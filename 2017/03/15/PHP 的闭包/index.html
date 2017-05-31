@@ -7,14 +7,15 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="PHP 的闭包闭包函数（closures）也就做匿名函数（Anonymous functions），是指在创建时封装周围状态的函数。即便闭包所在的环境不存在了，闭包中封装的状态依然存在。  理论上，闭包和匿名函数是不同的概念，不过 PHP 将其视作相同的概念，所以闭包与匿名函数相等。  匿名函数其实就是没有名字的函数。匿名函数可以赋值给变量，还能像其他任何 PHP 对象那样传递。不过匿名函数仍然是">
+<meta name="keywords" content="Closures">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="PHP Closures">
 <meta property="og:url" content="http://yoursite.com/2017/03/15/PHP 的闭包/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="PHP 的闭包闭包函数（closures）也就做匿名函数（Anonymous functions），是指在创建时封装周围状态的函数。即便闭包所在的环境不存在了，闭包中封装的状态依然存在。  理论上，闭包和匿名函数是不同的概念，不过 PHP 将其视作相同的概念，所以闭包与匿名函数相等。  匿名函数其实就是没有名字的函数。匿名函数可以赋值给变量，还能像其他任何 PHP 对象那样传递。不过匿名函数仍然是">
-<meta property="og:updated_time" content="2017-03-15T12:53:45.000Z">
+<meta property="og:updated_time" content="2017-05-31T06:39:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="PHP Closures">
 <meta name="twitter:description" content="PHP 的闭包闭包函数（closures）也就做匿名函数（Anonymous functions），是指在创建时封装周围状态的函数。即便闭包所在的环境不存在了，闭包中封装的状态依然存在。  理论上，闭包和匿名函数是不同的概念，不过 PHP 将其视作相同的概念，所以闭包与匿名函数相等。  匿名函数其实就是没有名字的函数。匿名函数可以赋值给变量，还能像其他任何 PHP 对象那样传递。不过匿名函数仍然是">
     
     
@@ -35,7 +36,7 @@
         
     
     <!-- title -->
-    <title>Hexo</title>
+    <title>PHP Closures</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- rss -->
@@ -84,15 +85,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/03/15/PHP 的闭包/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/03/15/PHP 的闭包/&text="><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title="><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/03/15/PHP 的闭包/&is_video=false&description="><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://yoursite.com/2017/03/15/PHP 的闭包/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title="><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title="><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title="><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title="><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/03/15/PHP 的闭包/&name=&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/03/15/PHP 的闭包/&text=PHP Closures"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title=PHP Closures"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/03/15/PHP 的闭包/&is_video=false&description=PHP Closures"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=PHP Closures&body=Check out this article: http://yoursite.com/2017/03/15/PHP 的闭包/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title=PHP Closures"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title=PHP Closures"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title=PHP Closures"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title=PHP Closures"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/03/15/PHP 的闭包/&name=PHP Closures&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -109,7 +110,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        
+        PHP Closures
     </h1>
 
 
@@ -120,11 +121,16 @@
       </span>
       
     <div class="postdate">
-        <time datetime="2017-03-15T12:53:45.000Z" itemprop="datePublished">2017-03-15</time>
+        <time datetime="2017-03-15T14:15:16.000Z" itemprop="datePublished">2017-03-15</time>
     </div>
 
 
       
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Closures/">Closures</a>
+    </div>
+
 
     </div>
   </header>
@@ -188,15 +194,15 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/03/15/PHP 的闭包/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/03/15/PHP 的闭包/&text="><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title="><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/03/15/PHP 的闭包/&is_video=false&description="><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://yoursite.com/2017/03/15/PHP 的闭包/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title="><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title="><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title="><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title="><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/03/15/PHP 的闭包/&name=&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/03/15/PHP 的闭包/&text=PHP Closures"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title=PHP Closures"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/03/15/PHP 的闭包/&is_video=false&description=PHP Closures"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=PHP Closures&body=Check out this article: http://yoursite.com/2017/03/15/PHP 的闭包/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title=PHP Closures"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title=PHP Closures"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title=PHP Closures"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/03/15/PHP 的闭包/&title=PHP Closures"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/03/15/PHP 的闭包/&name=PHP Closures&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
