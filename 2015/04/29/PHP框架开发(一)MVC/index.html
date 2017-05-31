@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="首先欢迎各位进入我的博客，我感觉非常荣幸，我并不是什么高手，现在的我不过是个在校的大学生，写这篇系列的博文只不过是为了加深自己对PHP的理解，以及对之前的学习做一个总结，同时也希望各位能够给我提一些意见。   PHP框架总给人以高大上的感觉，很多人学框架都学的头晕脑胀，百思不得其解，看完这篇博文后应该可以让还处于迷茫中的学习者找到一个入门的道路。   PHP框架到底是什么，框架不过是其他程序员">
+<meta name="keywords" content="PHP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP框架编写（一）：框架运行流程">
+<meta property="og:url" content="http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="首先欢迎各位进入我的博客，我感觉非常荣幸，我并不是什么高手，现在的我不过是个在校的大学生，写这篇系列的博文只不过是为了加深自己对PHP的理解，以及对之前的学习做一个总结，同时也希望各位能够给我提一些意见。   PHP框架总给人以高大上的感觉，很多人学框架都学的头晕脑胀，百思不得其解，看完这篇博文后应该可以让还处于迷茫中的学习者找到一个入门的道路。   PHP框架到底是什么，框架不过是其他程序员">
+<meta property="og:updated_time" content="2016-03-09T01:05:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP框架编写（一）：框架运行流程">
+<meta name="twitter:description" content="首先欢迎各位进入我的博客，我感觉非常荣幸，我并不是什么高手，现在的我不过是个在校的大学生，写这篇系列的博文只不过是为了加深自己对PHP的理解，以及对之前的学习做一个总结，同时也希望各位能够给我提一些意见。   PHP框架总给人以高大上的感觉，很多人学框架都学的头晕脑胀，百思不得其解，看完这篇博文后应该可以让还处于迷茫中的学习者找到一个入门的道路。   PHP框架到底是什么，框架不过是其他程序员">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>PHP框架编写（一）：框架运行流程</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2015/04/30/PHP框架编写（二）单入口路由/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/&text=PHP框架编写（一）：框架运行流程"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/&title=PHP框架编写（一）：框架运行流程"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/&is_video=false&description=PHP框架编写（一）：框架运行流程"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=PHP框架编写（一）：框架运行流程&body=Check out this article: http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/&title=PHP框架编写（一）：框架运行流程"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/&title=PHP框架编写（一）：框架运行流程"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/&title=PHP框架编写（一）：框架运行流程"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/&title=PHP框架编写（一）：框架运行流程"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/&name=PHP框架编写（一）：框架运行流程&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        PHP框架编写（一）：框架运行流程
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Hexo</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2015-04-29T14:02:49.000Z" itemprop="datePublished">2015-04-29</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/PHP/">PHP</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>  首先欢迎各位进入我的博客，我感觉非常荣幸，我并不是什么高手，现在的我不过是个在校的大学生，写这篇系列的博文只不过是为了加深自己对PHP的理解，以及对之前的学习做一个总结，同时也希望各位能够给我提一些意见。</p>
+<p>  PHP框架总给人以高大上的感觉，很多人学框架都学的头晕脑胀，百思不得其解，看完这篇博文后应该可以让还处于迷茫中的学习者找到一个入门的道路。</p>
+<p>  PHP框架到底是什么，框架不过是其他程序员提供的一个快速开发的一个代码而已，他帮助PHP开发者能够快速的开发，免去一些代码而已，PHP框架目前的核心就是MVC和数据库操作，更加大白话一点其实就是编程中最基础的增删改查，不过就是将他变的更加漂亮而已。</p>
+<p>  那么什么是MVC呢，M模型,V显示,C控制器。</p>
+<p>  这基本上是所有教程和书中都会提及的概念，也就不再多进行赘述模糊不清的概念了。</p>
+<p>  M是啥，字面上理解太费劲了，其实M模型我感觉表面上就是对数据库的操作，以及业务逻辑的梳理，这便是M模型，主要进行逻辑分析，将分析的结果传递给C也就是控制器，M就是一个深藏功与名的人，他默默就默默地站在幕后，干着最累的工作。</p>
+<p>V就是显示，也就是其中最好面子的人，他们两个人忙活半天，其实都是在给我忙活，所有东西都处理完了，拿到他这里来显示。</p>
+<p>C控制器，这个字面上就好理解了，那就是起到控制的作用，他控制着全局，属于M和C的一个中间层。（如果说错了，还请高手指正）</p>
+<p>  现在市面上的PHP框架基本上都是单一入口的文件。下面就是一个PHP框架的运行的简单流程图。</p>
+<p>  对PHP框架有了一定的了解之后，我们下一篇就开始讲PHP框架的目录结构了。</p>
+<p>  仅以此文先给刚刚入门的菜鸟，和正在努力奋斗的程序员们，祝各位早日成为攻城狮！出任CTO，赢取白富美，走向人生巅峰。</p>
+<p>  （如有转载，请注明出处，小弟感激不尽。）</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/&text=PHP框架编写（一）：框架运行流程"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/&title=PHP框架编写（一）：框架运行流程"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/&is_video=false&description=PHP框架编写（一）：框架运行流程"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=PHP框架编写（一）：框架运行流程&body=Check out this article: http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/&title=PHP框架编写（一）：框架运行流程"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/&title=PHP框架编写（一）：框架运行流程"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/&title=PHP框架编写（一）：框架运行流程"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/&title=PHP框架编写（一）：框架运行流程"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2015/04/29/PHP框架开发(一)MVC/&name=PHP框架编写（一）：框架运行流程&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+

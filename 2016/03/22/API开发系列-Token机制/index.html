@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Token（计算机术语）在计算机身份认证是令牌的意思，在此法分析中是标记的意思，我们通过Token机制能够有效的保护接口API不被恶意‘骚扰’。 我们可以想象一下，如果一个API在没有任何防护机制的情况下是多么恐怖的一件事情。通过抓包工具开发者可以轻松的抓到APP的接口,在没有保护的情况下一些‘坏家伙’就会开始跃跃欲试了，拥有一定安全意识的人都应该知道会发生什么。">
+<meta name="keywords" content="API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="API开发系列-Token机制">
+<meta property="og:url" content="http://yoursite.com/2016/03/22/API开发系列-Token机制/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Token（计算机术语）在计算机身份认证是令牌的意思，在此法分析中是标记的意思，我们通过Token机制能够有效的保护接口API不被恶意‘骚扰’。 我们可以想象一下，如果一个API在没有任何防护机制的情况下是多么恐怖的一件事情。通过抓包工具开发者可以轻松的抓到APP的接口,在没有保护的情况下一些‘坏家伙’就会开始跃跃欲试了，拥有一定安全意识的人都应该知道会发生什么。">
+<meta property="og:updated_time" content="2016-05-08T03:21:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="API开发系列-Token机制">
+<meta name="twitter:description" content="Token（计算机术语）在计算机身份认证是令牌的意思，在此法分析中是标记的意思，我们通过Token机制能够有效的保护接口API不被恶意‘骚扰’。 我们可以想象一下，如果一个API在没有任何防护机制的情况下是多么恐怖的一件事情。通过抓包工具开发者可以轻松的抓到APP的接口,在没有保护的情况下一些‘坏家伙’就会开始跃跃欲试了，拥有一定安全意识的人都应该知道会发生什么。">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>API开发系列-Token机制</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2016/03/26/mytime/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/03/22/多线程-nsoperation/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2016/03/22/API开发系列-Token机制/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2016/03/22/API开发系列-Token机制/&text=API开发系列-Token机制"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2016/03/22/API开发系列-Token机制/&title=API开发系列-Token机制"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2016/03/22/API开发系列-Token机制/&is_video=false&description=API开发系列-Token机制"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=API开发系列-Token机制&body=Check out this article: http://yoursite.com/2016/03/22/API开发系列-Token机制/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2016/03/22/API开发系列-Token机制/&title=API开发系列-Token机制"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2016/03/22/API开发系列-Token机制/&title=API开发系列-Token机制"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2016/03/22/API开发系列-Token机制/&title=API开发系列-Token机制"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2016/03/22/API开发系列-Token机制/&title=API开发系列-Token机制"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2016/03/22/API开发系列-Token机制/&name=API开发系列-Token机制&description=&lt;p&gt;Token（计算机术语）在计算机身份认证是令牌的意思，在此法分析中是标记的意思，我们通过Token机制能够有效的保护接口API不被恶意‘骚扰’。&lt;/p&gt;
+&lt;p&gt;我们可以想象一下，如果一个API在没有任何防护机制的情况下是多么恐怖的一件事情。通过抓包工具开发者可以轻松的抓到APP的接口,在没有保护的情况下一些‘坏家伙’就会开始跃跃欲试了，拥有一定安全意识的人都应该知道会发生什么。&lt;/p&gt;"><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        API开发系列-Token机制
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Hexo</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2016-03-22T08:05:19.000Z" itemprop="datePublished">2016-03-22</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/API/">API</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Token（计算机术语）在计算机身份认证是令牌的意思，在此法分析中是标记的意思，我们通过Token机制能够有效的保护接口API不被恶意‘骚扰’。</p>
+<p>我们可以想象一下，如果一个API在没有任何防护机制的情况下是多么恐怖的一件事情。通过抓包工具开发者可以轻松的抓到APP的接口,在没有保护的情况下一些‘坏家伙’就会开始跃跃欲试了，拥有一定安全意识的人都应该知道会发生什么。</p>
+<a id="more"></a>
+<p>那么现在我们开始讲述如何实现一个简单的PHP实现API接口中的Token机制。</p>
+<p>移动端和服务端的通信需要2把钥匙：</p>
+<ol>
+<li>接口token（api_token）</li>
+<li>客户端token（user_token）</li>
+</ol>
+<p>接口token（api_token）</p>
+<p>它的职责是保持接口访问的隐蔽性和有效性，保证接口的唯一性，实现的方法有很多种，我们可以按照服务端和客户端都拥有的共同属性生成一个随机串，客户端生成这个穿，服务器也按同样的算法生成一个串，用来验证客户端的串。</p>
+<p>我使用的风格为：</p>
+<p>api_token = md5(‘action’,’date’,’key’)</p>
+<p>详细解析：</p>
+<p>action：方法</p>
+<p>date：当前时间</p>
+<p>key：密匙</p>
+<p>其中key为自由的加密key，手机端需要在服务端注册一个‘接口使用者’账户后，系统会自动凤佩一个账号以及密码，数据表设计参考如下：</p>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th style="text-align:center">字段类型</th>
+<th style="text-align:left">注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>client_id</td>
+<td style="text-align:center">varchar(20)</td>
+<td style="text-align:left">客户端ID</td>
+</tr>
+<tr>
+<td>client_secret</td>
+<td style="text-align:center">varchar(20)</td>
+<td style="text-align:left">客户端（加密）key</td>
+</tr>
+</tbody>
+</table>
+<p>服务端接口验证，PHP实现如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//1.获取GET参数</div><div class="line">$action = $_GET[&apos;action&apos;]</div><div class="line">$client_id = $_GET[&apos;client_id&apos;]</div><div class="line">$api_token = $_GET[&apos;api_token&apos;]</div><div class="line">//2.根据客户端传来的client_id，查询数据库，获取对应的client_secret</div><div class="line">$client_select = getClientId($client_id);</div><div class="line">//3.服务器重新生成一份api_token</div><div class="line">$api_token_server = md5($$action.date(&apos;Y-m-d&apos;),time()).$client_select);</div><div class="line">//4.客户端传来的api_token与服务端生成的api_token进行校对，如果不相等，则表示验证失败</div><div class="line">if ($api_token!= api_token_server)&#123;</div><div class="line">	exit(&apos;access deny&apos;)//拒绝访问</div><div class="line">&#125;</div><div class="line">//通过则返回数据</div></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2016/03/22/API开发系列-Token机制/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2016/03/22/API开发系列-Token机制/&text=API开发系列-Token机制"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2016/03/22/API开发系列-Token机制/&title=API开发系列-Token机制"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2016/03/22/API开发系列-Token机制/&is_video=false&description=API开发系列-Token机制"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=API开发系列-Token机制&body=Check out this article: http://yoursite.com/2016/03/22/API开发系列-Token机制/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2016/03/22/API开发系列-Token机制/&title=API开发系列-Token机制"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2016/03/22/API开发系列-Token机制/&title=API开发系列-Token机制"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2016/03/22/API开发系列-Token机制/&title=API开发系列-Token机制"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2016/03/22/API开发系列-Token机制/&title=API开发系列-Token机制"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2016/03/22/API开发系列-Token机制/&name=API开发系列-Token机制&description=&lt;p&gt;Token（计算机术语）在计算机身份认证是令牌的意思，在此法分析中是标记的意思，我们通过Token机制能够有效的保护接口API不被恶意‘骚扰’。&lt;/p&gt;
+&lt;p&gt;我们可以想象一下，如果一个API在没有任何防护机制的情况下是多么恐怖的一件事情。通过抓包工具开发者可以轻松的抓到APP的接口,在没有保护的情况下一些‘坏家伙’就会开始跃跃欲试了，拥有一定安全意识的人都应该知道会发生什么。&lt;/p&gt;"><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+
