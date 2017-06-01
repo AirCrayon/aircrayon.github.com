@@ -153,11 +153,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                39
+                40
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                9
+                10
                 <span>tags</span>
             </div>
         </div>
@@ -206,18 +206,98 @@
 
             
             <section id="main">
-    <article id="post-Java 学习之路之Hibernate" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-PHP设计模式系列之入门" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/09/23/108/">PHP设计模式系列之入门</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/09/23/108/">
+            <time datetime="2016-09-23T14:15:16.000Z" itemprop="datePublished">2016-09-23</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/PHP设计模式/">PHP设计模式</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/设计模式/">设计模式</a>
+    </div>
+
+                    </div>
+                
+            </header>
         
         
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h1 id="Java-学习之路之Hibernate"><a href="#Java-学习之路之Hibernate" class="headerlink" title="Java 学习之路之Hibernate"></a>Java 学习之路之Hibernate</h1><p>##前言</p>
-<p>公司让我转岗，从 iOS 转向 Java，于是开始进行 Java 的学习，由于是带有目的性的学习所以学习速度上要快一些，所以只要能将功能实现就 ok 了。至于深入那是以后的事情，目前需要走的东西就是胜任工作。</p>
-<p>##Hibernate简介</p>
-<p>Hibernate 是在 JDBC 层面上的一层封装实现的 ORM（即Object-Relational Mapping，它的作用就是在关系型数据库和对象之间做了一个映射。从对象（Object）映射到关系（Relation），再从关系映射到对象。这样，我们在操作数据库的时候，不需要再去和复杂SQL打交道，只要像操作对象一样操作它就可以了（把关系数据库的字段在内存中映射成对象的属性））</p>
+            <blockquote>
+<p>设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问，设计模式于己于他人于系统都是多赢的；设计模式使代码编制真正工程化；设计模式是软件工程的基石脉络，如同大厦的结构一样。</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+<li><p>本系列文章不会直接上代码直接进行解释，我一直认为带着问题来学习是效率最高的学习方式。</p>
+</li>
+<li><p>本系列文章不会有演示截图，你为什么不敲一遍加深印象呢，另外说不定我的代码有错。</p>
+</li>
+<li><p>我所写的文章只是我对于编程的理解，如果有错误希望能够得到指正以免误人子弟。</p>
+</li>
+</ul>
+<h2 id="怎么样才可以进行设计模式的学习"><a href="#怎么样才可以进行设计模式的学习" class="headerlink" title="怎么样才可以进行设计模式的学习"></a>怎么样才可以进行设计模式的学习</h2><p>步子迈大了容易扯到蛋，如果在没有熟悉 OOP 编程思想前就开始学习设计模式，我感觉会有两种可能，不是“扯蛋”，就是“拉跨”。</p>
+<p><img src="http://wanzao2.b0.upaiyun.com/system/pictures/17809564/original/5a08021694a003ca.gif" alt=""></p>
+<p>当然上面的话是一句玩笑话，学习设计模式可以有效的提高我们的代码质量与深入的理解 OOP 编程理念，如但是果在没有扎实的功底（至少要要理解了抽象、接口、多态）前就开始学习设计模式会越学越难，脑子越来越浑，那就真变成了从入门到放弃了，因为你的思维还没有真正的走进 OOP(单身狗表示完全无法面向对象^_^)。</p>
+<p>对于设计模式的不理解我感觉主要分为两种，一种是不知道怎么实现的，原因就是如上所述，另外一种是不知道为什么要这么用的，其实没有必要纠结于为什么这么用，这么用了有啥作用，设计模式不过是与算法一样只是为了实现某个特定环境下可以使用的一种更好的选择。</p>
+<p>更好一点的例子就是当我们对一些数据进行排序的时候，我们首先想到就是那几个排序算法一样，当我们打着打着代码突然灵光一闪，好像这个地方用这个设计模式写起来会轻松一点。</p>
+<p>当碰到不懂得地方，思考一下，想不通，就出去走走，把这个东西放下来，反正就算看到第二天凌晨也也是无用的，当真正遇到问题的时候，灵光一闪这个东西可以这么写，然后去实践，这就是我的学习之道。还有就是尽量去学实例，而不是去死扣概念，当你真正用起来了，你也就差不多懂了，算法与数据结构亦是如此。</p>
+<p>本系列文章尽量以推导的形式来进行书写，而不是以现成的代码来进行讲解，让读者知道设计模式是怎么来的也就是如何演化出来的，希望各位能够喜欢。<strong>另外本系列的文章并不会提供运行界面的截图，如果想看看结果是否正确，为什么不自己试试呢？</strong></p>
+<h2 id="设计模式尝鲜（策略模式）"><a href="#设计模式尝鲜（策略模式）" class="headerlink" title="设计模式尝鲜（策略模式）"></a>设计模式尝鲜（策略模式）</h2><p>开头引用的话来自于百度百科，我相信很多刚刚开始接触编程的人都会犯晕，因为所有人都不喜欢被学术化的文字，我们以设计模式中较为常用的策略模式来进行演示，当我们编写一个广告模块的时候，公司给的要求是根据访问者的性别来进行显示广告以提高转化率，那我们应该怎么写呢？</p>
+<p><img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&amp;quality=100&amp;size=b4000_4000&amp;sec=1474639306&amp;di=8cd977b3c8e7d09c8a22672b95423266&amp;src=http://img01.taopic.com/151015/234716-15101509225378.jpg" alt=""></p>
+<p>首先我们想到的是在每一个广告位上面都使用 if 判断来判断访客的性别，这样就能够解决这样的需求，那么我们的每一个广告代码的代码块可能是这个样子的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">判断 男 or 女&#123;</div><div class="line">	如果是男的就是男人的广告</div><div class="line">&#125;else&#123;</div><div class="line">	显示女人的广告</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>既然伪代码想好了，那么我们就可以着手进行开发了，然后我们在 if 代码块中添加各自的家在广告代码，于是就变成了下面的样子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if ($_GET[&apos;sex&apos;] == &apos;man&apos;) &#123;</div><div class="line">	echo &apos;外星人大减价现在购买立即送电竞瑞文皮肤&apos;;</div><div class="line">&#125;else&#123;</div><div class="line">	echo &apos;卡西欧美颜相机不要钱免费送！&apos;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但是这是属于一种硬编码的编程方式，一旦我们增加了某种需求，要求其年龄大于23岁显示什么样的广告，那么我们就不得不在每一个 if 判断处再加上新的判断条件，这样的设计就是不合理的，为了提高可读性与可维护性，我们会考虑建立两个不同的类来对两个广告类来对其进行管理。于是代码变成了下面的样子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">//index.php</div><div class="line">include &apos;GenderAD.php&apos;;</div><div class="line">include &apos;ManAD.php&apos;;</div><div class="line"></div><div class="line">if ($_GET[&apos;sex&apos;] == &apos;man&apos;) &#123;</div><div class="line">	$ad = new ManAD();</div><div class="line">&#125;else&#123;</div><div class="line">	$ad = new GenderAD();</div><div class="line">&#125;</div><div class="line">$ad-&gt;show();</div><div class="line"></div><div class="line">//GenderAD.php</div><div class="line">class GenderAD</div><div class="line">&#123;</div><div class="line">	public algorithm()&#123;</div><div class="line">		echo &apos;卡西欧美颜相机不要钱免费送！&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//ManAD.php</div><div class="line">class ManAD&#123;</div><div class="line">	public algorithm()&#123;</div><div class="line">		echo &apos;外星人大减价现在购买立即送电竞瑞文皮肤&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>algorithm    英[ˈælgərɪðəm] 美[ˈælɡəˌrɪðəm] n.    演算法; 运算法则; 计算程序;</p>
+</blockquote>
+<p>其实到了这一步就已经算是一个简单的策略模式了，因为他已经具有策略的特质了，只不过还不够完善，如果说这不算什么的话我也没有办法，因为所有的设计模式其实都是思维模式与表现形式罢了，就像上面的引用中提到的一样，设计模式只不过是为了能够让代码可以重用，更容易他让人理解，因为你的代码并不是你一个人在维护，那么问题来了，只是简单的对其进行封装真的就提高代码的可维护性了么，其实并没有，我们还没有将 OOP 的设计概念发挥到极致。</p>
+<p>经过分析我们发现其实 ManAD类和 GenderAD最终都要进行显示，他们的方法的显示方法都是 show，如果是你一个人在开发那么没有什么问题，可是若是两个人开发呢，你们可以直接可以对话的方式进行沟通，协定好都是 show方法来显示，可是为什么不用更工程化的方式来实现呢？</p>
+<p>我们可以使用接口来实现这一目的，如果对接口还不了解，可以去查阅一下资料，很快你就能够明白，在本文结束后我会在下方标注出参考范例。</p>
+<p>我们可以新建一个接口来对这些策略进行控制。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">interface ADinterface&#123;</div><div class="line">	public function algorithm();</div><div class="line">&#125;</div><div class="line"></div><div class="line">class ManAD implements ADInterface</div><div class="line">&#123;</div><div class="line">	public function algorithm()&#123;</div><div class="line">		echo &apos;外星人大减价现在购买立即送电竞瑞文皮肤&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">class GenderAD implements ADInterface</div><div class="line">&#123;</div><div class="line">	public function algorithm()&#123;	</div><div class="line">		echo &apos;卡西欧美颜相机不要钱免费送！&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样一来广告策略必须遵循这个接口进行开发，就保证了所有策略类都需要实现 show 方法。</p>
+<p>到目前为止，策略模式已经相对的完善了，但是还是不够完美，因为代码依旧并不是很 OOP，我们其实还可以更进一步，让他更 OOP，我们可以对那些策略外面套一个壳子，给外面一个选择器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class StrategySelect &#123;</div><div class="line">	//具体策略对象</div><div class="line">    private $strategyInstance;</div><div class="line">    </div><div class="line">    //构造函数</div><div class="line">    public function __construct($instance)</div><div class="line">    &#123;</div><div class="line">        $this-&gt;strategyInstance = $instance;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public function algorithm($strategy)</div><div class="line">    &#123;</div><div class="line">        return $this-&gt;strategyInstance-&gt;algorithm();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们通过构造函数接收到具体的执行策略，然后使用algorithm()执行相对应的策略。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">interface ADinterface&#123;</div><div class="line">	public function algorithm();</div><div class="line">&#125;</div><div class="line"></div><div class="line">class StrategySelect &#123;</div><div class="line">	//具体策略对象</div><div class="line">    private $strategyInstance;</div><div class="line">    </div><div class="line">    //构造函数</div><div class="line">    public function __construct($instance)</div><div class="line">    &#123;</div><div class="line">        $this-&gt;strategyInstance = $instance;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public function algorithm()</div><div class="line">    &#123;</div><div class="line">        return $this-&gt;strategyInstance-&gt;algorithm();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class ManAD implements ADInterface</div><div class="line">&#123;</div><div class="line">	public function algorithm()&#123;</div><div class="line">		echo &apos;外星人大减价现在购买立即送电竞瑞文皮肤&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class GenderAD implements ADInterface</div><div class="line">&#123;</div><div class="line">	public function algorithm()&#123;</div><div class="line">		echo &apos;卡西欧相机免费赠送啦&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">header(&quot;Content-type:text/html;charset=utf-8&quot;);</div><div class="line">if ($_GET[&apos;sex&apos;] == &apos;man&apos;) &#123;</div><div class="line">	$stratey = new StrategySelect(new ManAD());</div><div class="line">	$stratey-&gt;algorithm();</div><div class="line">&#125;else&#123;</div><div class="line">	$stratey = new StrategySelect(new GenderAD());</div><div class="line">	$stratey-&gt;algorithm();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Strategy其实算是一个策略选择器，当满足一定条件的时候，我们通过这个策略选测器来进行选择相对应的策略。这样一来更符合逻辑。是不是很 OOP？</p>
+<p>如果有什么不懂得可以在评论区进行留言，有时间我会一一答复，如果发现本文中有什么错误请指出，我也害怕误人子弟，特别是概念上的东西，在最后StrategySelect类的讲解上我依旧感觉写的很模糊，有些差强人意。</p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><p>《Leaning PHP Design Patterns》 William Sanders 著 苏金国 王宇飞等译</p>
+</li>
+<li><p>《PHP之道》</p>
+</li>
+<li><p>《PHP大话设计模式》 Rango(韩天峰) 录制者 慕课网视频教程</p>
+</li>
+</ul>
 
         
         </div>
@@ -228,7 +308,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/09/21/cj3dqe9hf000e2txiccokqbdk/" data-id="cj3dqe9hf000e2txiccokqbdk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/09/23/108/" data-id="cj3drxipy000wo9xiwutfv0k9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -296,7 +376,107 @@
 
             
     
-        <a href="http://yoursite.com/2016/09/21/cj3dqe9hf000e2txiccokqbdk/#comments" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/2016/09/23/108/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-Java 学习之路之Hibernate" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="Java-学习之路之Hibernate"><a href="#Java-学习之路之Hibernate" class="headerlink" title="Java 学习之路之Hibernate"></a>Java 学习之路之Hibernate</h1><p>##前言</p>
+<p>公司让我转岗，从 iOS 转向 Java，于是开始进行 Java 的学习，由于是带有目的性的学习所以学习速度上要快一些，所以只要能将功能实现就 ok 了。至于深入那是以后的事情，目前需要走的东西就是胜任工作。</p>
+<p>##Hibernate简介</p>
+<p>Hibernate 是在 JDBC 层面上的一层封装实现的 ORM（即Object-Relational Mapping，它的作用就是在关系型数据库和对象之间做了一个映射。从对象（Object）映射到关系（Relation），再从关系映射到对象。这样，我们在操作数据库的时候，不需要再去和复杂SQL打交道，只要像操作对象一样操作它就可以了（把关系数据库的字段在内存中映射成对象的属性））</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/09/21/cj3drxiph000ao9xi8ksvw00g/" data-id="cj3drxiph000ao9xi8ksvw00g" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/09/21/cj3drxiph000ao9xi8ksvw00g/#comments" class="article-comment-link">Comments</a>
     
 
         </footer>
@@ -367,7 +547,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/07/30/194/" data-id="cj3dqe9j1002j2txi9agyrylh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/07/30/194/" data-id="cj3drxird002ro9xi1f7lb2is" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -453,7 +633,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2016/07/20/cj3dqe9ih001s2txigbfdoh9q/">对于未来的规划</a>
+            <a class="article-title" href="/2016/07/20/cj3drxiqp001po9xi18knxc79/">对于未来的规划</a>
         </h1>
     
 
@@ -462,7 +642,7 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/07/20/cj3dqe9ih001s2txigbfdoh9q/">
+        <a href="/2016/07/20/cj3drxiqp001po9xi18knxc79/">
             <time datetime="2016-07-20T04:45:16.000Z" itemprop="datePublished">2016-07-20</time>
         </a>
     </div>
@@ -518,7 +698,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/07/20/cj3dqe9ih001s2txigbfdoh9q/" data-id="cj3dqe9ih001s2txigbfdoh9q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/07/20/cj3drxiqp001po9xi18knxc79/" data-id="cj3drxiqp001po9xi18knxc79" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -586,7 +766,7 @@
 
             
     
-        <a href="http://yoursite.com/2016/07/20/cj3dqe9ih001s2txigbfdoh9q/#comments" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/2016/07/20/cj3drxiqp001po9xi18knxc79/#comments" class="article-comment-link">Comments</a>
     
 
         </footer>
@@ -604,7 +784,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2016/05/08/cj3dqe9i300182txib1or4lpk/">使用 Feedly RSS阅读器订阅技术大牛的博客</a>
+            <a class="article-title" href="/2016/05/08/cj3drxiq80016o9xibdqv0uxu/">使用 Feedly RSS阅读器订阅技术大牛的博客</a>
         </h1>
     
 
@@ -613,7 +793,7 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/05/08/cj3dqe9i300182txib1or4lpk/">
+        <a href="/2016/05/08/cj3drxiq80016o9xibdqv0uxu/">
             <time datetime="2016-05-08T03:06:05.000Z" itemprop="datePublished">2016-05-08</time>
         </a>
     </div>
@@ -642,7 +822,7 @@
 <p>这个时候我想起了一个叫做 RSS 订阅的一个功能，可是国产的RSS 订阅器的 UI 是一个很大的槽点，而且功能相对于臃肿，很多功能都用不到，最终选择了 Feedly 这款 APP，UI 清爽，功能简单，完全符合我的需要，而且还支持 OPML 导入。</p>
 <p>AirCrayon 是一名 iOS 程序员，所以我订阅的大多都是 iOS 的技术大牛，大牛唐巧一直在维护一个中文博文列表的项目地：<a href="https://github.com/tangqiaoboy/iOSBlogCN" target="_blank" rel="external">https://github.com/tangqiaoboy/iOSBlogCN</a></p></p>
             <p class="article-more-link">
-                <a href="/2016/05/08/cj3dqe9i300182txib1or4lpk/#more">Read More</a>
+                <a href="/2016/05/08/cj3drxiq80016o9xibdqv0uxu/#more">Read More</a>
             </p>
         
         </div>
@@ -653,7 +833,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/05/08/cj3dqe9i300182txib1or4lpk/" data-id="cj3dqe9i300182txib1or4lpk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/05/08/cj3drxiq80016o9xibdqv0uxu/" data-id="cj3drxiq80016o9xibdqv0uxu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -721,7 +901,7 @@
 
             
     
-        <a href="http://yoursite.com/2016/05/08/cj3dqe9i300182txib1or4lpk/#comments" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/2016/05/08/cj3drxiq80016o9xibdqv0uxu/#comments" class="article-comment-link">Comments</a>
     
 
         </footer>
@@ -839,7 +1019,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/05/06/cj3dqe9j0002h2txinjy3ikms/" data-id="cj3dqe9j0002h2txinjy3ikms" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/05/06/cj3drxir8002eo9xi0hu9c50j/" data-id="cj3drxir8002eo9xi0hu9c50j" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -907,7 +1087,7 @@
 
             
     
-        <a href="http://yoursite.com/2016/05/06/cj3dqe9j0002h2txinjy3ikms/#comments" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/2016/05/06/cj3drxir8002eo9xi0hu9c50j/#comments" class="article-comment-link">Comments</a>
     
 
         </footer>
@@ -925,7 +1105,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2016/05/06/cj3dqe9hm000l2txixzrnbwun/">读书总结之NSObject</a>
+            <a class="article-title" href="/2016/05/06/cj3drxipn000ho9xii2r3c4zo/">读书总结之NSObject</a>
         </h1>
     
 
@@ -934,7 +1114,7 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/05/06/cj3dqe9hm000l2txixzrnbwun/">
+        <a href="/2016/05/06/cj3drxipn000ho9xii2r3c4zo/">
             <time datetime="2016-05-06T03:03:16.000Z" itemprop="datePublished">2016-05-06</time>
         </a>
     </div>
@@ -967,7 +1147,7 @@
 <p>根类通过哪些方式提供了哪些功能对系统有很大的影响。因此，根类不同的系统之间是无法开发出通用的程序的。</p>
 <p>Cocoa 是以OPENSTEPDE的核心 API 为基础发展起来的。OPENSTEP的前身为 NeXTstep。在 NeXTstep 时代，根类是累 Object,而在 OPENSTEP 时代，根类则变为了 NSObject，同时类的设计也得到了大幅度的改进。</p></p>
             <p class="article-more-link">
-                <a href="/2016/05/06/cj3dqe9hm000l2txixzrnbwun/#more">Read More</a>
+                <a href="/2016/05/06/cj3drxipn000ho9xii2r3c4zo/#more">Read More</a>
             </p>
         
         </div>
@@ -978,7 +1158,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/05/06/cj3dqe9hm000l2txixzrnbwun/" data-id="cj3dqe9hm000l2txixzrnbwun" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/05/06/cj3drxipn000ho9xii2r3c4zo/" data-id="cj3drxipn000ho9xii2r3c4zo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1046,7 +1226,7 @@
 
             
     
-        <a href="http://yoursite.com/2016/05/06/cj3dqe9hm000l2txixzrnbwun/#comments" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/2016/05/06/cj3drxipn000ho9xii2r3c4zo/#comments" class="article-comment-link">Comments</a>
     
 
         </footer>
@@ -1064,7 +1244,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2016/04/23/cj3dqe9ib001j2txiatl4pbyl/">UITableView 系统 API实现滑动删除Cell</a>
+            <a class="article-title" href="/2016/04/23/cj3drxiqo001mo9xi6ou3dcgc/">UITableView 系统 API实现滑动删除Cell</a>
         </h1>
     
 
@@ -1073,7 +1253,7 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/04/23/cj3dqe9ib001j2txiatl4pbyl/">
+        <a href="/2016/04/23/cj3drxiqo001mo9xi6ou3dcgc/">
             <time datetime="2016-04-23T08:05:19.000Z" itemprop="datePublished">2016-04-23</time>
         </a>
     </div>
@@ -1110,7 +1290,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/04/23/cj3dqe9ib001j2txiatl4pbyl/" data-id="cj3dqe9ib001j2txiatl4pbyl" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/04/23/cj3drxiqo001mo9xi6ou3dcgc/" data-id="cj3drxiqo001mo9xi6ou3dcgc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1178,7 +1358,7 @@
 
             
     
-        <a href="http://yoursite.com/2016/04/23/cj3dqe9ib001j2txiatl4pbyl/#comments" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/2016/04/23/cj3drxiqo001mo9xi6ou3dcgc/#comments" class="article-comment-link">Comments</a>
     
 
         </footer>
@@ -1251,7 +1431,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/04/05/cj3dqe9gm00002txi6wm24kgv/" data-id="cj3dqe9gm00002txi6wm24kgv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/04/05/cj3drxioq0001o9xifmufnleh/" data-id="cj3drxioq0001o9xifmufnleh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1319,7 +1499,7 @@
 
             
     
-        <a href="http://yoursite.com/2016/04/05/cj3dqe9gm00002txi6wm24kgv/#comments" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/2016/04/05/cj3drxioq0001o9xifmufnleh/#comments" class="article-comment-link">Comments</a>
     
 
         </footer>
@@ -1337,7 +1517,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2016/03/27/cj3dqe9io00202txiakvw0q3n/">一个新的开始</a>
+            <a class="article-title" href="/2016/03/27/cj3drxiqv001xo9xi9h388lvi/">一个新的开始</a>
         </h1>
     
 
@@ -1346,7 +1526,7 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/03/27/cj3dqe9io00202txiakvw0q3n/">
+        <a href="/2016/03/27/cj3drxiqv001xo9xi9h388lvi/">
             <time datetime="2016-03-27T15:28:11.000Z" itemprop="datePublished">2016-03-27</time>
         </a>
     </div>
@@ -1368,7 +1548,7 @@
         
             <p><p>人生又要开启新的篇章了，而我也将重头开始，接触网络文学也有五六年了，断断续续的也算是写了很多东西，但都无疾而终了，可能是那几分钟的热度退去了，仔细回想倒是感觉真的欠缺了自己很多东西，说起来也是蛮遗憾的，为了不让我的青春有遗憾，我做了很多事情，唯独欠缺的可能就是曾经在上大学前许下的承诺，在大学毕业的时候写一本完本的小说。</p></p>
             <p class="article-more-link">
-                <a href="/2016/03/27/cj3dqe9io00202txiakvw0q3n/#more">Read More</a>
+                <a href="/2016/03/27/cj3drxiqv001xo9xi9h388lvi/#more">Read More</a>
             </p>
         
         </div>
@@ -1379,7 +1559,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/03/27/cj3dqe9io00202txiakvw0q3n/" data-id="cj3dqe9io00202txiakvw0q3n" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/03/27/cj3drxiqv001xo9xi9h388lvi/" data-id="cj3drxiqv001xo9xi9h388lvi" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1447,142 +1627,7 @@
 
             
     
-        <a href="http://yoursite.com/2016/03/27/cj3dqe9io00202txiakvw0q3n/#comments" class="article-comment-link">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-mytime" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/03/26/cj3dqe9id001p2txilzah8p28/">我的碎片化时间都在做什么?</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/03/26/cj3dqe9id001p2txilzah8p28/">
-            <time datetime="2016-03-26T03:03:16.000Z" itemprop="datePublished">2016-03-26</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/随笔/">随笔</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/随笔/">随笔</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>一直都没太仔细的时间管理,基本上就是想要去做什么就去做,但就算如此有的时候回想一下自己这一天都在做什么了,却发现一天过得有些苍白,可能是精神上还是没有获得太多的满足,日记现在还在坚持写,不过一般都是有什么事情发生了才会去写上那么一笔.</p>
-<p>最近一直在想自己的时间去了哪里,现在正在处于学习状态,满脑子都是成片的代码,倒是没有更多的碎片化时间.</p>
-<p>那么我平时大部分碎片化时间都在干什么呢.</p></p>
-            <p class="article-more-link">
-                <a href="/2016/03/26/cj3dqe9id001p2txilzah8p28/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2016/03/26/cj3dqe9id001p2txilzah8p28/" data-id="cj3dqe9id001p2txilzah8p28" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2016/03/26/cj3dqe9id001p2txilzah8p28/#comments" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/2016/03/27/cj3drxiqv001xo9xi9h388lvi/#comments" class="article-comment-link">Comments</a>
     
 
         </footer>
@@ -1608,64 +1653,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/03/16/cj3dqe9iw002b2txiu5we49lv/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/03/16/cj3dqe9iw002b2txiu5we49lv/" class="title"></a></p>
-                            <p class="item-date"><time datetime="2017-03-16T15:28:53.000Z" itemprop="datePublished">2017-03-16</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/03/16/cj3dqe9i8001f2txi73rd8trq/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/03/16/cj3dqe9i8001f2txi73rd8trq/" class="title"></a></p>
-                            <p class="item-date"><time datetime="2017-03-16T06:18:18.000Z" itemprop="datePublished">2017-03-16</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/03/16/cj3dqe9iy002e2txinv4wctmh/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/03/16/cj3dqe9iy002e2txinv4wctmh/" class="title"></a></p>
-                            <p class="item-date"><time datetime="2017-03-16T02:36:21.000Z" itemprop="datePublished">2017-03-16</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/03/15/cj3dqe9hd000a2txivln8mj82/" class="thumbnail">
+                            <a href="/2017/06/01/1/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -1676,15 +1664,15 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/PHP/">PHP</a></p>
-                            <p class="item-title"><a href="/2017/03/15/cj3dqe9hd000a2txivln8mj82/" class="title">PHP Closures</a></p>
-                            <p class="item-date"><time datetime="2017-03-15T14:15:16.000Z" itemprop="datePublished">2017-03-15</time></p>
+                            <p class="item-title"><a href="/2017/06/01/1/" class="title">理解规约设计模式(Specification)</a></p>
+                            <p class="item-date"><time datetime="2017-06-01T01:44:20.000Z" itemprop="datePublished">2017-06-01</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/03/14/cj3dqe9hr000s2txixurq0k53/" class="thumbnail">
+                            <a href="/2017/03/16/cj3drxiqy0020o9xi8rdsrowh/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -1695,8 +1683,65 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/03/14/cj3dqe9hr000s2txixurq0k53/" class="title"></a></p>
-                            <p class="item-date"><time datetime="2017-03-14T06:30:03.000Z" itemprop="datePublished">2017-03-14</time></p>
+                            <p class="item-title"><a href="/2017/03/16/cj3drxiqy0020o9xi8rdsrowh/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2017-03-16T15:28:53.000Z" itemprop="datePublished">2017-03-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/03/16/cj3drxiqg001co9xiaarl9by9/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/03/16/cj3drxiqg001co9xiaarl9by9/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2017-03-16T06:18:18.000Z" itemprop="datePublished">2017-03-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/03/16/cj3drxir9002ho9xi3z0xs0vi/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/03/16/cj3drxir9002ho9xi3z0xs0vi/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2017-03-16T02:36:21.000Z" itemprop="datePublished">2017-03-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/03/15/cj3drxipt000oo9xi5tg3a7nv/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/PHP/">PHP</a></p>
+                            <p class="item-title"><a href="/2017/03/15/cj3drxipt000oo9xi5tg3a7nv/" class="title">PHP Closures</a></p>
+                            <p class="item-date"><time datetime="2017-03-15T14:15:16.000Z" itemprop="datePublished">2017-03-15</time></p>
                         </div>
                     </li>
                 
@@ -1709,7 +1754,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Objective-C/">Objective-C</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP设计模式/">PHP设计模式</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Objective-C/">Objective-C</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP设计模式/">PHP设计模式</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -1718,7 +1763,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -1727,7 +1772,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/">API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Closures/">Closures</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/色彩/">色彩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">5</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/">API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Closures/">Closures</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP设计模式/">PHP设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/色彩/">色彩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">5</span></li></ul>
         </div>
     </div>
 
@@ -1736,7 +1781,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/Closures/" style="font-size: 10px;">Closures</a> <a href="/tags/PHP/" style="font-size: 13.33px;">PHP</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/色彩/" style="font-size: 10px;">色彩</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 16.67px;">随笔</a>
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/Closures/" style="font-size: 10px;">Closures</a> <a href="/tags/PHP/" style="font-size: 13.33px;">PHP</a> <a href="/tags/PHP设计模式/" style="font-size: 10px;">PHP设计模式</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/色彩/" style="font-size: 10px;">色彩</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 16.67px;">随笔</a>
         </div>
     </div>
 
