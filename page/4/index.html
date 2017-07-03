@@ -153,11 +153,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                40
+                41
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                10
+                11
                 <span>tags</span>
             </div>
         </div>
@@ -206,7 +206,7 @@
 
             
             <section id="main">
-    <article id="post- CGFloat、CGPoint、CGSize和CGRect" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Block学习" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -214,7 +214,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2016/01/31/cj3drxiov0003o9xiekkmjojn/">CGFloat、CGPoint、CGSize和CGRect</a>
+            <a class="article-title" href="/2016/02/17/231/">Block全面解析</a>
         </h1>
     
 
@@ -223,8 +223,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/01/31/cj3drxiov0003o9xiekkmjojn/">
-            <time datetime="2016-01-30T16:27:31.000Z" itemprop="datePublished">2016-01-31</time>
+        <a href="/2016/02/17/231/">
+            <time datetime="2016-02-17T08:05:19.000Z" itemprop="datePublished">2016-02-17</time>
         </a>
     </div>
 
@@ -248,16 +248,45 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><p>CGFloat、CGPoint、CGSize和CGRect主要是用来描述UI控件的几何属性的基本类型。</p>
-<ul>
-<li>CGFloat: 浮点值的基本类型</li>
-<li>CGPoint: 表示一个二维坐标系中的点</li>
-<li>CGSize: 表示一个矩形的宽度和高度</li>
-<li>CGRect: 表示一个矩形的位置和大小</li>
-</ul></p>
-            <p class="article-more-link">
-                <a href="/2016/01/31/cj3drxiov0003o9xiekkmjojn/#more">Read More</a>
-            </p>
+            
+            <p>该博文转载自:<a href="http://my.oschina.net/leejan97/blog/268536" target="_blank" rel="external">http://my.oschina.net/leejan97/blog/268536</a></p>
+<p>如果有Block语法不懂的，可以参考fuckingblocksyntax，里面对于Block<br>为了方便对比，下面的代码我假设是写在ViewController子类中的</p>
+<h2 id="1、第一部分"><a href="#1、第一部分" class="headerlink" title="1、第一部分"></a>1、第一部分</h2><p>定义和使用Block，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad</div><div class="line">&#123;</div><div class="line">[super viewDidLoad];</div><div class="line">//（1）定义无参无返回值的Block</div><div class="line">void (^printBlock)() = ^()&#123;</div><div class="line">printf(&quot;no number&quot;);</div><div class="line">&#125;;</div><div class="line">printBlock();</div><div class="line">printBlock(9);</div><div class="line">int mutiplier = 7;</div><div class="line">//（3）定义名为myBlock的代码块，返回值类型为int</div><div class="line">int (^myBlock)(int) = ^(int num)&#123;</div><div class="line">return num*mutiplier;</div><div class="line">&#125;</div><div class="line">//使用定义的myBlock</div><div class="line">int newMutiplier = myBlock(3);</div><div class="line">printf(&quot;newMutiplier is %d&quot;,myBlock(3));</div><div class="line">&#125;</div><div class="line">//定义在-viewDidLoad方法外部</div><div class="line">//（2）定义一个有参数，没有返回值的Block</div><div class="line">void (^printNumBlock)(int) = ^(int num)&#123;</div><div class="line">printf(&quot;int number is %d&quot;,num);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>定义Block变量，就相当于定义了一个函数。但是区别也很明显，因为函数肯定是在-viewDidLoad方法外面定义，而Block变量定义在了viewDidLoad方法内部。当然，我们也可以把Block定义在-viewDidLoad方法外部，例如上面的代码块printNumBlock的定义，就在-viewDidLoad外面。</p>
+<p>再来看看上面代码运行的顺序问题，以第（3）个myBlock距离来说，在定义的地方，并不会执行Block{}内部的代码，而在myBlock(3)调用之后才会执行其中的代码，这跟函数的理解其实差不多，就是只要在调用Block（函数）的时候才会执行Block体内（函数体内）的代码。所以上面的简单代码示例，我可以作出如下的结论，</p>
+<p>（1）在类中，定义一个Block变量，就像定义一个函数；</p>
+<p>（2）Block可以定义在方法内部，也可以定义在方法外部；</p>
+<p>（3）只有调用Block时候，才会执行其{}体内的代码；</p>
+<p>（PS：关于第（2）条，定义在方法外部的Block，其实就是文件级别的全局变量）</p>
+<p>那么在类中定义一个Block，特别是在-viewDidLoad方法体内定义一个Block到底有什么意义呢？我表示这时候只把它当做私有函数就可以了。我之前说过，Block其实就相当于代理，那么这时候我该怎样将其与代理类比以了解呢。这时候我可以这样说：本类中的Block就相当于类自己服从某个协议，然后让自己代理自己去做某个事情。很拗口吧？看看下面的代码，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//定义一个协议</div><div class="line">@protocol ViewControllerDelegate</div><div class="line">- (void)selfDelegateMethod;</div><div class="line">@end</div><div class="line">//本类实现这个协议ViewControllerDelegate</div><div class="line">@interface ViewController ()</div><div class="line">@property (nonatomic, assign) id delegate;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>接着在-viewDidLoad中的代码如下，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad</div><div class="line">&#123;</div><div class="line">[super viewDidLoad];</div><div class="line">// Do any additional setup after loading the view from its nib.</div><div class="line">self.delegate = self;</div><div class="line">if (self.delegate &amp;amp;&amp;amp; [self.delegate respondsToSelector:@selector(selfDelegateMethod)]) &#123;</div><div class="line">[self.delegate selfDelegateMethod];</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">#pragma mark - ViewControllerDelegate method</div><div class="line">//实现协议中的方法</div><div class="line">- (void)selfDelegateMethod</div><div class="line">&#123;</div><div class="line">NSLog(@&quot;自己委托自己实现的方法&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>看出这种写法的奇葩地方了吗？自己委托自己去实现某个方法，而不是委托别的类去实现某个方法。本类中定义的一个Block其实就是闲的蛋疼，委托自己去字做某件事情，实际的意义不大，所以你很少看见别人的代码直接在类中定义Block然后使用的，Block很多的用处是跨越两个类来使用的，比如作为property属性或者作为方法的参数，这样就能跨越两个类了。</p>
+<h2 id="2、第二部分"><a href="#2、第二部分" class="headerlink" title="2、第二部分"></a>2、第二部分</h2><p>__block关键字的使用</p>
+<p>在Block的{}体内，是不可以对外面的变量进行更改的，比如下面的语句，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad</div><div class="line">&#123;</div><div class="line">//将Block定义在方法内部</div><div class="line">int x = 100;</div><div class="line">void (^sumXAndYBlock)(int) = ^(int y)&#123;</div><div class="line">x = x+y;</div><div class="line">printf(&quot;new x value is %d&quot;,x);</div><div class="line">&#125;;</div><div class="line">sumXAndYBlock(50);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段代码有什么问题呢，Xcode会提示x变量错误信息：Variable is not assigning (missing <strong>block type)，这时候给int x = 100;语句前面加上</strong>block关键字即可，如下，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">__block int x = 100;</div></pre></td></tr></table></figure>
+<p>这样在Block的{}体内，就可以修改外部变量了。</p>
+<h2 id="3、第三部分：Block作为property属性实现页面之间传值"><a href="#3、第三部分：Block作为property属性实现页面之间传值" class="headerlink" title="3、第三部分：Block作为property属性实现页面之间传值"></a>3、第三部分：Block作为property属性实现页面之间传值</h2><p>需求：在ViewController中，点击Button，push到下一个页面NextViewController，在NextViewController的输入框TextField中输入一串字符，返回的时候，在ViewController的Label上面显示文字内容，</p>
+<p><strong>（1）第一种方法：首先看看通过“协议/代理”是怎么实现两个页面之间传值的吧，</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//NextViewController是push进入的第二个页面</div><div class="line">//NextViewController.h 文件</div><div class="line">//定义一个协议，前一个页面ViewController要服从该协议，并且实现协议中的方法</div><div class="line">@protocol NextViewControllerDelegate</div><div class="line">- (void)passTextValue:(NSString *)tfText;</div><div class="line">@end</div><div class="line">@interface NextViewController : UIViewController</div><div class="line">@property (nonatomic, assign) id delegate;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>//NextViewController.m 文件<br>//点击Button返回前一个ViewController页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (IBAction)popBtnClicked:(id)sender &#123;</div><div class="line">if (self.delegate &amp;amp;&amp;amp; [self.delegate respondsToSelector:@selector(passTextValue:)]) &#123;</div><div class="line">//self.inputTF是该页面中的TextField输入框</div><div class="line">[self.delegate passTextValue:self.inputTF.text];</div><div class="line">&#125;</div><div class="line">[self.navigationController popViewControllerAnimated:YES];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接下来我们在看看ViewController文件中的内容，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">//ViewController.m 文件</div><div class="line">@interface ViewController ()</div><div class="line">@property (strong, nonatomic) IBOutlet UILabel *nextVCInfoLabel;</div><div class="line">@end</div><div class="line">//点击Button进入下一个NextViewController页面</div><div class="line">- (IBAction)btnClicked:(id)sender</div><div class="line">&#123;</div><div class="line">NextViewController *nextVC = [[NextViewController alloc] initWithNibName:@&quot;NextViewController&quot; bundle:nil];</div><div class="line">nextVC.delegate = self;//设置代理</div><div class="line">[self.navigationController pushViewController:nextVC animated:YES];</div><div class="line">&#125;</div><div class="line">//实现协议NextViewControllerDelegate中的方法</div><div class="line">#pragma mark - NextViewControllerDelegate method</div><div class="line">- (void)passTextValue:(NSString *)tfText</div><div class="line">&#123;</div><div class="line">//self.nextVCInfoLabel是显示NextViewController传递过来的字符串Label对象</div><div class="line">self.nextVCInfoLabel.text = tfText;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这是通过“协议/代理”来实现的两个页面之间传值的方式。<br><strong>（2）第二种方法：使用Block作为property，实现两个页面之间传值，</strong><br>先看看NextViewController文件中的内容，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//NextViewController.h 文件</div><div class="line">@interface NextViewController : UIViewController</div><div class="line">@property (nonatomic, copy) void (^NextViewControllerBlock)(NSString *tfText);</div><div class="line">@end</div><div class="line">//NextViewContorller.m 文件</div><div class="line">- (IBAction)popBtnClicked:(id)sender &#123;</div><div class="line">if (self.NextViewControllerBlock) &#123;</div><div class="line">self.NextViewControllerBlock(self.inputTF.text);</div><div class="line">&#125;</div><div class="line">[self.navigationController popViewControllerAnimated:YES];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>再来看看ViewController文件中的内容，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">- (IBAction)btnClicked:(id)sender</div><div class="line">&#123;</div><div class="line">NextViewController *nextVC = [[NextViewController alloc] initWithNibName:@&quot;NextViewController&quot; bundle:nil];</div><div class="line">nextVC.NextViewControllerBlock = ^(NSString *tfText)&#123;</div><div class="line">[self resetLabel:tfText];</div><div class="line">&#125;;</div><div class="line">[self.navigationController pushViewController:nextVC animated:YES];</div><div class="line">&#125;</div><div class="line">#pragma mark - NextViewControllerBlock method</div><div class="line">- (void)resetLabel:(NSString *)textStr</div><div class="line">&#123;</div><div class="line">self.nextVCInfoLabel.text = textStr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>好了就这么多代码，可以使用Block来实现两个页面之间传值的目的，实际上就是取代了Delegate的功能。</p>
+<p>另外，博客中的代码Sample Code可以再Github下载，如果因为Github被墙了，可以在终端使用git clone + 完整链接，即可克隆项目到本地。</p>
+<p>Github中的代码，可以开启两种调试模式，你需要在项目的配置文件BlockSamp-Prefix.pch中注释或者解注释下面的代码.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define Debug_BlcokPassValueEnable</div></pre></td></tr></table></figure>
+<p>即可开启两种调试的方式，如果注释了上面的语句就是使用Delegate进行调试；否则使用Block进行调试。</p>
+
         
         </div>
         <footer class="article-footer">
@@ -267,7 +296,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/01/31/cj3drxiov0003o9xiekkmjojn/" data-id="cj3drxiov0003o9xiekkmjojn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/02/17/231/" data-id="cj4nv7x9d00093axiyug0zca0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -335,7 +364,146 @@
 
             
     
-        <a href="http://yoursite.com/2016/01/31/cj3drxiov0003o9xiekkmjojn/#comments" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/2016/02/17/231/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post- CGFloat、CGPoint、CGSize和CGRect" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/01/31/cj4nv7x8l00003axicz4z7vlr/">CGFloat、CGPoint、CGSize和CGRect</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/01/31/cj4nv7x8l00003axicz4z7vlr/">
+            <time datetime="2016-01-30T16:27:31.000Z" itemprop="datePublished">2016-01-31</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Objective-C/">Objective-C</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/iOS/">iOS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>CGFloat、CGPoint、CGSize和CGRect主要是用来描述UI控件的几何属性的基本类型。</p>
+<ul>
+<li>CGFloat: 浮点值的基本类型</li>
+<li>CGPoint: 表示一个二维坐标系中的点</li>
+<li>CGSize: 表示一个矩形的宽度和高度</li>
+<li>CGRect: 表示一个矩形的位置和大小</li>
+</ul></p>
+            <p class="article-more-link">
+                <a href="/2016/01/31/cj4nv7x8l00003axicz4z7vlr/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/01/31/cj4nv7x8l00003axicz4z7vlr/" data-id="cj4nv7x8l00003axicz4z7vlr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/01/31/cj4nv7x8l00003axicz4z7vlr/#comments" class="article-comment-link">Comments</a>
     
 
         </footer>
@@ -405,7 +573,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/01/30/219/" data-id="cj3drxir6002bo9xid6sbatxb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/01/30/219/" data-id="cj4nv7xb0002k3axi6n44qqaz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -536,7 +704,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/01/05/189/" data-id="cj3drxipq000lo9xinzg8n3vy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/01/05/189/" data-id="cj4nv7x9g000d3axihcd627pk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -669,7 +837,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2015/08/28/108/" data-id="cj3drxir3002ao9xit901kl5b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2015/08/28/108/" data-id="cj4nv7xau002d3axi1f9aluqt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -802,7 +970,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2015/08/17/94/" data-id="cj3drxiqi001fo9xigtxgd2ho" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2015/08/17/94/" data-id="cj4nv7xa5001c3axil21j4yr5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -934,7 +1102,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2015/07/30/46/" data-id="cj3drxipl000eo9xim3a1gmij" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2015/07/30/46/" data-id="cj4nv7x9n000o3axitdo4h7mu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1069,7 +1237,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2015/05/26/36/" data-id="cj3drxiqm001jo9xiwcoqzh61" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2015/05/26/36/" data-id="cj4nv7xag001u3axipaz7bmm5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1200,7 +1368,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2015/05/21/20/" data-id="cj3drxiqb0018o9xi26ygtjmc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2015/05/21/20/" data-id="cj4nv7xa100163axiy75bhy5x" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1286,7 +1454,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2015/04/30/cj3drxiq1000zo9xi0agxd7j2/">PHP框架编写（二）单入口路由</a>
+            <a class="article-title" href="/2015/04/30/cj4nv7x9r000r3axizuw2umuy/">PHP框架编写（二）单入口路由</a>
         </h1>
     
 
@@ -1295,7 +1463,7 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2015/04/30/cj3drxiq1000zo9xi0agxd7j2/">
+        <a href="/2015/04/30/cj4nv7x9r000r3axizuw2umuy/">
             <time datetime="2015-04-30T08:05:19.000Z" itemprop="datePublished">2015-04-30</time>
         </a>
     </div>
@@ -1332,7 +1500,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2015/04/30/cj3drxiq1000zo9xi0agxd7j2/" data-id="cj3drxiq1000zo9xi0agxd7j2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2015/04/30/cj4nv7x9r000r3axizuw2umuy/" data-id="cj4nv7x9r000r3axizuw2umuy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1400,150 +1568,7 @@
 
             
     
-        <a href="http://yoursite.com/2015/04/30/cj3drxiq1000zo9xi0agxd7j2/#comments" class="article-comment-link">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-PHP框架开发(一)MVC" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2015/04/29/6/">PHP框架编写（一）：框架运行流程</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2015/04/29/6/">
-            <time datetime="2015-04-29T14:02:49.000Z" itemprop="datePublished">2015-04-29</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/PHP/">PHP</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/PHP/">PHP</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>  首先欢迎各位进入我的博客，我感觉非常荣幸，我并不是什么高手，现在的我不过是个在校的大学生，写这篇系列的博文只不过是为了加深自己对PHP的理解，以及对之前的学习做一个总结，同时也希望各位能够给我提一些意见。</p>
-<p>  PHP框架总给人以高大上的感觉，很多人学框架都学的头晕脑胀，百思不得其解，看完这篇博文后应该可以让还处于迷茫中的学习者找到一个入门的道路。</p>
-<p>  PHP框架到底是什么，框架不过是其他程序员提供的一个快速开发的一个代码而已，他帮助PHP开发者能够快速的开发，免去一些代码而已，PHP框架目前的核心就是MVC和数据库操作，更加大白话一点其实就是编程中最基础的增删改查，不过就是将他变的更加漂亮而已。</p>
-<p>  那么什么是MVC呢，M模型,V显示,C控制器。</p>
-<p>  这基本上是所有教程和书中都会提及的概念，也就不再多进行赘述模糊不清的概念了。</p>
-<p>  M是啥，字面上理解太费劲了，其实M模型我感觉表面上就是对数据库的操作，以及业务逻辑的梳理，这便是M模型，主要进行逻辑分析，将分析的结果传递给C也就是控制器，M就是一个深藏功与名的人，他默默就默默地站在幕后，干着最累的工作。</p>
-<p>V就是显示，也就是其中最好面子的人，他们两个人忙活半天，其实都是在给我忙活，所有东西都处理完了，拿到他这里来显示。</p>
-<p>C控制器，这个字面上就好理解了，那就是起到控制的作用，他控制着全局，属于M和C的一个中间层。（如果说错了，还请高手指正）</p>
-<p>  现在市面上的PHP框架基本上都是单一入口的文件。下面就是一个PHP框架的运行的简单流程图。</p>
-<p>  对PHP框架有了一定的了解之后，我们下一篇就开始讲PHP框架的目录结构了。</p>
-<p>  仅以此文先给刚刚入门的菜鸟，和正在努力奋斗的程序员们，祝各位早日成为攻城狮！出任CTO，赢取白富美，走向人生巅峰。</p>
-<p>  （如有转载，请注明出处，小弟感激不尽。）</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2015/04/29/6/" data-id="cj3drxipw000so9xip25rjoe8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2015/04/29/6/#comments" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/2015/04/30/cj4nv7x9r000r3axizuw2umuy/#comments" class="article-comment-link">Comments</a>
     
 
         </footer>
@@ -1554,7 +1579,7 @@
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+        <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
 </section>
             
@@ -1565,6 +1590,25 @@
         <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/06/23/2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/MySQL/">MySQL</a></p>
+                            <p class="item-title"><a href="/2017/06/23/2/" class="title">数据库设计规范</a></p>
+                            <p class="item-date"><time datetime="2017-06-22T16:00:00.000Z" itemprop="datePublished">2017-06-23</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -1581,14 +1625,14 @@
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/PHP/">PHP</a></p>
                             <p class="item-title"><a href="/2017/06/01/1/" class="title">理解规约设计模式(Specification)</a></p>
-                            <p class="item-date"><time datetime="2017-06-01T01:44:20.000Z" itemprop="datePublished">2017-06-01</time></p>
+                            <p class="item-date"><time datetime="2017-05-31T16:00:00.000Z" itemprop="datePublished">2017-06-01</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/03/16/cj3drxiqy0020o9xi8rdsrowh/" class="thumbnail">
+                            <a href="/2017/03/16/cj4nv7xar002b3axil8ksoqx0/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -1599,7 +1643,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/03/16/cj3drxiqy0020o9xi8rdsrowh/" class="title"></a></p>
+                            <p class="item-title"><a href="/2017/03/16/cj4nv7xar002b3axil8ksoqx0/" class="title"></a></p>
                             <p class="item-date"><time datetime="2017-03-16T15:28:53.000Z" itemprop="datePublished">2017-03-16</time></p>
                         </div>
                     </li>
@@ -1607,7 +1651,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/03/16/cj3drxiqg001co9xiaarl9by9/" class="thumbnail">
+                            <a href="/2017/03/16/cj4nv7xa7001f3axidgaw6rzt/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -1618,7 +1662,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/03/16/cj3drxiqg001co9xiaarl9by9/" class="title"></a></p>
+                            <p class="item-title"><a href="/2017/03/16/cj4nv7xa7001f3axidgaw6rzt/" class="title"></a></p>
                             <p class="item-date"><time datetime="2017-03-16T06:18:18.000Z" itemprop="datePublished">2017-03-16</time></p>
                         </div>
                     </li>
@@ -1626,7 +1670,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/03/16/cj3drxir9002ho9xi3z0xs0vi/" class="thumbnail">
+                            <a href="/2017/03/16/cj4nv7xav002f3axiifjm4jg9/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -1637,27 +1681,8 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/03/16/cj3drxir9002ho9xi3z0xs0vi/" class="title"></a></p>
+                            <p class="item-title"><a href="/2017/03/16/cj4nv7xav002f3axiifjm4jg9/" class="title"></a></p>
                             <p class="item-date"><time datetime="2017-03-16T02:36:21.000Z" itemprop="datePublished">2017-03-16</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/03/15/cj3drxipt000oo9xi5tg3a7nv/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/PHP/">PHP</a></p>
-                            <p class="item-title"><a href="/2017/03/15/cj3drxipt000oo9xi5tg3a7nv/" class="title">PHP Closures</a></p>
-                            <p class="item-date"><time datetime="2017-03-15T14:15:16.000Z" itemprop="datePublished">2017-03-15</time></p>
                         </div>
                     </li>
                 
@@ -1670,7 +1695,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Objective-C/">Objective-C</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP设计模式/">PHP设计模式</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Objective-C/">Objective-C</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP设计模式/">PHP设计模式</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -1679,7 +1704,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -1688,7 +1713,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/">API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Closures/">Closures</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP设计模式/">PHP设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/色彩/">色彩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">5</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/">API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Closures/">Closures</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL-设计规范/">MySQL 设计规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP设计模式/">PHP设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/色彩/">色彩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">5</span></li></ul>
         </div>
     </div>
 
@@ -1697,7 +1722,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/Closures/" style="font-size: 10px;">Closures</a> <a href="/tags/PHP/" style="font-size: 13.33px;">PHP</a> <a href="/tags/PHP设计模式/" style="font-size: 10px;">PHP设计模式</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/色彩/" style="font-size: 10px;">色彩</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 16.67px;">随笔</a>
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/Closures/" style="font-size: 10px;">Closures</a> <a href="/tags/MySQL-设计规范/" style="font-size: 10px;">MySQL 设计规范</a> <a href="/tags/PHP/" style="font-size: 13.33px;">PHP</a> <a href="/tags/PHP设计模式/" style="font-size: 10px;">PHP设计模式</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/色彩/" style="font-size: 10px;">色彩</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 16.67px;">随笔</a>
         </div>
     </div>
 

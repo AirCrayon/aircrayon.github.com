@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>数据库设计规范 | Maksim&#39;s Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="数据库设计规范这几日一直都在看慕课网的一篇有关于数据库设计的实战教程，在其中讲述了关于数据库设计的一些相关规范，可以说是受益匪浅，于是便将学习所得记录下来，如果有想要看视频版的同学可以到慕课网查看。 点我跳转到慕课网观看视频 数据库名称规范###1.所有数据库对象名称必须使用小写字母并使用下划线分割 由于 MySQL数据库的对象名称默认情况下是大小写敏感的，特别是在 Linux 系统下，MySQL">
+<meta name="keywords" content="MySQL 设计规范">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库设计规范">
+<meta property="og:url" content="http://yoursite.com/2017/06/23/2/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="数据库设计规范这几日一直都在看慕课网的一篇有关于数据库设计的实战教程，在其中讲述了关于数据库设计的一些相关规范，可以说是受益匪浅，于是便将学习所得记录下来，如果有想要看视频版的同学可以到慕课网查看。 点我跳转到慕课网观看视频 数据库名称规范###1.所有数据库对象名称必须使用小写字母并使用下划线分割 由于 MySQL数据库的对象名称默认情况下是大小写敏感的，特别是在 Linux 系统下，MySQL">
+<meta property="og:updated_time" content="2017-07-03T08:09:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库设计规范">
+<meta name="twitter:description" content="数据库设计规范这几日一直都在看慕课网的一篇有关于数据库设计的实战教程，在其中讲述了关于数据库设计的一些相关规范，可以说是受益匪浅，于是便将学习所得记录下来，如果有想要看视频版的同学可以到慕课网查看。 点我跳转到慕课网观看视频 数据库名称规范###1.所有数据库对象名称必须使用小写字母并使用下划线分割 由于 MySQL数据库的对象名称默认情况下是大小写敏感的，特别是在 Linux 系统下，MySQL">
+    
+
+    
+        <link rel="alternate" href="/" title="Maksim&#39;s Website" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Maksim&#39;s Website</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Maksim</h2>
+            <h3 id="title">PHP Developer &amp; iOS Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>齐齐哈尔, China</span>
+            <a id="follow" target="_blank" href="https://github.com/aircrayon/">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                41
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                11
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/aircrayon" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-数据库设计规范实例" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            数据库设计规范
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/06/23/2/">
+            <time datetime="2017-06-22T16:00:00.000Z" itemprop="datePublished">2017-06-23</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/MySQL/">MySQL</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/MySQL-设计规范/">MySQL 设计规范</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="数据库设计规范"><a href="#数据库设计规范" class="headerlink" title="数据库设计规范"></a>数据库设计规范</h1><p>这几日一直都在看慕课网的一篇有关于数据库设计的实战教程，在其中讲述了关于数据库设计的一些相关规范，可以说是受益匪浅，于是便将学习所得记录下来，如果有想要看视频版的同学可以到慕课网查看。</p>
+<p><a href="http://coding.imooc.com/class/79.html" target="_blank" rel="external">点我跳转到慕课网观看视频</a></p>
+<h2 id="数据库名称规范"><a href="#数据库名称规范" class="headerlink" title="数据库名称规范"></a>数据库名称规范</h2><p>###1.所有数据库对象名称必须使用小写字母并使用下划线分割</p>
+<p>由于 MySQL数据库的对象名称默认情况下是大小写敏感的，特别是在 Linux 系统下，MySQL 的数据库和表实际上的存储方式就是 Linux 下的一个文件，由于 Linux 系统是对大小写敏感的，所以 MySQL 也就对大小写敏感，这就意味着 DbName dbname 是完全不同的两个数据库。</p>
+<p>如果在开发过程中使用大小写混用的情况下，就会对未来的开发工作造成很多不必要的麻烦，要时刻注意数据库对象的大小写。</p>
+<p>###2.所有的数据库对象名称禁止使用 MySQL 的保留字段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select id,username from ,age from tb_user;</div></pre></td></tr></table></figure>
+<p>在上述SQL 语句中存在两个 from，由于 MySQL 并不知道这两个 from 有什么区别，若是执行这条 SQL 语句肯定会报错，但是在建表的时候却不会报错。</p>
+<p>若是已经使用了关键字做了字段名，那就需要在字段名前后加上反引号，示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select id,username `from` ,age from tb_user;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>反引号是为了区分MySQL关键字和保留字与普通字符而引入的符号，保留字的列表请点击此网页查看 <a href="https://dev.mysql.com/doc/refman/5.7/en/keywords.html" target="_blank" rel="external">https://dev.mysql.com/doc/refman/5.7/en/keywords.html</a></p>
+</blockquote>
+<p>###3. 数据库对象的命名要做到见名识义，而且最好不要超过32个字符</p>
+<p>MySQL 的限制长度是64个字符，但是表名和列名一旦过长，在使用过程中将会很不方便，而且还会增加网络传输的开销。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">用户数据库： ex_userdb</div><div class="line">用户账户表： user_account</div></pre></td></tr></table></figure>
+<p>###4. 所有的临时表必须以 tmp为前缀并以日期为后缀</p>
+<p>在我们的日常工作中，会在数据库中建立一些临时表或者中间表，往往无法第一时间将其清理掉，时间一长便无法分清，哪些是临时表或者是持久化表，这样一来就会造成很多的垃圾数据。</p>
+<p>###5.备份表必须以bak为前缀并以日期为后缀</p>
+<p>在日常工作中，我们会对数据库进行备份，在备份的时候，以 bak 开头可以清晰的表示出这是一个备份表，并且以时间结尾标注了这个表是在什么时间进行的备份，这样一来能够设计出更加整洁的数据库，并且结构清晰。</p>
+<p>###6.所有存储相同数据的列明和列类型必须一致。</p>
+<p>通着这这种字段都是以关联字段进行使用的，如果两个表的关联字段的数据类型不一致，在关联时MySQL 会进行隐式类型转换，造成字段索引失效，影响数据库的运行性能，导致不必要的开销。</p>
+<h2 id="数据库基本设计规范"><a href="#数据库基本设计规范" class="headerlink" title="数据库基本设计规范"></a>数据库基本设计规范</h2><p>###1. 在没有特殊要求的情况下，所有表必须使用 Innodb 存储引擎</p>
+<p>比如列存储、在5.7版本之前存储空间数据，如果还在使用MyISAM 引擎如果在升级到5.6之后应该尽快将存储引擎升级到 Innodb，因为在5.6之后的默认引擎就是 Innodb，Innodb 支持事务，行级锁，更好的恢复性，高并发下性能更好。</p>
+<p>###2.数据库和表的字符集使用 UTF8</p>
+<p>统一的字符集可以避免由于字符集转换禅城的乱码，MySQL 中 UTF8字符集汉字站3个字节，ASCII 码占用1个字节，若我们定了一个 varchar(255)的列，并且存储中文的话，255个中文字符将会占用725个字节。</p>
+<p>###3.所有的表和字段都需要添加注释</p>
+<p>使用 comment 从句添加表和列的备注，从一开始就进行数据字典维护。</p>
+<p>####4.尽量控制单表数据量的大小，建议控制在500万行以内</p>
+<p>500万并不是 MySQL数据库的限制，MySQL 的存储数据量取决于存储设置和文件系统，修改表结构，备份，恢复都会有很大问题。</p>
+<p>可以使用历史数据归档，分库分表等手段来控制数据量的大小，历史数据归档常用语系统日志，分库分表主要应用在业务表上。</p>
+<p>####5.谨慎的使用 MySQL 分区表。</p>
+<p>分区表在物理上表现为多个文件，在逻辑上表现为一个表。谨慎的选择分区键，跨分区查询效率可能更低。</p>
+<p>建议采用物理分表的方式管理大数据。</p>
+<p>####6.尽量做到冷热数据分离，减小表单的宽度</p>
+<p>MySQL 限制最多存储4096列，并且每一行的大小是不能超过65535个字节的。最好将经常用到的列放到一个表中，这样一来可以减少磁盘 IO，保证热数据的内存缓存命中率。利用更有效的利用缓存，避免读入无用的冷数据。</p>
+<p>####7.禁止在表中建立预留字段</p>
+<p>预留字段的命名很难做到见名识义，预留字段无法确认存储的数据类型，所以无法选择合适的类型。对预留字段类型的修改，会对表进行锁定，修改一个字段类型的成本远高于新建一个字段。</p>
+<p>####8.禁止在数据库中存储图片，文件等二进制数据</p>
+<p>这类文件都会很大，会在短时间内造成数据量的疯涨，在数据库读取的时会产生大量的 IO 操作，非常好事，影响数据库性能，常规的做法是将图片保存在对应的文件服务器上，然后在数据库中保存地址信息就可以了。</p>
+<p>####9.禁止在线上做数据库压力测试</p>
+<p>如果使用生产环境进行压力测试一方面会对正常的业务访问造成影响，另一方面也会对数据库造成影响，产生大量的垃圾数据。</p>
+<p>####8.禁止从开发环境，测试环境直接连生产环境数据库</p>
+<p>会对生产环境的数据的完整性进行破坏。</p>
+<h2 id="数据库索引设计规范"><a href="#数据库索引设计规范" class="headerlink" title="数据库索引设计规范"></a>数据库索引设计规范</h2><h3 id="1-限制每张表上的索引数量，建议单标索引不超过5个"><a href="#1-限制每张表上的索引数量，建议单标索引不超过5个" class="headerlink" title="1.限制每张表上的索引数量，建议单标索引不超过5个"></a>1.限制每张表上的索引数量，建议单标索引不超过5个</h3><p>索引数量是和列的数量是成正比的，通常列的数量越多索引的数量也会越多，索引并不是越多越好，索引可以提高效率单同样也可以鉴定效率，索引可以增加查询效率，单同样也会降低插入和更新的效率。</p>
+<p>由于 MySQL 优化器在选择优化查询时，会根据统计信息对每一个可以用到的索引进行评估，以生成出一个最好的执行计划，如果同时有很多索引都可以用于查询，就会增加 MySQL优化器生成优化器的时间，同样机会降低 SQL 查询的性能。</p>
+<p>禁止给表中的每一个列都建立单独的索引。</p>
+<h3 id="2-每一个-Innodb表都必须有一个主键"><a href="#2-每一个-Innodb表都必须有一个主键" class="headerlink" title="2.每一个 Innodb表都必须有一个主键"></a>2.每一个 Innodb表都必须有一个主键</h3><p>Innodb 是一种索引组织表，数据存储的逻辑顺序与索引的顺序是相同的，每一个表上上都会有很多索引，但是存储顺序只有一种，Innodb是按照主键索引进行组织表的。</p>
+<p>如果没有主键，那么 Innodb 会优先以第一非空，唯一索引当做主键，在没有非空唯一所以的情况下，MySQL 会生成一个站位6个字节的主键，这个自动生成的主键性能并不是最好的。</p>
+<p>在表的设计中不要使用更新频繁的列作为主键，不使用多列主键（联合索引），因为 Innodb是一个索引组织表的缘故，如果主键频繁被更新，那么久意味着，数据存储的顺序就会频繁的变动，必然会带来大量的 IO 操作。</p>
+<p>不要使用 UUID，MD5，HASH，字符串列作为主键。因为这类数据无法保证数据的顺序增长，如果后面插入的值比已经存在的值还要小，则为了保证索引的顺序，则会把新的数据插入到前面，这样就会造成所有大于这个值的数据要想后移带来大量的 IO 操作。</p>
+<p>建议使用自增 ID 作为主键。</p>
+<p>###常见索引列建议<br>1.SELECT、UPDATE、DELETE语句的WHERE 从句中的列出现的字段中添加索引<br>2.包含在 ORDER BY、GROUP BY、DISTINCT 中的字段<br>3.多表JOIN的关联列</p>
+<p>###如何选择索引列的顺序</p>
+<p>在联合索引中索引的使用顺序是由从左到右的顺序来使用的。所以我们需要将区分度最高的列放在联合索引的最左侧，尽量把字段长度小的列房子啊联合索引的最左侧，私用最频繁的列放在联合索引的左侧。</p>
+<p>###避免建立冗余索引和重复索引</p>
+<p>重复索引：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">primary key(id)、index(id)、unique index(id)</div></pre></td></tr></table></figure></p>
+<p>冗余索引：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">index(a,b,c) 、index(a,b)、index(a)</div></pre></td></tr></table></figure></p>
+<p>###对于频繁的查询优先考虑使用覆盖索引</p>
+<p>覆盖索引：就是包含了所有查询字段的索引</p>
+<p>避免 Innodb 表进行索引的二次查找，</p>
+<h2 id="数据库字段设计规范"><a href="#数据库字段设计规范" class="headerlink" title="数据库字段设计规范"></a>数据库字段设计规范</h2><h3 id="优先选择符合存储需要的最小的数据类型"><a href="#优先选择符合存储需要的最小的数据类型" class="headerlink" title="优先选择符合存储需要的最小的数据类型"></a>优先选择符合存储需要的最小的数据类型</h3><ul>
+<li>将字符串转换为数字类型存储<ul>
+<li>INET_ATON(‘255.255.255.255’) = 4294967295</li>
+<li>INET_NTOA(4294967295) = ‘255.255.255.255’</li>
+</ul>
+</li>
+<li>对于非负型的数据来说，要有限选用无符号整型来存储，无符号相对于有符号可以多出一倍的存储空间</li>
+<li>VARCHAR（N）中的 N 代表的是字符数，而不是字节数</li>
+<li>使用 UTF8存储汉字 VARCHAR(255)=765个字节</li>
+<li>过大的长度会消耗更多的内存，因为当数据被载入到内存时为了提高效率是按照所定义的类型长度来申请内存的。</li>
+</ul>
+<h3 id="避免使用-Text、BLOG-的数据类型"><a href="#避免使用-Text、BLOG-的数据类型" class="headerlink" title="避免使用 Text、BLOG 的数据类型"></a>避免使用 Text、BLOG 的数据类型</h3><p>Text列分为四种 TinyText、Text、MidumText、LongText，Text 类型可以存储下64K的数据，备注或者说明很少会使用到64K 这么庞大的数据，使用 Varchar 类型就可以了。另外由于MySQL 内存表是不支持 Text 和 Blog 的，因此我们在对这种大数据类型进行排序的时候无法使用内存表，而必须使用磁盘内置表，这类数据MySQL 在读取数据时会进行二次查询，所以会使得 SQL 的性能变的很差。</p>
+<p>建议把 BLOG 或是 TEXT列分离到单独的扩展表中    ，并且在查询时一定不要使用 select * 的方式，而是取出必要的列，在使用 BOLOG 或者 TEXT 类型的时候就不要查询该列。</p>
+<p>TEXT或 BLOG 类型只能使用前缀索引，并且 TEXT 的列上是不能有默认值的。</p>
+<h3 id="避免使用-ENUM-数据类型"><a href="#避免使用-ENUM-数据类型" class="headerlink" title="避免使用 ENUM 数据类型"></a>避免使用 ENUM 数据类型</h3><p>枚举类型是一个很特别的类型，在其他关系型数据库中并不存在这一类型，枚举本身是一个字符串类型，但是其本身却是以整数类型，所以能够存储65535种不同的枚举值，前面提到要将字符串类型转换成整数进行存储，从这一点看枚举是一种很好的数据类型，有助于我们很好的进行优化。</p>
+<p>但是枚举类型也存在着很大的缺陷，修改 ENUM 值需要使用 ALTER 语句，频繁的对表结构进行修改很容易造成失误，在修改元数据的时候会生成元数据锁，在大量数据访问的时候会造成数据库系统的阻塞，对枚举数据进行操作的时候是存在一定的操作风险的。</p>
+<p>ENUM 类型的 ORDER BY 操作效率低，需额外操作，由于是按照整型进行存储的，所以在查询的时候会对其进行字符串转化然后在进行排序，这种装换是无法使用索引的，所以枚举值排序性能比较差。</p>
+<p>禁止使用数值作为 ENUM 的枚举值，因为枚举本身是索引顺序存储的，如果枚举值也是用整型进行存储，很容易会造成逻辑上的一种混淆，一般情况下枚举值是整型，通常建议使用整型代替。</p>
+<h3 id="尽量可能把所有列定义为-NOT-NULL"><a href="#尽量可能把所有列定义为-NOT-NULL" class="headerlink" title="尽量可能把所有列定义为 NOT NULL"></a>尽量可能把所有列定义为 NOT NULL</h3><p>索引 NULL 列需要额外的空间来保存，所以需要占用更多的空间，索引空间占用的越低越好。</p>
+<p>进行比较和计算时候对 NULL 值做特别的处理，所以可能会造成索引失效。</p>
+<h3 id="使用-TIMESTAMP-或DATETIME-类型存储时间"><a href="#使用-TIMESTAMP-或DATETIME-类型存储时间" class="headerlink" title="使用 TIMESTAMP 或DATETIME 类型存储时间"></a>使用 TIMESTAMP 或DATETIME 类型存储时间</h3><p>字符串存储日期型的数据（不正确的做法）</p>
+<p>缺点1：无法用日期函数进行计算和比较。<br>缺点2：用字符串存储日期要占用更多的空间</p>
+<p>TIMESTAMP 1970-01-01 00：00：01 ~ 2038-01-19 03：14：07</p>
+<p>其实 TIMESTAMP 是以 INT 类型存储的，但是以日期格式显示，TIMESTAMP占用4字节和 INT 相同，单比 INT 可读性高，</p>
+<p>当超出 TIMESTAMP 类型的存储范围时我们需要使用 DATETIME 类型来进行存储。</p>
+<h3 id="同财务相关的金额类数据，必须使用-decimal-类型"><a href="#同财务相关的金额类数据，必须使用-decimal-类型" class="headerlink" title="同财务相关的金额类数据，必须使用 decimal 类型"></a>同财务相关的金额类数据，必须使用 decimal 类型</h3><p>Decimal 类型为精准浮点数，在计算时不会丢失精度，占用空间油定义的宽度决定，可用于存储比 bigint 更大的整数数据。</p>
+<h2 id="数据库-SQL-开发规范"><a href="#数据库-SQL-开发规范" class="headerlink" title="数据库 SQL 开发规范"></a>数据库 SQL 开发规范</h2><h3 id="建议使用预编译语句进行数据库"><a href="#建议使用预编译语句进行数据库" class="headerlink" title="建议使用预编译语句进行数据库"></a>建议使用预编译语句进行数据库</h3><ol>
+<li>只传参数，比传递 SQL 语句更高效</li>
+<li>相同语句可以一次解析，多次使用，提高处理效率</li>
+<li>防范 SQL 注入的风险</li>
+</ol>
+<h3 id="避免数据类型的隐式转换"><a href="#避免数据类型的隐式转换" class="headerlink" title="避免数据类型的隐式转换"></a>避免数据类型的隐式转换</h3><p>隐式转换一般发生在 Where 从句中，当列类型和参数类型不一致时就会出现隐式转换。， 隐式转换会导致索引失效</p>
+<h3 id="充分利用表上已经存在的索引"><a href="#充分利用表上已经存在的索引" class="headerlink" title="充分利用表上已经存在的索引"></a>充分利用表上已经存在的索引</h3><p>尽量避免用%号的查询 例如 a like ‘%123%’<br> 一个 SQL 只能利用到符合索引中的一列进行范围查询<br> 使用 left join 活 not exists 来优化 not in 操作。</p>
+<h3 id="程序链接不同的数据库使用不同的账号，禁止跨库查询。"><a href="#程序链接不同的数据库使用不同的账号，禁止跨库查询。" class="headerlink" title="程序链接不同的数据库使用不同的账号，禁止跨库查询。"></a>程序链接不同的数据库使用不同的账号，禁止跨库查询。</h3><ol>
+<li>为了数据库迁移和分库分表留出余地</li>
+<li>降低业务耦合度</li>
+<li>避免由于权限过大产生的安全风险</li>
+</ol>
+<h3 id="禁止使用-SELECT-必须使用-SELECT-lt-字段列表-gt-查询"><a href="#禁止使用-SELECT-必须使用-SELECT-lt-字段列表-gt-查询" class="headerlink" title="禁止使用 SELECT *必须使用 SELECT&lt;字段列表&gt;查询"></a>禁止使用 SELECT *必须使用 SELECT&lt;字段列表&gt;查询</h3><ol>
+<li>消耗更多的 CPU 和 IO 以及网络带宽资源</li>
+<li>无法使用覆盖索引</li>
+<li>可减少表结构变更带来的影响</li>
+</ol>
+<h3 id="禁止使用不含字段列表的-insert-语句"><a href="#禁止使用不含字段列表的-insert-语句" class="headerlink" title="禁止使用不含字段列表的 insert 语句"></a>禁止使用不含字段列表的 insert 语句</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">insert into t values (&apos;a&apos;,&apos;b&apos;,&apos;c&apos;); //不包含字段列表的 insert</div><div class="line">insert into t(c1,c2,c3) values(&apos;a&apos;,&apos;b&apos;,&apos;c&apos;); //正确的写</div></pre></td></tr></table></figure>
+<p> 可以减少表结构变更带来的影响</p>
+<h3 id="避免使用子查询，可以把子查询优化为join"><a href="#避免使用子查询，可以把子查询优化为join" class="headerlink" title="避免使用子查询，可以把子查询优化为join"></a>避免使用子查询，可以把子查询优化为join</h3><p> 并不是所有的子查询都可以使用 join进行优化，一般情况下只有子查询在 IN 子句中，并且子查询是一个简单的 SQL ，例如其中不包含 order by之类的复杂查询，才可以进行转换。</p>
+<ol>
+<li>子查询的结果集无法使用索引</li>
+<li>子查询会产生临时表操作，如果子查询数据量大则严重影响性能</li>
+<li>临时表会消耗过多 CPU 以及 IO 资源</li>
+</ol>
+<h3 id="避免使用-JOIN-关联太多的表"><a href="#避免使用-JOIN-关联太多的表" class="headerlink" title="避免使用 JOIN 关联太多的表"></a>避免使用 JOIN 关联太多的表</h3><ol>
+<li>每Join 一个表会占用一部分内存（join <em> buffer </em> size）</li>
+<li>会产生临时表操作，影响查询效率</li>
+<li>MySQL 最多允许关联61个表，建议不超过五个</li>
+</ol>
+<h3 id="减少同数据库的交互次数"><a href="#减少同数据库的交互次数" class="headerlink" title="减少同数据库的交互次数"></a>减少同数据库的交互次数</h3><ol>
+<li>数据库更适合处理批量操作</li>
+<li>合并多个相同的操作到一起，可以提高处理效率</li>
+</ol>
+<h3 id="使用-in-代替or"><a href="#使用-in-代替or" class="headerlink" title="使用 in 代替or"></a>使用 in 代替or</h3><ol>
+<li>in 的值不要超过500个</li>
+<li>in 操作可以有效的利用索引</li>
+</ol>
+<h3 id="禁止使用-order-by-rand-）进行随机排序"><a href="#禁止使用-order-by-rand-）进行随机排序" class="headerlink" title="禁止使用 order by rand(）进行随机排序"></a>禁止使用 order by rand(）进行随机排序</h3><ol>
+<li>会把表中所有符合条件的数据装载到内存中进行排序</li>
+<li>会消耗大量的 CUP 和 IO 以及内存支援</li>
+<li>推荐在程序中获取一个随机值，然后从数据库中获取数据的方式</li>
+</ol>
+<h3 id="WHERE-从句中禁止对列进行函数转换和计算"><a href="#WHERE-从句中禁止对列进行函数转换和计算" class="headerlink" title="WHERE 从句中禁止对列进行函数转换和计算"></a>WHERE 从句中禁止对列进行函数转换和计算</h3><ol>
+<li>对列进行函数转换或计算会导致无法使用索引</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wehre date(createtime) = &apos;20160901&apos;</div><div class="line">where createtime &gt;= &apos;20160901&apos; and createtime&lt; &apos;20160902&apos;</div></pre></td></tr></table></figure>
+<h3 id="有明显不会重复值时使用-UNION-ALL-而不是UNION"><a href="#有明显不会重复值时使用-UNION-ALL-而不是UNION" class="headerlink" title="有明显不会重复值时使用 UNION ALL 而不是UNION"></a>有明显不会重复值时使用 UNION ALL 而不是UNION</h3><ol>
+<li>UNION 会把所有数据放到临时表中然后进行去重操作</li>
+<li>UNION ALL 不会对结果集进行去重操作</li>
+</ol>
+<h3 id="拆分复杂的大-SQL-为多个小-SQL"><a href="#拆分复杂的大-SQL-为多个小-SQL" class="headerlink" title="拆分复杂的大 SQL 为多个小 SQL"></a>拆分复杂的大 SQL 为多个小 SQL</h3><ol>
+<li>MySQL 一个 SQL 只能使用一个 CPU进行计算</li>
+<li>SQL 拆分后可以进行并行执行来提高处理效率</li>
+</ol>
+<h2 id="数据库操作行为规范"><a href="#数据库操作行为规范" class="headerlink" title="数据库操作行为规范"></a>数据库操作行为规范</h2><h3 id="超100万行的批量写操作，需分批多次进行操作"><a href="#超100万行的批量写操作，需分批多次进行操作" class="headerlink" title="超100万行的批量写操作，需分批多次进行操作"></a>超100万行的批量写操作，需分批多次进行操作</h3><ol>
+<li>大批量操作可能会造成严重的主从延迟</li>
+<li>binlog 日志为row 格式时会产生大量的日志</li>
+<li>避免产生大事务操作</li>
+</ol>
+<h3 id="对大表数据结构的修改一定要谨慎，会造成严重的锁表操作。尤其是生产环境，是不能忍受的。"><a href="#对大表数据结构的修改一定要谨慎，会造成严重的锁表操作。尤其是生产环境，是不能忍受的。" class="headerlink" title="对大表数据结构的修改一定要谨慎，会造成严重的锁表操作。尤其是生产环境，是不能忍受的。"></a>对大表数据结构的修改一定要谨慎，会造成严重的锁表操作。尤其是生产环境，是不能忍受的。</h3><p>1.对于大表使用 pt-online-schema-change 修改表结构，可以避免主从延时、表锁的问题。</p>
+<h3 id="禁止为程序使用的账户赋予-super-权限"><a href="#禁止为程序使用的账户赋予-super-权限" class="headerlink" title="禁止为程序使用的账户赋予 super 权限"></a>禁止为程序使用的账户赋予 super 权限</h3><ol>
+<li>当达到最大连接数贤之士，MySQL 允许1个有 super 权限的用户连接</li>
+<li>super 权限只能留给 DBA 处理问题的账户使用</li>
+</ol>
+<h3 id="对于程序链接数据库账户，遵循权限最小原则"><a href="#对于程序链接数据库账户，遵循权限最小原则" class="headerlink" title="对于程序链接数据库账户，遵循权限最小原则"></a>对于程序链接数据库账户，遵循权限最小原则</h3><ol>
+<li>程序使用数据库账号只能在一个 DB下使用，不准夸库</li>
+<li>程序使用账号原则上不准有 drop权限</li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/06/23/2/" data-id="cj4nv7xb4002s3axic782nmyx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/06/23/2/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/06/01/1/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">理解规约设计模式(Specification)</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div id="uyan_frame"></div>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/06/23/2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/MySQL/">MySQL</a></p>
+                            <p class="item-title"><a href="/2017/06/23/2/" class="title">数据库设计规范</a></p>
+                            <p class="item-date"><time datetime="2017-06-22T16:00:00.000Z" itemprop="datePublished">2017-06-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/06/01/1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/PHP/">PHP</a></p>
+                            <p class="item-title"><a href="/2017/06/01/1/" class="title">理解规约设计模式(Specification)</a></p>
+                            <p class="item-date"><time datetime="2017-05-31T16:00:00.000Z" itemprop="datePublished">2017-06-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/03/16/cj4nv7xar002b3axil8ksoqx0/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/03/16/cj4nv7xar002b3axil8ksoqx0/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2017-03-16T15:28:53.000Z" itemprop="datePublished">2017-03-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/03/16/cj4nv7xa7001f3axidgaw6rzt/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/03/16/cj4nv7xa7001f3axidgaw6rzt/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2017-03-16T06:18:18.000Z" itemprop="datePublished">2017-03-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/03/16/cj4nv7xav002f3axiifjm4jg9/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/03/16/cj4nv7xav002f3axiifjm4jg9/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2017-03-16T02:36:21.000Z" itemprop="datePublished">2017-03-16</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Objective-C/">Objective-C</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP设计模式/">PHP设计模式</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/">API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Closures/">Closures</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL-设计规范/">MySQL 设计规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP设计模式/">PHP设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/色彩/">色彩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/Closures/" style="font-size: 10px;">Closures</a> <a href="/tags/MySQL-设计规范/" style="font-size: 10px;">MySQL 设计规范</a> <a href="/tags/PHP/" style="font-size: 13.33px;">PHP</a> <a href="/tags/PHP设计模式/" style="font-size: 10px;">PHP设计模式</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/色彩/" style="font-size: 10px;">色彩</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 16.67px;">随笔</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Maksim<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1828998# enter youyan uid here"></script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
