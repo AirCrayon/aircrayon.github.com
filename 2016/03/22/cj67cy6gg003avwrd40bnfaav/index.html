@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Maksim"><title>iOS多线程 · Maksim's Website</title><meta name="description" content="简介多线程是所有程序员都应该知道的一个概念，因为当一个程序开始运行，进程就已经开启了！
+多线程基本概念进程(process)和文件(files)是UNIX/Linux操作系统最基本的抽象。进程是处于执行期的程序和它所包含的资源的综合，也就是说一个进程就是处于执行期的程序。一个线程（thread）就是"><meta name="keywords"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">Maksim's Website</a></h3></div></div><ul class="social-links"></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li><li><a href="/categories/PHP">PHP</a></li><li><a href="/categories/iOS">iOS</a></li><li><a href="/categories/MySQL">MySQL</a></li><li><a href="/categories/Linux">Linux</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>iOS多线程</a></h3></div><div class="post-content"><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>多线程是所有程序员都应该知道的一个概念，因为当一个程序开始运行，进程就已经开启了！</p>
+<h3 id="多线程基本概念"><a href="#多线程基本概念" class="headerlink" title="多线程基本概念"></a>多线程基本概念</h3><p>进程(process)和文件(files)是UNIX/Linux操作系统最基本的抽象。进程是处于执行期的程序和它所包含的资源的综合，也就是说一个进程就是处于执行期的程序。一个线程（thread）就是运行在一个程序上下文中的一个逻辑刘，不难看出，线程是进程中最基本的活动对象。</p>
+<blockquote>
+<p>在软件工程中，上下文是一种属性的有序序列，它们为主流在环境内的对象定义环境，在对象的激活过程中创建上下文，对象呗配置为要求某些自动服务，如同步、事务、实时激活、安全性等等。又比如计算机技术中，对象鱼进程而言，上下文就是进程执行时候的环境，具体来就是各个变量和数据，包括所有的寄存器变量、进程打开的文件、内存信息等。</p>
+</blockquote>
+<p>在传统系统中，一个进程只包含一个线程。但是在现代系统中，润徐一个进程里面可以同时运行多个县城，这类程序被称之为多线程程序。所有的程序都有一个主线程（main thread，在iOS开发中，主线程主要用于UI呈现，要将耗时操作放到其他线程之中，否则UI界面会被卡死），主直选成是进程的控制流或者执行线程在多线程程序中，主线可以创建一个活多个对等线程（peer thread），从这个时间点开始，这些线程就开始兵法执行，主线程和对等线程的区别仅在于主线程总是进程中第一个运行的线程。从某种程度上看，线程可以看做是轻量级的进程（lightweight process）。</p>
+<p>每个程序都拥有独立的线程上下文（thread context），线程ID（Thread ID，TID），程序计数器（PC），线程栈（stack），一组寄存器（register）和条件码，其中内核正式通过线程ID（TID）来识别线程，进行线程调度的。</p>
+<p>上面的内容是否晦涩难懂，那么我们看一看百度百科是如何解释多线程的：</p>
+<p>在百度百科中，多线程是指软件或者硬件上实现多个线程并发执行的技术。具有多线程能力的计算机因有硬件支持而能够在同一时间执行多余一个线程，今儿提高整体处理性能。就这样的一句话就解释了什么是线程和线程的作用，就是为了提高程序的执行效率，能够在同一时间段执行多个任务。</p>
+<p>这样一来是否就容易理解了，其实每一个软件都是一个进程，每个进程中包含一个到多个的线程，我们在window有的时候程序卡死，我们使用任务管理器结束程序的时候就是杀死那个进程。进程也可能是整个程序或者是部分程序的动态执行，线程是一组指令的集合，或者是程序的特殊段，它可以在程序里面单独执行，也可以把它理解成为代码运行的上下文，所以线程基本上是轻量级的进程，它负责在单个程序里执行多任务。通常由操作系统负责多个线程的调度和执行。</p>
+<p>线程是程序中一个单一的顺序控制流程，在单个程序中同时运行多个线程完成不同的工作，成为多线程。</p>
+<p>线程和进程的主要区别在于子进程和父进程有不同的代码和数据空间，而多个线程则共享数据空间，每个线程有自己的执行堆栈和程序计数器为其知心上下文，多线程主要是为了节省CPU时间，发挥利用，根据具体情况而定。线程的运行需要使用计算机的内存资源和CPU。</p>
+<p>到了这里你应该已经知道了什么是多线程了，首先让我们来整理一下然后再进行进行学习。</p>
+<ol>
+<li>进程:就是指在系统中运行的一个应用程序，每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间中</li>
+<li>线程:一个进程要执行任务，必须得有线程（每一个进程只要有一条线程），一个进程的所有任务都是放在线程中完成的<ul>
+<li>线程的串行：一个线程中执行的任务是串行的，如果在一个线程中赤星多个任务，只能一个一个的按照顺序执行</li>
+</ul>
+</li>
+<li>多线程：一个进程中可以开启多条线程，每条线程可以并行（同时），执行不同的任务。</li>
+</ol>
+<h3 id="多线程的优缺点"><a href="#多线程的优缺点" class="headerlink" title="多线程的优缺点"></a>多线程的优缺点</h3><h4 id="多线程的优点"><a href="#多线程的优点" class="headerlink" title="多线程的优点"></a>多线程的优点</h4><ol>
+<li>能适当提高程序的执行效率</li>
+<li>能适当提高资源利用率（CPU、内存利用率）</li>
+</ol>
+<h4 id="多线程的缺点"><a href="#多线程的缺点" class="headerlink" title="多线程的缺点"></a>多线程的缺点</h4><ol>
+<li>开启线程需要占用一定的内存空间（默认情况下，主线程占用1M，子线程占用512KB），如果开启大量的线程，会占用大量的内存空间，降低程序的性能</li>
+<li>线程越多，CPU在调度线程上的开销就越大</li>
+<li>程序设计更加复杂：比如线程之间的通信、多线程的数据共享</li>
+</ol>
+<h4 id="多线程在iOS开发中的应用"><a href="#多线程在iOS开发中的应用" class="headerlink" title="多线程在iOS开发中的应用"></a>多线程在iOS开发中的应用</h4><p>主线程:一个iOS程序运行后，默认会开启1条线程，称为“主线程”或“UI线程”<br>主线程的主要作用<br>显示、刷新UI界面<br>处理UI事件（比如点击事件、滚动事件、拖拽事件等）<br>主线程的使用注意:别将比较耗时的操作放到主线程中。<br>耗时操作会卡住主线程，严重影响UI的流畅度，给用户一种“卡”的坏体验</p>
+<h2 id="Pthread"><a href="#Pthread" class="headerlink" title="Pthread"></a>Pthread</h2><p>POSIX线程（POSIX threads）简称Pthreads，是线程的POSIX标准。该标准定义了创建和操纵线程的一套API，在类Unix系统中，都是用Pthreads作为系统的线程。在这里只讲一下其基本使用，因为在日常的开发之中并不是很常用这种方式进行多线程的开发。</p>
+<h3 id="Pthread的基本使用"><a href="#Pthread的基本使用" class="headerlink" title="Pthread的基本使用"></a>Pthread的基本使用</h3><p>由于Pthreads是使用C语言进行开发的，所以其使用都是C语法。</p>
+<h4 id="语法规则"><a href="#语法规则" class="headerlink" title="语法规则"></a>语法规则</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pthread_create(pthread_t *thread,pthread_attr_t * attr,void*(*start_routine)(void*),void*arg);</div></pre></td></tr></table></figure>
+<h5 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h5><p>thread:返回创建的线程ID</p>
+<p>attr:线程属性，调度策略、优先级等都在这里设置，如果为NULL则标识默认属性</p>
+<p>start_rountine:线程入口函数，可以返回一个void*类型的返回值，该返回值可由pthread_join()捕获<br>arg:传给start_rountine的参数，可以为NULL</p>
+<h5 id="设置线程属性"><a href="#设置线程属性" class="headerlink" title="设置线程属性"></a>设置线程属性</h5><p>线程属性通过attr进行设置<br>设置与查询attr结构为pthread_attr_get<del>()与pthread_attr_set</del>()两个系列函数，也可以在创建时通过pthread_create参数参数，有些必须在线程创建时进行设置比如跳读策略。</p>
+<h5 id="调度策略"><a href="#调度策略" class="headerlink" title="调度策略"></a>调度策略</h5><p>POSIX定义一种优先级调度模型，此模型确定任何两个线程相对于对方的重要程度。当两个线程同时准备就绪的时候，系统就会自动选择具有最高优先级的线程。</p>
+<p>SCHED_OTHER：非实时、正常<br>SCHED_RR：实时、轮询法<br>SCHED_FIFO：实时、先入先出，与vxworks的调度机制一致</p>
+<p>例程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pthread_attr_t attr;</div><div class="line">pthread_attr_init(&amp;attr);</div><div class="line">pthread_attr_setschedpolicy(&amp;attr, SCHED_FIFO);//sched_policy</div></pre></td></tr></table></figure>
+<h2 id="NSThread"><a href="#NSThread" class="headerlink" title="NSThread"></a>NSThread</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>NSThread 是 Objective-C 对 pthread 的一个封装。通过封装，在 Cocoa 环境中，可以让代码看起来更加亲切,通过NSThread这个API我们可以实现简单的多线程编程,但需要管理线程的声明周期、同步、加锁等问题，这样会导致一定的性能开销，当我们进行多线程开发的时候，并不推荐此方法。</p>
+<h3 id="NSThread的初始化"><a href="#NSThread的初始化" class="headerlink" title="NSThread的初始化"></a>NSThread的初始化</h3><h4 id="动态方法"><a href="#动态方法" class="headerlink" title="动态方法"></a>动态方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (id)initWithTarget:(id)target selector:(SEL)selector object:(id)argument;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 初始化线程</div><div class="line">NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run) object:nil];</div><div class="line">// 设置线程的优先级(0.0 - 1.0，1.0最高级)</div><div class="line">thread.threadPriority = 1;</div><div class="line">// 开启线程</div><div class="line">[thread start];</div><div class="line">参数解析：</div><div class="line">selector ：线程执行的方法，这个selector最多只能接收一个参数</div><div class="line">target ：selector消息发送的对象</div><div class="line">argument : 传给selector的唯一参数，也可以是nil</div></pre></td></tr></table></figure>
+<h4 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ (void)detachNewThreadSelector:(SEL)selector toTarget:(id)target withObject:(id)argument;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[NSThread detachNewThreadSelector:@selector(run) toTarget:self withObject:nil];</div><div class="line">// 调用完毕后，会马上创建并开启新线程</div></pre></td></tr></table></figure>
+<h4 id="隐式创建线程的方法"><a href="#隐式创建线程的方法" class="headerlink" title="隐式创建线程的方法"></a>隐式创建线程的方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self performSelectorInBackground:@selector(run) withObject:nil];</div></pre></td></tr></table></figure>
+<h3 id="获取当前线程"><a href="#获取当前线程" class="headerlink" title="获取当前线程"></a>获取当前线程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSThread *current = [NSThread currentThread];</div></pre></td></tr></table></figure>
+<h3 id="获取主线程"><a href="#获取主线程" class="headerlink" title="获取主线程"></a>获取主线程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSThread *main = [NSThread mainThread];</div></pre></td></tr></table></figure>
+<h3 id="暂停当前线程"><a href="#暂停当前线程" class="headerlink" title="暂停当前线程"></a>暂停当前线程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 暂停2s</div><div class="line">[NSThread sleepForTimeInterval:2];</div><div class="line"></div><div class="line">// 或者</div><div class="line">NSDate *date = [NSDate dateWithTimeInterval:2 sinceDate:[NSDate date]];</div><div class="line">[NSThread sleepUntilDate:date];</div></pre></td></tr></table></figure>
+<h3 id="线程间的通信"><a href="#线程间的通信" class="headerlink" title="线程间的通信"></a>线程间的通信</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">1.在指定线程上执行操作</div><div class="line">[self performSelector:@selector(run) onThread:thread withObject:nil waitUntilDone:YES];</div><div class="line"></div><div class="line">2.在主线程上执行操作</div><div class="line">[self performSelectorOnMainThread:@selector(run) withObject:nil waitUntilDone:YES];</div><div class="line"></div><div class="line">3.在当前线程执行操作</div><div class="line">[self performSelector:@selector(run) withObject:nil];</div></pre></td></tr></table></figure>
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>1.优点：NSThread比其他两种多线程方案较轻量级，更直观地控制线程对象<br>2.缺点：需要自己管理线程的生命周期，线程同步。线程同步对数据的加锁会有一定的系统开销</p>
+<h2 id="NSOperation"><a href="#NSOperation" class="headerlink" title="NSOperation"></a>NSOperation</h2><p>NSOperation的作用</p>
+<ul>
+<li>配合使用NSOperation和NSOperationQueue实现多线程编程</li>
+<li>NSOperation和NSOperationQueue实现多线程的具体步骤<ol>
+<li>先将需要执行的操作封装到一个NSOperation对象中</li>
+<li>然后将NSOperation对象添加到NSOperationQueue中</li>
+<li>系统会自动的将NSOperationQueue中的NSOperation中取出来</li>
+<li>将取出的NSOperation封装的操作放到一条线程中执行</li>
+</ol>
+</li>
+</ul>
+<h3 id="NSOperation的子类"><a href="#NSOperation的子类" class="headerlink" title="NSOperation的子类"></a>NSOperation的子类</h3><p>NSOperation是一个抽象的类,它并不具备封装操作的能力,当我们进行多线程编程的时候,必须使用它的子类.</p>
+<ol>
+<li>NSInvocationOperation</li>
+<li>NSBlockOperation</li>
+<li>自定义子类继承NSOperation,实现内部相对应的方法</li>
+</ol>
+<h3 id="NSInvocationOperation"><a href="#NSInvocationOperation" class="headerlink" title="NSInvocationOperation"></a>NSInvocationOperation</h3><p><em>创建NSInvocationOperation对象</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(id)initWithTarget:(id)target selector:(SEL)sel object:(id)arg;</div></pre></td></tr></table></figure>
+<p><em>调用start方法开启线程</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(void)start;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>一旦执行操作，就会调用target的sel方法默认情况下，调用了start方法后并不会开一条新线程去执行操作，而是在当前线程同步执行操作<br>只有将NSOperation放到一个NSOperationQueue中，才会异步执行操作</p>
+</blockquote>
+<h3 id="NSBlockOperation"><a href="#NSBlockOperation" class="headerlink" title="NSBlockOperation"></a>NSBlockOperation</h3><p><em>创建NSBlockOperation对象</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+(id)blockOperationWithBlock:(void (^)(void))block;</div></pre></td></tr></table></figure>
+<p><em>通过addExecutionBlock:方法添加更多的操作</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(void)addExecutionBlock:(void (^)(void))block;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>只要NSBlockOperation封装的操作数 &gt; 1，就会异步执行操作</p>
+</blockquote>
+<h3 id="NSOperationQueue"><a href="#NSOperationQueue" class="headerlink" title="NSOperationQueue"></a>NSOperationQueue</h3><p>NSOperationQueue可以调用start放啊来进行执行任务,但是默认是同步执行的</p>
+<p>如果将NSOperationQueue添加到NSOperationQueue操作队列中,系统会自动异步执行.</p>
+<p>添加操作:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-(void)addOperation:(NSOperation *)op;</div><div class="line">-(void)addOperationWithBlock:(void (^)(void))bloc</div></pre></td></tr></table></figure>
+<h3 id="最大并发数"><a href="#最大并发数" class="headerlink" title="最大并发数"></a>最大并发数</h3><p><strong>什么是并发数</strong></p>
+<p>同时执行的任务数<br>比如，同时开3个线程执行3个任务，并发数就是3</p>
+<p><strong>最大并发数的相关方法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-(NSInteger)maxConcurrentOperationCount;</div><div class="line">-(void)setMaxConcurrentOperationCount:(NSInteger)cnt;</div></pre></td></tr></table></figure>
+<h3 id="队列的取消-暂停-回复"><a href="#队列的取消-暂停-回复" class="headerlink" title="队列的取消,暂停,回复"></a>队列的取消,暂停,回复</h3><p><strong>取消队列的所有操作</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(void)cancelAllOperations;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>提示：也可以调用NSOperation的 -(void)cancel方法取消单个操作</p>
+</blockquote>
+<p><em>暂停和恢复队列</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-(void)setSuspended:(BOOL)b; // YES代表暂停队列，NO代表恢复队列</div><div class="line">-(BOOL)isSuspended;</div></pre></td></tr></table></figure>
+<h3 id="操作依赖"><a href="#操作依赖" class="headerlink" title="操作依赖"></a>操作依赖</h3><p>NSOperation之间可以设置依赖来保证执行顺序<br>比如一定要让操作A执行完后，才能执行操作B，可以这么写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[operationB addDependency:operationA]; // 操作B依赖于操作A</div></pre></td></tr></table></figure>
+<p>可以在不同queue的NSOperation之间创建依赖关系</p>
+<h3 id="操作监听"><a href="#操作监听" class="headerlink" title="操作监听"></a>操作监听</h3><p>可以监听一个操作的执行完毕</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-(void (^)(void))completionBlock;</div><div class="line">-(void)setCompletionBlock:(void (^)(void))block;</div></pre></td></tr></table></figure>
+<h3 id="自定义NSOperation"><a href="#自定义NSOperation" class="headerlink" title="自定义NSOperation"></a>自定义NSOperation</h3><p><em>自定义NSOperation的步骤</em></p>
+<p>重写<code>-(void)main</code>方法，在里面实现想执行的任务</p>
+<p>重写<code>-(void)main</code>方法的注意点<br>自己创建自动释放池（因为如果是异步操作，无法访问主线程的自动释放池）<br>经常通过<code>- (BOOL)isCancelled</code>方法检测操作是否被取消，对取消做出响应</p>
+<h2 id="GCD"><a href="#GCD" class="headerlink" title="GCD"></a>GCD</h2><h3 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h3><p>GCD 是 libdispatch 的市场名称，而 libdispatch 作为 Apple 的一个库，为并发代码在多核硬件（跑 iOS 或 OS X ）上执行提供有力支持。它具有以下优点：</p>
+<ol>
+<li>GCD 能通过推迟昂贵计算任务并在后台运行它们来改善你的应用的响应性能。</li>
+<li>GCD 提供一个易于使用的并发模型而不仅仅只是锁和线程，以帮助我们避开并发陷阱。</li>
+<li>GCD 具有在常见模式（例如单例）上用更高性能的原语优化你的代码的潜在能力</li>
+</ol>
+<p>（未完待续）</p>
+<p>参考文献：</p>
+<p>[1] <a href="http://blog.chinaunix.net/uid-20528014-id-333508.html" target="_blank" rel="external">fireaxe - Pthread编程基础 </a></p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2016-03-22</span><i class="fa fa-tag"></i><a href="/categories/Objective-C/" title="Objective-C" class="tag">Objective-C </a><a href="/tags/iOS/" title="iOS" class="tag">iOS </a></div></div></div></div><div class="share"><div class="evernote"><a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,http://yoursite.com/2016/03/22/cj67cy6gg003avwrd40bnfaav/,Maksim's Website,iOS多线程,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2016/03/26/cj67cy6f3001zvwrdgyiasyqp/" title="我的碎片化时间都在做什么?" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2016/03/08/cj67cy6fc002avwrd0wmcr8mh/" title="将博客迁移到了github" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
