@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.maksim.website/"/>
-  <updated>2017-10-16T11:30:35.000Z</updated>
+  <updated>2017-10-18T13:06:45.000Z</updated>
   <id>http://www.maksim.website/</id>
   
   <author>
@@ -17,9 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>PHP基础解惑： =与==、===的区别</title>
+    <link href="http://www.maksim.website/2017/10/18/1/"/>
+    <id>http://www.maksim.website/2017/10/18/1/</id>
+    <published>2017-10-17T16:00:00.000Z</published>
+    <updated>2017-10-18T13:06:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先等于号（=）在大多数语言中都是复制操作；</p><p><code>==</code>和<code>===</code>都是比较运算符，用来比较两个变量间的关系，他们两个都有“等于”的含义，不过<code>===</code>是恒等计算符。两侧数据类型不一致时会返回 false，在官方文档中给出如下：</p><p><code>==</code>如果两侧的变量类型不同时，会转化类型后在进行比较。</p><table><thead><tr><th>例子</th><th>名称</th><th>结果</th></tr></thead><tbody><tr><td>$a == $b</td><td>等于</td><td><strong>TRUE</strong>，如果类型转换后 $a 等于 $b。</td></tr><tr><td>$a === $b</td><td>全等</td><td><strong>TRUE</strong>，如果 $a 等于 $b，并且它们的类型也相同。</td></tr></tbody></table><p>上表摘自 PHP 手册。下面来看一个例子：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">   $age = <span class="number">18</span>;</div><div class="line">   var_dump($age == <span class="number">18</span>)l    <span class="comment">//bool(true)</span></div><div class="line">   var_dump($age === <span class="number">18</span>);   <span class="comment">//bool(true)</span></div><div class="line">   var_dump($age == <span class="string">'18'</span>);  <span class="comment">//bool(true)</span></div><div class="line">   var_dump($age === <span class="string">'18'</span>); <span class="comment">//bool(false)</span></div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;首先等于号（=）在大多数语言中都是复制操作；&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;==&lt;/code&gt;和&lt;code&gt;===&lt;/code&gt;都是比较运算符，用来比较两个变量间的关系，他们两个都有“等于”的含义，不过&lt;code&gt;===&lt;/code&gt;是恒等计算符。两侧数据类型不一致时会返回 f
+      
+    
+    </summary>
+    
+      <category term="php" scheme="http://www.maksim.website/categories/php/"/>
+    
+    
+      <category term="PHP基础" scheme="http://www.maksim.website/tags/PHP%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
     <title>PHP页面静态化</title>
-    <link href="http://www.maksim.website/2017/10/16/cj8x16oq3001jucrdj7ilv3st/"/>
-    <id>http://www.maksim.website/2017/10/16/cj8x16oq3001jucrdj7ilv3st/</id>
+    <link href="http://www.maksim.website/2017/10/16/cj8x1xwat001iwlrdvrd9bnb7/"/>
+    <id>http://www.maksim.website/2017/10/16/cj8x1xwat001iwlrdvrd9bnb7/</id>
     <published>2017-10-16T11:17:47.000Z</published>
     <updated>2017-10-16T11:30:35.000Z</updated>
     
@@ -41,8 +67,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2017/10/15/cj8x16op3000qucrdabvc1n34/"/>
-    <id>http://www.maksim.website/2017/10/15/cj8x16op3000qucrdabvc1n34/</id>
+    <link href="http://www.maksim.website/2017/10/15/cj8x1xw9r000owlrdkh8cn1rb/"/>
+    <id>http://www.maksim.website/2017/10/15/cj8x1xw9r000owlrdkh8cn1rb/</id>
     <published>2017-10-15T11:24:45.000Z</published>
     <updated>2017-10-15T11:52:43.000Z</updated>
     
@@ -62,8 +88,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2017/10/13/cj8x16orb003bucrdr8kn8qr5/"/>
-    <id>http://www.maksim.website/2017/10/13/cj8x16orb003bucrdr8kn8qr5/</id>
+    <link href="http://www.maksim.website/2017/10/13/cj8x1xwc90032wlrdmsvca4lp/"/>
+    <id>http://www.maksim.website/2017/10/13/cj8x1xwc90032wlrdmsvca4lp/</id>
     <published>2017-10-13T05:41:58.000Z</published>
     <updated>2017-10-13T05:41:58.000Z</updated>
     
@@ -270,8 +296,8 @@
   
   <entry>
     <title>使用Object.defineProperty()模拟双向数据绑定</title>
-    <link href="http://www.maksim.website/2017/09/06/cj8x16org003iucrdb3icxy74/"/>
-    <id>http://www.maksim.website/2017/09/06/cj8x16org003iucrdb3icxy74/</id>
+    <link href="http://www.maksim.website/2017/09/06/cj8x1xwcn003fwlrdrvdelo0k/"/>
+    <id>http://www.maksim.website/2017/09/06/cj8x1xwcn003fwlrdrvdelo0k/</id>
     <published>2017-09-06T14:28:57.000Z</published>
     <updated>2017-09-06T15:10:50.000Z</updated>
     
@@ -485,33 +511,6 @@
 &lt;p&gt;&lt;strong&gt;1. 用户变量&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;MySQL允许用户在语句中自定义变量，对于用户变量的值，可以先保存在用户变量中，然后在引用它；这样就可以将值从一个语句传到另外一个语句。&lt;/p&gt;
 &lt;p
-      
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
-    
-    
-      <category term="MySQL" scheme="http://www.maksim.website/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基础很重要，你真的知道什么是数据库吗？</title>
-    <link href="http://www.maksim.website/2017/08/04/601/"/>
-    <id>http://www.maksim.website/2017/08/04/601/</id>
-    <published>2017-08-04T13:04:12.000Z</published>
-    <updated>2017-08-04T13:12:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>“数据库基础”可不是一件小事。问题是，有时人们认为他们知道的很多。</p><p>例如，这个问题:什么是数据库?</p><p>我敢说大多数的人相信他们知道这个问题的答案。但其中一部分人(或者很多)都会答错。SQL Server 不是数据库，它只是一种 DBMS(数据库管理系统)。你可以使用 SQL Server 来创建数据库，但 SQL Server 本身不是一种数据库。</p><p>那么，什么是数据库?数据库是一种有组织的数据存储，其中的数据可以通过指定的数据元素(比如，字段、记录和文件)来访问(详见图 1-1)。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://www.maksim.website/images/whatis.png" alt="数据库" title="">                </div>                <div class="image-caption">数据库</div>            </figure><p>数据库是一种有组织的数据存储，其中的数据可以通过指定的数据元素来访问。</p><p>DBMS 是一种使终端用户或程序员能够共享数据的软件。它提供了一套操作数据库的系</p><p>统性方法:创建、更新、检索和存储信息。DBMS 通常还负责数据完整性、数据安全性、数据访问控制和优化、自动回退、重起和恢复。</p><p>对外行人来说，你可以把数据库想象成一个文件夹，把 DBMS 想象成文件柜，且所容纳的所有文件都贴有标签。DBMS 管理着数据库，通过 DBMS 来实现和访问数据库实例。所以说，DB2、Oracle 和 SQL Server 都是数据库管理系统。工资单应用使用工资单的数据库，该数据库可以使用 DB2、Oracle 或者 SQL Server 来实现。</p><p>摘自DBA 《修炼之道：数据库管理员的第一本书》</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;“数据库基础”可不是一件小事。问题是，有时人们认为他们知道的很多。&lt;/p&gt;
-&lt;p&gt;例如，这个问题:什么是数据库?&lt;/p&gt;
-&lt;p&gt;我敢说大多数的人相信他们知道这个问题的答案。但其中一部分人(或者很多)都会答错。SQL Server 不是数据库，它只是一种 DBMS(数据库管理
       
     
     </summary>
