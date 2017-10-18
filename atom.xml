@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Maksim&#39;s Website</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.maksim.website/"/>
+  <updated>2017-10-16T11:30:35.000Z</updated>
+  <id>http://www.maksim.website/</id>
+  
+  <author>
+    <name>Maksim</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PHP页面静态化</title>
+    <link href="http://www.maksim.website/2017/10/16/cj8x0oad8001gs7rd8oat1bjy/"/>
+    <id>http://www.maksim.website/2017/10/16/cj8x0oad8001gs7rd8oat1bjy/</id>
+    <published>2017-10-16T11:17:47.000Z</published>
+    <updated>2017-10-16T11:30:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="关于页面"><a href="#关于页面" class="headerlink" title="关于页面"></a>关于页面</h1><p>要了解静态化页面，首先我们就要知道什么是页面？</p><p>一、静态web页面：</p><p>1、在静态Web程序中，客户端使用Web浏览器（IE、FireFox等）经过网络(Network)连接到服务器上，使用HTTP协议发起一个请求（Request），告诉服务器我现在需要得到哪个页面，所有的请求交给Web服务器，之后WEB服务器根据用户的需要，从文件系统（存放了所有静态页面的磁盘）取出内容。之后通过Web服务器返回给客户端，客户端接收到内容之后经过浏览器渲染解析，得到显示的效果。</p><p>2、为了让静态web页面显示更加好看，使用javascript／VBScript／ajax（AJAX即“Asynchronous Javascript And XML”（异步JavaScript和XML），是指一种创建交互式网页应用的网页开发技术。）但是这些特效都是在客户端上借助于浏览器展现给用户的，所以在服务器上本身并没有任何的变化。</p><p>3、静态web无法连接数据库；</p><p>4、静态web资源开发技术：HTML；</p><p>5、由于现在的web页面中，大量使用JS，导致浏览器打开页面，就会占用大量的内存，服务端的压力是减轻了，但压力转移到了客户端。</p><p>二、动态web页面：</p><p>动态WEB中，程序依然使用客户端和服务端，客户端依然使用浏览器（IE、FireFox等），通过网络(Network)连接到服务器上，使用HTTP协议发起请求（Request），现在的所有请求都先经过一个WEB Server来处理。</p><p>如果客户端请求的是静态资源(<em>.htm或者是</em>.htm)，则将请求直接转交给WEB服务器，之后WEB服务器从文件系统中取出内容，发送回客户端浏览器进行解析执行。</p><p>如果客户端请求的是动态资源（<em>.jsp、</em>.asp/<em>.aspx、</em>.php），则先将请求转交给WEB Container(WEB容器)，在WEB Container中连接数据库，从数据库中取出数据等一系列操作后动态拼凑页面的展示内容，拼凑页面的展示内容后，把所有的展示内容交给WEB服务器，之后通过WEB服务器将内容发送回客户端浏览器进行解析执行。</p><p>#静态化</p><p>PHP静态化分为：纯静态化 和 伪静态化；纯静态化又分为：局部静态化 和 完全静态化</p><p>纯静态化：是把PHP生成的动态页面保存成静态的html文件，用户访问该静态页面，而不是用户每一次访问都重新生成一张相同的网页，优点就是减小服务器开销，</p><ul><li>局部静态化：是生成的静态文件中，有局部的数据还是通过ajax技术动态获取的；</li><li>完全静态化：即不存在动态获取数据的情况，所以内容都来自静态的html页面</li></ul><p>伪静态化：其实还是动态访问，其实质是动态生成数据，你访问的网址类似于”<a href="http://yourhost,com/index/post/12&quot;,是一个静态地址，该地址多见于博客地址，但伪静态化中，你访问的网址实际上经过服务器解析，还是会解析成类似于&quot;http://yourhost,com/?c=index&amp;a=post&amp;id=12&quot;的地址，所以称之为伪静态化" target="_blank" rel="external">http://yourhost,com/index/post/12&quot;,是一个静态地址，该地址多见于博客地址，但伪静态化中，你访问的网址实际上经过服务器解析，还是会解析成类似于&quot;http://yourhost,com/?c=index&amp;a=post&amp;id=12&quot;的地址，所以称之为伪静态化</a></p><p>　　伪静态的优点：美观；便于搜索引擎收录</p><p>buffer 概括</p><p>buffer 其实就是缓冲区，一个内存地址空间，主要是用于存储数据的区域。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;关于页面&quot;&gt;&lt;a href=&quot;#关于页面&quot; class=&quot;headerlink&quot; title=&quot;关于页面&quot;&gt;&lt;/a&gt;关于页面&lt;/h1&gt;&lt;p&gt;要了解静态化页面，首先我们就要知道什么是页面？&lt;/p&gt;
+&lt;p&gt;一、静态web页面：&lt;/p&gt;
+&lt;p&gt;1、在静态Web程序中，客
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://www.maksim.website/2017/10/15/cj8x0oac2000is7rdv3xm6qzy/"/>
+    <id>http://www.maksim.website/2017/10/15/cj8x0oac2000is7rdv3xm6qzy/</id>
+    <published>2017-10-15T11:24:45.000Z</published>
+    <updated>2017-10-15T11:52:43.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="MySQL常用存储引擎之Innodb"><a href="#MySQL常用存储引擎之Innodb" class="headerlink" title="MySQL常用存储引擎之Innodb"></a>MySQL常用存储引擎之Innodb</h1><p>Mysql5.5(5.58)及之后的版本默认的存储引擎由 MyISAM 引擎替换为 Innodb。</p><p>和 MyISAM 存储引擎不同，InnoDB是事务型引擎，也是最重要、使用最广泛的存储引擎。它被设计用来处理大量的短期（short-lived）事务，短期事务大部分情况下是正常提交的，很少会被回滚。InnoDB 的性能和自动崩溃恢复特性，使得它在非实物型存储的需求中也很六星。除非有非常特别的原因需要使用其他的存储引擎，否则应该优先考虑 innoDB 引擎。</p><p>特点：</p><ul><li>灾难恢复性好</li><li>支持全部四种级别的事务。默认的事务隔离级别是可重复度（Repeatable Read），它的事务支持通过多版本并发控制（MVVC）来提供的</li><li>使用行级锁</li><li>对于 InnoDB 引擎的表，其数据的物理组织形式是簇表（Cluster Table），数据按主键来组织，也就是说主键索引和数据是在一起的，数据主键的顺序物理分布。数据表的另一种常见形式是非簇表，其索引是有序的，而数据时无序的</li><li>实现了缓冲管理，不仅能缓冲索引也能缓冲数据，并且会自动创建散列索引以加快数据的读取。相比之下，MyISAM 只是缓存了索引</li><li>支持外键</li><li>支持热备份</li></ul><p>Innodb 拥有表空间的概念，表中的数据时存储在表空间之中的，具体存储在什么样的表空间之中则由<code>innodb_file_per_table</code>这个参数决定。</p><p>如果值为 <code>ON</code>,会为每个 innodb 表建立一个<code>tablename.ibd</code>的系统文件，如果该参数为<code>OFF</code>时会把数据存储到系统的表空间<code>ibdataX</code></p><p>引用</p><p>《打造扛得住的 MySQL》 慕课网</p><p>《高性能 MySQL》</p><p>《My》</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;MySQL常用存储引擎之Innodb&quot;&gt;&lt;a href=&quot;#MySQL常用存储引擎之Innodb&quot; class=&quot;headerlink&quot; title=&quot;MySQL常用存储引擎之Innodb&quot;&gt;&lt;/a&gt;MySQL常用存储引擎之Innodb&lt;/h1&gt;&lt;p&gt;Mysql5
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://www.maksim.website/2017/10/13/cj8x0oaf70031s7rd1udfh67b/"/>
+    <id>http://www.maksim.website/2017/10/13/cj8x0oaf70031s7rd1udfh67b/</id>
+    <published>2017-10-13T05:41:58.000Z</published>
+    <updated>2017-10-13T05:41:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="业务评估"><a href="#业务评估" class="headerlink" title="业务评估"></a>业务评估</h1><h2 id="业务需求"><a href="#业务需求" class="headerlink" title="业务需求"></a>业务需求</h2><ul><li>响应时间（request time）</li><li>数据总量</li><li>每秒请求量</li><li>读写比</li><li>重要程度</li></ul><p><strong>响应时间</strong>是与整个数据库的状态有关，不仅与CPU、数据总量、每秒请求量、读写比以及各种场景都是有关系的。所以说相应时间是一个综合指标。</p><p>对于DBA来说最关心的就是业务的相应时间能不能够满足，在满足的情况下再去优化以下的这些点，才是有意义的。</p><p>数据总量往往需要业务方提供一个一到两年的数据总量，这是因为如果没有数据总量，前期是没有办法规划我们的数据库实例的。当然也有很多的不确定因素，比如互联网行业，比如有的业务会爆发性的增长，这些规划可能是不合理的，但是在我们也要有一个大概的评估，因为这是前期资源申请和资源分配的策略。</p><p>每秒请求量</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;业务评估&quot;&gt;&lt;a href=&quot;#业务评估&quot; class=&quot;headerlink&quot; title=&quot;业务评估&quot;&gt;&lt;/a&gt;业务评估&lt;/h1&gt;&lt;h2 id=&quot;业务需求&quot;&gt;&lt;a href=&quot;#业务需求&quot; class=&quot;headerlink&quot; title=&quot;业务需求&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL体系结构</title>
+    <link href="http://www.maksim.website/2017/10/13/1/"/>
+    <id>http://www.maksim.website/2017/10/13/1/</id>
+    <published>2017-10-12T16:00:00.000Z</published>
+    <updated>2017-10-13T11:35:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>数据库产品的架构一般可以分为应用层、逻辑层、物理层，对于MySQL，同样可以理解为如下3个层次。</p><p><img src="http://ogxeww23n.bkt.clouddn.com/http://images2015.cnblogs.com/blog/676456/201707/676456-20170722164214340-166686649.jpg210050572965263.gif" alt="img"></p><p>其中<code>Connectors</code>可以理解为各种客户端、 应用服务； <code>Connection Pool</code>可以理解为<strong>应用层</strong>，负责和客户端、用户进行交互，需要和不同的客户端（<code>PHP</code>,<code>Java</code>,<code>C API</code>,<code>.Net</code>以及<code>ODBC</code>,<code>JDBC</code>等等）和中间服务器进行交互，这一层主要完成的是链接处理，授权认证，和安全等一些功能，连接到<code>MySQL</code>的客户端在其进程中，都会有一个独立的线程，连接的查询只会在这个登录线程中进行查询。</p><p><code>Management Services&amp;Utilities</code>、<code>SQL Interface</code>、 <code>Parser</code>、 <code>Optimizer</code>、 <code>Caches&amp;Buffers</code>、 <code>Pluggable Storage Engines</code>可以理解为数据库的大脑——<strong>逻辑层</strong>。</p><p>负责具体的查询处理、事务处理、存储管理、恢复管理，以及其他附加功能。查询处理器负责查询的解析、执行。当接收到客户端的查询时，数据库会分配一个县城来处理它。先友查询处理器（优化器）生成执行计划，然后交由计划执行器来执行，执行器有时需要访问更底层的事务管理器、存储管理器来操作数据，事务管理器、存储管理器主要负责事务控制、并发控制、存储管理。在其中，将由事务管理来保证“<code>ACID</code>”特性，通过锁管理器来控制并发，由日志管理器来确保数据持久化，存储故那里器一般还包括一个缓冲管理器，有它来确定磁盘和缓存之间的数据传输。</p><p>根据上面的架构图，我们可以看到在逻辑层中<code>Pluggable Storage Engines</code></p><p>这是MySQL服务逻辑架构中的第三层，是MySQL的存储引擎，MySQL提供出了存储引擎接口，第三方可以根据自己的业务逻辑需求开发自己的存储引擎，Innodb起初就是由Innobase Oy公司所开发，2006年5月被甲骨文公司并购。</p><p>服务器通过API与存储引擎通信，这些接口屏蔽了不同存储引擎之间的差异，使得这些差异对上层的查询过程透明。存储引擎API包含几十个底层函数，用于执行诸如“开始一个事务”或者“根据主键提取一行记录”等操作，但存储引擎不会去解析SQL，不同存储引擎之间也不会相互通信，而只是简单地相应上层和服务的请求。</p><blockquote><p>注意：存储引擎是针对于表的而不是针对于库的，不同的表可以使用不同的引擎；</p></blockquote><p> 最下方的Files&amp;Logs可以理解为物理层，实际物理磁盘（存储）上的数据库文件，比如数据文件、日志文件等等。</p><p>引用：</p><p>《MySQL DBA修炼之道》 作者陈晓勇  出版社：华章图书</p><p>《打造扛得住的MySQL》 电子工业出版社</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;数据库产品的架构一般可以分为应用层、逻辑层、物理层，对于MySQL，同样可以理解为如下3个层次。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ogxeww23n.bkt.clouddn.com/http://images2015.cnblogs.com/blog/676
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>服务器系统对MySQL性能带来的影响</title>
+    <link href="http://www.maksim.website/2017/10/10/2/"/>
+    <id>http://www.maksim.website/2017/10/10/2/</id>
+    <published>2017-10-09T16:00:00.000Z</published>
+    <updated>2017-10-13T11:39:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>影响数据库性能的主要因素有很多，主要包括以下几点：</p><ol><li>服务器硬件</li><li>服务器系统</li><li>数据库存储引擎的选择</li><li>数据库参数配置</li><li>数据库结构设计和SQL语句</li></ol><h1 id="服务器系统"><a href="#服务器系统" class="headerlink" title="服务器系统"></a>服务器系统</h1><p>MySQL本身支持很多操作系统：</p><ul><li>Windows</li><li>FreeBSD</li><li>Solaris</li><li>Linux</li></ul><p>很多人都习惯将开发环境的数据库部署在Windows上，将生产环境的数据库部署在Linux上，这就会导致一个问题，MySQL 的schema存储方式在文件系统上实际是一个目录，<strong>在Windows平台上，大小写是不敏感的</strong>，而在<strong>Linux上大小写是敏感的</strong>，所以这就会导致，数据库和表的名字在Windows是可以运行的，但是当移植到Linux下就会找不到相关数据库和表的错误。</p><h2 id="CentOS系统参数优化"><a href="#CentOS系统参数优化" class="headerlink" title="CentOS系统参数优化"></a>CentOS系统参数优化</h2><p><strong>内核相关参数</strong>（/etc/sysctl.conf）</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"># </div><div class="line">net.core.somaxconn = 65535</div><div class="line">net.core.netdev_max_backlog = 65535</div><div class="line">net.ipv4.tcp_max_syn_backlog = 65535</div><div class="line"></div><div class="line"># TCP连接回收</div><div class="line">net.ipv4.tcp_fin_timeout = 10</div><div class="line">net.ipv4.tcp_tw_reuse = 1</div><div class="line">net.ipv4.tcp_tw_recycle = 1</div><div class="line"></div><div class="line">net.core.wmen_default = 87380</div><div class="line">net.core.wmen_max = 16777216</div><div class="line">net.core.rmem_default = 87380</div><div class="line">net.core_rmem_max = 1677216</div><div class="line"></div><div class="line">net.ipv4.tcp_keeplive_time = 120</div><div class="line">net.ipv4.tcp_keepalive_intvl = 30</div><div class="line">net.ipv4.tcp_keepalive_probes = 3</div><div class="line"></div><div class="line">kernel.shmmax = 4294967295</div><div class="line"># Linux内核参数最重要的参数之一，用于定义单个共享内存段的最大值</div><div class="line"># 1. 这个参数应该设置的足够大，以便能在一个共享内存段下容纳下整个Innodb缓冲池的大小</div><div class="line"># 这个值的大小对于64位Linux系统，可取的最大值为物理内存值-1byte,建议设置为物理内存的一半，一半取决于Innodb缓冲池的大小即可，可以取物理内存-1byte</div><div class="line"></div><div class="line">vm.swappiness = 0 </div><div class="line"># 这个参数当内存不足时会对性能产生较明显的影响</div><div class="line"># Linux系统内存交换区。</div><div class="line"># 禁用交换分区所带来的风险：</div><div class="line">#1. 降低操作系统的性能</div><div class="line">#2。 容易造成内存溢出，崩溃，或者被操作系统kill掉</div><div class="line"># 在MySQL服务器上保留叫分区还是有必要的额，但是要控制何时使用交换分区，vm.swappiness = 0 ，就是告诉内核除非虚拟内存完全满了，否则就不会使用交换分区</div></pre></td></tr></table></figure><p>增加资源限制（/etc/security/limit.conf），这个文件实际上是Linux PAM也就是插入式认证模块的配置文件。</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">* soft nofile 65535</div><div class="line">* hard nofile 65535</div><div class="line"></div><div class="line"># * 表示对所有用户有效</div><div class="line"># soft 指的是当前系统生效的设置</div><div class="line"># hard 表明系统中所设定的最大值</div><div class="line"># nofile 表示所限制的资源是打开文件的额最大数目</div><div class="line"># 65535 就是限制的数量</div><div class="line"># 把可打开的文件数量增加到65535个，以保证可以打开足够多的文件句柄，这个文件的修改需要重启系统后生效</div></pre></td></tr></table></figure><p>磁盘调度策略(/sys/block/devname/queue/scheduler)</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cat /sys/block/devname/queue/scheduler</div><div class="line">noop anticipatory deadline [cfq]</div></pre></td></tr></table></figure><p><strong>noop</strong>（电梯式调度策略）<br>NOOP实现了一个FIFO队列，它像电梯的工作方式一样对I/O请求进行组织，当有一个新的请求到来时，它将请求合并到最近的请求之后，以此来保证请求同一个介质。NOOP倾向于饿死读而利于写，因此NOOP对于闪存设备，RAM以及嵌入式是最好的选择。</p><p><strong>deadline</strong>（介质时间调度策略）<br>Deadline确保了在一个截至时间内服务请求，这个截至时间是可调整的，而默认读期限短于写期限。这样就防止了写操作因为不能被读取而饿死的现象。Deadline对数据库类应用是最好的选择。</p><p><strong>anticipatory</strong>（预料I/O调度策略）<br>本质上与Deadline一样，但在最后一次读操作后，要等待6ms，才能继续进行对其他I/O请求进行调度。它会在每个6ms中插入新的I/O操作，而会将一些小写入流合并成一个大写入流，用写入延时换取最大的写入吞吐量。AS适合于写入较多的环境，比如文件服务器，AS对数据库环境表现很差。</p><p>通过下面方法修改磁盘策略：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo  deadline &gt;  /sys/block/devname/queue/scheduler</div></pre></td></tr></table></figure><h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><p>在Windows环境下，仅有FAT和NTFS两种文件系统，但其实现在只使用NTFS。</p><p>在Linux环境下就不同了，目前主流的文件系统有EXT3、EXT4、XFS。这三种文件系统都带有日志，安全性可以得到保证，江湖传闻XFS新更能更好。</p><p>EXT3/4系统的挂在参数(/etc/fstab)</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 日志写入</div><div class="line">data = writeback | ordered | jouranl</div><div class="line">noatime, nodiratime</div><div class="line">/dev/sda1/ext4 noatime,nodiratime,data=writeback 1 1</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;影响数据库性能的主要因素有很多，主要包括以下几点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;服务器硬件&lt;/li&gt;
+&lt;li&gt;服务器系统&lt;/li&gt;
+&lt;li&gt;数据库存储引擎的选择&lt;/li&gt;
+&lt;li&gt;数据库参数配置&lt;/li&gt;
+&lt;li&gt;数据库结构设计和SQL语句&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>服务器硬件对MYSQL性能的影响</title>
+    <link href="http://www.maksim.website/2017/10/10/1/"/>
+    <id>http://www.maksim.website/2017/10/10/1/</id>
+    <published>2017-10-09T16:00:00.000Z</published>
+    <updated>2017-10-15T11:12:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>影响数据库性能的主要因素有很多，主要包括以下几点：</p><ol><li>服务器硬件</li><li>服务器系统</li><li>数据库存储引擎的选择</li><li>数据库参数配置</li><li>数据库结构设计和SQL语句</li></ol><h1 id="服务器硬件："><a href="#服务器硬件：" class="headerlink" title="服务器硬件："></a>服务器硬件：</h1><p>每当大促或者一些活动的时候，我们监控系统时会发现，CPU和可用内存的资源都是很紧张的，特别对于一些计算密集型的应用，CPU的资源可能会变成系统的瓶颈。</p><p>当我们工作所需要的热数据的大小大于可用内存大小的时候，IO系统就会变成我们的瓶颈。</p><p>网络也算是一种IO，它对于性能的影响往往发生在大量的数据被查询时，特别是使用MemCache这类缓存系统时，当缓存大量失效时，就会造成大量的网络传输从而影响服务性能。</p><p>当发生这类问题的时候，我们可以升级I/O子系统，来增加大量的内存。</p><h2 id="如何选择CPU？"><a href="#如何选择CPU？" class="headerlink" title="如何选择CPU？"></a>如何选择CPU？</h2><h4 id="我们是选择更多的CPU，还是更快的CPU？"><a href="#我们是选择更多的CPU，还是更快的CPU？" class="headerlink" title="我们是选择更多的CPU，还是更快的CPU？"></a>我们是选择更多的CPU，还是更快的CPU？</h4><p>Intel Xeon E7-8890 v2</p><p>主频2.5GHz 核心数量：18核36线程</p><p>正常情况下，这两点我们都想要，但是现实是残酷的，44499RMB的价格，并不是所有公司都能够接受的。</p><p>首先，我们需要考虑几个问题。</p><p>####我们的应用是CPU密集型的应用吗？</p><p>如果是CPU密集型的应用要加快SQL的处理速度，显然我们需要的是更快的CPU而不是核心较多的CPU。</p><p>值得注意的是，MySQL目前还不支持多CPU对同一SQL并发处理。</p><p>也就是说，一条SQL只能使用一颗CPU来进行处理，多颗CPU对于一条SQL的处理效率是没有帮助的。</p><p>我们系统的并发量如何？</p><p>虽然单个SQL无法利用到多个CPU资源，如果要提高系统的吞吐量和并发处理量呢？</p><p>这时我们就需要CPU越多越好。</p><p>在Web应用中，CPU的数量就要比频率要重要一些。</p><p>我们所使用的MySQL版本也会决定如何选择CPU，老版本的MySQL对于多核CPU的支持并不好，5.0之前的版本限制是非常严重的，5.6、5.7对多核CPU的支持已经有了很好的改善。</p><h4 id="选择32位还是64位的CPU？"><a href="#选择32位还是64位的CPU？" class="headerlink" title="选择32位还是64位的CPU？"></a>选择32位还是64位的CPU？</h4><p>这个问题已经是多余的了，目前64位已经是默认配置了，而且MySQL对于64位CPU的支持已经很好了。</p><p>不过值得注意的是，<strong>在64位CPU上使用32位操作系统</strong>，意味着我们不能使用大的内存，任何一个单独的进程都不能寻址到4G以上的内存，MySQL是一个单线程的服务，这样就会对MySQL的性能造成极大的影响。</p><h2 id="内存、更大更快？"><a href="#内存、更大更快？" class="headerlink" title="内存、更大更快？"></a>内存、更大更快？</h2><p>内存的大小直接影响数据库的性能，目前内存的IO效率要远远高于磁盘，所以把数据缓存到内存中可以大大提高数据库性能。</p><p>MyISAM会把索引缓存到内存中，数据放到系统上进行缓存。</p><p>InnoDB会在内存上同时缓存索引和数据，所以可以提高运行效率</p><p>内存的确是越多越好，可是数据库的性能影响也是有限的，并不能无限增加性能，数据库可以利用的内存是有限的。</p><p>当所有的数据都被缓存到内后，再增加内存大小就变成没有意义的了。</p><p>如果我们的数据的大小是100G，内存是64G，我们可以通过扩展内存到128G来扩大数据库的缓冲区来提高数据库性能。</p><p>可是如果此时内存以经256G了，并且数据库的缓存池大小已经达到了196G的情况下，就不能指望增加内存来提高数据库心梗了。</p><p>多余的内存可以增加操作系统等其他服务的性能。</p><p>缓存虽然不能避免磁盘的写操作，但是可以起到延缓作用，把多次写入变成一次写入。</p><p>###　内存的选择？</p><p>内存的频率越高读取也就越快，应该选择主板所支持的最高主频，组成购买升级，每个通道的内存最高相同品牌、颗粒、频率、电压、校验技术和型号。单条容量要尽可能的大。</p><p>根据数据库大小选择内存，例如现在热数据有100G，那么我们就可以选择128G的内存。但是还有一个问题，那就是数据的增长率，为了避免短时间内多次升级硬件，可以选择更大一些的内存。</p><p>##I/O子系统（磁盘的配置和选择）</p><p>虽然内存对数据库的性能影响很重要，通过增加内存大小可以解决大部分性能问题，但是并不能忽视I/O子系统对性能影响。</p><p>有时我们需要以牺牲内存为代价提高I/O子系统的性能，因为无论如何最终，数据都要通过磁盘来进行持久化的存储。</p><p>目前主流的四种磁盘配置：</p><ol><li>使用传统机器磁盘</li><li>使用RAID增强传统机器磁盘</li><li>使用固态存储SSD和PCIe卡</li><li>使用网络存储NAS和SAN</li></ol><h3 id="传统机器硬盘"><a href="#传统机器硬盘" class="headerlink" title="传统机器硬盘"></a>传统机器硬盘</h3><p>传统机器磁盘是目前最常见的选择，使用最多，这类磁盘价格低，存储空间大，但是读、写速度较慢，传统机器硬盘的读、写效率取决于它的存储机制。</p><p>传统机器硬盘读取数据的过程：</p><ol><li>移动磁头到磁盘表面的正确位置</li><li>等待磁盘旋转，使所需的数据在磁头之下</li><li>等待磁盘旋转过去，所有所需的数据都被磁头读取</li></ol><p>磁盘执行这些操作有多快，也就决定了磁盘的读取速度，第1,2步骤被称之为访问时间，第3步称之为传输速度。</p><p>如何选择传统机器硬盘</p><ol><li>存储容量</li><li>传输速度</li><li>访问时间</li><li>主轴转速</li><li>物理尺寸</li></ol><h3 id="RAID增强机器硬盘的性能"><a href="#RAID增强机器硬盘的性能" class="headerlink" title="RAID增强机器硬盘的性能"></a>RAID增强机器硬盘的性能</h3><p>首先我们要知道什么是RAID，RAID是磁盘冗余队列的简称（Redundant Arrays of independent Disks）简单来说RAID的作用就是可以把多个容量较小的磁盘组成一组容量更大的磁盘，并提供数据冗余保证数据完整性的技术。</p><h4 id="数据库中使用的RAID-0级别："><a href="#数据库中使用的RAID-0级别：" class="headerlink" title="数据库中使用的RAID 0级别："></a>数据库中使用的RAID 0级别：</h4><p><strong>RAID 0</strong>是最早出现的RAID模式，也称之为数据条带，是组建磁盘阵列中<strong>最简单</strong>的一种形式，只需要两块以上的硬盘即可，<strong>成本低</strong>，可以提高整个磁盘的性能和吞吐量。RAID 0<strong>没有提供冗余或错误修复能力</strong>，但是实现成本是最低的。</p><p><img src="http://www.maixj.net/wp-content/uploads/2015/02/raid0.png" alt="RAID 0"></p><p>RAID 0 就是多个独立的磁盘串联到一起，比如有三块300G的磁盘组合到一起，就可以组成一块900G的磁盘，在写入时可以并发同时对三块磁盘进行写入，理论上写入效率就是普通磁盘的三倍。</p><p>RAID 0可能是性价比最高的解决方案，但是如果考虑到数据的恢复、可靠性因素，RAID 0就变成了一种成本最高的一种解决方案。</p><p>因为在RAID 0 中数据没有冗余，数据损坏的几率要比单块磁盘的几率还要高，因为RAID 0中任意一块磁盘损坏了，都会造成数据丢失。</p><p>所以RAID 0比较适合于不担心数据丢失的情况，比如可以随时从其他数据库克隆的备存，或者是一次性使用的数据。</p><h4 id="数据库中使用的RAID-1级别"><a href="#数据库中使用的RAID-1级别" class="headerlink" title="数据库中使用的RAID 1级别"></a>数据库中使用的RAID 1级别</h4><p><strong>RAID 1</strong>又称磁盘镜像，原理是把一块磁盘的数据镜像到另一个磁盘上，也就是说数据写入一块磁盘的同事，会在另一块限制的磁盘上生成镜像文件，在不影响性能的情况下最大限度的保证系统的可靠性和可修复性。</p><p><img src="http://www.maixj.net/wp-content/uploads/2015/02/raid1.jpg" alt="RAID 1"></p><p>RAID 1当一块硬盘失效时，系统会忽略该硬盘，转而使用剩余的镜像盘来读取数据，拥有很好的冗余能力，虽然这样对数据的安全性而言是绝对安全的，但是却似的成本增加，磁盘的利用率仅有百分之五十，以4块300G的硬盘而言，能够利用的空间仅有600G，出现故障后的RAID系统也不在可靠了，应当及时更换损坏的硬盘，否则其他的镜像盘也出现问题了，会导致系统的崩溃。</p><p>更换硬盘后需要很长的时间同步镜像，虽然对数据的访问不会受到影响，但是对整个系统的性能是会有所下降的。</p><p>RAID 1在读的速度上要比RAID 0快。</p><p>####数据库中使用的RAID 5级别</p><p>RAID 5又称之为分布式奇偶校验磁盘阵列，通过分布式奇偶校验块把数据分散到多个磁盘上，这样如果任何一个盘数据失效，都可以从奇偶校验块中重建。但是如果两块磁盘失效，则整个卷的数据都无法恢复。</p><p><img src="http://www.maixj.net/wp-content/uploads/2015/02/raid5.gif" alt="RAID 5"></p><p>在RAID 5上随机比较慢，因为每次写都需要两次读和两次写，以计算校验位的数值，比较适合以读为主的数据库业务。</p><p>最大的性能问题，发生在磁盘失效的时候，因为数据需要重新分布到其他磁盘上，这样会严重影响数据库性能，如果要使用RAID 5的话，最好使用在从服务器上。</p><h4 id="数据库中使用的RAID-10级别"><a href="#数据库中使用的RAID-10级别" class="headerlink" title="数据库中使用的RAID 10级别"></a>数据库中使用的RAID 10级别</h4><p>RAID 10又称分片的镜像，她是对磁盘先做RAID 1之后对两组RAID 1的磁盘再做RAID 0，所以对读写都有良好的性能，相对于RAID 5重建起来更简单，速度也更快。</p><p><img src="http://www.maixj.net/wp-content/uploads/2015/02/raid01.jpg" alt="RAID 10"></p><h4 id="RAID级别的选择"><a href="#RAID级别的选择" class="headerlink" title="RAID级别的选择"></a>RAID级别的选择</h4><table><thead><tr><th style="text-align:center">等级</th><th style="text-align:center">特点</th><th style="text-align:center">是否冗余</th><th style="text-align:center">盘数</th><th style="text-align:center">读</th><th style="text-align:center">写</th></tr></thead><tbody><tr><td style="text-align:center">RAID 0</td><td style="text-align:center">便宜，快速，危险</td><td style="text-align:center">无</td><td style="text-align:center">N</td><td style="text-align:center">快</td><td style="text-align:center">快</td></tr><tr><td style="text-align:center">RAID 1</td><td style="text-align:center">高速读，简单，安全</td><td style="text-align:center">有</td><td style="text-align:center">2</td><td style="text-align:center">快</td><td style="text-align:center">慢</td></tr><tr><td style="text-align:center">RAID 5</td><td style="text-align:center">安全，成本这种</td><td style="text-align:center">有</td><td style="text-align:center">N+1</td><td style="text-align:center">快</td><td style="text-align:center">取决于最慢的盘</td></tr><tr><td style="text-align:center">RAID 10</td><td style="text-align:center">贵，告诉，安全</td><td style="text-align:center">有</td><td style="text-align:center">2N</td><td style="text-align:center">快</td><td style="text-align:center">快</td></tr></tbody></table><h3 id="固态存储"><a href="#固态存储" class="headerlink" title="固态存储"></a>固态存储</h3><ol><li>拥有更好的随机读写性能。</li><li>能够更好的支持并发</li><li>更容易损坏</li></ol><p>在数据库存储中，我们常用的固态存储设备是SSD和PCI-E SSD。</p><h4 id="SSD"><a href="#SSD" class="headerlink" title="SSD"></a>SSD</h4><ol><li>使用SATA接口，可以替换传统磁盘而无需任何改变 </li><li>SATA接口的SSD同样支持RAID技术</li></ol><h4 id="PCI-E-SSD"><a href="#PCI-E-SSD" class="headerlink" title="PCI-E SSD"></a>PCI-E SSD</h4><ol><li>无法使用SATA接口，需要独特的驱动和配置</li><li>价格相比SSD要贵，但是性能比SSD更好</li></ol><p>PCI-E会占用服务器的内存。</p><h4 id="固态存储的使用场景"><a href="#固态存储的使用场景" class="headerlink" title="固态存储的使用场景"></a>固态存储的使用场景</h4><ol><li><p>适用于存在大量随机I/O的场景</p></li><li><p>使用于解决单线程负载的I/O场景</p><p>如果只有一块固态存储设备我们更应该将其放在从服务器上，因为从服务器是单线程的，而主DB是多线程的写入，为了产生更少的延迟，我们应该增加从服务器的I/O性能，而且由于固态设备易损耗，在主服务器上使用存在一定的安全隐患。</p></li></ol><h3 id="网络存储SAN和NAS"><a href="#网络存储SAN和NAS" class="headerlink" title="网络存储SAN和NAS"></a>网络存储SAN和NAS</h3><p><strong>SAN</strong>(Storage Area Network)和<strong>NAS</strong>(Network-Attached Storage)是两种外部文件存储设备加载到服务器上的方法</p><p>SAN设备通过光纤连接到服务器，设备通过块接口访问，服务器可以将其当做硬盘使用。</p><p>NAS设备使用网络连接，通过基于文件的协议如NFS或SMB来访问。</p><h4 id="网络存储适用的场景"><a href="#网络存储适用的场景" class="headerlink" title="网络存储适用的场景"></a>网络存储适用的场景</h4><p>网络存储在随机I/O比较差，并不适合MySQL数据库存储数据，有一些人认为可以使用网络存储实现服务的高可用性，比如两台服务器挂在同一网络环境下的磁盘，当主服务器可以由主备服务器来接管磁盘来提供服务，提高系统的可用性。</p><p>虽然能够在一定条件下能够提高系统的可用性，可是却是以牺牲性能为代价，而且，一旦网络存储设备出现问题，则需要更多的时间进行恢复。</p><p>不过，我们可以利用网络存储设备来存储数据库的备份文件，当一台独立服务器出现故障，短时间内无法恢复的情况下，可以利用网络存储设备上存储的备份文件恢复是实例。</p><h3 id="网络接口设备对数据库性能的影响"><a href="#网络接口设备对数据库性能的影响" class="headerlink" title="网络接口设备对数据库性能的影响"></a>网络接口设备对数据库性能的影响</h3><ol><li>网络带宽对性能的影响</li><li>网络质量对性能的影响</li></ol><p>建议</p><ul><li>采用高性能和高贷款的网络设备和交换机</li><li>对多个网卡进行绑定，增强可用性和带宽</li><li>尽可能的进行网络隔离</li></ul><h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>CPU</p><ul><li>64位的CPU一定要工作在64位的系统下</li><li>对于并发比较高的场景CPU的数量比频率更重要</li><li>对于CPU密集性场景和复杂SQL则频率越高越好</li></ul><p>内存</p><ul><li>选择主板所能使用的最高频率的内存</li><li>内存的大小对性能很重要，所以尽可能的大</li></ul><p>I/O子系统</p><ul><li>PCie -&gt; SSD -&gt; Raid10 &gt; 磁盘 -&gt; SAN</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;影响数据库性能的主要因素有很多，主要包括以下几点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;服务器硬件&lt;/li&gt;
+&lt;li&gt;服务器系统&lt;/li&gt;
+&lt;li&gt;数据库存储引擎的选择&lt;/li&gt;
+&lt;li&gt;数据库参数配置&lt;/li&gt;
+&lt;li&gt;数据库结构设计和SQL语句&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>利用 INSERT 命令将表中字段导入到新表中</title>
+    <link href="http://www.maksim.website/2017/09/18/1/"/>
+    <id>http://www.maksim.website/2017/09/18/1/</id>
+    <published>2017-09-17T16:00:00.000Z</published>
+    <updated>2017-09-18T09:04:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近为公司内部系统写了一个爬虫，爬了一个问答社区的三万多条数据，由于一开始的设计不够合理，将所有记录都放入了一个表中，由于是问答系统，合理的数据库设计，应该是将问题和答案分离开来，这样的结构更加合理，也易于未来的扩展。</p><p>我刚开始做iOS 的，转到 PHP 有一年多了，大学时有自学PHP，东学学西搞搞，结果就变成了啥都快记不住了，什么也都懂一些。</p><p>到了现在MYSQL 的基础也忘了许多，你让我扯一扯大规模，主从，分表，优化，我倒是能说上一堆，但是实际操作起来，啧啧。</p><p>这么一个简单的功能一时之间竟然都没有想起来，搜索引擎的确是个好东西（当然不拿医疗盈利的话）。</p><p>现在 iOS 也快忘得差不多了，感叹 ing，Swift 4都出了···</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`new_table_name`</span> <span class="keyword">VALUE</span> (<span class="string">`c1`</span>,<span class="string">`c2`</span>) <span class="keyword">SELECT</span> <span class="string">`c1`</span>,<span class="string">`c2`</span> <span class="keyword">FROM</span> <span class="string">`old_table_name`</span></div></pre></td></tr></table></figure><p>简单的一命令即可将数据导出。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近为公司内部系统写了一个爬虫，爬了一个问答社区的三万多条数据，由于一开始的设计不够合理，将所有记录都放入了一个表中，由于是问答系统，合理的数据库设计，应该是将问题和答案分离开来，这样的结构更加合理，也易于未来的扩展。&lt;/p&gt;
+&lt;p&gt;我刚开始做iOS 的，转到 PHP 有一
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
+    
+    
+      <category term="INSERT" scheme="http://www.maksim.website/tags/INSERT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>大事务对MySQL性能带来的影响</title>
+    <link href="http://www.maksim.website/2017/09/16/1/"/>
+    <id>http://www.maksim.website/2017/09/16/1/</id>
+    <published>2017-09-15T16:00:00.000Z</published>
+    <updated>2017-10-10T12:26:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>在我们的日常开发过程当中，为了保持数据的一致性，多多少少都会用到事务。</p><p>当面对大量数据时，使用事务一定要谨小慎微，因为一旦编写的事务中设计的数据量过大，就会严重的影响系统性能，如果操作的数据量特别巨大，则会造成服务器的阻塞，导致业务逻辑无法访问。</p><h3 id="什么是事务？"><a href="#什么是事务？" class="headerlink" title="什么是事务？"></a>什么是事务？</h3><p>在了解大事务对 MySQL 性能带来的影响之前，我们首先要了解什么是事务，事务又起到了什么样的作用：</p><ol><li><p>事务是关系型数据库系统区分于其他一切文件系统的重要特性，举例说明，对于文件系统来说，为了保证两个文件的一致，在我们修改完一个文件后，系统突然崩溃，这样文件系统在恢复后就很难保持系统的一致了，而数据库系统中，由于使用了事务，在数据库崩溃后，我们可以恢复数据库中的数据，使其保证数据的一致性。</p></li><li><p>事务是一组具有原子性的SQL语句，或是一个单独的工作单元，事务处理中只有两种可能性，事务处理成功，事务处理失败，一旦失败，数据库就会回滚到原始状态。</p></li></ol><p>事务要符合：原子性、一致性、隔离性、持久性</p><h4 id="事务的原子性（ATOMICITY）"><a href="#事务的原子性（ATOMICITY）" class="headerlink" title="事务的原子性（ATOMICITY）"></a>事务的原子性（ATOMICITY）</h4><p>定义：一个事务必须被诗作为一个不可分割的最小工作单元，整个事务中的所有操作要么全部提交完成，要么全部失败，对于一个事物来说，不可能只执行其中的一部分操作。</p><p>举个例子（银行），我们有两个账户，一个是理财账户，另外一个是活期存款账户，现在需要从理财账户中转出2000RMB到活期存款账户中，我们需要经过以下步骤。</p><ol><li>检查理财账户中的余额是否高于2000RMB</li><li>从理财账户的余额中减去2000RMB</li><li>在活期存款账户中增加2000RM</li></ol><p>以上步骤必须作为一个整体一起完成，如果运行到第二步骤时系统崩溃，如果没有事务原子性这一特性，用户将损失两千元，这是无法接受的一件事情。</p><p>在事务中执行到第二步崩溃时，在系统恢复后，在日志中有没有完成提交的事务，系统就会回滚，避免了用户的损失。</p><p>整个事务中所有操作要么全部提交成功，要么全部失败回滚。</p><h4 id="事务的一致性（CONSISTENCY）"><a href="#事务的一致性（CONSISTENCY）" class="headerlink" title="事务的一致性（CONSISTENCY）"></a>事务的一致性（CONSISTENCY）</h4><p>定义：一致性是指事务将数据库从一种一致性状态转换到另外一种一致性状态，在事务开始之前和事务结束后数据库中数据的完整性没有被破坏。</p><h4 id="事务的隔离性（ISOLATION）"><a href="#事务的隔离性（ISOLATION）" class="headerlink" title="事务的隔离性（ISOLATION）"></a>事务的隔离性（ISOLATION）</h4><p>定义： 隔离性要求一个事务对数据库中数据的修改，在未提交完成前对于其他事务是不可见的。</p><p>SQL标准中定义的四种隔离级别</p><ul><li>未提交读（READ UNCOMMITED）</li><li>已提交读（READ COMMITED）</li><li>可重复读（REPEATABLE READ）</li><li>可串行化（SERIALIZABLE）</li></ul><h4 id="事务的持久性（DURABILITY）"><a href="#事务的持久性（DURABILITY）" class="headerlink" title="事务的持久性（DURABILITY）"></a>事务的持久性（DURABILITY）</h4><p>定义：一旦事务提交，则其所做的修改就会永久</p><p>的保存到数据库中，即使此时系统崩溃，已经提交的修改数据也不会丢失。</p><h3 id="什么是大事务"><a href="#什么是大事务" class="headerlink" title="什么是大事务"></a>什么是大事务</h3><p>定义：运行时间比较长，操作数据比较多的事务。</p><p>余额宝这样的理财产品，每天都会计算前一天的理财收入所得，如果在一个事务中对所有的用户的理财收入都进行计算，并更新到用户余额中，这样数以亿计的用户余额的更新就要数个小时，而且一旦中间出现问题就会回滚，时间会更长。</p><p>这时一旦出现问题，数据库就会加锁，造成用户无法使用余额的问题。</p><p>风险：</p><ol><li>锁定太多的数据，造成大量的阻塞和锁超时，对于innodb为了保证数据的一致性，虽然是行级锁，但是也会把所有相关的记录都加上锁。</li><li>回滚所需要的时间比较长，回滚时数据仍然会被锁定。</li><li>执行时间长，容易造成主从延迟。</li></ol><h3 id="如何处理大事务"><a href="#如何处理大事务" class="headerlink" title="如何处理大事务"></a>如何处理大事务</h3><ol><li>避免一次处理太多数据,当面临成百上千万的数据量时，我们最好分批进行处理，例如每一个事务处理一万条数据。</li><li>移出不必要在事务中的SELECT操作。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h3&gt;&lt;p&gt;在我们的日常开发过程当中，为了保持数据的一致性，多多少少都会用到事务。&lt;/p&gt;
+&lt;p&gt;当面对大量数据时，使用事务一定要谨小慎微，因为一旦编写
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>使用Object.defineProperty()模拟双向数据绑定</title>
+    <link href="http://www.maksim.website/2017/09/06/cj8x0oafr003es7rdfqzm6aqq/"/>
+    <id>http://www.maksim.website/2017/09/06/cj8x0oafr003es7rdfqzm6aqq/</id>
+    <published>2017-09-06T14:28:57.000Z</published>
+    <updated>2017-09-06T15:10:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>对象是由多键值对组成的无序集合，对象中的每个属性对应任意类型的值。定义对象可以使用构造函数或字面量的形式。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>(); <span class="comment">//obj = &#123;&#125;</span></div><div class="line">obj.name = <span class="string">'Maksim'</span>;     <span class="comment">//添加属性</span></div><div class="line">obj.say = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;; <span class="comment">//添加方法</span></div></pre></td></tr></table></figure><p>为对象添加属性我们还可以使用 Object.defineProperty 定义和修改属性。</p><p>语法：<code>Object.defineProperty(obj, prop, descriptor)</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;对象是由多键值对组成的无序集合，对象中的每个属性对应任意类型的值。定义对象可以使用构造函数或字面量的形式。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div cl
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Invert a Binary Tree</title>
+    <link href="http://www.maksim.website/2017/08/13/2/"/>
+    <id>http://www.maksim.website/2017/08/13/2/</id>
+    <published>2017-08-13T05:01:00.000Z</published>
+    <updated>2017-08-13T07:36:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">     4                          4</div><div class="line">   /    \                     /    \</div><div class="line">  2      7         to        7      2 </div><div class="line"> / \    /  \                / \    /  \</div><div class="line">1   3  6    9              9   6  3    1</div></pre></td></tr></table></figure><p>解答：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * strcut TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode *left;</div><div class="line"> *     TreeNode *right;</div><div class="line"> *     TreeNode (index x) : val(x), left(NULL), right(NULL) &#123;&#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line">    <span class="keyword">public</span>:</div><div class="line">    <span class="function">TreeNode *<span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>)</div><div class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">        TreeNoe * tmpNode = root-&gt;left;</div><div class="line">        root-&gt;left = invertTree(root-&gt;right);</div><div class="line">        root-&gt;right = invertTree(tmpNode);</div><div class="line">        <span class="keyword">return</span> root; </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure><p>利用的递归这个概念，短短几行就完成了一个翻转二叉树，只是在翻转二叉树的左右子数。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/di
+      
+    
+    </summary>
+    
+      <category term="C/C++" scheme="http://www.maksim.website/categories/C-C/"/>
+    
+    
+      <category term="C/C++,算法" scheme="http://www.maksim.website/tags/C-C-%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法笔试入门题目Memmove</title>
+    <link href="http://www.maksim.website/2017/08/13/1/"/>
+    <id>http://www.maksim.website/2017/08/13/1/</id>
+    <published>2017-08-13T04:02:10.000Z</published>
+    <updated>2017-08-13T07:24:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> *<span class="title">memmove</span> <span class="params">(<span class="keyword">void</span> *dest, <span class="keyword">const</span> <span class="keyword">void</span> *src, <span class="keyword">size_t</span> n)</span></span></div><div class="line">&#123;</div><div class="line"><span class="comment">//implementation here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure><p>这是 C 语言中的一个库函数，他的功能是吧内存中一块内容从src拷贝到dest，固定的长度是n。</p><p>这是笔试中的一个入门体</p><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> *<span class="title">memmove</span> <span class="params">(<span class="keyword">void</span> *dest, <span class="keyword">const</span> <span class="keyword">void</span> *scr, <span class="keyword">size_t</span> n)</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">char</span> *p1 = dest;</div><div class="line"><span class="keyword">char</span> *p2 = src;</div><div class="line"></div><div class="line"><span class="keyword">while</span> (*p2 != \<span class="number">0</span>)</div><div class="line">*p1++ = *p2++;</div><div class="line"></div><div class="line"><span class="keyword">return</span> p1;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>上面的这份代码，可以完成要求，可是却存在一些问题，我们先来看一下，C语言中的一些让人进场不会注意到的陷阱。</p><ul><li>内存重叠的处理，从一个指针，它指向的内存地址，拷贝到另外一个地址，那么有没有可能是完全重合，或者有一部分是重合的。</li><li>临时变量太多 或者没有安全释放</li><li>没有测试内存越界，size 是否小于零，指针是否为空？</li><li>指针操作熟悉</li></ul><p>内存是否重叠？</p><p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-08-13%2014.45.22.png" alt="内存重叠">)</p><p>正确的写法</p><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> *<span class="title">memmove</span> <span class="params">(<span class="keyword">void</span> *dest, <span class="keyword">const</span> <span class="keyword">void</span> *scr, <span class="keyword">size_t</span> n)</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">char</span> *p1 = dest;</div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> *p2 = src;<span class="comment">//o用常量表示src</span></div><div class="line"></div><div class="line"><span class="comment">//判断src 和 dest 的位置关系</span></div><div class="line"><span class="keyword">if</span>  (p2 &lt; p1) &#123; </div><div class="line">p2 += n;</div><div class="line">p1 += n;</div><div class="line"><span class="keyword">while</span> (n-- != <span class="number">0</span>) </div><div class="line">*--p1 = *--p2;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line"><span class="keyword">while</span> (n-- != <span class="number">0</span>) &#123;</div><div class="line">*p1++ = *p2++;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> p1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;d
+      
+    
+    </summary>
+    
+      <category term="C/C++" scheme="http://www.maksim.website/categories/C-C/"/>
+    
+    
+      <category term="算法" scheme="http://www.maksim.website/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Array&amp;String算法</title>
+    <link href="http://www.maksim.website/2017/08/12/1/"/>
+    <id>http://www.maksim.website/2017/08/12/1/</id>
+    <published>2017-08-11T16:00:00.000Z</published>
+    <updated>2017-10-10T11:34:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Returns the position of the first occurrence of string target in string source or -1 if target is not part of source.</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">strStr</span> <span class="params">(String source, String target)</span> </span>&#123;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure><p>希望在 <code>string</code> 里面寻找<code>target</code>，如果找到一个完全匹配的话，就返回他所在的位置，如果不存在就返回<code>-1</code>;</p><h1 id="字符串匹配"><a href="#字符串匹配" class="headerlink" title="字符串匹配"></a>字符串匹配</h1><p>两种比较容易实现的字符串比较算法。</p><p>假设在长度为 n的沐川中匹配长度为 m的子串。</p><p><code>Brute-Force</code> 算法： 顺序遍历母串，将每个字符作为匹配的起始字符，判断是否匹配子串。时间复杂度 O(m*n)</p><p><em>Brute-Force</em></p><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">char</span>* <span class="title">StrStr</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *str, <span class="keyword">const</span> <span class="keyword">char</span> *target)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(!*target) <span class="keyword">return</span> str;</div><div class="line">    <span class="keyword">char</span> *p1 = (<span class="keyword">char</span> *)str;</div><div class="line">    <span class="keyword">while</span>(*p1) &#123;</div><div class="line">        <span class="keyword">char</span> *p1Begin = p1, *p2 = (<span class="keyword">char</span>*)target;</div><div class="line">        <span class="keyword">while</span>(*p1 &amp;&amp; *p2 &amp;&amp; *p1 == *p2) &#123;</div><div class="line">            p1++;</div><div class="line">            p2++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (!*p2)<span class="comment">//发现p2走到了末尾，就意味着有匹配到的字符串，那么直接返回p1Begin;所记录的位置</span></div><div class="line">            <span class="keyword">return</span> p1Begin;</div><div class="line">        p1 = p1Begin + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;
+      
+    
+    </summary>
+    
+      <category term="C/C++" scheme="http://www.maksim.website/categories/C-C/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 和 GNU 工程</title>
+    <link href="http://www.maksim.website/2017/08/10/3/"/>
+    <id>http://www.maksim.website/2017/08/10/3/</id>
+    <published>2017-08-10T12:01:00.000Z</published>
+    <updated>2017-08-10T12:52:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>每天都有许多计算机用户使用一个被改动过的GNU 系统 (18k 字节)，但是他们并没有意识到它。 经过一系列的事件，现在被广泛使用的 GNU 版本则经常被称作“Linux”，可是许多用户并不了解与之相关的 GNU 工程。</p><p>Linux 确实存在；它是一个内核，许多人都在使用它。但是你不能仅使用内核本身。内核只有作为整个系统的一个部分才有用处。Linux 是和 GNU 操作系统结合在一起使用：系统本身是 GNU，与 Linux 作为内核一起工作。</p><p>许多用户没有并不完全了解 Linux 内核和被称作“Linux”的整个系统的区别。而不加区别地使用这个名字并不能对理解有帮助。</p><p>程序员一般都知道 Linux 是一个内核。但是因为他们也听到整个系统被称作“Linux”，他们会根据名字去想象历史。比如，很多人认为当 Linus Torvalds 完成了内核后，他的朋友四处寻找其他的自由软件，而且所有的可以被组装成一个类似 Unix 系统的程序都是现成的。</p><p>他们的发现不是巧合 – 这就是 GNU 系统。 可用的自由软件加在一起就组成了一个完整的系统，这是由于自 1984 年就开始的 GNU 工程一直在为此努力。GNU 宣言(31k 字节) 早已设立了开发一个类似 Unix 的自由系统的目标，称作 GNU。GNU 工程的最初公告 也勾画了 GNU 系统的原始提纲。在 Linux 被编写时，这个系统几乎已经完成。</p><p>大多数自由软件的工程都是为了特定的工作开发特定的程序。比方说，Linus Torvalds 编写类似 Unix 的内核(Linux); Donald Knuth 编写一个文本格式化工具(TeX); Bob Scheifler 开发一个窗口系统(X Window System)。对于这项工程编写的程序都作出了贡献，对这些贡献进行评估是很自然的。</p><p>如果以这种方法来衡量对 GNU 工程的贡献，我们会得出什么结论？一个 CD-ROM的提供商发现在他们的“Linux 发行版”中，GNU 软件 占最大的比重，大约占全部源代码的 28% ，而且这还包括一些关键的部件，没有这些部件，系统就无法工作。Linux 本身占大约 3%。所以如果你要根据程序的作者来选择一个名字的话，最合适的选择是“GNU”。</p><p>但是我们不认为这是一个解决问题的适当方法。GNU 工程以前不是，现在也不是一个开发某个软件包的工程。它不是一个 开发 C 编译器的工程, 尽管我们做了。它也不是一个开发一个文本编辑器的工程，尽管我们也做了。GNU 工程的目标是开发一个完全自由的类似 Unix 的系统: GNU。</p><p>许多人已经为系统中的自由软件作出了重大贡献，他们都应该获得荣誉。但 GNU 是一个系统而不是一些实用程序的组合的原因是，GNU 工程的最初目标就是做一个完整系统。我们曾经为完成一个完整的系统做了一个所需程序清单，而且我们有系统地寻找，编写这些程序，并且寻找别人编写清单上的每一个程序。我们编写了关键的但是十分枯燥的主要部件，比如汇编语言和连接器，因为这是系统所必需的。除了编程工具，一个完整的系统还需要更多的东西， Bourne Again SHell 程序, PostScript 解释器 Ghostscript, 和 GNU C 库 同样是很重要的。</p><p>到了 90 年代初期，我们曾经把除了内核以外的东西放到一起组成了一个系统（我们同时也在做内核的工作）称为 GNU Hurd, 运行在 Mach 上)。开发这个内核比我们想象的要难得多，我们现在仍然在 为此工作。</p><p>庆幸的是，你不必再等了，因为 Linux 开发成功。当 Linus Torvalds 写成了 Linux，他填补了一个重要的空白。人们可以将 Linux 和 GNU 系统组成一个完整的自由系统：基于 Linux 的 GNU 系统（或简称为 GNU/Linux 系统）。</p><p>把它们组合到一起听起来很容易，但是这并不是一个简单的工作。 GNU C 库 (简称 glibc) 需要作大量的修改。集成到一个完整的发行系统中也是一项很大的工作。它需要对如何安装和启动系统进行定位 – 这个问题直到现在还在完善，因为我们还没有抓住要点。那些开发了不同的发行系统的人们作出了巨大贡献。</p><p>除了 GNU，还有一个独立进行的工程开发了一个自由的类似 Unix 的操作系统。这个系统被称为 BSD，它是由 UC Berkeley 开发的。 在 GNU 工程的鼓舞下，BSD 的开发者开始进行他们自己的自由软件的开发工作，并时常受到 GNU 人士的鼓励，但是他们的实际工作与 GNU 差别不大。今天 BSD 系统采用一些 GNU 软件，就象不同版本的 GNU 系统也采用 BSD 的软件一样。总的说来，它们是两套独立开发的不同的系统。今天一个免费的操作系统几乎都是采用 GNU 或 BSD 系统的一个派生版本。</p><p>GNU 工程支持 GNU/Linux 系统，就象支持 GNU 系统一样 – 包括资金的支持。我们为重写与 Linux 相关的 GNU C 库提供资金，以至于它们现在可以很好地集成在一起，直到最新版本的 GNU/Linux 仍在使用这个库而无需修改。我们也为早期 Debian GNU/Linux 的开发提供资金。</p><p>今天我们的绝大多数的工作都在基于 Linux 的 GNU 系统上完成，我们希望你也如此。但是请不要含糊地使用 Linux 而使公众迷惑。Linux 是内核，系统的关键部件之一。系统或多或少实际上都应该是 GNU 系统，再加上 Linux。当你在讨论到这个组合系统时，请使用 “GNU/Linux”。</p><p>如果要为 GNU/Linux 作链接，本页和 <a href="http://www.gnu.org/gnu/the-gnu-project.html" target="_blank" rel="external">http://www.gnu.org/gnu/the-gnu-project.html</a> 都是很好的选择。如果你想为 Linux（内核）作链接，<a href="http://www.kernel.org/是一个很好" target="_blank" rel="external">http://www.kernel.org/是一个很好</a> URL。</p><p>本文摘 <a href="https://www.gnu.org/gnu/linux-and-gnu.html" target="_blank" rel="external">https://www.gnu.org/gnu/linux-and-gnu.html</a></p><p>Copyright 1997, 1998 Richard Stallman</p><p>中文翻译：白若玉<br>翻译校正：刘昭宏</p><p>全文在保证完整性的前提下可以在任意媒体转载 - 须保留此标注。</p><p>Updated: 30 Nov 2000 paulv</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;每天都有许多计算机用户使用一个被改动过的GNU 系统 (18k 字节)，但是他们并没有意识到它。 经过一系列的事件，现在被广泛使用的 GNU 版本则经常被称作“Linux”，可是许多用户并不了解与之相关的 GNU 工程。&lt;/p&gt;
+&lt;p&gt;Linux 确实存在；它是一个内核，许
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.maksim.website/categories/Linux/"/>
+    
+    
+      <category term="Linux,GNU" scheme="http://www.maksim.website/tags/Linux-GNU/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Virtualbox下安装 CentOS  minimal 后设置上网</title>
+    <link href="http://www.maksim.website/2017/08/10/2/"/>
+    <id>http://www.maksim.website/2017/08/10/2/</id>
+    <published>2017-08-10T08:04:12.000Z</published>
+    <updated>2017-08-10T11:53:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在虚拟机中以minimal安装 CentOS 后无法上网，因为CentOS的默认网卡未激活。</p><p>可以设置 </p><p>文件 /etc/sysconfig/network-scripts/ifcfg-enp0s3</p><p> 将 <code>ONBOOT=no</code> 改为 <code>ONBOOT=yes</code></p><p> <img src="http://www.maksim.website/images/linux/networkonboot.png" alt="激活"></p><p> 保存后重启网卡： <code>service network restart</code></p><p>  <img src="http://www.maksim.website/images/linux/ping.png" alt="ping"></p><p> 这样就可以上网了，我用的是桥接模式。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在虚拟机中以minimal安装 CentOS 后无法上网，因为CentOS的默认网卡未激活。&lt;/p&gt;
+&lt;p&gt;可以设置 &lt;/p&gt;
+&lt;p&gt;文件 /etc/sysconfig/network-scripts/ifcfg-enp0s3&lt;/p&gt;
+&lt;p&gt; 将 &lt;code&gt;ONBOOT=
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.maksim.website/categories/Linux/"/>
+    
+    
+      <category term="Linux,Centos" scheme="http://www.maksim.website/tags/Linux-Centos/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS中Live、netinstall、minimal、DVD 等版本的区别</title>
+    <link href="http://www.maksim.website/2017/08/10/1/"/>
+    <id>http://www.maksim.website/2017/08/10/1/</id>
+    <published>2017-08-10T07:04:12.000Z</published>
+    <updated>2017-08-10T07:46:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>LiveCD</code> 和<code>LiveDVD</code> 是可以直接光盘运行的胸痛，但不能安装，两者差别在于容量大小，DVD 包含的软件要多一些。</p><p><code>netinstall</code> 用于网络安装和系统救援的镜像文件。</p><p><code>minimal</code> 这个镜像文件用于安装一个非常基本的 CentOS系统,包含了一些基本所需的最小安装包。</p><p><code>DVD</code> 镜像包含了完整的发布版，可以用于安装完整的 CentOS 系统。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;LiveCD&lt;/code&gt; 和&lt;code&gt;LiveDVD&lt;/code&gt; 是可以直接光盘运行的胸痛，但不能安装，两者差别在于容量大小，DVD 包含的软件要多一些。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;netinstall&lt;/code&gt; 用于网络安装和系统救援的镜像文件。&lt;/
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.maksim.website/categories/Linux/"/>
+    
+    
+      <category term="Linux,Centos" scheme="http://www.maksim.website/tags/Linux-Centos/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在Mac上编译安装线程安全的PHP7.2</title>
+    <link href="http://www.maksim.website/2017/08/05/1/"/>
+    <id>http://www.maksim.website/2017/08/05/1/</id>
+    <published>2017-08-05T04:04:12.000Z</published>
+    <updated>2017-08-05T03:17:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>因为项目需求后期可能会需要使用到进程守护和消息队列，于是上网查了一下，看到<a href="http://netkiller.github.io/php/index.html" target="_blank" rel="external">Netkiller <em>PHP 手札</em></a>中有介绍到PHP使用 Pthread实现优雅守护进程的方法。</p><p>可是由于我本地的 PHP 是使用brew进行安装的，在 Linux 下使用 yum或者 apt进行安装的 PHP 同样不支持线程安全。</p><p>于是开始折腾起来，将 PHP 卸载掉后使用编译进行重新安装，开启<code>--enable-maintainer-zts</code> 后在编译过程中遇到了 Clang 报错，经过了一番 Google、百度过后，原来是编译器在作怪。Mac 由于 Xcode 的原因，默认使用的编译器是 Clang，在编译到 pthread 的时候，就会报错。</p><p>解决方法也很简单，在./configure 命令的最后加上 CC=gcc ，告诉make 我要使用 GCC 编译器进行编译即可。</p><p>其实在日常的开发中PHP开发者，很少会接触到多线程这一块。甚至有的PHP 开发者都搞不清楚什么是线程、进程和协程。</p><p>那是因为在 Web 开发中根本使用不了多线程，因为 PHP 本身并不提供多线程API，其多线程的支持是由 Pthread 扩展提供的，而 Pthread 扩展的文档中有说明：</p><blockquote><p><strong>Warning</strong>    不可以在 web 服务器环境中使用 pthreads 扩展，PHP 多线程开发仅限于命令行模式的应用。</p></blockquote><p>Windows版的PHP从版本5.2.1开始有Thread Safe(线程安全)和None Thread Safe(NTS，非线程安全)之分，这两者不同在于何处？到底应该用哪种？</p><p>从2000年 10月20日发布的第一个Windows版的PHP3.0.17开始的都是线程安全的版本，这是由于与Linux/Unix系统是采用多进程的工作方式不同的导致的。</p><p>Windows系统是采用多线程的工作方式。如果在IIS下以CGI方式运行PHP会非常慢，这是由于CGI模式是建立在多进程的基础之上的，而非多线程。一般我们会把PHP配置成以ISAPI的方式来运行，ISAPI是多线程的方式，这样就快多了。</p><p>但存在一个问题，很多常用的PHP扩展是以 Linux/Unix的多进程思想来开发的，这些扩展在ISAPI的方式运行时就会出错搞垮IIS。因此在IIS下CGI模式才是PHP运行的最安全方式，但CGI模式对于每个HTTP请求都需要重新加载和卸载整个PHP环境，其消耗是巨大的。</p><p>为了兼顾IIS下PHP的效率和安全，微软 给出了FastCGI的解决方案。FastCGI可以让PHP的进程重复利用而不是每一个新的请求就重开一个进程。同时FastCGI也可以允许几个进程同时执行。这样既解决了CGI进程模式消耗太大的问题，又利用上了CGI进程模式不存在线程安全问题的优势。</p><p>因此，如果是使用ISAPI 的方式来运行PHP就必须用Thread Safe(线程安全)的版本；而用FastCGI模式运行PHP的话就没有必要用线程安全检查了，用None Thread Safe(NTS，非线程安全)的版本能够更好的提高效率。</p><p>从上面这段描述我们可以清楚的知道，如果不是使用 ISAPI 的话，不使用多线程特性，那么基本上就用不Thread Safe。</p><p>查看自己的 PHP版本是否是线程安全你的只需要在命令行中输入 <code>PHP -v</code>查看 PHP 的版本即可，如下：</p><p><img src="http://www.maksim.website/images/threadsafe.png" alt="线程安全"></p><p>引用：</p><p><em>PHP线程安全和非线程安全有什么区别</em>  <a href="http://www.cnblogs.com/T8881/p/6397264.html" target="_blank" rel="external">http://www.cnblogs.com/T8881/p/6397264.html</a></p><p><em>PHP Internals Book（《PHP内部书》PHP 内核开发者合著)</em> <a href="http://www.phpinternalsbook.com/index.html" target="_blank" rel="external">http://www.phpinternalsbook.com/index.html</a></p><p><em>PHP运行模式</em> <a href="http://www.cnblogs.com/xia520pi/p/3914964.html" target="_blank" rel="external">http://www.cnblogs.com/xia520pi/p/3914964.html</a></p><p><em>Netkiller <em>PHP 手札</em></em> <a href="http://netkiller.github.io/php/index.html" target="_blank" rel="external">http://netkiller.github.io/php/index.html</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;因为项目需求后期可能会需要使用到进程守护和消息队列，于是上网查了一下，看到&lt;a href=&quot;http://netkiller.github.io/php/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Netkiller &lt;em&gt;PHP
+      
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
+    
+    
+      <category term="多线程,PHP7.2,编译安装,GCC" scheme="http://www.maksim.website/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B-PHP7-2-%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85-GCC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在SQL中使用变量</title>
+    <link href="http://www.maksim.website/2017/08/05/602/"/>
+    <id>http://www.maksim.website/2017/08/05/602/</id>
+    <published>2017-08-05T00:04:12.000Z</published>
+    <updated>2017-08-05T01:31:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>MySQL 李的变量可分为用户变量和系统变量</p><p><strong>1. 用户变量</strong></p><p>MySQL允许用户在语句中自定义变量，对于用户变量的值，可以先保存在用户变量中，然后在引用它；这样就可以将值从一个语句传到另外一个语句。</p><p>用户变量与连接有关。一个客户端定义的变量不能被其他客户端看到货使用。当客户端退出时，该客户端连接的所有变量将自动释放。这点不同于在函数或存储过程中通过 <code>DECLAER</code> 药监局声明的局部变量，局部变量的生存周期在它被声明的“<code>BEGIN...END</code>”块内。</p><p>用户变量的表现形式为：@var_name</p><p>设置用户变量的一个途径是执行 SET 语句，语法如下：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SET</span> @var_name= expr[, @var_name= expr] ...</div></pre></td></tr></table></figure><p>对于SET，可以使用“=”或“:=”作为分配符。分配给每个变量的expr可以为整数、实数、字符串或NULL值。如:</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SET @t1=0, @t2=0, @t3=0;</div></pre></td></tr></table></figure><p>或</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SET</span> @minMid=(<span class="keyword">select</span> <span class="keyword">min</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> table_name) ;</div></pre></td></tr></table></figure><p><strong>2.系统变量</strong></p><p>MySQL服务器维护着两种系统变量:</p><ul><li>全局变量影响MySQL服务的整体运行方式</li><li>会话变量影响具体客户端连接的操作</li></ul><p>当服务器启动时，它将所有全局变量初始化为默认值。这些默认值可以在选项文件中或在命令行中对指定的选项进行更改。服务器启动后，通过连接服务器并执行<code>SET</code> <code>GLOBAL var_name</code>语句，可以动态更改这些全局变量。要想更改全局变量，必须具有<code>SUPER</code>权限。</p><p>服务器还为每个连接的客户端维护一系列的会话变量。在连接时使用相应全局变量的当前值对客户端的会话变量进行初始化。对于动态会话变量，客户端可以通过<code>SET SESSION var_name</code>语句更改它们。设置会话变量不需要特殊权限，但客户端只能更改自己的会话变量，而不能更改其他客户端的会话变量。</p><p>访问全局变量的任何客户端都可以看见对全局变量所做的更改。然而，它只影响更改后连接的客户的相应会话变量，而不会影响目前已经连接的客户端的会话变量(即使客户端执行<code>SET GLOBAL</code>语句也不影响)。</p><p>也就是说，如果你的连接是短连接，那么修改全局变量后，客户端有重连的操作，就会立刻影响到客户端。而对于长连接、连接池来说，连接可能一直在MySQL里没有被销毁，也就不会有重连的操作，所以这种情况下对全局变量的修改一般不会影响到客户端。</p><p>可以使用如下几种语法形式来设置或检索全局变量或会话变量(下面的例子使用<code>sort_buffer_size</code>作为示例变量名)。</p><p>要想设置一个<code>GLOBAL</code>变量的值，可使用下面的语法。</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SET GLOBAL sort_buffer_size=value; </div><div class="line">mysql&gt; SET @@global.sort_buffer_size=value;</div></pre></td></tr></table></figure><p>要想设置一个SESSION变量的值，可使用下面的语法。</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SET SESSION sort_buffer_size=value; </div><div class="line">mysql&gt; SET @@session.sort_buffer_size=value; </div><div class="line">mysql&gt; SET sort_buffer_size=value;</div></pre></td></tr></table></figure><p>如果设置变量时不指定<code>GLOBAL</code>、<code>SESSION</code>或<code>LOCAL</code>，则默认使用<code>SESSION</code>。</p><p>要想检索一个<code>GLOBAL</code>变量的值，可使用下面的语法。</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT @@global.sort_buffer_size;</div><div class="line">mysql&gt; SHOW GLOBAL VARIABLES LIKE 'sort_buffer_size';</div></pre></td></tr></table></figure><p>要想检索一个SESSION变量的值，可使用下面的语法。</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT @@sort_buffer_size;</div><div class="line">mysql&gt; SELECT @@session.sort_buffer_size; mysql&gt; SHOW VARIABLES LIKE 'sort_buffer_size';</div></pre></td></tr></table></figure><p>当用<code>SELECT@@var_name</code>搜索一个变量时(也就是说，不指定<code>GLOBAL</code>、<code>SESSION</code>)，MySQL会返回<code>SESSION</code>值(如果存在<code>SESSION</code>变量的话)，否则返回<code>GLOBAL</code>值。</p><p>对于<code>SHOW VARIABLES</code>，如果不指定<code>GLOBAL</code>、<code>SESSION的</code>话，MySQL会返回SESSION值。</p><p>引用</p><p>《MySQLDBA 修炼之道》 作者：陈晓勇</p><p><a href="https://dev.mysql.com/doc/refman/5.7/en/user-variables.html" target="_blank" rel="external">MySQL 官方文档 9.4 User-Defined Variables</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;MySQL 李的变量可分为用户变量和系统变量&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 用户变量&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;MySQL允许用户在语句中自定义变量，对于用户变量的值，可以先保存在用户变量中，然后在引用它；这样就可以将值从一个语句传到另外一个语句。&lt;/p&gt;
+&lt;p
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
+    
+    
+      <category term="MySQL" scheme="http://www.maksim.website/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基础很重要，你真的知道什么是数据库吗？</title>
+    <link href="http://www.maksim.website/2017/08/04/601/"/>
+    <id>http://www.maksim.website/2017/08/04/601/</id>
+    <published>2017-08-04T13:04:12.000Z</published>
+    <updated>2017-08-04T13:12:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>“数据库基础”可不是一件小事。问题是，有时人们认为他们知道的很多。</p><p>例如，这个问题:什么是数据库?</p><p>我敢说大多数的人相信他们知道这个问题的答案。但其中一部分人(或者很多)都会答错。SQL Server 不是数据库，它只是一种 DBMS(数据库管理系统)。你可以使用 SQL Server 来创建数据库，但 SQL Server 本身不是一种数据库。</p><p>那么，什么是数据库?数据库是一种有组织的数据存储，其中的数据可以通过指定的数据元素(比如，字段、记录和文件)来访问(详见图 1-1)。</p><p><img src="http://www.maksim.website/images/whatis.png" alt="数据库"></p><p>数据库是一种有组织的数据存储，其中的数据可以通过指定的数据元素来访问。</p><p>DBMS 是一种使终端用户或程序员能够共享数据的软件。它提供了一套操作数据库的系</p><p>统性方法:创建、更新、检索和存储信息。DBMS 通常还负责数据完整性、数据安全性、数据访问控制和优化、自动回退、重起和恢复。</p><p>对外行人来说，你可以把数据库想象成一个文件夹，把 DBMS 想象成文件柜，且所容纳的所有文件都贴有标签。DBMS 管理着数据库，通过 DBMS 来实现和访问数据库实例。所以说，DB2、Oracle 和 SQL Server 都是数据库管理系统。工资单应用使用工资单的数据库，该数据库可以使用 DB2、Oracle 或者 SQL Server 来实现。</p><p>摘自DBA 《修炼之道：数据库管理员的第一本书》</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;“数据库基础”可不是一件小事。问题是，有时人们认为他们知道的很多。&lt;/p&gt;
+&lt;p&gt;例如，这个问题:什么是数据库?&lt;/p&gt;
+&lt;p&gt;我敢说大多数的人相信他们知道这个问题的答案。但其中一部分人(或者很多)都会答错。SQL Server 不是数据库，它只是一种 DBMS(数据库管理
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
+    
+    
+      <category term="MySQL" scheme="http://www.maksim.website/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用 MySQL 权限机制设置用户权限</title>
+    <link href="http://www.maksim.website/2017/08/04/600/"/>
+    <id>http://www.maksim.website/2017/08/04/600/</id>
+    <published>2017-08-04T05:01:00.000Z</published>
+    <updated>2017-08-08T00:38:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>MySQL 权限控制包含如下两个阶段。</p><p>阶段1： 服务器检测是否允许你链接。</p><p>阶段2： 假定你能连接，服务器将检测你发出的每一个请求，查看你是否有足够的权限实施它。例如你从数据库表中选择（SELECT）行或从数据库中删除表，那么服务器要确定你是否对表有SELECT权限或对数据库有DROP权限。</p><p>MySQL是通过用户名、密码、IP(主机名)3个要素来验证用户的。当你想要访问MySQL服务器时，MySQL客户端程序一 般会要求你指定如下参数。</p><ul><li>MySQL服务器的IP(主机名)，</li><li>端口</li><li>用户名</li><li>密码 </li></ul><p>以下是连接MySQL服务器的一个示例，你需要以实际的IP、端口、用户名、密码代替相应的内容。</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -h host_ip_address -u user_name -pyour_password -P server_port</div></pre></td></tr></table></figure><p>一般在生产环境下，程序账号有增加、删除、查询、修改这4项功能即可。</p><p>如下命令用于赋予查询、插入、修改、删除权限，并进行密码设置。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">grant</span> <span class="keyword">select</span>,<span class="keyword">insert</span>,<span class="keyword">update</span>,<span class="keyword">delete</span> <span class="keyword">on</span> db_name.* <span class="keyword">to</span> user_name@ <span class="string">'10.%'</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">'password'</span>;</div></pre></td></tr></table></figure><p>如下命令用于回收上面所赋予的权限。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">revoke</span> <span class="keyword">select</span>,<span class="keyword">insert</span>,<span class="keyword">update</span>,<span class="keyword">delete</span> <span class="keyword">on</span> db_name.* <span class="keyword">from</span> user_name@ <span class="string">'10.%'</span>;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;MySQL 权限控制包含如下两个阶段。&lt;/p&gt;
+&lt;p&gt;阶段1： 服务器检测是否允许你链接。&lt;/p&gt;
+&lt;p&gt;阶段2： 假定你能连接，服务器将检测你发出的每一个请求，查看你是否有足够的权限实施它。例如你从数据库表中选择（SELECT）行或从数据库中删除表，那么服务器要确定你是否
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
+    
+    
+      <category term="MySQL" scheme="http://www.maksim.website/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP7 微信支付不能回调，让我们的团队损失1.00CNY。</title>
+    <link href="http://www.maksim.website/2017/07/14/cj8x0oacr0013s7rdo6r82xt1/"/>
+    <id>http://www.maksim.website/2017/07/14/cj8x0oacr0013s7rdo6r82xt1/</id>
+    <published>2017-07-14T06:15:20.000Z</published>
+    <updated>2017-07-14T11:39:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>公司目前正在使用一套基于 TP5的开源商城，在线上测试过程中碰到了一个问题，微信支付完成后无法进行回调更新订单状态，简单点说就是钱没了，啥也没得到。</p><p><code>What？</code>这可是一个无法容忍的错误。</p><p>原本以为是微信支付配置环节出了问题，于是便去查看微信官网给出的帮助手册，又顺着流程走了一边，信心满满的又测试了一边，结果尴尬了，又损失了0.01人民币。</p><p>反复确认流程后，确认并不是配置的问题，于是便开始了百度，原来这一切都是在微信官网给出的SDK中的一段代码惹的祸，就这么一段代码让我们团队损失了接近1人民币。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取通知的数据</span></div><div class="line">$xml = $GLOBALS[<span class="string">'HTTP_RAW_POST_DATA'</span>];  <span class="comment">//  WxPay.Api.php  414 line</span></div></pre></td></tr></table></figure><p>这段代码如果放在PHP7之前的版本是不会有任何问题的，但是在 PHP7版本中却已经<strong>废除</strong>了 <code>HTTP\_RAW\_POST\_DATA</code>    。</p><p>在官方文档中给了说明：</p><blockquote><p><strong>Warning</strong> This feature was DEPRECATED in PHP 5.6.0, and REMOVED as of PHP 7.0.0.</p></blockquote><p>在<code>PHP5.6.0</code>发布的时候，就已经不推荐只用这种方法，于是在PHP 社区在开发 PHP7.0的时候直接就将其废弃掉了。</p><p>而官方也给出了替代的方案，那就是<code>php://input</code></p><p><code>php://input</code> 是个可以访问请求的原始数据的只读流。 </p><p><code>POST</code> 请求的情况下，最好使用 <code>php://input</code> 来代替 <code>$HTTP\_RAW\_POST\_DATA</code>，因为它不依赖于特定的<code>php.ini</code>指令。 </p><p> 而且，这样的情况下 <code>$HTTP\_RAW\_POST\_DATA</code> 默认没有填充， 比激活 <code>always\_populate\_raw\_post\_data</code>潜在需要更少的内存。 <code>enctype=&quot;multipart/form-data&quot;</code> 的时候 <code>php://input</code> 是无效的。</p><blockquote><p><code>Note</code>: 在 PHP 5.6 之前 php://input 打开的数据流只能读取一次； 数据流不支持 seek 操作。 不过，依赖于 SAPI 的实现，请求体数据被保存的时候， 它可以打开另一个 php://input 数据流并重新读取。 通常情况下，这种情况只是针对 POST 请求，而不是其他请求方式，比如 PUT 或者 PROPFIND。 </p></blockquote><p>于是我将这段代码改为了：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取通知的数据</span></div><div class="line">$xml = file_get_contents(<span class="string">"php://input"</span>); <span class="comment">//  WxPay.Api.php  414 line</span></div></pre></td></tr></table></figure><p>最后我又以0.01人民币的代价确认修复了这个 BUG。</p><p><code>PHP7:&quot;怪我喽，让你经常看文档，哼！&quot;</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;公司目前正在使用一套基于 TP5的开源商城，在线上测试过程中碰到了一个问题，微信支付完成后无法进行回调更新订单状态，简单点说就是钱没了，啥也没得到。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;What？&lt;/code&gt;这可是一个无法容忍的错误。&lt;/p&gt;
+&lt;p&gt;原本以为是微信支付配置环节出了问
+      
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
+    
+    
+      <category term="wechat pay, php, php7, php://input" scheme="http://www.maksim.website/tags/wechat-pay-php-php7-php-input/"/>
+    
+  </entry>
+  
+</feed>

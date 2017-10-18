@@ -1,25 +1,1883 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Maksim"><title>Maksim's Website</title><meta name="description" content="A Blog Powered By Hexo"><meta name="keywords"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">Maksim's Website</a></h3></div></div><ul class="social-links"></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/" class="current">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li><li><a href="/categories/PHP">PHP</a></li><li><a href="/categories/iOS">iOS</a></li><li><a href="/categories/MySQL">MySQL</a></li><li><a href="/categories/Linux">Linux</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" style="display:none;" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/08/13/1/">算法笔试入门题目Memmove</a></h3></div><div class="post-content"><p>1234void *memmove (void *dest, const void *src, size_t n)&#123;	//implementation here&#125;
-这是 C 语言中的一个库函数，他的功能是吧内存中一块内容从src拷贝到dest，固定的长度是n。
-这是笔试中的一个入门体
-1234...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-08-13</span><i class="fa fa-tag"></i><a href="/categories/C-C/" title="C/C++" class="tag">C/C++ </a><a href="/tags/算法/" title="算法" class="tag">算法 </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/08/12/1/">Array&amp;String算法</a></h3></div><div class="post-content"><p>12345//Returns the position of the first occurrence of string target in string source or -1 if target is not part of source.int strStr (String source, String...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-08-12</span><i class="fa fa-tag"></i><a href="/categories/C-C/" title="C/C++" class="tag">C/C++ </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/08/10/3/">Linux 和 GNU 工程</a></h3></div><div class="post-content"><p>每天都有许多计算机用户使用一个被改动过的GNU 系统 (18k 字节)，但是他们并没有意识到它。 经过一系列的事件，现在被广泛使用的 GNU 版本则经常被称作“Linux”，可是许多用户并不了解与之相关的 GNU 工程。
-Linux 确实存在；它是一个内核，许多人都在使用它。但是你不能仅使用内核本身。内核只有作为...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-08-10</span><i class="fa fa-tag"></i><a href="/categories/Linux/" title="Linux" class="tag">Linux </a><a href="/tags/Linux-GNU/" title="Linux,GNU" class="tag">Linux,GNU </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/08/10/2/">Virtualbox下安装 CentOS  minimal 后设置上网</a></h3></div><div class="post-content"><p>在虚拟机中以minimal安装 CentOS 后无法上网，因为CentOS的默认网卡未激活。
-可以设置 
-文件 /etc/sysconfig/network-scripts/ifcfg-enp0s3
- 将 ONBOOT=no 改为 ONBOOT=yes
- 
- 保存后重启网卡： service network re...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-08-10</span><i class="fa fa-tag"></i><a href="/categories/Linux/" title="Linux" class="tag">Linux </a><a href="/tags/Linux-Centos/" title="Linux,Centos" class="tag">Linux,Centos </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/08/10/1/">CentOS中Live、netinstall、minimal、DVD 等版本的区别</a></h3></div><div class="post-content"><p>LiveCD 和LiveDVD 是可以直接光盘运行的胸痛，但不能安装，两者差别在于容量大小，DVD 包含的软件要多一些。
-netinstall 用于网络安装和系统救援的镜像文件。
-minimal 这个镜像文件用于安装一个非常基本的 CentOS系统,包含了一些基本所需的最小安装包。
-DVD 镜像包含了完整的发布版...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-08-10</span><i class="fa fa-tag"></i><a href="/categories/Linux/" title="Linux" class="tag">Linux </a><a href="/tags/Linux-Centos/" title="Linux,Centos" class="tag">Linux,Centos </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/08/05/1/">在Mac上编译安装线程安全的PHP7.2</a></h3></div><div class="post-content"><p>因为项目需求后期可能会需要使用到进程守护和消息队列，于是上网查了一下，看到Netkiller PHP 手札中有介绍到PHP使用 Pthread实现优雅守护进程的方法。
-可是由于我本地的 PHP 是使用brew进行安装的，在 Linux 下使用 yum或者 apt进行安装的 PHP 同样不支持线程安全。
-于是开始折...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-08-05</span><i class="fa fa-tag"></i><a href="/categories/PHP/" title="PHP" class="tag">PHP </a><a href="/tags/多线程-PHP7-2-编译安装-GCC/" title="多线程,PHP7.2,编译安装,GCC" class="tag">多线程,PHP7.2,编译安装,GCC </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/08/05/602/">在SQL中使用变量</a></h3></div><div class="post-content"><p>MySQL 李的变量可分为用户变量和系统变量
-1. 用户变量
-MySQL允许用户在语句中自定义变量，对于用户变量的值，可以先保存在用户变量中，然后在引用它；这样就可以将值从一个语句传到另外一个语句。
-用户变量与连接有关。一个客户端定义的变量不能被其他客户端看到货使用。当客户端退出时，该客户端连接的所有变量将自动释...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-08-05</span><i class="fa fa-tag"></i><a href="/categories/MySQL/" title="MySQL" class="tag">MySQL </a><a href="/tags/MySQL/" title="MySQL" class="tag">MySQL </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/08/04/601/">基础很重要，你真的知道什么是数据库吗？</a></h3></div><div class="post-content"><p>“数据库基础”可不是一件小事。问题是，有时人们认为他们知道的很多。
-例如，这个问题:什么是数据库?
-我敢说大多数的人相信他们知道这个问题的答案。但其中一部分人(或者很多)都会答错。SQL Server 不是数据库，它只是一种 DBMS(数据库管理系统)。你可以使用 SQL Server 来创建数据库，但 SQL ...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-08-04</span><i class="fa fa-tag"></i><a href="/categories/MySQL/" title="MySQL" class="tag">MySQL </a><a href="/tags/MySQL/" title="MySQL" class="tag">MySQL </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/08/04/600/">利用 MySQL 权限机制设置用户权限</a></h3></div><div class="post-content"><p>MySQL 权限控制包含如下两个阶段。
-阶段1： 服务器检测是否允许你链接。
-阶段2： 假定你能连接，服务器将检测你发出的每一个请求，查看你是否有足够的权限实施它。例如你从数据库表中选择（SELECT）行或从数据库中删除表，那么服务器要确定你是否对表有SELECT权限或对数据库有DROP权限。
-MySQL是通过用...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-08-04</span><i class="fa fa-tag"></i><a href="/categories/MySQL/" title="MySQL" class="tag">MySQL </a><a href="/tags/MySQL/" title="MySQL" class="tag">MySQL </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/07/14/cj8snj0h2001bt0rdks5b72t9/">PHP7 微信支付不能回调，让我们的团队损失1.00CNY。</a></h3></div><div class="post-content"><p>公司目前正在使用一套基于 TP5的开源商城，在线上测试过程中碰到了一个问题，微信支付完成后无法进行回调更新订单状态，简单点说就是钱没了，啥也没得到。
-What？这可是一个无法容忍的错误。
-原本以为是微信支付配置环节出了问题，于是便去查看微信官网给出的帮助手册，又顺着流程走了一边，信心满满的又测试了一边，结果尴尬了...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-07-14</span><i class="fa fa-tag"></i><a href="/categories/PHP/" title="PHP" class="tag">PHP </a><a href="/tags/wechat-pay-php-php7-php-input/" title="wechat pay, php, php7, php://input" class="tag">wechat pay, php, php7, php://input </a></div></div></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/" class="btn">上一页</a></li><li class="next pagbuttons"><a role="navigation" href="/page/3/" class="btn">下一页</a></li></ul></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Maksim&#39;s Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Maksim&#39;s Website">
+<meta property="og:url" content="http://www.maksim.website/page/2/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Maksim&#39;s Website">
+    
+
+    
+        <link rel="alternate" href="/" title="Maksim&#39;s Website" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Maksim&#39;s Website</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Maksim</h2>
+            <h3 id="title">PHP Developer &amp; iOS Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>齐齐哈尔, China</span>
+            <a id="follow" target="_blank" href="https://github.com/aircrayon/">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                57
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                20
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/aircrayon" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main">
+    <article id="post-memove" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/13/1/">算法笔试入门题目Memmove</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/13/1/">
+            <time datetime="2017-08-13T04:02:10.000Z" itemprop="datePublished">2017-08-13</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/C-C/">C/C++</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/算法/">算法</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> *<span class="title">memmove</span> <span class="params">(<span class="keyword">void</span> *dest, <span class="keyword">const</span> <span class="keyword">void</span> *src, <span class="keyword">size_t</span> n)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="comment">//implementation here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这是 C 语言中的一个库函数，他的功能是吧内存中一块内容从src拷贝到dest，固定的长度是n。</p>
+<p>这是笔试中的一个入门体</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> *<span class="title">memmove</span> <span class="params">(<span class="keyword">void</span> *dest, <span class="keyword">const</span> <span class="keyword">void</span> *scr, <span class="keyword">size_t</span> n)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">char</span> *p1 = dest;</div><div class="line">	<span class="keyword">char</span> *p2 = src;</div><div class="line">	</div><div class="line">	<span class="keyword">while</span> (*p2 != \<span class="number">0</span>)</div><div class="line">		*p1++ = *p2++;</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> p1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的这份代码，可以完成要求，可是却存在一些问题，我们先来看一下，C语言中的一些让人进场不会注意到的陷阱。</p>
+<ul>
+<li>内存重叠的处理，从一个指针，它指向的内存地址，拷贝到另外一个地址，那么有没有可能是完全重合，或者有一部分是重合的。</li>
+<li>临时变量太多 或者没有安全释放</li>
+<li>没有测试内存越界，size 是否小于零，指针是否为空？</li>
+<li>指针操作熟悉</li>
+</ul>
+<p>内存是否重叠？</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-08-13%2014.45.22.png" alt="内存重叠">)</p>
+<p>正确的写法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> *<span class="title">memmove</span> <span class="params">(<span class="keyword">void</span> *dest, <span class="keyword">const</span> <span class="keyword">void</span> *scr, <span class="keyword">size_t</span> n)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">char</span> *p1 = dest;</div><div class="line">	<span class="keyword">const</span> <span class="keyword">char</span> *p2 = src;		<span class="comment">//o用常量表示src</span></div><div class="line">	</div><div class="line">	<span class="comment">//判断src 和 dest 的位置关系</span></div><div class="line">	<span class="keyword">if</span>  (p2 &lt; p1) &#123; </div><div class="line">		p2 += n;</div><div class="line">		p1 += n;</div><div class="line">		<span class="keyword">while</span> (n-- != <span class="number">0</span>) </div><div class="line">			*--p1 = *--p2;</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		<span class="keyword">while</span> (n-- != <span class="number">0</span>) &#123;</div><div class="line">			*p1++ = *p2++;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> p1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2017/08/13/1/" data-id="cj8x0oaep002js7rdq1nyi415" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2017/08/13/1/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-Array&amp;String 算法" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/12/1/">Array&amp;String算法</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/12/1/">
+            <time datetime="2017-08-11T16:00:00.000Z" itemprop="datePublished">2017-08-12</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/C-C/">C/C++</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Returns the position of the first occurrence of string target in string source or -1 if target is not part of source.</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">strStr</span> <span class="params">(String source, String target)</span> </span>&#123;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>希望在 <code>string</code> 里面寻找<code>target</code>，如果找到一个完全匹配的话，就返回他所在的位置，如果不存在就返回<code>-1</code>;</p>
+<h1 id="字符串匹配"><a href="#字符串匹配" class="headerlink" title="字符串匹配"></a>字符串匹配</h1><p>两种比较容易实现的字符串比较算法。</p>
+<p>假设在长度为 n的沐川中匹配长度为 m的子串。</p>
+<p><code>Brute-Force</code> 算法： 顺序遍历母串，将每个字符作为匹配的起始字符，判断是否匹配子串。时间复杂度 O(m*n)</p>
+<p><em>Brute-Force</em></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">char</span>* <span class="title">StrStr</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *str, <span class="keyword">const</span> <span class="keyword">char</span> *target)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(!*target) <span class="keyword">return</span> str;</div><div class="line">    <span class="keyword">char</span> *p1 = (<span class="keyword">char</span> *)str;</div><div class="line">    <span class="keyword">while</span>(*p1) &#123;</div><div class="line">        <span class="keyword">char</span> *p1Begin = p1, *p2 = (<span class="keyword">char</span>*)target;</div><div class="line">        <span class="keyword">while</span>(*p1 &amp;&amp; *p2 &amp;&amp; *p1 == *p2) &#123;</div><div class="line">            p1++;</div><div class="line">            p2++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (!*p2)	<span class="comment">//发现p2走到了末尾，就意味着有匹配到的字符串，那么直接返回p1Begin;所记录的位置</span></div><div class="line">            <span class="keyword">return</span> p1Begin;</div><div class="line">        p1 = p1Begin + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2017/08/12/1/" data-id="cj8x0oab60004s7rd7ezb8bd6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2017/08/12/1/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-GNU&amp;Linux" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/10/3/">Linux 和 GNU 工程</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/10/3/">
+            <time datetime="2017-08-10T12:01:00.000Z" itemprop="datePublished">2017-08-10</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Linux-GNU/">Linux,GNU</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>每天都有许多计算机用户使用一个被改动过的GNU 系统 (18k 字节)，但是他们并没有意识到它。 经过一系列的事件，现在被广泛使用的 GNU 版本则经常被称作“Linux”，可是许多用户并不了解与之相关的 GNU 工程。</p>
+<p>Linux 确实存在；它是一个内核，许多人都在使用它。但是你不能仅使用内核本身。内核只有作为整个系统的一个部分才有用处。Linux 是和 GNU 操作系统结合在一起使用：系统本身是 GNU，与 Linux 作为内核一起工作。</p>
+<p>许多用户没有并不完全了解 Linux 内核和被称作“Linux”的整个系统的区别。而不加区别地使用这个名字并不能对理解有帮助。</p>
+<p>程序员一般都知道 Linux 是一个内核。但是因为他们也听到整个系统被称作“Linux”，他们会根据名字去想象历史。比如，很多人认为当 Linus Torvalds 完成了内核后，他的朋友四处寻找其他的自由软件，而且所有的可以被组装成一个类似 Unix 系统的程序都是现成的。</p>
+<p>他们的发现不是巧合 – 这就是 GNU 系统。 可用的自由软件加在一起就组成了一个完整的系统，这是由于自 1984 年就开始的 GNU 工程一直在为此努力。GNU 宣言(31k 字节) 早已设立了开发一个类似 Unix 的自由系统的目标，称作 GNU。GNU 工程的最初公告 也勾画了 GNU 系统的原始提纲。在 Linux 被编写时，这个系统几乎已经完成。</p>
+<p>大多数自由软件的工程都是为了特定的工作开发特定的程序。比方说，Linus Torvalds 编写类似 Unix 的内核(Linux); Donald Knuth 编写一个文本格式化工具(TeX); Bob Scheifler 开发一个窗口系统(X Window System)。对于这项工程编写的程序都作出了贡献，对这些贡献进行评估是很自然的。</p>
+<p>如果以这种方法来衡量对 GNU 工程的贡献，我们会得出什么结论？一个 CD-ROM的提供商发现在他们的“Linux 发行版”中，GNU 软件 占最大的比重，大约占全部源代码的 28% ，而且这还包括一些关键的部件，没有这些部件，系统就无法工作。Linux 本身占大约 3%。所以如果你要根据程序的作者来选择一个名字的话，最合适的选择是“GNU”。</p>
+<p>但是我们不认为这是一个解决问题的适当方法。GNU 工程以前不是，现在也不是一个开发某个软件包的工程。它不是一个 开发 C 编译器的工程, 尽管我们做了。它也不是一个开发一个文本编辑器的工程，尽管我们也做了。GNU 工程的目标是开发一个完全自由的类似 Unix 的系统: GNU。</p>
+<p>许多人已经为系统中的自由软件作出了重大贡献，他们都应该获得荣誉。但 GNU 是一个系统而不是一些实用程序的组合的原因是，GNU 工程的最初目标就是做一个完整系统。我们曾经为完成一个完整的系统做了一个所需程序清单，而且我们有系统地寻找，编写这些程序，并且寻找别人编写清单上的每一个程序。我们编写了关键的但是十分枯燥的主要部件，比如汇编语言和连接器，因为这是系统所必需的。除了编程工具，一个完整的系统还需要更多的东西， Bourne Again SHell 程序, PostScript 解释器 Ghostscript, 和 GNU C 库 同样是很重要的。</p>
+<p>到了 90 年代初期，我们曾经把除了内核以外的东西放到一起组成了一个系统（我们同时也在做内核的工作）称为 GNU Hurd, 运行在 Mach 上)。开发这个内核比我们想象的要难得多，我们现在仍然在 为此工作。</p>
+<p>庆幸的是，你不必再等了，因为 Linux 开发成功。当 Linus Torvalds 写成了 Linux，他填补了一个重要的空白。人们可以将 Linux 和 GNU 系统组成一个完整的自由系统：基于 Linux 的 GNU 系统（或简称为 GNU/Linux 系统）。</p>
+<p>把它们组合到一起听起来很容易，但是这并不是一个简单的工作。 GNU C 库 (简称 glibc) 需要作大量的修改。集成到一个完整的发行系统中也是一项很大的工作。它需要对如何安装和启动系统进行定位 – 这个问题直到现在还在完善，因为我们还没有抓住要点。那些开发了不同的发行系统的人们作出了巨大贡献。</p>
+<p>除了 GNU，还有一个独立进行的工程开发了一个自由的类似 Unix 的操作系统。这个系统被称为 BSD，它是由 UC Berkeley 开发的。 在 GNU 工程的鼓舞下，BSD 的开发者开始进行他们自己的自由软件的开发工作，并时常受到 GNU 人士的鼓励，但是他们的实际工作与 GNU 差别不大。今天 BSD 系统采用一些 GNU 软件，就象不同版本的 GNU 系统也采用 BSD 的软件一样。总的说来，它们是两套独立开发的不同的系统。今天一个免费的操作系统几乎都是采用 GNU 或 BSD 系统的一个派生版本。</p>
+<p>GNU 工程支持 GNU/Linux 系统，就象支持 GNU 系统一样 – 包括资金的支持。我们为重写与 Linux 相关的 GNU C 库提供资金，以至于它们现在可以很好地集成在一起，直到最新版本的 GNU/Linux 仍在使用这个库而无需修改。我们也为早期 Debian GNU/Linux 的开发提供资金。</p>
+<p>今天我们的绝大多数的工作都在基于 Linux 的 GNU 系统上完成，我们希望你也如此。但是请不要含糊地使用 Linux 而使公众迷惑。Linux 是内核，系统的关键部件之一。系统或多或少实际上都应该是 GNU 系统，再加上 Linux。当你在讨论到这个组合系统时，请使用 “GNU/Linux”。</p>
+<p>如果要为 GNU/Linux 作链接，本页和 <a href="http://www.gnu.org/gnu/the-gnu-project.html" target="_blank" rel="external">http://www.gnu.org/gnu/the-gnu-project.html</a> 都是很好的选择。如果你想为 Linux（内核）作链接，<a href="http://www.kernel.org/是一个很好" target="_blank" rel="external">http://www.kernel.org/是一个很好</a> URL。</p>
+<p>本文摘 <a href="https://www.gnu.org/gnu/linux-and-gnu.html" target="_blank" rel="external">https://www.gnu.org/gnu/linux-and-gnu.html</a></p>
+<p>Copyright 1997, 1998 Richard Stallman</p>
+<p>中文翻译：白若玉<br>翻译校正：刘昭宏</p>
+<p>全文在保证完整性的前提下可以在任意媒体转载 - 须保留此标注。</p>
+<p>Updated: 30 Nov 2000 paulv</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2017/08/10/3/" data-id="cj8x0oabk000as7rdhlj0cs2b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2017/08/10/3/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-Virtualbox下安装 CentOS  minimal 后设置上网" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/10/2/">Virtualbox下安装 CentOS  minimal 后设置上网</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/10/2/">
+            <time datetime="2017-08-10T08:04:12.000Z" itemprop="datePublished">2017-08-10</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Linux-Centos/">Linux,Centos</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>在虚拟机中以minimal安装 CentOS 后无法上网，因为CentOS的默认网卡未激活。</p>
+<p>可以设置 </p>
+<p>文件 /etc/sysconfig/network-scripts/ifcfg-enp0s3</p>
+<p> 将 <code>ONBOOT=no</code> 改为 <code>ONBOOT=yes</code></p>
+<p> <img src="http://www.maksim.website/images/linux/networkonboot.png" alt="激活"></p>
+<p> 保存后重启网卡： <code>service network restart</code></p>
+<p>  <img src="http://www.maksim.website/images/linux/ping.png" alt="ping"></p>
+<p> 这样就可以上网了，我用的是桥接模式。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2017/08/10/2/" data-id="cj8x0oae20020s7rd4wyl1gek" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2017/08/10/2/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-CentOS版本区别" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/10/1/">CentOS中Live、netinstall、minimal、DVD 等版本的区别</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/10/1/">
+            <time datetime="2017-08-10T07:04:12.000Z" itemprop="datePublished">2017-08-10</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Linux-Centos/">Linux,Centos</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><code>LiveCD</code> 和<code>LiveDVD</code> 是可以直接光盘运行的胸痛，但不能安装，两者差别在于容量大小，DVD 包含的软件要多一些。</p>
+<p><code>netinstall</code> 用于网络安装和系统救援的镜像文件。</p>
+<p><code>minimal</code> 这个镜像文件用于安装一个非常基本的 CentOS系统,包含了一些基本所需的最小安装包。</p>
+<p><code>DVD</code> 镜像包含了完整的发布版，可以用于安装完整的 CentOS 系统。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2017/08/10/1/" data-id="cj8x0oabe0006s7rdkibm0sq9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2017/08/10/1/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-在-Mac上编译安装线程安全的-PHP7.2" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/05/1/">在Mac上编译安装线程安全的PHP7.2</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/05/1/">
+            <time datetime="2017-08-05T04:04:12.000Z" itemprop="datePublished">2017-08-05</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/PHP/">PHP</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/多线程-PHP7-2-编译安装-GCC/">多线程,PHP7.2,编译安装,GCC</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>因为项目需求后期可能会需要使用到进程守护和消息队列，于是上网查了一下，看到<a href="http://netkiller.github.io/php/index.html" target="_blank" rel="external">Netkiller <em>PHP 手札</em></a>中有介绍到PHP使用 Pthread实现优雅守护进程的方法。</p>
+<p>可是由于我本地的 PHP 是使用brew进行安装的，在 Linux 下使用 yum或者 apt进行安装的 PHP 同样不支持线程安全。</p>
+<p>于是开始折腾起来，将 PHP 卸载掉后使用编译进行重新安装，开启<code>--enable-maintainer-zts</code> 后在编译过程中遇到了 Clang 报错，经过了一番 Google、百度过后，原来是编译器在作怪。Mac 由于 Xcode 的原因，默认使用的编译器是 Clang，在编译到 pthread 的时候，就会报错。</p>
+<p>解决方法也很简单，在./configure 命令的最后加上 CC=gcc ，告诉make 我要使用 GCC 编译器进行编译即可。</p>
+<p>其实在日常的开发中PHP开发者，很少会接触到多线程这一块。甚至有的PHP 开发者都搞不清楚什么是线程、进程和协程。</p>
+<p>那是因为在 Web 开发中根本使用不了多线程，因为 PHP 本身并不提供多线程API，其多线程的支持是由 Pthread 扩展提供的，而 Pthread 扩展的文档中有说明：</p>
+<blockquote>
+<p><strong>Warning</strong>    不可以在 web 服务器环境中使用 pthreads 扩展，PHP 多线程开发仅限于命令行模式的应用。</p>
+</blockquote>
+<p>Windows版的PHP从版本5.2.1开始有Thread Safe(线程安全)和None Thread Safe(NTS，非线程安全)之分，这两者不同在于何处？到底应该用哪种？</p>
+<p>从2000年 10月20日发布的第一个Windows版的PHP3.0.17开始的都是线程安全的版本，这是由于与Linux/Unix系统是采用多进程的工作方式不同的导致的。</p>
+<p>Windows系统是采用多线程的工作方式。如果在IIS下以CGI方式运行PHP会非常慢，这是由于CGI模式是建立在多进程的基础之上的，而非多线程。一般我们会把PHP配置成以ISAPI的方式来运行，ISAPI是多线程的方式，这样就快多了。</p>
+<p>但存在一个问题，很多常用的PHP扩展是以 Linux/Unix的多进程思想来开发的，这些扩展在ISAPI的方式运行时就会出错搞垮IIS。因此在IIS下CGI模式才是PHP运行的最安全方式，但CGI模式对于每个HTTP请求都需要重新加载和卸载整个PHP环境，其消耗是巨大的。</p>
+<p>为了兼顾IIS下PHP的效率和安全，微软 给出了FastCGI的解决方案。FastCGI可以让PHP的进程重复利用而不是每一个新的请求就重开一个进程。同时FastCGI也可以允许几个进程同时执行。这样既解决了CGI进程模式消耗太大的问题，又利用上了CGI进程模式不存在线程安全问题的优势。</p>
+<p>因此，如果是使用ISAPI 的方式来运行PHP就必须用Thread Safe(线程安全)的版本；而用FastCGI模式运行PHP的话就没有必要用线程安全检查了，用None Thread Safe(NTS，非线程安全)的版本能够更好的提高效率。</p>
+<p>从上面这段描述我们可以清楚的知道，如果不是使用 ISAPI 的话，不使用多线程特性，那么基本上就用不Thread Safe。</p>
+<p>查看自己的 PHP版本是否是线程安全你的只需要在命令行中输入 <code>PHP -v</code>查看 PHP 的版本即可，如下：</p>
+<p><img src="http://www.maksim.website/images/threadsafe.png" alt="线程安全"></p>
+<p>引用：</p>
+<p><em>PHP线程安全和非线程安全有什么区别</em>  <a href="http://www.cnblogs.com/T8881/p/6397264.html" target="_blank" rel="external">http://www.cnblogs.com/T8881/p/6397264.html</a></p>
+<p><em>PHP Internals Book（《PHP内部书》PHP 内核开发者合著)</em> <a href="http://www.phpinternalsbook.com/index.html" target="_blank" rel="external">http://www.phpinternalsbook.com/index.html</a></p>
+<p><em>PHP运行模式</em> <a href="http://www.cnblogs.com/xia520pi/p/3914964.html" target="_blank" rel="external">http://www.cnblogs.com/xia520pi/p/3914964.html</a></p>
+<p><em>Netkiller <em>PHP 手札</em></em> <a href="http://netkiller.github.io/php/index.html" target="_blank" rel="external">http://netkiller.github.io/php/index.html</a></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2017/08/05/1/" data-id="cj8x0oafy003hs7rdvrwg9cr9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2017/08/05/1/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-在SQL中使用变量" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/05/602/">在SQL中使用变量</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/05/602/">
+            <time datetime="2017-08-05T00:04:12.000Z" itemprop="datePublished">2017-08-05</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/MySQL/">MySQL</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/MySQL/">MySQL</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>MySQL 李的变量可分为用户变量和系统变量</p>
+<p><strong>1. 用户变量</strong></p>
+<p>MySQL允许用户在语句中自定义变量，对于用户变量的值，可以先保存在用户变量中，然后在引用它；这样就可以将值从一个语句传到另外一个语句。</p>
+<p>用户变量与连接有关。一个客户端定义的变量不能被其他客户端看到货使用。当客户端退出时，该客户端连接的所有变量将自动释放。这点不同于在函数或存储过程中通过 <code>DECLAER</code> 药监局声明的局部变量，局部变量的生存周期在它被声明的“<code>BEGIN...END</code>”块内。</p>
+<p>用户变量的表现形式为：@var_name</p>
+<p>设置用户变量的一个途径是执行 SET 语句，语法如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SET</span> @var_name= expr[, @var_name= expr] ...</div></pre></td></tr></table></figure>
+<p>对于SET，可以使用“=”或“:=”作为分配符。分配给每个变量的expr可以为整数、实数、字符串或NULL值。如:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SET @t1=0, @t2=0, @t3=0;</div></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SET</span> @minMid=(<span class="keyword">select</span> <span class="keyword">min</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> table_name) ;</div></pre></td></tr></table></figure>
+<p><strong>2.系统变量</strong></p>
+<p>MySQL服务器维护着两种系统变量:</p>
+<ul>
+<li>全局变量影响MySQL服务的整体运行方式</li>
+<li>会话变量影响具体客户端连接的操作</li>
+</ul>
+<p>当服务器启动时，它将所有全局变量初始化为默认值。这些默认值可以在选项文件中或在命令行中对指定的选项进行更改。服务器启动后，通过连接服务器并执行<code>SET</code> <code>GLOBAL var_name</code>语句，可以动态更改这些全局变量。要想更改全局变量，必须具有<code>SUPER</code>权限。</p>
+<p>服务器还为每个连接的客户端维护一系列的会话变量。在连接时使用相应全局变量的当前值对客户端的会话变量进行初始化。对于动态会话变量，客户端可以通过<code>SET SESSION var_name</code>语句更改它们。设置会话变量不需要特殊权限，但客户端只能更改自己的会话变量，而不能更改其他客户端的会话变量。</p>
+<p>访问全局变量的任何客户端都可以看见对全局变量所做的更改。然而，它只影响更改后连接的客户的相应会话变量，而不会影响目前已经连接的客户端的会话变量(即使客户端执行<code>SET GLOBAL</code>语句也不影响)。</p>
+<p>也就是说，如果你的连接是短连接，那么修改全局变量后，客户端有重连的操作，就会立刻影响到客户端。而对于长连接、连接池来说，连接可能一直在MySQL里没有被销毁，也就不会有重连的操作，所以这种情况下对全局变量的修改一般不会影响到客户端。</p>
+<p>可以使用如下几种语法形式来设置或检索全局变量或会话变量(下面的例子使用<code>sort_buffer_size</code>作为示例变量名)。</p>
+<p>要想设置一个<code>GLOBAL</code>变量的值，可使用下面的语法。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SET GLOBAL sort_buffer_size=value; </div><div class="line">mysql&gt; SET @@global.sort_buffer_size=value;</div></pre></td></tr></table></figure>
+<p>要想设置一个SESSION变量的值，可使用下面的语法。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SET SESSION sort_buffer_size=value; </div><div class="line">mysql&gt; SET @@session.sort_buffer_size=value; </div><div class="line">mysql&gt; SET sort_buffer_size=value;</div></pre></td></tr></table></figure>
+<p>如果设置变量时不指定<code>GLOBAL</code>、<code>SESSION</code>或<code>LOCAL</code>，则默认使用<code>SESSION</code>。</p>
+<p>要想检索一个<code>GLOBAL</code>变量的值，可使用下面的语法。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT @@global.sort_buffer_size;</div><div class="line">mysql&gt; SHOW GLOBAL VARIABLES LIKE 'sort_buffer_size';</div></pre></td></tr></table></figure>
+<p>要想检索一个SESSION变量的值，可使用下面的语法。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT @@sort_buffer_size;</div><div class="line">mysql&gt; SELECT @@session.sort_buffer_size; mysql&gt; SHOW VARIABLES LIKE 'sort_buffer_size';</div></pre></td></tr></table></figure>
+<p>当用<code>SELECT@@var_name</code>搜索一个变量时(也就是说，不指定<code>GLOBAL</code>、<code>SESSION</code>)，MySQL会返回<code>SESSION</code>值(如果存在<code>SESSION</code>变量的话)，否则返回<code>GLOBAL</code>值。</p>
+<p>对于<code>SHOW VARIABLES</code>，如果不指定<code>GLOBAL</code>、<code>SESSION的</code>话，MySQL会返回SESSION值。</p>
+<p>引用</p>
+<p>《MySQLDBA 修炼之道》 作者：陈晓勇</p>
+<p><a href="https://dev.mysql.com/doc/refman/5.7/en/user-variables.html" target="_blank" rel="external">MySQL 官方文档 9.4 User-Defined Variables</a></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2017/08/05/602/" data-id="cj8x0oag2003ks7rdxgxef2g7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2017/08/05/602/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-读书笔记之什么是数据库？" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/04/601/">基础很重要，你真的知道什么是数据库吗？</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/04/601/">
+            <time datetime="2017-08-04T13:04:12.000Z" itemprop="datePublished">2017-08-04</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/MySQL/">MySQL</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/MySQL/">MySQL</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>“数据库基础”可不是一件小事。问题是，有时人们认为他们知道的很多。</p>
+<p>例如，这个问题:什么是数据库?</p>
+<p>我敢说大多数的人相信他们知道这个问题的答案。但其中一部分人(或者很多)都会答错。SQL Server 不是数据库，它只是一种 DBMS(数据库管理系统)。你可以使用 SQL Server 来创建数据库，但 SQL Server 本身不是一种数据库。</p>
+<p>那么，什么是数据库?数据库是一种有组织的数据存储，其中的数据可以通过指定的数据元素(比如，字段、记录和文件)来访问(详见图 1-1)。</p>
+<p><img src="http://www.maksim.website/images/whatis.png" alt="数据库"></p>
+<p>数据库是一种有组织的数据存储，其中的数据可以通过指定的数据元素来访问。</p>
+<p>DBMS 是一种使终端用户或程序员能够共享数据的软件。它提供了一套操作数据库的系</p>
+<p>统性方法:创建、更新、检索和存储信息。DBMS 通常还负责数据完整性、数据安全性、数据访问控制和优化、自动回退、重起和恢复。</p>
+<p>对外行人来说，你可以把数据库想象成一个文件夹，把 DBMS 想象成文件柜，且所容纳的所有文件都贴有标签。DBMS 管理着数据库，通过 DBMS 来实现和访问数据库实例。所以说，DB2、Oracle 和 SQL Server 都是数据库管理系统。工资单应用使用工资单的数据库，该数据库可以使用 DB2、Oracle 或者 SQL Server 来实现。</p>
+<p>摘自DBA 《修炼之道：数据库管理员的第一本书》</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2017/08/04/601/" data-id="cj8x0oahn004zs7rdc5mdh8qj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2017/08/04/601/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-Mysql权限控制" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/04/600/">利用 MySQL 权限机制设置用户权限</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/04/600/">
+            <time datetime="2017-08-04T05:01:00.000Z" itemprop="datePublished">2017-08-04</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/MySQL/">MySQL</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/MySQL/">MySQL</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>MySQL 权限控制包含如下两个阶段。</p>
+<p>阶段1： 服务器检测是否允许你链接。</p>
+<p>阶段2： 假定你能连接，服务器将检测你发出的每一个请求，查看你是否有足够的权限实施它。例如你从数据库表中选择（SELECT）行或从数据库中删除表，那么服务器要确定你是否对表有SELECT权限或对数据库有DROP权限。</p>
+<p>MySQL是通过用户名、密码、IP(主机名)3个要素来验证用户的。当你想要访问MySQL服务器时，MySQL客户端程序一 般会要求你指定如下参数。</p>
+<ul>
+<li>MySQL服务器的IP(主机名)，</li>
+<li>端口</li>
+<li>用户名</li>
+<li>密码 </li>
+</ul>
+<p>以下是连接MySQL服务器的一个示例，你需要以实际的IP、端口、用户名、密码代替相应的内容。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -h host_ip_address -u user_name -pyour_password -P server_port</div></pre></td></tr></table></figure>
+<p>一般在生产环境下，程序账号有增加、删除、查询、修改这4项功能即可。</p>
+<p>如下命令用于赋予查询、插入、修改、删除权限，并进行密码设置。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">grant</span> <span class="keyword">select</span>,<span class="keyword">insert</span>,<span class="keyword">update</span>,<span class="keyword">delete</span> <span class="keyword">on</span> db_name.* <span class="keyword">to</span> user_name@ <span class="string">'10.%'</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">'password'</span>;</div></pre></td></tr></table></figure>
+<p>如下命令用于回收上面所赋予的权限。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">revoke</span> <span class="keyword">select</span>,<span class="keyword">insert</span>,<span class="keyword">update</span>,<span class="keyword">delete</span> <span class="keyword">on</span> db_name.* <span class="keyword">from</span> user_name@ <span class="string">'10.%'</span>;</div></pre></td></tr></table></figure>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2017/08/04/600/" data-id="cj8x0oac5000ms7rds9fnckct" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2017/08/04/600/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-PHP7微信支付" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/07/14/cj8x0oacr0013s7rdo6r82xt1/">PHP7 微信支付不能回调，让我们的团队损失1.00CNY。</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/07/14/cj8x0oacr0013s7rdo6r82xt1/">
+            <time datetime="2017-07-14T06:15:20.000Z" itemprop="datePublished">2017-07-14</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/PHP/">PHP</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/wechat-pay-php-php7-php-input/">wechat pay, php, php7, php://input</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>公司目前正在使用一套基于 TP5的开源商城，在线上测试过程中碰到了一个问题，微信支付完成后无法进行回调更新订单状态，简单点说就是钱没了，啥也没得到。</p>
+<p><code>What？</code>这可是一个无法容忍的错误。</p>
+<p>原本以为是微信支付配置环节出了问题，于是便去查看微信官网给出的帮助手册，又顺着流程走了一边，信心满满的又测试了一边，结果尴尬了，又损失了0.01人民币。</p>
+<p>反复确认流程后，确认并不是配置的问题，于是便开始了百度，原来这一切都是在微信官网给出的SDK中的一段代码惹的祸，就这么一段代码让我们团队损失了接近1人民币。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取通知的数据</span></div><div class="line">$xml = $GLOBALS[<span class="string">'HTTP_RAW_POST_DATA'</span>];  <span class="comment">//  WxPay.Api.php  414 line</span></div></pre></td></tr></table></figure>
+<p>这段代码如果放在PHP7之前的版本是不会有任何问题的，但是在 PHP7版本中却已经<strong>废除</strong>了 <code>HTTP\_RAW\_POST\_DATA</code>    。</p>
+<p>在官方文档中给了说明：</p>
+<blockquote>
+<p><strong>Warning</strong> This feature was DEPRECATED in PHP 5.6.0, and REMOVED as of PHP 7.0.0.</p>
+</blockquote>
+<p>在<code>PHP5.6.0</code>发布的时候，就已经不推荐只用这种方法，于是在PHP 社区在开发 PHP7.0的时候直接就将其废弃掉了。</p>
+<p>而官方也给出了替代的方案，那就是<code>php://input</code></p>
+<p><code>php://input</code> 是个可以访问请求的原始数据的只读流。 </p>
+<p><code>POST</code> 请求的情况下，最好使用 <code>php://input</code> 来代替 <code>$HTTP\_RAW\_POST\_DATA</code>，因为它不依赖于特定的<code>php.ini</code>指令。 </p>
+<p> 而且，这样的情况下 <code>$HTTP\_RAW\_POST\_DATA</code> 默认没有填充， 比激活 <code>always\_populate\_raw\_post\_data</code>潜在需要更少的内存。 <code>enctype=&quot;multipart/form-data&quot;</code> 的时候 <code>php://input</code> 是无效的。</p>
+<blockquote>
+<p><code>Note</code>: 在 PHP 5.6 之前 php://input 打开的数据流只能读取一次； 数据流不支持 seek 操作。 不过，依赖于 SAPI 的实现，请求体数据被保存的时候， 它可以打开另一个 php://input 数据流并重新读取。 通常情况下，这种情况只是针对 POST 请求，而不是其他请求方式，比如 PUT 或者 PROPFIND。 </p>
+</blockquote>
+<p>于是我将这段代码改为了：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取通知的数据</span></div><div class="line">$xml = file_get_contents(<span class="string">"php://input"</span>); <span class="comment">//  WxPay.Api.php  414 line</span></div></pre></td></tr></table></figure>
+<p>最后我又以0.01人民币的代价确认修复了这个 BUG。</p>
+<p><code>PHP7:&quot;怪我喽，让你经常看文档，哼！&quot;</code></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2017/07/14/cj8x0oacr0013s7rdo6r82xt1/" data-id="cj8x0oacr0013s7rdo6r82xt1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2017/07/14/cj8x0oacr0013s7rdo6r82xt1/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <nav id="page-nav">
+        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    </nav>
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/16/cj8x0oad8001gs7rd8oat1bjy/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/16/cj8x0oad8001gs7rd8oat1bjy/" class="title">PHP页面静态化</a></p>
+                            <p class="item-date"><time datetime="2017-10-16T11:17:47.000Z" itemprop="datePublished">2017-10-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/15/cj8x0oac2000is7rdv3xm6qzy/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/15/cj8x0oac2000is7rdv3xm6qzy/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2017-10-15T11:24:45.000Z" itemprop="datePublished">2017-10-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/13/cj8x0oaf70031s7rd1udfh67b/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/13/cj8x0oaf70031s7rd1udfh67b/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2017-10-13T05:41:58.000Z" itemprop="datePublished">2017-10-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/13/1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/MySQL/">MySQL</a></p>
+                            <p class="item-title"><a href="/2017/10/13/1/" class="title">MySQL体系结构</a></p>
+                            <p class="item-date"><time datetime="2017-10-12T16:00:00.000Z" itemprop="datePublished">2017-10-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/10/2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/MySQL/">MySQL</a></p>
+                            <p class="item-title"><a href="/2017/10/10/2/" class="title">服务器系统对MySQL性能带来的影响</a></p>
+                            <p class="item-date"><time datetime="2017-10-09T16:00:00.000Z" itemprop="datePublished">2017-10-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Objective-C/">Objective-C</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP设计模式/">PHP设计模式</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ios/">ios</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C-算法/">C/C++,算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Closures/">Closures</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/INSERT/">INSERT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Centos/">Linux,Centos</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-GNU/">Linux,GNU</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL-设计规范/">MySQL 设计规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objc-多线程/">Objc,多线程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP设计模式/">PHP设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wechat-pay-php-php7-php-input/">wechat pay, php, php7, php://input</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存管理/">内存管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程-PHP7-2-编译安装-GCC/">多线程,PHP7.2,编译安装,GCC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/色彩/">色彩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C-C-算法/" style="font-size: 10px;">C/C++,算法</a> <a href="/tags/Closures/" style="font-size: 10px;">Closures</a> <a href="/tags/INSERT/" style="font-size: 10px;">INSERT</a> <a href="/tags/Linux-Centos/" style="font-size: 12px;">Linux,Centos</a> <a href="/tags/Linux-GNU/" style="font-size: 10px;">Linux,GNU</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/MySQL-设计规范/" style="font-size: 10px;">MySQL 设计规范</a> <a href="/tags/Objc-多线程/" style="font-size: 10px;">Objc,多线程</a> <a href="/tags/PHP/" style="font-size: 16px;">PHP</a> <a href="/tags/PHP设计模式/" style="font-size: 10px;">PHP设计模式</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/wechat-pay-php-php7-php-input/" style="font-size: 10px;">wechat pay, php, php7, php://input</a> <a href="/tags/内存管理/" style="font-size: 10px;">内存管理</a> <a href="/tags/多线程-PHP7-2-编译安装-GCC/" style="font-size: 10px;">多线程,PHP7.2,编译安装,GCC</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/色彩/" style="font-size: 10px;">色彩</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 18px;">随笔</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Maksim<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1828998# enter youyan uid here"></script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

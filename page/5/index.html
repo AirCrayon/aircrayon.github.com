@@ -1,21 +1,1840 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Maksim"><title>Maksim's Website</title><meta name="description" content="A Blog Powered By Hexo"><meta name="keywords"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">Maksim's Website</a></h3></div></div><ul class="social-links"></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/" class="current">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li><li><a href="/categories/PHP">PHP</a></li><li><a href="/categories/iOS">iOS</a></li><li><a href="/categories/MySQL">MySQL</a></li><li><a href="/categories/Linux">Linux</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" style="display:none;" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2016/03/08/cj8snj0j70030t0rdjwvlqt74/">将博客迁移到了github</a></h3></div><div class="post-content"><p>折腾了一天终于将博客迁移到了github上,以前一直用的都是WordPress,这几天看一些大牛的微博发现有很多人用的都是hexo于是在好奇心的驱使下搜了一下,发现很有逼格,身为一个不折腾就会死的人我便开始了迁移之路,这篇博文并不会讲如何迁移,因为今天没有时间了,等过两天进行一下总结,熟悉一下hexo.
-在用Wo...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2016-03-08</span><i class="fa fa-tag"></i><a href="/tags/随笔/" title="随笔" class="tag">随笔 </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2016/03/04/cj8snj0lr004jt0rdar17a4nl/">移动info.plist后无法运行</a></h3></div><div class="post-content"><p>今天做项目的时候,不小心将info.plist移动了,再移动回项目中的时候直接报错,查了一下百度找到了解决办法.
-只需要在bulid Phases中的Copy Bundle Resources重新加入info.plist即可
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Maksim&#39;s Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Maksim&#39;s Website">
+<meta property="og:url" content="http://www.maksim.website/page/5/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Maksim&#39;s Website">
+    
+
+    
+        <link rel="alternate" href="/" title="Maksim&#39;s Website" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
 
 
-</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2016-03-04</span><i class="fa fa-tag"></i><a href="/tags/iOS/" title="iOS" class="tag">iOS </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2016/03/04/cj8snj0m7004vt0rdixn16kqn/">统一设置tabBarItem字体样式</a></h3></div><div class="post-content"><p>一般我们在使用tabBar的时候都需要进行自定义,统一设置其字体样式的方法如下.
-在iOS开发中有两个方法:load与initialize.
-load是在类加载的时候会自动调用,iOS工程在运行的时候,会自动将工程内的类加载到内存之中,这个时候就是load执行的时候.
-initialize是在第一次使用或者调用子...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2016-03-04</span><i class="fa fa-tag"></i><a href="/tags/iOS/" title="iOS" class="tag">iOS </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2016/03/03/244/">iOS推送通知</a></h3></div><div class="post-content"><p>iOS 于2008年问世时，只能有一个第三方应用处于活动状态（位于前台）。这意味着应用需要执行的任务都必须在应用位于前台时完成，佛泽任务将暂停并在应用下次启动时接着执行。iOS4退出后，向第三方应用提供了后台功能。鉴于 iOS 设备的系统资源有限，且节省电量至关重要，对后台处理有些限制，那就是不能干扰前台引用，也...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2016-03-03</span><i class="fa fa-tag"></i><a href="/categories/Objective-C/" title="Objective-C" class="tag">Objective-C </a><a href="/tags/iOS/" title="iOS" class="tag">iOS </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2016/03/03/244/">使用iOS本地通知</a></h3></div><div class="post-content"><p>在 iOS 开发中推送通知被分为两种，本地通知与推送通知，
-本地通知是应用在后台运行时，把一些消息提示给用户，一个很好的例子就是基于定位的应用，这类应用在后台运行，到他发现到达某个特殊地点是给予用户提醒，本地通知只能使用在 iOS 设备中，他可以立即发出通知也可以在计划时间后发出。
-本地通知只是应用所在设备上给用...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2016-03-03</span><i class="fa fa-tag"></i><a href="/categories/iOS/" title="iOS" class="tag">iOS </a><a href="/tags/iOS/" title="iOS" class="tag">iOS </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2016/03/01/cj8snj0m1004rt0rd4q2wqgvl/">iOS多线程.01 简介</a></h3></div><div class="post-content"><p>简介我们为何需要多线程呢？多线程其实是为了实现并发执行，而且线程是并发执行多个代码路径的多种技术之中比较轻量级的一种（对应较重的实现是多进程）。
-在单核 CPU 时代，支持多线程的操作系统会通过分配 CPU 计算时间，来实现软件层面的多线程。创建线程，线程间切换都是有成本开销的。但由于多线程可以避免阻塞所造成的 ...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2016-03-01</span><i class="fa fa-tag"></i><a href="/tags/iOS/" title="iOS" class="tag">iOS </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2016/02/17/231/">Objective-C Block的基本使用</a></h3></div><div class="post-content"><p>一、Block 的定义定义和使用Block，
-1234567891011121314151617181920212223242526- (void)viewDidLoad &#123;	[super viewDidLoad];  	//（1）定义无参无返回值的Block	void (^printBlock)() ...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2016-02-17</span><i class="fa fa-tag"></i><a href="/categories/ios/" title="ios" class="tag">ios </a><a href="/tags/iOS/" title="iOS" class="tag">iOS </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2016/01/31/2/">CGFloat、CGPoint、CGSize和CGRect</a></h3></div><div class="post-content"><p>CGFloat、CGPoint、CGSize和CGRect主要是用来描述UI控件的几何属性的基本类型。
+</head>
 
-CGFloat: 浮点值的基本类型
-CGPoint: 表示一个二维坐标系中的点
-CGSize: 表示一个矩形的宽度和高度
-CGRect: 表示一个矩形的位置和大小
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Maksim&#39;s Website</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
 
-CGFloatCGFloat是这四种类型中...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2016-01-31</span><i class="fa fa-tag"></i><a href="/categories/iOS/" title="iOS" class="tag">iOS </a><a href="/tags/iOS/" title="iOS" class="tag">iOS </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2016/01/30/219/">懒加载与模型转换</a></h3></div><div class="post-content"><p>所谓的懒加载其实就是重写getter方法，以实现实例化类的同时自动加载数据，简化代码的一个作用,代码如下
-12345678//这是一个实例-(NSArray*)question&#123;if (!_question) &#123;//判断是否为空_question = [GZModelName question...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2016-01-30</span><i class="fa fa-tag"></i><a href="/categories/Objective-C/" title="Objective-C" class="tag">Objective-C </a><a href="/tags/iOS/" title="iOS" class="tag">iOS </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2016/01/05/3/">Objective-C 简单的数组排序</a></h3></div><div class="post-content"><p>12345678910NSMutableArray *array  = [NSMutableArray arrayWithObjects:@"8123",@"456",@"378", nil];NSComparator cmp = ^(id obj,id obj1)&#123;	return [obj compa...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2016-01-05</span><i class="fa fa-tag"></i><a href="/categories/iOS/" title="iOS" class="tag">iOS </a><a href="/tags/iOS/" title="iOS" class="tag">iOS </a></div></div></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/page/4/" class="btn">上一页</a></li><li class="next pagbuttons"><a role="navigation" href="/page/6/" class="btn">下一页</a></li></ul></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Maksim</h2>
+            <h3 id="title">PHP Developer &amp; iOS Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>齐齐哈尔, China</span>
+            <a id="follow" target="_blank" href="https://github.com/aircrayon/">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                57
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                20
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/aircrayon" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main">
+    <article id="post-移动info.plist后无法运行" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/03/04/cj8x0oahd004ks7rdw1venuj3/">移动info.plist后无法运行</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/03/04/cj8x0oahd004ks7rdw1venuj3/">
+            <time datetime="2016-03-04T14:29:03.000Z" itemprop="datePublished">2016-03-04</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/iOS/">iOS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>今天做项目的时候,不小心将info.plist移动了,再移动回项目中的时候直接报错,查了一下百度找到了解决办法.</p>
+<p>只需要在bulid Phases中的Copy Bundle Resources重新加入info.plist即可</p></p>
+            <p class="article-more-link">
+                <a href="/2016/03/04/cj8x0oahd004ks7rdw1venuj3/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2016/03/04/cj8x0oahd004ks7rdw1venuj3/" data-id="cj8x0oahd004ks7rdw1venuj3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2016/03/04/cj8x0oahd004ks7rdw1venuj3/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-统一设置tabBarItem字体样式" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/03/04/cj8x0oahm004xs7rd1of5fxwr/">统一设置tabBarItem字体样式</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/03/04/cj8x0oahm004xs7rd1of5fxwr/">
+            <time datetime="2016-03-04T12:14:36.000Z" itemprop="datePublished">2016-03-04</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/iOS/">iOS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>一般我们在使用tabBar的时候都需要进行自定义,统一设置其字体样式的方法如下.</p>
+<p>在iOS开发中有两个方法:load与initialize.</p>
+<p>load是在类加载的时候会自动调用,iOS工程在运行的时候,会自动将工程内的类加载到内存之中,这个时候就是load执行的时候.</p>
+<p>initialize是在第一次使用或者调用子类的时候回自动执行,具有初始化类的功能,我们可以通过这两个方式的执行特性来对tabBarItem的样式进行设置.</p>
+<p>tabBarItem其实是一个模型(Item是苹果对模型的一种命名规范),我们并不能够对模型直接格式操作,但是我们可以对控件的格式进行设置,这样也就是使用到了文本属性(富文本)来进行设置.</p>
+<p>代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">+(void)initialize&#123;</div><div class="line">    //获取所有的tabBarItem 获取所有的外观</div><div class="line">    UITabBarItem *item = [UITabBarItem appearance];</div><div class="line">    NSMutableDictionary *att = [[NSMutableDictionary alloc]init];</div><div class="line">    [att setObject:[UIColor grayColor] forKey:NSForegroundColorAttributeName];</div><div class="line">    NSMutableDictionary *selectedAtt = [[NSMutableDictionary alloc]init];</div><div class="line">    [selectedAtt setObject:[UIColor orangeColor] forKey:NSForegroundColorAttributeName];</div><div class="line">    [item setTitleTextAttributes:att forState:UIControlStateNormal];</div><div class="line">    [item setTitleTextAttributes:selectedAtt forState:UIControlStateSelected];    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样一来我们就完成了样式的设置,appearance在英语中的意思是外观,在iOS中算是一个标记,通过这个标记,我们可以取得UITabBarItem中所有Item的外观.</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2016/03/04/cj8x0oahm004xs7rd1of5fxwr/" data-id="cj8x0oahm004xs7rd1of5fxwr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2016/03/04/cj8x0oahm004xs7rd1of5fxwr/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-IOS推送通知" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/03/03/244/">使用iOS本地通知</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/03/03/244/">
+            <time datetime="2016-03-03T07:06:05.000Z" itemprop="datePublished">2016-03-03</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/iOS/">iOS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/iOS/">iOS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>在 iOS 开发中推送通知被分为两种，本地通知与推送通知，</p>
+<p>本地通知是应用在后台运行时，把一些消息提示给用户，一个很好的例子就是基于定位的应用，这类应用在后台运行，到他发现到达某个特殊地点是给予用户提醒，本地通知只能使用在 iOS 设备中，他可以立即发出通知也可以在计划时间后发出。</p>
+<p>本地通知只是应用所在设备上给用户通知，而推送通知是远程通知，它是由远程服务器推送过来的。无论是哪一种，通知的形式都是一样的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">//本地推送,主要用于一些常规类的提醒</div><div class="line">    /**</div><div class="line">     *  1.健康类 定时几点运动</div><div class="line">     *  2.社交类 几点约会</div><div class="line">     *  3.游戏类 到时见领取奖励</div><div class="line">     *  4.新闻类 每日早间提醒阅读</div><div class="line">     *  5.医药类 你该吃药了,药别停</div><div class="line">     */</div><div class="line">     </div><div class="line">    //在iOS8下需要注册一下本地推送</div><div class="line">    [[UIApplication sharedApplication] registerUserNotificationSettings: [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeAlert|UIUserNotificationTypeSound categories:nil]];</div><div class="line">    //初始创建本地推送</div><div class="line">    UILocalNotification *local = [[UILocalNotification alloc]init];</div><div class="line">    //设置推送时间</div><div class="line">    local.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];</div><div class="line">    //设置推送的内容</div><div class="line">    local.alertBody = @&quot;你该吃药了!&quot;;</div><div class="line">    //设置时区 根据当前手机时区设置的</div><div class="line">    local.timeZone = [NSTimeZone defaultTimeZone];</div><div class="line">    //设置重复的间隔</div><div class="line">    local.repeatInterval = kCFCalendarUnitDay;</div><div class="line">    //设置推送声音(本地需要有相对应的声音,该声音需要少于三十秒)</div><div class="line">    //local.soundName = UILocalNotificationDefaultSoundName;</div><div class="line">    local.soundName = @&quot;音效.caf&quot;;</div><div class="line">    local.userInfo = @&#123;@&quot;name&quot;:@&quot;王花花&quot;&#125;;</div><div class="line">    local.applicationIconBadgeNumber = 9999;</div><div class="line">    //加入到系统级推送</div><div class="line">    [[UIApplication sharedApplication] scheduleLocalNotification:local];</div></pre></td></tr></table></figure>
+<p>清除本地推送</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//如何取消推送</div><div class="line">//获取目前已经加入本地消息推送的有几个.</div><div class="line">NSArray *array = [[UIApplication sharedApplication]scheduledLocalNotifications];</div><div class="line">//遍历推送内容</div><div class="line">for (UILocalNotification *notification in array) &#123;</div><div class="line">    NSLog(@&quot;%@&quot;,notification.userInfo);</div><div class="line">    //如果遇到我们想要取消的本地推送</div><div class="line">    [[UIApplication sharedApplication] cancelLocalNotification:notification];</div><div class="line">&#125;</div><div class="line">//如果全部取消</div><div class="line">//[[UIApplication sharedApplication]cancelAllLocalNotifications];</div></pre></td></tr></table></figure>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2016/03/03/244/" data-id="cj8x0oabo000cs7rdeh5t3tyg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2016/03/03/244/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-检查设备是否支持后台处理" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/03/03/244/">iOS推送通知</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/03/03/244/">
+            <time datetime="2016-03-03T07:06:05.000Z" itemprop="datePublished">2016-03-03</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Objective-C/">Objective-C</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/iOS/">iOS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>iOS 于2008年问世时，只能有一个第三方应用处于活动状态（位于前台）。这意味着应用需要执行的任务都必须在应用位于前台时完成，佛泽任务将暂停并在应用下次启动时接着执行。iOS4退出后，向第三方应用提供了后台功能。鉴于 iOS 设备的系统资源有限，且节省电量至关重要，对后台处理有些限制，那就是不能干扰前台引用，也不能消耗太多电量。通过妥善的利用后台功能，引用能做很多事情。</p>
+<p>iOS 支持两种后台任务处理方式</p>
+<ul>
+<li>第一种方式是在后台完成耗时操作。这种方式适合用于完成大量数据下载或更新等任务，他们需要的时间超过了用户与应用交互的时间。</li>
+<li>第二种方式是执行 iOS 润徐的后台活动，如播放音乐、蓝牙交互、监视 GPS 数据以及获取位置变化、维持永久网络连接让 VoIP应用能够正常运行。</li>
+</ul>
+<h2 id="检查设备是否支持后台处理"><a href="#检查设备是否支持后台处理" class="headerlink" title="检查设备是否支持后台处理"></a>检查设备是否支持后台处理</h2><p>能够运行 iOS6或者 iOS5的设备都支持在后台执行活动，这在 Apple 文档中称之为多任务，如果应用需要支持 iOS4就需要注意了，因为有些设备不支持多任务。编写使用多任务功能的代码，需要检测设备是否支持多任务。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2016/03/03/244/" data-id="cj8x0oaha004gs7rdzg9q6za0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2016/03/03/244/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-简介" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/03/01/cj8x0oahj004qs7rd2ekqbfxl/">iOS多线程.01 简介</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/03/01/cj8x0oahj004qs7rd2ekqbfxl/">
+            <time datetime="2016-03-01T04:11:20.000Z" itemprop="datePublished">2016-03-01</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/iOS/">iOS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>我们为何需要多线程呢？多线程其实是为了实现并发执行，而且线程是并发执行多个代码路径的多种技术之中比较轻量级的一种（对应较重的实现是多进程）。</p>
+<p>在单核 CPU 时代，支持多线程的操作系统会通过分配 CPU 计算时间，来实现软件层面的多线程。创建线程，线程间切换都是有成本开销的。但由于多线程可以避免阻塞所造成的 CPU 计算时间浪费，所以多线程所带来的开销成本总体看来是值得的。任务一般都可以被拆分成多个子任务，如果一个子任务发生了阻塞，计算时间就可以分配给其他子任务。这样就提高了 CPU 的利用率。</p>
+<p>在多核 CPU 时代，就更好理解了。由于硬件上就支持多线程技术，就可以让多个线程真正同时地运行。如果任务能够被拆分，各个子任务就能并行地在 CPU 上运行，这就能显著加快运行速度。</p>
+<p>总结说来，多线程的目的是，通过并发执行提高 CPU 的使用效率，进而提供程序运行效率。</p>
+<p>OS X 和 iOS 是多线程操作系统，它们追随 UNIX 系统使用了 POSIX 线程模型。OS X 和 iOS 都提供了一套底层的 C 语言 POSIX 线程 API 来创建和管理线程。但实际应用开发中，除非需要跨平台，我们并不常直接使用 POSIX 线程 API，而是使用系统或语言提供的其他一些更为简单的方案。</p>
+<h1 id="多线程基本概念"><a href="#多线程基本概念" class="headerlink" title="多线程基本概念"></a>多线程基本概念</h1><p>在了解多线程之前，我们应该先搞懂几个概念，首先了解几个基本概念</p>
+<ol>
+<li>进程</li>
+<li>线程</li>
+<li>多线程</li>
+<li>主线程</li>
+</ol>
+<h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><p>进程（process），是计算机中已运行程序的实体。在面向线程设计的系统中，进程是线程的容器。程序本身只是指令、数据以及其组织形式的描述，进程才是程序（那些指令和数据）的真正运行实例。若干进程有可能与同一个程序相关系，而且每个进程皆可以同步或者异步的方法独立运行。现代计算机系统刻在统一时间内以进程的形式将多个程序加载到存储器中，并且借由时间共享（分时复用），在一个处理器上表选出同时运行的感觉。同样的，使用多线程技术（多线程即每一个线程都代表一个进程内的一个独立执行上下文）的操作系统或计算机架构，同样程序的平行线程，可在多CPU主机或网络上真正同时运行（在不同的CPU上）</p>
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>线程（英语：thread）是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p>
+<h2 id="多线程（软件多线程）"><a href="#多线程（软件多线程）" class="headerlink" title="多线程（软件多线程）"></a>多线程（软件多线程）</h2><p>多线程（英语：multithreading），是指从软件或者硬件上实现多个线程并发执行的技术。具有多线程能力的计算机因有硬件支持而能够在同一时间执行多于一个执行绪，进而提升整体处理性能。</p>
+<p>软件多线程。即便处理器只能运行一个线程，操作系统也可以通过快速的在不同线程之间进行切换，由于时间间隔很小，来给用户造成一种多个线程同时运行的假象。这样的程序运行机制被称为软件多线程。</p>
+<h2 id="主线程"><a href="#主线程" class="headerlink" title="主线程"></a>主线程</h2><p>在一个 iOS 程序运行后，默认会开启1条线程。称之为主线程或者是 UI 线程。</p>
+<p>主线程是进程的控制流或者执行线程在多线程程序中，主线可以创建一个或多个对等线程（peer thread），从这个时间点开始，这些线程就开始兵法执行，主线程和对等线程的区别仅在于主线程总是进程中第一个运行的线程。从某种程度上看，线程可以看做是轻量级的进程（lightweight process）。</p>
+<p>每个程序都拥有独立的线程上下文（thread context），线程ID（Thread ID，TID），程序计数器（PC），线程栈（stack），一组寄存器（register）和条件码，其中内核正式通过线程ID（TID）来识别线程，进行线程调度的。</p>
+<p>我们要知道，一条线程只能处理一个任务，如果将大规模运算放到主线程之中，就会造成 UI 界面卡顿的现象。</p>
+<h1 id="线程进程的主要区别"><a href="#线程进程的主要区别" class="headerlink" title="线程进程的主要区别"></a>线程进程的主要区别</h1><p>线程和进程的主要区别在于子进程和父进程有不同的代码和数据空间，而多个线程则共享数据空间，每个线程有自己的执行堆栈和程序计数器为其知心上下文，多线程主要是为了节省CPU时间，发挥利用，根据具体情况而定。线程的运行需要使用计算机的内存资源和CPU。<br>​    </p>
+<h2 id="多线程的优缺点"><a href="#多线程的优缺点" class="headerlink" title="多线程的优缺点"></a>多线程的优缺点</h2><h3 id="多线程的优点"><a href="#多线程的优点" class="headerlink" title="多线程的优点"></a>多线程的优点</h3><ol>
+<li>能适当提高程序的执行效率</li>
+<li>能适当提高资源利用率（CPU、内存利用率）</li>
+</ol>
+<h3 id="多线程的缺点"><a href="#多线程的缺点" class="headerlink" title="多线程的缺点"></a>多线程的缺点</h3><ol>
+<li>开启线程需要占用一定的内存空间（默认情况下，主线程占用1M，子线程占用512KB），如果开启大量的线程，会占用大量的内存空间，降低程序的性能</li>
+<li>线程越多，CPU在调度线程上的开销就越大</li>
+<li>程序设计更加复杂：比如线程之间的通信、多线程的数据共享</li>
+</ol>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>[1] 维基百科</p>
+<p>[3] <a href="http://www.infoq.com/cn/articles/os-x-ios-multithread-technology" target="_blank" rel="external">OS X 和 iOS 中的多线程技术 infoq</a></p>
+<p>[2] <a href="http://blog.chinaunix.net/uid-20528014-id-333508.html" target="_blank" rel="external">fireaxe - Pthread编程基础 </a></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2016/03/01/cj8x0oahj004qs7rd2ekqbfxl/" data-id="cj8x0oahj004qs7rd2ekqbfxl" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2016/03/01/cj8x0oahj004qs7rd2ekqbfxl/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-Block学习" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/02/17/231/">Objective-C Block的基本使用</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/02/17/231/">
+            <time datetime="2016-02-17T08:05:19.000Z" itemprop="datePublished">2016-02-17</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/ios/">ios</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/iOS/">iOS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="一、Block-的定义"><a href="#一、Block-的定义" class="headerlink" title="一、Block 的定义"></a>一、Block 的定义</h2><p>定义和使用Block，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">	[super viewDidLoad];</div><div class="line">  </div><div class="line">	//（1）定义无参无返回值的Block</div><div class="line">	void (^printBlock)() = ^()&#123;</div><div class="line">		printf(&quot;no number&quot;);</div><div class="line">	&#125;;</div><div class="line">  </div><div class="line">	printBlock();</div><div class="line">	printBlock(9);</div><div class="line">  </div><div class="line">	int mutiplier = 7;</div><div class="line">	//（3）定义名为myBlock的代码块，返回值类型为int</div><div class="line">	int (^myBlock)(int) = ^(int num)&#123;</div><div class="line">		return num*mutiplier;</div><div class="line">	&#125;</div><div class="line">	//使用定义的myBlock</div><div class="line">	int newMutiplier = myBlock(3);</div><div class="line">		printf(&quot;newMutiplier is %d&quot;,myBlock(3));</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	//定义在-viewDidLoad方法外部</div><div class="line">	//（2）定义一个有参数，没有返回值的Block</div><div class="line">	void (^printNumBlock)(int) = ^(int num)&#123;</div><div class="line">		printf(&quot;int number is %d&quot;,num);</div><div class="line">	&#125;;</div></pre></td></tr></table></figure>
+<p>定义Block变量，就相当于定义了一个函数。但是区别也很明显，因为函数肯定是在-viewDidLoad方法外面定义，而Block变量定义在了viewDidLoad方法内部。当然，我们也可以把Block定义在-viewDidLoad方法外部，例如上面的代码块printNumBlock的定义，就在-viewDidLoad外面。</p>
+<p>再来看看上面代码运行的顺序问题，以第（3）个myBlock距离来说，在定义的地方，并不会执行Block{}内部的代码，而在myBlock(3)调用之后才会执行其中的代码，这跟函数的理解其实差不多，就是只要在调用Block（函数）的时候才会执行Block体内（函数体内）的代码。所以上面的简单代码示例，我可以作出如下的结论，</p>
+<ol>
+<li>在类中，定义一个Block变量，就像定义一个函数；</li>
+<li>Block可以定义在方法内部，也可以定义在方法外部；</li>
+<li>只有调用Block时候，才会执行其{}体内的代码；</li>
+</ol>
+<p>（PS：关于第（2）条，定义在方法外部的Block，其实就是文件级别的全局变量）</p>
+<p>那么在类中定义一个Block，特别是在-viewDidLoad方法体内定义一个Block到底有什么意义呢？我表示这时候只把它当做私有函数就可以了。我之前说过，Block其实就相当于代理，那么这时候我该怎样将其与代理类比以了解呢。这时候我可以这样说：本类中的Block就相当于类自己服从某个协议，然后让自己代理自己去做某个事情。很拗口吧？看看下面的代码，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//定义一个协议</div><div class="line">@protocol ViewControllerDelegate</div><div class="line">- (void)selfDelegateMethod;</div><div class="line">@end</div><div class="line">//本类实现这个协议ViewControllerDelegate</div><div class="line">@interface ViewController ()</div><div class="line">@property (nonatomic, assign) id delegate;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>接着在-viewDidLoad中的代码如下，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">	[super viewDidLoad];</div><div class="line">	// Do any additional setup after loading the view from its nib.</div><div class="line">	self.delegate = self;</div><div class="line">	if (self.delegate &amp;&amp; [self.delegate respondsToSelector:@selector(selfDelegateMethod)] &#123;</div><div class="line">		[self.delegate selfDelegateMethod];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">        </div><div class="line">#pragma mark - ViewControllerDelegate method</div><div class="line">//实现协议中的方法</div><div class="line">- (void)selfDelegateMethod&#123;</div><div class="line">	NSLog(@&quot;自己委托自己实现的方法&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>看出这种写法的奇葩地方了吗？自己委托自己去实现某个方法，而不是委托别的类去实现某个方法。本类中定义的一个Block其实就是闲的蛋疼，委托自己去字做某件事情，实际的意义不大，所以你很少看见别人的代码直接在类中定义Block然后使用的，Block很多的用处是跨越两个类来使用的，比如作为property属性或者作为方法的参数，这样就能跨越两个类了。</p>
+<h2 id="二、-block关键字的使用"><a href="#二、-block关键字的使用" class="headerlink" title="二、__block关键字的使用"></a>二、__block关键字的使用</h2><p>在Block的{}体内，是不可以对外面的变量进行更改的，比如下面的语句，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">	//将Block定义在方法内部</div><div class="line">	int x = 100;</div><div class="line">	void (^sumXAndYBlock)(int) = ^(int y)&#123;</div><div class="line">		x = x+y;</div><div class="line">		printf(&quot;new x value is %d&quot;,x);</div><div class="line">	&#125;;</div><div class="line">	sumXAndYBlock(50);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段代码有什么问题呢，Xcode会提示x变量错误信息：Variable is not assigning (missing__block type)，这时候给int x = 100;语句前面加上__block关键字即可，如下，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">__block int x = 100;</div></pre></td></tr></table></figure>
+<p>这样在Block的{}体内，就可以修改外部变量了。</p>
+<h2 id="三、Block作为Property属性实现页面之间传值"><a href="#三、Block作为Property属性实现页面之间传值" class="headerlink" title="三、Block作为Property属性实现页面之间传值"></a>三、Block作为Property属性实现页面之间传值</h2><p>需求：在ViewController中，点击Button，push到下一个页面NextViewController，在NextViewController的输入框TextField中输入一串字符，返回的时候，在ViewController的Label上面显示文字内容，</p>
+<p><strong>（1）第一种方法：首先看看通过“协议/代理”是怎么实现两个页面之间传值的吧，</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//NextViewController是push进入的第二个页面</div><div class="line">//NextViewController.h 文件</div><div class="line">//定义一个协议，前一个页面ViewController要服从该协议，并且实现协议中的方法</div><div class="line">@protocol NextViewControllerDelegate</div><div class="line">	- (void)passTextValue:(NSString *)tfText;</div><div class="line">@end</div><div class="line">  </div><div class="line">@interface NextViewController : UIViewController</div><div class="line">	@property (nonatomic, assign) id delegate;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>//NextViewController.m 文件<br>//点击Button返回前一个ViewController页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (IBAction)popBtnClicked:(id)sender &#123;</div><div class="line">	if (self.delegate &amp;&amp; [self.delegate respondsToSelector:@selector(passTextValue:)]) &#123;</div><div class="line">		//self.inputTF是该页面中的TextField输入框</div><div class="line">    	[self.delegate passTextValue:self.inputTF.text];</div><div class="line">	&#125;</div><div class="line">	[self.navigationController popViewControllerAnimated:YES];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接下来我们在看看ViewController文件中的内容，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">//ViewController.m 文件</div><div class="line">@interface ViewController ()</div><div class="line">@property (strong, nonatomic) IBOutlet UILabel *nextVCInfoLabel;</div><div class="line">@end</div><div class="line">//点击Button进入下一个NextViewController页面</div><div class="line">- (IBAction)btnClicked:(id)sender</div><div class="line">&#123;</div><div class="line">NextViewController *nextVC = [[NextViewController alloc] initWithNibName:@&quot;NextViewController&quot; bundle:nil];</div><div class="line">nextVC.delegate = self;//设置代理</div><div class="line">[self.navigationController pushViewController:nextVC animated:YES];</div><div class="line">&#125;</div><div class="line">//实现协议NextViewControllerDelegate中的方法</div><div class="line">#pragma mark - NextViewControllerDelegate method</div><div class="line">- (void)passTextValue:(NSString *)tfText</div><div class="line">&#123;</div><div class="line">//self.nextVCInfoLabel是显示NextViewController传递过来的字符串Label对象</div><div class="line">self.nextVCInfoLabel.text = tfText;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这是通过“协议/代理”来实现的两个页面之间传值的方式。<br><strong>（2）第二种方法：使用Block作为property，实现两个页面之间传值，</strong><br>先看看NextViewController文件中的内容，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//NextViewController.h 文件</div><div class="line">@interface NextViewController : UIViewController</div><div class="line">	@property (nonatomic, copy) void (^NextViewControllerBlock)(NSString *tfText);</div><div class="line">@end</div><div class="line">//NextViewContorller.m 文件</div><div class="line">- (IBAction)popBtnClicked:(id)sender &#123;</div><div class="line">	if (self.NextViewControllerBlock) &#123;</div><div class="line">		self.NextViewControllerBlock(self.inputTF.text);</div><div class="line">	&#125;</div><div class="line">	[self.navigationController popViewControllerAnimated:YES];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>再来看看ViewController文件中的内容，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (IBAction)btnClicked:(id)sender&#123;</div><div class="line">	NextViewController *nextVC = [[NextViewController alloc] initWithNibName:@&quot;NextViewController&quot; bundle:nil];</div><div class="line">	nextVC.NextViewControllerBlock = ^(NSString *tfText)&#123;</div><div class="line">	[self resetLabel:tfText];</div><div class="line">&#125;;</div><div class="line">	[self.navigationController pushViewController:nextVC animated:YES];</div><div class="line">&#125;</div><div class="line">#pragma mark - NextViewControllerBlock method</div><div class="line">- (void)resetLabel:(NSString *)textStr &#123;</div><div class="line">	self.nextVCInfoLabel.text = textStr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>好了就这么多代码，可以使用Block来实现两个页面之间传值的目的，实际上就是取代了Delegate的功能。</p>
+<p>另外，博客中的代码Sample Code可以再Github下载，如果因为Github被墙了，可以在终端使用git clone + 完整链接，即可克隆项目到本地。</p>
+<p>Github中的代码，可以开启两种调试模式，你需要在项目的配置文件BlockSamp-Prefix.pch中注释或者解注释下面的代码.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define Debug_BlcokPassValueEnable</div></pre></td></tr></table></figure>
+<p>即可开启两种调试的方式，如果注释了上面的语句就是使用Delegate进行调试；否则使用Block进行调试。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2016/02/17/231/" data-id="cj8x0oaat0001s7rdwvhs2tf8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2016/02/17/231/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post- CGFloat、CGPoint、CGSize和CGRect" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/01/31/2/">CGFloat、CGPoint、CGSize和CGRect</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/01/31/2/">
+            <time datetime="2016-01-30T16:27:31.000Z" itemprop="datePublished">2016-01-31</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/iOS/">iOS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/iOS/">iOS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>CGFloat、CGPoint、CGSize和CGRect主要是用来描述UI控件的几何属性的基本类型。</p>
+<ul>
+<li>CGFloat: 浮点值的基本类型</li>
+<li>CGPoint: 表示一个二维坐标系中的点</li>
+<li>CGSize: 表示一个矩形的宽度和高度</li>
+<li>CGRect: 表示一个矩形的位置和大小</li>
+</ul>
+<h2 id="CGFloat"><a href="#CGFloat" class="headerlink" title="CGFloat"></a>CGFloat</h2><p>CGFloat是这四种类型中最基本的类型，这是一个浮点型的数据，他就是一个数值，下面三种类型都需要使用该数值来进行赋值，当我们使用CMD键进入CGBase.h文件后，可以清楚的看到关于CGFloat的定义，映入眼帘的是一个别名定义：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> CGFLOAT_TYPE CGFloat;</div></pre></td></tr></table></figure>
+<p>当我们CMD点击CGFLOAT_TYPE的时候，我们可以跳转到宏定义的代码区域，其实就在其上面</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">if</span> defined(__LP64__) &amp;amp;&amp;amp; __LP64__</span></div><div class="line"><span class="meta"># <span class="meta-keyword">define</span> CGFLOAT_TYPE double</span></div><div class="line"><span class="meta"># <span class="meta-keyword">define</span> CGFLOAT_IS_DOUBLE 1</span></div><div class="line"><span class="meta"># <span class="meta-keyword">define</span> CGFLOAT_MIN DBL_MIN</span></div><div class="line"><span class="meta"># <span class="meta-keyword">define</span> CGFLOAT_MAX DBL_MAX</span></div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line"><span class="meta"># <span class="meta-keyword">define</span> CGFLOAT_TYPE float</span></div><div class="line"><span class="meta"># <span class="meta-keyword">define</span> CGFLOAT_IS_DOUBLE 0</span></div><div class="line"><span class="meta"># <span class="meta-keyword">define</span> CGFLOAT_MIN FLT_MIN</span></div><div class="line"><span class="meta"># <span class="meta-keyword">define</span> CGFLOAT_MAX FLT_MAX</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
+<p>我们可以清晰的看到这就是一段宏定义，#if defined(<strong>LP64</strong>) &amp;&amp; <strong>LP64</strong>这一段代码主要使用来判断操作系统是64位还是32位，如果是64位那么CGFloat就是double类型，如果不是那边是32位操作系统，则会被系统定义为float类型,接下来的三种类型都是基于CGFloat的结构体。</p>
+<h2 id="CGPoint"><a href="#CGPoint" class="headerlink" title="CGPoint"></a>CGPoint</h2><p>CGPoint用于表示二维坐标系中的某一个点，在IOS中以左上角（0，0）为起始坐标。<br>CMD进入CGGeometry.h中便可以直接查看其类型的定义如下（CGSize、CGRect都在此文件中）：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CGPoint</span> &#123;</span></div><div class="line">    CGFloat x;</div><div class="line">    CGFloat y;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">CGPoint</span> <span class="title">CGPoint</span>;</span></div></pre></td></tr></table></figure>
+<h2 id="CGSize"><a href="#CGSize" class="headerlink" title="CGSize"></a>CGSize</h2><p>CGSize主要用于描述UI控件的宽与高</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CGSize</span> &#123;</span></div><div class="line">    CGFloat width;</div><div class="line">    CGFloat height;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">CGSize</span> <span class="title">CGSize</span>;</span></div></pre></td></tr></table></figure>
+<h2 id="CGRect"><a href="#CGRect" class="headerlink" title="CGRect"></a>CGRect</h2><p>CGRect同样也是一个结构体，通过上面的了解，我们知道了原来CGRect是由CGSize和CGPoint组成，这样一来便可以确定一个UI空间的大小与位置。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CGRect</span> &#123;</span></div><div class="line">    CGPoint origin;</div><div class="line">    CGSize size;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">CGRect</span> <span class="title">CGRect</span>;</span></div></pre></td></tr></table></figure>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2016/01/31/2/" data-id="cj8x0oaae0000s7rd48og51j8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2016/01/31/2/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-懒加载与模型转换" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/01/30/219/">懒加载与模型转换</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/01/30/219/">
+            <time datetime="2016-01-30T15:48:32.000Z" itemprop="datePublished">2016-01-30</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Objective-C/">Objective-C</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/iOS/">iOS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>所谓的懒加载其实就是重写getter方法，以实现实例化类的同时自动加载数据，简化代码的一个作用,代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//这是一个实例</div><div class="line">-(NSArray*)question&#123;</div><div class="line">if (!_question) &#123;</div><div class="line">//判断是否为空</div><div class="line">_question = [GZModelName questionList];</div><div class="line">&#125;</div><div class="line">return _question;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接下来便是模型转化,因为使用点语法写起来的方法也非常简单，只需要重新定义构造方法即可,其中用到的plist文件如下图：</p>
+<p><a href="http://www.aircrayon.xyz/wp-content/uploads/2016/01/1.png" target="_blank" rel="external"><img src="http://www.aircrayon.xyz/wp-content/uploads/2016/01/1-300x97.png" alt="1"></a></p>
+<p>.h文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@interface GZQuestion : NSObject</div><div class="line">@property (nonatomic,copy) NSString *answer;</div><div class="line">@property (nonatomic,copy) NSString *icon;</div><div class="line">@property (nonatomic,copy) NSString *title;</div><div class="line">@property (nonatomic,strong) NSArray *options;</div><div class="line">-(instancetype)initWithDic:(NSDictionary *)dic;</div><div class="line">+(instancetype)questionWithDic:(NSDictionary *)dic;</div><div class="line">+(NSArray*)questionList;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>.m文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">-(instancetype)initWithDic:(NSDictionary *)dic&#123;</div><div class="line">if (self = [super init]) &#123;</div><div class="line">//KVC 直接从字典中读取对应的值，需要注意的是，定义的属性名称，要与字典的key值相对应，否则会崩溃</div><div class="line">[self setValuesForKeysWithDictionary:dic];</div><div class="line">&#125;</div><div class="line">return self;</div><div class="line">&#125;</div><div class="line">+(instancetype)questionWithDic:(NSDictionary *)dic&#123;</div><div class="line">return [[self alloc]initWithDic:dic];</div><div class="line">&#125;</div><div class="line">+(NSArray *)questionList&#123;</div><div class="line">//加载plist</div><div class="line">NSString *path = [[NSBundle mainBundle] pathForResource:@&quot;questions&quot; ofType:@&quot;plist&quot;];</div><div class="line">NSArray *dicArray = [NSArray arrayWithContentsOfFile:path];</div><div class="line">//字典转模型</div><div class="line">NSMutableArray *tempArray = [NSMutableArray array];</div><div class="line">for (NSDictionary *dic in dicArray) &#123;</div><div class="line">GZQuestion *question = [GZQuestion questionWithDic:dic];</div><div class="line">[tempArray addObject:question];</div><div class="line">&#125;</div><div class="line">return tempArray;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2016/01/30/219/" data-id="cj8x0oaga003ps7rd5jlg2o2i" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2016/01/30/219/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-OC简单数组排序" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/01/05/3/">Objective-C 简单的数组排序</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/01/05/3/">
+            <time datetime="2016-01-05T07:53:07.000Z" itemprop="datePublished">2016-01-05</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/iOS/">iOS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/iOS/">iOS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">NSMutableArray *array  = [NSMutableArray arrayWithObjects:@"8123",@"456",@"378", nil];</div><div class="line"></div><div class="line">NSComparator cmp = ^(id obj,id obj1)</div><div class="line">&#123;</div><div class="line">	return [obj compare:obj1];</div><div class="line">&#125;;</div><div class="line"></div><div class="line">[array sortUsingComparator:cmp];</div><div class="line"></div><div class="line">NSLog(@"%@",array);&lt;/pre&gt;</div></pre></td></tr></table></figure>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2016/01/05/3/" data-id="cj8x0oac7000ps7rduqiafga8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2016/01/05/3/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-Untitled" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/12/10/1/">iOS多线程</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/12/10/1/">
+            <time datetime="2015-12-10T08:04:12.000Z" itemprop="datePublished">2015-12-10</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/iOS/">iOS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Objc-多线程/">Objc,多线程</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>NSObject 提供了以 performSelector 为前缀的一系列方法。它们可以让用户在制定的线程中、或者立即、延迟执行某个方法调用个。这个方法给用户实现多线程编程最简单的方法。</p>
+<p>在当前线程中执行方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (void)performSelector:(SEL)aSelector withObject:(id)anArgument afterDelay:(NSTimeInterval)delay</div><div class="line"></div><div class="line">- (void)performSelector:(SEL)aSelector withObject:(id)anArgument afterDelay: (NSTimeInterval)delay inModes:(NSArray *)modes</div></pre></td></tr></table></figure>
+<p>在指定线程中执行方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (void)performSelector:(SEL)aSelector onThread:(NSThread *)thread </div><div class="line">withObject:(id)arg waitUntilDone:(BOOL)wait</div><div class="line"></div><div class="line">- (void)performSelector:(SEL)aSelector onThread:(NSThread *)thread withObject:</div><div class="line">(id)arg waitUntilDone:(BOOL)wait modes:(NSArray *)array</div></pre></td></tr></table></figure>
+<p>在主线程中执行方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (void)performSelectorOnMainThread: (SEL)selector withObject:(id)argument </div><div class="line">waitUntilDone:(BOOL)wait</div><div class="line"></div><div class="line">- (void)performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg </div><div class="line">waitUntilDone:(BOOL)wait modes:(NSArray *)array</div></pre></td></tr></table></figure>
+<p>在后台线程中执行方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)performSelectorInBackground:(SEL)aSelector withObject:(id)arg</div></pre></td></tr></table></figure>
+<p>这一系列方法简单易用，但只提供了有限的几个选择：指定执行的方法（但传入方法的参数数量有限制）；指定是在当前线程，还是在主线程，还是在后台线程执行；指定是否需要阻塞当前线程等待结果。</p>
+<p>例如，以下代码使得方法 foo: 在一个新的后台线程执行，并传入了 object 参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SEL selector ＝ @selector(foo:);</div><div class="line">[self performSelectorInBackground:selector withObject:object];</div></pre></td></tr></table></figure>
+<p>以下代码使得 updateUI 方法在主线程内得到执行，并且当前线程会被阻塞，直到主线程执行完该函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self performSelectorOnMainThread:@selector(updateUI) withObject:nil waitUntilDone:YES];</div></pre></td></tr></table></figure>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2015/12/10/1/" data-id="cj8x0oadv001ws7rdqhkr2p36" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2015/12/10/1/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <nav id="page-nav">
+        <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+    </nav>
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/16/cj8x0oad8001gs7rd8oat1bjy/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/16/cj8x0oad8001gs7rd8oat1bjy/" class="title">PHP页面静态化</a></p>
+                            <p class="item-date"><time datetime="2017-10-16T11:17:47.000Z" itemprop="datePublished">2017-10-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/15/cj8x0oac2000is7rdv3xm6qzy/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/15/cj8x0oac2000is7rdv3xm6qzy/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2017-10-15T11:24:45.000Z" itemprop="datePublished">2017-10-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/13/cj8x0oaf70031s7rd1udfh67b/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/13/cj8x0oaf70031s7rd1udfh67b/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2017-10-13T05:41:58.000Z" itemprop="datePublished">2017-10-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/13/1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/MySQL/">MySQL</a></p>
+                            <p class="item-title"><a href="/2017/10/13/1/" class="title">MySQL体系结构</a></p>
+                            <p class="item-date"><time datetime="2017-10-12T16:00:00.000Z" itemprop="datePublished">2017-10-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/10/2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/MySQL/">MySQL</a></p>
+                            <p class="item-title"><a href="/2017/10/10/2/" class="title">服务器系统对MySQL性能带来的影响</a></p>
+                            <p class="item-date"><time datetime="2017-10-09T16:00:00.000Z" itemprop="datePublished">2017-10-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Objective-C/">Objective-C</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP设计模式/">PHP设计模式</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ios/">ios</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C-算法/">C/C++,算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Closures/">Closures</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/INSERT/">INSERT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Centos/">Linux,Centos</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-GNU/">Linux,GNU</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL-设计规范/">MySQL 设计规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objc-多线程/">Objc,多线程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP设计模式/">PHP设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wechat-pay-php-php7-php-input/">wechat pay, php, php7, php://input</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存管理/">内存管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程-PHP7-2-编译安装-GCC/">多线程,PHP7.2,编译安装,GCC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/色彩/">色彩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C-C-算法/" style="font-size: 10px;">C/C++,算法</a> <a href="/tags/Closures/" style="font-size: 10px;">Closures</a> <a href="/tags/INSERT/" style="font-size: 10px;">INSERT</a> <a href="/tags/Linux-Centos/" style="font-size: 12px;">Linux,Centos</a> <a href="/tags/Linux-GNU/" style="font-size: 10px;">Linux,GNU</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/MySQL-设计规范/" style="font-size: 10px;">MySQL 设计规范</a> <a href="/tags/Objc-多线程/" style="font-size: 10px;">Objc,多线程</a> <a href="/tags/PHP/" style="font-size: 16px;">PHP</a> <a href="/tags/PHP设计模式/" style="font-size: 10px;">PHP设计模式</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/wechat-pay-php-php7-php-input/" style="font-size: 10px;">wechat pay, php, php7, php://input</a> <a href="/tags/内存管理/" style="font-size: 10px;">内存管理</a> <a href="/tags/多线程-PHP7-2-编译安装-GCC/" style="font-size: 10px;">多线程,PHP7.2,编译安装,GCC</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/色彩/" style="font-size: 10px;">色彩</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 18px;">随笔</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Maksim<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1828998# enter youyan uid here"></script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

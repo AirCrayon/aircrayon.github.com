@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>内存管理 Form《Objectivce-C编程全解》&amp;《Objectivce-C编程》 | Maksim&#39;s Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Xcode4.2之后可以使用自动引用计数（ARC,Automatic Reference Counting）的管理方式进行说明，ARC 是 Mac OS X 10.7和 iOS5引入的新特性，也是苹果公司推荐使用的内存管理方式。弃用 ARC 后，编译器会在适当的地方自动加入 retaion、release、autorelease 等语句，来简化 Objective-C 编程在内存管理方面的工作量">
+<meta name="keywords" content="内存管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内存管理 Form《Objectivce-C编程全解》&amp;《Objectivce-C编程》">
+<meta property="og:url" content="http://www.maksim.website/2016/05/06/cj8x0oags003ts7rdm3br1az2/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="Xcode4.2之后可以使用自动引用计数（ARC,Automatic Reference Counting）的管理方式进行说明，ARC 是 Mac OS X 10.7和 iOS5引入的新特性，也是苹果公司推荐使用的内存管理方式。弃用 ARC 后，编译器会在适当的地方自动加入 retaion、release、autorelease 等语句，来简化 Objective-C 编程在内存管理方面的工作量">
+<meta property="og:image" content="http://i2.piimg.com/1aa5fe7fdc3d7b06.png">
+<meta property="og:updated_time" content="2017-07-14T08:44:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="内存管理 Form《Objectivce-C编程全解》&amp;《Objectivce-C编程》">
+<meta name="twitter:description" content="Xcode4.2之后可以使用自动引用计数（ARC,Automatic Reference Counting）的管理方式进行说明，ARC 是 Mac OS X 10.7和 iOS5引入的新特性，也是苹果公司推荐使用的内存管理方式。弃用 ARC 后，编译器会在适当的地方自动加入 retaion、release、autorelease 等语句，来简化 Objective-C 编程在内存管理方面的工作量">
+<meta name="twitter:image" content="http://i2.piimg.com/1aa5fe7fdc3d7b06.png">
+    
+
+    
+        <link rel="alternate" href="/" title="Maksim&#39;s Website" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Maksim&#39;s Website</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Maksim</h2>
+            <h3 id="title">PHP Developer &amp; iOS Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>齐齐哈尔, China</span>
+            <a id="follow" target="_blank" href="https://github.com/aircrayon/">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                57
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                20
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/aircrayon" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-基于引用计数的内存管理" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            内存管理 Form《Objectivce-C编程全解》&amp;《Objectivce-C编程》
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/05/06/cj8x0oags003ts7rdm3br1az2/">
+            <time datetime="2016-05-06T04:31:00.000Z" itemprop="datePublished">2016-05-06</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/ios/">ios</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/内存管理/">内存管理</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <blockquote>
+<p>Xcode4.2之后可以使用自动引用计数（ARC,Automatic Reference Counting）的管理方式进行说明，ARC 是 Mac OS X 10.7和 iOS5引入的新特性，也是苹果公司推荐使用的内存管理方式。弃用 ARC 后，编译器会在适当的地方自动加入 retaion、release、autorelease 等语句，来简化 Objective-C 编程在内存管理方面的工作量</p>
+</blockquote>
+<h1 id="动态内存管理"><a href="#动态内存管理" class="headerlink" title="动态内存管理"></a>动态内存管理</h1><h2 id="内存管理的必要性"><a href="#内存管理的必要性" class="headerlink" title="内存管理的必要性"></a>内存管理的必要性</h2><p>C 语言中需要手动利用 malloc()和 free()对内存进行管理。当程序运行结束时，操作系统会释放掉为其分配的内存。如果是很小、运行时间短的程序，就算是内存没有释放也没有问题，程序结束时操作系统会进行自动释放。而对于长时间运行的程序，则需要程序员释放不再使用的内存，否则程序就会崩溃。</p>
+<p>如果程序没能妥善管理内存，运行过程中就不但不能释放不再使用的内存，而且还会不停的分配内容村，这样所占用的内存就会越来越多，程序速度也会越来越慢，最后甚至会出现内存耗尽而崩溃。</p>
+<p>就好像滴水一样，程序未能释放已不使用的内存叫做<strong>内存泄漏</strong>(memory leak)。C 语言中要特别注意内存的动态分配和释放，以防内存泄漏。有效地管理内存，会提高程序的执行效率。</p>
+<p>如果访问了以被释放的内存，则会造成数据错误，严重时甚至会导致程序异常终止。在指针指向已被释放或回收的情况下，该指针就称之为<strong>悬垂指针</strong>（danling pointer）或野指针。继续使用这种指针会造成程序崩溃。</p>
+<p>Objective—C 会通过向对象发送 alloc 消息来生成实例对象，alloc 的作用就是分配内存。alloc 方法的返回值是 id 类型，我们之前介绍过 id 其实就是指针类型，而其指向的就是为实例对象分配的内存。生成的实例对象用完之后如果不被释放的话，就会发生内存泄漏。另一方面，如果给已经被释放了的实例对象发送消息，运气好的话会得到警告，告诉你已被释放的对象发送了消息，运气不好的话则会程序错误甚至异常终止，所以 Objective-C 的程序一定要注意内存管理。</p>
+<p>在面向对象的语言中，对象是程序的核心。而对象也有生命周期，既有从头到尾一直存在的对象，也有声明起短暂的临时对象。对象之间也可能相互引用，构成结构复杂的数据结构。同面向过程的语言相比，面向对象语言的内存管理更复杂一些。</p>
+<h3 id="引用计数器、自动引用计数和自动垃圾回收"><a href="#引用计数器、自动引用计数和自动垃圾回收" class="headerlink" title="引用计数器、自动引用计数和自动垃圾回收"></a>引用计数器、自动引用计数和自动垃圾回收</h3><p>Coca 环境的 Objective-C 提供了一种动态内存管理方式，称之为<strong>引用计数</strong>（reference counter）。这种方式会跟踪每一个对象被引用的次数，当对象的引用次数为0的时候，系统会释放掉这个对象所占用的内存。这种内存管理方式也被称之为基于引用计数器的内存管理。</p>
+<p>比引用计数内存管理更高级一点的就是<strong>自动引用计数</strong>（Automatic Reference Counting，简写 ARC）的内存管理。自动引用计数使开发人员不需要考虑何时使用 retain、release、autorelease 来管理内存，它提供了自动评估对象生存期的工恩给你，在编译期间会自动加入何时的内存管理方法，为了同自动引用计数器进行区分，将引用计数内存管理方式称之为手动引用技术内存管理。</p>
+<p>除了 ARC 外，Objective-C2.0还引入了另外一种自动内存管理机制——<strong>垃圾回收</strong>，使用垃圾回收时，就不需要通过引用计数来刮泥创建的对象，系统会自动识别那些对象仍在使用，那些对象可以回收。</p>
+<p>程序员可以从手动引用计数管理、ARC 和垃圾回收中选择任意一种内存管理方式来进行开发，不过还是推荐大家使用 ARC 的方式来进行内存管理。</p>
+<table>
+<thead>
+<tr>
+<th>内存管理方式</th>
+<th style="text-align:center">难易度</th>
+<th style="text-align:center">Mac</th>
+<th style="text-align:center">iOS</th>
+<th style="text-align:center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>手动引用计数</td>
+<td style="text-align:center">较难</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>自动引用计数</td>
+<td style="text-align:center">容易</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">现在已经默认使用此方式</td>
+</tr>
+<tr>
+<td>垃圾回收</td>
+<td style="text-align:center">容易</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">不支持</td>
+</tr>
+</tbody>
+</table>
+<h3 id="兼容方法"><a href="#兼容方法" class="headerlink" title="兼容方法"></a>兼容方法</h3><p>在ARC的程序中,有一些类使用MRC实现的.</p>
+<p>如果希望某些指定的类还是使用MRC. 那么这个时候可以在</p>
+<pre><code>在targets的build phases选项下Compile Sources下选择要不使用arc编译的文件，双击它，输入 -fno-objc-arc 即可
+</code></pre><p>MRC工程中也可以使用ARC的类。方法如下：</p>
+<p>在targets的build phases选项下Compile Sources下选择要使用arc编译的文件，双击它，输入 -fobjc-arc 即可</p>
+<h2 id="手动引用计数内存管理"><a href="#手动引用计数内存管理" class="headerlink" title="手动引用计数内存管理"></a>手动引用计数内存管理</h2><p>本节将说明如何基于引用计数器来管理内存。手中引用计数是内存引用计数的基础，就算程序使用自动引用计数的内存管理，也需要了解手动引用计数的原理。</p>
+<h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><p>Cocoa 环境的 Objective-C 使用了一种叫做引用计数的计数来管理对象所占的内存。每个对象都有一个与之相关的整数——引用计数，当某段代码需要使用一个对象时，就将该对象的引用计数值加1。当这段代码不再使用这个对象的时候，则将对象的引用计数器减1.换而言之，引用计数就是指程序中到底有多少个地方需要访问这个对象。</p>
+<p>使用 alloc 和初始化方法创建一个对象的时候，该对象的引用计数初始值为1.假设有一个类 A 在进行某些处理的过程中需要使用到实例 B，为了防止实例化 B被别的对象随意释放，类 A 会实现给实例 B 发送一个 retain 消息。这样，没执行一次 retain，实例 B 的引用计数就会加1。</p>
+<p>反之，不需要某个对象时，可以发送 release 消息，使对象的引用计数减1。</p>
+<p>实际上，释放内存的并不是 release，而是 dealloc 方法。同 alloc 不同，dealloc 不是类方法而是一个实例方法。没收到一个 release 消息，对象的引用计数器就会减一。当对象的引用计数器达到0的时候，系统就知道这个对象不需要了。这时，Objectivce—C 会自动向对象发送一条 delloc 消息来释放内存。通常允许在程序内直接调用 dealloc。</p>
+<p>retain、release和 dealloc 的定义如下所示。retain 的返回值是接收消息的对象。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)<span class="keyword">retain</span>;</div><div class="line">-(<span class="keyword">oneway</span> <span class="keyword">void</span>)release;</div><div class="line">-(<span class="keyword">void</span>)dealloc;</div></pre></td></tr></table></figure>
+<p>retain 是“保持”的意思，给一个对象发送 retain 消息，就意味着“保持”这个对象。生成对象或通过给对象发送 retain 消息来保持对象这种状态，都可以说是拥有这个对象的<strong>所有权</strong>（ownership）拥有实例所有权的对象叫做<strong>所有者</strong>（owner）。</p>
+<p>这里需要注意的是，所有权是一个虚拟的概念。既无法通过语法标记，也无法通过这个对象的某个属性表示出来。程序在运行时没发确认某个对象的所有者是谁。所有权仅仅是人们分析阅读程序时，为了说明对象之间的关系而加上去的一个属性。</p>
+<p>通过引用计数能够表现出一个对象有几个所有者。只要某个对象的引用计数器大于0就表示这个对象有所有者。引用计数变为0的时候，说明这个对象没有所有者，会被释放。</p>
+<p><strong>图1 没有使用引用计数器的例子</strong></p>
+<p><img src="http://i2.piimg.com/1aa5fe7fdc3d7b06.png" alt=""></p>
+<p>让我们通过例子来说明一下基于应用技术的内存管理。首先，假设图（1）中对象 A 的方法把一个新生成的一个实例对象复制给了 A 的实例变量。这个时候新生成的对象的引用计数为1，他的所有者是对象 A，然后，图（2）中把这个对象的指针付给了对象 B 的某个实例变量。因为对象鼻没有发送 retain 消息，所以并不是这个对象的所有者，这个独享的引用计数器还是1.最后图（3）中对象 A 不再使用这个对象的时候发送了一个 release 消息，于是，虽然对象 B 还在使用这个对象，但该对象也被释放了。而此时如果对象 B 给已经释放的消息在发送消息，就会发生运行错误，程序将会异常终止！</p>
+<p>为了防止这样的情况发生，一定要给动态生成的对象发送 retain 消息来增加它的引用计数。只要对对象的引用次数大于零，系统就不会释放它。</p>
+<h3 id="测试引用计数"><a href="#测试引用计数" class="headerlink" title="测试引用计数"></a>测试引用计数</h3><p>让我们通过一个例子来看引用计数到底是如何工作的。</p>
+<p>retain 和 release 方法是类 NSObject 的实例方法，方法 retainCount 可以获得对象的引用计数的当前值。retainCount 方法并没有太大的使用价值，一般在调试程序的时候使用。</p>
+<p>代码清单的程序显示了对象生成后收到 retain、release 消息时引用计数器的变化。retainCount 的返回值是 NSUInteger 类型，使用 printf 输出返回值的时候需要进行类型转换。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[]) &#123;</div><div class="line">    <span class="keyword">id</span> obj = [[<span class="built_in">NSObject</span> alloc]init];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"init:%d"</span>,(<span class="keyword">int</span>)[obj retainCount]);</div><div class="line">    [obj <span class="keyword">retain</span>];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"retain:%d"</span>,(<span class="keyword">int</span>)[obj retainCount]);</div><div class="line">    [obj <span class="keyword">retain</span>];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"retain:%d"</span>,(<span class="keyword">int</span>)[obj retainCount]);</div><div class="line">    [obj release];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"release:%d"</span>,(<span class="keyword">int</span>)[obj retainCount]);</div><div class="line">    [obj release];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"release:%d"</span>,(<span class="keyword">int</span>)[obj retainCount]);</div><div class="line">    [obj release];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"release:%d"</span>,(<span class="keyword">int</span>)[obj retainCount]); </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>程序的输出如下所示。我们可以看出，对象刚生成的时候引用计数器的值为1，没收到一次 retain 消息，引用计数器的值就会加1；而收到 release 消息，引用计数器的值就减少1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">2016-05-06 13:19:16.761 引用计数器学习[6574:600738] init:1</div><div class="line">2016-05-06 13:19:16.762 引用计数器学习[6574:600738] retain:2</div><div class="line">2016-05-06 13:19:16.762 引用计数器学习[6574:600738] retain:3</div><div class="line">2016-05-06 13:19:16.762 引用计数器学习[6574:600738] release:2</div><div class="line">2016-05-06 13:19:16.763 引用计数器学习[6574:600738] release:1</div><div class="line">2016-05-06 13:19:16.763 引用计数器学习[6574:600738] release:1</div><div class="line">Program ended with exit code: 0</div></pre></td></tr></table></figure>
+<h3 id="释放对象的方法"><a href="#释放对象的方法" class="headerlink" title="释放对象的方法"></a>释放对象的方法</h3><p>在自定义类的时候，如果累的实例变量是一个对象类型，那么，在销毁类的对象的时候，也要给类的实例变量发送 release 消息。</p>
+<p>通过给对象发送 release 消息可以放弃对这个对象的所有权，但如前所述，真正释放对象占用的内存方法是 dealloc方法。</p>
+<p>释放一个类的实例对象时，为了彻底释放该实例对象的所有对象的所有权，需要为该类重写 dealloc 方法，在其中释放已经分配的资源，放弃实例变量的所有权。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)dealloc&#123; <span class="comment">//重写的是 dealloc 方法而不是 release 方法</span></div><div class="line">	<span class="comment">/*</span></div><div class="line">		这里通过 release 方法放弃子类中所有实例变量的所有权</div><div class="line">		其他用于释放前的善后操作也都卸载这里</div><div class="line">	*/</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在重写 dealloc 犯法中，在释放自身之前，首先做好“善后工作”（释放所有需要释放的资源）。一般情况下，“善后工作”包括通过使用 release 放弃自身的实例变量的所有权。销毁对象的时候，不允许直接使用 dealloc，而是使用 release。release 会让引用计数减少1，只有当引用计数等于0的时候系统才会自动调用 dealloc 真正的销毁这个对象。</p>
+<p>子类“善后工作”完成后，调用父类的 dealloc 方法来释放父类中定义的实例变量，这样，内存的释放会从子类一直向上知道 NSObject，最终这个对象就会被彻底释放掉。<br>下面的分数计算器的例子中展示了如何重写 dealloc。</p>
+<h3 id="Retain计数原则"><a href="#Retain计数原则" class="headerlink" title="Retain计数原则"></a>Retain计数原则</h3><p>当使用Objective-C编写程序时，如果没有使用 ARC，就必须遵守特定的内存管理约定，否则可以由 ARC 来自动完成相关任务。</p>
+<p>下面为 retain 计数总结若干规则，规则中的“你”代表“当前正在使用的某个类实例”。这是一种很有用的带入形式：请读者将自己想象成是在正在编写的那个对象。例如，“如果你保留了某个 NSString 对象，那么该实例就不会被释放掉”的真是意思是“如果读者正在使用的实例保留了某个 NSString 实例，那么该实例就不会被释放。”</p>
+<p>下面列出规则（袁阔闹中的是实现细节）</p>
+<ul>
+<li>如果用来创建对象的方法，其方法名是以 alloc 或new 开头的，或者包含 copy，那么你已经得到了该对象的所有权（即可以假设新对象的 retain计数是1，而且该对象不再 NSAutoreleasePool 对象中）。你要负责不再需要使用该对象的时候释放掉他。以下是部分常见的、会“传输”所有权的方法：alloc（后面总会跟一个 init 方法）、copy 和 mutableCopy</li>
+<li>通过任何其他途径创建的对象（例如通过便捷方法），你是没有所有权的（即可以假设新对象的 retain 计数是1，而且该对象已经在 NSAutoreleasePool 对象中。如果没有保留该对象，那么当NSAutoreleasePool被“排干”时，这个对象会被释放）。</li>
+<li>如果你不拥有某个对象，但是要确保该对象能继续存在，那么可以通过响起发送 retain 消息来获得所有权。</li>
+<li>当你拥有某个对象并且不再需要使用该对象的时候，可以向其方发送 release 消息或者 autorelease 消息</li>
+<li>只要对象还有只要一个拥有方，该对象就会继续存在下去。</li>
+</ul>
+<p>##参考文献：</p>
+<p>① Objectivce-C编程全解（第三版） [日]荻原刚志 著 唐璐 翟俊杰 译</p>
+<p>② Objectivce-C编程 [美]Aaron Hillegass 著 夏伟频 译</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://www.maksim.website/2016/05/06/cj8x0oags003ts7rdm3br1az2/" data-id="cj8x0oags003ts7rdm3br1az2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://www.maksim.website/2016/05/06/cj8x0oags003ts7rdm3br1az2/#comments" class="article-comment-link">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/05/08/cj8x0oadl001ps7rdz914o7sz/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    使用 Feedly RSS阅读器订阅技术大牛的博客
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2016/05/06/cj8x0oacd000ts7rdypaol4h6/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">读书总结之NSObject</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div id="uyan_frame"></div>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/16/cj8x0oad8001gs7rd8oat1bjy/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/16/cj8x0oad8001gs7rd8oat1bjy/" class="title">PHP页面静态化</a></p>
+                            <p class="item-date"><time datetime="2017-10-16T11:17:47.000Z" itemprop="datePublished">2017-10-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/15/cj8x0oac2000is7rdv3xm6qzy/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/15/cj8x0oac2000is7rdv3xm6qzy/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2017-10-15T11:24:45.000Z" itemprop="datePublished">2017-10-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/13/cj8x0oaf70031s7rd1udfh67b/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/10/13/cj8x0oaf70031s7rd1udfh67b/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2017-10-13T05:41:58.000Z" itemprop="datePublished">2017-10-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/13/1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/MySQL/">MySQL</a></p>
+                            <p class="item-title"><a href="/2017/10/13/1/" class="title">MySQL体系结构</a></p>
+                            <p class="item-date"><time datetime="2017-10-12T16:00:00.000Z" itemprop="datePublished">2017-10-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/10/10/2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/MySQL/">MySQL</a></p>
+                            <p class="item-title"><a href="/2017/10/10/2/" class="title">服务器系统对MySQL性能带来的影响</a></p>
+                            <p class="item-date"><time datetime="2017-10-09T16:00:00.000Z" itemprop="datePublished">2017-10-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Objective-C/">Objective-C</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP设计模式/">PHP设计模式</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ios/">ios</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C-算法/">C/C++,算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Closures/">Closures</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/INSERT/">INSERT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Centos/">Linux,Centos</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-GNU/">Linux,GNU</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL-设计规范/">MySQL 设计规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objc-多线程/">Objc,多线程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP设计模式/">PHP设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wechat-pay-php-php7-php-input/">wechat pay, php, php7, php://input</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存管理/">内存管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程-PHP7-2-编译安装-GCC/">多线程,PHP7.2,编译安装,GCC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/色彩/">色彩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C-C-算法/" style="font-size: 10px;">C/C++,算法</a> <a href="/tags/Closures/" style="font-size: 10px;">Closures</a> <a href="/tags/INSERT/" style="font-size: 10px;">INSERT</a> <a href="/tags/Linux-Centos/" style="font-size: 12px;">Linux,Centos</a> <a href="/tags/Linux-GNU/" style="font-size: 10px;">Linux,GNU</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/MySQL-设计规范/" style="font-size: 10px;">MySQL 设计规范</a> <a href="/tags/Objc-多线程/" style="font-size: 10px;">Objc,多线程</a> <a href="/tags/PHP/" style="font-size: 16px;">PHP</a> <a href="/tags/PHP设计模式/" style="font-size: 10px;">PHP设计模式</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/wechat-pay-php-php7-php-input/" style="font-size: 10px;">wechat pay, php, php7, php://input</a> <a href="/tags/内存管理/" style="font-size: 10px;">内存管理</a> <a href="/tags/多线程-PHP7-2-编译安装-GCC/" style="font-size: 10px;">多线程,PHP7.2,编译安装,GCC</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/色彩/" style="font-size: 10px;">色彩</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 18px;">随笔</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Maksim<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1828998# enter youyan uid here"></script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
