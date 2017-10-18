@@ -13,24 +13,24 @@
     
     
     
-    <title>使用iOS本地通知 | Maksim&#39;s Website</title>
+    <title>iOS推送通知 | Maksim&#39;s Website</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="iOS">
-    <meta name="description" content="在 iOS 开发中推送通知被分为两种，本地通知与推送通知， 本地通知是应用在后台运行时，把一些消息提示给用户，一个很好的例子就是基于定位的应用，这类应用在后台运行，到他发现到达某个特殊地点是给予用户提醒，本地通知只能使用在 iOS 设备中，他可以立即发出通知也可以在计划时间后发出。 本地通知只是应用所在设备上给用户通知，而推送通知是远程通知，它是由远程服务器推送过来的。无论是哪一种，通知的形式都是">
+    <meta name="description" content="iOS 于2008年问世时，只能有一个第三方应用处于活动状态（位于前台）。这意味着应用需要执行的任务都必须在应用位于前台时完成，佛泽任务将暂停并在应用下次启动时接着执行。iOS4退出后，向第三方应用提供了后台功能。鉴于 iOS 设备的系统资源有限，且节省电量至关重要，对后台处理有些限制，那就是不能干扰前台引用，也不能消耗太多电量。通过妥善的利用后台功能，引用能做很多事情。 iOS 支持两种后台任务">
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用iOS本地通知">
+<meta property="og:title" content="iOS推送通知">
 <meta property="og:url" content="http://www.maksim.website/2016/03/03/244/index.html">
 <meta property="og:site_name" content="Maksim&#39;s Website">
-<meta property="og:description" content="在 iOS 开发中推送通知被分为两种，本地通知与推送通知， 本地通知是应用在后台运行时，把一些消息提示给用户，一个很好的例子就是基于定位的应用，这类应用在后台运行，到他发现到达某个特殊地点是给予用户提醒，本地通知只能使用在 iOS 设备中，他可以立即发出通知也可以在计划时间后发出。 本地通知只是应用所在设备上给用户通知，而推送通知是远程通知，它是由远程服务器推送过来的。无论是哪一种，通知的形式都是">
-<meta property="og:updated_time" content="2017-07-17T05:49:19.000Z">
+<meta property="og:description" content="iOS 于2008年问世时，只能有一个第三方应用处于活动状态（位于前台）。这意味着应用需要执行的任务都必须在应用位于前台时完成，佛泽任务将暂停并在应用下次启动时接着执行。iOS4退出后，向第三方应用提供了后台功能。鉴于 iOS 设备的系统资源有限，且节省电量至关重要，对后台处理有些限制，那就是不能干扰前台引用，也不能消耗太多电量。通过妥善的利用后台功能，引用能做很多事情。 iOS 支持两种后台任务">
+<meta property="og:updated_time" content="2016-05-08T03:03:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用iOS本地通知">
-<meta name="twitter:description" content="在 iOS 开发中推送通知被分为两种，本地通知与推送通知， 本地通知是应用在后台运行时，把一些消息提示给用户，一个很好的例子就是基于定位的应用，这类应用在后台运行，到他发现到达某个特殊地点是给予用户提醒，本地通知只能使用在 iOS 设备中，他可以立即发出通知也可以在计划时间后发出。 本地通知只是应用所在设备上给用户通知，而推送通知是远程通知，它是由远程服务器推送过来的。无论是哪一种，通知的形式都是">
+<meta name="twitter:title" content="iOS推送通知">
+<meta name="twitter:description" content="iOS 于2008年问世时，只能有一个第三方应用处于活动状态（位于前台）。这意味着应用需要执行的任务都必须在应用位于前台时完成，佛泽任务将暂停并在应用下次启动时接着执行。iOS4退出后，向第三方应用提供了后台功能。鉴于 iOS 设备的系统资源有限，且节省电量至关重要，对后台处理有些限制，那就是不能干扰前台引用，也不能消耗太多电量。通过妥善的利用后台功能，引用能做很多事情。 iOS 支持两种后台任务">
     
         <link rel="alternate" type="application/atom+xml" title="Maksim&#39;s Website" href="/atom.xml">
     
@@ -58,7 +58,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">Maksim</h5>
-          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+          <a href="mailto:aircrayon@qq.com" title="aircrayon@qq.com" class="mail">aircrayon@qq.com</a>
         </hgroup>
       </div>
     </div>
@@ -94,14 +94,14 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/yscoder" target="_blank" >
+              <a href="https://github.com/aircrayon" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/ysweb" target="_blank" >
+              <a href="http://www.weibo.com/619946234" target="_blank" >
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
@@ -125,7 +125,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">使用iOS本地通知</div>
+        <div class="flex-col header-title ellipsis">iOS推送通知</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -147,7 +147,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">使用iOS本地通知</h1>
+        <h1 class="title">iOS推送通知</h1>
         <h5 class="subtitle">
             
                 <time datetime="2016-03-03T07:06:05.000Z" itemprop="datePublished" class="page-time">
@@ -155,7 +155,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/iOS/">iOS</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Objective-C/">Objective-C</a></li></ul>
 
             
         </h5>
@@ -169,16 +169,23 @@
 
 <div class="container body-wrap">
     
-<article id="post-IOS推送通知"
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#检查设备是否支持后台处理"><span class="post-toc-number">1.</span> <span class="post-toc-text">检查设备是否支持后台处理</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-检查设备是否支持后台处理"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">使用iOS本地通知</h1>
+        <h1 class="post-card-title">iOS推送通知</h1>
         <div class="post-meta">
             <time class="post-time" title="2016-03-03 15:06:05" datetime="2016-03-03T07:06:05.000Z"  itemprop="datePublished">2016-03-03</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/iOS/">iOS</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Objective-C/">Objective-C</a></li></ul>
 
 
 
@@ -190,19 +197,21 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>在 iOS 开发中推送通知被分为两种，本地通知与推送通知，</p>
-<p>本地通知是应用在后台运行时，把一些消息提示给用户，一个很好的例子就是基于定位的应用，这类应用在后台运行，到他发现到达某个特殊地点是给予用户提醒，本地通知只能使用在 iOS 设备中，他可以立即发出通知也可以在计划时间后发出。</p>
-<p>本地通知只是应用所在设备上给用户通知，而推送通知是远程通知，它是由远程服务器推送过来的。无论是哪一种，通知的形式都是一样的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">//本地推送,主要用于一些常规类的提醒</div><div class="line">    /**</div><div class="line">     *  1.健康类 定时几点运动</div><div class="line">     *  2.社交类 几点约会</div><div class="line">     *  3.游戏类 到时见领取奖励</div><div class="line">     *  4.新闻类 每日早间提醒阅读</div><div class="line">     *  5.医药类 你该吃药了,药别停</div><div class="line">     */</div><div class="line">     </div><div class="line">    //在iOS8下需要注册一下本地推送</div><div class="line">    [[UIApplication sharedApplication] registerUserNotificationSettings: [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeAlert|UIUserNotificationTypeSound categories:nil]];</div><div class="line">    //初始创建本地推送</div><div class="line">    UILocalNotification *local = [[UILocalNotification alloc]init];</div><div class="line">    //设置推送时间</div><div class="line">    local.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];</div><div class="line">    //设置推送的内容</div><div class="line">    local.alertBody = @&quot;你该吃药了!&quot;;</div><div class="line">    //设置时区 根据当前手机时区设置的</div><div class="line">    local.timeZone = [NSTimeZone defaultTimeZone];</div><div class="line">    //设置重复的间隔</div><div class="line">    local.repeatInterval = kCFCalendarUnitDay;</div><div class="line">    //设置推送声音(本地需要有相对应的声音,该声音需要少于三十秒)</div><div class="line">    //local.soundName = UILocalNotificationDefaultSoundName;</div><div class="line">    local.soundName = @&quot;音效.caf&quot;;</div><div class="line">    local.userInfo = @&#123;@&quot;name&quot;:@&quot;王花花&quot;&#125;;</div><div class="line">    local.applicationIconBadgeNumber = 9999;</div><div class="line">    //加入到系统级推送</div><div class="line">    [[UIApplication sharedApplication] scheduleLocalNotification:local];</div></pre></td></tr></table></figure>
-<p>清除本地推送</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//如何取消推送</div><div class="line">//获取目前已经加入本地消息推送的有几个.</div><div class="line">NSArray *array = [[UIApplication sharedApplication]scheduledLocalNotifications];</div><div class="line">//遍历推送内容</div><div class="line">for (UILocalNotification *notification in array) &#123;</div><div class="line">    NSLog(@&quot;%@&quot;,notification.userInfo);</div><div class="line">    //如果遇到我们想要取消的本地推送</div><div class="line">    [[UIApplication sharedApplication] cancelLocalNotification:notification];</div><div class="line">&#125;</div><div class="line">//如果全部取消</div><div class="line">//[[UIApplication sharedApplication]cancelAllLocalNotifications];</div></pre></td></tr></table></figure>
+            <p>iOS 于2008年问世时，只能有一个第三方应用处于活动状态（位于前台）。这意味着应用需要执行的任务都必须在应用位于前台时完成，佛泽任务将暂停并在应用下次启动时接着执行。iOS4退出后，向第三方应用提供了后台功能。鉴于 iOS 设备的系统资源有限，且节省电量至关重要，对后台处理有些限制，那就是不能干扰前台引用，也不能消耗太多电量。通过妥善的利用后台功能，引用能做很多事情。</p>
+<p>iOS 支持两种后台任务处理方式</p>
+<ul>
+<li>第一种方式是在后台完成耗时操作。这种方式适合用于完成大量数据下载或更新等任务，他们需要的时间超过了用户与应用交互的时间。</li>
+<li>第二种方式是执行 iOS 润徐的后台活动，如播放音乐、蓝牙交互、监视 GPS 数据以及获取位置变化、维持永久网络连接让 VoIP应用能够正常运行。</li>
+</ul>
+<h2 id="检查设备是否支持后台处理"><a href="#检查设备是否支持后台处理" class="headerlink" title="检查设备是否支持后台处理"></a>检查设备是否支持后台处理</h2><p>能够运行 iOS6或者 iOS5的设备都支持在后台执行活动，这在 Apple 文档中称之为多任务，如果应用需要支持 iOS4就需要注意了，因为有些设备不支持多任务。编写使用多任务功能的代码，需要检测设备是否支持多任务。</p>
+
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-07-17T05:49:19.000Z" itemprop="dateUpdated">2017-07-17 13:49:19</time>
+    Last updated: <time datetime="2016-05-08T03:03:35.000Z" itemprop="dateUpdated">2016-05-08 11:03:35</time>
 </span><br>
 
 
@@ -237,7 +246,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/03/03/244/&title=《使用iOS本地通知》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/03/03/244/&title=《iOS推送通知》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -247,7 +256,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/03/03/244/&title=《使用iOS本地通知》 — Maksim's Website&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/03/03/244/&title=《iOS推送通知》 — Maksim's Website&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -257,7 +266,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用iOS本地通知》 — Maksim's Website&url=http://www.maksim.website/2016/03/03/244/&via=http://www.maksim.website" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《iOS推送通知》 — Maksim's Website&url=http://www.maksim.website/2016/03/03/244/&via=http://www.maksim.website" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -287,14 +296,14 @@
     <div class="waves-block waves-effect prev">
       <a href="/2016/03/03/244/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">iOS推送通知</h4>
+        <h4 class="title">使用iOS本地通知</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2016/03/01/cj8x0s4lw004tsurdc47cjt7y/" id="post-next" class="post-nav-link">
+      <a href="/2016/03/01/cj8x16osk004zucrd05c8i0nq/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">iOS多线程.01 简介</h4>
       </a>
@@ -328,18 +337,8 @@
     <div class="reward-content">
         
         <div class="reward-code">
-            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+            <img id="rewardCode" src="/" alt="打赏二维码">
         </div>
-        
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechat">微信</span>
-                <span class="reward-toggle-label"></span>
-                <span class="reward-toggle-item alipay">支付宝</span>
-            </div>
-        </label>
         
     </div>
 </div>
@@ -387,7 +386,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/03/03/244/&title=《使用iOS本地通知》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/03/03/244/&title=《iOS推送通知》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -397,7 +396,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/03/03/244/&title=《使用iOS本地通知》 — Maksim's Website&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/03/03/244/&title=《iOS推送通知》 — Maksim's Website&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -407,7 +406,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用iOS本地通知》 — Maksim's Website&url=http://www.maksim.website/2016/03/03/244/&via=http://www.maksim.website" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《iOS推送通知》 — Maksim's Website&url=http://www.maksim.website/2016/03/03/244/&via=http://www.maksim.website" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
