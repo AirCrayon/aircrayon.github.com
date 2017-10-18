@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+    
+
+    
+
+    
+
+
+
     <meta charset="utf-8">
     
+    
+    
     <title>Maksim&#39;s Website</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="undefined">
     <meta property="og:type" content="website">
 <meta property="og:title" content="Maksim&#39;s Website">
 <meta property="og:url" content="http://www.maksim.website/page/3/index.html">
@@ -12,1965 +27,776 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maksim&#39;s Website">
     
+        <link rel="alternate" type="application/atom+xml" title="Maksim&#39;s Website" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
 
+    <!-- custom head -->
     
-        <link rel="alternate" href="/" title="Maksim&#39;s Website" type="application/atom+xml" />
-    
-
-    
-
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/open-sans/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
-
-    <link rel="stylesheet" href="/css/style.css">
-
-    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
-    
-    
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
-    
-    
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-    
-    
-    
-    
-
 
 </head>
 
 <body>
-    <div id="container">
-        <header id="header">
-    <div id="header-main" class="header-inner">
-        <div class="outer">
-            <a href="/" id="logo">
-                <i class="logo"></i>
-                <span class="site-title">Maksim&#39;s Website</span>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Maksim</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Maksim&#39;s Website</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <nav id="main-nav">
-                
-                    <a class="main-nav-link" href="/.">Home</a>
-                
-                    <a class="main-nav-link" href="/archives">Archives</a>
-                
-                    <a class="main-nav-link" href="/categories">Categories</a>
-                
-                    <a class="main-nav-link" href="/tags">Tags</a>
-                
-                    <a class="main-nav-link" href="/about">About</a>
-                
-            </nav>
-            
-                
-                <nav id="sub-nav">
-                    <div class="profile" id="profile-nav">
-                        <a id="profile-anchor" href="javascript:;">
-                            <img class="avatar" src="/css/images/avatar.png" />
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                    </div>
-                </nav>
-            
-            <div id="search-form-wrap">
-
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
         </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div>
-        </div>
-    </div>
-    <div id="main-nav-mobile" class="header-sub header-inner">
-        <table class="menu outer">
-            <tr>
-                
-                    <td><a class="main-nav-link" href="/.">Home</a></td>
-                
-                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
-                
-                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
-                
-                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
-                
-                    <td><a class="main-nav-link" href="/about">About</a></td>
-                
-                <td>
-                    
-    <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-    </div>
-
-                </td>
-            </tr>
-        </table>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
     </div>
 </header>
+<header class="content-header index-header">
 
-        <div class="outer">
+    <div class="container fade-scale">
+        <h1 class="title">Maksim&#39;s Website</h1>
+        <h5 class="subtitle">
             
                 
-
-<aside id="profile">
-    <div class="inner profile-inner">
-        <div class="base-info profile-block">
-            <img id="avatar" src="/css/images/avatar.png" />
-            <h2 id="name">Maksim</h2>
-            <h3 id="title">PHP Developer &amp; iOS Developer &amp; Designer</h3>
-            <span id="location"><i class="fa fa-map-marker"></i>齐齐哈尔, China</span>
-            <a id="follow" target="_blank" href="https://github.com/aircrayon/">FOLLOW</a>
-        </div>
-        <div class="article-info profile-block">
-            <div class="article-info-block">
-                57
-                <span>posts</span>
-            </div>
-            <div class="article-info-block">
-                20
-                <span>tags</span>
-            </div>
-        </div>
-        
-        <div class="profile-block social-links">
-            <table>
-                <tr>
-                    
-                    
-                    <td>
-                        <a href="http://github.com/aircrayon" target="_blank" title="github" class=tooltip>
-                            <i class="fa fa-github"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/" target="_blank" title="twitter" class=tooltip>
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/" target="_blank" title="facebook" class=tooltip>
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/" target="_blank" title="dribbble" class=tooltip>
-                            <i class="fa fa-dribbble"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/" target="_blank" title="rss" class=tooltip>
-                            <i class="fa fa-rss"></i>
-                        </a>
-                    </td>
-                    
-                </tr>
-            </table>
-        </div>
-        
+            
+        </h5>
     </div>
-</aside>
 
-            
-            <section id="main">
-    <article id="post-数据库设计规范实例" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/06/23/2/">提高 MySQL 的性能，从数据库设计规范开始</a>
-        </h1>
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/06/23/2/">
-            <time datetime="2017-06-22T16:00:00.000Z" itemprop="datePublished">2017-06-23</time>
+
+</header>
+
+<div class="container body-wrap">
+
+    <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-数据库设计规范实例"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-06-23 00:00:00" datetime="2017-06-22T16:00:00.000Z"  itemprop="datePublished">2017-06-23</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/MySQL/">MySQL</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/06/23/2/">提高 MySQL 的性能，从数据库设计规范开始</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        这几日一直都在看慕课网的一篇有关于数据库设计的实战教程，在其中讲述了关于数据库设计的一些相关规范，可以说是受益匪浅，于是便将学习所得记录下来，如果有想要看视频版的同学可以到慕课网查看。
+点我跳转到慕课网观看视频
+数据库名称规范1.所有数据库对象名称必须使用小写字母并使用下划线分割由于 MySQL数据库的对象名称默认情况下是大小写敏感的，特别是在 Linux 系统下，MySQL 的数据库和表实...
+    
+
+        <a href="/2017/06/23/2/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/MySQL/">MySQL</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/MySQL-设计规范/">MySQL 设计规范</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>这几日一直都在看慕课网的一篇有关于数据库设计的实战教程，在其中讲述了关于数据库设计的一些相关规范，可以说是受益匪浅，于是便将学习所得记录下来，如果有想要看视频版的同学可以到慕课网查看。</p>
-<p><a href="http://coding.imooc.com/class/79.html" target="_blank" rel="external">点我跳转到慕课网观看视频</a></p>
-<h2 id="数据库名称规范"><a href="#数据库名称规范" class="headerlink" title="数据库名称规范"></a>数据库名称规范</h2><h3 id="1-所有数据库对象名称必须使用小写字母并使用下划线分割"><a href="#1-所有数据库对象名称必须使用小写字母并使用下划线分割" class="headerlink" title="1.所有数据库对象名称必须使用小写字母并使用下划线分割"></a>1.所有数据库对象名称必须使用小写字母并使用下划线分割</h3><p>由于 MySQL数据库的对象名称默认情况下是大小写敏感的，特别是在 Linux 系统下，MySQL 的数据库和表实际上的存储方式就是 Linux 下的一个文件，由于 Linux 系统是对大小写敏感的，所以 MySQL 也就对大小写敏感，这就意味着 DbName dbname 是完全不同的两个数据库。</p>
-<p>如果在开发过程中使用大小写混用的情况下，就会对未来的开发工作造成很多不必要的麻烦，要时刻注意数据库对象的大小写。</p>
-<h3 id="2-所有的数据库对象名称禁止使用-MySQL-的保留字段"><a href="#2-所有的数据库对象名称禁止使用-MySQL-的保留字段" class="headerlink" title="2.所有的数据库对象名称禁止使用 MySQL 的保留字段"></a>2.所有的数据库对象名称禁止使用 MySQL 的保留字段</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select id,username from ,age from tb_user;</div></pre></td></tr></table></figure>
-<p>在上述SQL 语句中存在两个 from，由于 MySQL 并不知道这两个 from 有什么区别，若是执行这条 SQL 语句肯定会报错，但是在建表的时候却不会报错。</p>
-<p>若是已经使用了关键字做了字段名，那就需要在字段名前后加上反引号，示例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select id,username `from` ,age from tb_user;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>反引号是为了区分MySQL关键字和保留字与普通字符而引入的符号，保留字的列表请点击此网页查看 <a href="https://dev.mysql.com/doc/refman/5.7/en/keywords.html" target="_blank" rel="external">https://dev.mysql.com/doc/refman/5.7/en/keywords.html</a></p>
-</blockquote>
-<h3 id="3-数据库对象的命名要做到见名识义，而且最好不要超过32个字符"><a href="#3-数据库对象的命名要做到见名识义，而且最好不要超过32个字符" class="headerlink" title="3. 数据库对象的命名要做到见名识义，而且最好不要超过32个字符"></a>3. 数据库对象的命名要做到见名识义，而且最好不要超过32个字符</h3><p>MySQL 的限制长度是64个字符，但是表名和列名一旦过长，在使用过程中将会很不方便，而且还会增加网络传输的开销。</p>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">用户数据库： ex_userdb</div><div class="line">用户账户表： user_account</div></pre></td></tr></table></figure>
-<h3 id="4-所有的临时表必须以-tmp为前缀并以日期为后缀"><a href="#4-所有的临时表必须以-tmp为前缀并以日期为后缀" class="headerlink" title="4. 所有的临时表必须以 tmp为前缀并以日期为后缀"></a>4. 所有的临时表必须以 tmp为前缀并以日期为后缀</h3><p>在我们的日常工作中，会在数据库中建立一些临时表或者中间表，往往无法第一时间将其清理掉，时间一长便无法分清，哪些是临时表或者是持久化表，这样一来就会造成很多的垃圾数据。</p>
-<h3 id="5-备份表必须以bak为前缀并以日期为后缀"><a href="#5-备份表必须以bak为前缀并以日期为后缀" class="headerlink" title="5.备份表必须以bak为前缀并以日期为后缀"></a>5.备份表必须以bak为前缀并以日期为后缀</h3><p>在日常工作中，我们会对数据库进行备份，在备份的时候，以 bak 开头可以清晰的表示出这是一个备份表，并且以时间结尾标注了这个表是在什么时间进行的备份，这样一来能够设计出更加整洁的数据库，并且结构清晰。</p>
-<h3 id="6-所有存储相同数据的列明和列类型必须一致。"><a href="#6-所有存储相同数据的列明和列类型必须一致。" class="headerlink" title="6.所有存储相同数据的列明和列类型必须一致。"></a>6.所有存储相同数据的列明和列类型必须一致。</h3><p>通着这这种字段都是以关联字段进行使用的，如果两个表的关联字段的数据类型不一致，在关联时MySQL 会进行隐式类型转换，造成字段索引失效，影响数据库的运行性能，导致不必要的开销。</p>
-<h2 id="数据库基本设计规范"><a href="#数据库基本设计规范" class="headerlink" title="数据库基本设计规范"></a>数据库基本设计规范</h2><h3 id="1-在没有特殊要求的情况下，所有表必须使用-Innodb-存储引擎"><a href="#1-在没有特殊要求的情况下，所有表必须使用-Innodb-存储引擎" class="headerlink" title="1. 在没有特殊要求的情况下，所有表必须使用 Innodb 存储引擎"></a>1. 在没有特殊要求的情况下，所有表必须使用 Innodb 存储引擎</h3><p>比如列存储、在5.7版本之前存储空间数据，如果还在使用MyISAM 引擎如果在升级到5.6之后应该尽快将存储引擎升级到 Innodb，因为在5.6之后的默认引擎就是 Innodb，Innodb 支持事务，行级锁，更好的恢复性，高并发下性能更好。</p>
-<h3 id="2-数据库和表的字符集使用-UTF8"><a href="#2-数据库和表的字符集使用-UTF8" class="headerlink" title="2.数据库和表的字符集使用 UTF8"></a>2.数据库和表的字符集使用 UTF8</h3><p>统一的字符集可以避免由于字符集转换禅城的乱码，MySQL 中 UTF8字符集汉字站3个字节，ASCII 码占用1个字节，若我们定了一个 varchar(255)的列，并且存储中文的话，255个中文字符将会占用725个字节。</p>
-<h3 id="3-所有的表和字段都需要添加注释"><a href="#3-所有的表和字段都需要添加注释" class="headerlink" title="3.所有的表和字段都需要添加注释"></a>3.所有的表和字段都需要添加注释</h3><p>使用 comment 从句添加表和列的备注，从一开始就进行数据字典维护。</p>
-<h4 id="4-尽量控制单表数据量的大小，建议控制在500万行以内"><a href="#4-尽量控制单表数据量的大小，建议控制在500万行以内" class="headerlink" title="4.尽量控制单表数据量的大小，建议控制在500万行以内"></a>4.尽量控制单表数据量的大小，建议控制在500万行以内</h4><p>500万并不是 MySQL数据库的限制，MySQL 的存储数据量取决于存储设置和文件系统，修改表结构，备份，恢复都会有很大问题。</p>
-<p>可以使用历史数据归档，分库分表等手段来控制数据量的大小，历史数据归档常用语系统日志，分库分表主要应用在业务表上。</p>
-<h4 id="5-谨慎的使用-MySQL-分区表。"><a href="#5-谨慎的使用-MySQL-分区表。" class="headerlink" title="5.谨慎的使用 MySQL 分区表。"></a>5.谨慎的使用 MySQL 分区表。</h4><p>分区表在物理上表现为多个文件，在逻辑上表现为一个表。谨慎的选择分区键，跨分区查询效率可能更低。</p>
-<p>建议采用物理分表的方式管理大数据。</p>
-<h4 id="6-尽量做到冷热数据分离，减小表单的宽度"><a href="#6-尽量做到冷热数据分离，减小表单的宽度" class="headerlink" title="6.尽量做到冷热数据分离，减小表单的宽度"></a>6.尽量做到冷热数据分离，减小表单的宽度</h4><p>MySQL 限制最多存储4096列，并且每一行的大小是不能超过65535个字节的。最好将经常用到的列放到一个表中，这样一来可以减少磁盘 IO，保证热数据的内存缓存命中率。利用更有效的利用缓存，避免读入无用的冷数据。</p>
-<h4 id="7-禁止在表中建立预留字段"><a href="#7-禁止在表中建立预留字段" class="headerlink" title="7.禁止在表中建立预留字段"></a>7.禁止在表中建立预留字段</h4><p>预留字段的命名很难做到见名识义，预留字段无法确认存储的数据类型，所以无法选择合适的类型。对预留字段类型的修改，会对表进行锁定，修改一个字段类型的成本远高于新建一个字段。</p>
-<h4 id="8-禁止在数据库中存储图片，文件等二进制数据"><a href="#8-禁止在数据库中存储图片，文件等二进制数据" class="headerlink" title="8.禁止在数据库中存储图片，文件等二进制数据"></a>8.禁止在数据库中存储图片，文件等二进制数据</h4><p>这类文件都会很大，会在短时间内造成数据量的疯涨，在数据库读取的时会产生大量的 IO 操作，非常好事，影响数据库性能，常规的做法是将图片保存在对应的文件服务器上，然后在数据库中保存地址信息就可以了。</p>
-<h4 id="9-禁止在线上做数据库压力测试"><a href="#9-禁止在线上做数据库压力测试" class="headerlink" title="9.禁止在线上做数据库压力测试"></a>9.禁止在线上做数据库压力测试</h4><p>如果使用生产环境进行压力测试一方面会对正常的业务访问造成影响，另一方面也会对数据库造成影响，产生大量的垃圾数据。</p>
-<h4 id="8-禁止从开发环境，测试环境直接连生产环境数据库"><a href="#8-禁止从开发环境，测试环境直接连生产环境数据库" class="headerlink" title="8.禁止从开发环境，测试环境直接连生产环境数据库"></a>8.禁止从开发环境，测试环境直接连生产环境数据库</h4><p>会对生产环境的数据的完整性进行破坏。</p>
-<h2 id="数据库索引设计规范"><a href="#数据库索引设计规范" class="headerlink" title="数据库索引设计规范"></a>数据库索引设计规范</h2><h3 id="1-限制每张表上的索引数量，建议单标索引不超过5个"><a href="#1-限制每张表上的索引数量，建议单标索引不超过5个" class="headerlink" title="1.限制每张表上的索引数量，建议单标索引不超过5个"></a>1.限制每张表上的索引数量，建议单标索引不超过5个</h3><p>索引数量是和列的数量是成正比的，通常列的数量越多索引的数量也会越多，索引并不是越多越好，索引可以提高效率单同样也可以鉴定效率，索引可以增加查询效率，单同样也会降低插入和更新的效率。</p>
-<p>由于 MySQL 优化器在选择优化查询时，会根据统计信息对每一个可以用到的索引进行评估，以生成出一个最好的执行计划，如果同时有很多索引都可以用于查询，就会增加 MySQL优化器生成优化器的时间，同样机会降低 SQL 查询的性能。</p>
-<p>禁止给表中的每一个列都建立单独的索引。</p>
-<h3 id="2-每一个-Innodb表都必须有一个主键"><a href="#2-每一个-Innodb表都必须有一个主键" class="headerlink" title="2.每一个 Innodb表都必须有一个主键"></a>2.每一个 Innodb表都必须有一个主键</h3><p>Innodb 是一种索引组织表，数据存储的逻辑顺序与索引的顺序是相同的，每一个表上上都会有很多索引，但是存储顺序只有一种，Innodb是按照主键索引进行组织表的。</p>
-<p>如果没有主键，那么 Innodb 会优先以第一非空，唯一索引当做主键，在没有非空唯一所以的情况下，MySQL 会生成一个站位6个字节的主键，这个自动生成的主键性能并不是最好的。</p>
-<p>在表的设计中不要使用更新频繁的列作为主键，不使用多列主键（联合索引），因为 Innodb是一个索引组织表的缘故，如果主键频繁被更新，那么久意味着，数据存储的顺序就会频繁的变动，必然会带来大量的 IO 操作。</p>
-<p>不要使用 UUID，MD5，HASH，字符串列作为主键。因为这类数据无法保证数据的顺序增长，如果后面插入的值比已经存在的值还要小，则为了保证索引的顺序，则会把新的数据插入到前面，这样就会造成所有大于这个值的数据要想后移带来大量的 IO 操作。</p>
-<p>建议使用自增 ID 作为主键。</p>
-<h3 id="3-常见索引列建议"><a href="#3-常见索引列建议" class="headerlink" title="3.常见索引列建议"></a>3.常见索引列建议</h3><p>1.SELECT、UPDATE、DELETE语句的WHERE 从句中的列出现的字段中添加索引<br>2.包含在 ORDER BY、GROUP BY、DISTINCT 中的字段<br>3.多表JOIN的关联列</p>
-<h3 id="4-如何选择索引列的顺序"><a href="#4-如何选择索引列的顺序" class="headerlink" title="4.如何选择索引列的顺序"></a>4.如何选择索引列的顺序</h3><p>在联合索引中索引的使用顺序是由从左到右的顺序来使用的。所以我们需要将区分度最高的列放在联合索引的最左侧，尽量把字段长度小的列房子啊联合索引的最左侧，私用最频繁的列放在联合索引的左侧。</p>
-<p>###避免建立冗余索引和重复索引</p>
-<p>重复索引：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">primary key(id)、index(id)、unique index(id)</div></pre></td></tr></table></figure></p>
-<p>冗余索引：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">index(a,b,c) 、index(a,b)、index(a)</div></pre></td></tr></table></figure></p>
-<h3 id="5-对于频繁的查询优先考虑使用覆盖索引"><a href="#5-对于频繁的查询优先考虑使用覆盖索引" class="headerlink" title="5.对于频繁的查询优先考虑使用覆盖索引"></a>5.对于频繁的查询优先考虑使用覆盖索引</h3><p>覆盖索引：就是包含了所有查询字段的索引</p>
-<p>避免 Innodb 表进行索引的二次查找，</p>
-<h2 id="数据库字段设计规范"><a href="#数据库字段设计规范" class="headerlink" title="数据库字段设计规范"></a>数据库字段设计规范</h2><h3 id="1-优先选择符合存储需要的最小的数据类型"><a href="#1-优先选择符合存储需要的最小的数据类型" class="headerlink" title="1.优先选择符合存储需要的最小的数据类型"></a>1.优先选择符合存储需要的最小的数据类型</h3><ul>
-<li>将字符串转换为数字类型存储</li>
-<li>INET_ATON(‘255.255.255.255’) = 4294967295</li>
-<li>INET_NTOA(4294967295) = ‘255.255.255.255’</li>
-<li>对于非负型的数据来说，要有限选用无符号整型来存储，无符号相对于有符号可以多出一倍的存储空间</li>
-<li>VARCHAR（N）中的 N 代表的是字符数，而不是字节数</li>
-<li>使用 UTF8存储汉字 VARCHAR(255)=765个字节</li>
-<li>过大的长度会消耗更多的内存，因为当数据被载入到内存时为了提高效率是按照所定义的类型长度来申请内存的。</li>
-</ul>
-<h3 id="2-避免使用-Text、BLOG-的数据类型"><a href="#2-避免使用-Text、BLOG-的数据类型" class="headerlink" title="2.避免使用 Text、BLOG 的数据类型"></a>2.避免使用 Text、BLOG 的数据类型</h3><p>Text列分为四种 TinyText、Text、MidumText、LongText，Text 类型可以存储下64K的数据，备注或者说明很少会使用到64K 这么庞大的数据，使用 Varchar 类型就可以了。另外由于MySQL 内存表是不支持 Text 和 Blog 的，因此我们在对这种大数据类型进行排序的时候无法使用内存表，而必须使用磁盘内置表，这类数据MySQL 在读取数据时会进行二次查询，所以会使得 SQL 的性能变的很差。</p>
-<p>建议把 BLOG 或是 TEXT列分离到单独的扩展表中    ，并且在查询时一定不要使用 select * 的方式，而是取出必要的列，在使用 BOLOG 或者 TEXT 类型的时候就不要查询该列。</p>
-<p>TEXT或 BLOG 类型只能使用前缀索引，并且 TEXT 的列上是不能有默认值的。</p>
-<h3 id="3-避免使用-ENUM-数据类型"><a href="#3-避免使用-ENUM-数据类型" class="headerlink" title="3.避免使用 ENUM 数据类型"></a>3.避免使用 ENUM 数据类型</h3><p>枚举类型是一个很特别的类型，在其他关系型数据库中并不存在这一类型，枚举本身是一个字符串类型，但是其本身却是以整数类型，所以能够存储65535种不同的枚举值，前面提到要将字符串类型转换成整数进行存储，从这一点看枚举是一种很好的数据类型，有助于我们很好的进行优化。</p>
-<p>但是枚举类型也存在着很大的缺陷，修改 ENUM 值需要使用 ALTER 语句，频繁的对表结构进行修改很容易造成失误，在修改元数据的时候会生成元数据锁，在大量数据访问的时候会造成数据库系统的阻塞，对枚举数据进行操作的时候是存在一定的操作风险的。</p>
-<p>ENUM 类型的 ORDER BY 操作效率低，需额外操作，由于是按照整型进行存储的，所以在查询的时候会对其进行字符串转化然后在进行排序，这种装换是无法使用索引的，所以枚举值排序性能比较差。</p>
-<p>禁止使用数值作为 ENUM 的枚举值，因为枚举本身是索引顺序存储的，如果枚举值也是用整型进行存储，很容易会造成逻辑上的一种混淆，一般情况下枚举值是整型，通常建议使用整型代替。</p>
-<h3 id="4-尽量可能把所有列定义为-NOT-NULL"><a href="#4-尽量可能把所有列定义为-NOT-NULL" class="headerlink" title="4.尽量可能把所有列定义为 NOT NULL"></a>4.尽量可能把所有列定义为 NOT NULL</h3><p>索引 NULL 列需要额外的空间来保存，所以需要占用更多的空间，索引空间占用的越低越好。</p>
-<p>进行比较和计算时候对 NULL 值做特别的处理，所以可能会造成索引失效。</p>
-<h3 id="5-使用-TIMESTAMP-或DATETIME-类型存储时间"><a href="#5-使用-TIMESTAMP-或DATETIME-类型存储时间" class="headerlink" title="5.使用 TIMESTAMP 或DATETIME 类型存储时间"></a>5.使用 TIMESTAMP 或DATETIME 类型存储时间</h3><p>字符串存储日期型的数据（不正确的做法）</p>
-<p>缺点1：无法用日期函数进行计算和比较。<br>缺点2：用字符串存储日期要占用更多的空间</p>
-<p>TIMESTAMP 1970-01-01 00：00：01 ~ 2038-01-19 03：14：07</p>
-<p>其实 TIMESTAMP 是以 INT 类型存储的，但是以日期格式显示，TIMESTAMP占用4字节和 INT 相同，单比 INT 可读性高，</p>
-<p>当超出 TIMESTAMP 类型的存储范围时我们需要使用 DATETIME 类型来进行存储。</p>
-<h3 id="6-同财务相关的金额类数据，必须使用-decimal-类型"><a href="#6-同财务相关的金额类数据，必须使用-decimal-类型" class="headerlink" title="6.同财务相关的金额类数据，必须使用 decimal 类型"></a>6.同财务相关的金额类数据，必须使用 decimal 类型</h3><p>Decimal 类型为精准浮点数，在计算时不会丢失精度，占用空间油定义的宽度决定，可用于存储比 bigint 更大的整数数据。</p>
-<h2 id="数据库-SQL-开发规范"><a href="#数据库-SQL-开发规范" class="headerlink" title="数据库 SQL 开发规范"></a>数据库 SQL 开发规范</h2><h3 id="1-建议使用预编译语句进行数据库"><a href="#1-建议使用预编译语句进行数据库" class="headerlink" title="1.建议使用预编译语句进行数据库"></a>1.建议使用预编译语句进行数据库</h3><ol>
-<li>只传参数，比传递 SQL 语句更高效</li>
-<li>相同语句可以一次解析，多次使用，提高处理效率</li>
-<li>防范 SQL 注入的风险</li>
-</ol>
-<h3 id="2-避免数据类型的隐式转换"><a href="#2-避免数据类型的隐式转换" class="headerlink" title="2.避免数据类型的隐式转换"></a>2.避免数据类型的隐式转换</h3><p>隐式转换一般发生在 Where 从句中，当列类型和参数类型不一致时就会出现隐式转换。， 隐式转换会导致索引失效</p>
-<h3 id="3-充分利用表上已经存在的索引"><a href="#3-充分利用表上已经存在的索引" class="headerlink" title="3.充分利用表上已经存在的索引"></a>3.充分利用表上已经存在的索引</h3><p>尽量避免用%号的查询 例如 a like ‘%123%’<br> 一个 SQL 只能利用到符合索引中的一列进行范围查询<br> 使用 left join 活 not exists 来优化 not in 操作。</p>
-<h3 id="4-程序链接不同的数据库使用不同的账号，禁止跨库查询。"><a href="#4-程序链接不同的数据库使用不同的账号，禁止跨库查询。" class="headerlink" title="4.程序链接不同的数据库使用不同的账号，禁止跨库查询。"></a>4.程序链接不同的数据库使用不同的账号，禁止跨库查询。</h3><ol>
-<li>为了数据库迁移和分库分表留出余地</li>
-<li>降低业务耦合度</li>
-<li>避免由于权限过大产生的安全风险</li>
-</ol>
-<h3 id="5-禁止使用-SELECT-必须使用-SELECT-lt-字段列表-gt-查询"><a href="#5-禁止使用-SELECT-必须使用-SELECT-lt-字段列表-gt-查询" class="headerlink" title="5.禁止使用 SELECT *必须使用 SELECT&lt;字段列表&gt;查询"></a>5.禁止使用 SELECT *必须使用 SELECT&lt;字段列表&gt;查询</h3><ol>
-<li>消耗更多的 CPU 和 IO 以及网络带宽资源</li>
-<li>无法使用覆盖索引</li>
-<li>可减少表结构变更带来的影响</li>
-</ol>
-<h3 id="6-禁止使用不含字段列表的-insert-语句"><a href="#6-禁止使用不含字段列表的-insert-语句" class="headerlink" title="6.禁止使用不含字段列表的 insert 语句"></a>6.禁止使用不含字段列表的 insert 语句</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">insert into t values (&apos;a&apos;,&apos;b&apos;,&apos;c&apos;); //不包含字段列表的 insert</div><div class="line">insert into t(c1,c2,c3) values(&apos;a&apos;,&apos;b&apos;,&apos;c&apos;); //正确的写</div></pre></td></tr></table></figure>
-<p> 可以减少表结构变更带来的影响</p>
-<h3 id="7-避免使用子查询，可以把子查询优化为join"><a href="#7-避免使用子查询，可以把子查询优化为join" class="headerlink" title="7.避免使用子查询，可以把子查询优化为join"></a>7.避免使用子查询，可以把子查询优化为join</h3><p> 并不是所有的子查询都可以使用 join进行优化，一般情况下只有子查询在 IN 子句中，并且子查询是一个简单的 SQL ，例如其中不包含 order by之类的复杂查询，才可以进行转换。</p>
-<ol>
-<li>子查询的结果集无法使用索引</li>
-<li>子查询会产生临时表操作，如果子查询数据量大则严重影响性能</li>
-<li>临时表会消耗过多 CPU 以及 IO 资源</li>
-</ol>
-<h3 id="8-避免使用-JOIN-关联太多的表"><a href="#8-避免使用-JOIN-关联太多的表" class="headerlink" title="8.避免使用 JOIN 关联太多的表"></a>8.避免使用 JOIN 关联太多的表</h3><ol>
-<li>每Join 一个表会占用一部分内存（join <em> buffer </em> size）</li>
-<li>会产生临时表操作，影响查询效率</li>
-<li>MySQL 最多允许关联61个表，建议不超过五个</li>
-</ol>
-<h3 id="9-减少同数据库的交互次数"><a href="#9-减少同数据库的交互次数" class="headerlink" title="9.减少同数据库的交互次数"></a>9.减少同数据库的交互次数</h3><ol>
-<li>数据库更适合处理批量操作</li>
-<li>合并多个相同的操作到一起，可以提高处理效率</li>
-</ol>
-<h3 id="10-使用-in-代替or"><a href="#10-使用-in-代替or" class="headerlink" title="10.使用 in 代替or"></a>10.使用 in 代替or</h3><ol>
-<li>in 的值不要超过500个</li>
-<li>in 操作可以有效的利用索引</li>
-</ol>
-<h3 id="11-禁止使用-order-by-rand-）进行随机排序"><a href="#11-禁止使用-order-by-rand-）进行随机排序" class="headerlink" title="11.禁止使用 order by rand(）进行随机排序"></a>11.禁止使用 order by rand(）进行随机排序</h3><ol>
-<li>会把表中所有符合条件的数据装载到内存中进行排序</li>
-<li>会消耗大量的 CUP 和 IO 以及内存支援</li>
-<li>推荐在程序中获取一个随机值，然后从数据库中获取数据的方式</li>
-</ol>
-<h3 id="12-WHERE-从句中禁止对列进行函数转换和计算"><a href="#12-WHERE-从句中禁止对列进行函数转换和计算" class="headerlink" title="12.WHERE 从句中禁止对列进行函数转换和计算"></a>12.WHERE 从句中禁止对列进行函数转换和计算</h3><ol>
-<li>对列进行函数转换或计算会导致无法使用索引</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wehre date(createtime) = &apos;20160901&apos;</div><div class="line">where createtime &gt;= &apos;20160901&apos; and createtime&lt; &apos;20160902&apos;</div></pre></td></tr></table></figure>
-<h3 id="13-有明显不会重复值时使用-UNION-ALL-而不是UNION"><a href="#13-有明显不会重复值时使用-UNION-ALL-而不是UNION" class="headerlink" title="13.有明显不会重复值时使用 UNION ALL 而不是UNION"></a>13.有明显不会重复值时使用 UNION ALL 而不是UNION</h3><ol>
-<li>UNION 会把所有数据放到临时表中然后进行去重操作</li>
-<li>UNION ALL 不会对结果集进行去重操作</li>
-</ol>
-<h3 id="14-拆分复杂的大-SQL-为多个小-SQL"><a href="#14-拆分复杂的大-SQL-为多个小-SQL" class="headerlink" title="14.拆分复杂的大 SQL 为多个小 SQL"></a>14.拆分复杂的大 SQL 为多个小 SQL</h3><ol>
-<li>MySQL 一个 SQL 只能使用一个 CPU进行计算</li>
-<li>SQL 拆分后可以进行并行执行来提高处理效率</li>
-</ol>
-<h2 id="数据库操作行为规范"><a href="#数据库操作行为规范" class="headerlink" title="数据库操作行为规范"></a>数据库操作行为规范</h2><h3 id="1-超100万行的批量写操作，需分批多次进行操作"><a href="#1-超100万行的批量写操作，需分批多次进行操作" class="headerlink" title="1.超100万行的批量写操作，需分批多次进行操作"></a>1.超100万行的批量写操作，需分批多次进行操作</h3><ol>
-<li>大批量操作可能会造成严重的主从延迟</li>
-<li>binlog 日志为row 格式时会产生大量的日志</li>
-<li>避免产生大事务操作</li>
-</ol>
-<h3 id="2-对大表数据结构的修改一定要谨慎，会造成严重的锁表操作。尤其是生产环境，是不能忍受的。"><a href="#2-对大表数据结构的修改一定要谨慎，会造成严重的锁表操作。尤其是生产环境，是不能忍受的。" class="headerlink" title="2.对大表数据结构的修改一定要谨慎，会造成严重的锁表操作。尤其是生产环境，是不能忍受的。"></a>2.对大表数据结构的修改一定要谨慎，会造成严重的锁表操作。尤其是生产环境，是不能忍受的。</h3><p>对于大表使用 pt-online-schema-change 修改表结构，可以避免主从延时、表锁的问题。</p>
-<h3 id="3-禁止为程序使用的账户赋予-super-权限"><a href="#3-禁止为程序使用的账户赋予-super-权限" class="headerlink" title="3.禁止为程序使用的账户赋予 super 权限"></a>3.禁止为程序使用的账户赋予 super 权限</h3><ol>
-<li>当达到最大连接数贤之士，MySQL 允许1个有 super 权限的用户连接</li>
-<li>super 权限只能留给 DBA 处理问题的账户使用</li>
-</ol>
-<h3 id="4-对于程序链接数据库账户，遵循权限最小原则"><a href="#4-对于程序链接数据库账户，遵循权限最小原则" class="headerlink" title="4.对于程序链接数据库账户，遵循权限最小原则"></a>4.对于程序链接数据库账户，遵循权限最小原则</h3><ol>
-<li>程序使用数据库账号只能在一个 DB下使用，不准夸库</li>
-<li>程序使用账号原则上不准有 drop权限</li>
-</ol>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2017/06/23/2/" data-id="cj8x0oah9004ds7rdgyfzusro" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="http://www.maksim.website/2017/06/23/2/#comments" class="article-comment-link">Comments</a>
-    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL-设计规范/">MySQL 设计规范</a></li></ul>
 
-        </footer>
     </div>
     
 </article>
 
-
-
-    <article id="post-理解Specification设计模式" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
+        </li>
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/06/01/1/">利用规约设计模式（Specification）开发整洁的规格校验</a>
-        </h1>
+        <li class="post-list-item fade">
+            <article id="post-理解Specification设计模式"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-06-01 00:00:00" datetime="2017-05-31T16:00:00.000Z"  itemprop="datePublished">2017-06-01</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP/">PHP</a></li></ul>
+
+
+
+    </div>
+
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/06/01/1/">
-            <time datetime="2017-05-31T16:00:00.000Z" itemprop="datePublished">2017-06-01</time>
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/06/01/1/">利用规约设计模式（Specification）开发整洁的规格校验</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        规格校验是使我们在日常的开发过程中中比较常见的一种业务需求，最直观的使用是我们在开发电商类网站时我们会对商品的一些规格进行限定，例如重量大小不能超过 N（kg） 。
+如果是一个刚刚加入业界的程序员，很有可能会编写出大量的if语句来进行解决此类的业务逻辑，这样编码可行吗？
+答案是可以，因为顺利的完成了业务逻辑代码的编写任务，但是却违反了类设计中的开闭原则，而且一看就是没有经过正规的训练，没有对...
+    
+
+        <a href="/2017/06/01/1/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/PHP/">PHP</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/PHP设计模式/">PHP设计模式</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>规格校验是使我们在日常的开发过程中中比较常见的一种业务需求，最直观的使用是我们在开发电商类网站时我们会对商品的一些规格进行限定，例如重量大小不能超过 N（kg） 。</p>
-<p>如果是一个刚刚加入业界的程序员，很有可能会编写出大量的<code>if</code>语句来进行解决此类的业务逻辑，这样编码可行吗？</p>
-<p>答案是可以，因为顺利的完成了业务逻辑代码的编写任务，但是却违反了类设计中的<code>开闭原则</code>，而且一看就是没有经过正规的训练，没有对于 OOP 编程有更深的了解。</p>
-<p>那么有没有一种设计模式可以让我们设计出优雅而又整洁的逻辑代码呢，答案是显而易见的，要不然也就不会出现这篇文章，它就是——规模设计模式。</p>
-<p>我们可以利用规约模式来解决这一实际问题，开发出优雅而又健全的业务逻辑代码。</p>
-<p>规约设计模式的主要设计目的就是为了生成业务规则的明确规范，通过<code>isSatisfiedBy</code>方法来检测对象是否符合规范。</p>
-<p>下图是规约模式 UML 类图（不懂的同学推荐去看由谭云杰所编写的《大象：Thinking in UML》）</p>
-<p><img src="http://designpatternsphp.readthedocs.io/zh_CN/latest/_images/uml7.png" alt=""></p>
-<p>即使看不懂 UML 类图也没有关系，编码能力的提高是要根据不断的实践才能有所增长的。当你顺着我的思路打完代码，你就已经可以明白规约设计模式的设计理念以及作用。</p>
-<p>当然我还是要解释一下这个类图所代表的含义。</p>
-<p>既然是规格校验，那么一个规格校验到底包括什么呢？</p>
-<p>一般而言主要有：区间、大于、小于、不等于，这几样，那么我们是不是可以将其抽象成一个类呢？</p>
-<p>这就是上面那张 UML 的简单含义，其中主要是用于描述其类的关系，UML 就是帮助我们对类进行抽象的一个工具。</p>
-<p>下面让我们撸起袖子打代码。首先我们应该新建了 Goods类用于表示被规约的产品，其中包含一个 Price 价格属性，然后在建立对 Price 属性的规约，用来检验最新实例化的 Goods 是否满足约定。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">//商品类</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Goods</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> float</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $price;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(float $price)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;price = $price;</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getPrice</span><span class="params">()</span>: <span class="title">float</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;price;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在建立规约之前，我们需要建立一个接口，这个接口中定了了一个方法<code>isSatisfiedBy</code>,也就是上文提到的那个检测对象是否满足规约条件的那个方法。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">SpecificationInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">isSatisfiedBy</span><span class="params">(Goods $goods)</span>: <span class="title">bool</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Ok，在我们编写其余代码之前，我们需要来做一个思考，在程序语言当中，判断条件中的操作符是不是有或、与、非这三个判断条件，对应着 ||、&amp;&amp;、！。</p>
-<p>那么我们是否可以将其抽象成一个又一个的类呢？</p>
-<p>OrSpecification规约用来表示 Or 的关系，与我们的逻辑判断一样，表示在两个规约之间只要满足一条便返回 true。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">OrSpecification</span> <span class="keyword">implements</span> <span class="title">SpecificationInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> SpecificationInterface[]</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $specifications;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> SpecificationInterface[] ...$specifications</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(SpecificationInterface ...$specifications)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;specifications = $specifications;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * if at least one specification is true, return true, else return false</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">isSatisfiedBy</span><span class="params">(Item $item)</span>: <span class="title">bool</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">foreach</span> (<span class="keyword">$this</span>-&gt;specifications <span class="keyword">as</span> $specification) &#123;</div><div class="line">            <span class="keyword">if</span> ($specification-&gt;isSatisfiedBy($item)) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>AndSpecification 用于表示 And 关系，两条以上规约时，必须都满足条件才会返回 true否则返回false.</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AndSpecification</span> <span class="keyword">implements</span> <span class="title">SpecificationInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> SpecificationInterface[]</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $specifications;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> SpecificationInterface[] ...$specifications</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(SpecificationInterface ...$specifications)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;specifications = $specifications;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * if at least one specification is false, return false, else return true.</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">isSatisfiedBy</span><span class="params">(Item $item)</span>: <span class="title">bool</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">foreach</span> (<span class="keyword">$this</span>-&gt;specifications <span class="keyword">as</span> $specification) &#123;</div><div class="line">            <span class="keyword">if</span> (!$specification-&gt;isSatisfiedBy($item)) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>NotSpecification.php 用于表示Not。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NotSpecification</span> <span class="keyword">implements</span> <span class="title">SpecificationInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> SpecificationInterface</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $specification;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(SpecificationInterface $specification)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;specification = $specification;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">isSatisfiedBy</span><span class="params">(Item $item)</span>: <span class="title">bool</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> !<span class="keyword">$this</span>-&gt;specification-&gt;isSatisfiedBy($item);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>逻辑判断抽编码好了之后，我们就要开始真正的规约了，我们建立一个 Price 规约，其中主要设定了 Price 的范围，构造函数中包含最大值与最小值，并且实现<code>isSatisfiedBy</code>用来判断输入的值是否符合范围。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PriceSpecification</span> <span class="keyword">implements</span> <span class="title">SpecificationInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> float|null</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $maxPrice;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> float|null</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $minPrice;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> float $minPrice</div><div class="line">     * <span class="doctag">@param</span> float $maxPrice</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($minPrice, $maxPrice)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;minPrice = $minPrice;</div><div class="line">        <span class="keyword">$this</span>-&gt;maxPrice = $maxPrice;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">isSatisfiedBy</span><span class="params">(Item $item)</span>: <span class="title">bool</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;maxPrice !== <span class="keyword">null</span> &amp;&amp; $item-&gt;getPrice() &gt; <span class="keyword">$this</span>-&gt;maxPrice) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;minPrice !== <span class="keyword">null</span> &amp;&amp; $item-&gt;getPrice() &lt; <span class="keyword">$this</span>-&gt;minPrice) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>下面我们进行单元测试，如果不懂单元测试的朋友，也可以直接使用上面的代码进行测试。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>\<span class="title">Tests</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>\<span class="title">Item</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>\<span class="title">NotSpecification</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>\<span class="title">OrSpecification</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>\<span class="title">AndSpecification</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>\<span class="title">PriceSpecification</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">PHPUnit</span>\<span class="title">Framework</span>\<span class="title">TestCase</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SpecificationTest</span> <span class="keyword">extends</span> <span class="title">TestCase</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testCanOr</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $spec1 = <span class="keyword">new</span> PriceSpecification(<span class="number">50</span>, <span class="number">99</span>);</div><div class="line">        $spec2 = <span class="keyword">new</span> PriceSpecification(<span class="number">101</span>, <span class="number">200</span>);</div><div class="line"></div><div class="line">        $orSpec = <span class="keyword">new</span> OrSpecification($spec1, $spec2);</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;assertFalse($orSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">100</span>)));</div><div class="line">        <span class="keyword">$this</span>-&gt;assertTrue($orSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">51</span>)));</div><div class="line">        <span class="keyword">$this</span>-&gt;assertTrue($orSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">150</span>)));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testCanAnd</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $spec1 = <span class="keyword">new</span> PriceSpecification(<span class="number">50</span>, <span class="number">100</span>);</div><div class="line">        $spec2 = <span class="keyword">new</span> PriceSpecification(<span class="number">80</span>, <span class="number">200</span>);</div><div class="line"></div><div class="line">        $andSpec = <span class="keyword">new</span> AndSpecification($spec1, $spec2);</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;assertFalse($andSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">150</span>)));</div><div class="line">        <span class="keyword">$this</span>-&gt;assertFalse($andSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">1</span>)));</div><div class="line">        <span class="keyword">$this</span>-&gt;assertFalse($andSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">51</span>)));</div><div class="line">        <span class="keyword">$this</span>-&gt;assertTrue($andSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">100</span>)));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testCanNot</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $spec1 = <span class="keyword">new</span> PriceSpecification(<span class="number">50</span>, <span class="number">100</span>);</div><div class="line">        $notSpec = <span class="keyword">new</span> NotSpecification($spec1);</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;assertTrue($notSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">150</span>)));</div><div class="line">        <span class="keyword">$this</span>-&gt;assertFalse($notSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">50</span>)));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这样一来，我们就设计出了优雅而又健壮的代码。</p>
-<p>说明：</p>
-<p>本文章代码，来自于 Github 开源项目，点击链接进入查看<a href="http://designpatternsphp.readthedocs.io/" target="_blank" rel="external">http://designpatternsphp.readthedocs.io/</a></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2017/06/01/1/" data-id="cj8x0oahi004ns7rdeiqfwr0t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="http://www.maksim.website/2017/06/01/1/#comments" class="article-comment-link">Comments</a>
-    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP设计模式/">PHP设计模式</a></li></ul>
 
-        </footer>
     </div>
     
 </article>
 
-
-
-    <article id="post-单例模式 - Singleton" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="单例模式-Singleton"><a href="#单例模式-Singleton" class="headerlink" title="单例模式 - Singleton"></a>单例模式 - Singleton</h1><p>单例模式确保每一个指定的类只存在一个实例对象，并且可以全局访问那个实例。一般情况下会用延时加载的策略，指在第一次需要使用的时候初始化。</p>
-<blockquote>
-<p>设计模式并不局限于某一个语言，他是一种编程思维</p>
-</blockquote>
-<p>在 iOS 开发中单例模式h很常见，NSUserDefaults.standardUserDefaults()等等。</p>
-<p>如果多于一个实例又会怎么样呢？代码和内存还没精贵到这个地步吧？</p>
-<p>某些场景下，保持实例对象仅有一份是很有意义的。举个例子，你的应用实例 (UIApplication)，应该只有一个吧，显然是指你的当前应用。还有一个例子：设备的屏幕 (UIScreen) 实例也是这样，所以对于这些类的情况，你只想要一个实例对象。</p>
-<p>单例模式的应用还有另一种情况：你需要一个全局类来处理配置文件。我们很容易通过单例模式实现线程安全的实例访问，而如果有多个类可以同时访问配置文件，那可就复杂多了。</p>
-<h1 id="使用单例模式"><a href="#使用单例模式" class="headerlink" title="使用单例模式"></a>使用单例模式</h1><p><img src="https://swift-design-patterns.books.yourtion.com/images/singleton1.png" alt=""></p>
-<p>这是一个日志类，有一个属性（是以单例对象）和两个方法（sharedInstance()和 init()）。</p>
-<p>第一吊用 sharedInstance()的时候，instance 属性还没有初始化，所以我们必须创建一个新的实例并且返回。</p>
-<p>下一次再调用 sharedInstance()的时候，instance 已经完成了初始化，直接返回即可，这个逻辑就确保了只有一个实例对象。</p>
-<p>接下来我们继续完善单例模式，通过这个类来管理专辑数据。</p>
-<p>注意到在我们前面的截图里，分组中有个 API 分组，这里可以放那些提供后台服务的类。在这个分组中创建一个新的文件 LibraryAPI.swift ，继承自 NSObject 类。</p>
-<p>在 LibraryAPI 里添加下面这段代码：</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2017/03/16/cj8x0oafa0034s7rdhiyi3gzv/" data-id="cj8x0oafa0034s7rdhiyi3gzv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
+        </li>
     
-        <a href="http://www.maksim.website/2017/03/16/cj8x0oafa0034s7rdhiyi3gzv/#comments" class="article-comment-link">Comments</a>
-    
+        <li class="post-list-item fade">
+            <article id="post-单例模式 - Singleton"
+  class="article-card article-type-post" itemprop="blogPost">
 
-        </footer>
+    <div class="post-meta">
+        <time class="post-time" title="2017-03-16 23:28:53" datetime="2017-03-16T15:28:53.000Z"  itemprop="datePublished">2017-03-16</time>
+
+        
+
+
     </div>
-    
-</article>
 
-
-
-    <article id="post-PHP 的闭包" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/15/1/">PHP Closures</a>
-        </h1>
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/03/15/1/">
-            <time datetime="2017-03-15T14:15:16.000Z" itemprop="datePublished">2017-03-15</time>
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/16/cj8x0s4ko003gsurdogjmbf6r/">No title</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        单例模式 - Singleton单例模式确保每一个指定的类只存在一个实例对象，并且可以全局访问那个实例。一般情况下会用延时加载的策略，指在第一次需要使用的时候初始化。
+
+设计模式并不局限于某一个语言，他是一种编程思维
+
+在 iOS 开发中单例模式h很常见，NSUserDefaults.standardUserDefaults()等等。
+如果多于一个实例又会怎么样呢？代码和内存还没精贵到这个地...
+    
+
+        <a href="/2017/03/16/cj8x0s4ko003gsurdogjmbf6r/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/PHP/">PHP</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Closures/">Closures</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>闭包函数（closures）也就做匿名函数（Anonymous functions），是指在创建时封装周围状态的函数。即便闭包所在的环境不存在了，闭包中封装的状态依然存在。</p>
-<blockquote>
-<p>理论上，闭包和匿名函数是不同的概念，不过 PHP 将其视作相同的概念，所以闭包与匿名函数相等。</p>
-</blockquote>
-<p>匿名函数其实就是没有名字的函数。匿名函数可以赋值给变量，还能像其他任何 PHP 对象那样传递。不过匿名函数仍然是函数，因此可以调用，还可以传入参数。匿名函数特别适合作为函数或方法的回调。</p>
-<h3 id="创建闭包"><a href="#创建闭包" class="headerlink" title="创建闭包"></a>创建闭包</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$closure = <span class="function"><span class="keyword">function</span> <span class="params">($name)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> sprintf(<span class="string">'Hello %s'</span>, $name);</div><div class="line">&#125;;</div><div class="line"><span class="keyword">echo</span> $closure(<span class="string">'Maksim'</span>);</div><div class="line"><span class="comment">//输出 Hello Maksim</span></div></pre></td></tr></table></figure>
-<p>创建一个闭包对象，然后将其复制给<code>$closure</code> 变量。闭包和普通的 PHP 函数很想：使用语句相同，也接受参数，而且能返回值。不过，匿名函数没有名称。</p>
-<p>我们通常把 PHP 闭包当做函数和方法的回调使用。很多 PHP 函数都会用到回调函数，例如 <code>array_map()</code>和 <code>preg_replace_callback()</code>。这是使用 PHP 匿名函数的最佳时机！</p>
-<p>记住，闭包和其他值一样，可以作为参数传入其他 PHP 函数，我们把一个闭包对象当做回调参数，传给 array_map()函数。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$numbersPlusOne = array_map(<span class="function"><span class="keyword">function</span> <span class="params">($number)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> $number + <span class="number">1</span>;</div><div class="line">&#125;,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</div><div class="line">print_r($numbersPlusOne);</div><div class="line"><span class="comment">//([0] =&gt; 2 [1] =&gt; 3 [2] =&gt; 4)</span></div></pre></td></tr></table></figure>
-<p>在闭包出现之前，PHP 开发者只能单独创建普通函数，然后使用名称引用那个函数，这么做，代码执行的稍微慢一点，而且把回调场景和使用场景分割开了，如下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$numbersPlusOne = array_map(<span class="string">'incrementNumber'</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">incrementNumber</span><span class="params">($number)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> $number + <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">print_r($numbersPlusOne);</div><div class="line"><span class="comment">//([0] =&gt; 2 [1] =&gt; 3 [2] =&gt; 4)</span></div></pre></td></tr></table></figure>
-<p>这样的代码虽然可用，但是没有使用闭包来的间接。如果只需要使用一次回调，没有必要单独定义具名函数。把闭包当做回调使用，写出的代码更加简洁、清晰。</p>
-<h3 id="使用附加状态"><a href="#使用附加状态" class="headerlink" title="使用附加状态"></a>使用附加状态</h3><p>前面演示了如何把匿名函数当做回调使用，下面探讨如何为 PHP 闭包附加兵封装状态。JavaScript 开发者可能对 PHP 的闭包感到奇怪，因为 PHP 闭包不会像真正的 JavaScript 闭包那样自动封装应用状态。在 PHP 中，必须手动调用闭包对象的 bindTo()方法或者使用 use 关键字，把状态附加到 PHP 闭包上。</p>
-<p>使用 use 关键字附加闭包状态常见得多，因此我们先看这种方式。使用 use 关键字把变量附加到闭包上时，附加的变量会记住附加时赋给它的值。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">enclosePerson</span><span class="params">($name)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">($doCommand)</span> <span class="title">use</span> <span class="params">($name)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> sprintf(<span class="string">'%s, %s'</span>, $name, $doCommand);</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//把字符串“Maksim”封装在闭包中</span></div><div class="line">$clay = enclosePerson(<span class="string">'Clay'</span>);</div><div class="line"></div><div class="line"><span class="comment">//掺入参数，调用闭包</span></div><div class="line"><span class="keyword">echo</span> $clay(<span class="string">'get sweet tea'</span>);</div><div class="line"><span class="comment">// Clay, get sweet tea</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>使用 use 关键字可以把多个参数传入闭包，此时要像 PHP 函数或者方法的参数一样，使用逗号分割多个参数</p>
-</blockquote>
-<p>PHP 闭包是对象。与其他 PHP 对象类似，每个闭包实例都可以使用$this 关键字获取闭包的内部状态。闭包对象的默认状态没什么用，不过有一个__invoke()魔术方法和 bindTo()方法，仅此而已。</p>
-<p>但是，bindTo()方法为闭包增加了一些有趣的潜力。我们可以把使用这个方法把 Closure 对象的内部状态绑定到其他对象上。bindTo()方法的第二个参数很重要，其作用是指定绑定闭包的那个对象所属的 PHP 类。因此闭包可以访问绑定闭包的对象中受保护和私有的成员变量。</p>
-<p>你会发现，PHP 框架经常使用 bindTo()方法把路由 URL 映射到匿名回调函数上。框架会把匿名函数绑定到应用对象上，这么做可以把这个匿名函数中使用$this 关键字引用重要的应用对象。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">protected</span> $routes = <span class="keyword">array</span>();</div><div class="line">    <span class="keyword">protected</span> $responseStatus = <span class="string">'200 Ok'</span>;</div><div class="line">    <span class="keyword">protected</span> $responseContentType = <span class="string">'text/html'</span>;</div><div class="line">    <span class="keyword">protected</span> $responseBody = <span class="string">'Hello world'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addRoute</span><span class="params">($routePath, $routeCallback)</span> </span>&#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;routes[$routePath] = $routeCallback-&gt;bindTo(<span class="keyword">$this</span>,<span class="keyword">__CLASS__</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">dispatch</span><span class="params">($currentPath)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">foreach</span> (<span class="keyword">$this</span>-&gt;routes <span class="keyword">as</span> $routePath =&gt; $callback) &#123;</div><div class="line">            <span class="keyword">if</span> ($currentPath === $currentPath) &#123;</div><div class="line">                $callback();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        header(<span class="string">'HTTP/1.1 '</span>. <span class="keyword">$this</span>-&gt;responseStatus);</div><div class="line">        header(<span class="string">'Content-type: '</span> . <span class="keyword">$this</span>-&gt;responseContentType);</div><div class="line">        header(<span class="string">'Content-length: '</span> . mb_strlen(<span class="keyword">$this</span>-&gt;responseBody));</div><div class="line">        <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;responseBody;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p> 我们要特别注意 addRoute（）方法。这个方法的参数分别是一个路由路径（例如/users/josh）和一个路由回调。dispatch()方法的参数是当前 HTTP 请求的路径，它调用匹配的路由回调。第10行是重点所在，我们把路由回调绑定到了当前 APP 实例上。这么做能够在回调函数中处理 APP 实例的状态。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$app =  <span class="keyword">new</span> App();</div><div class="line">$app-&gt;addRoute(<span class="string">'/users/josh'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">$this</span>-&gt;responseContentType = <span class="string">'application/json;charset=utf8'</span>;</div><div class="line">    <span class="keyword">$this</span>-&gt;responseBody = <span class="string">'&#123;"name":"json"&#125;'</span>;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">$app-&gt;dispatch(<span class="string">'/users/josh'</span>);</div></pre></td></tr></table></figure>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li>现代 PHP</li>
-<li>官方手册</li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2017/03/15/1/" data-id="cj8x0oacu0017s7rd00q06w9f" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://www.maksim.website/2017/03/15/1/#comments" class="article-comment-link">Comments</a>
-    
-
-        </footer>
-    </div>
     
 </article>
 
-
-
-    <article id="post-RESTFul 是什么？" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="RESTFul-是什么？"><a href="#RESTFul-是什么？" class="headerlink" title="RESTFul 是什么？"></a>RESTFul 是什么？</h2><p>RESTful的本质是一种软件架构风格，核心是面向资源，主要用来解决降低开发的复杂性，提高系统的可伸缩性。随着互联网的发展，各种终端层出不穷，手机浏览器，手机 APP 为了节约成本，我们可以使用 RESTful 架构，只需要封装好一套完善的API就可以为多套终端提供服务。</p>
-<p>设计概念和准则</p>
-<ul>
-<li>网络上所有事物都可以被抽象为资源</li>
-<li>每一个资源都有唯一的标识符，对资源的操作不会改变这些标识</li>
-<li>所有的操作都是无状态的</li>
-</ul>
-<p>所谓的资源就是网络上的一个实体，或者说是网络上一个具体的信息。</p>
-<p>HTTP 协议 - URL</p>
-<p>HTTP 是一个属于应用层的协议，特点是简捷、快速</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">schema://host[:port]/path[?query-string][#anchor]</div></pre></td></tr></table></figure>
-<ul>
-<li>schema 指定底层使用的协议（如：http,https）</li>
-<li>host   服务器的 IP 地址或者域名</li>
-<li>port 服务器端口</li>
-<li>path 访问资源的路径</li>
-<li>query-string 发送给 http 服务器的数据</li>
-<li>anchor     锚</li>
-</ul>
-<p>HTTP</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2017/03/14/cj8x0oadb001js7rdmi4hgus7/" data-id="cj8x0oadb001js7rdmi4hgus7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
+        </li>
     
-        <a href="http://www.maksim.website/2017/03/14/cj8x0oadb001js7rdmi4hgus7/#comments" class="article-comment-link">Comments</a>
-    
+        <li class="post-list-item fade">
+            <article id="post-PHP 的闭包"
+  class="article-card article-type-post" itemprop="blogPost">
 
-        </footer>
+    <div class="post-meta">
+        <time class="post-time" title="2017-03-15 22:15:16" datetime="2017-03-15T14:15:16.000Z"  itemprop="datePublished">2017-03-15</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP/">PHP</a></li></ul>
+
+
+
     </div>
-    
-</article>
 
-
-
-    <article id="post-光源色、物体色、固有色" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="光源色、物体色、固有色"><a href="#光源色、物体色、固有色" class="headerlink" title="光源色、物体色、固有色"></a>光源色、物体色、固有色</h1><h2 id="什么是光源色"><a href="#什么是光源色" class="headerlink" title="什么是光源色"></a>什么是光源色</h2><p>光源色指的是发光体所发出光线的颜色。例如，阳光、月光、火光和各种灯光等的光色。光源色的不同会引起物体的固有颜色的变化。例如，一块红布在白天看起来和在晚上灯光下看起来颜色是有所不同的。许多女同志都懂得这一点，她们避免晚上去商店购买衣料，因为晚上灯光下看到的黄色，和白天看到的是有些不一样的。就是同样的眼光来说，在早晨、正午和傍晚其光色也是不相同的，会引起同一景物的色调的显著变化。</p>
-<p>物体在不同颜色的光照下会呈现出跟光颜色比较接近的色彩，这些都是收到光源色彩的影响。</p>
-<h2 id="什么是物体色"><a href="#什么是物体色" class="headerlink" title="什么是物体色"></a>什么是物体色</h2><p>物体色是指光源色经过物体有选择的吸收和反射，反映到人的视觉中的光色感觉。物体本身并不会发光，但都具有对各种波长的光有所选择性的吸收、反射或者投射的特性，因此形成千变万化的不相同的物体色彩。</p>
-<p>物体可以分为透明物体和不透明物体，不透明物体呈现的色彩是由它反射的光色决定的，而透明物体呈现的色彩则是由它透过的色彩决定的。</p>
-<p>如绿色树叶吸收太阳光除绿色光的其他色光，所以我们看到的是绿色，而蓝色玻璃只透过蓝色光吸收其他光所以看起来呈现的是蓝色。</p>
-<h2 id="什么是固有色"><a href="#什么是固有色" class="headerlink" title="什么是固有色"></a>什么是固有色</h2><p>固有色指的是一个物体在通常情况下给人的色彩印象（概念）例如，红旗是红色的，草地是绿色的，中国人的皮肤是黄色的等等。</p>
-<p>从色彩的光学原理知道物体并不存在固定不变的固有颜色，物体的颜色是与光密切相关的，是在一定的条件下变化的，是具体的，而不是一种概念。讲中国人皮肤是黄色的，其实不可能指出是哪一种具体的光色。然而，物体的颜色景观是变化的、复杂的，单扔给我们一定的色彩印象。所以我们既不要受固有色概念的束缚，又不能完全故事固有色。</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2017/03/14/cj8x0oafo003bs7rdfkw66r91/" data-id="cj8x0oafo003bs7rdfkw66r91" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://www.maksim.website/2017/03/14/cj8x0oafo003bs7rdfkw66r91/#comments" class="article-comment-link">Comments</a>
     
 
-        </footer>
-    </div>
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/15/1/">PHP Closures</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
     
-</article>
+        闭包函数（closures）也就做匿名函数（Anonymous functions），是指在创建时封装周围状态的函数。即便闭包所在的环境不存在了，闭包中封装的状态依然存在。
 
+理论上，闭包和匿名函数是不同的概念，不过 PHP 将其视作相同的概念，所以闭包与匿名函数相等。
 
-
-    <article id="post-色彩的基本构成和使用方法" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/11/cj8x0oahl004us7rdzwjyivg6/">色彩基础</a>
-        </h1>
+匿名函数其实就是没有名字的函数。匿名函数可以赋值给变量，还能像其他任何 PHP 对象那样传递。不过匿名函数仍然是函数，因...
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/03/11/cj8x0oahl004us7rdzwjyivg6/">
-            <time datetime="2017-03-11T12:40:00.000Z" itemprop="datePublished">2017-03-11</time>
+        <a href="/2017/03/15/1/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/设计/">设计</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/色彩/">色彩</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="色彩的基本构成和使用方法"><a href="#色彩的基本构成和使用方法" class="headerlink" title="色彩的基本构成和使用方法"></a>色彩的基本构成和使用方法</h1><ol>
-<li>色彩的定义是什么</li>
-<li>色彩的种类</li>
-<li>色彩3大特点</li>
-</ol>
-<h2 id="色彩的定义是什么"><a href="#色彩的定义是什么" class="headerlink" title="色彩的定义是什么"></a>色彩的定义是什么</h2><p>我们平时看到的所有东西都会有自己的色彩，有难以感觉到的灰暗，也有鲜艳耀眼的成色等，其实色彩是依赖于光存在的，没有光就不会有色彩，色彩是物体对光谱的反射给人眼传达的一种视觉信息。</p>
-<p>我们可以把颜色通过可见光的波长来划分，这有点跟 PS 软件上面的取色板上的色彩排列相似（如下图）。</p>
-<p><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=423413218,2703533471&amp;fm=116&amp;gp=0.jpg" alt="image"></p>
-<p>光其实也是电磁波的一种，我们知道电磁波的传播速度是一样的，而决定我们看到颜色光的色彩的就是电磁波的波长，我们可以从图中看到不同颜色对应的波长范围，如红色光的波长在760纳米之间，蓝色光的波长范围在380纳米之间，所以可见光的范围在380-760之间（如下图）。</p>
-<p><img src="http://p1.bpimg.com/4851/967f41bc84c70788.jpg" alt="image"></p>
-<h2 id="色彩种类划分"><a href="#色彩种类划分" class="headerlink" title="色彩种类划分"></a>色彩种类划分</h2><p>我们可以看到的可见光的范围是380-760纳米波长之间的光谱，通过三棱镜折射出太阳光我们可以看到红橙光绿青蓝紫7中颜色，而实际上我们可以把颜色归类成红黄蓝三追踪原色，这3种颜色可以通过组合搭配调配处其他任意颜色。</p>
-<p>色光三颜色 ： 红黄蓝 RGB（PS 案例）<br>物体三颜色： 红蓝黄（水彩绘画）</p>
-<h2 id="色彩的三要素"><a href="#色彩的三要素" class="headerlink" title="色彩的三要素"></a>色彩的三要素</h2><ol>
-<li>色相</li>
-<li>明度</li>
-<li>纯度（饱和度）</li>
-</ol>
-<h3 id="色相"><a href="#色相" class="headerlink" title="色相"></a>色相</h3><p>色相其实就是指色彩，物体所呈现的颜色状态叫做色相，如红旗的颜色就是红色，天空的颜色是蓝色，荷叶的颜色是绿色，我们可以很简单的识别一种物体的色相。</p>
-<p>在 RGB 色彩模式中，色彩用红，绿，蓝三种色彩来合成表现的，每种色彩分成255个阶，通过不同的比例调配出千变万化的色彩。</p>
-<h3 id="明度"><a href="#明度" class="headerlink" title="明度"></a>明度</h3><p>明度是指色彩的明暗程度，也称深浅度，是表现颜色层次感的基础。</p>
-<p>我们知道色彩的表现是以光反射的形式表现的，比如同一个橙子的颜色是橙色的，但是在明度上的变化让我们可以看出这个橙子的立体感(如下图)。</p>
-<p><img src="http://p1.bqimg.com/4851/87c2f84e88619477.jpg" alt=""></p>
-<p>在无彩色系中，白色明度最高，黑色明度最低，在黑白之间存在一系列灰色，靠近白色的部分称之为名灰色，靠近黑色的部分称之为暗灰色。在有色系中，黄色明度最高，紫色明度最低。任何一个有色彩，当它掺入白色时，明度提高，当掺入黑色时，明度降低。同时其混度也响应降低。</p>
-<p>在 RGB 色彩模式中，RGB 色彩3个数值相加越大就代表色彩明度越高，我们可以简单理解为月亮的颜色明度越高，就比如R：255是红色，那么 R255，G：50，B：50就是加了亮度的红色，会显得亮而且轻(如图)。</p>
-<p><img src="http://p1.bqimg.com/4851/16411dd0ff23090b.jpg" alt=""></p>
-<h3 id="纯度（饱和度）"><a href="#纯度（饱和度）" class="headerlink" title="纯度（饱和度）"></a>纯度（饱和度）</h3><p>纯度通常是指色彩的鲜艳程度。从科学的角度看，一种颜色的鲜艳度取决于这一色相发射光的单一程度，也就是指原色在色彩中所占的百分比。人眼能识别的有单色光特征的颜色，都具有一定的鲜艳度。不同色相不仅明度不同，纯度也不相同。</p>
-<p><img src="http://p1.bpimg.com/4851/4982b8808e9be06d.jpg" alt=""></p>
-<p>通常纯色的纯度最高，也就是不加入黑白灰的颜色，同一色相的色彩，不掺杂白色或者黑色，则被称为纯色。在纯色中加入不同明度的无彩色，会出现不同的纯度。以蓝色为例，向纯蓝色中加入一点白色，纯度下降而明度上升，变为淡蓝色。继续加入白色的量，颜色会越来越淡，纯度下降，而明度持续上升。反之，加入黑色或灰色，则相应的纯度和明度同时下降。</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2017/03/11/cj8x0oahl004us7rdzwjyivg6/" data-id="cj8x0oahl004us7rdzwjyivg6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="http://www.maksim.website/2017/03/11/cj8x0oahl004us7rdzwjyivg6/#comments" class="article-comment-link">Comments</a>
-    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Closures/">Closures</a></li></ul>
 
-        </footer>
     </div>
     
 </article>
 
-
-
-    <article id="post-使用 Vagrant 搭建开发环境" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
+        </li>
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/12/13/cj8x0oafe0038s7rdk6eco8xt/">使用 Vagrant 统一公司内开发环境</a>
-        </h1>
+        <li class="post-list-item fade">
+            <article id="post-RESTFul 是什么？"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-03-14 14:30:03" datetime="2017-03-14T06:30:03.000Z"  itemprop="datePublished">2017-03-14</time>
+
+        
+
+
+    </div>
+
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/12/13/cj8x0oafe0038s7rdk6eco8xt/">
-            <time datetime="2016-12-13T01:10:23.000Z" itemprop="datePublished">2016-12-13</time>
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/14/cj8x0s4iv001msurdvwwohgou/">No title</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        RESTFul 是什么？RESTful的本质是一种软件架构风格，核心是面向资源，主要用来解决降低开发的复杂性，提高系统的可伸缩性。随着互联网的发展，各种终端层出不穷，手机浏览器，手机 APP 为了节约成本，我们可以使用 RESTful 架构，只需要封装好一套完善的API就可以为多套终端提供服务。
+设计概念和准则
+
+网络上所有事物都可以被抽象为资源
+每一个资源都有唯一的标识符，对资源的操作不会...
+    
+
+        <a href="/2017/03/14/cj8x0s4iv001msurdvwwohgou/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/工具/">工具</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="使用-Vagrant-搭建开发环境"><a href="#使用-Vagrant-搭建开发环境" class="headerlink" title="使用 Vagrant 搭建开发环境"></a>使用 Vagrant 搭建开发环境</h1><h2 id="Vagrant-是什么"><a href="#Vagrant-是什么" class="headerlink" title="Vagrant 是什么"></a>Vagrant 是什么</h2><ul>
-<li>Vagrant 是构建在虚拟化技术上的虚拟机运行环境管理工具</li>
-<li>建立和删除虚拟机</li>
-<li>配置虚拟机运行参数</li>
-<li>管理虚拟机运行状态</li>
-<li>自动化配置和安装开发环境</li>
-<li>打包和分发虚拟机运行环境</li>
-<li>Vagrant 的运行，需要依赖某项具体的虚拟化技术</li>
-<li>Virtualbox</li>
-<li><p>WMWare</p>
-<h2 id="Vagrantd的作用"><a href="#Vagrantd的作用" class="headerlink" title="Vagrantd的作用"></a>Vagrantd的作用</h2></li>
-<li><p>跨平台</p>
-</li>
-<li>可移动</li>
-<li>自动化部署无需人工参与</li>
-<li>减少人力培训成本</li>
-<li><p>统一开发环境</p>
-<h2 id="Vagrant-适用范围"><a href="#Vagrant-适用范围" class="headerlink" title="Vagrant 适用范围"></a>Vagrant 适用范围</h2></li>
-<li><p>开发环境</p>
-</li>
-<li><p>项目配置比较复杂</p>
-<p>官网：<a href="https://www.vagrantup.com/" target="_blank" rel="external">https://www.vagrantup.com/</a><br>vagrant与 VirtualBox的版本需要注意匹配，在官网有详细介绍，如果版本不匹配会出现一些错误。</p>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2></li>
-<li>vagrant box list 查看目前已有的box</li>
-<li>vagrant box add 新增加一个box</li>
-<li>vagrant box remove 删除指定box</li>
-<li>vagrant init 初始化</li>
-<li>vagrant up 启动虚拟机</li>
-<li>vagrant ssh SSH 登陆虚拟机</li>
-<li>vagrant suspend 挂起虚拟机</li>
-<li>vagrant reload 重启虚拟机</li>
-<li>vagrant halt 关闭虚拟机</li>
-<li>vagrant status 查看虚拟机运行状态</li>
-<li>vagrant destroy 销毁当前虚拟机</li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2016/12/13/cj8x0oafe0038s7rdk6eco8xt/" data-id="cj8x0oafe0038s7rdk6eco8xt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://www.maksim.website/2016/12/13/cj8x0oafe0038s7rdk6eco8xt/#comments" class="article-comment-link">Comments</a>
-    
-
-        </footer>
-    </div>
     
 </article>
 
-
-
-    <article id="post-PHP设计模式系列之入门" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
+        </li>
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/09/23/108/">PHP设计模式系列之入门</a>
-        </h1>
+        <li class="post-list-item fade">
+            <article id="post-光源色、物体色、固有色"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-03-14 14:20:11" datetime="2017-03-14T06:20:11.000Z"  itemprop="datePublished">2017-03-14</time>
+
+        
+
+
+    </div>
+
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/09/23/108/">
-            <time datetime="2016-09-23T14:15:16.000Z" itemprop="datePublished">2016-09-23</time>
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/14/cj8x0s4kk003dsurdk9c6hzfk/">No title</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        光源色、物体色、固有色什么是光源色光源色指的是发光体所发出光线的颜色。例如，阳光、月光、火光和各种灯光等的光色。光源色的不同会引起物体的固有颜色的变化。例如，一块红布在白天看起来和在晚上灯光下看起来颜色是有所不同的。许多女同志都懂得这一点，她们避免晚上去商店购买衣料，因为晚上灯光下看到的黄色，和白天看到的是有些不一样的。就是同样的眼光来说，在早晨、正午和傍晚其光色也是不相同的，会引起同一景物...
+    
+
+        <a href="/2017/03/14/cj8x0s4kk003dsurdk9c6hzfk/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/PHP设计模式/">PHP设计模式</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/设计模式/">设计模式</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <blockquote>
-<p>设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问，设计模式于己于他人于系统都是多赢的；设计模式使代码编制真正工程化；设计模式是软件工程的基石脉络，如同大厦的结构一样。</p>
-</blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
-<li><p>本系列文章不会直接上代码直接进行解释，我一直认为带着问题来学习是效率最高的学习方式。</p>
-</li>
-<li><p>本系列文章不会有演示截图，你为什么不敲一遍加深印象呢，另外说不定我的代码有错。</p>
-</li>
-<li><p>我所写的文章只是我对于编程的理解，如果有错误希望能够得到指正以免误人子弟。</p>
-</li>
-</ul>
-<h2 id="怎么样才可以进行设计模式的学习"><a href="#怎么样才可以进行设计模式的学习" class="headerlink" title="怎么样才可以进行设计模式的学习"></a>怎么样才可以进行设计模式的学习</h2><p>步子迈大了容易扯到蛋，如果在没有熟悉 OOP 编程思想前就开始学习设计模式，我感觉会有两种可能，不是“扯蛋”，就是“拉跨”。</p>
-<p><img src="http://wanzao2.b0.upaiyun.com/system/pictures/17809564/original/5a08021694a003ca.gif" alt=""></p>
-<p>当然上面的话是一句玩笑话，学习设计模式可以有效的提高我们的代码质量与深入的理解 OOP 编程理念，如但是果在没有扎实的功底（至少要要理解了抽象、接口、多态）前就开始学习设计模式会越学越难，脑子越来越浑，那就真变成了从入门到放弃了，因为你的思维还没有真正的走进 OOP(单身狗表示完全无法面向对象^_^)。</p>
-<p>对于设计模式的不理解我感觉主要分为两种，一种是不知道怎么实现的，原因就是如上所述，另外一种是不知道为什么要这么用的，其实没有必要纠结于为什么这么用，这么用了有啥作用，设计模式不过是与算法一样只是为了实现某个特定环境下可以使用的一种更好的选择。</p>
-<p>更好一点的例子就是当我们对一些数据进行排序的时候，我们首先想到就是那几个排序算法一样，当我们打着打着代码突然灵光一闪，好像这个地方用这个设计模式写起来会轻松一点。</p>
-<p>当碰到不懂得地方，思考一下，想不通，就出去走走，把这个东西放下来，反正就算看到第二天凌晨也也是无用的，当真正遇到问题的时候，灵光一闪这个东西可以这么写，然后去实践，这就是我的学习之道。还有就是尽量去学实例，而不是去死扣概念，当你真正用起来了，你也就差不多懂了，算法与数据结构亦是如此。</p>
-<p>本系列文章尽量以推导的形式来进行书写，而不是以现成的代码来进行讲解，让读者知道设计模式是怎么来的也就是如何演化出来的，希望各位能够喜欢。<strong>另外本系列的文章并不会提供运行界面的截图，如果想看看结果是否正确，为什么不自己试试呢？</strong></p>
-<h2 id="设计模式尝鲜（策略模式）"><a href="#设计模式尝鲜（策略模式）" class="headerlink" title="设计模式尝鲜（策略模式）"></a>设计模式尝鲜（策略模式）</h2><p>开头引用的话来自于百度百科，我相信很多刚刚开始接触编程的人都会犯晕，因为所有人都不喜欢被学术化的文字，我们以设计模式中较为常用的策略模式来进行演示，当我们编写一个广告模块的时候，公司给的要求是根据访问者的性别来进行显示广告以提高转化率，那我们应该怎么写呢？</p>
-<p><img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&amp;quality=100&amp;size=b4000_4000&amp;sec=1474639306&amp;di=8cd977b3c8e7d09c8a22672b95423266&amp;src=http://img01.taopic.com/151015/234716-15101509225378.jpg" alt=""></p>
-<p>首先我们想到的是在每一个广告位上面都使用 if 判断来判断访客的性别，这样就能够解决这样的需求，那么我们的每一个广告代码的代码块可能是这个样子的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">判断 男 or 女&#123;</div><div class="line">	如果是男的就是男人的广告</div><div class="line">&#125;else&#123;</div><div class="line">	显示女人的广告</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>既然伪代码想好了，那么我们就可以着手进行开发了，然后我们在 if 代码块中添加各自的家在广告代码，于是就变成了下面的样子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if ($_GET[&apos;sex&apos;] == &apos;man&apos;) &#123;</div><div class="line">	echo &apos;外星人大减价现在购买立即送电竞瑞文皮肤&apos;;</div><div class="line">&#125;else&#123;</div><div class="line">	echo &apos;卡西欧美颜相机不要钱免费送！&apos;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>但是这是属于一种硬编码的编程方式，一旦我们增加了某种需求，要求其年龄大于23岁显示什么样的广告，那么我们就不得不在每一个 if 判断处再加上新的判断条件，这样的设计就是不合理的，为了提高可读性与可维护性，我们会考虑建立两个不同的类来对两个广告类来对其进行管理。于是代码变成了下面的样子。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">//index.php</div><div class="line">include &apos;GenderAD.php&apos;;</div><div class="line">include &apos;ManAD.php&apos;;</div><div class="line"></div><div class="line">if ($_GET[&apos;sex&apos;] == &apos;man&apos;) &#123;</div><div class="line">	$ad = new ManAD();</div><div class="line">&#125;else&#123;</div><div class="line">	$ad = new GenderAD();</div><div class="line">&#125;</div><div class="line">$ad-&gt;show();</div><div class="line"></div><div class="line">//GenderAD.php</div><div class="line">class GenderAD</div><div class="line">&#123;</div><div class="line">	public algorithm()&#123;</div><div class="line">		echo &apos;卡西欧美颜相机不要钱免费送！&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//ManAD.php</div><div class="line">class ManAD&#123;</div><div class="line">	public algorithm()&#123;</div><div class="line">		echo &apos;外星人大减价现在购买立即送电竞瑞文皮肤&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>algorithm    英[ˈælgərɪðəm] 美[ˈælɡəˌrɪðəm] n.    演算法; 运算法则; 计算程序;</p>
-</blockquote>
-<p>其实到了这一步就已经算是一个简单的策略模式了，因为他已经具有策略的特质了，只不过还不够完善，如果说这不算什么的话我也没有办法，因为所有的设计模式其实都是思维模式与表现形式罢了，就像上面的引用中提到的一样，设计模式只不过是为了能够让代码可以重用，更容易他让人理解，因为你的代码并不是你一个人在维护，那么问题来了，只是简单的对其进行封装真的就提高代码的可维护性了么，其实并没有，我们还没有将 OOP 的设计概念发挥到极致。</p>
-<p>经过分析我们发现其实 ManAD类和 GenderAD最终都要进行显示，他们的方法的显示方法都是 show，如果是你一个人在开发那么没有什么问题，可是若是两个人开发呢，你们可以直接可以对话的方式进行沟通，协定好都是 show方法来显示，可是为什么不用更工程化的方式来实现呢？</p>
-<p>我们可以使用接口来实现这一目的，如果对接口还不了解，可以去查阅一下资料，很快你就能够明白，在本文结束后我会在下方标注出参考范例。</p>
-<p>我们可以新建一个接口来对这些策略进行控制。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">interface ADinterface&#123;</div><div class="line">	public function algorithm();</div><div class="line">&#125;</div><div class="line"></div><div class="line">class ManAD implements ADInterface</div><div class="line">&#123;</div><div class="line">	public function algorithm()&#123;</div><div class="line">		echo &apos;外星人大减价现在购买立即送电竞瑞文皮肤&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">class GenderAD implements ADInterface</div><div class="line">&#123;</div><div class="line">	public function algorithm()&#123;	</div><div class="line">		echo &apos;卡西欧美颜相机不要钱免费送！&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这样一来广告策略必须遵循这个接口进行开发，就保证了所有策略类都需要实现 show 方法。</p>
-<p>到目前为止，策略模式已经相对的完善了，但是还是不够完美，因为代码依旧并不是很 OOP，我们其实还可以更进一步，让他更 OOP，我们可以对那些策略外面套一个壳子，给外面一个选择器。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class StrategySelect &#123;</div><div class="line">	//具体策略对象</div><div class="line">    private $strategyInstance;</div><div class="line">    </div><div class="line">    //构造函数</div><div class="line">    public function __construct($instance)</div><div class="line">    &#123;</div><div class="line">        $this-&gt;strategyInstance = $instance;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public function algorithm($strategy)</div><div class="line">    &#123;</div><div class="line">        return $this-&gt;strategyInstance-&gt;algorithm();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>我们通过构造函数接收到具体的执行策略，然后使用algorithm()执行相对应的策略。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">interface ADinterface&#123;</div><div class="line">	public function algorithm();</div><div class="line">&#125;</div><div class="line"></div><div class="line">class StrategySelect &#123;</div><div class="line">	//具体策略对象</div><div class="line">    private $strategyInstance;</div><div class="line">    </div><div class="line">    //构造函数</div><div class="line">    public function __construct($instance)</div><div class="line">    &#123;</div><div class="line">        $this-&gt;strategyInstance = $instance;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public function algorithm()</div><div class="line">    &#123;</div><div class="line">        return $this-&gt;strategyInstance-&gt;algorithm();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class ManAD implements ADInterface</div><div class="line">&#123;</div><div class="line">	public function algorithm()&#123;</div><div class="line">		echo &apos;外星人大减价现在购买立即送电竞瑞文皮肤&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class GenderAD implements ADInterface</div><div class="line">&#123;</div><div class="line">	public function algorithm()&#123;</div><div class="line">		echo &apos;卡西欧相机免费赠送啦&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">header(&quot;Content-type:text/html;charset=utf-8&quot;);</div><div class="line">if ($_GET[&apos;sex&apos;] == &apos;man&apos;) &#123;</div><div class="line">	$stratey = new StrategySelect(new ManAD());</div><div class="line">	$stratey-&gt;algorithm();</div><div class="line">&#125;else&#123;</div><div class="line">	$stratey = new StrategySelect(new GenderAD());</div><div class="line">	$stratey-&gt;algorithm();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Strategy其实算是一个策略选择器，当满足一定条件的时候，我们通过这个策略选测器来进行选择相对应的策略。这样一来更符合逻辑。是不是很 OOP？</p>
-<p>如果有什么不懂得可以在评论区进行留言，有时间我会一一答复，如果发现本文中有什么错误请指出，我也害怕误人子弟，特别是概念上的东西，在最后StrategySelect类的讲解上我依旧感觉写的很模糊，有些差强人意。</p>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
-<li><p>《Leaning PHP Design Patterns》 William Sanders 著 苏金国 王宇飞等译</p>
-</li>
-<li><p>《PHP之道》</p>
-</li>
-<li><p>《PHP大话设计模式》 Rango(韩天峰) 录制者 慕课网视频教程</p>
-</li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2016/09/23/108/" data-id="cj8x0oad2001ds7rd0fuhb786" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://www.maksim.website/2016/09/23/108/#comments" class="article-comment-link">Comments</a>
-    
-
-        </footer>
-    </div>
     
 </article>
 
-
-
-    <article id="post-文字转语音" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
+        </li>
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/07/30/194/">AV Foundation那些事系列（一）AVFunction入门了解</a>
-        </h1>
+        <li class="post-list-item fade">
+            <article id="post-色彩的基本构成和使用方法"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-03-11 20:40:00" datetime="2017-03-11T12:40:00.000Z"  itemprop="datePublished">2017-03-11</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/设计/">设计</a></li></ul>
+
+
+
+    </div>
+
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/07/30/194/">
-            <time datetime="2016-07-30T12:38:29.000Z" itemprop="datePublished">2016-07-30</time>
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/11/cj8x0s4m0004ysurdaizq3dd2/">色彩基础</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        色彩的基本构成和使用方法
+色彩的定义是什么
+色彩的种类
+色彩3大特点
+
+色彩的定义是什么我们平时看到的所有东西都会有自己的色彩，有难以感觉到的灰暗，也有鲜艳耀眼的成色等，其实色彩是依赖于光存在的，没有光就不会有色彩，色彩是物体对光谱的反射给人眼传达的一种视觉信息。
+我们可以把颜色通过可见光的波长来划分，这有点跟 PS 软件上面的取色板上的色彩排列相似（如下图）。
+
+             ...
+    
+
+        <a href="/2017/03/11/cj8x0s4m0004ysurdaizq3dd2/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Objective-C/">Objective-C</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/iOS/">iOS</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Hello，大家好，先做一个简短的自我介绍，我是AirCrayon，目前就职于齐齐哈尔的一家创业型公司，从今天开始，每周末我都将为大家带来一篇博文，今天为大家带阿里的是 AVFunction 的那些事系列博文的第一章——AV Foundation入门。</p>
-<p>苹果公司一直以来都是一家擅长引领潮流的一家公司，不论是产品设计开始技术革新，1991年苹果公司推出了QuickTime首次将数字音频和数字视频展现在用户面前。</p>
-<blockquote>
-<p>QuickTime不仅仅是一个媒体播放器，而且是一个完整的多媒体架构，可以用来进行多种媒体的创建、生产和分发，并为这一过程提供端到端的支持：包括媒体的实时捕捉，以编程的方式合成媒体，导入和导出现有的媒体，还有编辑和制作、压缩、分发，以及用户回放等多个环节。</p>
-</blockquote>
-<p>在2001年苹果公司推出了iTunes和iPod，从根本上改变了用户收听音乐的方式，iTunes store的出现彻底改变了国外的传统音乐行业（多么牛的一家公司）。</p>
-<h2 id="AV-Foundation-的含义"><a href="#AV-Foundation-的含义" class="headerlink" title="AV Foundation 的含义"></a>AV Foundation 的含义</h2><p>AV Foundation是MacOS（目前还叫 OS X ，但最新版本的名字将叫做 MacOS）和 iOS 系统中用于处理基于时间的媒体数据的高级Objective-C框架。通过开发所需要的工具提供了大量的功能集，让开发者能够基于 Apple 平台创建媒体应用程序。AV Foundation 的构建考虑到了目前的硬件环境和应用程序，其设计过程高度依赖于多线程机制。充分利用了多和设备的有时并且使用了大量的 block 和 GCD 机制将复杂的计算放在后台线程中会自动提供硬件加速操作，确保在大部分设备上应用程序以最佳的性能运行。AV Foundation 的设计也充分考虑了电量效率来满足注入 iPhone 和 iPad 这类的移动设备，此外从一开始该框架就是针对于64位处理器设计，可以发挥64为处理器的所有优势。</p>
-<p>在iOS7下的AVFoundation下增加了一个类用于文字转成语音,需要注意的是其转换的语音与你的手机语言环境有关,如果手机是英文环境,则无法读取中文字符串,但是中文环境下可以读取英文.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">AVSpeechSynthesizer *xx = [[AVSpeechSynthesizer alloc]init]; //开始播放</div><div class="line">[xx speakUtterance:[AVSpeechUtterance speechUtteranceWithString:@&quot;语音转换&quot;]];</div></pre></td></tr></table></figure>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2016/07/30/194/" data-id="cj8x0oah60046s7rdkq81bt3a" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="http://www.maksim.website/2016/07/30/194/#comments" class="article-comment-link">Comments</a>
-    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/色彩/">色彩</a></li></ul>
 
-        </footer>
     </div>
     
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-使用 Vagrant 搭建开发环境"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-12-13 09:10:23" datetime="2016-12-13T01:10:23.000Z"  itemprop="datePublished">2016-12-13</time>
+
+        
 
 
-    <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
-    </nav>
-</section>
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/12/13/cj8x0s4kd0036surdybze8bzk/">使用 Vagrant 统一公司内开发环境</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        使用 Vagrant 搭建开发环境Vagrant 是什么
+Vagrant 是构建在虚拟化技术上的虚拟机运行环境管理工具
+建立和删除虚拟机
+配置虚拟机运行参数
+管理虚拟机运行状态
+自动化配置和安装开发环境
+打包和分发虚拟机运行环境
+Vagrant 的运行，需要依赖某项具体的虚拟化技术
+Virtualbox
+WMWare
+Vagrantd的作用
+跨平台
+
+可移动
+自动化部署无需人工参与
+减少人力...
+    
+
+        <a href="/2016/12/13/cj8x0s4kd0036surdybze8bzk/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-PHP设计模式系列之入门"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-09-23 22:15:16" datetime="2016-09-23T14:15:16.000Z"  itemprop="datePublished">2016-09-23</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP设计模式/">PHP设计模式</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/09/23/108/">PHP设计模式系列之入门</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问，设计模式于己于他人于系统都是多赢的；设计模式使代码编制真正工程化；设计模式是软件工程的基石脉络，如同大厦的结构一样。
+
+前言
+本系列文章不会直接上代码直接进行解释，我一直认为带着问题来学习是效率最高的学...
+    
+
+        <a href="/2016/09/23/108/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-文字转语音"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-07-30 20:38:29" datetime="2016-07-30T12:38:29.000Z"  itemprop="datePublished">2016-07-30</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Objective-C/">Objective-C</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/07/30/194/">AV Foundation那些事系列（一）AVFunction入门了解</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        前言Hello，大家好，先做一个简短的自我介绍，我是AirCrayon，目前就职于齐齐哈尔的一家创业型公司，从今天开始，每周末我都将为大家带来一篇博文，今天为大家带阿里的是 AVFunction 的那些事系列博文的第一章——AV Foundation入门。
+苹果公司一直以来都是一家擅长引领潮流的一家公司，不论是产品设计开始技术革新，1991年苹果公司推出了QuickTime首次将数字音频和数...
+    
+
+        <a href="/2016/07/30/194/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+    </ul>
+
+    
+<nav id="page-nav">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+    </div>
+</nav>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
             
-                <aside id="sidebar">
-   
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">recent</h3>
-        <div class="widget">
-            <ul id="recent-post" class="">
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/10/16/cj8x0oad8001gs7rd8oat1bjy/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/10/16/cj8x0oad8001gs7rd8oat1bjy/" class="title">PHP页面静态化</a></p>
-                            <p class="item-date"><time datetime="2017-10-16T11:17:47.000Z" itemprop="datePublished">2017-10-16</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/10/15/cj8x0oac2000is7rdv3xm6qzy/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/10/15/cj8x0oac2000is7rdv3xm6qzy/" class="title"></a></p>
-                            <p class="item-date"><time datetime="2017-10-15T11:24:45.000Z" itemprop="datePublished">2017-10-15</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/10/13/cj8x0oaf70031s7rd1udfh67b/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/10/13/cj8x0oaf70031s7rd1udfh67b/" class="title"></a></p>
-                            <p class="item-date"><time datetime="2017-10-13T05:41:58.000Z" itemprop="datePublished">2017-10-13</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/10/13/1/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/MySQL/">MySQL</a></p>
-                            <p class="item-title"><a href="/2017/10/13/1/" class="title">MySQL体系结构</a></p>
-                            <p class="item-date"><time datetime="2017-10-12T16:00:00.000Z" itemprop="datePublished">2017-10-13</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/10/10/2/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/MySQL/">MySQL</a></p>
-                            <p class="item-title"><a href="/2017/10/10/2/" class="title">服务器系统对MySQL性能带来的影响</a></p>
-                            <p class="item-date"><time datetime="2017-10-09T16:00:00.000Z" itemprop="datePublished">2017-10-10</time></p>
-                        </div>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">categories</h3>
-        <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Objective-C/">Objective-C</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP设计模式/">PHP设计模式</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ios/">ios</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">archives</h3>
-        <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">tags</h3>
-        <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C-算法/">C/C++,算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Closures/">Closures</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/INSERT/">INSERT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Centos/">Linux,Centos</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-GNU/">Linux,GNU</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL-设计规范/">MySQL 设计规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objc-多线程/">Objc,多线程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP设计模式/">PHP设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wechat-pay-php-php7-php-input/">wechat pay, php, php7, php://input</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存管理/">内存管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程-PHP7-2-编译安装-GCC/">多线程,PHP7.2,编译安装,GCC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/色彩/">色彩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">5</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">tag cloud</h3>
-        <div class="widget tagcloud">
-            <a href="/tags/C-C-算法/" style="font-size: 10px;">C/C++,算法</a> <a href="/tags/Closures/" style="font-size: 10px;">Closures</a> <a href="/tags/INSERT/" style="font-size: 10px;">INSERT</a> <a href="/tags/Linux-Centos/" style="font-size: 12px;">Linux,Centos</a> <a href="/tags/Linux-GNU/" style="font-size: 10px;">Linux,GNU</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/MySQL-设计规范/" style="font-size: 10px;">MySQL 设计规范</a> <a href="/tags/Objc-多线程/" style="font-size: 10px;">Objc,多线程</a> <a href="/tags/PHP/" style="font-size: 16px;">PHP</a> <a href="/tags/PHP设计模式/" style="font-size: 10px;">PHP设计模式</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/wechat-pay-php-php7-php-input/" style="font-size: 10px;">wechat pay, php, php7, php://input</a> <a href="/tags/内存管理/" style="font-size: 10px;">内存管理</a> <a href="/tags/多线程-PHP7-2-编译安装-GCC/" style="font-size: 10px;">多线程,PHP7.2,编译安装,GCC</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/色彩/" style="font-size: 10px;">色彩</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 18px;">随笔</a>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">links</h3>
-        <div class="widget">
-            <ul>
-                
-                    <li>
-                        <a href="http://hexo.io">Hexo</a>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-
-    
-    <div id="toTop" class="fa fa-angle-up"></div>
-</aside>
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-        </div>
-        <footer id="footer">
-    <div class="outer">
-        <div id="footer-info" class="inner">
-            &copy; 2017 Maksim<br>
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
-        </div>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Maksim &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
     </div>
 </footer>
-        
-    
-    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1828998# enter youyan uid here"></script>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/page/3/&title=Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/page/3/&title=Maksim's Website&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/page/3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=Maksim's Website&url=http://www.maksim.website/page/3/&via=http://www.maksim.website" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/page/3/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzklEQVR42u3aQW7DMAwEwP7/0ynQU4Ek7i4VKSkwOgWGI499ICiSX1/xuv2s+yu/r99fafd82cLFxV3m3i7X/dYJ/dm/rve/vgcXF/c89zrQXAep6+vXrNyAi4v7mdw260jouLi4/52bHG+SO4/GXVxc3AXu+uEkf71DZzVcXNwFblvc3PF7Y30XFxe35N7KdV0wbZOY+um4uLhHuPnj29CTH5Da4xAuLu5ublK2aANc/vJ1YQUXF/cgty2MtmMZsw/xYB9cXNyD3DwMFXlTMLSRh7NiHgQXF3eZmx+B1hsteSCL0Li4uNu4SYhJEqBZOzb/HMUpChcX9wh39oAkuanHLHBxcY9wk63zVmveJsmLJg/uxMXF3czNSx7rictsLAMXF/dd3CQRSVopK/cPOz+4uLgbuLOGRxLsZs2YqL6Li4u7mTtLQWbpSxvOcHFx38udPawto7QlWlxc3Pdy85W3QGbt2MKOi4u7jdsGlFcdgdrySv0yuLi4y9w8eM0GtmbB7ukXxcXFPchNCqP5K81GtaIwiouL+2HcNmOaFV7/iFq4uLgfyZ0NV82CHS4u7nu56+OYbQO1/UC4uLgnuesF07bVOmu64OLiHuF+A48ITdSiwQe8AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
 
 
 
 
-    
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
-    
-    
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
-    
-    
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 
-<!-- Custom Scripts -->
-<script src="/js/main.js"></script>
 
-    </div>
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
 </body>
 </html>

@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+    
+
+    
+
+    
+
+
+
     <meta charset="utf-8">
     
+    
+    
     <title>Maksim&#39;s Website</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="undefined">
     <meta property="og:type" content="website">
 <meta property="og:title" content="Maksim&#39;s Website">
 <meta property="og:url" content="http://www.maksim.website/page/4/index.html">
@@ -12,1989 +27,766 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maksim&#39;s Website">
     
+        <link rel="alternate" type="application/atom+xml" title="Maksim&#39;s Website" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
 
+    <!-- custom head -->
     
-        <link rel="alternate" href="/" title="Maksim&#39;s Website" type="application/atom+xml" />
-    
-
-    
-
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/open-sans/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
-
-    <link rel="stylesheet" href="/css/style.css">
-
-    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
-    
-    
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
-    
-    
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-    
-    
-    
-    
-
 
 </head>
 
 <body>
-    <div id="container">
-        <header id="header">
-    <div id="header-main" class="header-inner">
-        <div class="outer">
-            <a href="/" id="logo">
-                <i class="logo"></i>
-                <span class="site-title">Maksim&#39;s Website</span>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Maksim</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Maksim&#39;s Website</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <nav id="main-nav">
-                
-                    <a class="main-nav-link" href="/.">Home</a>
-                
-                    <a class="main-nav-link" href="/archives">Archives</a>
-                
-                    <a class="main-nav-link" href="/categories">Categories</a>
-                
-                    <a class="main-nav-link" href="/tags">Tags</a>
-                
-                    <a class="main-nav-link" href="/about">About</a>
-                
-            </nav>
-            
-                
-                <nav id="sub-nav">
-                    <div class="profile" id="profile-nav">
-                        <a id="profile-anchor" href="javascript:;">
-                            <img class="avatar" src="/css/images/avatar.png" />
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                    </div>
-                </nav>
-            
-            <div id="search-form-wrap">
-
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
         </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div>
-        </div>
-    </div>
-    <div id="main-nav-mobile" class="header-sub header-inner">
-        <table class="menu outer">
-            <tr>
-                
-                    <td><a class="main-nav-link" href="/.">Home</a></td>
-                
-                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
-                
-                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
-                
-                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
-                
-                    <td><a class="main-nav-link" href="/about">About</a></td>
-                
-                <td>
-                    
-    <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-    </div>
-
-                </td>
-            </tr>
-        </table>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
     </div>
 </header>
+<header class="content-header index-header">
 
-        <div class="outer">
+    <div class="container fade-scale">
+        <h1 class="title">Maksim&#39;s Website</h1>
+        <h5 class="subtitle">
             
                 
-
-<aside id="profile">
-    <div class="inner profile-inner">
-        <div class="base-info profile-block">
-            <img id="avatar" src="/css/images/avatar.png" />
-            <h2 id="name">Maksim</h2>
-            <h3 id="title">PHP Developer &amp; iOS Developer &amp; Designer</h3>
-            <span id="location"><i class="fa fa-map-marker"></i>齐齐哈尔, China</span>
-            <a id="follow" target="_blank" href="https://github.com/aircrayon/">FOLLOW</a>
-        </div>
-        <div class="article-info profile-block">
-            <div class="article-info-block">
-                57
-                <span>posts</span>
-            </div>
-            <div class="article-info-block">
-                20
-                <span>tags</span>
-            </div>
-        </div>
-        
-        <div class="profile-block social-links">
-            <table>
-                <tr>
-                    
-                    
-                    <td>
-                        <a href="http://github.com/aircrayon" target="_blank" title="github" class=tooltip>
-                            <i class="fa fa-github"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/" target="_blank" title="twitter" class=tooltip>
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/" target="_blank" title="facebook" class=tooltip>
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/" target="_blank" title="dribbble" class=tooltip>
-                            <i class="fa fa-dribbble"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/" target="_blank" title="rss" class=tooltip>
-                            <i class="fa fa-rss"></i>
-                        </a>
-                    </td>
-                    
-                </tr>
-            </table>
-        </div>
-        
+            
+        </h5>
     </div>
-</aside>
 
-            
-            <section id="main">
-    <article id="post-plan" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/07/20/cj8x0oaeu002os7rdplawmvk6/">对于未来的规划</a>
-        </h1>
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/07/20/cj8x0oaeu002os7rdplawmvk6/">
-            <time datetime="2016-07-20T04:45:16.000Z" itemprop="datePublished">2016-07-20</time>
+
+</header>
+
+<div class="container body-wrap">
+
+    <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-plan"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-07-20 12:45:16" datetime="2016-07-20T04:45:16.000Z"  itemprop="datePublished">2016-07-20</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/07/20/cj8x0s4k1002tsurdgsz67u28/">对于未来的规划</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        我现在在做什么很久没有写博客了，其实是不知道写什么了，目前在做一个 PHP的项目，这也算是大学没有白白浪费，至少还学了一门语言，虽然并没有一上来就做 iOS 心里有点小遗憾。我并没有回北京而是选择留在了齐齐哈尔，这是一座很美的城市，其中也有很多回忆，留下来的一个原因就是这里的回忆实在是太多了，等回忆被齐齐哈尔的大风吹散也就该是离开这里的时候了。
+对于未来的规划规划这种东西规划的太久也没有用，...
+    
+
+        <a href="/2016/07/20/cj8x0s4k1002tsurdgsz67u28/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/随笔/">随笔</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/随笔/">随笔</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="我现在在做什么"><a href="#我现在在做什么" class="headerlink" title="我现在在做什么"></a>我现在在做什么</h2><p>很久没有写博客了，其实是不知道写什么了，目前在做一个 PHP的项目，这也算是大学没有白白浪费，至少还学了一门语言，虽然并没有一上来就做 iOS 心里有点小遗憾。我并没有回北京而是选择留在了齐齐哈尔，这是一座很美的城市，其中也有很多回忆，留下来的一个原因就是这里的回忆实在是太多了，等回忆被齐齐哈尔的大风吹散也就该是离开这里的时候了。</p>
-<h2 id="对于未来的规划"><a href="#对于未来的规划" class="headerlink" title="对于未来的规划"></a>对于未来的规划</h2><p>规划这种东西规划的太久也没有用，谁都不可能预料到以后会发生什么，只能说是大致心里有一个方向，最近打算在看 swfit 的同时也看一下安卓。本身我就会 PHP，说不定在齐齐哈尔的这段时间里我会成为一个全栈工程师。</p>
-<p>毕业了，虽然闲散的时间少了，但是这个时候我可以去做一些我喜欢做的事情，因为可以自己赚钱了，昨天在网上买了一个瑜伽垫准备开始健身，健康的身体才是未来的保障，我还买了一套美术教程，其实我还想买一个尤克里里，但是想了想还是算了，可能是在我出生的时候身上的音乐细胞就全都被消灭掉了。</p>
-<p>我目前每天11点半睡觉，早晨五点钟起床，从五点到六点半的这个时间段我分配出了半个小时锻炼，一个小时的晨读，读的并不是技术类的书籍而是一些读物，目前正在读《百年孤独》，这样做只是希望自己能够得到精神上的满足还有活跃一下脑子，害怕有一天变成了代码脑袋。</p>
-<p>以下是我这一年要读的书：</p>
-<ul>
-<li>《百年孤独》</li>
-<li>《摆渡人》</li>
-</ul>
-<p>在齐齐哈尔这段时间要掌握的技能：</p>
-<ul>
-<li>安卓开发</li>
-<li>跨平台开发</li>
-</ul>
-<p>自己的爱好：</p>
-<ul>
-<li>可以画简单的插画</li>
-<li>新书收藏超过500</li>
-</ul>
-<p>这样今年简单的计划就算是完成了</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2016/07/20/cj8x0oaeu002os7rdplawmvk6/" data-id="cj8x0oaeu002os7rdplawmvk6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="http://www.maksim.website/2016/07/20/cj8x0oaeu002os7rdplawmvk6/#comments" class="article-comment-link">Comments</a>
-    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
-        </footer>
     </div>
     
 </article>
 
-
-
-    <article id="post-Runtime:Class" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
+        </li>
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/05/31/2/">Objective-C Runtime：Class</a>
-        </h1>
+        <li class="post-list-item fade">
+            <article id="post-Runtime:Class"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-05-31 00:27:31" datetime="2016-05-30T16:27:31.000Z"  itemprop="datePublished">2016-05-31</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/iOS/">iOS</a></li></ul>
+
+
+
+    </div>
+
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/05/31/2/">
-            <time datetime="2016-05-30T16:27:31.000Z" itemprop="datePublished">2016-05-31</time>
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/05/31/2/">Objective-C Runtime：Class</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Objective-C具有相当多的动态特性，表现在三个方面动态类型（Dynamic typeing）、动态绑定（ggDynamic binding）、动态加载（Dynamic loading），之所以被叫做动态，是因为必须到运行时（Runtime）才会做这些事情。
+
+动态类型：即运行时在决定对象的类型。这类动态特性在日常生活中非常常见，简单说就是id类型。实际上静态类因为固定性与可与执行而使...
+    
+
+        <a href="/2016/05/31/2/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/iOS/">iOS</a>
-    </div>
-
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>Objective-C具有相当多的动态特性，表现在三个方面动态类型（Dynamic typeing）、动态绑定（ggDynamic binding）、动态加载（Dynamic loading），之所以被叫做动态，是因为必须到运行时（Runtime）才会做这些事情。</p>
-<ol>
-<li><strong>动态类型</strong>：即运行时在决定对象的类型。这类动态特性在日常生活中非常常见，简单说就是id类型。实际上静态类因为固定性与可与执行而使用得更加广泛，静态类型是强类型，而动态类型属于弱类型，运行时决定接受者。</li>
-<li><strong>动态绑定</strong>：基于冬天类型，在某个实例对象呗确定后，其类型便被确定了，该对象对应的水泥管和响应的消息也将会被完全确定。</li>
-<li><strong>动态加载</strong>：根据需求加载所需要的资源，最经典的例子就是在Retina设备上加载@2x的图片，而在老一些的图通屏幕设备上加载原图。</li>
-</ol>
-<p>这一切的特性都是由于objective-c的Runtime。</p>
-<p>Runtime库主要做了下面的几件事</p>
-<ol>
-<li>封装：在这个库中对象可以用C语言的结构体表示，而方法可以用C函数来实现，另外再加上一些额外的特性。这些结构体和函数被runtime封装后，我们就可以在程序运行时创建、检查，修改类、对象和它们的方法了。</li>
-<li>找出方法的最终执行代码：当程序执行[object doSometing]时，会想消息接受者（object）发送一条消息，runtime会根据消息接受者是否响应该消息而做出不同的反应。</li>
-</ol>
-<p>而在我们在了解Runtime之前，我们需要清楚Runtime的数据类型</p>
-<p>如果想要进一步的了解，我们可以到苹果开源上下载Runtime的源码来进行学习。</p>
-<p>Objective-C类是由Class类型来表示的，它实际上是一个指向objc_class结构体的指针。它的定义如下:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">objc_class</span> *<span class="title">Class</span>;</span></div></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">objc_class</span> &#123;</span></div><div class="line">    Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> !__OBJC2__</span></div><div class="line">    Class super_class                                        OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *name                                         OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> version                                             OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> info                                                OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> instance_size                                       OBJC2_UNAVAILABLE;</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">objc_ivar_list</span> *<span class="title">ivars</span>                             <span class="title">OBJC2_UNAVAILABLE</span>;</span></div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">objc_method_list</span> **<span class="title">methodLists</span>                    <span class="title">OBJC2_UNAVAILABLE</span>;</span></div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">objc_cache</span> *<span class="title">cache</span>                                 <span class="title">OBJC2_UNAVAILABLE</span>;</span></div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">objc_protocol_list</span> *<span class="title">protocols</span>                     <span class="title">OBJC2_UNAVAILABLE</span>;</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"></div><div class="line">&#125; OBJC2_UNAVAILABLE;</div><div class="line"><span class="comment">/* Use `Class` instead of `struct objc_class *` */</span></div></pre></td></tr></table></figure>
-<ol>
-<li>isa:需要注意的是在Objective-C中，所有类的自身也是一个对象这个对象的Class里面有一个isa指针，它指向metaClass（元类），下一章进行详细介绍。</li>
-<li>super_class：指向该类的父类，如果该类已经是最顶层的根类，则它的值为NULL。</li>
-<li>name：类的名称</li>
-<li>info:在运行时使用的一些标识</li>
-<li>version：我们可以使用这个字段来提供类的版本信息。这对于对象的序列化非常有用，它可是让我们识别出不同类定义版本中实例变量布局的改变。<br>针对cache，我们用下面例子来说明其执行过程：</li>
-<li>instance_size 该类实例变量的大小</li>
-<li>ivars 该类中所有成员变量的数组</li>
-<li>methodLists 该类中自定义方法的数组 </li>
-<li>cache：用于缓存最近使用的方法。一个接收者对象接收到一个消息时，它会根据isa指针去查找能够响应这个消息的对象。在实际使用中，这个对象只有一部分方法是常用的，很多方法其实很少用或者根本用不上。这种情况下，如果每次消息来时，我们都是methodLists中遍历一遍，性能势必很差。这时，cache就派上用场了。在我们每次调用过一个方法后，这个方法就会被缓存到cache列表中，下次调用的时候runtime就会优先去cache中查找，如果cache没有，才去methodLists中查找方法。这样，对于那些经常用到的方法的调用，但提高了调用的效率。</li>
-<li>protocls 该类遵守协议的数组</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSArray *array = [[NSArray alloc] init];</div></pre></td></tr></table></figure>
-<p>其流程是：</p>
-<p>[NSArray alloc]先被执行。因为NSArray没有+alloc方法，于是去父类NSObject去查找。</p>
-<p>检测NSObject是否响应+alloc方法，发现响应，于是检测NSArray类，并根据其所需的内存空间大小开始分配内存空间，然后把isa指针指向NSArray类。同时，+alloc也被加进cache列表里面。</p>
-<p>接着，执行-init方法，如果NSArray响应该方法，则直接将其加入cache；如果不响应，则去父类查找。</p>
-<p>在后期的操作中，如果再以[[NSArray alloc] init]这种方式来创建数组，则会直接从cache中取出相应的方法，直接调用。</p>
-<p>##参考资料</p>
-<ol>
-<li><a href="http://southpeak.github.io/blog/2014/10/25/objective-c-runtime-yun-xing-shi-zhi-lei-yu-dui-xiang/" target="_blank" rel="external">Objective-C Runtime 运行时之一：类与对象</a></li>
-<li><a href="http://www.cnblogs.com/whyandinside/archive/2013/02/26/2933552.html" target="_blank" rel="external">Objective-C Runtime的数据类型</a></li>
-<li><a href="http://blog.csdn.net/uxyheaven/article/details/38113901" target="_blank" rel="external">Objective-C objc_class 介绍</a></li>
-</ol>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2016/05/31/2/" data-id="cj8x0oads001ts7rdou180l74" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://www.maksim.website/2016/05/31/2/#comments" class="article-comment-link">Comments</a>
-    
-
-        </footer>
     </div>
     
 </article>
 
-
-
-    <article id="post-Rss" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
+        </li>
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/05/08/cj8x0oadl001ps7rdz914o7sz/">使用 Feedly RSS阅读器订阅技术大牛的博客</a>
-        </h1>
+        <li class="post-list-item fade">
+            <article id="post-Rss"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-05-08 11:06:05" datetime="2016-05-08T03:06:05.000Z"  itemprop="datePublished">2016-05-08</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Objective-C/">Objective-C</a></li></ul>
+
+
+
+    </div>
+
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/05/08/cj8x0oadl001ps7rdz914o7sz/">
-            <time datetime="2016-05-08T03:06:05.000Z" itemprop="datePublished">2016-05-08</time>
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/05/08/cj8x0s4iy001psurd2gythv6l/">使用 Feedly RSS阅读器订阅技术大牛的博客</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        这几天一直都在自己看书，可是书上面的东西都比较落后一点，而且没有大牛博文上的东西讲的深入，可是来回跳转各位大牛的博客又非常的麻烦，有一些公众账号虽然也会推荐一些知识内容，可是你应该有过看到多个公众号发一篇博文的经历吧。
+这个时候我想起了一个叫做 RSS 订阅的一个功能，可是国产的RSS 订阅器的 UI 是一个很大的槽点，而且功能相对于臃肿，很多功能都用不到，最终选择了 Feedly 这款 APP，UI 清爽，功能简单，完全符合我的需要，而且还支持 OPML 导入。
+AirCrayon 是一名 iOS 程序员，所以我订阅的大多都是 iOS 的技术大牛，大牛唐巧一直在维护一个中文博文列表的项目地：https://github.com/tangqiaoboy/iOSBlogCN
+    
+
+        <a href="/2016/05/08/cj8x0s4iy001psurd2gythv6l/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Objective-C/">Objective-C</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/iOS/">iOS</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>这几天一直都在自己看书，可是书上面的东西都比较落后一点，而且没有大牛博文上的东西讲的深入，可是来回跳转各位大牛的博客又非常的麻烦，有一些公众账号虽然也会推荐一些知识内容，可是你应该有过看到多个公众号发一篇博文的经历吧。</p>
-<p>这个时候我想起了一个叫做 RSS 订阅的一个功能，可是国产的RSS 订阅器的 UI 是一个很大的槽点，而且功能相对于臃肿，很多功能都用不到，最终选择了 Feedly 这款 APP，UI 清爽，功能简单，完全符合我的需要，而且还支持 OPML 导入。</p>
-<p>AirCrayon 是一名 iOS 程序员，所以我订阅的大多都是 iOS 的技术大牛，大牛唐巧一直在维护一个中文博文列表的项目地：<a href="https://github.com/tangqiaoboy/iOSBlogCN" target="_blank" rel="external">https://github.com/tangqiaoboy/iOSBlogCN</a></p></p>
-            <p class="article-more-link">
-                <a href="/2016/05/08/cj8x0oadl001ps7rdz914o7sz/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2016/05/08/cj8x0oadl001ps7rdz914o7sz/" data-id="cj8x0oadl001ps7rdz914o7sz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="http://www.maksim.website/2016/05/08/cj8x0oadl001ps7rdz914o7sz/#comments" class="article-comment-link">Comments</a>
-    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
 
-        </footer>
     </div>
     
 </article>
 
-
-
-    <article id="post-基于引用计数的内存管理" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
+        </li>
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/05/06/cj8x0oags003ts7rdm3br1az2/">内存管理 Form《Objectivce-C编程全解》&amp;《Objectivce-C编程》</a>
-        </h1>
+        <li class="post-list-item fade">
+            <article id="post-基于引用计数的内存管理"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-05-06 12:31:00" datetime="2016-05-06T04:31:00.000Z"  itemprop="datePublished">2016-05-06</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ios/">ios</a></li></ul>
+
+
+
+    </div>
+
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/05/06/cj8x0oags003ts7rdm3br1az2/">
-            <time datetime="2016-05-06T04:31:00.000Z" itemprop="datePublished">2016-05-06</time>
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/05/06/cj8x0s4ky003ssurdksiebp6u/">内存管理 Form《Objectivce-C编程全解》&amp;《Objectivce-C编程》</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+Xcode4.2之后可以使用自动引用计数（ARC,Automatic Reference Counting）的管理方式进行说明，ARC 是 Mac OS X 10.7和 iOS5引入的新特性，也是苹果公司推荐使用的内存管理方式。弃用 ARC 后，编译器会在适当的地方自动加入 retaion、release、autorelease 等语句，来简化 Objective-C 编程在内存管理方面的...
+    
+
+        <a href="/2016/05/06/cj8x0s4ky003ssurdksiebp6u/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/ios/">ios</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/内存管理/">内存管理</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <blockquote>
-<p>Xcode4.2之后可以使用自动引用计数（ARC,Automatic Reference Counting）的管理方式进行说明，ARC 是 Mac OS X 10.7和 iOS5引入的新特性，也是苹果公司推荐使用的内存管理方式。弃用 ARC 后，编译器会在适当的地方自动加入 retaion、release、autorelease 等语句，来简化 Objective-C 编程在内存管理方面的工作量</p>
-</blockquote>
-<h1 id="动态内存管理"><a href="#动态内存管理" class="headerlink" title="动态内存管理"></a>动态内存管理</h1><h2 id="内存管理的必要性"><a href="#内存管理的必要性" class="headerlink" title="内存管理的必要性"></a>内存管理的必要性</h2><p>C 语言中需要手动利用 malloc()和 free()对内存进行管理。当程序运行结束时，操作系统会释放掉为其分配的内存。如果是很小、运行时间短的程序，就算是内存没有释放也没有问题，程序结束时操作系统会进行自动释放。而对于长时间运行的程序，则需要程序员释放不再使用的内存，否则程序就会崩溃。</p>
-<p>如果程序没能妥善管理内存，运行过程中就不但不能释放不再使用的内存，而且还会不停的分配内容村，这样所占用的内存就会越来越多，程序速度也会越来越慢，最后甚至会出现内存耗尽而崩溃。</p>
-<p>就好像滴水一样，程序未能释放已不使用的内存叫做<strong>内存泄漏</strong>(memory leak)。C 语言中要特别注意内存的动态分配和释放，以防内存泄漏。有效地管理内存，会提高程序的执行效率。</p>
-<p>如果访问了以被释放的内存，则会造成数据错误，严重时甚至会导致程序异常终止。在指针指向已被释放或回收的情况下，该指针就称之为<strong>悬垂指针</strong>（danling pointer）或野指针。继续使用这种指针会造成程序崩溃。</p>
-<p>Objective—C 会通过向对象发送 alloc 消息来生成实例对象，alloc 的作用就是分配内存。alloc 方法的返回值是 id 类型，我们之前介绍过 id 其实就是指针类型，而其指向的就是为实例对象分配的内存。生成的实例对象用完之后如果不被释放的话，就会发生内存泄漏。另一方面，如果给已经被释放了的实例对象发送消息，运气好的话会得到警告，告诉你已被释放的对象发送了消息，运气不好的话则会程序错误甚至异常终止，所以 Objective-C 的程序一定要注意内存管理。</p>
-<p>在面向对象的语言中，对象是程序的核心。而对象也有生命周期，既有从头到尾一直存在的对象，也有声明起短暂的临时对象。对象之间也可能相互引用，构成结构复杂的数据结构。同面向过程的语言相比，面向对象语言的内存管理更复杂一些。</p>
-<h3 id="引用计数器、自动引用计数和自动垃圾回收"><a href="#引用计数器、自动引用计数和自动垃圾回收" class="headerlink" title="引用计数器、自动引用计数和自动垃圾回收"></a>引用计数器、自动引用计数和自动垃圾回收</h3><p>Coca 环境的 Objective-C 提供了一种动态内存管理方式，称之为<strong>引用计数</strong>（reference counter）。这种方式会跟踪每一个对象被引用的次数，当对象的引用次数为0的时候，系统会释放掉这个对象所占用的内存。这种内存管理方式也被称之为基于引用计数器的内存管理。</p>
-<p>比引用计数内存管理更高级一点的就是<strong>自动引用计数</strong>（Automatic Reference Counting，简写 ARC）的内存管理。自动引用计数使开发人员不需要考虑何时使用 retain、release、autorelease 来管理内存，它提供了自动评估对象生存期的工恩给你，在编译期间会自动加入何时的内存管理方法，为了同自动引用计数器进行区分，将引用计数内存管理方式称之为手动引用技术内存管理。</p>
-<p>除了 ARC 外，Objective-C2.0还引入了另外一种自动内存管理机制——<strong>垃圾回收</strong>，使用垃圾回收时，就不需要通过引用计数来刮泥创建的对象，系统会自动识别那些对象仍在使用，那些对象可以回收。</p>
-<p>程序员可以从手动引用计数管理、ARC 和垃圾回收中选择任意一种内存管理方式来进行开发，不过还是推荐大家使用 ARC 的方式来进行内存管理。</p>
-<table>
-<thead>
-<tr>
-<th>内存管理方式</th>
-<th style="text-align:center">难易度</th>
-<th style="text-align:center">Mac</th>
-<th style="text-align:center">iOS</th>
-<th style="text-align:center">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>手动引用计数</td>
-<td style="text-align:center">较难</td>
-<td style="text-align:center">支持</td>
-<td style="text-align:center">支持</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td>自动引用计数</td>
-<td style="text-align:center">容易</td>
-<td style="text-align:center">支持</td>
-<td style="text-align:center">支持</td>
-<td style="text-align:center">现在已经默认使用此方式</td>
-</tr>
-<tr>
-<td>垃圾回收</td>
-<td style="text-align:center">容易</td>
-<td style="text-align:center">支持</td>
-<td style="text-align:center">不支持</td>
-</tr>
-</tbody>
-</table>
-<h3 id="兼容方法"><a href="#兼容方法" class="headerlink" title="兼容方法"></a>兼容方法</h3><p>在ARC的程序中,有一些类使用MRC实现的.</p>
-<p>如果希望某些指定的类还是使用MRC. 那么这个时候可以在</p>
-<pre><code>在targets的build phases选项下Compile Sources下选择要不使用arc编译的文件，双击它，输入 -fno-objc-arc 即可
-</code></pre><p>MRC工程中也可以使用ARC的类。方法如下：</p>
-<p>在targets的build phases选项下Compile Sources下选择要使用arc编译的文件，双击它，输入 -fobjc-arc 即可</p>
-<h2 id="手动引用计数内存管理"><a href="#手动引用计数内存管理" class="headerlink" title="手动引用计数内存管理"></a>手动引用计数内存管理</h2><p>本节将说明如何基于引用计数器来管理内存。手中引用计数是内存引用计数的基础，就算程序使用自动引用计数的内存管理，也需要了解手动引用计数的原理。</p>
-<h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><p>Cocoa 环境的 Objective-C 使用了一种叫做引用计数的计数来管理对象所占的内存。每个对象都有一个与之相关的整数——引用计数，当某段代码需要使用一个对象时，就将该对象的引用计数值加1。当这段代码不再使用这个对象的时候，则将对象的引用计数器减1.换而言之，引用计数就是指程序中到底有多少个地方需要访问这个对象。</p>
-<p>使用 alloc 和初始化方法创建一个对象的时候，该对象的引用计数初始值为1.假设有一个类 A 在进行某些处理的过程中需要使用到实例 B，为了防止实例化 B被别的对象随意释放，类 A 会实现给实例 B 发送一个 retain 消息。这样，没执行一次 retain，实例 B 的引用计数就会加1。</p>
-<p>反之，不需要某个对象时，可以发送 release 消息，使对象的引用计数减1。</p>
-<p>实际上，释放内存的并不是 release，而是 dealloc 方法。同 alloc 不同，dealloc 不是类方法而是一个实例方法。没收到一个 release 消息，对象的引用计数器就会减一。当对象的引用计数器达到0的时候，系统就知道这个对象不需要了。这时，Objectivce—C 会自动向对象发送一条 delloc 消息来释放内存。通常允许在程序内直接调用 dealloc。</p>
-<p>retain、release和 dealloc 的定义如下所示。retain 的返回值是接收消息的对象。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)<span class="keyword">retain</span>;</div><div class="line">-(<span class="keyword">oneway</span> <span class="keyword">void</span>)release;</div><div class="line">-(<span class="keyword">void</span>)dealloc;</div></pre></td></tr></table></figure>
-<p>retain 是“保持”的意思，给一个对象发送 retain 消息，就意味着“保持”这个对象。生成对象或通过给对象发送 retain 消息来保持对象这种状态，都可以说是拥有这个对象的<strong>所有权</strong>（ownership）拥有实例所有权的对象叫做<strong>所有者</strong>（owner）。</p>
-<p>这里需要注意的是，所有权是一个虚拟的概念。既无法通过语法标记，也无法通过这个对象的某个属性表示出来。程序在运行时没发确认某个对象的所有者是谁。所有权仅仅是人们分析阅读程序时，为了说明对象之间的关系而加上去的一个属性。</p>
-<p>通过引用计数能够表现出一个对象有几个所有者。只要某个对象的引用计数器大于0就表示这个对象有所有者。引用计数变为0的时候，说明这个对象没有所有者，会被释放。</p>
-<p><strong>图1 没有使用引用计数器的例子</strong></p>
-<p><img src="http://i2.piimg.com/1aa5fe7fdc3d7b06.png" alt=""></p>
-<p>让我们通过例子来说明一下基于应用技术的内存管理。首先，假设图（1）中对象 A 的方法把一个新生成的一个实例对象复制给了 A 的实例变量。这个时候新生成的对象的引用计数为1，他的所有者是对象 A，然后，图（2）中把这个对象的指针付给了对象 B 的某个实例变量。因为对象鼻没有发送 retain 消息，所以并不是这个对象的所有者，这个独享的引用计数器还是1.最后图（3）中对象 A 不再使用这个对象的时候发送了一个 release 消息，于是，虽然对象 B 还在使用这个对象，但该对象也被释放了。而此时如果对象 B 给已经释放的消息在发送消息，就会发生运行错误，程序将会异常终止！</p>
-<p>为了防止这样的情况发生，一定要给动态生成的对象发送 retain 消息来增加它的引用计数。只要对对象的引用次数大于零，系统就不会释放它。</p>
-<h3 id="测试引用计数"><a href="#测试引用计数" class="headerlink" title="测试引用计数"></a>测试引用计数</h3><p>让我们通过一个例子来看引用计数到底是如何工作的。</p>
-<p>retain 和 release 方法是类 NSObject 的实例方法，方法 retainCount 可以获得对象的引用计数的当前值。retainCount 方法并没有太大的使用价值，一般在调试程序的时候使用。</p>
-<p>代码清单的程序显示了对象生成后收到 retain、release 消息时引用计数器的变化。retainCount 的返回值是 NSUInteger 类型，使用 printf 输出返回值的时候需要进行类型转换。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[]) &#123;</div><div class="line">    <span class="keyword">id</span> obj = [[<span class="built_in">NSObject</span> alloc]init];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"init:%d"</span>,(<span class="keyword">int</span>)[obj retainCount]);</div><div class="line">    [obj <span class="keyword">retain</span>];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"retain:%d"</span>,(<span class="keyword">int</span>)[obj retainCount]);</div><div class="line">    [obj <span class="keyword">retain</span>];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"retain:%d"</span>,(<span class="keyword">int</span>)[obj retainCount]);</div><div class="line">    [obj release];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"release:%d"</span>,(<span class="keyword">int</span>)[obj retainCount]);</div><div class="line">    [obj release];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"release:%d"</span>,(<span class="keyword">int</span>)[obj retainCount]);</div><div class="line">    [obj release];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"release:%d"</span>,(<span class="keyword">int</span>)[obj retainCount]); </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>程序的输出如下所示。我们可以看出，对象刚生成的时候引用计数器的值为1，没收到一次 retain 消息，引用计数器的值就会加1；而收到 release 消息，引用计数器的值就减少1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">2016-05-06 13:19:16.761 引用计数器学习[6574:600738] init:1</div><div class="line">2016-05-06 13:19:16.762 引用计数器学习[6574:600738] retain:2</div><div class="line">2016-05-06 13:19:16.762 引用计数器学习[6574:600738] retain:3</div><div class="line">2016-05-06 13:19:16.762 引用计数器学习[6574:600738] release:2</div><div class="line">2016-05-06 13:19:16.763 引用计数器学习[6574:600738] release:1</div><div class="line">2016-05-06 13:19:16.763 引用计数器学习[6574:600738] release:1</div><div class="line">Program ended with exit code: 0</div></pre></td></tr></table></figure>
-<h3 id="释放对象的方法"><a href="#释放对象的方法" class="headerlink" title="释放对象的方法"></a>释放对象的方法</h3><p>在自定义类的时候，如果累的实例变量是一个对象类型，那么，在销毁类的对象的时候，也要给类的实例变量发送 release 消息。</p>
-<p>通过给对象发送 release 消息可以放弃对这个对象的所有权，但如前所述，真正释放对象占用的内存方法是 dealloc方法。</p>
-<p>释放一个类的实例对象时，为了彻底释放该实例对象的所有对象的所有权，需要为该类重写 dealloc 方法，在其中释放已经分配的资源，放弃实例变量的所有权。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)dealloc&#123; <span class="comment">//重写的是 dealloc 方法而不是 release 方法</span></div><div class="line">	<span class="comment">/*</span></div><div class="line">		这里通过 release 方法放弃子类中所有实例变量的所有权</div><div class="line">		其他用于释放前的善后操作也都卸载这里</div><div class="line">	*/</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在重写 dealloc 犯法中，在释放自身之前，首先做好“善后工作”（释放所有需要释放的资源）。一般情况下，“善后工作”包括通过使用 release 放弃自身的实例变量的所有权。销毁对象的时候，不允许直接使用 dealloc，而是使用 release。release 会让引用计数减少1，只有当引用计数等于0的时候系统才会自动调用 dealloc 真正的销毁这个对象。</p>
-<p>子类“善后工作”完成后，调用父类的 dealloc 方法来释放父类中定义的实例变量，这样，内存的释放会从子类一直向上知道 NSObject，最终这个对象就会被彻底释放掉。<br>下面的分数计算器的例子中展示了如何重写 dealloc。</p>
-<h3 id="Retain计数原则"><a href="#Retain计数原则" class="headerlink" title="Retain计数原则"></a>Retain计数原则</h3><p>当使用Objective-C编写程序时，如果没有使用 ARC，就必须遵守特定的内存管理约定，否则可以由 ARC 来自动完成相关任务。</p>
-<p>下面为 retain 计数总结若干规则，规则中的“你”代表“当前正在使用的某个类实例”。这是一种很有用的带入形式：请读者将自己想象成是在正在编写的那个对象。例如，“如果你保留了某个 NSString 对象，那么该实例就不会被释放掉”的真是意思是“如果读者正在使用的实例保留了某个 NSString 实例，那么该实例就不会被释放。”</p>
-<p>下面列出规则（袁阔闹中的是实现细节）</p>
-<ul>
-<li>如果用来创建对象的方法，其方法名是以 alloc 或new 开头的，或者包含 copy，那么你已经得到了该对象的所有权（即可以假设新对象的 retain计数是1，而且该对象不再 NSAutoreleasePool 对象中）。你要负责不再需要使用该对象的时候释放掉他。以下是部分常见的、会“传输”所有权的方法：alloc（后面总会跟一个 init 方法）、copy 和 mutableCopy</li>
-<li>通过任何其他途径创建的对象（例如通过便捷方法），你是没有所有权的（即可以假设新对象的 retain 计数是1，而且该对象已经在 NSAutoreleasePool 对象中。如果没有保留该对象，那么当NSAutoreleasePool被“排干”时，这个对象会被释放）。</li>
-<li>如果你不拥有某个对象，但是要确保该对象能继续存在，那么可以通过响起发送 retain 消息来获得所有权。</li>
-<li>当你拥有某个对象并且不再需要使用该对象的时候，可以向其方发送 release 消息或者 autorelease 消息</li>
-<li>只要对象还有只要一个拥有方，该对象就会继续存在下去。</li>
-</ul>
-<p>##参考文献：</p>
-<p>① Objectivce-C编程全解（第三版） [日]荻原刚志 著 唐璐 翟俊杰 译</p>
-<p>② Objectivce-C编程 [美]Aaron Hillegass 著 夏伟频 译</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2016/05/06/cj8x0oags003ts7rdm3br1az2/" data-id="cj8x0oags003ts7rdm3br1az2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="http://www.maksim.website/2016/05/06/cj8x0oags003ts7rdm3br1az2/#comments" class="article-comment-link">Comments</a>
-    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内存管理/">内存管理</a></li></ul>
 
-        </footer>
     </div>
     
 </article>
 
-
-
-    <article id="post-NSObject" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
+        </li>
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/05/06/cj8x0oacd000ts7rdypaol4h6/">读书总结之NSObject</a>
-        </h1>
+        <li class="post-list-item fade">
+            <article id="post-NSObject"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-05-06 11:03:16" datetime="2016-05-06T03:03:16.000Z"  itemprop="datePublished">2016-05-06</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/iOS/">iOS</a></li></ul>
+
+
+
+    </div>
+
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/05/06/cj8x0oacd000ts7rdypaol4h6/">
-            <time datetime="2016-05-06T03:03:16.000Z" itemprop="datePublished">2016-05-06</time>
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/05/06/cj8x0s4hn000ssurdqoy3igpp/">读书总结之NSObject</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+使用 Objectvice-C 进行全面对象编程时，除了需要知道语言本身的语法和面向对象的知识外，还需要了解Objectvice-C的根类 NSObject 的信息。
+
+NSObject根类的作用作为一门动态编程语言，Objectstvice-C有很多动态的特性，因此，Objectvice-C不进需要编译环境，同时还需要一个运行时系统（runtime system）来执行编译好的代码。运行时系统扮演的角色类似于Objectvice-C的操作系统，他负责完成对象生成、释放时的内存管理、发来的消息查找对应的处理方法等工作。
+通常情况下，程序无法直接使用运行时系统提供的功能。根类方法提供了运行时系统的基本工恩给你。继承了 NSObject 的所有类都可以自由的使用运行时系统的功能，也就是说，根类就想到于系统的一个借口。
+根类通过哪些方式提供了哪些功能对系统有很大的影响。因此，根类不同的系统之间是无法开发出通用的程序的。
+Cocoa 是以OPENSTEPDE的核心 API 为基础发展起来的。OPENSTEP的前身为 NeXTstep。在 NeXTstep 时代，根类是累 Object,而在 OPENSTEP 时代，根类则变为了 NSObject，同时类的设计也得到了大幅度的改进。
+    
+
+        <a href="/2016/05/06/cj8x0s4hn000ssurdqoy3igpp/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/iOS/">iOS</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/iOS/">iOS</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><blockquote>
-<p>使用 Objectvice-C 进行全面对象编程时，除了需要知道语言本身的语法和面向对象的知识外，还需要了解Objectvice-C的根类 NSObject 的信息。</p>
-</blockquote>
-<h2 id="NSObject"><a href="#NSObject" class="headerlink" title="NSObject"></a>NSObject</h2><h3 id="根类的作用"><a href="#根类的作用" class="headerlink" title="根类的作用"></a>根类的作用</h3><p>作为一门动态编程语言，Objectstvice-C有很多动态的特性，因此，Objectvice-C不进需要编译环境，同时还需要一个<strong>运行时系统</strong>（runtime system）来执行编译好的代码。运行时系统扮演的角色类似于Objectvice-C的操作系统，他负责完成对象生成、释放时的内存管理、发来的消息查找对应的处理方法等工作。</p>
-<p>通常情况下，程序无法直接使用运行时系统提供的功能。根类方法提供了运行时系统的基本工恩给你。继承了 NSObject 的所有类都可以自由的使用运行时系统的功能，也就是说，根类就想到于系统的一个借口。</p>
-<p>根类通过哪些方式提供了哪些功能对系统有很大的影响。因此，根类不同的系统之间是无法开发出通用的程序的。</p>
-<p>Cocoa 是以OPENSTEPDE的核心 API 为基础发展起来的。OPENSTEP的前身为 NeXTstep。在 NeXTstep 时代，根类是累 Object,而在 OPENSTEP 时代，根类则变为了 NSObject，同时类的设计也得到了大幅度的改进。</p></p>
-            <p class="article-more-link">
-                <a href="/2016/05/06/cj8x0oacd000ts7rdypaol4h6/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2016/05/06/cj8x0oacd000ts7rdypaol4h6/" data-id="cj8x0oacd000ts7rdypaol4h6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="http://www.maksim.website/2016/05/06/cj8x0oacd000ts7rdypaol4h6/#comments" class="article-comment-link">Comments</a>
-    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
 
-        </footer>
     </div>
     
 </article>
 
-
-
-    <article id="post-delete_cell" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
+        </li>
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/04/23/cj8x0oaee002cs7rd0lqc920t/">UITableView 系统 API实现滑动删除Cell</a>
-        </h1>
+        <li class="post-list-item fade">
+            <article id="post-delete_cell"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-04-23 16:05:19" datetime="2016-04-23T08:05:19.000Z"  itemprop="datePublished">2016-04-23</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Objective-C/">Objective-C</a></li></ul>
+
+
+
+    </div>
+
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/04/23/cj8x0oaee002cs7rd0lqc920t/">
-            <time datetime="2016-04-23T08:05:19.000Z" itemprop="datePublished">2016-04-23</time>
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/04/23/cj8x0s4jo002esurdu0di8mw7/">UITableView 系统 API实现滑动删除Cell</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        #UITableView 系统 API实现滑动删除Cell
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051import UIKitclass ViewController: UIViewController &#123;    private lazy ...
+    
+
+        <a href="/2016/04/23/cj8x0s4jo002esurdu0di8mw7/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Objective-C/">Objective-C</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/iOS/">iOS</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>#UITableView 系统 API实现滑动删除Cell</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">import UIKit</div><div class="line"></div><div class="line">class ViewController: UIViewController &#123;</div><div class="line"></div><div class="line">    private lazy var tableview:UITableView = &#123;</div><div class="line">        let tb = UITableView(frame: CGRectZero,style: UITableViewStyle.Plain)</div><div class="line">        tb.dataSource = self</div><div class="line">        tb.delegate = self</div><div class="line">        tb.registerClass(UITableViewCell.self, forCellReuseIdentifier: &quot;Cell&quot;)</div><div class="line">        return tb</div><div class="line">    &#125;()</div><div class="line">    </div><div class="line">    private var dataArray = [&quot;lazy&quot;,&quot;make&quot;,&quot;help&quot;,&quot;papa&quot;]</div><div class="line">    </div><div class="line">    override func viewDidLoad() &#123;</div><div class="line">        super.viewDidLoad()</div><div class="line">        view = tableview</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">extension ViewController:UITableViewDataSource&#123;</div><div class="line">    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int &#123;</div><div class="line">        return dataArray.count;</div><div class="line">    &#125;</div><div class="line">    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -&gt; UITableViewCell &#123;</div><div class="line">        let cell = tableview.dequeueReusableCellWithIdentifier(&quot;Cell&quot;, forIndexPath: indexPath)</div><div class="line">        cell.textLabel?.text = dataArray[indexPath.row]</div><div class="line">        return cell</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">extension ViewController:UITableViewDelegate&#123;</div><div class="line">    //1.设置Cell 可编辑</div><div class="line">    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -&gt; Bool &#123;</div><div class="line">        return true</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //2.进入编辑模式，滑动初选删除按钮</div><div class="line">      func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -&gt; String? &#123;</div><div class="line">        return &quot;删除&quot;</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">    //3.响应删除按钮事件</div><div class="line">    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) &#123;</div><div class="line">        tableview.setEditing(false, animated: true)</div><div class="line">        print(&quot;删除\(dataArray[indexPath.row])&quot;)</div><div class="line">        dataArray.removeAtIndex(indexPath.row)</div><div class="line">        tableview.reloadData()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2016/04/23/cj8x0oaee002cs7rd0lqc920t/" data-id="cj8x0oaee002cs7rd0lqc920t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="http://www.maksim.website/2016/04/23/cj8x0oaee002cs7rd0lqc920t/#comments" class="article-comment-link">Comments</a>
-    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
 
-        </footer>
     </div>
     
 </article>
 
-
-
-    <article id="post-一个新的开始" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
+        </li>
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/03/27/cj8x0oaf5002ys7rd6ct75zo5/">一个新的开始</a>
-        </h1>
+        <li class="post-list-item fade">
+            <article id="post-一个新的开始"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-03-27 23:28:11" datetime="2016-03-27T15:28:11.000Z"  itemprop="datePublished">2016-03-27</time>
+
+        
+
+
+    </div>
+
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/03/27/cj8x0oaf5002ys7rd6ct75zo5/">
-            <time datetime="2016-03-27T15:28:11.000Z" itemprop="datePublished">2016-03-27</time>
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/03/27/cj8x0s4k90033surd3n7jko4g/">一个新的开始</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        人生又要开启新的篇章了，而我也将重头开始，接触网络文学也有五六年了，断断续续的也算是写了很多东西，但都无疾而终了，可能是那几分钟的热度退去了，仔细回想倒是感觉真的欠缺了自己很多东西，说起来也是蛮遗憾的，为了不让我的青春有遗憾，我做了很多事情，唯独欠缺的可能就是曾经在上大学前许下的承诺，在大学毕业的时候写一本完本的小说。
+    
+
+        <a href="/2016/03/27/cj8x0s4k90033surd3n7jko4g/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/随笔/">随笔</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>人生又要开启新的篇章了，而我也将重头开始，接触网络文学也有五六年了，断断续续的也算是写了很多东西，但都无疾而终了，可能是那几分钟的热度退去了，仔细回想倒是感觉真的欠缺了自己很多东西，说起来也是蛮遗憾的，为了不让我的青春有遗憾，我做了很多事情，唯独欠缺的可能就是曾经在上大学前许下的承诺，在大学毕业的时候写一本完本的小说。</p></p>
-            <p class="article-more-link">
-                <a href="/2016/03/27/cj8x0oaf5002ys7rd6ct75zo5/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2016/03/27/cj8x0oaf5002ys7rd6ct75zo5/" data-id="cj8x0oaf5002ys7rd6ct75zo5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="http://www.maksim.website/2016/03/27/cj8x0oaf5002ys7rd6ct75zo5/#comments" class="article-comment-link">Comments</a>
-    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
-        </footer>
     </div>
     
 </article>
 
-
-
-    <article id="post-mytime" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
+        </li>
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/03/26/cj8x0oaey002rs7rd3jkrw975/">我的碎片化时间都在做什么?</a>
-        </h1>
+        <li class="post-list-item fade">
+            <article id="post-mytime"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-03-26 11:03:16" datetime="2016-03-26T03:03:16.000Z"  itemprop="datePublished">2016-03-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+
+
+
+    </div>
+
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/03/26/cj8x0oaey002rs7rd3jkrw975/">
-            <time datetime="2016-03-26T03:03:16.000Z" itemprop="datePublished">2016-03-26</time>
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/03/26/cj8x0s4jz002qsurdwk5zy54p/">我的碎片化时间都在做什么?</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        一直都没太仔细的时间管理,基本上就是想要去做什么就去做,但就算如此有的时候回想一下自己这一天都在做什么了,却发现一天过得有些苍白,可能是精神上还是没有获得太多的满足,日记现在还在坚持写,不过一般都是有什么事情发生了才会去写上那么一笔.
+最近一直在想自己的时间去了哪里,现在正在处于学习状态,满脑子都是成片的代码,倒是没有更多的碎片化时间.
+那么我平时大部分碎片化时间都在干什么呢.
+    
+
+        <a href="/2016/03/26/cj8x0s4jz002qsurdwk5zy54p/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/随笔/">随笔</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/随笔/">随笔</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>一直都没太仔细的时间管理,基本上就是想要去做什么就去做,但就算如此有的时候回想一下自己这一天都在做什么了,却发现一天过得有些苍白,可能是精神上还是没有获得太多的满足,日记现在还在坚持写,不过一般都是有什么事情发生了才会去写上那么一笔.</p>
-<p>最近一直在想自己的时间去了哪里,现在正在处于学习状态,满脑子都是成片的代码,倒是没有更多的碎片化时间.</p>
-<p>那么我平时大部分碎片化时间都在干什么呢.</p></p>
-            <p class="article-more-link">
-                <a href="/2016/03/26/cj8x0oaey002rs7rd3jkrw975/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2016/03/26/cj8x0oaey002rs7rd3jkrw975/" data-id="cj8x0oaey002rs7rd3jkrw975" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="http://www.maksim.website/2016/03/26/cj8x0oaey002rs7rd3jkrw975/#comments" class="article-comment-link">Comments</a>
-    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
-        </footer>
     </div>
     
 </article>
 
-
-
-    <article id="post-多线程-nsoperation" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
+        </li>
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/03/22/cj8x0oah0003ws7rd4akyo0ex/">iOS多线程</a>
-        </h1>
+        <li class="post-list-item fade">
+            <article id="post-多线程-nsoperation"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-03-22 16:05:19" datetime="2016-03-22T08:05:19.000Z"  itemprop="datePublished">2016-03-22</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Objective-C/">Objective-C</a></li></ul>
+
+
+
+    </div>
+
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/03/22/cj8x0oah0003ws7rd4akyo0ex/">
-            <time datetime="2016-03-22T08:05:19.000Z" itemprop="datePublished">2016-03-22</time>
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/03/22/cj8x0s4l1003wsurdi1igv8ua/">iOS多线程</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        简介多线程是所有程序员都应该知道的一个概念，因为当一个程序开始运行，进程就已经开启了！
+多线程基本概念进程(process)和文件(files)是UNIX/Linux操作系统最基本的抽象。进程是处于执行期的程序和它所包含的资源的综合，也就是说一个进程就是处于执行期的程序。一个线程（thread）就是运行在一个程序上下文中的一个逻辑刘，不难看出，线程是进程中最基本的活动对象。
+
+在软件工程中，...
+    
+
+        <a href="/2016/03/22/cj8x0s4l1003wsurdi1igv8ua/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Objective-C/">Objective-C</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/iOS/">iOS</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>多线程是所有程序员都应该知道的一个概念，因为当一个程序开始运行，进程就已经开启了！</p>
-<h3 id="多线程基本概念"><a href="#多线程基本概念" class="headerlink" title="多线程基本概念"></a>多线程基本概念</h3><p>进程(process)和文件(files)是UNIX/Linux操作系统最基本的抽象。进程是处于执行期的程序和它所包含的资源的综合，也就是说一个进程就是处于执行期的程序。一个线程（thread）就是运行在一个程序上下文中的一个逻辑刘，不难看出，线程是进程中最基本的活动对象。</p>
-<blockquote>
-<p>在软件工程中，上下文是一种属性的有序序列，它们为主流在环境内的对象定义环境，在对象的激活过程中创建上下文，对象呗配置为要求某些自动服务，如同步、事务、实时激活、安全性等等。又比如计算机技术中，对象鱼进程而言，上下文就是进程执行时候的环境，具体来就是各个变量和数据，包括所有的寄存器变量、进程打开的文件、内存信息等。</p>
-</blockquote>
-<p>在传统系统中，一个进程只包含一个线程。但是在现代系统中，润徐一个进程里面可以同时运行多个县城，这类程序被称之为多线程程序。所有的程序都有一个主线程（main thread，在iOS开发中，主线程主要用于UI呈现，要将耗时操作放到其他线程之中，否则UI界面会被卡死），主直选成是进程的控制流或者执行线程在多线程程序中，主线可以创建一个活多个对等线程（peer thread），从这个时间点开始，这些线程就开始兵法执行，主线程和对等线程的区别仅在于主线程总是进程中第一个运行的线程。从某种程度上看，线程可以看做是轻量级的进程（lightweight process）。</p>
-<p>每个程序都拥有独立的线程上下文（thread context），线程ID（Thread ID，TID），程序计数器（PC），线程栈（stack），一组寄存器（register）和条件码，其中内核正式通过线程ID（TID）来识别线程，进行线程调度的。</p>
-<p>上面的内容是否晦涩难懂，那么我们看一看百度百科是如何解释多线程的：</p>
-<p>在百度百科中，多线程是指软件或者硬件上实现多个线程并发执行的技术。具有多线程能力的计算机因有硬件支持而能够在同一时间执行多余一个线程，今儿提高整体处理性能。就这样的一句话就解释了什么是线程和线程的作用，就是为了提高程序的执行效率，能够在同一时间段执行多个任务。</p>
-<p>这样一来是否就容易理解了，其实每一个软件都是一个进程，每个进程中包含一个到多个的线程，我们在window有的时候程序卡死，我们使用任务管理器结束程序的时候就是杀死那个进程。进程也可能是整个程序或者是部分程序的动态执行，线程是一组指令的集合，或者是程序的特殊段，它可以在程序里面单独执行，也可以把它理解成为代码运行的上下文，所以线程基本上是轻量级的进程，它负责在单个程序里执行多任务。通常由操作系统负责多个线程的调度和执行。</p>
-<p>线程是程序中一个单一的顺序控制流程，在单个程序中同时运行多个线程完成不同的工作，成为多线程。</p>
-<p>线程和进程的主要区别在于子进程和父进程有不同的代码和数据空间，而多个线程则共享数据空间，每个线程有自己的执行堆栈和程序计数器为其知心上下文，多线程主要是为了节省CPU时间，发挥利用，根据具体情况而定。线程的运行需要使用计算机的内存资源和CPU。</p>
-<p>到了这里你应该已经知道了什么是多线程了，首先让我们来整理一下然后再进行进行学习。</p>
-<ol>
-<li>进程:就是指在系统中运行的一个应用程序，每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间中</li>
-<li>线程:一个进程要执行任务，必须得有线程（每一个进程只要有一条线程），一个进程的所有任务都是放在线程中完成的<ul>
-<li>线程的串行：一个线程中执行的任务是串行的，如果在一个线程中赤星多个任务，只能一个一个的按照顺序执行</li>
-</ul>
-</li>
-<li>多线程：一个进程中可以开启多条线程，每条线程可以并行（同时），执行不同的任务。</li>
-</ol>
-<h3 id="多线程的优缺点"><a href="#多线程的优缺点" class="headerlink" title="多线程的优缺点"></a>多线程的优缺点</h3><h4 id="多线程的优点"><a href="#多线程的优点" class="headerlink" title="多线程的优点"></a>多线程的优点</h4><ol>
-<li>能适当提高程序的执行效率</li>
-<li>能适当提高资源利用率（CPU、内存利用率）</li>
-</ol>
-<h4 id="多线程的缺点"><a href="#多线程的缺点" class="headerlink" title="多线程的缺点"></a>多线程的缺点</h4><ol>
-<li>开启线程需要占用一定的内存空间（默认情况下，主线程占用1M，子线程占用512KB），如果开启大量的线程，会占用大量的内存空间，降低程序的性能</li>
-<li>线程越多，CPU在调度线程上的开销就越大</li>
-<li>程序设计更加复杂：比如线程之间的通信、多线程的数据共享</li>
-</ol>
-<h4 id="多线程在iOS开发中的应用"><a href="#多线程在iOS开发中的应用" class="headerlink" title="多线程在iOS开发中的应用"></a>多线程在iOS开发中的应用</h4><p>主线程:一个iOS程序运行后，默认会开启1条线程，称为“主线程”或“UI线程”<br>主线程的主要作用<br>显示、刷新UI界面<br>处理UI事件（比如点击事件、滚动事件、拖拽事件等）<br>主线程的使用注意:别将比较耗时的操作放到主线程中。<br>耗时操作会卡住主线程，严重影响UI的流畅度，给用户一种“卡”的坏体验</p>
-<h2 id="Pthread"><a href="#Pthread" class="headerlink" title="Pthread"></a>Pthread</h2><p>POSIX线程（POSIX threads）简称Pthreads，是线程的POSIX标准。该标准定义了创建和操纵线程的一套API，在类Unix系统中，都是用Pthreads作为系统的线程。在这里只讲一下其基本使用，因为在日常的开发之中并不是很常用这种方式进行多线程的开发。</p>
-<h3 id="Pthread的基本使用"><a href="#Pthread的基本使用" class="headerlink" title="Pthread的基本使用"></a>Pthread的基本使用</h3><p>由于Pthreads是使用C语言进行开发的，所以其使用都是C语法。</p>
-<h4 id="语法规则"><a href="#语法规则" class="headerlink" title="语法规则"></a>语法规则</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pthread_create(pthread_t *thread,pthread_attr_t * attr,void*(*start_routine)(void*),void*arg);</div></pre></td></tr></table></figure>
-<h5 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h5><p>thread:返回创建的线程ID</p>
-<p>attr:线程属性，调度策略、优先级等都在这里设置，如果为NULL则标识默认属性</p>
-<p>start_rountine:线程入口函数，可以返回一个void*类型的返回值，该返回值可由pthread_join()捕获<br>arg:传给start_rountine的参数，可以为NULL</p>
-<h5 id="设置线程属性"><a href="#设置线程属性" class="headerlink" title="设置线程属性"></a>设置线程属性</h5><p>线程属性通过attr进行设置<br>设置与查询attr结构为pthread_attr_get<del>()与pthread_attr_set</del>()两个系列函数，也可以在创建时通过pthread_create参数参数，有些必须在线程创建时进行设置比如跳读策略。</p>
-<h5 id="调度策略"><a href="#调度策略" class="headerlink" title="调度策略"></a>调度策略</h5><p>POSIX定义一种优先级调度模型，此模型确定任何两个线程相对于对方的重要程度。当两个线程同时准备就绪的时候，系统就会自动选择具有最高优先级的线程。</p>
-<p>SCHED_OTHER：非实时、正常<br>SCHED_RR：实时、轮询法<br>SCHED_FIFO：实时、先入先出，与vxworks的调度机制一致</p>
-<p>例程：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pthread_attr_t attr;</div><div class="line">pthread_attr_init(&amp;attr);</div><div class="line">pthread_attr_setschedpolicy(&amp;attr, SCHED_FIFO);//sched_policy</div></pre></td></tr></table></figure>
-<h2 id="NSThread"><a href="#NSThread" class="headerlink" title="NSThread"></a>NSThread</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>NSThread 是 Objective-C 对 pthread 的一个封装。通过封装，在 Cocoa 环境中，可以让代码看起来更加亲切,通过NSThread这个API我们可以实现简单的多线程编程,但需要管理线程的声明周期、同步、加锁等问题，这样会导致一定的性能开销，当我们进行多线程开发的时候，并不推荐此方法。</p>
-<h3 id="NSThread的初始化"><a href="#NSThread的初始化" class="headerlink" title="NSThread的初始化"></a>NSThread的初始化</h3><h4 id="动态方法"><a href="#动态方法" class="headerlink" title="动态方法"></a>动态方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (id)initWithTarget:(id)target selector:(SEL)selector object:(id)argument;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 初始化线程</div><div class="line">NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run) object:nil];</div><div class="line">// 设置线程的优先级(0.0 - 1.0，1.0最高级)</div><div class="line">thread.threadPriority = 1;</div><div class="line">// 开启线程</div><div class="line">[thread start];</div><div class="line">参数解析：</div><div class="line">selector ：线程执行的方法，这个selector最多只能接收一个参数</div><div class="line">target ：selector消息发送的对象</div><div class="line">argument : 传给selector的唯一参数，也可以是nil</div></pre></td></tr></table></figure>
-<h4 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ (void)detachNewThreadSelector:(SEL)selector toTarget:(id)target withObject:(id)argument;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[NSThread detachNewThreadSelector:@selector(run) toTarget:self withObject:nil];</div><div class="line">// 调用完毕后，会马上创建并开启新线程</div></pre></td></tr></table></figure>
-<h4 id="隐式创建线程的方法"><a href="#隐式创建线程的方法" class="headerlink" title="隐式创建线程的方法"></a>隐式创建线程的方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self performSelectorInBackground:@selector(run) withObject:nil];</div></pre></td></tr></table></figure>
-<h3 id="获取当前线程"><a href="#获取当前线程" class="headerlink" title="获取当前线程"></a>获取当前线程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSThread *current = [NSThread currentThread];</div></pre></td></tr></table></figure>
-<h3 id="获取主线程"><a href="#获取主线程" class="headerlink" title="获取主线程"></a>获取主线程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSThread *main = [NSThread mainThread];</div></pre></td></tr></table></figure>
-<h3 id="暂停当前线程"><a href="#暂停当前线程" class="headerlink" title="暂停当前线程"></a>暂停当前线程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 暂停2s</div><div class="line">[NSThread sleepForTimeInterval:2];</div><div class="line"></div><div class="line">// 或者</div><div class="line">NSDate *date = [NSDate dateWithTimeInterval:2 sinceDate:[NSDate date]];</div><div class="line">[NSThread sleepUntilDate:date];</div></pre></td></tr></table></figure>
-<h3 id="线程间的通信"><a href="#线程间的通信" class="headerlink" title="线程间的通信"></a>线程间的通信</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">1.在指定线程上执行操作</div><div class="line">[self performSelector:@selector(run) onThread:thread withObject:nil waitUntilDone:YES];</div><div class="line"></div><div class="line">2.在主线程上执行操作</div><div class="line">[self performSelectorOnMainThread:@selector(run) withObject:nil waitUntilDone:YES];</div><div class="line"></div><div class="line">3.在当前线程执行操作</div><div class="line">[self performSelector:@selector(run) withObject:nil];</div></pre></td></tr></table></figure>
-<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>1.优点：NSThread比其他两种多线程方案较轻量级，更直观地控制线程对象<br>2.缺点：需要自己管理线程的生命周期，线程同步。线程同步对数据的加锁会有一定的系统开销</p>
-<h2 id="NSOperation"><a href="#NSOperation" class="headerlink" title="NSOperation"></a>NSOperation</h2><p>NSOperation的作用</p>
-<ul>
-<li>配合使用NSOperation和NSOperationQueue实现多线程编程</li>
-<li>NSOperation和NSOperationQueue实现多线程的具体步骤<ol>
-<li>先将需要执行的操作封装到一个NSOperation对象中</li>
-<li>然后将NSOperation对象添加到NSOperationQueue中</li>
-<li>系统会自动的将NSOperationQueue中的NSOperation中取出来</li>
-<li>将取出的NSOperation封装的操作放到一条线程中执行</li>
-</ol>
-</li>
-</ul>
-<h3 id="NSOperation的子类"><a href="#NSOperation的子类" class="headerlink" title="NSOperation的子类"></a>NSOperation的子类</h3><p>NSOperation是一个抽象的类,它并不具备封装操作的能力,当我们进行多线程编程的时候,必须使用它的子类.</p>
-<ol>
-<li>NSInvocationOperation</li>
-<li>NSBlockOperation</li>
-<li>自定义子类继承NSOperation,实现内部相对应的方法</li>
-</ol>
-<h3 id="NSInvocationOperation"><a href="#NSInvocationOperation" class="headerlink" title="NSInvocationOperation"></a>NSInvocationOperation</h3><p><em>创建NSInvocationOperation对象</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(id)initWithTarget:(id)target selector:(SEL)sel object:(id)arg;</div></pre></td></tr></table></figure>
-<p><em>调用start方法开启线程</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(void)start;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>一旦执行操作，就会调用target的sel方法默认情况下，调用了start方法后并不会开一条新线程去执行操作，而是在当前线程同步执行操作<br>只有将NSOperation放到一个NSOperationQueue中，才会异步执行操作</p>
-</blockquote>
-<h3 id="NSBlockOperation"><a href="#NSBlockOperation" class="headerlink" title="NSBlockOperation"></a>NSBlockOperation</h3><p><em>创建NSBlockOperation对象</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+(id)blockOperationWithBlock:(void (^)(void))block;</div></pre></td></tr></table></figure>
-<p><em>通过addExecutionBlock:方法添加更多的操作</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(void)addExecutionBlock:(void (^)(void))block;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>只要NSBlockOperation封装的操作数 &gt; 1，就会异步执行操作</p>
-</blockquote>
-<h3 id="NSOperationQueue"><a href="#NSOperationQueue" class="headerlink" title="NSOperationQueue"></a>NSOperationQueue</h3><p>NSOperationQueue可以调用start放啊来进行执行任务,但是默认是同步执行的</p>
-<p>如果将NSOperationQueue添加到NSOperationQueue操作队列中,系统会自动异步执行.</p>
-<p>添加操作:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-(void)addOperation:(NSOperation *)op;</div><div class="line">-(void)addOperationWithBlock:(void (^)(void))bloc</div></pre></td></tr></table></figure>
-<h3 id="最大并发数"><a href="#最大并发数" class="headerlink" title="最大并发数"></a>最大并发数</h3><p><strong>什么是并发数</strong></p>
-<p>同时执行的任务数<br>比如，同时开3个线程执行3个任务，并发数就是3</p>
-<p><strong>最大并发数的相关方法</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-(NSInteger)maxConcurrentOperationCount;</div><div class="line">-(void)setMaxConcurrentOperationCount:(NSInteger)cnt;</div></pre></td></tr></table></figure>
-<h3 id="队列的取消-暂停-回复"><a href="#队列的取消-暂停-回复" class="headerlink" title="队列的取消,暂停,回复"></a>队列的取消,暂停,回复</h3><p><strong>取消队列的所有操作</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(void)cancelAllOperations;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>提示：也可以调用NSOperation的 -(void)cancel方法取消单个操作</p>
-</blockquote>
-<p><em>暂停和恢复队列</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-(void)setSuspended:(BOOL)b; // YES代表暂停队列，NO代表恢复队列</div><div class="line">-(BOOL)isSuspended;</div></pre></td></tr></table></figure>
-<h3 id="操作依赖"><a href="#操作依赖" class="headerlink" title="操作依赖"></a>操作依赖</h3><p>NSOperation之间可以设置依赖来保证执行顺序<br>比如一定要让操作A执行完后，才能执行操作B，可以这么写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[operationB addDependency:operationA]; // 操作B依赖于操作A</div></pre></td></tr></table></figure>
-<p>可以在不同queue的NSOperation之间创建依赖关系</p>
-<h3 id="操作监听"><a href="#操作监听" class="headerlink" title="操作监听"></a>操作监听</h3><p>可以监听一个操作的执行完毕</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-(void (^)(void))completionBlock;</div><div class="line">-(void)setCompletionBlock:(void (^)(void))block;</div></pre></td></tr></table></figure>
-<h3 id="自定义NSOperation"><a href="#自定义NSOperation" class="headerlink" title="自定义NSOperation"></a>自定义NSOperation</h3><p><em>自定义NSOperation的步骤</em></p>
-<p>重写<code>-(void)main</code>方法，在里面实现想执行的任务</p>
-<p>重写<code>-(void)main</code>方法的注意点<br>自己创建自动释放池（因为如果是异步操作，无法访问主线程的自动释放池）<br>经常通过<code>- (BOOL)isCancelled</code>方法检测操作是否被取消，对取消做出响应</p>
-<h2 id="GCD"><a href="#GCD" class="headerlink" title="GCD"></a>GCD</h2><h3 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h3><p>GCD 是 libdispatch 的市场名称，而 libdispatch 作为 Apple 的一个库，为并发代码在多核硬件（跑 iOS 或 OS X ）上执行提供有力支持。它具有以下优点：</p>
-<ol>
-<li>GCD 能通过推迟昂贵计算任务并在后台运行它们来改善你的应用的响应性能。</li>
-<li>GCD 提供一个易于使用的并发模型而不仅仅只是锁和线程，以帮助我们避开并发陷阱。</li>
-<li>GCD 具有在常见模式（例如单例）上用更高性能的原语优化你的代码的潜在能力</li>
-</ol>
-<p>（未完待续）</p>
-<p>参考文献：</p>
-<p>[1] <a href="http://blog.chinaunix.net/uid-20528014-id-333508.html" target="_blank" rel="external">fireaxe - Pthread编程基础 </a></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2016/03/22/cj8x0oah0003ws7rd4akyo0ex/" data-id="cj8x0oah0003ws7rd4akyo0ex" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="http://www.maksim.website/2016/03/22/cj8x0oah0003ws7rd4akyo0ex/#comments" class="article-comment-link">Comments</a>
-    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
 
-        </footer>
     </div>
     
 </article>
 
-
-
-    <article id="post-wordpress to hexo" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
+        </li>
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/03/08/cj8x0oaf1002us7rdqsglk8ql/">将博客迁移到了github</a>
-        </h1>
+        <li class="post-list-item fade">
+            <article id="post-wordpress to hexo"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-03-08 23:00:00" datetime="2016-03-08T15:00:00.000Z"  itemprop="datePublished">2016-03-08</time>
+
+        
+
+
+    </div>
+
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/03/08/cj8x0oaf1002us7rdqsglk8ql/">
-            <time datetime="2016-03-08T15:00:00.000Z" itemprop="datePublished">2016-03-08</time>
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/03/08/cj8x0s4k4002wsurd2dso8p7x/">将博客迁移到了github</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        折腾了一天终于将博客迁移到了github上,以前一直用的都是WordPress,这几天看一些大牛的微博发现有很多人用的都是hexo于是在好奇心的驱使下搜了一下,发现很有逼格,身为一个不折腾就会死的人我便开始了迁移之路,这篇博文并不会讲如何迁移,因为今天没有时间了,等过两天进行一下总结,熟悉一下hexo.
+在用WordPress的时候,有的博文中有html标签,hexo用的markdown很多...
+    
+
+        <a href="/2016/03/08/cj8x0s4k4002wsurd2dso8p7x/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/随笔/">随笔</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>折腾了一天终于将博客迁移到了github上,以前一直用的都是WordPress,这几天看一些大牛的微博发现有很多人用的都是hexo于是在好奇心的驱使下搜了一下,发现很有逼格,身为一个不折腾就会死的人我便开始了迁移之路,这篇博文并不会讲如何迁移,因为今天没有时间了,等过两天进行一下总结,熟悉一下hexo.</p>
-<p>在用WordPress的时候,有的博文中有html标签,hexo用的markdown很多标签不兼容,这样就导致了,导入WordPress文章的时候会出现错误,要删除其中的标签,头晕了一个晚上,一激动把一些博文删掉了.</p>
-<p>之前的博文有很多人转载的东西,我也全都删除了,就留下了一些比较有用的东西,以后的博文也我要尽量的去试着原创,毕竟那也是一种不错的挑战.</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://www.maksim.website/2016/03/08/cj8x0oaf1002us7rdqsglk8ql/" data-id="cj8x0oaf1002us7rdqsglk8ql" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="http://www.maksim.website/2016/03/08/cj8x0oaf1002us7rdqsglk8ql/#comments" class="article-comment-link">Comments</a>
-    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
-        </footer>
     </div>
     
 </article>
 
+        </li>
+    
+    </ul>
+
+    
+<nav id="page-nav">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
+    </div>
+</nav>
 
 
-    <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
-    </nav>
-</section>
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
             
-                <aside id="sidebar">
-   
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">recent</h3>
-        <div class="widget">
-            <ul id="recent-post" class="">
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/10/16/cj8x0oad8001gs7rd8oat1bjy/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/10/16/cj8x0oad8001gs7rd8oat1bjy/" class="title">PHP页面静态化</a></p>
-                            <p class="item-date"><time datetime="2017-10-16T11:17:47.000Z" itemprop="datePublished">2017-10-16</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/10/15/cj8x0oac2000is7rdv3xm6qzy/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/10/15/cj8x0oac2000is7rdv3xm6qzy/" class="title"></a></p>
-                            <p class="item-date"><time datetime="2017-10-15T11:24:45.000Z" itemprop="datePublished">2017-10-15</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/10/13/cj8x0oaf70031s7rd1udfh67b/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/10/13/cj8x0oaf70031s7rd1udfh67b/" class="title"></a></p>
-                            <p class="item-date"><time datetime="2017-10-13T05:41:58.000Z" itemprop="datePublished">2017-10-13</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/10/13/1/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/MySQL/">MySQL</a></p>
-                            <p class="item-title"><a href="/2017/10/13/1/" class="title">MySQL体系结构</a></p>
-                            <p class="item-date"><time datetime="2017-10-12T16:00:00.000Z" itemprop="datePublished">2017-10-13</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/10/10/2/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/MySQL/">MySQL</a></p>
-                            <p class="item-title"><a href="/2017/10/10/2/" class="title">服务器系统对MySQL性能带来的影响</a></p>
-                            <p class="item-date"><time datetime="2017-10-09T16:00:00.000Z" itemprop="datePublished">2017-10-10</time></p>
-                        </div>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">categories</h3>
-        <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Objective-C/">Objective-C</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP设计模式/">PHP设计模式</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ios/">ios</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">archives</h3>
-        <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">tags</h3>
-        <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C-算法/">C/C++,算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Closures/">Closures</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/INSERT/">INSERT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Centos/">Linux,Centos</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-GNU/">Linux,GNU</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL-设计规范/">MySQL 设计规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objc-多线程/">Objc,多线程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP设计模式/">PHP设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wechat-pay-php-php7-php-input/">wechat pay, php, php7, php://input</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存管理/">内存管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程-PHP7-2-编译安装-GCC/">多线程,PHP7.2,编译安装,GCC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/色彩/">色彩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">5</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">tag cloud</h3>
-        <div class="widget tagcloud">
-            <a href="/tags/C-C-算法/" style="font-size: 10px;">C/C++,算法</a> <a href="/tags/Closures/" style="font-size: 10px;">Closures</a> <a href="/tags/INSERT/" style="font-size: 10px;">INSERT</a> <a href="/tags/Linux-Centos/" style="font-size: 12px;">Linux,Centos</a> <a href="/tags/Linux-GNU/" style="font-size: 10px;">Linux,GNU</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/MySQL-设计规范/" style="font-size: 10px;">MySQL 设计规范</a> <a href="/tags/Objc-多线程/" style="font-size: 10px;">Objc,多线程</a> <a href="/tags/PHP/" style="font-size: 16px;">PHP</a> <a href="/tags/PHP设计模式/" style="font-size: 10px;">PHP设计模式</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/wechat-pay-php-php7-php-input/" style="font-size: 10px;">wechat pay, php, php7, php://input</a> <a href="/tags/内存管理/" style="font-size: 10px;">内存管理</a> <a href="/tags/多线程-PHP7-2-编译安装-GCC/" style="font-size: 10px;">多线程,PHP7.2,编译安装,GCC</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/色彩/" style="font-size: 10px;">色彩</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 18px;">随笔</a>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">links</h3>
-        <div class="widget">
-            <ul>
-                
-                    <li>
-                        <a href="http://hexo.io">Hexo</a>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-
-    
-    <div id="toTop" class="fa fa-angle-up"></div>
-</aside>
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-        </div>
-        <footer id="footer">
-    <div class="outer">
-        <div id="footer-info" class="inner">
-            &copy; 2017 Maksim<br>
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
-        </div>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Maksim &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
     </div>
 </footer>
-        
-    
-    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1828998# enter youyan uid here"></script>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/page/4/&title=Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/page/4/&title=Maksim's Website&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/page/4/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=Maksim's Website&url=http://www.maksim.website/page/4/&via=http://www.maksim.website" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/page/4/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABx0lEQVR42u3aS2rDQBAFQN//0g5kZUhsve4ezSRQsxI2yCUvHv3R4xGf5/d5vX49Pz+v3nPxwcXFHXOfH8877rs75A+ZfPvLI+Hi4m7k5uGVx1DCyg24uLh/k9srfZIHxsXF/b/cz0VMgq7GIi4u7llu3pwkYdcLtcW9Gi4u7oDbG5iuvb59vouLi7toK5GEUXUgMvp1XFzcLdzPN1rctMQlzsUdcHFxb+bm7U3e5FQjL6lkcHFxz3KrfUc1EEflFC4u7hZuHmGrSplenEVf4OLiLuUmxMmAoxpkBTQuLu4hbrWU6a1sm+tVXFzcm7nVRigJvmpDtWDri4uLO+ZWX5CqIpLmqlBg4eLibuFWG568BZosU3Fxcc9ykzFoMjBNfr46UrnY/ODi4t7GzV+uqo5CekEWDUxxcXFv5ibB8RycSZzh4uKe5VZLjepSJH9d46KEwsXF3citBlN1tJGMWkYbYFxc3KXcyQo2H61OxiW9+MPFxZ1z8/BKrnvD1sKrG7i4uBu5vRewqmHXK2Wa811cXNwt3LVFTB52zSDDxcU9yo12ua2ww8XFPcvtDUknw9PqH4SLi7uTOx+Y5iOP6nAEFxd3O/cLBdQlCz0pee4AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
 
 
 
 
-    
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
-    
-    
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
-    
-    
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 
-<!-- Custom Scripts -->
-<script src="/js/main.js"></script>
 
-    </div>
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
 </body>
 </html>
