@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>PHP7 微信支付不能回调，让我们的团队损失1.00CNY。 | Maksim&#39;s Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="wechat pay, php, php7, php://input">
+    <meta name="description" content="公司目前正在使用一套基于 TP5的开源商城，在线上测试过程中碰到了一个问题，微信支付完成后无法进行回调更新订单状态，简单点说就是钱没了，啥也没得到。 What？这可是一个无法容忍的错误。 原本以为是微信支付配置环节出了问题，于是便去查看微信官网给出的帮助手册，又顺着流程走了一边，信心满满的又测试了一边，结果尴尬了，又损失了0.01人民币。 反复确认流程后，确认并不是配置的问题，于是便开始了百度，原">
+<meta name="keywords" content="wechat pay, php, php7, php:&#x2F;&#x2F;input">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP7 微信支付不能回调，让我们的团队损失1.00CNY。">
+<meta property="og:url" content="http://www.maksim.website/2017/07/14/cj8x25k21001fx7rdqqdjcg3h/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="公司目前正在使用一套基于 TP5的开源商城，在线上测试过程中碰到了一个问题，微信支付完成后无法进行回调更新订单状态，简单点说就是钱没了，啥也没得到。 What？这可是一个无法容忍的错误。 原本以为是微信支付配置环节出了问题，于是便去查看微信官网给出的帮助手册，又顺着流程走了一边，信心满满的又测试了一边，结果尴尬了，又损失了0.01人民币。 反复确认流程后，确认并不是配置的问题，于是便开始了百度，原">
+<meta property="og:updated_time" content="2017-07-14T11:39:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP7 微信支付不能回调，让我们的团队损失1.00CNY。">
+<meta name="twitter:description" content="公司目前正在使用一套基于 TP5的开源商城，在线上测试过程中碰到了一个问题，微信支付完成后无法进行回调更新订单状态，简单点说就是钱没了，啥也没得到。 What？这可是一个无法容忍的错误。 原本以为是微信支付配置环节出了问题，于是便去查看微信官网给出的帮助手册，又顺着流程走了一边，信心满满的又测试了一边，结果尴尬了，又损失了0.01人民币。 反复确认流程后，确认并不是配置的问题，于是便开始了百度，原">
+    
+        <link rel="alternate" type="application/atom+xml" title="Maksim&#39;s Website" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Maksim</h5>
+          <a href="mailto:aircrayon@qq.com" title="aircrayon@qq.com" class="mail">aircrayon@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/aircrayon" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/619946234" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">PHP7 微信支付不能回调，让我们的团队损失1.00CNY。</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">PHP7 微信支付不能回调，让我们的团队损失1.00CNY。</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-07-14T06:15:20.000Z" itemprop="datePublished" class="page-time">
+  2017-07-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP/">PHP</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-PHP7微信支付"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">PHP7 微信支付不能回调，让我们的团队损失1.00CNY。</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-07-14 14:15:20" datetime="2017-07-14T06:15:20.000Z"  itemprop="datePublished">2017-07-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP/">PHP</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>公司目前正在使用一套基于 TP5的开源商城，在线上测试过程中碰到了一个问题，微信支付完成后无法进行回调更新订单状态，简单点说就是钱没了，啥也没得到。</p>
+<p><code>What？</code>这可是一个无法容忍的错误。</p>
+<p>原本以为是微信支付配置环节出了问题，于是便去查看微信官网给出的帮助手册，又顺着流程走了一边，信心满满的又测试了一边，结果尴尬了，又损失了0.01人民币。</p>
+<p>反复确认流程后，确认并不是配置的问题，于是便开始了百度，原来这一切都是在微信官网给出的SDK中的一段代码惹的祸，就这么一段代码让我们团队损失了接近1人民币。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取通知的数据</span></div><div class="line">$xml = $GLOBALS[<span class="string">'HTTP_RAW_POST_DATA'</span>];  <span class="comment">//  WxPay.Api.php  414 line</span></div></pre></td></tr></table></figure>
+<p>这段代码如果放在PHP7之前的版本是不会有任何问题的，但是在 PHP7版本中却已经<strong>废除</strong>了 <code>HTTP\_RAW\_POST\_DATA</code>    。</p>
+<p>在官方文档中给了说明：</p>
+<blockquote>
+<p><strong>Warning</strong> This feature was DEPRECATED in PHP 5.6.0, and REMOVED as of PHP 7.0.0.</p>
+</blockquote>
+<p>在<code>PHP5.6.0</code>发布的时候，就已经不推荐只用这种方法，于是在PHP 社区在开发 PHP7.0的时候直接就将其废弃掉了。</p>
+<p>而官方也给出了替代的方案，那就是<code>php://input</code></p>
+<p><code>php://input</code> 是个可以访问请求的原始数据的只读流。 </p>
+<p><code>POST</code> 请求的情况下，最好使用 <code>php://input</code> 来代替 <code>$HTTP\_RAW\_POST\_DATA</code>，因为它不依赖于特定的<code>php.ini</code>指令。 </p>
+<p> 而且，这样的情况下 <code>$HTTP\_RAW\_POST\_DATA</code> 默认没有填充， 比激活 <code>always\_populate\_raw\_post\_data</code>潜在需要更少的内存。 <code>enctype=&quot;multipart/form-data&quot;</code> 的时候 <code>php://input</code> 是无效的。</p>
+<blockquote>
+<p><code>Note</code>: 在 PHP 5.6 之前 php://input 打开的数据流只能读取一次； 数据流不支持 seek 操作。 不过，依赖于 SAPI 的实现，请求体数据被保存的时候， 它可以打开另一个 php://input 数据流并重新读取。 通常情况下，这种情况只是针对 POST 请求，而不是其他请求方式，比如 PUT 或者 PROPFIND。 </p>
+</blockquote>
+<p>于是我将这段代码改为了：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取通知的数据</span></div><div class="line">$xml = file_get_contents(<span class="string">"php://input"</span>); <span class="comment">//  WxPay.Api.php  414 line</span></div></pre></td></tr></table></figure>
+<p>最后我又以0.01人民币的代价确认修复了这个 BUG。</p>
+<p><code>PHP7:&quot;怪我喽，让你经常看文档，哼！&quot;</code></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-07-14T11:39:10.000Z" itemprop="dateUpdated">2017-07-14 19:39:10</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/07/14/cj8x25k21001fx7rdqqdjcg3h/" target="_blank" rel="external">http://www.maksim.website/2017/07/14/cj8x25k21001fx7rdqqdjcg3h/</a>
+        
+    </div>
+    <footer>
+        <a href="http://www.maksim.website">
+            <img src="/img/avatar.jpg" alt="Maksim">
+            Maksim
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wechat-pay-php-php7-php-input/">wechat pay, php, php7, php://input</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2017/07/14/cj8x25k21001fx7rdqqdjcg3h/&title=《PHP7 微信支付不能回调，让我们的团队损失1.00CNY。》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2017/07/14/cj8x25k21001fx7rdqqdjcg3h/&title=《PHP7 微信支付不能回调，让我们的团队损失1.00CNY。》 — Maksim's Website&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2017/07/14/cj8x25k21001fx7rdqqdjcg3h/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PHP7 微信支付不能回调，让我们的团队损失1.00CNY。》 — Maksim's Website&url=http://www.maksim.website/2017/07/14/cj8x25k21001fx7rdqqdjcg3h/&via=http://www.maksim.website" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2017/07/14/cj8x25k21001fx7rdqqdjcg3h/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/08/04/600/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">利用 MySQL 权限机制设置用户权限</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/06/23/2/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">提高 MySQL 的性能，从数据库设计规范开始</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Maksim &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2017/07/14/cj8x25k21001fx7rdqqdjcg3h/&title=《PHP7 微信支付不能回调，让我们的团队损失1.00CNY。》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2017/07/14/cj8x25k21001fx7rdqqdjcg3h/&title=《PHP7 微信支付不能回调，让我们的团队损失1.00CNY。》 — Maksim's Website&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2017/07/14/cj8x25k21001fx7rdqqdjcg3h/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PHP7 微信支付不能回调，让我们的团队损失1.00CNY。》 — Maksim's Website&url=http://www.maksim.website/2017/07/14/cj8x25k21001fx7rdqqdjcg3h/&via=http://www.maksim.website" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2017/07/14/cj8x25k21001fx7rdqqdjcg3h/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACp0lEQVR42u3a0W6DMAwF0P3/T2+vlbbSazumnXR4QohCDpPi7MZfX/Hx/XA8Xnl2/vv+33deX79+4+EDDw8PbzD0Z4O7vp6/JcFcvz0fMx4eHt42rzqgvHg8fXHwrupnxcPDw/tMXnW5nK9ykzvx8PDw/iMvv1ItGMnCGg8PD+9zeBuProa/+edbyVrw8PDwYt4khH3X+cr+Hh4eHt54Vz0PAvLNrfnGW2G0eHh4eAu8+ebWqV8l22O9N+Lh4eFt8JJ/+HsL7vnKNnlaYfGNh4eHd4jXm3avw9ONOLhXKvDw8PA2ePlEXN34TxoCqoPOx4mHh4e3wbu+NUfmQ7x+Qm+7q/kXw8PDwxvw5kFDNcBNfpV8+hcLdzw8PLzbeb0ycH2eL8SrR3lnDw8PD2/AqzY55VN5tQGrt+x+URjw8PDw1njVwfWaAOaFpFDA8PDw8BZ4yYNyfDWSyEONvIS8aLrCw8PDO8SbxKyTSDdvKegFJXh4eHjv4vWigUkTVXXZXegpw8PDwzvE603Tk2m9Fzf0Grnw8PDwNnjVIjGZyueNCPPYFw8PD2/Cq8YK85igN/Rqi1ihTwEPDw+vxeu1W1V5vQasvKbh4eHh3c+bb+031++tUhQ1MeDh4eEt8Hob/5MPUW0jOJa14OHh4R3lVRfBvaD2VPBRaFHFw8PDu4XX27CvfrJq41ReNv4YGx4eHt4arxoc9MLZfIi9UoGHh4e3zfsuHtVI91QoXP0z4OHh4e3xqpNvHjH0lsvJu3ohMh4eHt5Z3rwY5AvrU5+yUDbw8PDw1ni9rab8vFpaTgUTeHh4eJ/GS+LUSZCR45v7e3h4eHg38vJIYqOxoDAGPDw8vDVe88fFdoE8hqgurPHw8PDu5PWm8klskQ8o+UBNEh4eHl6H9wNL7IdcnZU7TQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

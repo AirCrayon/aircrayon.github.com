@@ -13,7 +13,7 @@
     
     
     
-    <title>PHP设计模式系列之入门 | Maksim&#39;s Website</title>
+    <title>使用策略模式敲开设计模式的大门(PHP语言描述) | Maksim&#39;s Website</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -23,15 +23,15 @@
     <meta name="description" content="设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问，设计模式于己于他人于系统都是多赢的；设计模式使代码编制真正工程化；设计模式是软件工程的基石脉络，如同大厦的结构一样。  前言 本系列文章不会直接上代码直接进行解释，我一直认为带着问题来学习是效率最高的学习方式">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PHP设计模式系列之入门">
+<meta property="og:title" content="使用策略模式敲开设计模式的大门(PHP语言描述)">
 <meta property="og:url" content="http://www.maksim.website/2016/09/23/108/index.html">
 <meta property="og:site_name" content="Maksim&#39;s Website">
 <meta property="og:description" content="设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问，设计模式于己于他人于系统都是多赢的；设计模式使代码编制真正工程化；设计模式是软件工程的基石脉络，如同大厦的结构一样。  前言 本系列文章不会直接上代码直接进行解释，我一直认为带着问题来学习是效率最高的学习方式">
 <meta property="og:image" content="http://wanzao2.b0.upaiyun.com/system/pictures/17809564/original/5a08021694a003ca.gif">
 <meta property="og:image" content="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1474639306&di=8cd977b3c8e7d09c8a22672b95423266&src=http://img01.taopic.com/151015/234716-15101509225378.jpg">
-<meta property="og:updated_time" content="2017-03-12T04:33:28.000Z">
+<meta property="og:updated_time" content="2017-10-18T13:12:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PHP设计模式系列之入门">
+<meta name="twitter:title" content="使用策略模式敲开设计模式的大门(PHP语言描述)">
 <meta name="twitter:description" content="设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问，设计模式于己于他人于系统都是多赢的；设计模式使代码编制真正工程化；设计模式是软件工程的基石脉络，如同大厦的结构一样。  前言 本系列文章不会直接上代码直接进行解释，我一直认为带着问题来学习是效率最高的学习方式">
 <meta name="twitter:image" content="http://wanzao2.b0.upaiyun.com/system/pictures/17809564/original/5a08021694a003ca.gif">
     
@@ -128,7 +128,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">PHP设计模式系列之入门</div>
+        <div class="flex-col header-title ellipsis">使用策略模式敲开设计模式的大门(PHP语言描述)</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -150,7 +150,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">PHP设计模式系列之入门</h1>
+        <h1 class="title">使用策略模式敲开设计模式的大门(PHP语言描述)</h1>
         <h5 class="subtitle">
             
                 <time datetime="2016-09-23T14:15:16.000Z" itemprop="datePublished" class="page-time">
@@ -158,7 +158,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP设计模式/">PHP设计模式</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP/">PHP</a></li></ul>
 
             
         </h5>
@@ -175,7 +175,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#怎么样才可以进行设计模式的学习"><span class="post-toc-number">2.</span> <span class="post-toc-text">怎么样才可以进行设计模式的学习</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设计模式尝鲜（策略模式）"><span class="post-toc-number">3.</span> <span class="post-toc-text">设计模式尝鲜（策略模式）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考文档"><span class="post-toc-number">4.</span> <span class="post-toc-text">参考文档</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#怎么样才可以进行设计模式的学习"><span class="post-toc-number">2.</span> <span class="post-toc-text">怎么样才可以进行设计模式的学习</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设计模式尝鲜（策略模式）"><span class="post-toc-number">3.</span> <span class="post-toc-text">设计模式尝鲜（策略模式）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">4.</span> <span class="post-toc-text">参考</span></a></li></ol>
         </nav>
     </aside>
     
@@ -183,12 +183,12 @@
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">PHP设计模式系列之入门</h1>
+        <h1 class="post-card-title">使用策略模式敲开设计模式的大门(PHP语言描述)</h1>
         <div class="post-meta">
             <time class="post-time" title="2016-09-23 22:15:16" datetime="2016-09-23T14:15:16.000Z"  itemprop="datePublished">2016-09-23</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP设计模式/">PHP设计模式</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP/">PHP</a></li></ul>
 
 
 
@@ -233,11 +233,11 @@
                 <div class="image-caption"></div>
             </figure>
 <p>首先我们想到的是在每一个广告位上面都使用 if 判断来判断访客的性别，这样就能够解决这样的需求，那么我们的每一个广告代码的代码块可能是这个样子的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">判断 男 or 女&#123;</div><div class="line">	如果是男的就是男人的广告</div><div class="line">&#125;else&#123;</div><div class="line">	显示女人的广告</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">判断 男 <span class="keyword">or</span> 女&#123;</div><div class="line">	如果是男的就是男人的广告</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">	显示女人的广告</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>既然伪代码想好了，那么我们就可以着手进行开发了，然后我们在 if 代码块中添加各自的家在广告代码，于是就变成了下面的样子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if ($_GET[&apos;sex&apos;] == &apos;man&apos;) &#123;</div><div class="line">	echo &apos;外星人大减价现在购买立即送电竞瑞文皮肤&apos;;</div><div class="line">&#125;else&#123;</div><div class="line">	echo &apos;卡西欧美颜相机不要钱免费送！&apos;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ($_GET[<span class="string">'sex'</span>] == <span class="string">'man'</span>) &#123;</div><div class="line">	<span class="keyword">echo</span> <span class="string">'外星人大减价现在购买立即送电竞瑞文皮肤'</span>;</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">	<span class="keyword">echo</span> <span class="string">'卡西欧美颜相机不要钱免费送！'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>但是这是属于一种硬编码的编程方式，一旦我们增加了某种需求，要求其年龄大于23岁显示什么样的广告，那么我们就不得不在每一个 if 判断处再加上新的判断条件，这样的设计就是不合理的，为了提高可读性与可维护性，我们会考虑建立两个不同的类来对两个广告类来对其进行管理。于是代码变成了下面的样子。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">//index.php</div><div class="line">include &apos;GenderAD.php&apos;;</div><div class="line">include &apos;ManAD.php&apos;;</div><div class="line"></div><div class="line">if ($_GET[&apos;sex&apos;] == &apos;man&apos;) &#123;</div><div class="line">	$ad = new ManAD();</div><div class="line">&#125;else&#123;</div><div class="line">	$ad = new GenderAD();</div><div class="line">&#125;</div><div class="line">$ad-&gt;show();</div><div class="line"></div><div class="line">//GenderAD.php</div><div class="line">class GenderAD</div><div class="line">&#123;</div><div class="line">	public algorithm()&#123;</div><div class="line">		echo &apos;卡西欧美颜相机不要钱免费送！&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//ManAD.php</div><div class="line">class ManAD&#123;</div><div class="line">	public algorithm()&#123;</div><div class="line">		echo &apos;外星人大减价现在购买立即送电竞瑞文皮肤&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//index.php</span></div><div class="line"><span class="keyword">include</span> <span class="string">'GenderAD.php'</span>;</div><div class="line"><span class="keyword">include</span> <span class="string">'ManAD.php'</span>;</div><div class="line"></div><div class="line"><span class="keyword">if</span> ($_GET[<span class="string">'sex'</span>] == <span class="string">'man'</span>) &#123;</div><div class="line">	$ad = <span class="keyword">new</span> ManAD();</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">	$ad = <span class="keyword">new</span> GenderAD();</div><div class="line">&#125;</div><div class="line">$ad-&gt;show();</div><div class="line"></div><div class="line"><span class="comment">//GenderAD.php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenderAD</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">public</span> algorithm()&#123;</div><div class="line">		<span class="keyword">echo</span> <span class="string">'卡西欧美颜相机不要钱免费送！'</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//ManAD.php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ManAD</span></span>&#123;</div><div class="line">	<span class="keyword">public</span> algorithm()&#123;</div><div class="line">		<span class="keyword">echo</span> <span class="string">'外星人大减价现在购买立即送电竞瑞文皮肤'</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>algorithm    英[ˈælgərɪðəm] 美[ˈælɡəˌrɪðəm] n.    演算法; 运算法则; 计算程序;</p>
 </blockquote>
@@ -245,15 +245,15 @@
 <p>经过分析我们发现其实 ManAD类和 GenderAD最终都要进行显示，他们的方法的显示方法都是 show，如果是你一个人在开发那么没有什么问题，可是若是两个人开发呢，你们可以直接可以对话的方式进行沟通，协定好都是 show方法来显示，可是为什么不用更工程化的方式来实现呢？</p>
 <p>我们可以使用接口来实现这一目的，如果对接口还不了解，可以去查阅一下资料，很快你就能够明白，在本文结束后我会在下方标注出参考范例。</p>
 <p>我们可以新建一个接口来对这些策略进行控制。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">interface ADinterface&#123;</div><div class="line">	public function algorithm();</div><div class="line">&#125;</div><div class="line"></div><div class="line">class ManAD implements ADInterface</div><div class="line">&#123;</div><div class="line">	public function algorithm()&#123;</div><div class="line">		echo &apos;外星人大减价现在购买立即送电竞瑞文皮肤&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">class GenderAD implements ADInterface</div><div class="line">&#123;</div><div class="line">	public function algorithm()&#123;	</div><div class="line">		echo &apos;卡西欧美颜相机不要钱免费送！&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ADinterface</span></span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">algorithm</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ManAD</span> <span class="keyword">implements</span> <span class="title">ADInterface</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">algorithm</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">echo</span> <span class="string">'外星人大减价现在购买立即送电竞瑞文皮肤'</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenderAD</span> <span class="keyword">implements</span> <span class="title">ADInterface</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">algorithm</span><span class="params">()</span></span>&#123;	</div><div class="line">		<span class="keyword">echo</span> <span class="string">'卡西欧美颜相机不要钱免费送！'</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这样一来广告策略必须遵循这个接口进行开发，就保证了所有策略类都需要实现 show 方法。</p>
 <p>到目前为止，策略模式已经相对的完善了，但是还是不够完美，因为代码依旧并不是很 OOP，我们其实还可以更进一步，让他更 OOP，我们可以对那些策略外面套一个壳子，给外面一个选择器。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class StrategySelect &#123;</div><div class="line">	//具体策略对象</div><div class="line">    private $strategyInstance;</div><div class="line">    </div><div class="line">    //构造函数</div><div class="line">    public function __construct($instance)</div><div class="line">    &#123;</div><div class="line">        $this-&gt;strategyInstance = $instance;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public function algorithm($strategy)</div><div class="line">    &#123;</div><div class="line">        return $this-&gt;strategyInstance-&gt;algorithm();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">StrategySelect</span> </span>&#123;</div><div class="line">	<span class="comment">//具体策略对象</span></div><div class="line">    <span class="keyword">private</span> $strategyInstance;</div><div class="line">    </div><div class="line">    <span class="comment">//构造函数</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($instance)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;strategyInstance = $instance;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">algorithm</span><span class="params">($strategy)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;strategyInstance-&gt;algorithm();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>我们通过构造函数接收到具体的执行策略，然后使用algorithm()执行相对应的策略。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">interface ADinterface&#123;</div><div class="line">	public function algorithm();</div><div class="line">&#125;</div><div class="line"></div><div class="line">class StrategySelect &#123;</div><div class="line">	//具体策略对象</div><div class="line">    private $strategyInstance;</div><div class="line">    </div><div class="line">    //构造函数</div><div class="line">    public function __construct($instance)</div><div class="line">    &#123;</div><div class="line">        $this-&gt;strategyInstance = $instance;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public function algorithm()</div><div class="line">    &#123;</div><div class="line">        return $this-&gt;strategyInstance-&gt;algorithm();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class ManAD implements ADInterface</div><div class="line">&#123;</div><div class="line">	public function algorithm()&#123;</div><div class="line">		echo &apos;外星人大减价现在购买立即送电竞瑞文皮肤&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class GenderAD implements ADInterface</div><div class="line">&#123;</div><div class="line">	public function algorithm()&#123;</div><div class="line">		echo &apos;卡西欧相机免费赠送啦&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">header(&quot;Content-type:text/html;charset=utf-8&quot;);</div><div class="line">if ($_GET[&apos;sex&apos;] == &apos;man&apos;) &#123;</div><div class="line">	$stratey = new StrategySelect(new ManAD());</div><div class="line">	$stratey-&gt;algorithm();</div><div class="line">&#125;else&#123;</div><div class="line">	$stratey = new StrategySelect(new GenderAD());</div><div class="line">	$stratey-&gt;algorithm();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ADinterface</span></span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">algorithm</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">StrategySelect</span> </span>&#123;</div><div class="line">	<span class="comment">//具体策略对象</span></div><div class="line">    <span class="keyword">private</span> $strategyInstance;</div><div class="line">    </div><div class="line">    <span class="comment">//构造函数</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($instance)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;strategyInstance = $instance;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">algorithm</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;strategyInstance-&gt;algorithm();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ManAD</span> <span class="keyword">implements</span> <span class="title">ADInterface</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">algorithm</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">echo</span> <span class="string">'外星人大减价现在购买立即送电竞瑞文皮肤'</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenderAD</span> <span class="keyword">implements</span> <span class="title">ADInterface</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">algorithm</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">echo</span> <span class="string">'卡西欧相机免费赠送啦'</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">header(<span class="string">"Content-type:text/html;charset=utf-8"</span>);</div><div class="line"><span class="keyword">if</span> ($_GET[<span class="string">'sex'</span>] == <span class="string">'man'</span>) &#123;</div><div class="line">	$stratey = <span class="keyword">new</span> StrategySelect(<span class="keyword">new</span> ManAD());</div><div class="line">	$stratey-&gt;algorithm();</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">	$stratey = <span class="keyword">new</span> StrategySelect(<span class="keyword">new</span> GenderAD());</div><div class="line">	$stratey-&gt;algorithm();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>Strategy其实算是一个策略选择器，当满足一定条件的时候，我们通过这个策略选测器来进行选择相对应的策略。这样一来更符合逻辑。是不是很 OOP？</p>
 <p>如果有什么不懂得可以在评论区进行留言，有时间我会一一答复，如果发现本文中有什么错误请指出，我也害怕误人子弟，特别是概念上的东西，在最后StrategySelect类的讲解上我依旧感觉写的很模糊，有些差强人意。</p>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><p>《Leaning PHP Design Patterns》 William Sanders 著 苏金国 王宇飞等译</p>
 </li>
 <li><p>《PHP之道》</p>
@@ -268,7 +268,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-03-12T04:33:28.000Z" itemprop="dateUpdated">2017-03-12 12:33:28</time>
+    Last updated: <time datetime="2017-10-18T13:12:08.000Z" itemprop="dateUpdated">2017-10-18 21:12:08</time>
 </span><br>
 
 
@@ -303,7 +303,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/09/23/108/&title=《PHP设计模式系列之入门》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/09/23/108/&title=《使用策略模式敲开设计模式的大门(PHP语言描述)》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -313,7 +313,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/09/23/108/&title=《PHP设计模式系列之入门》 — Maksim's Website&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/09/23/108/&title=《使用策略模式敲开设计模式的大门(PHP语言描述)》 — Maksim's Website&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -323,7 +323,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PHP设计模式系列之入门》 — Maksim's Website&url=http://www.maksim.website/2016/09/23/108/&via=http://www.maksim.website" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用策略模式敲开设计模式的大门(PHP语言描述)》 — Maksim's Website&url=http://www.maksim.website/2016/09/23/108/&via=http://www.maksim.website" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -351,7 +351,7 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2016/12/13/cj8x1xwd2003rwlrd3lh36z8e/" id="post-prev" class="post-nav-link">
+      <a href="/2016/12/13/cj8x25k49003gx7rdg8s2a1ka/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">使用 Vagrant 统一公司内开发环境</h4>
       </a>
@@ -443,7 +443,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/09/23/108/&title=《PHP设计模式系列之入门》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/09/23/108/&title=《使用策略模式敲开设计模式的大门(PHP语言描述)》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -453,7 +453,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/09/23/108/&title=《PHP设计模式系列之入门》 — Maksim's Website&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/09/23/108/&title=《使用策略模式敲开设计模式的大门(PHP语言描述)》 — Maksim's Website&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -463,7 +463,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PHP设计模式系列之入门》 — Maksim's Website&url=http://www.maksim.website/2016/09/23/108/&via=http://www.maksim.website" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用策略模式敲开设计模式的大门(PHP语言描述)》 — Maksim's Website&url=http://www.maksim.website/2016/09/23/108/&via=http://www.maksim.website" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
