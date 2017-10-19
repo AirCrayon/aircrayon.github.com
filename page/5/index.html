@@ -126,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -160,6 +160,155 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-基于引用计数的内存管理"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-05-06 12:31:00" datetime="2016-05-06T04:31:00.000Z"  itemprop="datePublished">2016-05-06</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ios/">ios</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/05/06/cj8ye2c58004f77rdp51ypplc/">内存管理 Form《Objectivce-C编程全解》&amp;《Objectivce-C编程》</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+Xcode4.2之后可以使用自动引用计数（ARC,Automatic Reference Counting）的管理方式进行说明，ARC 是 Mac OS X 10.7和 iOS5引入的新特性，也是苹果公司推荐使用的内存管理方式。弃用 ARC 后，编译器会在适当的地方自动加入 retaion、release、autorelease 等语句，来简化 Objective-C 编程在内存管理方面的...
+    
+
+        <a href="/2016/05/06/cj8ye2c58004f77rdp51ypplc/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内存管理/">内存管理</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-NSObject"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-05-06 11:03:16" datetime="2016-05-06T03:03:16.000Z"  itemprop="datePublished">2016-05-06</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/iOS/">iOS</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/05/06/cj8ye2c17000x77rd7tzt53do/">读书总结之NSObject</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+使用 Objectvice-C 进行全面对象编程时，除了需要知道语言本身的语法和面向对象的知识外，还需要了解Objectvice-C的根类 NSObject 的信息。
+
+NSObject根类的作用作为一门动态编程语言，Objectstvice-C有很多动态的特性，因此，Objectvice-C不进需要编译环境，同时还需要一个运行时系统（runtime system）来执行编译好的代码。运行时系统扮演的角色类似于Objectvice-C的操作系统，他负责完成对象生成、释放时的内存管理、发来的消息查找对应的处理方法等工作。
+通常情况下，程序无法直接使用运行时系统提供的功能。根类方法提供了运行时系统的基本工恩给你。继承了 NSObject 的所有类都可以自由的使用运行时系统的功能，也就是说，根类就想到于系统的一个借口。
+根类通过哪些方式提供了哪些功能对系统有很大的影响。因此，根类不同的系统之间是无法开发出通用的程序的。
+Cocoa 是以OPENSTEPDE的核心 API 为基础发展起来的。OPENSTEP的前身为 NeXTstep。在 NeXTstep 时代，根类是累 Object,而在 OPENSTEP 时代，根类则变为了 NSObject，同时类的设计也得到了大幅度的改进。
+    
+
+        <a href="/2016/05/06/cj8ye2c17000x77rd7tzt53do/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-delete_cell"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2016-04-23 16:05:19" datetime="2016-04-23T08:05:19.000Z"  itemprop="datePublished">2016-04-23</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Objective-C/">Objective-C</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/04/23/cj8ye2c3d002q77rdvppk8bqr/">UITableView 系统 API实现滑动删除Cell</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        #UITableView 系统 API实现滑动删除Cell
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051import UIKitclass ViewController: UIViewController &#123;    private lazy ...
+    
+
+        <a href="/2016/04/23/cj8ye2c3d002q77rdvppk8bqr/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-一个新的开始"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -176,7 +325,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/03/27/cj8x3mq5l00372crdkc7zmmiw/">一个新的开始</a>
+      <a class="post-title-link" href="/2016/03/27/cj8ye2c46003j77rddjkt2vxb/">一个新的开始</a>
     </h3>
   
 
@@ -189,8 +338,8 @@
         人生又要开启新的篇章了，而我也将重头开始，接触网络文学也有五六年了，断断续续的也算是写了很多东西，但都无疾而终了，可能是那几分钟的热度退去了，仔细回想倒是感觉真的欠缺了自己很多东西，说起来也是蛮遗憾的，为了不让我的青春有遗憾，我做了很多事情，唯独欠缺的可能就是曾经在上大学前许下的承诺，在大学毕业的时候写一本完本的小说。
     
 
-        <a href="/2016/03/27/cj8x3mq5l00372crdkc7zmmiw/" class="post-more waves-effect waves-button">
-            阅读全文…
+        <a href="/2016/03/27/cj8ye2c46003j77rddjkt2vxb/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -223,7 +372,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/03/26/cj8x3mq5a002x2crd2drbym4n/">我的碎片化时间都在做什么?</a>
+      <a class="post-title-link" href="/2016/03/26/cj8ye2c3v003977rdhk7ze97f/">我的碎片化时间都在做什么?</a>
     </h3>
   
 
@@ -238,8 +387,8 @@
 那么我平时大部分碎片化时间都在干什么呢.
     
 
-        <a href="/2016/03/26/cj8x3mq5a002x2crd2drbym4n/" class="post-more waves-effect waves-button">
-            阅读全文…
+        <a href="/2016/03/26/cj8ye2c3v003977rdhk7ze97f/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -272,7 +421,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/03/22/cj8x3mq76004d2crdt9iazx3k/">iOS多线程</a>
+      <a class="post-title-link" href="/2016/03/22/cj8ye2c5j004m77rdprbd1ls8/">iOS多线程</a>
     </h3>
   
 
@@ -288,8 +437,8 @@
 在软件工程中，...
     
 
-        <a href="/2016/03/22/cj8x3mq76004d2crdt9iazx3k/" class="post-more waves-effect waves-button">
-            阅读全文…
+        <a href="/2016/03/22/cj8ye2c5j004m77rdprbd1ls8/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -320,7 +469,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/03/08/cj8x3mq5h00342crdif9k5rf6/">将博客迁移到了github</a>
+      <a class="post-title-link" href="/2016/03/08/cj8ye2c3n003377rdd7g25upm/">将博客迁移到了github</a>
     </h3>
   
 
@@ -334,8 +483,8 @@
 在用WordPress的时候,有的博文中有html标签,hexo用的markdown很多...
     
 
-        <a href="/2016/03/08/cj8x3mq5h00342crdif9k5rf6/" class="post-more waves-effect waves-button">
-            阅读全文…
+        <a href="/2016/03/08/cj8ye2c3n003377rdd7g25upm/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -366,7 +515,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/03/04/cj8x3mq7z004t2crdg9ooidwt/">移动info.plist后无法运行</a>
+      <a class="post-title-link" href="/2016/03/04/cj8ye2c6e005877rdu6kby0ox/">移动info.plist后无法运行</a>
     </h3>
   
 
@@ -380,8 +529,8 @@
 只需要在bulid Phases中的Copy Bundle Resources重新加入info.plist即可
     
 
-        <a href="/2016/03/04/cj8x3mq7z004t2crdg9ooidwt/" class="post-more waves-effect waves-button">
-            阅读全文…
+        <a href="/2016/03/04/cj8ye2c6e005877rdu6kby0ox/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -412,7 +561,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/03/04/cj8x3mq8400552crdsntezvkg/">统一设置tabBarItem字体样式</a>
+      <a class="post-title-link" href="/2016/03/04/cj8ye2c6j005g77rdloje2o1k/">统一设置tabBarItem字体样式</a>
     </h3>
   
 
@@ -428,8 +577,8 @@ load是在类加载的时候会自动调用,iOS工程在运行的时候,会自�
 initialize是在第一次使用或者调用子类的时候回自动执行,具有初始化类的功能,我们可以通过这两个方式的执行特性来对ta...
     
 
-        <a href="/2016/03/04/cj8x3mq8400552crdsntezvkg/" class="post-more waves-effect waves-button">
-            阅读全文…
+        <a href="/2016/03/04/cj8ye2c6j005g77rdloje2o1k/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -478,149 +627,7 @@ initialize是在第一次使用或者调用子类的时候回自动执行,具有
     
 
         <a href="/2016/03/03/244/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-检查设备是否支持后台处理"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2016-03-03 15:06:05" datetime="2016-03-03T07:06:05.000Z"  itemprop="datePublished">2016-03-03</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Objective-C/">Objective-C</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/03/03/244/">iOS推送通知</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        iOS 于2008年问世时，只能有一个第三方应用处于活动状态（位于前台）。这意味着应用需要执行的任务都必须在应用位于前台时完成，佛泽任务将暂停并在应用下次启动时接着执行。iOS4退出后，向第三方应用提供了后台功能。鉴于 iOS 设备的系统资源有限，且节省电量至关重要，对后台处理有些限制，那就是不能干扰前台引用，也不能消耗太多电量。通过妥善的利用后台功能，引用能做很多事情。
-iOS 支持两种后...
-    
-
-        <a href="/2016/03/03/244/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-简介"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2016-03-01 12:11:20" datetime="2016-03-01T04:11:20.000Z"  itemprop="datePublished">2016-03-01</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/03/01/cj8x3mq81004z2crdc1eg1jya/">iOS多线程.01 简介</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        简介我们为何需要多线程呢？多线程其实是为了实现并发执行，而且线程是并发执行多个代码路径的多种技术之中比较轻量级的一种（对应较重的实现是多进程）。
-在单核 CPU 时代，支持多线程的操作系统会通过分配 CPU 计算时间，来实现软件层面的多线程。创建线程，线程间切换都是有成本开销的。但由于多线程可以避免阻塞所造成的 CPU 计算时间浪费，所以多线程所带来的开销成本总体看来是值得的。任务一般都可以...
-    
-
-        <a href="/2016/03/01/cj8x3mq81004z2crdc1eg1jya/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Block学习"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2016-02-17 16:05:19" datetime="2016-02-17T08:05:19.000Z"  itemprop="datePublished">2016-02-17</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ios/">ios</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/02/17/231/">Objective-C Block的基本使用</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        一、Block 的定义定义和使用Block，
-1234567891011121314151617181920212223242526- (void)viewDidLoad &#123;	[super viewDidLoad];  	//（1）定义无参无返回值的Block	void (^printBlock)() = ^()&#123;		printf(&quot;no number&quot...
-    
-
-        <a href="/2016/02/17/231/" class="post-more waves-effect waves-button">
-            阅读全文…
+            Continue reading...
         </a>
     </div>
     
@@ -663,7 +670,7 @@ iOS 支持两种后...
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
