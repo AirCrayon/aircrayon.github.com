@@ -126,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="搜尋">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -160,11 +160,52 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-《PHP-internals-Book》-介绍"
+            <article id="post-PHP基础手札的引用"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-10-18 00:00:00" datetime="2017-10-17T16:00:00.000Z"  itemprop="datePublished">2017-10-18</time>
+        <time class="post-time" title="2017-10-21 18:06:24" datetime="2017-10-21T10:06:24.000Z"  itemprop="datePublished">2017-10-21</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/10/21/cjbz25uwh001o9ardi7pztip4/">PHP基础手札的引用</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        在 C 或C++里，我们都知道有“指针”的概念，它是一个指向内存地址的变量，这也是被称为指针的原因。C++的指针在内部，对于开发者来说不可见，它的特点是可直接访问到需要的内容，速度更快。
+PHP 的指针域这些语言机制相同，即可以用一个变量
+
+    
+
+        <a href="/2017/10/21/cjbz25uwh001o9ardi7pztip4/" class="post-more waves-effect waves-button">
+            閱讀全文…
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-如何看待面试这回事"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-10-21 00:00:00" datetime="2017-10-20T16:00:00.000Z"  itemprop="datePublished">2017-10-21</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP/">PHP</a></li></ul>
@@ -178,7 +219,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/18/10/">《PHP internals Book》 介绍</a>
+      <a class="post-title-link" href="/2017/10/21/2/">PHP常见的经典面试题</a>
     </h3>
   
 
@@ -188,22 +229,77 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        介绍这本书是几个PHP开发人员之间的协作努力，可以更好地记录和描述PHP内部的工作原理。
-这本书有三个主要目标：
+        常见经典面试题
 
+什么是引用变量？在 PHP 当中用什么符号定义引用变量？
+要求写出JQuery 中，可以处理AJAX的几种方法。
+写出尽可能多的Linux 命令
+写出三种以上 MySQL数据存储引擎的名字
+编写在线留言本，实现用户的在线留言功能
+谈谈你对 MVC 的认识，介绍几中目前比较流行的MVC 框架
+请写出常见的排序算法
+PHP 如何解决网站大流量与高并发
 
-记录和描述PHP内部工作原理。
-记录并描述如何使用扩展扩展语言。
-记录并描述如何与社区进行交互以开发PHP本身。
-
-
-本书主要面向具有C编程语言经验的开发人员。然而，尽管如此，我们将尝试提炼信息并对其进行总结，以便不了解C的开发人员仍然能够理解内容。
-但是，让我们坚持。如果您...
+1.什么是引用变量？在 ...
     
 
-        <a href="/2017/10/18/10/" class="post-more waves-effect waves-button">
-            Continue reading...
+        <a href="/2017/10/21/2/" class="post-more waves-effect waves-button">
+            閱讀全文…
         </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-PHP-依赖注入和服务容器"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-10-19 00:00:00" datetime="2017-10-18T16:00:00.000Z"  itemprop="datePublished">2017-10-19</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP/">PHP</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/10/19/cjbz25uvn00129ardz2urpfsr/">PHP 控制反转、依赖注入、依赖查找服务容器？</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        控制反转（Inversion of Control，英文缩写为IoC）是框架的重要特征，并非面向对象编程的专用术语。它与依赖注入（Dependency Injection，简称DI）和依赖查找（Dependency Lookup）并没有关系。
+
+    
+
+        <a href="/2017/10/19/cjbz25uvn00129ardz2urpfsr/" class="post-more waves-effect waves-button">
+            閱讀全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务容器/">服务容器</a></li></ul>
+
     </div>
     
 </article>
@@ -261,7 +357,7 @@ $a === $...
     
 
         <a href="/2017/10/18/1/" class="post-more waves-effect waves-button">
-            Continue reading...
+            閱讀全文…
         </a>
     </div>
     
@@ -269,6 +365,57 @@ $a === $...
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP基础/">PHP基础</a></li></ul>
 
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-《PHP-internals-Book》-介绍"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-10-18 00:00:00" datetime="2017-10-17T16:00:00.000Z"  itemprop="datePublished">2017-10-18</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP/">PHP</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/10/18/10/">《PHP internals Book》 介绍</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        介绍这本书是几个PHP开发人员之间的协作努力，可以更好地记录和描述PHP内部的工作原理。
+这本书有三个主要目标：
+
+
+记录和描述PHP内部工作原理。
+记录并描述如何使用扩展扩展语言。
+记录并描述如何与社区进行交互以开发PHP本身。
+
+
+本书主要面向具有C编程语言经验的开发人员。然而，尽管如此，我们将尝试提炼信息并对其进行总结，以便不了解C的开发人员仍然能够理解内容。
+但是，让我们坚持。如果您...
+    
+
+        <a href="/2017/10/18/10/" class="post-more waves-effect waves-button">
+            閱讀全文…
+        </a>
     </div>
     
 </article>
@@ -292,7 +439,7 @@ $a === $...
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/16/cj8ye2c2c001r77rdo5vw7ied/">PHP页面静态化</a>
+      <a class="post-title-link" href="/2017/10/16/cjbz25ux500219ardode99xmo/">PHP页面静态化</a>
     </h3>
   
 
@@ -307,8 +454,8 @@ $a === $...
 1、在静态Web程序中，客户端使用Web浏览器（IE、FireFox等）经过网络(Network)连接到服务器上，使用HTTP协议发起一个请求（Request），告诉服务器我现在需要得到哪个页面，所有的请求交给Web服务器，之后WEB服务器根据用户的需要，从文件系统（存放了所有静态页面的磁盘）取出内容。之后通过We...
     
 
-        <a href="/2017/10/16/cj8ye2c2c001r77rdo5vw7ied/" class="post-more waves-effect waves-button">
-            Continue reading...
+        <a href="/2017/10/16/cjbz25ux500219ardode99xmo/" class="post-more waves-effect waves-button">
+            閱讀全文…
         </a>
     </div>
     
@@ -351,7 +498,7 @@ isset()用来检测一个变量是否已声明且值不为null。只能在变量
     
 
         <a href="/2017/10/16/2/" class="post-more waves-effect waves-button">
-            Continue reading...
+            閱讀全文…
         </a>
     </div>
     
@@ -394,7 +541,7 @@ isset()用来检测一个变量是否已声明且值不为null。只能在变量
     
 
         <a href="/2017/10/16/1/" class="post-more waves-effect waves-button">
-            Continue reading...
+            閱讀全文…
         </a>
     </div>
     
@@ -425,7 +572,7 @@ isset()用来检测一个变量是否已声明且值不为null。只能在变量
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/15/cj8ye2c0o000k77rd71hzqvdu/">No title</a>
+      <a class="post-title-link" href="/2017/10/15/cjbz25uus000o9ard7wbv46q1/">No title</a>
     </h3>
   
 
@@ -439,8 +586,8 @@ isset()用来检测一个变量是否已声明且值不为null。只能在变量
 和 MyISAM 存储引擎不同，InnoDB是事务型引擎，也是最重要、使用最广泛的存储引擎。它被设计用来处理大量的短期（short-lived）事务，短期事务大部分情况下是正常提交的，很少会被回滚。InnoDB 的性能和自动崩溃恢复特性，使得它在非实物型存储...
     
 
-        <a href="/2017/10/15/cj8ye2c0o000k77rd71hzqvdu/" class="post-more waves-effect waves-button">
-            Continue reading...
+        <a href="/2017/10/15/cjbz25uus000o9ard7wbv46q1/" class="post-more waves-effect waves-button">
+            閱讀全文…
         </a>
     </div>
     
@@ -465,7 +612,7 @@ isset()用来检测一个变量是否已声明且值不为null。只能在变量
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/13/cj8ye2c3x003d77rd0yqttxq2/">No title</a>
+      <a class="post-title-link" href="/2017/10/13/cjbz25uzp003o9ardxlhjwc3g/">No title</a>
     </h3>
   
 
@@ -487,151 +634,8 @@ isset()用来检测一个变量是否已声明且值不为null。只能在变量
 数据总量往往需要业务方提供一个一到两年的数据总量，这是因...
     
 
-        <a href="/2017/10/13/cj8ye2c3x003d77rd0yqttxq2/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-MySQL体系结构"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-10-13 00:00:00" datetime="2017-10-12T16:00:00.000Z"  itemprop="datePublished">2017-10-13</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/MySQL/">MySQL</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/13/1/">MySQL体系结构</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        数据库产品的架构一般可以分为应用层、逻辑层、物理层，对于MySQL，同样可以理解为如下3个层次。
-
-                
-                    
-                    
-                
-                img
-            
-其中Connectors可以理解为各种客户端、 应用服务； Connecti...
-    
-
-        <a href="/2017/10/13/1/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-MyISAM"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-10-13 00:00:00" datetime="2017-10-12T16:00:00.000Z"  itemprop="datePublished">2017-10-13</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/MySQL/">MySQL</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/13/2/">MySQL常用存储引擎之MyISAM</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        MyISAM存储引擎是MySQL5.5之前版本默认的存储引擎，由于这个原因，现在还有大量的数据库在使用MyISAM的表。
-同时它也是MySQL大部分系统表和临时表使用的而存储引擎，这个临时表并非是我们使用CREATE TEMPORARY TABLE所建立的临时表。
-使用CREATE TEMPORARY TABLE语句创建的临时表，我们可以使用MySQL各种存储引擎的，这里所说的临时表指的是在...
-    
-
-        <a href="/2017/10/13/2/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-服务器硬件对MYSQL性能的影响"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-10-10 00:00:00" datetime="2017-10-09T16:00:00.000Z"  itemprop="datePublished">2017-10-10</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/MySQL/">MySQL</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/10/1/">服务器硬件对MYSQL性能的影响</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        影响数据库性能的主要因素有很多，主要包括以下几点：
-
-服务器硬件
-服务器系统
-数据库存储引擎的选择
-数据库参数配置
-数据库结构设计和SQL语句
-
-服务器硬件：每当大促或者一些活动的时候，我们监控系统时会发现，CPU和可用内存的资源都是很紧张的，特别对于一些计算密集型的应用，CPU的资源可能会变成系统的瓶颈。
-当我们工作所需要的热数据的大小大于可用内存大小的时候，IO系统就会变成我们的瓶颈。
-...
-    
-
-        <a href="/2017/10/10/1/" class="post-more waves-effect waves-button">
-            Continue reading...
+        <a href="/2017/10/13/cjbz25uzp003o9ardxlhjwc3g/" class="post-more waves-effect waves-button">
+            閱讀全文…
         </a>
     </div>
     
@@ -668,11 +672,11 @@ isset()用来检测一个变量是否已声明且值不为null。只能在变量
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>本部落格係採用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">創用 CC 姓名標示 4.0 國際 授權條款授權</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Maksim &copy; 2015 - 2017</span>
+        <p><span>Maksim &copy; 2015 - 2018</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

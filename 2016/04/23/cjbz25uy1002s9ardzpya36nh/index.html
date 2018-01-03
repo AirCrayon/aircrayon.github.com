@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>UITableView 系统 API实现滑动删除Cell | Maksim&#39;s Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="iOS">
+    <meta name="description" content="#UITableView 系统 API实现滑动删除Cell 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051import UIKitclass ViewController: UIViewController &amp;#123;    private lazy var">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UITableView 系统 API实现滑动删除Cell">
+<meta property="og:url" content="http://www.maksim.website/2016/04/23/cjbz25uy1002s9ardzpya36nh/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="#UITableView 系统 API实现滑动删除Cell 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051import UIKitclass ViewController: UIViewController &amp;#123;    private lazy var">
+<meta property="og:updated_time" content="2016-07-29T08:24:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UITableView 系统 API实现滑动删除Cell">
+<meta name="twitter:description" content="#UITableView 系统 API实现滑动删除Cell 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051import UIKitclass ViewController: UIViewController &amp;#123;    private lazy var">
+    
+        <link rel="alternate" type="application/atom+xml" title="Maksim&#39;s Website" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Maksim</h5>
+          <a href="mailto:aircrayon@qq.com" title="aircrayon@qq.com" class="mail">aircrayon@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/aircrayon" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/619946234" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于Maksim
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">UITableView 系统 API实现滑动删除Cell</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="搜尋">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">UITableView 系统 API实现滑动删除Cell</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-04-23T08:05:19.000Z" itemprop="datePublished" class="page-time">
+  2016-04-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Objective-C/">Objective-C</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-delete_cell"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">UITableView 系统 API实现滑动删除Cell</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-04-23 16:05:19" datetime="2016-04-23T08:05:19.000Z"  itemprop="datePublished">2016-04-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Objective-C/">Objective-C</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>#UITableView 系统 API实现滑动删除Cell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">import UIKit</div><div class="line"></div><div class="line">class ViewController: UIViewController &#123;</div><div class="line"></div><div class="line">    private lazy var tableview:UITableView = &#123;</div><div class="line">        let tb = UITableView(frame: CGRectZero,style: UITableViewStyle.Plain)</div><div class="line">        tb.dataSource = self</div><div class="line">        tb.delegate = self</div><div class="line">        tb.registerClass(UITableViewCell.self, forCellReuseIdentifier: &quot;Cell&quot;)</div><div class="line">        return tb</div><div class="line">    &#125;()</div><div class="line">    </div><div class="line">    private var dataArray = [&quot;lazy&quot;,&quot;make&quot;,&quot;help&quot;,&quot;papa&quot;]</div><div class="line">    </div><div class="line">    override func viewDidLoad() &#123;</div><div class="line">        super.viewDidLoad()</div><div class="line">        view = tableview</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">extension ViewController:UITableViewDataSource&#123;</div><div class="line">    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int &#123;</div><div class="line">        return dataArray.count;</div><div class="line">    &#125;</div><div class="line">    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -&gt; UITableViewCell &#123;</div><div class="line">        let cell = tableview.dequeueReusableCellWithIdentifier(&quot;Cell&quot;, forIndexPath: indexPath)</div><div class="line">        cell.textLabel?.text = dataArray[indexPath.row]</div><div class="line">        return cell</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">extension ViewController:UITableViewDelegate&#123;</div><div class="line">    //1.设置Cell 可编辑</div><div class="line">    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -&gt; Bool &#123;</div><div class="line">        return true</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //2.进入编辑模式，滑动初选删除按钮</div><div class="line">      func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -&gt; String? &#123;</div><div class="line">        return &quot;删除&quot;</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">    //3.响应删除按钮事件</div><div class="line">    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) &#123;</div><div class="line">        tableview.setEditing(false, animated: true)</div><div class="line">        print(&quot;删除\(dataArray[indexPath.row])&quot;)</div><div class="line">        dataArray.removeAtIndex(indexPath.row)</div><div class="line">        tableview.reloadData()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2016-07-29T08:24:31.000Z" itemprop="dateUpdated">2016-07-29 16:24:31</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/04/23/cjbz25uy1002s9ardzpya36nh/" target="_blank" rel="external">http://www.maksim.website/2016/04/23/cjbz25uy1002s9ardzpya36nh/</a>
+        
+    </div>
+    <footer>
+        <a href="http://www.maksim.website">
+            <img src="/img/avatar.jpg" alt="Maksim">
+            Maksim
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/04/23/cjbz25uy1002s9ardzpya36nh/&title=《UITableView 系统 API实现滑动删除Cell》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/04/23/cjbz25uy1002s9ardzpya36nh/&title=《UITableView 系统 API实现滑动删除Cell》 — Maksim's Website&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2016/04/23/cjbz25uy1002s9ardzpya36nh/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《UITableView 系统 API实现滑动删除Cell》 — Maksim's Website&url=http://www.maksim.website/2016/04/23/cjbz25uy1002s9ardzpya36nh/&via=http://www.maksim.website" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2016/04/23/cjbz25uy1002s9ardzpya36nh/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/05/06/cjbz25uv9000w9ardufugpfpz/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">读书总结之NSObject</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/03/27/cjbz25uzk003h9ardqnz7xcbk/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">一个新的开始</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>本部落格係採用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">創用 CC 姓名標示 4.0 國際 授權條款授權</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Maksim &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/04/23/cjbz25uy1002s9ardzpya36nh/&title=《UITableView 系统 API实现滑动删除Cell》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/04/23/cjbz25uy1002s9ardzpya36nh/&title=《UITableView 系统 API实现滑动删除Cell》 — Maksim's Website&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2016/04/23/cjbz25uy1002s9ardzpya36nh/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《UITableView 系统 API实现滑动删除Cell》 — Maksim's Website&url=http://www.maksim.website/2016/04/23/cjbz25uy1002s9ardzpya36nh/&via=http://www.maksim.website" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2016/04/23/cjbz25uy1002s9ardzpya36nh/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACu0lEQVR42u3a0WrDMAwF0Pz/T3ewp42R5Eqy2wxOnkqa2T4exKqk44iv1/f19/PPO3/vX492NubZt/n45QsPDw+vtfSzK5/yevoq6XpbkzXj4eHh7eYlh0EOyF/l+SzJVuLh4eE9jbcvXs2PFjw8PLz/yMsD37MtqC4aDw8P75m85OWeJBeqr/t8K7fnWvDw8PBi3qQA9qnPb6rv4eHh4RVTCckhkf9VLyyuzvVrXjw8PLwNvOtkQeEHf7CUahtBXni7eRIPDw9vKS8pWSXf5vd7JbTqv+H03MPDw8Mb865vTVK0ve3owaKtxMPDw9vA6/3g702cPNlrHbj5Fg8PD28pLynAJ6/seaPAKLOSF8Pw8PDwFvGSKZO0Qm+cCexmhXh4eHiLePkxsLZdoPBCbwXTeHh4eLt5eUo0H7paTqsW3qI7eHh4eBt4vYaqVYmDPNW7IBmBh4eHt4iXN0LlSYf5CNXi1uloeHh4eBt45c6CYoohD46rJbpRsgMPDw9vwJsnF/LtmLcv5BuEh4eHt4+XFLQmxbC8vaA6Zh6s4+Hh4a3lvZZeawv/kwAdDw8Pbzevl5KoJmEnKYkFTVd4eHh4S3nJKzhPQEwWnR82eHh4eE/jzYPdJPzNExzNTcTDw8PbwMsTqUnAnbRhJZsyKcjdZKnx8PDwxrxq0StZUF48q77oy+Pg4eHhbebloW3+TNS5sCgpfNNuhYeHh7eIl5e+quFydaF5KJ8nc/Hw8PB28OZtVWsbsOYHFR4eHt5uXu8k6YW/SdKhmhzpNWbh4eHhzXnVkn91gh6pV5Y7qhPg4eHhDXjVw6CakkhaB3on2M3zeHh4eB/lVQPcXntB9d1+MxoeHh7eA3iTJG8VU21BwMPDw3snr5eMmBf7q0WvapCNh4eHt4M3yYVWC/x5Ojjf3GN+4eHh4aW8L1FJ5ClI5xxtAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
