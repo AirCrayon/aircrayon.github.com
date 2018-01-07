@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.maksim.website/"/>
-  <updated>2017-10-21T10:06:25.000Z</updated>
+  <updated>2018-01-05T06:14:24.853Z</updated>
   <id>http://www.maksim.website/</id>
   
   <author>
@@ -17,9 +17,33 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>cookie, sessionStorage和localStorage的区别</title>
+    <link href="http://www.maksim.website/2018/01/05/3/"/>
+    <id>http://www.maksim.website/2018/01/05/3/</id>
+    <published>2018-01-04T16:00:00.000Z</published>
+    <updated>2018-01-05T06:14:24.853Z</updated>
+    
+    <content type="html"><![CDATA[<p>在HTML5出来之前，只有cookie作为本地存储的一个方法（JavaScript Web API）。</p><h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><ul><li>本身用于客户端和服务器端通信的，</li><li>但是它有本地存储的功能， 于是被“借用”</li><li>使用document.cookie = … 获取和修改即可，用起来特别麻烦</li></ul><p>缺点：</p><ul><li>存储量太小，只有4kb</li><li>所有http请求都带着，会影响获取资源的效率，所以cookie只适合保存很小的数据，如会话标识</li><li>API简单，需要封装才能用document.cookie = …</li><li>有效时长根据设定的过期时间而定。</li></ul><p>​    </p><h2 id="sessionStorage-和localStorage"><a href="#sessionStorage-和localStorage" class="headerlink" title="sessionStorage 和localStorage"></a>sessionStorage 和localStorage</h2><ul><li>HTML5专门为存储而设计，因为不需要像服务端发送数据，所以最大容量5M</li><li>API简单易用：</li><li>localStorage.setItem(key, value); localStorage.getItem(key)</li><li>sessionStorage当关闭浏览器后便会被清除，localStorage则不会，即使关闭浏览器localStorage也会一直存在，直到删除</li><li>sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；localStorage 在所有同源窗口中都是共享的</li><li>在iOS Safari 隐匿模式下，localStorage.getItem会报错，建议同一使用try-catch</li><li>Web Storage 支持事件通知机制，可以将数据更新的通知发送给监听者</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在HTML5出来之前，只有cookie作为本地存储的一个方法（JavaScript Web API）。&lt;/p&gt;
+&lt;h2 id=&quot;cookie&quot;&gt;&lt;a href=&quot;#cookie&quot; class=&quot;headerlink&quot; title=&quot;cookie&quot;&gt;&lt;/a&gt;cookie&lt;/h
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.maksim.website/categories/JavaScript/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>PHP基础手札的引用</title>
-    <link href="http://www.maksim.website/2017/10/21/cjbz25uwh001o9ardi7pztip4/"/>
-    <id>http://www.maksim.website/2017/10/21/cjbz25uwh001o9ardi7pztip4/</id>
+    <link href="http://www.maksim.website/2017/10/21/cjc4mwipa001r2qrdkme7weqd/"/>
+    <id>http://www.maksim.website/2017/10/21/cjc4mwipa001r2qrdkme7weqd/</id>
     <published>2017-10-21T10:06:24.000Z</published>
     <updated>2017-10-21T10:06:25.000Z</updated>
     
@@ -71,8 +95,8 @@
   
   <entry>
     <title>PHP 控制反转、依赖注入、依赖查找服务容器？</title>
-    <link href="http://www.maksim.website/2017/10/19/cjbz25uvn00129ardz2urpfsr/"/>
-    <id>http://www.maksim.website/2017/10/19/cjbz25uvn00129ardz2urpfsr/</id>
+    <link href="http://www.maksim.website/2017/10/19/cjc4mwioz001b2qrdmtx0lm8y/"/>
+    <id>http://www.maksim.website/2017/10/19/cjc4mwioz001b2qrdmtx0lm8y/</id>
     <published>2017-10-18T16:00:00.000Z</published>
     <updated>2017-10-22T04:09:53.000Z</updated>
     
@@ -148,8 +172,8 @@
   
   <entry>
     <title>PHP页面静态化</title>
-    <link href="http://www.maksim.website/2017/10/16/cjbz25ux500219ardode99xmo/"/>
-    <id>http://www.maksim.website/2017/10/16/cjbz25ux500219ardode99xmo/</id>
+    <link href="http://www.maksim.website/2017/10/16/cjc4mwipz002q2qrdvpd83juv/"/>
+    <id>http://www.maksim.website/2017/10/16/cjc4mwipz002q2qrdvpd83juv/</id>
     <published>2017-10-16T11:17:47.000Z</published>
     <updated>2017-10-16T11:30:35.000Z</updated>
     
@@ -220,8 +244,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2017/10/15/cjbz25uus000o9ard7wbv46q1/"/>
-    <id>http://www.maksim.website/2017/10/15/cjbz25uus000o9ard7wbv46q1/</id>
+    <link href="http://www.maksim.website/2017/10/15/cjc4mwiol000p2qrdujq8tm60/"/>
+    <id>http://www.maksim.website/2017/10/15/cjc4mwiol000p2qrdujq8tm60/</id>
     <published>2017-10-15T11:24:45.000Z</published>
     <updated>2017-10-15T11:52:43.000Z</updated>
     
@@ -241,8 +265,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2017/10/13/cjbz25uzp003o9ardxlhjwc3g/"/>
-    <id>http://www.maksim.website/2017/10/13/cjbz25uzp003o9ardxlhjwc3g/</id>
+    <link href="http://www.maksim.website/2017/10/13/cjc4mwiqj003r2qrdbmdac2px/"/>
+    <id>http://www.maksim.website/2017/10/13/cjc4mwiqj003r2qrdbmdac2px/</id>
     <published>2017-10-13T05:41:58.000Z</published>
     <updated>2017-10-13T05:41:58.000Z</updated>
     
@@ -311,37 +335,6 @@
   </entry>
   
   <entry>
-    <title>服务器系统对MySQL性能带来的影响</title>
-    <link href="http://www.maksim.website/2017/10/10/2/"/>
-    <id>http://www.maksim.website/2017/10/10/2/</id>
-    <published>2017-10-09T16:00:00.000Z</published>
-    <updated>2017-10-13T11:39:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>影响数据库性能的主要因素有很多，主要包括以下几点：</p><ol><li>服务器硬件</li><li>服务器系统</li><li>数据库存储引擎的选择</li><li>数据库参数配置</li><li>数据库结构设计和SQL语句</li></ol><h1 id="服务器系统"><a href="#服务器系统" class="headerlink" title="服务器系统"></a>服务器系统</h1><p>MySQL本身支持很多操作系统：</p><ul><li>Windows</li><li>FreeBSD</li><li>Solaris</li><li>Linux</li></ul><p>很多人都习惯将开发环境的数据库部署在Windows上，将生产环境的数据库部署在Linux上，这就会导致一个问题，MySQL 的schema存储方式在文件系统上实际是一个目录，<strong>在Windows平台上，大小写是不敏感的</strong>，而在<strong>Linux上大小写是敏感的</strong>，所以这就会导致，数据库和表的名字在Windows是可以运行的，但是当移植到Linux下就会找不到相关数据库和表的错误。</p><h2 id="CentOS系统参数优化"><a href="#CentOS系统参数优化" class="headerlink" title="CentOS系统参数优化"></a>CentOS系统参数优化</h2><p><strong>内核相关参数</strong>（/etc/sysctl.conf）</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"># </div><div class="line">net.core.somaxconn = 65535</div><div class="line">net.core.netdev_max_backlog = 65535</div><div class="line">net.ipv4.tcp_max_syn_backlog = 65535</div><div class="line"></div><div class="line"># TCP连接回收</div><div class="line">net.ipv4.tcp_fin_timeout = 10</div><div class="line">net.ipv4.tcp_tw_reuse = 1</div><div class="line">net.ipv4.tcp_tw_recycle = 1</div><div class="line"></div><div class="line">net.core.wmen_default = 87380</div><div class="line">net.core.wmen_max = 16777216</div><div class="line">net.core.rmem_default = 87380</div><div class="line">net.core_rmem_max = 1677216</div><div class="line"></div><div class="line">net.ipv4.tcp_keeplive_time = 120</div><div class="line">net.ipv4.tcp_keepalive_intvl = 30</div><div class="line">net.ipv4.tcp_keepalive_probes = 3</div><div class="line"></div><div class="line">kernel.shmmax = 4294967295</div><div class="line"># Linux内核参数最重要的参数之一，用于定义单个共享内存段的最大值</div><div class="line"># 1. 这个参数应该设置的足够大，以便能在一个共享内存段下容纳下整个Innodb缓冲池的大小</div><div class="line"># 这个值的大小对于64位Linux系统，可取的最大值为物理内存值-1byte,建议设置为物理内存的一半，一半取决于Innodb缓冲池的大小即可，可以取物理内存-1byte</div><div class="line"></div><div class="line">vm.swappiness = 0 </div><div class="line"># 这个参数当内存不足时会对性能产生较明显的影响</div><div class="line"># Linux系统内存交换区。</div><div class="line"># 禁用交换分区所带来的风险：</div><div class="line">#1. 降低操作系统的性能</div><div class="line">#2。 容易造成内存溢出，崩溃，或者被操作系统kill掉</div><div class="line"># 在MySQL服务器上保留叫分区还是有必要的额，但是要控制何时使用交换分区，vm.swappiness = 0 ，就是告诉内核除非虚拟内存完全满了，否则就不会使用交换分区</div></pre></td></tr></table></figure><p>增加资源限制（/etc/security/limit.conf），这个文件实际上是Linux PAM也就是插入式认证模块的配置文件。</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">* soft nofile 65535</div><div class="line">* hard nofile 65535</div><div class="line"></div><div class="line"># * 表示对所有用户有效</div><div class="line"># soft 指的是当前系统生效的设置</div><div class="line"># hard 表明系统中所设定的最大值</div><div class="line"># nofile 表示所限制的资源是打开文件的额最大数目</div><div class="line"># 65535 就是限制的数量</div><div class="line"># 把可打开的文件数量增加到65535个，以保证可以打开足够多的文件句柄，这个文件的修改需要重启系统后生效</div></pre></td></tr></table></figure><p>磁盘调度策略(/sys/block/devname/queue/scheduler)</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cat /sys/block/devname/queue/scheduler</div><div class="line">noop anticipatory deadline [cfq]</div></pre></td></tr></table></figure><p><strong>noop</strong>（电梯式调度策略）<br>NOOP实现了一个FIFO队列，它像电梯的工作方式一样对I/O请求进行组织，当有一个新的请求到来时，它将请求合并到最近的请求之后，以此来保证请求同一个介质。NOOP倾向于饿死读而利于写，因此NOOP对于闪存设备，RAM以及嵌入式是最好的选择。</p><p><strong>deadline</strong>（介质时间调度策略）<br>Deadline确保了在一个截至时间内服务请求，这个截至时间是可调整的，而默认读期限短于写期限。这样就防止了写操作因为不能被读取而饿死的现象。Deadline对数据库类应用是最好的选择。</p><p><strong>anticipatory</strong>（预料I/O调度策略）<br>本质上与Deadline一样，但在最后一次读操作后，要等待6ms，才能继续进行对其他I/O请求进行调度。它会在每个6ms中插入新的I/O操作，而会将一些小写入流合并成一个大写入流，用写入延时换取最大的写入吞吐量。AS适合于写入较多的环境，比如文件服务器，AS对数据库环境表现很差。</p><p>通过下面方法修改磁盘策略：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo  deadline &gt;  /sys/block/devname/queue/scheduler</div></pre></td></tr></table></figure><h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><p>在Windows环境下，仅有FAT和NTFS两种文件系统，但其实现在只使用NTFS。</p><p>在Linux环境下就不同了，目前主流的文件系统有EXT3、EXT4、XFS。这三种文件系统都带有日志，安全性可以得到保证，江湖传闻XFS新更能更好。</p><p>EXT3/4系统的挂在参数(/etc/fstab)</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 日志写入</div><div class="line">data = writeback | ordered | jouranl</div><div class="line">noatime, nodiratime</div><div class="line">/dev/sda1/ext4 noatime,nodiratime,data=writeback 1 1</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;影响数据库性能的主要因素有很多，主要包括以下几点：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;服务器硬件&lt;/li&gt;
-&lt;li&gt;服务器系统&lt;/li&gt;
-&lt;li&gt;数据库存储引擎的选择&lt;/li&gt;
-&lt;li&gt;数据库参数配置&lt;/li&gt;
-&lt;li&gt;数据库结构设计和SQL语句&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id
-      
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>服务器硬件对MYSQL性能的影响</title>
     <link href="http://www.maksim.website/2017/10/10/1/"/>
     <id>http://www.maksim.website/2017/10/10/1/</id>
@@ -373,27 +366,33 @@
   </entry>
   
   <entry>
-    <title>大表会对数据库带来的那些问题！</title>
-    <link href="http://www.maksim.website/2017/09/18/1/"/>
-    <id>http://www.maksim.website/2017/09/18/1/</id>
-    <published>2017-09-17T16:00:00.000Z</published>
-    <updated>2017-10-18T12:45:30.000Z</updated>
+    <title>服务器系统对MySQL性能带来的影响</title>
+    <link href="http://www.maksim.website/2017/10/10/2/"/>
+    <id>http://www.maksim.website/2017/10/10/2/</id>
+    <published>2017-10-09T16:00:00.000Z</published>
+    <updated>2017-10-13T11:39:54.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="什么样的表才可以被称之为大表"><a href="#什么样的表才可以被称之为大表" class="headerlink" title="什么样的表才可以被称之为大表?"></a>什么样的表才可以被称之为大表?</h3><p>所谓的大表都是相对而言的，对不同的存储引擎都有不同的限制，Innodb并没有定义每张表的最大行数，只要物理磁盘允许，我们就可以将数据存入数据库中。</p><p>在实际使用过程中，当数据量超过千万行之后，就会对数据库的性能造成影响。</p><ul><li>记录行数巨大，单表超过前往行</li><li>表数据文件巨大，表数据文件超过10G </li></ul><p>当然这也是相对的，也要跟我们的业务场景，磁盘 IO情况而定，如果这个表只是用来记录日志的，只有INSERT、SELECT 操作，而几乎没有 UPDATE 和 DELETE的操作，就算是超过了千万行，对我们的业务操作也没有太大的影响。</p><p>但是也有例外的情况，如果我们要对超过10G 的日志表追加列，如果这个时候，这个表被同步到N台服务器上后，就会变成一场灾难。</p><h4 id="大表对查询的影响"><a href="#大表对查询的影响" class="headerlink" title="大表对查询的影响"></a>大表对查询的影响</h4><p>慢查询：很难在一定的时间内过滤出所需要的重要数据。</p><h4 id="大表对-DDL-操作的影响："><a href="#大表对-DDL-操作的影响：" class="headerlink" title="大表对 DDL 操作的影响："></a>大表对 DDL 操作的影响：</h4><p>建立索引需要很长的时间。</p><p>风险： </p><ul><li>MYSQL 版本 &lt; 5.5 建立索引会锁表</li><li>MYSQL 版本 &gt;= 5.5 虽然不会锁表但会引起长时间的主从延迟</li></ul><h4 id="修改表结构需要长时间锁表"><a href="#修改表结构需要长时间锁表" class="headerlink" title="修改表结构需要长时间锁表"></a>修改表结构需要长时间锁表</h4><p>风险： 会造成长时间的主从延迟，由于主从复制的机制都是现在主库上完成操作，再传输到从库上，在执行相同操作，如果在主库上需要使用480s 的时间来完成 DDL 操作，在从服务器上至少也需要480s。</p><h4 id="影响正常数据库操作。"><a href="#影响正常数据库操作。" class="headerlink" title="影响正常数据库操作。"></a>影响正常数据库操作。</h4><p>进行 DDL 时会被锁表，这样一来就会造成堵塞，在这一个阶段，数据库连接数会被激增，一旦数据库连接数被沾满，前台就会出现500错误。</p><h3 id="如何处理数据库中的大表"><a href="#如何处理数据库中的大表" class="headerlink" title="如何处理数据库中的大表"></a>如何处理数据库中的大表</h3><h4 id="分库分表把一张大表分成多个小表"><a href="#分库分表把一张大表分成多个小表" class="headerlink" title="分库分表把一张大表分成多个小表"></a>分库分表把一张大表分成多个小表</h4><p>难点： </p><p><strong>1.分表主键的选择。</strong></p><p>这个往往根据业务的不同，有多种分表的方式，比如对于订单表来说，可以根据订单号分表，也可以根据供应商和地区域来进行分表，选择合适的分区键对于后期的分表是十分重要的。</p><p><strong>2.分表后跨分区数据的查询和统计</strong></p><p>不要认为选择了好的分区键后就不需要跨分区进行查询了，好的分区键只能尽量避免跨分区查询。</p><h4 id="大表的历史数据归档"><a href="#大表的历史数据归档" class="headerlink" title="大表的历史数据归档"></a>大表的历史数据归档</h4><p>使用这种方法，可以减少对前后端业务的影响，因为表结构并没有发生变化，一切的程序都可以正常的使用，对于历史订单可以开放一个接口。</p><p>而且归档表可以跟正在使用的表放在不同的服务器上，一方面减少了热数据所在服务器的表容量，同时也减少了服务器的查询压力，对于后端业务而言，应该是已经完成相关操作和统计的历史数据。</p><p>难点：</p><ol><li><p>归档时间点的选择。</p></li><li><p>如何进行归档操作，对于大表的增删改查都要十分的小心，既然我们要归档，就要把要归档的数据从数据库中移除，从一个上亿行的数据表中移出上百万行的时候，就要注意方式了，轻则会产生主从延迟，严重会产生大量的阻塞。</p></li></ol>]]></content>
+    <content type="html"><![CDATA[<p>影响数据库性能的主要因素有很多，主要包括以下几点：</p><ol><li>服务器硬件</li><li>服务器系统</li><li>数据库存储引擎的选择</li><li>数据库参数配置</li><li>数据库结构设计和SQL语句</li></ol><h1 id="服务器系统"><a href="#服务器系统" class="headerlink" title="服务器系统"></a>服务器系统</h1><p>MySQL本身支持很多操作系统：</p><ul><li>Windows</li><li>FreeBSD</li><li>Solaris</li><li>Linux</li></ul><p>很多人都习惯将开发环境的数据库部署在Windows上，将生产环境的数据库部署在Linux上，这就会导致一个问题，MySQL 的schema存储方式在文件系统上实际是一个目录，<strong>在Windows平台上，大小写是不敏感的</strong>，而在<strong>Linux上大小写是敏感的</strong>，所以这就会导致，数据库和表的名字在Windows是可以运行的，但是当移植到Linux下就会找不到相关数据库和表的错误。</p><h2 id="CentOS系统参数优化"><a href="#CentOS系统参数优化" class="headerlink" title="CentOS系统参数优化"></a>CentOS系统参数优化</h2><p><strong>内核相关参数</strong>（/etc/sysctl.conf）</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"># </div><div class="line">net.core.somaxconn = 65535</div><div class="line">net.core.netdev_max_backlog = 65535</div><div class="line">net.ipv4.tcp_max_syn_backlog = 65535</div><div class="line"></div><div class="line"># TCP连接回收</div><div class="line">net.ipv4.tcp_fin_timeout = 10</div><div class="line">net.ipv4.tcp_tw_reuse = 1</div><div class="line">net.ipv4.tcp_tw_recycle = 1</div><div class="line"></div><div class="line">net.core.wmen_default = 87380</div><div class="line">net.core.wmen_max = 16777216</div><div class="line">net.core.rmem_default = 87380</div><div class="line">net.core_rmem_max = 1677216</div><div class="line"></div><div class="line">net.ipv4.tcp_keeplive_time = 120</div><div class="line">net.ipv4.tcp_keepalive_intvl = 30</div><div class="line">net.ipv4.tcp_keepalive_probes = 3</div><div class="line"></div><div class="line">kernel.shmmax = 4294967295</div><div class="line"># Linux内核参数最重要的参数之一，用于定义单个共享内存段的最大值</div><div class="line"># 1. 这个参数应该设置的足够大，以便能在一个共享内存段下容纳下整个Innodb缓冲池的大小</div><div class="line"># 这个值的大小对于64位Linux系统，可取的最大值为物理内存值-1byte,建议设置为物理内存的一半，一半取决于Innodb缓冲池的大小即可，可以取物理内存-1byte</div><div class="line"></div><div class="line">vm.swappiness = 0 </div><div class="line"># 这个参数当内存不足时会对性能产生较明显的影响</div><div class="line"># Linux系统内存交换区。</div><div class="line"># 禁用交换分区所带来的风险：</div><div class="line">#1. 降低操作系统的性能</div><div class="line">#2。 容易造成内存溢出，崩溃，或者被操作系统kill掉</div><div class="line"># 在MySQL服务器上保留叫分区还是有必要的额，但是要控制何时使用交换分区，vm.swappiness = 0 ，就是告诉内核除非虚拟内存完全满了，否则就不会使用交换分区</div></pre></td></tr></table></figure><p>增加资源限制（/etc/security/limit.conf），这个文件实际上是Linux PAM也就是插入式认证模块的配置文件。</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">* soft nofile 65535</div><div class="line">* hard nofile 65535</div><div class="line"></div><div class="line"># * 表示对所有用户有效</div><div class="line"># soft 指的是当前系统生效的设置</div><div class="line"># hard 表明系统中所设定的最大值</div><div class="line"># nofile 表示所限制的资源是打开文件的额最大数目</div><div class="line"># 65535 就是限制的数量</div><div class="line"># 把可打开的文件数量增加到65535个，以保证可以打开足够多的文件句柄，这个文件的修改需要重启系统后生效</div></pre></td></tr></table></figure><p>磁盘调度策略(/sys/block/devname/queue/scheduler)</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cat /sys/block/devname/queue/scheduler</div><div class="line">noop anticipatory deadline [cfq]</div></pre></td></tr></table></figure><p><strong>noop</strong>（电梯式调度策略）<br>NOOP实现了一个FIFO队列，它像电梯的工作方式一样对I/O请求进行组织，当有一个新的请求到来时，它将请求合并到最近的请求之后，以此来保证请求同一个介质。NOOP倾向于饿死读而利于写，因此NOOP对于闪存设备，RAM以及嵌入式是最好的选择。</p><p><strong>deadline</strong>（介质时间调度策略）<br>Deadline确保了在一个截至时间内服务请求，这个截至时间是可调整的，而默认读期限短于写期限。这样就防止了写操作因为不能被读取而饿死的现象。Deadline对数据库类应用是最好的选择。</p><p><strong>anticipatory</strong>（预料I/O调度策略）<br>本质上与Deadline一样，但在最后一次读操作后，要等待6ms，才能继续进行对其他I/O请求进行调度。它会在每个6ms中插入新的I/O操作，而会将一些小写入流合并成一个大写入流，用写入延时换取最大的写入吞吐量。AS适合于写入较多的环境，比如文件服务器，AS对数据库环境表现很差。</p><p>通过下面方法修改磁盘策略：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo  deadline &gt;  /sys/block/devname/queue/scheduler</div></pre></td></tr></table></figure><h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><p>在Windows环境下，仅有FAT和NTFS两种文件系统，但其实现在只使用NTFS。</p><p>在Linux环境下就不同了，目前主流的文件系统有EXT3、EXT4、XFS。这三种文件系统都带有日志，安全性可以得到保证，江湖传闻XFS新更能更好。</p><p>EXT3/4系统的挂在参数(/etc/fstab)</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 日志写入</div><div class="line">data = writeback | ordered | jouranl</div><div class="line">noatime, nodiratime</div><div class="line">/dev/sda1/ext4 noatime,nodiratime,data=writeback 1 1</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h3 id=&quot;什么样的表才可以被称之为大表&quot;&gt;&lt;a href=&quot;#什么样的表才可以被称之为大表&quot; class=&quot;headerlink&quot; title=&quot;什么样的表才可以被称之为大表?&quot;&gt;&lt;/a&gt;什么样的表才可以被称之为大表?&lt;/h3&gt;&lt;p&gt;所谓的大表都是相对而言的，对不同的存储引
+        &lt;p&gt;影响数据库性能的主要因素有很多，主要包括以下几点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;服务器硬件&lt;/li&gt;
+&lt;li&gt;服务器系统&lt;/li&gt;
+&lt;li&gt;数据库存储引擎的选择&lt;/li&gt;
+&lt;li&gt;数据库参数配置&lt;/li&gt;
+&lt;li&gt;数据库结构设计和SQL语句&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id
       
     
     </summary>
     
       <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
     
-    
-      <category term="MySQL" scheme="http://www.maksim.website/tags/MySQL/"/>
     
   </entry>
   
@@ -424,6 +423,31 @@
   </entry>
   
   <entry>
+    <title>大表会对数据库带来的那些问题！</title>
+    <link href="http://www.maksim.website/2017/09/18/1/"/>
+    <id>http://www.maksim.website/2017/09/18/1/</id>
+    <published>2017-09-17T16:00:00.000Z</published>
+    <updated>2017-10-18T12:45:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="什么样的表才可以被称之为大表"><a href="#什么样的表才可以被称之为大表" class="headerlink" title="什么样的表才可以被称之为大表?"></a>什么样的表才可以被称之为大表?</h3><p>所谓的大表都是相对而言的，对不同的存储引擎都有不同的限制，Innodb并没有定义每张表的最大行数，只要物理磁盘允许，我们就可以将数据存入数据库中。</p><p>在实际使用过程中，当数据量超过千万行之后，就会对数据库的性能造成影响。</p><ul><li>记录行数巨大，单表超过前往行</li><li>表数据文件巨大，表数据文件超过10G </li></ul><p>当然这也是相对的，也要跟我们的业务场景，磁盘 IO情况而定，如果这个表只是用来记录日志的，只有INSERT、SELECT 操作，而几乎没有 UPDATE 和 DELETE的操作，就算是超过了千万行，对我们的业务操作也没有太大的影响。</p><p>但是也有例外的情况，如果我们要对超过10G 的日志表追加列，如果这个时候，这个表被同步到N台服务器上后，就会变成一场灾难。</p><h4 id="大表对查询的影响"><a href="#大表对查询的影响" class="headerlink" title="大表对查询的影响"></a>大表对查询的影响</h4><p>慢查询：很难在一定的时间内过滤出所需要的重要数据。</p><h4 id="大表对-DDL-操作的影响："><a href="#大表对-DDL-操作的影响：" class="headerlink" title="大表对 DDL 操作的影响："></a>大表对 DDL 操作的影响：</h4><p>建立索引需要很长的时间。</p><p>风险： </p><ul><li>MYSQL 版本 &lt; 5.5 建立索引会锁表</li><li>MYSQL 版本 &gt;= 5.5 虽然不会锁表但会引起长时间的主从延迟</li></ul><h4 id="修改表结构需要长时间锁表"><a href="#修改表结构需要长时间锁表" class="headerlink" title="修改表结构需要长时间锁表"></a>修改表结构需要长时间锁表</h4><p>风险： 会造成长时间的主从延迟，由于主从复制的机制都是现在主库上完成操作，再传输到从库上，在执行相同操作，如果在主库上需要使用480s 的时间来完成 DDL 操作，在从服务器上至少也需要480s。</p><h4 id="影响正常数据库操作。"><a href="#影响正常数据库操作。" class="headerlink" title="影响正常数据库操作。"></a>影响正常数据库操作。</h4><p>进行 DDL 时会被锁表，这样一来就会造成堵塞，在这一个阶段，数据库连接数会被激增，一旦数据库连接数被沾满，前台就会出现500错误。</p><h3 id="如何处理数据库中的大表"><a href="#如何处理数据库中的大表" class="headerlink" title="如何处理数据库中的大表"></a>如何处理数据库中的大表</h3><h4 id="分库分表把一张大表分成多个小表"><a href="#分库分表把一张大表分成多个小表" class="headerlink" title="分库分表把一张大表分成多个小表"></a>分库分表把一张大表分成多个小表</h4><p>难点： </p><p><strong>1.分表主键的选择。</strong></p><p>这个往往根据业务的不同，有多种分表的方式，比如对于订单表来说，可以根据订单号分表，也可以根据供应商和地区域来进行分表，选择合适的分区键对于后期的分表是十分重要的。</p><p><strong>2.分表后跨分区数据的查询和统计</strong></p><p>不要认为选择了好的分区键后就不需要跨分区进行查询了，好的分区键只能尽量避免跨分区查询。</p><h4 id="大表的历史数据归档"><a href="#大表的历史数据归档" class="headerlink" title="大表的历史数据归档"></a>大表的历史数据归档</h4><p>使用这种方法，可以减少对前后端业务的影响，因为表结构并没有发生变化，一切的程序都可以正常的使用，对于历史订单可以开放一个接口。</p><p>而且归档表可以跟正在使用的表放在不同的服务器上，一方面减少了热数据所在服务器的表容量，同时也减少了服务器的查询压力，对于后端业务而言，应该是已经完成相关操作和统计的历史数据。</p><p>难点：</p><ol><li><p>归档时间点的选择。</p></li><li><p>如何进行归档操作，对于大表的增删改查都要十分的小心，既然我们要归档，就要把要归档的数据从数据库中移除，从一个上亿行的数据表中移出上百万行的时候，就要注意方式了，轻则会产生主从延迟，严重会产生大量的阻塞。</p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;什么样的表才可以被称之为大表&quot;&gt;&lt;a href=&quot;#什么样的表才可以被称之为大表&quot; class=&quot;headerlink&quot; title=&quot;什么样的表才可以被称之为大表?&quot;&gt;&lt;/a&gt;什么样的表才可以被称之为大表?&lt;/h3&gt;&lt;p&gt;所谓的大表都是相对而言的，对不同的存储引
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
+    
+    
+      <category term="MySQL" scheme="http://www.maksim.website/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
     <title>大事务对MySQL性能带来的影响</title>
     <link href="http://www.maksim.website/2017/09/16/1/"/>
     <id>http://www.maksim.website/2017/09/16/1/</id>
@@ -449,8 +473,8 @@
   
   <entry>
     <title>使用Object.defineProperty()模拟双向数据绑定</title>
-    <link href="http://www.maksim.website/2017/09/06/cjbz25v06003y9ard5lqjw1t8/"/>
-    <id>http://www.maksim.website/2017/09/06/cjbz25v06003y9ard5lqjw1t8/</id>
+    <link href="http://www.maksim.website/2017/09/06/cjc4mwiqq00412qrd7ybfga4w/"/>
+    <id>http://www.maksim.website/2017/09/06/cjc4mwiqq00412qrd7ybfga4w/</id>
     <published>2017-09-06T14:28:57.000Z</published>
     <updated>2017-09-06T15:10:50.000Z</updated>
     
@@ -492,31 +516,6 @@
     
       <category term="随笔" scheme="http://www.maksim.website/categories/%E9%9A%8F%E7%AC%94/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Invert a Binary Tree</title>
-    <link href="http://www.maksim.website/2017/08/13/2/"/>
-    <id>http://www.maksim.website/2017/08/13/2/</id>
-    <published>2017-08-13T05:01:00.000Z</published>
-    <updated>2017-08-13T07:36:25.000Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">     4                          4</div><div class="line">   /    \                     /    \</div><div class="line">  2      7         to        7      2 </div><div class="line"> / \    /  \                / \    /  \</div><div class="line">1   3  6    9              9   6  3    1</div></pre></td></tr></table></figure><p>解答：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for a binary tree node.</div><div class="line"> * strcut TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode *left;</div><div class="line"> *     TreeNode *right;</div><div class="line"> *     TreeNode (index x) : val(x), left(NULL), right(NULL) &#123;&#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line">    <span class="keyword">public</span>:</div><div class="line">    <span class="function">TreeNode *<span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>)</div><div class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">        TreeNoe * tmpNode = root-&gt;left;</div><div class="line">        root-&gt;left = invertTree(root-&gt;right);</div><div class="line">        root-&gt;right = invertTree(tmpNode);</div><div class="line">        <span class="keyword">return</span> root; </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure><p>利用的递归这个概念，短短几行就完成了一个翻转二叉树，只是在翻转二叉树的左右子数。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/di
-      
-    
-    </summary>
-    
-      <category term="C/C++" scheme="http://www.maksim.website/categories/C-C/"/>
-    
-    
-      <category term="C/C++,算法" scheme="http://www.maksim.website/tags/C-C-%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
