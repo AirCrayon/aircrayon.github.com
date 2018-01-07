@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>统一设置tabBarItem字体样式 | Maksim&#39;s Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="iOS">
+    <meta name="description" content="一般我们在使用tabBar的时候都需要进行自定义,统一设置其字体样式的方法如下. 在iOS开发中有两个方法:load与initialize. load是在类加载的时候会自动调用,iOS工程在运行的时候,会自动将工程内的类加载到内存之中,这个时候就是load执行的时候. initialize是在第一次使用或者调用子类的时候回自动执行,具有初始化类的功能,我们可以通过这两个方式的执行特性来对tabBa">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="统一设置tabBarItem字体样式">
+<meta property="og:url" content="http://www.maksim.website/2016/03/04/cjc4nkapz005sljrd5ll5ook7/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="一般我们在使用tabBar的时候都需要进行自定义,统一设置其字体样式的方法如下. 在iOS开发中有两个方法:load与initialize. load是在类加载的时候会自动调用,iOS工程在运行的时候,会自动将工程内的类加载到内存之中,这个时候就是load执行的时候. initialize是在第一次使用或者调用子类的时候回自动执行,具有初始化类的功能,我们可以通过这两个方式的执行特性来对tabBa">
+<meta property="og:updated_time" content="2017-07-17T05:46:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="统一设置tabBarItem字体样式">
+<meta name="twitter:description" content="一般我们在使用tabBar的时候都需要进行自定义,统一设置其字体样式的方法如下. 在iOS开发中有两个方法:load与initialize. load是在类加载的时候会自动调用,iOS工程在运行的时候,会自动将工程内的类加载到内存之中,这个时候就是load执行的时候. initialize是在第一次使用或者调用子类的时候回自动执行,具有初始化类的功能,我们可以通过这两个方式的执行特性来对tabBa">
+    
+        <link rel="alternate" type="application/atom+xml" title="Maksim&#39;s Website" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Maksim</h5>
+          <a href="mailto:aircrayon@qq.com" title="aircrayon@qq.com" class="mail">aircrayon@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/aircrayon" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/619946234" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于Maksim
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">统一设置tabBarItem字体样式</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">统一设置tabBarItem字体样式</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-03-04T12:14:36.000Z" itemprop="datePublished" class="page-time">
+  2016-03-04
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-统一设置tabBarItem字体样式"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">统一设置tabBarItem字体样式</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-03-04 20:14:36" datetime="2016-03-04T12:14:36.000Z"  itemprop="datePublished">2016-03-04</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>一般我们在使用tabBar的时候都需要进行自定义,统一设置其字体样式的方法如下.</p>
+<p>在iOS开发中有两个方法:load与initialize.</p>
+<p>load是在类加载的时候会自动调用,iOS工程在运行的时候,会自动将工程内的类加载到内存之中,这个时候就是load执行的时候.</p>
+<p>initialize是在第一次使用或者调用子类的时候回自动执行,具有初始化类的功能,我们可以通过这两个方式的执行特性来对tabBarItem的样式进行设置.</p>
+<p>tabBarItem其实是一个模型(Item是苹果对模型的一种命名规范),我们并不能够对模型直接格式操作,但是我们可以对控件的格式进行设置,这样也就是使用到了文本属性(富文本)来进行设置.</p>
+<p>代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">+(void)initialize&#123;</div><div class="line">    //获取所有的tabBarItem 获取所有的外观</div><div class="line">    UITabBarItem *item = [UITabBarItem appearance];</div><div class="line">    NSMutableDictionary *att = [[NSMutableDictionary alloc]init];</div><div class="line">    [att setObject:[UIColor grayColor] forKey:NSForegroundColorAttributeName];</div><div class="line">    NSMutableDictionary *selectedAtt = [[NSMutableDictionary alloc]init];</div><div class="line">    [selectedAtt setObject:[UIColor orangeColor] forKey:NSForegroundColorAttributeName];</div><div class="line">    [item setTitleTextAttributes:att forState:UIControlStateNormal];</div><div class="line">    [item setTitleTextAttributes:selectedAtt forState:UIControlStateSelected];    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样一来我们就完成了样式的设置,appearance在英语中的意思是外观,在iOS中算是一个标记,通过这个标记,我们可以取得UITabBarItem中所有Item的外观.</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-07-17T05:46:12.000Z" itemprop="dateUpdated">2017-07-17 13:46:12</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/03/04/cjc4nkapz005sljrd5ll5ook7/" target="_blank" rel="external">http://www.maksim.website/2016/03/04/cjc4nkapz005sljrd5ll5ook7/</a>
+        
+    </div>
+    <footer>
+        <a href="http://www.maksim.website">
+            <img src="/img/avatar.jpg" alt="Maksim">
+            Maksim
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/03/04/cjc4nkapz005sljrd5ll5ook7/&title=《统一设置tabBarItem字体样式》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/03/04/cjc4nkapz005sljrd5ll5ook7/&title=《统一设置tabBarItem字体样式》 — Maksim's Website&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2016/03/04/cjc4nkapz005sljrd5ll5ook7/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《统一设置tabBarItem字体样式》 — Maksim's Website&url=http://www.maksim.website/2016/03/04/cjc4nkapz005sljrd5ll5ook7/&via=http://www.maksim.website" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2016/03/04/cjc4nkapz005sljrd5ll5ook7/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/03/04/cjc4nkapw005lljrdfcmlk156/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">移动info.plist后无法运行</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/03/03/244/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">使用iOS本地通知</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Maksim &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/03/04/cjc4nkapz005sljrd5ll5ook7/&title=《统一设置tabBarItem字体样式》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/03/04/cjc4nkapz005sljrd5ll5ook7/&title=《统一设置tabBarItem字体样式》 — Maksim's Website&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2016/03/04/cjc4nkapz005sljrd5ll5ook7/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《统一设置tabBarItem字体样式》 — Maksim's Website&url=http://www.maksim.website/2016/03/04/cjc4nkapz005sljrd5ll5ook7/&via=http://www.maksim.website" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2016/03/04/cjc4nkapz005sljrd5ll5ook7/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACq0lEQVR42u3aQW7DMAwEwPz/0+01QBN3SYpODuNTkMqxRgUsYcnHI75+/lzP37/7/PzN3zHX318/6/CFh4eHN576u5+eTOJ6zPXTr5fv+i48PDy8PV4+oXx7uF6aHN8bg4eHh/dtvMnxN3qhj7cfPDw8vG/jJeDr8ckGky8xHh4e3v28JIzIg4le7JvksYtZCx4eHl7My6tI3/N5pb6Hh4eHN66qJy/c/GW9N/LtL+Dh4eEt8KrH2Zx6IH4djMHDw8O7h5fEB1Xw5GR7LNrAw8PDO8rrBam9SHdSxGpuOXh4eHgLvOQVn4enk+JZ8teEGtX38PDw8NZ416/dBJDc1VuIwj8ADw8P7yivF+AmU8yXI8fnS/kijMDDw8O7hZcHpr3GgkkcHO0CeHh4eAu8XhjRm1xv26gWyfDw8PDu4VVjgt4heBJ5VJcDDw8Pb4/Xa3hK2qEmy3Qs1MDDw8Nb5lVvzhu2qsvXq2Q9qhPFw8PDa/Gqk8snVG2i6jVmRXfh4eHhHeVNMow89s0XbjLmxazw8PDw1nj50TmnVkOKarEtKsXh4eHhLfDmDQT5oTlvEUio5cACDw8P7xAvPzRXC2C98thkKV9Y8PDw8BZ4eWtUXrjKA9nqYTrfePDw8PC2eflhet5WVd1CDoQReHh4eMu8ZIq9F/S8YFYt0eHh4eFt83pNUfNgotduVaDi4eHh3cKrPiDZBqpBRm+rwMPDw9vmTYpbk4NyNbColsHw8PDw9njVl2/15t4WMooeehceHh5ekdfbDPLfnByRoxJXtb6Hh4eHd4g3eUwvhjhbGCtkLXh4eHgf4lVD3uqz8lawZn0PDw8P70O8XhFr3lhQCDXw8PDw1njNm+OIthdhVCNjPDw8vHt4k1JWdQvpTSgvko3qe3h4eHj/834Bu7kNAYT9hOYAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
