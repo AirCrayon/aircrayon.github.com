@@ -133,7 +133,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -192,7 +192,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>因为项目需求后期可能会需要使用到进程守护和消息队列，于是上网查了一下，看到<a href="http://netkiller.github.io/php/index.html" target="_blank" rel="external">Netkiller <em>PHP 手札</em></a>中有介绍到PHP使用 Pthread实现优雅守护进程的方法。</p>
+            <p>因为项目需求后期可能会需要使用到进程守护和消息队列，于是上网查了一下，看到<a href="http://netkiller.github.io/php/index.html" target="_blank" rel="noopener">Netkiller <em>PHP 手札</em></a>中有介绍到PHP使用 Pthread实现优雅守护进程的方法。</p>
 <p>可是由于我本地的 PHP 是使用brew进行安装的，在 Linux 下使用 yum或者 apt进行安装的 PHP 同样不支持线程安全。</p>
 <p>于是开始折腾起来，将 PHP 卸载掉后使用编译进行重新安装，开启<code>--enable-maintainer-zts</code> 后在编译过程中遇到了 Clang 报错，经过了一番 Google、百度过后，原来是编译器在作怪。Mac 由于 Xcode 的原因，默认使用的编译器是 Clang，在编译到 pthread 的时候，就会报错。</p>
 <p>解决方法也很简单，在./configure 命令的最后加上 CC=gcc ，告诉make 我要使用 GCC 编译器进行编译即可。</p>
@@ -217,10 +217,10 @@
                 <div class="image-caption">线程安全</div>
             </figure>
 <p>引用：</p>
-<p><em>PHP线程安全和非线程安全有什么区别</em>  <a href="http://www.cnblogs.com/T8881/p/6397264.html" target="_blank" rel="external">http://www.cnblogs.com/T8881/p/6397264.html</a></p>
-<p><em>PHP Internals Book（《PHP内部书》PHP 内核开发者合著)</em> <a href="http://www.phpinternalsbook.com/index.html" target="_blank" rel="external">http://www.phpinternalsbook.com/index.html</a></p>
-<p><em>PHP运行模式</em> <a href="http://www.cnblogs.com/xia520pi/p/3914964.html" target="_blank" rel="external">http://www.cnblogs.com/xia520pi/p/3914964.html</a></p>
-<p><em>Netkiller <em>PHP 手札</em></em> <a href="http://netkiller.github.io/php/index.html" target="_blank" rel="external">http://netkiller.github.io/php/index.html</a></p>
+<p><em>PHP线程安全和非线程安全有什么区别</em>  <a href="http://www.cnblogs.com/T8881/p/6397264.html" target="_blank" rel="noopener">http://www.cnblogs.com/T8881/p/6397264.html</a></p>
+<p><em>PHP Internals Book（《PHP内部书》PHP 内核开发者合著)</em> <a href="http://www.phpinternalsbook.com/index.html" target="_blank" rel="noopener">http://www.phpinternalsbook.com/index.html</a></p>
+<p><em>PHP运行模式</em> <a href="http://www.cnblogs.com/xia520pi/p/3914964.html" target="_blank" rel="noopener">http://www.cnblogs.com/xia520pi/p/3914964.html</a></p>
+<p><em>Netkiller <em>PHP 手札</em></em> <a href="http://netkiller.github.io/php/index.html" target="_blank" rel="noopener">http://netkiller.github.io/php/index.html</a></p>
 
         </div>
 
@@ -228,7 +228,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-08-05T03:17:24.000Z" itemprop="dateUpdated">2017-08-05 11:17:24</time>
+    最后更新时间：<time datetime="2017-08-05T03:17:24.000Z" itemprop="dateUpdated">2017-08-05 11:17:24</time>
 </span><br>
 
 
@@ -311,7 +311,7 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2017/08/06/cje5p1n3t0016qxrd04w7e9te/" id="post-prev" class="post-nav-link">
+      <a href="/2017/08/06/cje5p4g6s0013rtrdyldxypkn/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">[no title]</h4>
       </a>
@@ -381,7 +381,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
