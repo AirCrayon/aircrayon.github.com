@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>No title | Maksim&#39;s Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="title:C语言中的内存categories:C/C++date:2017-10-21 id:1 C 程序在编译后，会以三种形式使用内存。  静态变量/全局内存 静态声明的变量分配在这里，全局变量也会使用这部分内存。这些内存在程序开始运行时分配，直到程序终止才会消失。所有函数都能访问全局变量，静态变量的作用域则局限在定义它们的函数内部。  自动内存 这些变量在函数内部声明，并且在函数被调用时才">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://www.maksim.website/2017/10/21/cje5qeeod0004v6rdyqn4a505/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="title:C语言中的内存categories:C/C++date:2017-10-21 id:1 C 程序在编译后，会以三种形式使用内存。  静态变量/全局内存 静态声明的变量分配在这里，全局变量也会使用这部分内存。这些内存在程序开始运行时分配，直到程序终止才会消失。所有函数都能访问全局变量，静态变量的作用域则局限在定义它们的函数内部。  自动内存 这些变量在函数内部声明，并且在函数被调用时才">
+<meta property="og:updated_time" content="2018-01-07T10:50:24.324Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="title:C语言中的内存categories:C/C++date:2017-10-21 id:1 C 程序在编译后，会以三种形式使用内存。  静态变量/全局内存 静态声明的变量分配在这里，全局变量也会使用这部分内存。这些内存在程序开始运行时分配，直到程序终止才会消失。所有函数都能访问全局变量，静态变量的作用域则局限在定义它们的函数内部。  自动内存 这些变量在函数内部声明，并且在函数被调用时才">
+    
+        <link rel="alternate" type="application/atom+xml" title="Maksim&#39;s Website" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Maksim</h5>
+          <a href="mailto:aircrayon@qq.com" title="aircrayon@qq.com" class="mail">aircrayon@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/aircrayon" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/619946234" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于Maksim
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">No title</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">No title</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-21T09:59:26.000Z" itemprop="datePublished" class="page-time">
+  2017-10-21
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#id-1"><span class="post-toc-number">1.</span> <span class="post-toc-text">id:1</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-C语言中的内存"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">No title</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-21 17:59:26" datetime="2017-10-21T09:59:26.000Z"  itemprop="datePublished">2017-10-21</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <hr>
+<p>title:C语言中的内存<br>categories:C/C++<br>date:2017-10-21</p>
+<h2 id="id-1"><a href="#id-1" class="headerlink" title="id:1"></a>id:1</h2><p> C 程序在编译后，会以三种形式使用内存。</p>
+<ul>
+<li><p>静态变量/全局内存</p>
+<p>静态声明的变量分配在这里，全局变量也会使用这部分内存。这些内存在程序开始运行时分配，直到程序终止才会消失。所有函数都能访问全局变量，静态变量的作用域则局限在定义它们的函数内部。</p>
+</li>
+<li><p>自动内存</p>
+<p>这些变量在函数内部声明，并且在函数被调用时才能创建。它们的作用域局限于函数内部，而且在函数被调用才创建。它们的作用域局限于函数内部，热切声明周期限制在函数的执行时间内。</p>
+</li>
+<li><p>动态内存</p>
+<p>内存分派在堆上，可以根据需要存放，而且直到释放才消失。指针引用分配的内存，作用域局限于引用内存的指针。</p>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-01-07T10:50:24.324Z" itemprop="dateUpdated">2018-01-07 18:50:24</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/10/21/cje5qeeod0004v6rdyqn4a505/" target="_blank" rel="external">http://www.maksim.website/2017/10/21/cje5qeeod0004v6rdyqn4a505/</a>
+        
+    </div>
+    <footer>
+        <a href="http://www.maksim.website">
+            <img src="/img/avatar.jpg" alt="Maksim">
+            Maksim
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2017/10/21/cje5qeeod0004v6rdyqn4a505/&title=《No title》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2017/10/21/cje5qeeod0004v6rdyqn4a505/&title=《No title》 — Maksim's Website&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2017/10/21/cje5qeeod0004v6rdyqn4a505/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — Maksim's Website&url=http://www.maksim.website/2017/10/21/cje5qeeod0004v6rdyqn4a505/&via=http://www.maksim.website" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2017/10/21/cje5qeeod0004v6rdyqn4a505/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/10/21/cje5qeepp001uv6rdlkb3zhb9/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">PHP基础手札的引用</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/21/2/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">PHP常见的经典面试题</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Maksim &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2017/10/21/cje5qeeod0004v6rdyqn4a505/&title=《No title》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2017/10/21/cje5qeeod0004v6rdyqn4a505/&title=《No title》 — Maksim's Website&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2017/10/21/cje5qeeod0004v6rdyqn4a505/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — Maksim's Website&url=http://www.maksim.website/2017/10/21/cje5qeeod0004v6rdyqn4a505/&via=http://www.maksim.website" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2017/10/21/cje5qeeod0004v6rdyqn4a505/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3awY4aMRAE0P3/n06kXDcMVd022UiPEwKG8TOS3VT76yt+/PrzSN79/vz7ta8+//wNz2NYPfDw8PBGQ3/1SAbR3qWdiFfXPo8ZDw8P7zZvttw/D2j2+XZq3ljw8PDw/ikvWdxnm0c+TXh4eHj/F28TWyTlck7Cw8PD+wm85DbJK5vlfjaeY1kLHh4eXsxrl/uf8Pxifw8PDw9v0VXfLL5Jc6uNOeoR4uHh4V3g5S2o2XqbLOhtsd5+Px4eHt493ozdRgn5vdpRvbwWDw8P7yO85OJZtNoW0MkrbyYFDw8P7xrvbItrs20kVxXBLh4eHt4F3j6YaNv57UI/O8qAh4eHd4O3D1g3a3KyzbRhxF/6e3h4eHgXeO2xgBtHppKQt50IPDw8vBu8NkJtI9p9HLwp9/Hw8PBu8PYLcV5wtxFt+259JgIPDw/vKC+HzQ5XtQt93gArshY8PDy8Ba/9q7/ZTtqDBbOJiPYiPDw8vDWvjRs24UW7kbR3xMPDw7vHm8WveXGcbwxJq+z58/VviIeHhzfi5QNKgoC2BJ+1xIqJxsPDw7vGa+PX4eGnUUNrc+gBDw8P7zavrsTjMvfU9lBHw3h4eHiXeXVjfnQUIL9LHuYOUxY8PDy8EW/zpTkgjznayS3+GODh4eF9hDcLZ3Ne/s1tq6zOkvHw8PBKXlvgtsXxbOnP22BvxoyHh4d3mXeqnE3CgvzdA20wPDw8vEO82bD24cWp6XizReHh4eFd4M2ih6jhVBbf7VX51oWHh4d3g5cvyvsFOp+a/Nro0AAeHh7eBV7bOdoXx0VeEm9dxaEBPDw8vI/z8qgiiW43BXfdAMPDw8P7IG9TRs9ijrYVtyqp8fDw8Epe28jfI9tmW/Iz4OHh4X2G1zbA2hDhVEw8mxo8PDy8o7zfMGUDJ1VZgMwAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

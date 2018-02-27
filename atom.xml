@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.maksim.website/"/>
-  <updated>2018-02-27T13:56:44.607Z</updated>
+  <updated>2018-02-27T14:12:11.003Z</updated>
   <id>http://www.maksim.website/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title></title>
+    <link href="http://www.maksim.website/2018/02/27/cje5qeerr004uv6rdzaxxv5kx/"/>
+    <id>http://www.maksim.website/2018/02/27/cje5qeerr004uv6rdzaxxv5kx/</id>
+    <published>2018-02-27T14:12:05.857Z</published>
+    <updated>2018-02-27T14:12:11.003Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p>title:创建型设计模式之抽象工厂<br>categories:PHP</p><h2 id="tags-设计模式-PHP"><a href="#tags-设计模式-PHP" class="headerlink" title="tags:设计模式,PHP"></a>tags:设计模式,PHP</h2><p>原文地址：<a href="http://designpatternsphp.readthedocs.io" target="_blank" rel="noopener">http://designpatternsphp.readthedocs.io</a></p><p>在软件工程中，创建型设计模式承担着对象创建的职责，尝试创建适合程序上下文的对象，对象创建设计模式的产生是由于软件工程设计的问题，具体说是向设计中增加复杂度，创建型设计模式解决了程序设计中对象创建的问题。</p><h2 id="抽象工厂"><a href="#抽象工厂" class="headerlink" title="抽象工厂"></a>抽象工厂</h2><h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>创建一系列互相关联或依赖的对象时不需要指定将要创建的对象对应的类，因为这些将被创建的对象对应的类都实现了同一个接口。抽象工厂的使用者不需要关心对象的创建过程，它只需要知道这些对象是如何协调工作的。</p><h3 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h3><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://designpatternsphp.readthedocs.io/zh_CN/latest/_images/uml12.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>在 <a href="https://github.com/domnikl/DesignPatternsPHP/tree/master/Creational/AbstractFactory" target="_blank" rel="noopener">GitHub</a> 上查看代码</p><p>AbstractFactory.php</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * In this case, the abstract factory is a contract for creating some components</div><div class="line"> * for the web. There are two ways of rendering text: HTML and JSON</div><div class="line"> */</div><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractFactory</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">createText</span><span class="params">(string $content)</span>: <span class="title">Text</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>JsonFactory.php</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JsonFactory</span> <span class="keyword">extends</span> <span class="title">AbstractFactory</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">createText</span><span class="params">(string $content)</span>: <span class="title">Text</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> JsonText($content);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>HtmlFactory.php</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HtmlFactory</span> <span class="keyword">extends</span> <span class="title">AbstractFactory</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">createText</span><span class="params">(string $content)</span>: <span class="title">Text</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> HtmlText($content);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>Text.php</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>;</div><div class="line"></div><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Text</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> string</div><div class="line">     */</div><div class="line">    <span class="keyword">protected</span> $text;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(string $text)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;text = $text;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>JsonText.php</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JsonText</span> <span class="keyword">extends</span> <span class="title">Text</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// do something here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure><p>HtmlText.php</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HtmlText</span> <span class="keyword">extends</span> <span class="title">Text</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// do something here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>\<span class="title">Tests</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>\<span class="title">HtmlFactory</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>\<span class="title">HtmlText</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>\<span class="title">JsonFactory</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>\<span class="title">JsonText</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">PHPUnit</span>\<span class="title">Framework</span>\<span class="title">TestCase</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AbstractFactoryTest</span> <span class="keyword">extends</span> <span class="title">TestCase</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testCanCreateHtmlText</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $factory = <span class="keyword">new</span> HtmlFactory();</div><div class="line">        $text = $factory-&gt;createText(<span class="string">'foobar'</span>);</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;assertInstanceOf(HtmlText::class, $text);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testCanCreateJsonText</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $factory = <span class="keyword">new</span> JsonFactory();</div><div class="line">        $text = $factory-&gt;createText(<span class="string">'foobar'</span>);</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;assertInstanceOf(JsonText::class, $text);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;hr&gt;
+&lt;p&gt;title:创建型设计模式之抽象工厂&lt;br&gt;categories:PHP&lt;/p&gt;
+&lt;h2 id=&quot;tags-设计模式-PHP&quot;&gt;&lt;a href=&quot;#tags-设计模式-PHP&quot; class=&quot;headerlink&quot; title=&quot;tags:设计模式,PHP&quot;&gt;&lt;/
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Nginx的安装</title>
-    <link href="http://www.maksim.website/2018/02/27/cje5p4g71001brtrdxj49ditm/"/>
-    <id>http://www.maksim.website/2018/02/27/cje5p4g71001brtrdxj49ditm/</id>
+    <link href="http://www.maksim.website/2018/02/27/cje5qeep90017v6rd7gmm4mws/"/>
+    <id>http://www.maksim.website/2018/02/27/cje5qeep90017v6rd7gmm4mws/</id>
     <published>2018-02-26T16:00:00.000Z</published>
-    <updated>2018-02-27T13:56:44.607Z</updated>
+    <updated>2018-02-27T14:04:44.098Z</updated>
     
     <content type="html"><![CDATA[<p>Nginx 最初的设计，是成为一个 HTTP 服务器，一个能解决 C10K 问题的 HTTP 服务器，为了实现这个目标，Nginx 通过基于事件的链接——处理机制，并且操作系统也要使用相应的事件机制，便可以解决 C10K 问题。</p><p>在安装 Nginx 时，我们可以通过以下两种方式进行安装：</p><ol><li>使用包管理器安装 Nginx</li><li>通过源代码安装 Nginx</li></ol><h2 id="使用包管理器安装-Nginx"><a href="#使用包管理器安装-Nginx" class="headerlink" title="使用包管理器安装 Nginx"></a>使用包管理器安装 Nginx</h2><p>使用包管理器安装 Nginx 的机会，是你使用的操作系统已经提供了 Nginx 的安装包。使用包管理器安装 Nginx 的方式很简单，只需要在终端输入：</p><p>Linux(基于 deb，如 Ubunut)</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install nginx</div></pre></td></tr></table></figure><p> Linux（基于 rpm，如 CentOS)</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install nginx</div></pre></td></tr></table></figure><p>FreeBSD</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pkg_install -r nginx</div></pre></td></tr></table></figure><p>通过上述命令，Nginx 将会安装到操作系统的标准位置下。如果使用操作系统的安装包安装 Nginx，那么通过上面的命令来安装是最佳方式。</p><p>Nginx 核心团队也提供了稳定的二进制版本，可以从 <a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">http://nginx.org/en/download.html</a> 页面下载可用版本。未发布 Nginx 安装包的系统用户（例如，CentOS），可以使用下面指导来安装预测试、预编译二进制版本。</p><p>通过创建下面的文件，在系统中添加 Nginx 仓库的 yum 配置：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/yum.repos.d/nginx.repo</div><div class="line">[nginx]</div><div class="line">name=nginx repo baseurl=http://nginx.org/packages/centos/7/$basearch/ gpgcheck=0</div><div class="line">enabled=1</div></pre></td></tr></table></figure><p>然后，听过执行如下命令来安装 Nginx：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install nginx</div></pre></td></tr></table></figure><p>也可以按照前面介绍的 URL 下载 nginx 发行版安装。</p><h2 id="从源代码安装-Nginx"><a href="#从源代码安装-Nginx" class="headerlink" title="从源代码安装 Nginx"></a>从源代码安装 Nginx</h2><p>Nginx 代码提供了两种独立的下载分支——开发版与稳定版。开发分支是一个正处于积极开发状态的版本。在这个版本中，会有一些新功能被集成到其中，在稳定版中是找不到这些功能的。当发布一个“开发”版时，它会经历同样的 QA 和作为稳定版本的一组类似测试功能。因此无论哪一个分支都一颗用于生产环境中，两者主要的不同，在于对第三方模块的支持。在开发板中，内部的 API 可能会发生改变，而稳定版则保持不变。因此，为了与第三方模块向下兼容，在稳定版中第三方模块都可以有效使用。</p><h3 id="准备编译环境"><a href="#准备编译环境" class="headerlink" title="准备编译环境"></a>准备编译环境</h3><p>为了从源代码编译 Nginx，系统需要满足某些必要条件，除了编译器外，如果想分别启用 SSL 支持和使用 rewrite 模块，那么还需要提供响应的 OpenSSL 与 PCRE（Perl Compatible Regular Expressions）库及开发头文件。rewrite 模块是默认安装的。如果你还没有 PCRE 库与开发头文件，你需要在配置阶段禁用 rewrite 模块。这依赖于系统，也有可能在系统中已经默认安装了这些必要条件。如果没有安装，则需要从其安装包安装或者从源码下载并且解压安装，在 Nginx 配置脚本中指定他们在系统中的安装位置。</p><p>如果在配置文件中使用了—with-\<library\>=\<path\>选项，那么 Nginx 会视图建立一个静态依赖库。如果你想让 Nginx 不依赖于系统的任何其他部分，或是想获得些 Nginx 的二进制额外性能，那么你可能会使用构建静态库的做法。如果你使用外部库功能只能从某一个版本起有效（例如，NPN[Next Protocol Negotiation]TLS扩展从 OpenSSL1.0.1版有效），那么你就不得不将其指定到特定版本解压后的源代码路径中。</path\></library\></p><p>根据自己的喜好，你可能会提供其他的、可选安装包。你可以为这些安装包提供支持。他们包括 MD5和 SHA-1以支持散列算法、zip 压缩库、libatomic 库。在 Nginx 中，很多地方法会用到散列库，例如为了计算 URI 散列进而计算缓存 key。</p><p>zlib 压缩裤被用来投递 gzip 压缩内容。如果 atomic_ops 库有效，那么 Nginx 会用它来实现自动内存更新操作，以实现高性能的内存锁定代码。</p><h3 id="从源代码编译"><a href="#从源代码编译" class="headerlink" title="从源代码编译"></a>从源代码编译</h3><p>读者可以从 <a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">http://nginx.org/en/download.html</a> 下载 Nginx，在该页面找到.tar.gz 或者.zip 格式的源代码分支，安装如下步骤将下载的安装包解压到一个临时目录中:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> mkdir ~/bulid</div><div class="line"><span class="meta">$</span> cd ~/bulid &amp;&amp; tar xzf nginx-&lt;version-number&gt;.tar.gz</div></pre></td></tr></table></figure><p>使用下面命令配置 Nginx:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> cd ~/bulid/nginx-&lt;version-number&gt; &amp;&amp; ./configure</div></pre></td></tr></table></figure><p>然后，使用下面命令进行编译安装：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> make &amp;&amp; sudo make install</div></pre></td></tr></table></figure><p>在编译自己的二进制 nginx 时，你会有很大的灵活性来包含你仅使用的功能。你已经指定使用哪个用户运行 Nginx 了吗?你要使用默认的 logfile 位置，以便不用在 Nginx 的配置文件明确地说明它们吗?表 1-1 所示是配置选项列表，通过它来帮助你设计出自己的 nginx 命令。这些选项对 Nginx 都是有效的，模块可以被独立激活。</p><table><thead><tr><th>选项</th><th style="text-align:left">解释</th></tr></thead><tbody><tr><td>–prefix=\<path\></path\></td><td style="text-align:left">Nginx 安装的根路径，所有其他的安装路径都要依赖于该选项</td></tr><tr><td>–sbin-path=\<path\></path\></td><td style="text-align:left">指定 Nginx 二进制文件的路径。如果没有指定，那么这个路径依赖于——prefix 选项</td></tr><tr><td>–conf-path=\<path\></path\></td><td style="text-align:left">如果在命令行没有指定配置文件，那么将会通过这里指定的路径，Nginx 将会去那里寻找它的配置文件</td></tr><tr><td>–error-log-path=\<path\></path\></td><td style="text-align:left">指定错误文件的路径，Nginx 会将其中写入错误日志文件，除非有其他配置</td></tr><tr><td>–pid-path=\<path\></path\></td><td style="text-align:left">指定的文件将会写入 Nginx master 进程的pid，通常在/var/run 下</td></tr><tr><td>–lock-path=\<path\></path\></td><td style="text-align:left">共享存储器互斥锁文件的路径</td></tr><tr><td>–user=\<user\></user\></td><td style="text-align:left">worker 进程运行的用户</td></tr><tr><td>–group=\<group\></group\></td><td style="text-align:left">worker 进程运行的组</td></tr><tr><td>–with-file-aio</td><td style="text-align:left">为 FreeBSD4.3+和 Linux2.6.22+系统启用异步 I/O</td></tr><tr><td>–with-debug</td><td style="text-align:left">这个选项用于启用调试日志。在生产环境中不推荐使用该选项。</td></tr></tbody></table><p>你可以使用优化编译，单但是如果使用包管理工具进行安装将无法获得这些优化，如下表：</p><table><thead><tr><th>选项</th><th>说明</th></tr></thead><tbody><tr><td>–with-cc=\<path\></path\></td><td>如果想设置一个不再默认 Path 下的编译器</td></tr><tr><td>–with-cpp=\<path\></path\></td><td>设置 C 预处理器的响应路径</td></tr><tr><td>–with-cc-opt=\<options></options></td><td>指定必要的 include 文件路径，可能（-I\<path\>）指出，也可能是优化(-O4)并指定64位构建</path\></td></tr><tr><td>–with-ld-opt=\<options\></options\></td><td>包含连接器库的路径(-L\<path\>)和运行路径(-R\<path\>)</path\></path\></td></tr><tr><td>—with-cpu-opt=\<cpu\></cpu\></td><td>通过该选项为特定的 CPU 构建 Nginx</td></tr></tbody></table><h2 id="配置-SSL-支持"><a href="#配置-SSL-支持" class="headerlink" title="配置 SSL 支持"></a>配置 SSL 支持</h2><p>对于 TLS/SSL 协议，Nginx 使用 OpenSSL 项目。有关此开源工具包的更多信息，请访问 <a href="https://www.openssl.org。你可以从操作系统或者直接从工具包的单独副本来获取对" target="_blank" rel="noopener">https://www.openssl.org。你可以从操作系统或者直接从工具包的单独副本来获取对</a> SSL 的支持。如果使用不带–with-ssl 选项的–with-http_ssl_module 或者–with-mail_ssl_module，你正在使用执行了 configure 命令的、安装在计算机上的 OpenSSL 库。如果你想要针对特定版本的 OpenSSL 进行编译，请下载该分发包，将其解压缩到一个目录中，然后将该目录的路径指定为–with-openssl 的参数。使用–with-openssl-opt 选项为 OpenSSL本身指定额外的构建选项。</p><p>例如，为了使用具有优化椭圆曲线的 OpenSSL 来构建 Nginx，您将使用如下的命令:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> ./configure --with-http_ssl_module --with-openssl=$&#123;BUILD_DIR&#125;/openssl-1.0.1p --with-openssl-opt=enable-ec_nistp_64_gcc_128</div></pre></td></tr></table></figure><h2 id="查找并安装第三方模块"><a href="#查找并安装第三方模块" class="headerlink" title="查找并安装第三方模块"></a>查找并安装第三方模块</h2><p>由于有多个开源项目，所以在 Nginx 周围就会有一个活跃的开发社区。由于 Nginx 的模块化特性，这个社区能够开发和发布模块，从而为 Nginx 提供额外的功能。它们涵盖了广泛的应用，所以着手开发自己的模块之前应该看看有什么可用模块。</p><p>安装第三方模块的过程相当简单，步骤如下。</p><p>1.定位你想要使用的模块(在 <a href="https://github.com" target="_blank" rel="noopener">https://github.com</a> 或者是 <a href="http://wiki.nginx.org/3rdPartyModules查找)。" target="_blank" rel="noopener">http://wiki.nginx.org/3rdPartyModules查找)。</a></p><p>2.下载该模块。</p><p>3.解压缩源代码安装包。</p><p>4.如果有 README 文件，那么阅读 README 文件，查看在安装中是否有依赖安装。</p><p>5.通过./configure–add-module=\<path\>选项配置使用该模块。</path\></p><p>这个过程会给你的 nginx 二进制文件与模块附加这个功能。</p><p>需要注意的是，很多第三方模块是实验性质的。因此，在将这些模块用于生产系统之前，首先要测试使用这些模块。另外请记住，Nginx 的开发版本中可能会有 API 的变化，会导致第三方模块出现问题。</p><h2 id="添加对-Lua-的支持"><a href="#添加对-Lua-的支持" class="headerlink" title="添加对 Lua 的支持"></a>添加对 Lua 的支持</h2><p>特别应该提到的是 ngx_lua 这个第三方模块，ngx_lua 模块提供了启用 Lua 的功能，而不是像 Perl 一样在配置时嵌入式脚本语言。该模块对于 perl 模块来说最大的优点就是它的无阻塞性，并与其他第三方模块紧密集成。对于它的安装说明的完整描述详见:<a href="https://github.com/openresty/lua-nginx-module#installation。我们将以这个模块为例，在下一节中介绍如何安装第三方模块。" target="_blank" rel="noopener">https://github.com/openresty/lua-nginx-module#installation。我们将以这个模块为例，在下一节中介绍如何安装第三方模块。</a></p><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>通过编译你自己的二进制文件，你可以定制 Nginx能够为你提供哪些功能。对于你来说，构建和安装软件应该不会陌生。所以，创造一个构建环境或者确保所有依赖关系都存在，这并不会花费你很多的时间。一个 Nginx 的安装应该是按照你的需要，能随时启用或禁用模块，正如你看到的，启用或者是禁用一个模块应该感到很容易。</p><p>参考资料：</p><p>《精通 Nginx》第二版</p>]]></content>
     
@@ -36,6 +59,30 @@
     </summary>
     
       <category term="Linux" scheme="http://www.maksim.website/categories/Linux/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>cookie, sessionStorage和localStorage的区别</title>
+    <link href="http://www.maksim.website/2018/01/05/3/"/>
+    <id>http://www.maksim.website/2018/01/05/3/</id>
+    <published>2018-01-04T16:00:00.000Z</published>
+    <updated>2018-01-07T10:42:39.757Z</updated>
+    
+    <content type="html"><![CDATA[<p>在HTML5出来之前，只有cookie作为本地存储的一个方法（JavaScript Web API）。</p><h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><ul><li>本身用于客户端和服务器端通信的，</li><li>但是它有本地存储的功能， 于是被“借用”</li><li>使用document.cookie = … 获取和修改即可，用起来特别麻烦</li></ul><p>缺点：</p><ul><li>存储量太小，只有4kb</li><li>所有http请求都带着，会影响获取资源的效率，所以cookie只适合保存很小的数据，如会话标识</li><li>API简单，需要封装才能用document.cookie = …</li><li><p>有效时长根据设定的过期时间而定。</p><p>​</p></li></ul><h2 id="sessionStorage-和localStorage"><a href="#sessionStorage-和localStorage" class="headerlink" title="sessionStorage 和localStorage"></a>sessionStorage 和localStorage</h2><ul><li>HTML5专门为存储而设计，因为不需要像服务端发送数据，所以最大容量5M</li><li>API简单易用：</li><li>localStorage.setItem(key, value); localStorage.getItem(key)</li><li>sessionStorage当关闭浏览器后便会被清除，localStorage则不会，即使关闭浏览器localStorage也会一直存在，直到删除</li><li>sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；localStorage 在所有同源窗口中都是共享的</li><li>在iOS Safari 隐匿模式下，localStorage.getItem会报错，建议同一使用try-catch</li><li>Web Storage 支持事件通知机制，可以将数据更新的通知发送给监听者</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在HTML5出来之前，只有cookie作为本地存储的一个方法（JavaScript Web API）。&lt;/p&gt;
+&lt;h2 id=&quot;cookie&quot;&gt;&lt;a href=&quot;#cookie&quot; class=&quot;headerlink&quot; title=&quot;cookie&quot;&gt;&lt;/a&gt;cookie&lt;/h
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.maksim.website/categories/JavaScript/"/>
     
     
   </entry>
@@ -71,33 +118,9 @@
   </entry>
   
   <entry>
-    <title>cookie, sessionStorage和localStorage的区别</title>
-    <link href="http://www.maksim.website/2018/01/05/3/"/>
-    <id>http://www.maksim.website/2018/01/05/3/</id>
-    <published>2018-01-04T16:00:00.000Z</published>
-    <updated>2018-01-07T10:42:39.757Z</updated>
-    
-    <content type="html"><![CDATA[<p>在HTML5出来之前，只有cookie作为本地存储的一个方法（JavaScript Web API）。</p><h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><ul><li>本身用于客户端和服务器端通信的，</li><li>但是它有本地存储的功能， 于是被“借用”</li><li>使用document.cookie = … 获取和修改即可，用起来特别麻烦</li></ul><p>缺点：</p><ul><li>存储量太小，只有4kb</li><li>所有http请求都带着，会影响获取资源的效率，所以cookie只适合保存很小的数据，如会话标识</li><li>API简单，需要封装才能用document.cookie = …</li><li><p>有效时长根据设定的过期时间而定。</p><p>​</p></li></ul><h2 id="sessionStorage-和localStorage"><a href="#sessionStorage-和localStorage" class="headerlink" title="sessionStorage 和localStorage"></a>sessionStorage 和localStorage</h2><ul><li>HTML5专门为存储而设计，因为不需要像服务端发送数据，所以最大容量5M</li><li>API简单易用：</li><li>localStorage.setItem(key, value); localStorage.getItem(key)</li><li>sessionStorage当关闭浏览器后便会被清除，localStorage则不会，即使关闭浏览器localStorage也会一直存在，直到删除</li><li>sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；localStorage 在所有同源窗口中都是共享的</li><li>在iOS Safari 隐匿模式下，localStorage.getItem会报错，建议同一使用try-catch</li><li>Web Storage 支持事件通知机制，可以将数据更新的通知发送给监听者</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;在HTML5出来之前，只有cookie作为本地存储的一个方法（JavaScript Web API）。&lt;/p&gt;
-&lt;h2 id=&quot;cookie&quot;&gt;&lt;a href=&quot;#cookie&quot; class=&quot;headerlink&quot; title=&quot;cookie&quot;&gt;&lt;/a&gt;cookie&lt;/h
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://www.maksim.website/categories/JavaScript/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>PHP基础手札的引用</title>
-    <link href="http://www.maksim.website/2017/10/21/cje5p4ga20024rtrddelr7a16/"/>
-    <id>http://www.maksim.website/2017/10/21/cje5p4ga20024rtrddelr7a16/</id>
+    <link href="http://www.maksim.website/2017/10/21/cje5qeepp001uv6rdlkb3zhb9/"/>
+    <id>http://www.maksim.website/2017/10/21/cje5qeepp001uv6rdlkb3zhb9/</id>
     <published>2017-10-21T10:06:24.000Z</published>
     <updated>2017-10-21T10:06:25.000Z</updated>
     
@@ -119,8 +142,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2017/10/21/cje5p4g63000drtrdhm25gyov/"/>
-    <id>http://www.maksim.website/2017/10/21/cje5p4g63000drtrdhm25gyov/</id>
+    <link href="http://www.maksim.website/2017/10/21/cje5qeeod0004v6rdyqn4a505/"/>
+    <id>http://www.maksim.website/2017/10/21/cje5qeeod0004v6rdyqn4a505/</id>
     <published>2017-10-21T09:59:26.000Z</published>
     <updated>2018-01-07T10:50:24.324Z</updated>
     
@@ -172,8 +195,8 @@
   
   <entry>
     <title>PHP 控制反转、依赖注入、依赖查找服务容器？</title>
-    <link href="http://www.maksim.website/2017/10/19/cje5p4g9l001srtrdx0yt6gfs/"/>
-    <id>http://www.maksim.website/2017/10/19/cje5p4g9l001srtrdx0yt6gfs/</id>
+    <link href="http://www.maksim.website/2017/10/19/cje5qeeps001xv6rd4o30pq8n/"/>
+    <id>http://www.maksim.website/2017/10/19/cje5qeeps001xv6rd4o30pq8n/</id>
     <published>2017-10-18T16:00:00.000Z</published>
     <updated>2017-10-22T04:09:53.000Z</updated>
     
@@ -247,8 +270,8 @@
   
   <entry>
     <title>PHP页面静态化</title>
-    <link href="http://www.maksim.website/2017/10/16/cje5p4gac002frtrdm8b2bn0u/"/>
-    <id>http://www.maksim.website/2017/10/16/cje5p4gac002frtrdm8b2bn0u/</id>
+    <link href="http://www.maksim.website/2017/10/16/cje5qeeq8002iv6rdnq8wlhjn/"/>
+    <id>http://www.maksim.website/2017/10/16/cje5qeeq8002iv6rdnq8wlhjn/</id>
     <published>2017-10-16T11:17:47.000Z</published>
     <updated>2017-10-16T11:30:35.000Z</updated>
     
@@ -264,6 +287,30 @@
       
     
     </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PHP基础手札之emtpy、isset、is_null的区别</title>
+    <link href="http://www.maksim.website/2017/10/16/2/"/>
+    <id>http://www.maksim.website/2017/10/16/2/</id>
+    <published>2017-10-15T16:00:00.000Z</published>
+    <updated>2017-10-16T01:55:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>PHP提供了3个用于测试变量值的函数，分别是isset()、empty()、is_null（从这里就可以看出PHP系统函数变量名命名的混乱，这也是一直被人诟病的地方）.这几个函数均返回布尔值，有时使用不当会造成意想不到的结果。</p><p>比如，用isset()和empty()返回的结果是相反的，但却并非一直如此。</p><p>isset()用来检测一个变量是否已声明且值不为null。只能在变量不是null时返回真。</p><p>empty()用来检测一个变量是否为空，也就是说有如下情况时返回真值：变量是一个空字符串，false，空数组,null,’’,以及被unset删除后的变量。</p><blockquote><p>在PHP5.5之后，empty()函数可以接受任意类型的表达式</p></blockquote><p>is_null()函数用来判断变量内容是否是null，即返回真值的条件仅为变量值是null，值得一提的是，is_null() 是 isset() 的反函数，区别是isset()函数可以应用到未知变量，但is_null()只能针对以声明的变量。</p><table><thead><tr><th>对比项</th><th></th><th></th><th></th></tr></thead><tbody><tr><td>变量值($var)</td><td>isset($var)</td><td>empty($var)</td><td>is_null($var)</td></tr><tr><td>“”（空字符串）</td><td>bool(true)</td><td>bool(true)</td><td>bool(false)</td></tr><tr><td>“ “(空格)</td><td>bool(true)</td><td>bool(false)</td><td>bool(false)</td></tr><tr><td>false</td><td>bool(true)</td><td>bool(true)</td><td>bool(false)</td></tr><tr><td>true</td><td>bool(true)</td><td>bool(false)</td><td>bool(false)</td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;PHP提供了3个用于测试变量值的函数，分别是isset()、empty()、is_null（从这里就可以看出PHP系统函数变量名命名的混乱，这也是一直被人诟病的地方）.这几个函数均返回布尔值，有时使用不当会造成意想不到的结果。&lt;/p&gt;
+&lt;p&gt;比如，用isset()和empt
+      
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
     
     
   </entry>
@@ -294,33 +341,9 @@
   </entry>
   
   <entry>
-    <title>PHP基础手札之emtpy、isset、is_null的区别</title>
-    <link href="http://www.maksim.website/2017/10/16/2/"/>
-    <id>http://www.maksim.website/2017/10/16/2/</id>
-    <published>2017-10-15T16:00:00.000Z</published>
-    <updated>2017-10-16T01:55:22.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>PHP提供了3个用于测试变量值的函数，分别是isset()、empty()、is_null（从这里就可以看出PHP系统函数变量名命名的混乱，这也是一直被人诟病的地方）.这几个函数均返回布尔值，有时使用不当会造成意想不到的结果。</p><p>比如，用isset()和empty()返回的结果是相反的，但却并非一直如此。</p><p>isset()用来检测一个变量是否已声明且值不为null。只能在变量不是null时返回真。</p><p>empty()用来检测一个变量是否为空，也就是说有如下情况时返回真值：变量是一个空字符串，false，空数组,null,’’,以及被unset删除后的变量。</p><blockquote><p>在PHP5.5之后，empty()函数可以接受任意类型的表达式</p></blockquote><p>is_null()函数用来判断变量内容是否是null，即返回真值的条件仅为变量值是null，值得一提的是，is_null() 是 isset() 的反函数，区别是isset()函数可以应用到未知变量，但is_null()只能针对以声明的变量。</p><table><thead><tr><th>对比项</th><th></th><th></th><th></th></tr></thead><tbody><tr><td>变量值($var)</td><td>isset($var)</td><td>empty($var)</td><td>is_null($var)</td></tr><tr><td>“”（空字符串）</td><td>bool(true)</td><td>bool(true)</td><td>bool(false)</td></tr><tr><td>“ “(空格)</td><td>bool(true)</td><td>bool(false)</td><td>bool(false)</td></tr><tr><td>false</td><td>bool(true)</td><td>bool(true)</td><td>bool(false)</td></tr><tr><td>true</td><td>bool(true)</td><td>bool(false)</td><td>bool(false)</td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></tbody></table>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;PHP提供了3个用于测试变量值的函数，分别是isset()、empty()、is_null（从这里就可以看出PHP系统函数变量名命名的混乱，这也是一直被人诟病的地方）.这几个函数均返回布尔值，有时使用不当会造成意想不到的结果。&lt;/p&gt;
-&lt;p&gt;比如，用isset()和empt
-      
-    
-    </summary>
-    
-      <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title></title>
-    <link href="http://www.maksim.website/2017/10/15/cje5p4g6o0010rtrdwn7170fu/"/>
-    <id>http://www.maksim.website/2017/10/15/cje5p4g6o0010rtrdwn7170fu/</id>
+    <link href="http://www.maksim.website/2017/10/15/cje5qeep1000uv6rd18vxftdu/"/>
+    <id>http://www.maksim.website/2017/10/15/cje5qeep1000uv6rd18vxftdu/</id>
     <published>2017-10-15T11:24:45.000Z</published>
     <updated>2017-10-15T11:52:43.000Z</updated>
     
@@ -340,8 +363,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2017/10/13/cje5p4g6v0015rtrdlk83h7rt/"/>
-    <id>http://www.maksim.website/2017/10/13/cje5p4g6v0015rtrdlk83h7rt/</id>
+    <link href="http://www.maksim.website/2017/10/13/cje5qeep2000xv6rd8j1h92fd/"/>
+    <id>http://www.maksim.website/2017/10/13/cje5qeep2000xv6rd8j1h92fd/</id>
     <published>2017-10-13T08:56:28.000Z</published>
     <updated>2018-02-27T13:04:29.467Z</updated>
     
@@ -363,8 +386,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2017/10/13/cje5p4gbf003urtrdbaxe45zu/"/>
-    <id>http://www.maksim.website/2017/10/13/cje5p4gbf003urtrdbaxe45zu/</id>
+    <link href="http://www.maksim.website/2017/10/13/cje5qeer3003vv6rde6h1zkmk/"/>
+    <id>http://www.maksim.website/2017/10/13/cje5qeer3003vv6rde6h1zkmk/</id>
     <published>2017-10-13T05:41:58.000Z</published>
     <updated>2017-10-13T05:41:58.000Z</updated>
     
@@ -378,30 +401,6 @@
       
     
     </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL常用存储引擎之MyISAM</title>
-    <link href="http://www.maksim.website/2017/10/13/2/"/>
-    <id>http://www.maksim.website/2017/10/13/2/</id>
-    <published>2017-10-12T16:00:00.000Z</published>
-    <updated>2017-10-18T13:54:04.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>MyISAM存储引擎是MySQL5.5之前版本默认的存储引擎，由于这个原因，现在还有大量的数据库在使用MyISAM的表。</p><p>同时它也是MySQL大部分系统表和临时表使用的而存储引擎，这个临时表并非是我们使用<code>CREATE TEMPORARY TABLE</code>所建立的临时表。</p><p>使用<code>CREATE TEMPORARY TABLE</code>语句创建的临时表，我们可以使用MySQL各种存储引擎的，这里所说的临时表指的是在排序、分组等操作中，当当数量超过一定大小后，由查询优化器所建立的磁盘临时表。</p><p>MyISAM存储引擎表由MYD和MYI组成。</p><p>在这里，我们建立一个myIsam的表，并且存储引擎使用了MyISAM。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`myIsam`</span> (</div><div class="line"><span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line"><span class="string">`c1`</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span></div><div class="line">)<span class="keyword">ENGINE</span>= MyISAM <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8</div></pre></td></tr></table></figure><p>下图为MyISAM在文件系统上的存储方式：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20171013110625.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>以frm为扩展名存储的文件并非是MyISAM存储引擎独有，它是用于记录表的结构。MyISAM表可以存储的记录数，一般首选治愈可用磁盘空间，或者是操作系统单个文件最大尺寸的限制。</p><p>作为MySQL最早的存储引擎之一，MyISAM有一些已经开发出来很多年的特性，可以满足用户的实际需求。</p><p><strong>加锁与并发</strong></p><ul><li>MyISAM使用的是表级锁，进行读取操作时会对需要读到的所有表加共享锁，写入时则会对表加排他锁。但是在表有读取查询的同时，可以往表中插入新的记录，这也被称之为并发插入，CONCURRENT INSERT</li></ul><p><strong>修复</strong> </p><ul><li>对于MyISAM表，MySQL可以手工或者自动执行检查和修复操作，但是此处的修复和事务恢复以及崩溃恢复并不是一个概念，执行表的修复可能导致数据的丢失，而且修复操作时非常慢的。可以通过CHECK TABLE table检查表的错误，如果存在错误可以通过REPAIR TABLE table进行修复。在MySQL服务器处于<strong>关闭状态</strong>时，可以通过myisamcheck命令工具进行检查和恢复，切记是处于<strong>关闭状态</strong>。</li></ul><p><strong>索引</strong></p><ul><li>对于MyISAM表，即使是BLOG和TEXT等长字段，也可以基于前500个字符创建索引，而且MyISAM也支持全文索引。</li><li>延迟更新索引（Delayed Key Write）创建MyISAM表的时候，如果制定了DELAY_KEY_WRITE选项，在每次修改执行完成时，不会立即将修改的索引数据写入磁盘，而是会写到内存中的键缓冲区(in-memory key buffer)，只有在清理键缓冲区或者关闭表的时候才会将对应的索引块写入磁盘。这种方式可以极大的提升写入性能，但是在数据库或者主机崩溃的时候会造成索引损坏，需要执行修复操作。此属性可以再全局设置，也可以为单个表设置。</li></ul><p><strong>压缩</strong></p><ul><li>如果表在创建并导入数据以后，不会再进行修改操作，可以使用myisampa对表进行压缩（打包）。压缩表不能进行修改，除非解除压缩，压缩表可以极大地减少磁盘空间占用，因此也可以减少磁盘I/O，从而提升性能，压缩表支持索引，但索引也是只读的。</li><li>压缩时表中的记录是独立压缩的，所以读取单行的时候不需要去解压整个表。</li></ul><h4 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h4><ul><li>版本&lt;MySYQL5.0时默认表大小为4G，如存储大表则需要修改MAX_Rows和AVG_ROW_LENGTH这两个参数，调整后表会进行重建，这需要很长的时间。</li><li>版本 &gt; 5.0时默认支持256TB </li></ul><p>适用场景：</p><ul><li>非事务性应用</li><li>只读类应用</li><li>空间类应用（在5.7之前，MyISAM是唯一支持空间函数的存储引擎）</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;MyISAM存储引擎是MySQL5.5之前版本默认的存储引擎，由于这个原因，现在还有大量的数据库在使用MyISAM的表。&lt;/p&gt;
-&lt;p&gt;同时它也是MySQL大部分系统表和临时表使用的而存储引擎，这个临时表并非是我们使用&lt;code&gt;CREATE TEMPORARY TABLE
-      
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
     
     
   </entry>
@@ -423,6 +422,30 @@
 &lt;figure class=&quot;image-bubble&quot;&gt;
                 &lt;div class=&quot;img-lightbox&quot;&gt;
            
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL常用存储引擎之MyISAM</title>
+    <link href="http://www.maksim.website/2017/10/13/2/"/>
+    <id>http://www.maksim.website/2017/10/13/2/</id>
+    <published>2017-10-12T16:00:00.000Z</published>
+    <updated>2017-10-18T13:54:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>MyISAM存储引擎是MySQL5.5之前版本默认的存储引擎，由于这个原因，现在还有大量的数据库在使用MyISAM的表。</p><p>同时它也是MySQL大部分系统表和临时表使用的而存储引擎，这个临时表并非是我们使用<code>CREATE TEMPORARY TABLE</code>所建立的临时表。</p><p>使用<code>CREATE TEMPORARY TABLE</code>语句创建的临时表，我们可以使用MySQL各种存储引擎的，这里所说的临时表指的是在排序、分组等操作中，当当数量超过一定大小后，由查询优化器所建立的磁盘临时表。</p><p>MyISAM存储引擎表由MYD和MYI组成。</p><p>在这里，我们建立一个myIsam的表，并且存储引擎使用了MyISAM。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`myIsam`</span> (</div><div class="line"><span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line"><span class="string">`c1`</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span></div><div class="line">)<span class="keyword">ENGINE</span>= MyISAM <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8</div></pre></td></tr></table></figure><p>下图为MyISAM在文件系统上的存储方式：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20171013110625.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>以frm为扩展名存储的文件并非是MyISAM存储引擎独有，它是用于记录表的结构。MyISAM表可以存储的记录数，一般首选治愈可用磁盘空间，或者是操作系统单个文件最大尺寸的限制。</p><p>作为MySQL最早的存储引擎之一，MyISAM有一些已经开发出来很多年的特性，可以满足用户的实际需求。</p><p><strong>加锁与并发</strong></p><ul><li>MyISAM使用的是表级锁，进行读取操作时会对需要读到的所有表加共享锁，写入时则会对表加排他锁。但是在表有读取查询的同时，可以往表中插入新的记录，这也被称之为并发插入，CONCURRENT INSERT</li></ul><p><strong>修复</strong> </p><ul><li>对于MyISAM表，MySQL可以手工或者自动执行检查和修复操作，但是此处的修复和事务恢复以及崩溃恢复并不是一个概念，执行表的修复可能导致数据的丢失，而且修复操作时非常慢的。可以通过CHECK TABLE table检查表的错误，如果存在错误可以通过REPAIR TABLE table进行修复。在MySQL服务器处于<strong>关闭状态</strong>时，可以通过myisamcheck命令工具进行检查和恢复，切记是处于<strong>关闭状态</strong>。</li></ul><p><strong>索引</strong></p><ul><li>对于MyISAM表，即使是BLOG和TEXT等长字段，也可以基于前500个字符创建索引，而且MyISAM也支持全文索引。</li><li>延迟更新索引（Delayed Key Write）创建MyISAM表的时候，如果制定了DELAY_KEY_WRITE选项，在每次修改执行完成时，不会立即将修改的索引数据写入磁盘，而是会写到内存中的键缓冲区(in-memory key buffer)，只有在清理键缓冲区或者关闭表的时候才会将对应的索引块写入磁盘。这种方式可以极大的提升写入性能，但是在数据库或者主机崩溃的时候会造成索引损坏，需要执行修复操作。此属性可以再全局设置，也可以为单个表设置。</li></ul><p><strong>压缩</strong></p><ul><li>如果表在创建并导入数据以后，不会再进行修改操作，可以使用myisampa对表进行压缩（打包）。压缩表不能进行修改，除非解除压缩，压缩表可以极大地减少磁盘空间占用，因此也可以减少磁盘I/O，从而提升性能，压缩表支持索引，但索引也是只读的。</li><li>压缩时表中的记录是独立压缩的，所以读取单行的时候不需要去解压整个表。</li></ul><h4 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h4><ul><li>版本&lt;MySYQL5.0时默认表大小为4G，如存储大表则需要修改MAX_Rows和AVG_ROW_LENGTH这两个参数，调整后表会进行重建，这需要很长的时间。</li><li>版本 &gt; 5.0时默认支持256TB </li></ul><p>适用场景：</p><ul><li>非事务性应用</li><li>只读类应用</li><li>空间类应用（在5.7之前，MyISAM是唯一支持空间函数的存储引擎）</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;MyISAM存储引擎是MySQL5.5之前版本默认的存储引擎，由于这个原因，现在还有大量的数据库在使用MyISAM的表。&lt;/p&gt;
+&lt;p&gt;同时它也是MySQL大部分系统表和临时表使用的而存储引擎，这个临时表并非是我们使用&lt;code&gt;CREATE TEMPORARY TABLE
       
     
     </summary>
@@ -491,31 +514,6 @@
     
       <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>大表会对数据库带来的那些问题！</title>
-    <link href="http://www.maksim.website/2017/09/18/1/"/>
-    <id>http://www.maksim.website/2017/09/18/1/</id>
-    <published>2017-09-17T16:00:00.000Z</published>
-    <updated>2017-10-18T12:45:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="什么样的表才可以被称之为大表"><a href="#什么样的表才可以被称之为大表" class="headerlink" title="什么样的表才可以被称之为大表?"></a>什么样的表才可以被称之为大表?</h3><p>所谓的大表都是相对而言的，对不同的存储引擎都有不同的限制，Innodb并没有定义每张表的最大行数，只要物理磁盘允许，我们就可以将数据存入数据库中。</p><p>在实际使用过程中，当数据量超过千万行之后，就会对数据库的性能造成影响。</p><ul><li>记录行数巨大，单表超过前往行</li><li>表数据文件巨大，表数据文件超过10G </li></ul><p>当然这也是相对的，也要跟我们的业务场景，磁盘 IO情况而定，如果这个表只是用来记录日志的，只有INSERT、SELECT 操作，而几乎没有 UPDATE 和 DELETE的操作，就算是超过了千万行，对我们的业务操作也没有太大的影响。</p><p>但是也有例外的情况，如果我们要对超过10G 的日志表追加列，如果这个时候，这个表被同步到N台服务器上后，就会变成一场灾难。</p><h4 id="大表对查询的影响"><a href="#大表对查询的影响" class="headerlink" title="大表对查询的影响"></a>大表对查询的影响</h4><p>慢查询：很难在一定的时间内过滤出所需要的重要数据。</p><h4 id="大表对-DDL-操作的影响："><a href="#大表对-DDL-操作的影响：" class="headerlink" title="大表对 DDL 操作的影响："></a>大表对 DDL 操作的影响：</h4><p>建立索引需要很长的时间。</p><p>风险： </p><ul><li>MYSQL 版本 &lt; 5.5 建立索引会锁表</li><li>MYSQL 版本 &gt;= 5.5 虽然不会锁表但会引起长时间的主从延迟</li></ul><h4 id="修改表结构需要长时间锁表"><a href="#修改表结构需要长时间锁表" class="headerlink" title="修改表结构需要长时间锁表"></a>修改表结构需要长时间锁表</h4><p>风险： 会造成长时间的主从延迟，由于主从复制的机制都是现在主库上完成操作，再传输到从库上，在执行相同操作，如果在主库上需要使用480s 的时间来完成 DDL 操作，在从服务器上至少也需要480s。</p><h4 id="影响正常数据库操作。"><a href="#影响正常数据库操作。" class="headerlink" title="影响正常数据库操作。"></a>影响正常数据库操作。</h4><p>进行 DDL 时会被锁表，这样一来就会造成堵塞，在这一个阶段，数据库连接数会被激增，一旦数据库连接数被沾满，前台就会出现500错误。</p><h3 id="如何处理数据库中的大表"><a href="#如何处理数据库中的大表" class="headerlink" title="如何处理数据库中的大表"></a>如何处理数据库中的大表</h3><h4 id="分库分表把一张大表分成多个小表"><a href="#分库分表把一张大表分成多个小表" class="headerlink" title="分库分表把一张大表分成多个小表"></a>分库分表把一张大表分成多个小表</h4><p>难点： </p><p><strong>1.分表主键的选择。</strong></p><p>这个往往根据业务的不同，有多种分表的方式，比如对于订单表来说，可以根据订单号分表，也可以根据供应商和地区域来进行分表，选择合适的分区键对于后期的分表是十分重要的。</p><p><strong>2.分表后跨分区数据的查询和统计</strong></p><p>不要认为选择了好的分区键后就不需要跨分区进行查询了，好的分区键只能尽量避免跨分区查询。</p><h4 id="大表的历史数据归档"><a href="#大表的历史数据归档" class="headerlink" title="大表的历史数据归档"></a>大表的历史数据归档</h4><p>使用这种方法，可以减少对前后端业务的影响，因为表结构并没有发生变化，一切的程序都可以正常的使用，对于历史订单可以开放一个接口。</p><p>而且归档表可以跟正在使用的表放在不同的服务器上，一方面减少了热数据所在服务器的表容量，同时也减少了服务器的查询压力，对于后端业务而言，应该是已经完成相关操作和统计的历史数据。</p><p>难点：</p><ol><li><p>归档时间点的选择。</p></li><li><p>如何进行归档操作，对于大表的增删改查都要十分的小心，既然我们要归档，就要把要归档的数据从数据库中移除，从一个上亿行的数据表中移出上百万行的时候，就要注意方式了，轻则会产生主从延迟，严重会产生大量的阻塞。</p></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;什么样的表才可以被称之为大表&quot;&gt;&lt;a href=&quot;#什么样的表才可以被称之为大表&quot; class=&quot;headerlink&quot; title=&quot;什么样的表才可以被称之为大表?&quot;&gt;&lt;/a&gt;什么样的表才可以被称之为大表?&lt;/h3&gt;&lt;p&gt;所谓的大表都是相对而言的，对不同的存储引
-      
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
-    
-    
-      <category term="MySQL" scheme="http://www.maksim.website/tags/MySQL/"/>
     
   </entry>
   

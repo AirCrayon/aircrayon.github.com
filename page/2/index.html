@@ -160,15 +160,13 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-PHP基础手札之省略结束标签"
+            <article id="post-PHP静态化页面"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-10-16 00:00:00" datetime="2017-10-15T16:00:00.000Z"  itemprop="datePublished">2017-10-16</time>
+        <time class="post-time" title="2017-10-16 19:17:47" datetime="2017-10-16T11:17:47.000Z"  itemprop="datePublished">2017-10-16</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP/">PHP</a></li></ul>
-
 
 
     </div>
@@ -178,7 +176,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/16/1/">PHP基础解惑：省略结束标签</a>
+      <a class="post-title-link" href="/2017/10/16/cje5qeeq8002iv6rdnq8wlhjn/">PHP页面静态化</a>
     </h3>
   
 
@@ -188,20 +186,14 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        对于PHP编译器来说，脚本的结束标签?&gt;是可选的，在写程序时你可以忽略它。你或许碰见过：在使用include()、require()或输入输出缓冲函数时，页面顶部有时会多空行或者出现“header had send”之类的错误信息，这类问题与结束标签有关。
-省略结束标签适合纯PHP文件。如果是PHP与HTML混合开发，则不可省略。
-忽略结束标签不仅能少些两个字符，而且可以使得我们开发的...
+        关于页面要了解静态化页面，首先我们就要知道什么是页面？
+一、静态web页面：
+1、在静态Web程序中，客户端使用Web浏览器（IE、FireFox等）经过网络(Network)连接到服务器上，使用HTTP协议发起一个请求（Request），告诉服务器我现在需要得到哪个页面，所有的请求交给Web服务器，之后WEB服务器根据用户的需要，从文件系统（存放了所有静态页面的磁盘）取出内容。之后通过We...
     
 
-        <a href="/2017/10/16/1/" class="post-more waves-effect waves-button">
+        <a href="/2017/10/16/cje5qeeq8002iv6rdnq8wlhjn/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP基础/">PHP基础</a></li></ul>
-
     </div>
     
 </article>
@@ -252,6 +244,55 @@ isset()用来检测一个变量是否已声明且值不为null。只能在变量
         </li>
     
         <li class="post-list-item fade">
+            <article id="post-PHP基础手札之省略结束标签"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-10-16 00:00:00" datetime="2017-10-15T16:00:00.000Z"  itemprop="datePublished">2017-10-16</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP/">PHP</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/10/16/1/">PHP基础解惑：省略结束标签</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        对于PHP编译器来说，脚本的结束标签?&gt;是可选的，在写程序时你可以忽略它。你或许碰见过：在使用include()、require()或输入输出缓冲函数时，页面顶部有时会多空行或者出现“header had send”之类的错误信息，这类问题与结束标签有关。
+省略结束标签适合纯PHP文件。如果是PHP与HTML混合开发，则不可省略。
+忽略结束标签不仅能少些两个字符，而且可以使得我们开发的...
+    
+
+        <a href="/2017/10/16/1/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP基础/">PHP基础</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-MySQL常用存储引擎之Innodb"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -268,7 +309,7 @@ isset()用来检测一个变量是否已声明且值不为null。只能在变量
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/15/cje5p4g6o0010rtrdwn7170fu/">No title</a>
+      <a class="post-title-link" href="/2017/10/15/cje5qeep1000uv6rd18vxftdu/">No title</a>
     </h3>
   
 
@@ -282,7 +323,7 @@ isset()用来检测一个变量是否已声明且值不为null。只能在变量
 和 MyISAM 存储引擎不同，InnoDB是事务型引擎，也是最重要、使用最广泛的存储引擎。它被设计用来处理大量的短期（short-lived）事务，短期事务大部分情况下是正常提交的，很少会被回滚。InnoDB 的性能和自动崩溃恢复特性，使得它在非实物型存储...
     
 
-        <a href="/2017/10/15/cje5p4g6o0010rtrdwn7170fu/" class="post-more waves-effect waves-button">
+        <a href="/2017/10/15/cje5qeep1000uv6rd18vxftdu/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -308,7 +349,7 @@ isset()用来检测一个变量是否已声明且值不为null。只能在变量
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/13/cje5p4g6v0015rtrdlk83h7rt/">No title</a>
+      <a class="post-title-link" href="/2017/10/13/cje5qeep2000xv6rd8j1h92fd/">No title</a>
     </h3>
   
 
@@ -324,7 +365,7 @@ id:1人们经常问，“我的服务器有32G内存，12核CPU，怎样配置�
 MySQL有大量可以修改的参数——但是不应该随意去修改。通常只需要把基本的配置正确（大部分情况下至于很少的一些参...
     
 
-        <a href="/2017/10/13/cje5p4g6v0015rtrdlk83h7rt/" class="post-more waves-effect waves-button">
+        <a href="/2017/10/13/cje5qeep2000xv6rd8j1h92fd/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -350,7 +391,7 @@ MySQL有大量可以修改的参数——但是不应该随意去修改。通常
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/13/cje5p4gbf003urtrdbaxe45zu/">No title</a>
+      <a class="post-title-link" href="/2017/10/13/cje5qeer3003vv6rde6h1zkmk/">No title</a>
     </h3>
   
 
@@ -372,50 +413,7 @@ MySQL有大量可以修改的参数——但是不应该随意去修改。通常
 数据总量往往需要业务方提供一个一到两年的数据总量，这是因...
     
 
-        <a href="/2017/10/13/cje5p4gbf003urtrdbaxe45zu/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-MyISAM"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-10-13 00:00:00" datetime="2017-10-12T16:00:00.000Z"  itemprop="datePublished">2017-10-13</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/MySQL/">MySQL</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/13/2/">MySQL常用存储引擎之MyISAM</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        MyISAM存储引擎是MySQL5.5之前版本默认的存储引擎，由于这个原因，现在还有大量的数据库在使用MyISAM的表。
-同时它也是MySQL大部分系统表和临时表使用的而存储引擎，这个临时表并非是我们使用CREATE TEMPORARY TABLE所建立的临时表。
-使用CREATE TEMPORARY TABLE语句创建的临时表，我们可以使用MySQL各种存储引擎的，这里所说的临时表指的是在...
-    
-
-        <a href="/2017/10/13/2/" class="post-more waves-effect waves-button">
+        <a href="/2017/10/13/cje5qeer3003vv6rde6h1zkmk/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -465,6 +463,49 @@ MySQL有大量可以修改的参数——但是不应该随意去修改。通常
     
 
         <a href="/2017/10/13/1/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-MyISAM"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-10-13 00:00:00" datetime="2017-10-12T16:00:00.000Z"  itemprop="datePublished">2017-10-13</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/MySQL/">MySQL</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/10/13/2/">MySQL常用存储引擎之MyISAM</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        MyISAM存储引擎是MySQL5.5之前版本默认的存储引擎，由于这个原因，现在还有大量的数据库在使用MyISAM的表。
+同时它也是MySQL大部分系统表和临时表使用的而存储引擎，这个临时表并非是我们使用CREATE TEMPORARY TABLE所建立的临时表。
+使用CREATE TEMPORARY TABLE语句创建的临时表，我们可以使用MySQL各种存储引擎的，这里所说的临时表指的是在...
+    
+
+        <a href="/2017/10/13/2/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -574,59 +615,6 @@ Linux
         <a href="/2017/10/10/2/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-什么样的表才可以被称之为大表"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-09-18 00:00:00" datetime="2017-09-17T16:00:00.000Z"  itemprop="datePublished">2017-09-18</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/MySQL/">MySQL</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/09/18/1/">大表会对数据库带来的那些问题！</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        什么样的表才可以被称之为大表?所谓的大表都是相对而言的，对不同的存储引擎都有不同的限制，Innodb并没有定义每张表的最大行数，只要物理磁盘允许，我们就可以将数据存入数据库中。
-在实际使用过程中，当数据量超过千万行之后，就会对数据库的性能造成影响。
-
-记录行数巨大，单表超过前往行
-表数据文件巨大，表数据文件超过10G 
-
-当然这也是相对的，也要跟我们的业务场景，磁盘 IO情况而定，如果这个表...
-    
-
-        <a href="/2017/09/18/1/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
-
     </div>
     
 </article>
