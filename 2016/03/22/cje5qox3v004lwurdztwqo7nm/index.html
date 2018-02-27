@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>iOS多线程 | Maksim&#39;s Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="iOS">
+    <meta name="description" content="简介多线程是所有程序员都应该知道的一个概念，因为当一个程序开始运行，进程就已经开启了！ 多线程基本概念进程(process)和文件(files)是UNIX/Linux操作系统最基本的抽象。进程是处于执行期的程序和它所包含的资源的综合，也就是说一个进程就是处于执行期的程序。一个线程（thread）就是运行在一个程序上下文中的一个逻辑刘，不难看出，线程是进程中最基本的活动对象。  在软件工程中，上下文">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS多线程">
+<meta property="og:url" content="http://www.maksim.website/2016/03/22/cje5qox3v004lwurdztwqo7nm/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="简介多线程是所有程序员都应该知道的一个概念，因为当一个程序开始运行，进程就已经开启了！ 多线程基本概念进程(process)和文件(files)是UNIX/Linux操作系统最基本的抽象。进程是处于执行期的程序和它所包含的资源的综合，也就是说一个进程就是处于执行期的程序。一个线程（thread）就是运行在一个程序上下文中的一个逻辑刘，不难看出，线程是进程中最基本的活动对象。  在软件工程中，上下文">
+<meta property="og:updated_time" content="2017-07-17T05:55:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS多线程">
+<meta name="twitter:description" content="简介多线程是所有程序员都应该知道的一个概念，因为当一个程序开始运行，进程就已经开启了！ 多线程基本概念进程(process)和文件(files)是UNIX/Linux操作系统最基本的抽象。进程是处于执行期的程序和它所包含的资源的综合，也就是说一个进程就是处于执行期的程序。一个线程（thread）就是运行在一个程序上下文中的一个逻辑刘，不难看出，线程是进程中最基本的活动对象。  在软件工程中，上下文">
+    
+        <link rel="alternate" type="application/atom+xml" title="Maksim&#39;s Website" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Maksim</h5>
+          <a href="mailto:aircrayon@qq.com" title="aircrayon@qq.com" class="mail">aircrayon@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/aircrayon" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/619946234" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于Maksim
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">iOS多线程</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">iOS多线程</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-03-22T08:05:19.000Z" itemprop="datePublished" class="page-time">
+  2016-03-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Objective-C/">Objective-C</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多线程基本概念"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">多线程基本概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多线程的优缺点"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">多线程的优缺点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多线程的优点"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">多线程的优点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多线程的缺点"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">多线程的缺点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多线程在iOS开发中的应用"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">多线程在iOS开发中的应用</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Pthread"><span class="post-toc-number">2.</span> <span class="post-toc-text">Pthread</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Pthread的基本使用"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Pthread的基本使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#语法规则"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">语法规则</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#创建线程"><span class="post-toc-number">2.1.1.1.</span> <span class="post-toc-text">创建线程</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#设置线程属性"><span class="post-toc-number">2.1.1.2.</span> <span class="post-toc-text">设置线程属性</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#调度策略"><span class="post-toc-number">2.1.1.3.</span> <span class="post-toc-text">调度策略</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#NSThread"><span class="post-toc-number">3.</span> <span class="post-toc-text">NSThread</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简介-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#NSThread的初始化"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">NSThread的初始化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#动态方法"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">动态方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#静态方法"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">静态方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#隐式创建线程的方法"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">隐式创建线程的方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取当前线程"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">获取当前线程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取主线程"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">获取主线程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#暂停当前线程"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">暂停当前线程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程间的通信"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">线程间的通信</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优缺点"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">优缺点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#NSOperation"><span class="post-toc-number">4.</span> <span class="post-toc-text">NSOperation</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#NSOperation的子类"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">NSOperation的子类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#NSInvocationOperation"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">NSInvocationOperation</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#NSBlockOperation"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">NSBlockOperation</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#NSOperationQueue"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">NSOperationQueue</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最大并发数"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">最大并发数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#队列的取消-暂停-回复"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">队列的取消,暂停,回复</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#操作依赖"><span class="post-toc-number">4.7.</span> <span class="post-toc-text">操作依赖</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#操作监听"><span class="post-toc-number">4.8.</span> <span class="post-toc-text">操作监听</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自定义NSOperation"><span class="post-toc-number">4.9.</span> <span class="post-toc-text">自定义NSOperation</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#GCD"><span class="post-toc-number">5.</span> <span class="post-toc-text">GCD</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简介-2"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">简介</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-多线程-nsoperation"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">iOS多线程</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-03-22 16:05:19" datetime="2016-03-22T08:05:19.000Z"  itemprop="datePublished">2016-03-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Objective-C/">Objective-C</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>多线程是所有程序员都应该知道的一个概念，因为当一个程序开始运行，进程就已经开启了！</p>
+<h3 id="多线程基本概念"><a href="#多线程基本概念" class="headerlink" title="多线程基本概念"></a>多线程基本概念</h3><p>进程(process)和文件(files)是UNIX/Linux操作系统最基本的抽象。进程是处于执行期的程序和它所包含的资源的综合，也就是说一个进程就是处于执行期的程序。一个线程（thread）就是运行在一个程序上下文中的一个逻辑刘，不难看出，线程是进程中最基本的活动对象。</p>
+<blockquote>
+<p>在软件工程中，上下文是一种属性的有序序列，它们为主流在环境内的对象定义环境，在对象的激活过程中创建上下文，对象呗配置为要求某些自动服务，如同步、事务、实时激活、安全性等等。又比如计算机技术中，对象鱼进程而言，上下文就是进程执行时候的环境，具体来就是各个变量和数据，包括所有的寄存器变量、进程打开的文件、内存信息等。</p>
+</blockquote>
+<p>在传统系统中，一个进程只包含一个线程。但是在现代系统中，润徐一个进程里面可以同时运行多个县城，这类程序被称之为多线程程序。所有的程序都有一个主线程（main thread，在iOS开发中，主线程主要用于UI呈现，要将耗时操作放到其他线程之中，否则UI界面会被卡死），主直选成是进程的控制流或者执行线程在多线程程序中，主线可以创建一个活多个对等线程（peer thread），从这个时间点开始，这些线程就开始兵法执行，主线程和对等线程的区别仅在于主线程总是进程中第一个运行的线程。从某种程度上看，线程可以看做是轻量级的进程（lightweight process）。</p>
+<p>每个程序都拥有独立的线程上下文（thread context），线程ID（Thread ID，TID），程序计数器（PC），线程栈（stack），一组寄存器（register）和条件码，其中内核正式通过线程ID（TID）来识别线程，进行线程调度的。</p>
+<p>上面的内容是否晦涩难懂，那么我们看一看百度百科是如何解释多线程的：</p>
+<p>在百度百科中，多线程是指软件或者硬件上实现多个线程并发执行的技术。具有多线程能力的计算机因有硬件支持而能够在同一时间执行多余一个线程，今儿提高整体处理性能。就这样的一句话就解释了什么是线程和线程的作用，就是为了提高程序的执行效率，能够在同一时间段执行多个任务。</p>
+<p>这样一来是否就容易理解了，其实每一个软件都是一个进程，每个进程中包含一个到多个的线程，我们在window有的时候程序卡死，我们使用任务管理器结束程序的时候就是杀死那个进程。进程也可能是整个程序或者是部分程序的动态执行，线程是一组指令的集合，或者是程序的特殊段，它可以在程序里面单独执行，也可以把它理解成为代码运行的上下文，所以线程基本上是轻量级的进程，它负责在单个程序里执行多任务。通常由操作系统负责多个线程的调度和执行。</p>
+<p>线程是程序中一个单一的顺序控制流程，在单个程序中同时运行多个线程完成不同的工作，成为多线程。</p>
+<p>线程和进程的主要区别在于子进程和父进程有不同的代码和数据空间，而多个线程则共享数据空间，每个线程有自己的执行堆栈和程序计数器为其知心上下文，多线程主要是为了节省CPU时间，发挥利用，根据具体情况而定。线程的运行需要使用计算机的内存资源和CPU。</p>
+<p>到了这里你应该已经知道了什么是多线程了，首先让我们来整理一下然后再进行进行学习。</p>
+<ol>
+<li>进程:就是指在系统中运行的一个应用程序，每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间中</li>
+<li>线程:一个进程要执行任务，必须得有线程（每一个进程只要有一条线程），一个进程的所有任务都是放在线程中完成的<ul>
+<li>线程的串行：一个线程中执行的任务是串行的，如果在一个线程中赤星多个任务，只能一个一个的按照顺序执行</li>
+</ul>
+</li>
+<li>多线程：一个进程中可以开启多条线程，每条线程可以并行（同时），执行不同的任务。</li>
+</ol>
+<h3 id="多线程的优缺点"><a href="#多线程的优缺点" class="headerlink" title="多线程的优缺点"></a>多线程的优缺点</h3><h4 id="多线程的优点"><a href="#多线程的优点" class="headerlink" title="多线程的优点"></a>多线程的优点</h4><ol>
+<li>能适当提高程序的执行效率</li>
+<li>能适当提高资源利用率（CPU、内存利用率）</li>
+</ol>
+<h4 id="多线程的缺点"><a href="#多线程的缺点" class="headerlink" title="多线程的缺点"></a>多线程的缺点</h4><ol>
+<li>开启线程需要占用一定的内存空间（默认情况下，主线程占用1M，子线程占用512KB），如果开启大量的线程，会占用大量的内存空间，降低程序的性能</li>
+<li>线程越多，CPU在调度线程上的开销就越大</li>
+<li>程序设计更加复杂：比如线程之间的通信、多线程的数据共享</li>
+</ol>
+<h4 id="多线程在iOS开发中的应用"><a href="#多线程在iOS开发中的应用" class="headerlink" title="多线程在iOS开发中的应用"></a>多线程在iOS开发中的应用</h4><p>主线程:一个iOS程序运行后，默认会开启1条线程，称为“主线程”或“UI线程”<br>主线程的主要作用<br>显示、刷新UI界面<br>处理UI事件（比如点击事件、滚动事件、拖拽事件等）<br>主线程的使用注意:别将比较耗时的操作放到主线程中。<br>耗时操作会卡住主线程，严重影响UI的流畅度，给用户一种“卡”的坏体验</p>
+<h2 id="Pthread"><a href="#Pthread" class="headerlink" title="Pthread"></a>Pthread</h2><p>POSIX线程（POSIX threads）简称Pthreads，是线程的POSIX标准。该标准定义了创建和操纵线程的一套API，在类Unix系统中，都是用Pthreads作为系统的线程。在这里只讲一下其基本使用，因为在日常的开发之中并不是很常用这种方式进行多线程的开发。</p>
+<h3 id="Pthread的基本使用"><a href="#Pthread的基本使用" class="headerlink" title="Pthread的基本使用"></a>Pthread的基本使用</h3><p>由于Pthreads是使用C语言进行开发的，所以其使用都是C语法。</p>
+<h4 id="语法规则"><a href="#语法规则" class="headerlink" title="语法规则"></a>语法规则</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pthread_create(pthread_t *thread,pthread_attr_t * attr,void*(*start_routine)(void*),void*arg);</div></pre></td></tr></table></figure>
+<h5 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h5><p>thread:返回创建的线程ID</p>
+<p>attr:线程属性，调度策略、优先级等都在这里设置，如果为NULL则标识默认属性</p>
+<p>start_rountine:线程入口函数，可以返回一个void*类型的返回值，该返回值可由pthread_join()捕获<br>arg:传给start_rountine的参数，可以为NULL</p>
+<h5 id="设置线程属性"><a href="#设置线程属性" class="headerlink" title="设置线程属性"></a>设置线程属性</h5><p>线程属性通过attr进行设置<br>设置与查询attr结构为pthread_attr_get<del>()与pthread_attr_set</del>()两个系列函数，也可以在创建时通过pthread_create参数参数，有些必须在线程创建时进行设置比如跳读策略。</p>
+<h5 id="调度策略"><a href="#调度策略" class="headerlink" title="调度策略"></a>调度策略</h5><p>POSIX定义一种优先级调度模型，此模型确定任何两个线程相对于对方的重要程度。当两个线程同时准备就绪的时候，系统就会自动选择具有最高优先级的线程。</p>
+<p>SCHED_OTHER：非实时、正常<br>SCHED_RR：实时、轮询法<br>SCHED_FIFO：实时、先入先出，与vxworks的调度机制一致</p>
+<p>例程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pthread_attr_t attr;</div><div class="line">pthread_attr_init(&amp;attr);</div><div class="line">pthread_attr_setschedpolicy(&amp;attr, SCHED_FIFO);//sched_policy</div></pre></td></tr></table></figure>
+<h2 id="NSThread"><a href="#NSThread" class="headerlink" title="NSThread"></a>NSThread</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>NSThread 是 Objective-C 对 pthread 的一个封装。通过封装，在 Cocoa 环境中，可以让代码看起来更加亲切,通过NSThread这个API我们可以实现简单的多线程编程,但需要管理线程的声明周期、同步、加锁等问题，这样会导致一定的性能开销，当我们进行多线程开发的时候，并不推荐此方法。</p>
+<h3 id="NSThread的初始化"><a href="#NSThread的初始化" class="headerlink" title="NSThread的初始化"></a>NSThread的初始化</h3><h4 id="动态方法"><a href="#动态方法" class="headerlink" title="动态方法"></a>动态方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (id)initWithTarget:(id)target selector:(SEL)selector object:(id)argument;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 初始化线程</div><div class="line">NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run) object:nil];</div><div class="line">// 设置线程的优先级(0.0 - 1.0，1.0最高级)</div><div class="line">thread.threadPriority = 1;</div><div class="line">// 开启线程</div><div class="line">[thread start];</div><div class="line">参数解析：</div><div class="line">selector ：线程执行的方法，这个selector最多只能接收一个参数</div><div class="line">target ：selector消息发送的对象</div><div class="line">argument : 传给selector的唯一参数，也可以是nil</div></pre></td></tr></table></figure>
+<h4 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ (void)detachNewThreadSelector:(SEL)selector toTarget:(id)target withObject:(id)argument;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[NSThread detachNewThreadSelector:@selector(run) toTarget:self withObject:nil];</div><div class="line">// 调用完毕后，会马上创建并开启新线程</div></pre></td></tr></table></figure>
+<h4 id="隐式创建线程的方法"><a href="#隐式创建线程的方法" class="headerlink" title="隐式创建线程的方法"></a>隐式创建线程的方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self performSelectorInBackground:@selector(run) withObject:nil];</div></pre></td></tr></table></figure>
+<h3 id="获取当前线程"><a href="#获取当前线程" class="headerlink" title="获取当前线程"></a>获取当前线程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSThread *current = [NSThread currentThread];</div></pre></td></tr></table></figure>
+<h3 id="获取主线程"><a href="#获取主线程" class="headerlink" title="获取主线程"></a>获取主线程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSThread *main = [NSThread mainThread];</div></pre></td></tr></table></figure>
+<h3 id="暂停当前线程"><a href="#暂停当前线程" class="headerlink" title="暂停当前线程"></a>暂停当前线程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 暂停2s</div><div class="line">[NSThread sleepForTimeInterval:2];</div><div class="line"></div><div class="line">// 或者</div><div class="line">NSDate *date = [NSDate dateWithTimeInterval:2 sinceDate:[NSDate date]];</div><div class="line">[NSThread sleepUntilDate:date];</div></pre></td></tr></table></figure>
+<h3 id="线程间的通信"><a href="#线程间的通信" class="headerlink" title="线程间的通信"></a>线程间的通信</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">1.在指定线程上执行操作</div><div class="line">[self performSelector:@selector(run) onThread:thread withObject:nil waitUntilDone:YES];</div><div class="line"></div><div class="line">2.在主线程上执行操作</div><div class="line">[self performSelectorOnMainThread:@selector(run) withObject:nil waitUntilDone:YES];</div><div class="line"></div><div class="line">3.在当前线程执行操作</div><div class="line">[self performSelector:@selector(run) withObject:nil];</div></pre></td></tr></table></figure>
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>1.优点：NSThread比其他两种多线程方案较轻量级，更直观地控制线程对象<br>2.缺点：需要自己管理线程的生命周期，线程同步。线程同步对数据的加锁会有一定的系统开销</p>
+<h2 id="NSOperation"><a href="#NSOperation" class="headerlink" title="NSOperation"></a>NSOperation</h2><p>NSOperation的作用</p>
+<ul>
+<li>配合使用NSOperation和NSOperationQueue实现多线程编程</li>
+<li>NSOperation和NSOperationQueue实现多线程的具体步骤<ol>
+<li>先将需要执行的操作封装到一个NSOperation对象中</li>
+<li>然后将NSOperation对象添加到NSOperationQueue中</li>
+<li>系统会自动的将NSOperationQueue中的NSOperation中取出来</li>
+<li>将取出的NSOperation封装的操作放到一条线程中执行</li>
+</ol>
+</li>
+</ul>
+<h3 id="NSOperation的子类"><a href="#NSOperation的子类" class="headerlink" title="NSOperation的子类"></a>NSOperation的子类</h3><p>NSOperation是一个抽象的类,它并不具备封装操作的能力,当我们进行多线程编程的时候,必须使用它的子类.</p>
+<ol>
+<li>NSInvocationOperation</li>
+<li>NSBlockOperation</li>
+<li>自定义子类继承NSOperation,实现内部相对应的方法</li>
+</ol>
+<h3 id="NSInvocationOperation"><a href="#NSInvocationOperation" class="headerlink" title="NSInvocationOperation"></a>NSInvocationOperation</h3><p><em>创建NSInvocationOperation对象</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(id)initWithTarget:(id)target selector:(SEL)sel object:(id)arg;</div></pre></td></tr></table></figure>
+<p><em>调用start方法开启线程</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(void)start;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>一旦执行操作，就会调用target的sel方法默认情况下，调用了start方法后并不会开一条新线程去执行操作，而是在当前线程同步执行操作<br>只有将NSOperation放到一个NSOperationQueue中，才会异步执行操作</p>
+</blockquote>
+<h3 id="NSBlockOperation"><a href="#NSBlockOperation" class="headerlink" title="NSBlockOperation"></a>NSBlockOperation</h3><p><em>创建NSBlockOperation对象</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+(id)blockOperationWithBlock:(void (^)(void))block;</div></pre></td></tr></table></figure>
+<p><em>通过addExecutionBlock:方法添加更多的操作</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(void)addExecutionBlock:(void (^)(void))block;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>只要NSBlockOperation封装的操作数 &gt; 1，就会异步执行操作</p>
+</blockquote>
+<h3 id="NSOperationQueue"><a href="#NSOperationQueue" class="headerlink" title="NSOperationQueue"></a>NSOperationQueue</h3><p>NSOperationQueue可以调用start放啊来进行执行任务,但是默认是同步执行的</p>
+<p>如果将NSOperationQueue添加到NSOperationQueue操作队列中,系统会自动异步执行.</p>
+<p>添加操作:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-(void)addOperation:(NSOperation *)op;</div><div class="line">-(void)addOperationWithBlock:(void (^)(void))bloc</div></pre></td></tr></table></figure>
+<h3 id="最大并发数"><a href="#最大并发数" class="headerlink" title="最大并发数"></a>最大并发数</h3><p><strong>什么是并发数</strong></p>
+<p>同时执行的任务数<br>比如，同时开3个线程执行3个任务，并发数就是3</p>
+<p><strong>最大并发数的相关方法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-(NSInteger)maxConcurrentOperationCount;</div><div class="line">-(void)setMaxConcurrentOperationCount:(NSInteger)cnt;</div></pre></td></tr></table></figure>
+<h3 id="队列的取消-暂停-回复"><a href="#队列的取消-暂停-回复" class="headerlink" title="队列的取消,暂停,回复"></a>队列的取消,暂停,回复</h3><p><strong>取消队列的所有操作</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(void)cancelAllOperations;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>提示：也可以调用NSOperation的 -(void)cancel方法取消单个操作</p>
+</blockquote>
+<p><em>暂停和恢复队列</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-(void)setSuspended:(BOOL)b; // YES代表暂停队列，NO代表恢复队列</div><div class="line">-(BOOL)isSuspended;</div></pre></td></tr></table></figure>
+<h3 id="操作依赖"><a href="#操作依赖" class="headerlink" title="操作依赖"></a>操作依赖</h3><p>NSOperation之间可以设置依赖来保证执行顺序<br>比如一定要让操作A执行完后，才能执行操作B，可以这么写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[operationB addDependency:operationA]; // 操作B依赖于操作A</div></pre></td></tr></table></figure>
+<p>可以在不同queue的NSOperation之间创建依赖关系</p>
+<h3 id="操作监听"><a href="#操作监听" class="headerlink" title="操作监听"></a>操作监听</h3><p>可以监听一个操作的执行完毕</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-(void (^)(void))completionBlock;</div><div class="line">-(void)setCompletionBlock:(void (^)(void))block;</div></pre></td></tr></table></figure>
+<h3 id="自定义NSOperation"><a href="#自定义NSOperation" class="headerlink" title="自定义NSOperation"></a>自定义NSOperation</h3><p><em>自定义NSOperation的步骤</em></p>
+<p>重写<code>-(void)main</code>方法，在里面实现想执行的任务</p>
+<p>重写<code>-(void)main</code>方法的注意点<br>自己创建自动释放池（因为如果是异步操作，无法访问主线程的自动释放池）<br>经常通过<code>- (BOOL)isCancelled</code>方法检测操作是否被取消，对取消做出响应</p>
+<h2 id="GCD"><a href="#GCD" class="headerlink" title="GCD"></a>GCD</h2><h3 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h3><p>GCD 是 libdispatch 的市场名称，而 libdispatch 作为 Apple 的一个库，为并发代码在多核硬件（跑 iOS 或 OS X ）上执行提供有力支持。它具有以下优点：</p>
+<ol>
+<li>GCD 能通过推迟昂贵计算任务并在后台运行它们来改善你的应用的响应性能。</li>
+<li>GCD 提供一个易于使用的并发模型而不仅仅只是锁和线程，以帮助我们避开并发陷阱。</li>
+<li>GCD 具有在常见模式（例如单例）上用更高性能的原语优化你的代码的潜在能力</li>
+</ol>
+<p>（未完待续）</p>
+<p>参考文献：</p>
+<p>[1] <a href="http://blog.chinaunix.net/uid-20528014-id-333508.html" target="_blank" rel="noopener">fireaxe - Pthread编程基础 </a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-07-17T05:55:20.000Z" itemprop="dateUpdated">2017-07-17 13:55:20</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/03/22/cje5qox3v004lwurdztwqo7nm/" target="_blank" rel="external">http://www.maksim.website/2016/03/22/cje5qox3v004lwurdztwqo7nm/</a>
+        
+    </div>
+    <footer>
+        <a href="http://www.maksim.website">
+            <img src="/img/avatar.jpg" alt="Maksim">
+            Maksim
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/03/22/cje5qox3v004lwurdztwqo7nm/&title=《iOS多线程》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/03/22/cje5qox3v004lwurdztwqo7nm/&title=《iOS多线程》 — Maksim's Website&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2016/03/22/cje5qox3v004lwurdztwqo7nm/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《iOS多线程》 — Maksim's Website&url=http://www.maksim.website/2016/03/22/cje5qox3v004lwurdztwqo7nm/&via=http://www.maksim.website" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2016/03/22/cje5qox3v004lwurdztwqo7nm/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/03/26/cje5qox330039wurdtojed72v/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">我的碎片化时间都在做什么?</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/03/08/cje5qox3a003mwurd7n3ewhrw/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">将博客迁移到了github</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Maksim &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/03/22/cje5qox3v004lwurdztwqo7nm/&title=《iOS多线程》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/03/22/cje5qox3v004lwurdztwqo7nm/&title=《iOS多线程》 — Maksim's Website&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2016/03/22/cje5qox3v004lwurdztwqo7nm/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《iOS多线程》 — Maksim's Website&url=http://www.maksim.website/2016/03/22/cje5qox3v004lwurdztwqo7nm/&via=http://www.maksim.website" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2016/03/22/cje5qox3v004lwurdztwqo7nm/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtUlEQVR42u3aUU4rQQwEwNz/0vD7JEjSbc+gPKnyhSDLTgVpbdp+POLX14/X7J3Prn32zn+///q+qxceHh7e+ujPfnVy6ATwGpPfJbkKDw8P7x4vP1COacvJvkjg4eHhfT6vLQ8bPB4eHt7/y5sVj6RBT67Cw8PD+xxeEka0BWP2e/K2+3DWgoeHhxfz8inS53x9Zb6Hh4eHt56qt43vpqXOB2/FafHw8PAu8Np29mygkCxdJaHJ63Pi4eHh3eC1jHbpavhAD5B1842Hh4e35rUHnQWsm6Fae/fH7LPBw8PDO8TbhK35T9vlqqJo4eHh4V3gvW586wdxDNisVQ0LCR4eHt5RXhvRznh5M9025W/KCR4eHt4F3ixE2LDz8GK2YVXXPTw8PLxyaSBvoDcFY1Y28vACDw8P7294s/2CPIRNDpGHtu0fAA8PD+8eLx9BzZaxNuuqx8IIPDw8vAu89hCbwVW+rtrii+qBh4eHd5TXRg9tk51P9vcNPR4eHt5Z3iwa2GDykVt731/eiYeHh3drRzQqD+1Yqw0pkru3QQkeHh7eDV4bIswe7m0onOcJb36Kh4eHd4GXhw6bZnpWHtqV1qd/Kjw8PLzLvP3AabPG2hak6N8APDw8vAu818cqNrbiAVVyr3bw9qZ44OHh4R3ltaFq0grnCwGbYjPcwMXDw8M7ystvv3lk52Fue22RteDh4eGteY+jr7Z13i8uvMla8PDw8A7xvspX3tRuAotZQ//Lx4qHh4d3gbd50OcRbR7j5o3y4WKGh4eHV/LONrvJ43u2FjALTfDw8PDu8TYNbjuyOjUYiyx4eHh4H8DLqfmAP/84kkIVpdR4eHh4H8nLm+ZZnJEUGDw8PLx7vPbivAzk+GIJNQ+a8fDw8C7whv/klyVkVk7ydYED8z08PDy892f7Bkywuf/dXvXlAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

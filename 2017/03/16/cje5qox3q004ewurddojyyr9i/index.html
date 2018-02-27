@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>No title | Maksim&#39;s Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="title:iOS图层树categories:iOSdate:2015-12-21 id:1图层树Core Animation 是一个符合引擎，塔的职责就是尽可能快地组合屏幕上不同的可视内容，这个内容被分分解成独立的图层，存储在一个叫做图层数的体系中，于是这个树形成了 UIKit 以及在 iOS 10应用程序当中你所看能在屏幕上看见的一切的基础。 图层与视图如果你曾经在 iOS 10或MacOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://www.maksim.website/2017/03/16/cje5qox3q004ewurddojyyr9i/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="title:iOS图层树categories:iOSdate:2015-12-21 id:1图层树Core Animation 是一个符合引擎，塔的职责就是尽可能快地组合屏幕上不同的可视内容，这个内容被分分解成独立的图层，存储在一个叫做图层数的体系中，于是这个树形成了 UIKit 以及在 iOS 10应用程序当中你所看能在屏幕上看见的一切的基础。 图层与视图如果你曾经在 iOS 10或MacOS">
+<meta property="og:image" content="https://zsisme.gitbooks.io/ios-/content/chapter1/1.1.jpeg">
+<meta property="og:image" content="https://zsisme.gitbooks.io/ios-/content/chapter1/1.2.jpeg">
+<meta property="og:updated_time" content="2018-02-27T14:15:44.077Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="title:iOS图层树categories:iOSdate:2015-12-21 id:1图层树Core Animation 是一个符合引擎，塔的职责就是尽可能快地组合屏幕上不同的可视内容，这个内容被分分解成独立的图层，存储在一个叫做图层数的体系中，于是这个树形成了 UIKit 以及在 iOS 10应用程序当中你所看能在屏幕上看见的一切的基础。 图层与视图如果你曾经在 iOS 10或MacOS">
+<meta name="twitter:image" content="https://zsisme.gitbooks.io/ios-/content/chapter1/1.1.jpeg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Maksim&#39;s Website" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Maksim</h5>
+          <a href="mailto:aircrayon@qq.com" title="aircrayon@qq.com" class="mail">aircrayon@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/aircrayon" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/619946234" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于Maksim
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-03-16T02:36:21.000Z" itemprop="datePublished" class="page-time">
+  2017-03-16
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#id-1"><span class="post-toc-number">1.</span> <span class="post-toc-text">id:1</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#图层树"><span class="post-toc-number"></span> <span class="post-toc-text">图层树</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#图层与视图"><span class="post-toc-number">1.</span> <span class="post-toc-text">图层与视图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CALayer"><span class="post-toc-number">2.</span> <span class="post-toc-text">CALayer</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#平行的层级关系"><span class="post-toc-number">3.</span> <span class="post-toc-text">平行的层级关系</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-图层树"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-03-16 10:36:21" datetime="2017-03-16T02:36:21.000Z"  itemprop="datePublished">2017-03-16</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <hr>
+<p>title:iOS图层树<br>categories:iOS<br>date:2015-12-21</p>
+<h2 id="id-1"><a href="#id-1" class="headerlink" title="id:1"></a>id:1</h2><h1 id="图层树"><a href="#图层树" class="headerlink" title="图层树"></a>图层树</h1><p>Core Animation 是一个符合引擎，塔的职责就是尽可能快地组合屏幕上不同的可视内容，这个内容被分分解成独立的图层，存储在一个叫做图层数的体系中，于是这个树形成了 UIKit 以及在 iOS 10应用程序当中你所看能在屏幕上看见的一切的基础。</p>
+<h2 id="图层与视图"><a href="#图层与视图" class="headerlink" title="图层与视图"></a>图层与视图</h2><p>如果你曾经在 iOS 10或MacOS 平台上面写过应用程序，你可能能会对视图的概念比较熟悉。一个视图就是在屏幕上显示一个矩形块（比如图片，文字或者视频），它能拦截类似于鼠标点击或者触摸手势等用户输入。视图在层级关系中可以互相嵌套，一个视图可以管理它的所有子视图的位置。图1.1显示了一种典型的视图层级关系。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://zsisme.gitbooks.io/ios-/content/chapter1/1.1.jpeg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>图1.1一种典型的 iOS 屏幕（左边）和型城市图的层级关系（右边）</p>
+<p>在 iOS 中，所有的视图都从一个叫做 UIview 的基类派生而来，UIView 可以处理触摸事件，可以支持基于 Core Graphics 绘图，可以做仿射变换（例如旋转或者缩放），或者简单的类似于滑动或者渐变的动画。</p>
+<h2 id="CALayer"><a href="#CALayer" class="headerlink" title="CALayer"></a>CALayer</h2><p>CALayer类在概念上和 UIView 类似，同样也是一些被层级关系树管理的矩形块，同样可以包含一些内容（像图片，文本或者背景色），管理子视图的位置。它们有一些方法和尚需经用来做动画和变换。</p>
+<p>和 UIview 最大的不同是 CALayer 不处理用户的交互。</p>
+<p>CALayer 兵不清楚具体的响应链（iOS通过视图层级关系用来传递触摸事件的机制），于是它并不能够响应事件，即使它提供了一些方法来判断是否一个触电在图层的范围之内。</p>
+<h2 id="平行的层级关系"><a href="#平行的层级关系" class="headerlink" title="平行的层级关系"></a>平行的层级关系</h2><p>每一个 UIView 都有一个 CALayer 实例的图层属性，也就是所谓的 Backing layer,视图的职责就是创建并管理这个图层，以确保子视图在层级关系中添加或者被移除的时候，他们关联的图层也同样对应是在层级关系树当中有相同的操作（见图1.2）</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://zsisme.gitbooks.io/ios-/content/chapter1/1.2.jpeg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>图1.2 图层的树状结构（左边）以及对应的视图层级（右边）</p>
+<p>实际上这些背后关联的图层才是真正用来在屏幕上显示和做动画，UIView 仅仅是对它的一个封装，提供了一些 iOS 类似于处理触摸事件的具体功能，以及 Core Animation 底层方法的高级借口。</p>
+<p>但是为什么 iOS 要基于 UIview 和 CALayer 提供两个平行的层级关系呢？为什么不用一个简单的层级来处理所有事情呢？原因在于要做职责分离，这也是能避免很多重复代码。在 iOS 和 Mac OS两个平台上，时间和用户交互有很多地方不同，基于多点触控的用户界面和基于鼠标键盘有着本质的区别，这就是为什么 iOS有 UIKit 和 UIView，但是 MacOS 有 APPKit 和 NSView 的元婴。他们功能上很类似，但是在实现上有着显著的区别。</p>
+<p>绘图，布局和动画，相比之下就是类似Mac笔记本和桌面系列一样应用于iPhone和iPad触屏的概念。把这种功能的逻辑分开并应用到独立的Core Animation框架，苹果就能够在iOS和Mac OS之间共享代码，使得对苹果自己的OS开发团队和第三方开发者去开发两个平台的应用更加便捷。+</p>
+<p>实际上，这里并不是两个层级关系，而是四个，每一个都扮演不同的角色，除了视图层级和图层树之外，还存在呈现树和渲染树，</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-02-27T14:15:44.077Z" itemprop="dateUpdated">2018-02-27 22:15:44</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/03/16/cje5qox3q004ewurddojyyr9i/" target="_blank" rel="external">http://www.maksim.website/2017/03/16/cje5qox3q004ewurddojyyr9i/</a>
+        
+    </div>
+    <footer>
+        <a href="http://www.maksim.website">
+            <img src="/img/avatar.jpg" alt="Maksim">
+            Maksim
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2017/03/16/cje5qox3q004ewurddojyyr9i/&title=Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2017/03/16/cje5qox3q004ewurddojyyr9i/&title=Maksim's Website&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2017/03/16/cje5qox3q004ewurddojyyr9i/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=Maksim's Website&url=http://www.maksim.website/2017/03/16/cje5qox3q004ewurddojyyr9i/&via=http://www.maksim.website" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2017/03/16/cje5qox3q004ewurddojyyr9i/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/03/16/cje5qox3m0049wurdavgb25od/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/03/15/1/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">PHP Closures</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Maksim &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2017/03/16/cje5qox3q004ewurddojyyr9i/&title=《No title》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2017/03/16/cje5qox3q004ewurddojyyr9i/&title=《No title》 — Maksim's Website&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2017/03/16/cje5qox3q004ewurddojyyr9i/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — Maksim's Website&url=http://www.maksim.website/2017/03/16/cje5qox3q004ewurddojyyr9i/&via=http://www.maksim.website" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2017/03/16/cje5qox3q004ewurddojyyr9i/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuElEQVR42u3aQW7CQAwFUO5/aSp11QoSvu2ZkMXLClEa5k2ljPvtxyO+nr/X0ft/r9fPv/5u8tOj67HjwsPDw2st/fx250s8utv5+6+v840obAEeHh7eNt75YdC7dfUz+eGUrBkPDw/vDrxqYT0p2auFOB4eHt49edXP9EKH/HDCw8PD+y4vCSPOC+vzL64eAPl6lmUteHh4eBu6SPd5vbG/h4eHhzfoqveOimpUkQ8flNeJh4eHt4FXbUHlIwJJ2JFvU29b8fDw8HbwJg/reaCQI6vjX2/OPTw8PLxFvF4rKw925wV0/oSPDgk8PDy8Rbz5QFX+QC9HCb2/FR4eHt5m3qSpnzOqh0r1/Q+RCh4eHt5SXvUW1SdwL66dxMeHDTA8PDy8Rbw8jKhuQTWKzePjPFDGw8PDW8urBqPVaDUfAmhGDHh4eHg3461qes23I1/Pm8kIPDw8vKW8yaN80k7L75YX9If3xMPDw1vKy//hzwOCXlTRY0T5NB4eHt4GXnU0KokMlk00xI20DyceHh4e3oW83nhWftisev1m5Xh4eHgX8uYjBfkoVQ8QbSIeHh7eNl41fq0eD/OGVr41H7IWPDw8vM28PIxYFV5Uw+UPCjw8PLwNvF5zqzd0NWmk5avCw8PDu4Y3GXiaFNyTrZlsMR4eHt4qXnW581I4Ka/zbyznFnh4eHgDXrXAXVVwV0vkcgMMDw8P7xJe7wE9CXZ7sW+zDYaHh4c35j2LVzVESEYEkm/Jj59/YDw8PLwNvPyqxrLVonzVSEEZhoeHh9fiTUamejFB3u6qRh5R3wwPDw9vEW/SEusV5YW8pDjigIeHh3c3Xi9EmB9CzQMJDw8P76u8pGieD1ElSy+sBA8PD28br/q4n29Er9lW3T48PDy8HbxeA6z3KE/K6OpQQh4N4+Hh4Y15P1akkpcH0UTXAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

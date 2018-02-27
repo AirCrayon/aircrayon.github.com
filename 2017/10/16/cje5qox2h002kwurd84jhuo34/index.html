@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>PHP页面静态化 | Maksim&#39;s Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="关于页面要了解静态化页面，首先我们就要知道什么是页面？ 一、静态web页面： 1、在静态Web程序中，客户端使用Web浏览器（IE、FireFox等）经过网络(Network)连接到服务器上，使用HTTP协议发起一个请求（Request），告诉服务器我现在需要得到哪个页面，所有的请求交给Web服务器，之后WEB服务器根据用户的需要，从文件系统（存放了所有静态页面的磁盘）取出内容。之后通过Web服务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP页面静态化">
+<meta property="og:url" content="http://www.maksim.website/2017/10/16/cje5qox2h002kwurd84jhuo34/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="关于页面要了解静态化页面，首先我们就要知道什么是页面？ 一、静态web页面： 1、在静态Web程序中，客户端使用Web浏览器（IE、FireFox等）经过网络(Network)连接到服务器上，使用HTTP协议发起一个请求（Request），告诉服务器我现在需要得到哪个页面，所有的请求交给Web服务器，之后WEB服务器根据用户的需要，从文件系统（存放了所有静态页面的磁盘）取出内容。之后通过Web服务">
+<meta property="og:updated_time" content="2017-10-16T11:30:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP页面静态化">
+<meta name="twitter:description" content="关于页面要了解静态化页面，首先我们就要知道什么是页面？ 一、静态web页面： 1、在静态Web程序中，客户端使用Web浏览器（IE、FireFox等）经过网络(Network)连接到服务器上，使用HTTP协议发起一个请求（Request），告诉服务器我现在需要得到哪个页面，所有的请求交给Web服务器，之后WEB服务器根据用户的需要，从文件系统（存放了所有静态页面的磁盘）取出内容。之后通过Web服务">
+    
+        <link rel="alternate" type="application/atom+xml" title="Maksim&#39;s Website" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Maksim</h5>
+          <a href="mailto:aircrayon@qq.com" title="aircrayon@qq.com" class="mail">aircrayon@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/aircrayon" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/619946234" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于Maksim
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">PHP页面静态化</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">PHP页面静态化</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-16T11:17:47.000Z" itemprop="datePublished" class="page-time">
+  2017-10-16
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#关于页面"><span class="post-toc-number">1.</span> <span class="post-toc-text">关于页面</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-PHP静态化页面"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">PHP页面静态化</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-16 19:17:47" datetime="2017-10-16T11:17:47.000Z"  itemprop="datePublished">2017-10-16</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="关于页面"><a href="#关于页面" class="headerlink" title="关于页面"></a>关于页面</h1><p>要了解静态化页面，首先我们就要知道什么是页面？</p>
+<p>一、静态web页面：</p>
+<p>1、在静态Web程序中，客户端使用Web浏览器（IE、FireFox等）经过网络(Network)连接到服务器上，使用HTTP协议发起一个请求（Request），告诉服务器我现在需要得到哪个页面，所有的请求交给Web服务器，之后WEB服务器根据用户的需要，从文件系统（存放了所有静态页面的磁盘）取出内容。之后通过Web服务器返回给客户端，客户端接收到内容之后经过浏览器渲染解析，得到显示的效果。</p>
+<p>2、为了让静态web页面显示更加好看，使用javascript／VBScript／ajax（AJAX即“Asynchronous Javascript And XML”（异步JavaScript和XML），是指一种创建交互式网页应用的网页开发技术。）但是这些特效都是在客户端上借助于浏览器展现给用户的，所以在服务器上本身并没有任何的变化。</p>
+<p>3、静态web无法连接数据库；</p>
+<p>4、静态web资源开发技术：HTML；</p>
+<p>5、由于现在的web页面中，大量使用JS，导致浏览器打开页面，就会占用大量的内存，服务端的压力是减轻了，但压力转移到了客户端。</p>
+<p>二、动态web页面：</p>
+<p>动态WEB中，程序依然使用客户端和服务端，客户端依然使用浏览器（IE、FireFox等），通过网络(Network)连接到服务器上，使用HTTP协议发起请求（Request），现在的所有请求都先经过一个WEB Server来处理。</p>
+<p>如果客户端请求的是静态资源(<em>.htm或者是</em>.htm)，则将请求直接转交给WEB服务器，之后WEB服务器从文件系统中取出内容，发送回客户端浏览器进行解析执行。</p>
+<p>如果客户端请求的是动态资源（<em>.jsp、</em>.asp/<em>.aspx、</em>.php），则先将请求转交给WEB Container(WEB容器)，在WEB Container中连接数据库，从数据库中取出数据等一系列操作后动态拼凑页面的展示内容，拼凑页面的展示内容后，把所有的展示内容交给WEB服务器，之后通过WEB服务器将内容发送回客户端浏览器进行解析执行。</p>
+<p>#静态化</p>
+<p>PHP静态化分为：纯静态化 和 伪静态化；纯静态化又分为：局部静态化 和 完全静态化</p>
+<p>纯静态化：是把PHP生成的动态页面保存成静态的html文件，用户访问该静态页面，而不是用户每一次访问都重新生成一张相同的网页，优点就是减小服务器开销，</p>
+<ul>
+<li>局部静态化：是生成的静态文件中，有局部的数据还是通过ajax技术动态获取的；</li>
+<li>完全静态化：即不存在动态获取数据的情况，所以内容都来自静态的html页面</li>
+</ul>
+<p>伪静态化：其实还是动态访问，其实质是动态生成数据，你访问的网址类似于”<a href="http://yourhost,com/index/post/12&quot;,是一个静态地址，该地址多见于博客地址，但伪静态化中，你访问的网址实际上经过服务器解析，还是会解析成类似于&quot;http://yourhost,com/?c=index&amp;a=post&amp;id=12&quot;的地址，所以称之为伪静态化" target="_blank" rel="noopener">http://yourhost,com/index/post/12&quot;,是一个静态地址，该地址多见于博客地址，但伪静态化中，你访问的网址实际上经过服务器解析，还是会解析成类似于&quot;http://yourhost,com/?c=index&amp;a=post&amp;id=12&quot;的地址，所以称之为伪静态化</a></p>
+<p>　　伪静态的优点：美观；便于搜索引擎收录</p>
+<p>buffer 概括</p>
+<p>buffer 其实就是缓冲区，一个内存地址空间，主要是用于存储数据的区域。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-10-16T11:30:35.000Z" itemprop="dateUpdated">2017-10-16 19:30:35</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/10/16/cje5qox2h002kwurd84jhuo34/" target="_blank" rel="external">http://www.maksim.website/2017/10/16/cje5qox2h002kwurd84jhuo34/</a>
+        
+    </div>
+    <footer>
+        <a href="http://www.maksim.website">
+            <img src="/img/avatar.jpg" alt="Maksim">
+            Maksim
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2017/10/16/cje5qox2h002kwurd84jhuo34/&title=《PHP页面静态化》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2017/10/16/cje5qox2h002kwurd84jhuo34/&title=《PHP页面静态化》 — Maksim's Website&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2017/10/16/cje5qox2h002kwurd84jhuo34/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PHP页面静态化》 — Maksim's Website&url=http://www.maksim.website/2017/10/16/cje5qox2h002kwurd84jhuo34/&via=http://www.maksim.website" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2017/10/16/cje5qox2h002kwurd84jhuo34/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/10/18/1/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">PHP基础解惑： =与==、===的区别</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/16/1/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">PHP基础解惑：省略结束标签</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Maksim &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2017/10/16/cje5qox2h002kwurd84jhuo34/&title=《PHP页面静态化》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2017/10/16/cje5qox2h002kwurd84jhuo34/&title=《PHP页面静态化》 — Maksim's Website&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2017/10/16/cje5qox2h002kwurd84jhuo34/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PHP页面静态化》 — Maksim's Website&url=http://www.maksim.website/2017/10/16/cje5qox2h002kwurd84jhuo34/&via=http://www.maksim.website" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2017/10/16/cje5qox2h002kwurd84jhuo34/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACr0lEQVR42u3ay44jMQgF0Pz/T/dIs55yLmA6GenUKsqjiuOWjBt4veLr5+91fufpV+ffPn36dL02Ljw8PLxW6OfbJSEmd3i653khznd7swR4eHh4a7xzMjg/OEkhCSBPTknMeHh4eN/AOwcxOQTny4SHh4f3f/F61EnRIXmNh4eH9yleXkqoPrLH/kCtBQ8PD2+hi/Q9rxf7e3h4eHiDrnqy7fa29bzFNYoTDw8Pb4FXbUFVd91kQ9/+Ph4eHt4GL9/Wky1+8tvJEENSmMbDw8Ob83oNp+oheHKATu72+A4eHh7eGq+6EUcZZlxQuPa/Ah4eHt5VXvXEnZdo80+rIwLV5IGHh4d3l5eElQSXFxSSskK1jPuYzPDw8PB+hdcbw8rHCPJ22jx14eHh4W3z5kNRve27cPavLjoeHh7eAm9SwK2mlnnZoreIeHh4eBu8fIvPh1OrheB8acqjXXh4eHgLvGpYeSJJFqJXkmhmPDw8PLxLvDyI3kBqcyuPS8OFlICHh4d3iTdpQc2DqxaUr/0N8fDw8Ma8XpuqN1IwaYlNBgvw8PDwbvF6xYLeplwNNG+/lTMeHh4eXot3/jhvd/WKttWjdrU8gYeHh7fB67WyJmNYefrpDWzh4eHhfYrXa2hVm/p3Uw4eHh7eN/DmpYHe3fLD96sXHB4eHt6Y1ztMz4u884GtQgMMDw8Pb4FXbVzl5dTeUbhX/nhsg+Hh4eFd4v0Ur2rxtFd+7SWGf6QKPDw8vAXerfGm6qE83+4nT8HDw8Pb4/WGq853qH4zX+Ly4RsPDw9vjZd3jqqH6WrhdY7Hw8PD+2Ze/v1eEqomiTf9PTw8PLxf5/XCSlprvZQTPQUPDw9vjVdt5PcKFtXnJofsN4kEDw8Pb4FXbYAlQc/LxEk6SZYGDw8P7yrvD5oK5CkTfnJNAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
