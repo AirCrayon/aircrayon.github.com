@@ -13,24 +13,24 @@
     
     
     
-    <title>利用 INSERT 命令将表中字段导入到新表中 | Maksim&#39;s Website</title>
+    <title>大表会对数据库带来的那些问题！ | Maksim&#39;s Website</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="INSERT">
-    <meta name="description" content="最近为公司内部系统写了一个爬虫，爬了一个问答社区的三万多条数据，由于一开始的设计不够合理，将所有记录都放入了一个表中，由于是问答系统，合理的数据库设计，应该是将问题和答案分离开来，这样的结构更加合理，也易于未来的扩展。 我刚开始做iOS 的，转到 PHP 有一年多了，大学时有自学PHP，东学学西搞搞，结果就变成了啥都快记不住了，什么也都懂一些。 到了现在MYSQL 的基础也忘了许多，你让我扯一扯大">
-<meta name="keywords" content="INSERT">
+    <meta name="keywords" content="MySQL">
+    <meta name="description" content="什么样的表才可以被称之为大表?所谓的大表都是相对而言的，对不同的存储引擎都有不同的限制，Innodb并没有定义每张表的最大行数，只要物理磁盘允许，我们就可以将数据存入数据库中。 在实际使用过程中，当数据量超过千万行之后，就会对数据库的性能造成影响。  记录行数巨大，单表超过前往行 表数据文件巨大，表数据文件超过10G   当然这也是相对的，也要跟我们的业务场景，磁盘 IO情况而定，如果这个表只是用">
+<meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用 INSERT 命令将表中字段导入到新表中">
+<meta property="og:title" content="大表会对数据库带来的那些问题！">
 <meta property="og:url" content="http://www.maksim.website/2017/09/18/1/index.html">
 <meta property="og:site_name" content="Maksim&#39;s Website">
-<meta property="og:description" content="最近为公司内部系统写了一个爬虫，爬了一个问答社区的三万多条数据，由于一开始的设计不够合理，将所有记录都放入了一个表中，由于是问答系统，合理的数据库设计，应该是将问题和答案分离开来，这样的结构更加合理，也易于未来的扩展。 我刚开始做iOS 的，转到 PHP 有一年多了，大学时有自学PHP，东学学西搞搞，结果就变成了啥都快记不住了，什么也都懂一些。 到了现在MYSQL 的基础也忘了许多，你让我扯一扯大">
-<meta property="og:updated_time" content="2017-09-18T09:04:49.000Z">
+<meta property="og:description" content="什么样的表才可以被称之为大表?所谓的大表都是相对而言的，对不同的存储引擎都有不同的限制，Innodb并没有定义每张表的最大行数，只要物理磁盘允许，我们就可以将数据存入数据库中。 在实际使用过程中，当数据量超过千万行之后，就会对数据库的性能造成影响。  记录行数巨大，单表超过前往行 表数据文件巨大，表数据文件超过10G   当然这也是相对的，也要跟我们的业务场景，磁盘 IO情况而定，如果这个表只是用">
+<meta property="og:updated_time" content="2017-10-18T12:45:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用 INSERT 命令将表中字段导入到新表中">
-<meta name="twitter:description" content="最近为公司内部系统写了一个爬虫，爬了一个问答社区的三万多条数据，由于一开始的设计不够合理，将所有记录都放入了一个表中，由于是问答系统，合理的数据库设计，应该是将问题和答案分离开来，这样的结构更加合理，也易于未来的扩展。 我刚开始做iOS 的，转到 PHP 有一年多了，大学时有自学PHP，东学学西搞搞，结果就变成了啥都快记不住了，什么也都懂一些。 到了现在MYSQL 的基础也忘了许多，你让我扯一扯大">
+<meta name="twitter:title" content="大表会对数据库带来的那些问题！">
+<meta name="twitter:description" content="什么样的表才可以被称之为大表?所谓的大表都是相对而言的，对不同的存储引擎都有不同的限制，Innodb并没有定义每张表的最大行数，只要物理磁盘允许，我们就可以将数据存入数据库中。 在实际使用过程中，当数据量超过千万行之后，就会对数据库的性能造成影响。  记录行数巨大，单表超过前往行 表数据文件巨大，表数据文件超过10G   当然这也是相对的，也要跟我们的业务场景，磁盘 IO情况而定，如果这个表只是用">
     
         <link rel="alternate" type="application/atom+xml" title="Maksim&#39;s Website" href="/atom.xml">
     
@@ -125,7 +125,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">利用 INSERT 命令将表中字段导入到新表中</div>
+        <div class="flex-col header-title ellipsis">大表会对数据库带来的那些问题！</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -147,7 +147,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">利用 INSERT 命令将表中字段导入到新表中</h1>
+        <h1 class="title">大表会对数据库带来的那些问题！</h1>
         <h5 class="subtitle">
             
                 <time datetime="2017-09-17T16:00:00.000Z" itemprop="datePublished" class="page-time">
@@ -169,11 +169,18 @@
 
 <div class="container body-wrap">
     
-<article id="post-insert"
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么样的表才可以被称之为大表"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么样的表才可以被称之为大表?</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#大表对查询的影响"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">大表对查询的影响</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#大表对-DDL-操作的影响："><span class="post-toc-number">1.2.</span> <span class="post-toc-text">大表对 DDL 操作的影响：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修改表结构需要长时间锁表"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">修改表结构需要长时间锁表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#影响正常数据库操作。"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">影响正常数据库操作。</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何处理数据库中的大表"><span class="post-toc-number">2.</span> <span class="post-toc-text">如何处理数据库中的大表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分库分表把一张大表分成多个小表"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">分库分表把一张大表分成多个小表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#大表的历史数据归档"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">大表的历史数据归档</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-什么样的表才可以被称之为大表"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">利用 INSERT 命令将表中字段导入到新表中</h1>
+        <h1 class="post-card-title">大表会对数据库带来的那些问题！</h1>
         <div class="post-meta">
             <time class="post-time" title="2017-09-18 00:00:00" datetime="2017-09-17T16:00:00.000Z"  itemprop="datePublished">2017-09-18</time>
 
@@ -190,13 +197,37 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>最近为公司内部系统写了一个爬虫，爬了一个问答社区的三万多条数据，由于一开始的设计不够合理，将所有记录都放入了一个表中，由于是问答系统，合理的数据库设计，应该是将问题和答案分离开来，这样的结构更加合理，也易于未来的扩展。</p>
-<p>我刚开始做iOS 的，转到 PHP 有一年多了，大学时有自学PHP，东学学西搞搞，结果就变成了啥都快记不住了，什么也都懂一些。</p>
-<p>到了现在MYSQL 的基础也忘了许多，你让我扯一扯大规模，主从，分表，优化，我倒是能说上一堆，但是实际操作起来，啧啧。</p>
-<p>这么一个简单的功能一时之间竟然都没有想起来，搜索引擎的确是个好东西（当然不拿医疗盈利的话）。</p>
-<p>现在 iOS 也快忘得差不多了，感叹 ing，Swift 4都出了···</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`new_table_name`</span> <span class="keyword">VALUE</span> (<span class="string">`c1`</span>,<span class="string">`c2`</span>) <span class="keyword">SELECT</span> <span class="string">`c1`</span>,<span class="string">`c2`</span> <span class="keyword">FROM</span> <span class="string">`old_table_name`</span></div></pre></td></tr></table></figure>
-<p>简单的一命令即可将数据导出。</p>
+            <h3 id="什么样的表才可以被称之为大表"><a href="#什么样的表才可以被称之为大表" class="headerlink" title="什么样的表才可以被称之为大表?"></a>什么样的表才可以被称之为大表?</h3><p>所谓的大表都是相对而言的，对不同的存储引擎都有不同的限制，Innodb并没有定义每张表的最大行数，只要物理磁盘允许，我们就可以将数据存入数据库中。</p>
+<p>在实际使用过程中，当数据量超过千万行之后，就会对数据库的性能造成影响。</p>
+<ul>
+<li>记录行数巨大，单表超过前往行</li>
+<li>表数据文件巨大，表数据文件超过10G </li>
+</ul>
+<p>当然这也是相对的，也要跟我们的业务场景，磁盘 IO情况而定，如果这个表只是用来记录日志的，只有INSERT、SELECT 操作，而几乎没有 UPDATE 和 DELETE的操作，就算是超过了千万行，对我们的业务操作也没有太大的影响。</p>
+<p>但是也有例外的情况，如果我们要对超过10G 的日志表追加列，如果这个时候，这个表被同步到N台服务器上后，就会变成一场灾难。</p>
+<h4 id="大表对查询的影响"><a href="#大表对查询的影响" class="headerlink" title="大表对查询的影响"></a>大表对查询的影响</h4><p>慢查询：很难在一定的时间内过滤出所需要的重要数据。</p>
+<h4 id="大表对-DDL-操作的影响："><a href="#大表对-DDL-操作的影响：" class="headerlink" title="大表对 DDL 操作的影响："></a>大表对 DDL 操作的影响：</h4><p>建立索引需要很长的时间。</p>
+<p>风险： </p>
+<ul>
+<li>MYSQL 版本 &lt; 5.5 建立索引会锁表</li>
+<li>MYSQL 版本 &gt;= 5.5 虽然不会锁表但会引起长时间的主从延迟</li>
+</ul>
+<h4 id="修改表结构需要长时间锁表"><a href="#修改表结构需要长时间锁表" class="headerlink" title="修改表结构需要长时间锁表"></a>修改表结构需要长时间锁表</h4><p>风险： 会造成长时间的主从延迟，由于主从复制的机制都是现在主库上完成操作，再传输到从库上，在执行相同操作，如果在主库上需要使用480s 的时间来完成 DDL 操作，在从服务器上至少也需要480s。</p>
+<h4 id="影响正常数据库操作。"><a href="#影响正常数据库操作。" class="headerlink" title="影响正常数据库操作。"></a>影响正常数据库操作。</h4><p>进行 DDL 时会被锁表，这样一来就会造成堵塞，在这一个阶段，数据库连接数会被激增，一旦数据库连接数被沾满，前台就会出现500错误。</p>
+<h3 id="如何处理数据库中的大表"><a href="#如何处理数据库中的大表" class="headerlink" title="如何处理数据库中的大表"></a>如何处理数据库中的大表</h3><h4 id="分库分表把一张大表分成多个小表"><a href="#分库分表把一张大表分成多个小表" class="headerlink" title="分库分表把一张大表分成多个小表"></a>分库分表把一张大表分成多个小表</h4><p>难点： </p>
+<p><strong>1.分表主键的选择。</strong></p>
+<p>这个往往根据业务的不同，有多种分表的方式，比如对于订单表来说，可以根据订单号分表，也可以根据供应商和地区域来进行分表，选择合适的分区键对于后期的分表是十分重要的。</p>
+<p><strong>2.分表后跨分区数据的查询和统计</strong></p>
+<p>不要认为选择了好的分区键后就不需要跨分区进行查询了，好的分区键只能尽量避免跨分区查询。</p>
+<h4 id="大表的历史数据归档"><a href="#大表的历史数据归档" class="headerlink" title="大表的历史数据归档"></a>大表的历史数据归档</h4><p>使用这种方法，可以减少对前后端业务的影响，因为表结构并没有发生变化，一切的程序都可以正常的使用，对于历史订单可以开放一个接口。</p>
+<p>而且归档表可以跟正在使用的表放在不同的服务器上，一方面减少了热数据所在服务器的表容量，同时也减少了服务器的查询压力，对于后端业务而言，应该是已经完成相关操作和统计的历史数据。</p>
+<p>难点：</p>
+<ol>
+<li><p>归档时间点的选择。</p>
+</li>
+<li><p>如何进行归档操作，对于大表的增删改查都要十分的小心，既然我们要归档，就要把要归档的数据从数据库中移除，从一个上亿行的数据表中移出上百万行的时候，就要注意方式了，轻则会产生主从延迟，严重会产生大量的阻塞。</p>
+</li>
+</ol>
 
         </div>
 
@@ -204,7 +235,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-09-18T09:04:49.000Z" itemprop="dateUpdated">2017-09-18 17:04:49</time>
+    最后更新时间：<time datetime="2017-10-18T12:45:30.000Z" itemprop="dateUpdated">2017-10-18 20:45:30</time>
 </span><br>
 
 
@@ -229,7 +260,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/INSERT/">INSERT</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
 
 
             
@@ -239,7 +270,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2017/09/18/1/&title=《利用 INSERT 命令将表中字段导入到新表中》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2017/09/18/1/&title=《大表会对数据库带来的那些问题！》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -249,7 +280,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2017/09/18/1/&title=《利用 INSERT 命令将表中字段导入到新表中》 — Maksim's Website&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2017/09/18/1/&title=《大表会对数据库带来的那些问题！》 — Maksim's Website&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -259,7 +290,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《利用 INSERT 命令将表中字段导入到新表中》 — Maksim's Website&url=http://www.maksim.website/2017/09/18/1/&via=http://www.maksim.website" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《大表会对数据库带来的那些问题！》 — Maksim's Website&url=http://www.maksim.website/2017/09/18/1/&via=http://www.maksim.website" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -289,7 +320,7 @@
     <div class="waves-block waves-effect prev">
       <a href="/2017/09/18/1/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">大表会对数据库带来的那些问题！</h4>
+        <h4 class="title">利用 INSERT 命令将表中字段导入到新表中</h4>
       </a>
     </div>
   
@@ -379,7 +410,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2017/09/18/1/&title=《利用 INSERT 命令将表中字段导入到新表中》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2017/09/18/1/&title=《大表会对数据库带来的那些问题！》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -389,7 +420,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2017/09/18/1/&title=《利用 INSERT 命令将表中字段导入到新表中》 — Maksim's Website&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2017/09/18/1/&title=《大表会对数据库带来的那些问题！》 — Maksim's Website&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -399,7 +430,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《利用 INSERT 命令将表中字段导入到新表中》 — Maksim's Website&url=http://www.maksim.website/2017/09/18/1/&via=http://www.maksim.website" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《大表会对数据库带来的那些问题！》 — Maksim's Website&url=http://www.maksim.website/2017/09/18/1/&via=http://www.maksim.website" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>

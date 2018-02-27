@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>No title | Maksim&#39;s Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="title:创建型设计模式之抽象工厂categories:PHPtags:设计模式,PHP date:2018-1-1原文地址：http://designpatternsphp.readthedocs.io 在软件工程中，创建型设计模式承担着对象创建的职责，尝试创建适合程序上下文的对象，对象创建设计模式的产生是由于软件工程设计的问题，具体说是向设计中增加复杂度，创建型设计模式解决了程序设计中对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://www.maksim.website/2018/02/27/cje5qj3yr004wvyrdjxy3stm5/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="title:创建型设计模式之抽象工厂categories:PHPtags:设计模式,PHP date:2018-1-1原文地址：http://designpatternsphp.readthedocs.io 在软件工程中，创建型设计模式承担着对象创建的职责，尝试创建适合程序上下文的对象，对象创建设计模式的产生是由于软件工程设计的问题，具体说是向设计中增加复杂度，创建型设计模式解决了程序设计中对象">
+<meta property="og:image" content="http://designpatternsphp.readthedocs.io/zh_CN/latest/_images/uml12.png">
+<meta property="og:updated_time" content="2018-02-27T14:15:49.753Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="title:创建型设计模式之抽象工厂categories:PHPtags:设计模式,PHP date:2018-1-1原文地址：http://designpatternsphp.readthedocs.io 在软件工程中，创建型设计模式承担着对象创建的职责，尝试创建适合程序上下文的对象，对象创建设计模式的产生是由于软件工程设计的问题，具体说是向设计中增加复杂度，创建型设计模式解决了程序设计中对象">
+<meta name="twitter:image" content="http://designpatternsphp.readthedocs.io/zh_CN/latest/_images/uml12.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Maksim&#39;s Website" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Maksim</h5>
+          <a href="mailto:aircrayon@qq.com" title="aircrayon@qq.com" class="mail">aircrayon@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/aircrayon" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/619946234" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于Maksim
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">No title</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">No title</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-02-27T14:12:05.857Z" itemprop="datePublished" class="page-time">
+  2018-02-27
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#date-2018-1-1"><span class="post-toc-number">1.</span> <span class="post-toc-text">date:2018-1-1</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#抽象工厂"><span class="post-toc-number">2.</span> <span class="post-toc-text">抽象工厂</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#目的"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">目的</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#UML-图"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">UML 图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#测试"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">测试</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-抽象工厂"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">No title</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-02-27 22:12:05" datetime="2018-02-27T14:12:05.857Z"  itemprop="datePublished">2018-02-27</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <hr>
+<p>title:创建型设计模式之抽象工厂<br>categories:PHP<br>tags:设计模式,PHP</p>
+<h2 id="date-2018-1-1"><a href="#date-2018-1-1" class="headerlink" title="date:2018-1-1"></a>date:2018-1-1</h2><p>原文地址：<a href="http://designpatternsphp.readthedocs.io" target="_blank" rel="noopener">http://designpatternsphp.readthedocs.io</a></p>
+<p>在软件工程中，创建型设计模式承担着对象创建的职责，尝试创建适合程序上下文的对象，对象创建设计模式的产生是由于软件工程设计的问题，具体说是向设计中增加复杂度，创建型设计模式解决了程序设计中对象创建的问题。</p>
+<h2 id="抽象工厂"><a href="#抽象工厂" class="headerlink" title="抽象工厂"></a>抽象工厂</h2><h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>创建一系列互相关联或依赖的对象时不需要指定将要创建的对象对应的类，因为这些将被创建的对象对应的类都实现了同一个接口。抽象工厂的使用者不需要关心对象的创建过程，它只需要知道这些对象是如何协调工作的。</p>
+<h3 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://designpatternsphp.readthedocs.io/zh_CN/latest/_images/uml12.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>在 <a href="https://github.com/domnikl/DesignPatternsPHP/tree/master/Creational/AbstractFactory" target="_blank" rel="noopener">GitHub</a> 上查看代码</p>
+<p>AbstractFactory.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * In this case, the abstract factory is a contract for creating some components</div><div class="line"> * for the web. There are two ways of rendering text: HTML and JSON</div><div class="line"> */</div><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractFactory</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">createText</span><span class="params">(string $content)</span>: <span class="title">Text</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>JsonFactory.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JsonFactory</span> <span class="keyword">extends</span> <span class="title">AbstractFactory</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">createText</span><span class="params">(string $content)</span>: <span class="title">Text</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> JsonText($content);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>HtmlFactory.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HtmlFactory</span> <span class="keyword">extends</span> <span class="title">AbstractFactory</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">createText</span><span class="params">(string $content)</span>: <span class="title">Text</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> HtmlText($content);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Text.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>;</div><div class="line"></div><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Text</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> string</div><div class="line">     */</div><div class="line">    <span class="keyword">protected</span> $text;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(string $text)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;text = $text;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>JsonText.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JsonText</span> <span class="keyword">extends</span> <span class="title">Text</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// do something here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>HtmlText.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HtmlText</span> <span class="keyword">extends</span> <span class="title">Text</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// do something here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>\<span class="title">Tests</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>\<span class="title">HtmlFactory</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>\<span class="title">HtmlText</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>\<span class="title">JsonFactory</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>\<span class="title">JsonText</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">PHPUnit</span>\<span class="title">Framework</span>\<span class="title">TestCase</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AbstractFactoryTest</span> <span class="keyword">extends</span> <span class="title">TestCase</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testCanCreateHtmlText</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $factory = <span class="keyword">new</span> HtmlFactory();</div><div class="line">        $text = $factory-&gt;createText(<span class="string">'foobar'</span>);</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;assertInstanceOf(HtmlText::class, $text);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testCanCreateJsonText</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $factory = <span class="keyword">new</span> JsonFactory();</div><div class="line">        $text = $factory-&gt;createText(<span class="string">'foobar'</span>);</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;assertInstanceOf(JsonText::class, $text);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-02-27T14:15:49.753Z" itemprop="dateUpdated">2018-02-27 22:15:49</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/02/27/cje5qj3yr004wvyrdjxy3stm5/" target="_blank" rel="external">http://www.maksim.website/2018/02/27/cje5qj3yr004wvyrdjxy3stm5/</a>
+        
+    </div>
+    <footer>
+        <a href="http://www.maksim.website">
+            <img src="/img/avatar.jpg" alt="Maksim">
+            Maksim
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2018/02/27/cje5qj3yr004wvyrdjxy3stm5/&title=《No title》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2018/02/27/cje5qj3yr004wvyrdjxy3stm5/&title=《No title》 — Maksim's Website&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2018/02/27/cje5qj3yr004wvyrdjxy3stm5/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — Maksim's Website&url=http://www.maksim.website/2018/02/27/cje5qj3yr004wvyrdjxy3stm5/&via=http://www.maksim.website" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2018/02/27/cje5qj3yr004wvyrdjxy3stm5/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/02/27/cje5qj3w4001bvyrdfrvnyznk/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Nginx的安装</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Maksim &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2018/02/27/cje5qj3yr004wvyrdjxy3stm5/&title=《No title》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2018/02/27/cje5qj3yr004wvyrdjxy3stm5/&title=《No title》 — Maksim's Website&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2018/02/27/cje5qj3yr004wvyrdjxy3stm5/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — Maksim's Website&url=http://www.maksim.website/2018/02/27/cje5qj3yr004wvyrdjxy3stm5/&via=http://www.maksim.website" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2018/02/27/cje5qj3yr004wvyrdjxy3stm5/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3a227rQAgF0Pz/T+dIfWp1ctnA4EbVmqfIteJZjjRQ4HaL1/1rff/8/cqz6//fk9z5+vtvGwsPDw+vtfVna3LPWVJ1P3h4eHjbvGowSGDJUV59Sr5nPDw8vE/gJVnr64N7kjTj4eHh/Q1enkZXk2Y8PDy8z+clR3leREj+mhcdLqq14OHh4cW8XgPsdz+v9/fw8PDwWl31s0EiDxi9YPBgt3h4eHgLvF776vU98/GsXopc+I8BDw8Pb8x7vdH8YdV216QUkr9iPDw8vA1edSv5qZuzJ420N/vHw8PDu5BXDQnVMaz8oM+fUggMeHh4eANefvTPC7jXFIJv+e+Ah4eHV+Tlx3Gz+RS/oHw4IAkGP/p7eHh4eAu8aiE1b1NVS7oT9oPvx8PDw1vm9VLnagG3OjSQPP3pfvDw8PAWePnhmxdk56NX1TGFUQEXDw8Pb8yrJtbVAaw8/OSwaJ94eHh4h3jV4zVPdnvXJ02vB3vDw8PDW+DlBYVTLf95OMl/Bjw8PLw93qjJFJRfewlx9cqbF42Hh4d3lDcZk+oVaucljHKXDw8PD2+Zlw8EVIuz+fckKX7SrsPDw8M7y6sy7sE6O44wWnh4eHhrvPlGk+9M0uI8DETBCQ8PD2+BV207JSXaapqeD3jlrwwPDw9vj5dv91T5oHrQjwoieHh4eBfyqkf2KOVtvY4o/ODh4eEt8PK2fY6vNq42irlPZ8rw8PDwxrx7cSVHcDUt7jXkogEFPDw8vAXe2SGD3jjC64S7+hQ8PDy8a3hJMMiLC9X+W174yJN4PDw8vGt4efpbjTmnBrB6aToeHh7e7/LyfDwH9xpd+QvCw8PD+wRefk9v+KCXyr+Zj8DDw8Nb4J0tRlQLxGcr0Hh4eHjbvEkDrNrKqmLyK6OFh4eHl/L+AcWsNcocWhpJAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
