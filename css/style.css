@@ -1407,17 +1407,20 @@ code {
   margin: 1rem 0;
   padding: 10px 15px;
   border-radius: 4px;
-  background: #fafafa;
-  font-family: "Menlo", "Meslo LG", monospace;
-  -webkit-border-radius: 4px;
 }
-.highlight figcaption {
+background:#4a4747,
+font-family: $font-family-mono,
+-webkit-border-radius: 4px,
+figcaption {
   margin: -5px 0 5px;
   color: #757575;
   font-size: 0.9em;
   zoom: 1;
 }
-.highlight figcaption a {
+background:#4a4747 a,
+font-family: $font-family-mono a,
+-webkit-border-radius: 4px a,
+figcaption a {
   float: right;
   color: #757575;
   font-style: italic;
@@ -1427,27 +1430,39 @@ code {
   background-size: 100% 6px;
   background-repeat: repeat-x;
 }
-.highlight figcaption a:hover {
+background:#4a4747 a:hover,
+font-family: $font-family-mono a:hover,
+-webkit-border-radius: 4px a:hover,
+figcaption a:hover {
   color: #919191;
 }
-.highlight figcaption:before,
-.highlight figcaption content: "" {
+background:#4a4747:before,
+font-family: $font-family-mono:before,
+-webkit-border-radius: 4px:before,
+figcaption:before,
+background:#4a4747 content: "",
+font-family: $font-family-mono content: "",
+-webkit-border-radius: 4px content: "",
+figcaption content: "" {
   display: table;
 }
-.highlight figcaption:after {
+background:#4a4747:after,
+font-family: $font-family-mono:after,
+-webkit-border-radius: 4px:after,
+figcaption:after {
   clear: both;
 }
-.highlight pre {
+pre {
   padding: 0;
   border: none;
   background: none;
 }
-.highlight table {
+table {
   width: auto;
 }
-.highlight td.gutter {
+td.gutter {
   text-align: right;
 }
-.highlight .line {
+.line {
   height: 22px;
 }

@@ -18,8 +18,8 @@
   
   <entry>
     <title>Nginx的安装</title>
-    <link href="http://www.maksim.website/2018/02/27/cjek1d3iq0018rhrdma2piy7p/"/>
-    <id>http://www.maksim.website/2018/02/27/cjek1d3iq0018rhrdma2piy7p/</id>
+    <link href="http://www.maksim.website/2018/02/27/cjek1lubh001iufrd1tf2e57f/"/>
+    <id>http://www.maksim.website/2018/02/27/cjek1lubh001iufrd1tf2e57f/</id>
     <published>2018-02-26T16:00:00.000Z</published>
     <updated>2018-02-27T14:04:44.098Z</updated>
     
@@ -42,8 +42,8 @@
   
   <entry>
     <title>function与感叹号</title>
-    <link href="http://www.maksim.website/2018/02/01/cjek1d3k6003crhrdu2lf6h07/"/>
-    <id>http://www.maksim.website/2018/02/01/cjek1d3k6003crhrdu2lf6h07/</id>
+    <link href="http://www.maksim.website/2018/02/01/cjek1lucl0038ufrds7ngtvmm/"/>
+    <id>http://www.maksim.website/2018/02/01/cjek1lucl0038ufrds7ngtvmm/</id>
     <published>2018-01-31T16:00:00.000Z</published>
     <updated>2018-03-09T13:33:02.267Z</updated>
     
@@ -65,8 +65,8 @@
   
   <entry>
     <title>创建型设计模式之抽象工厂</title>
-    <link href="http://www.maksim.website/2018/01/10/cjek1etny0000rtrdtvtz7xp0/"/>
-    <id>http://www.maksim.website/2018/01/10/cjek1etny0000rtrdtvtz7xp0/</id>
+    <link href="http://www.maksim.website/2018/01/10/cjek1ludi004yufrderriwjvo/"/>
+    <id>http://www.maksim.website/2018/01/10/cjek1ludi004yufrderriwjvo/</id>
     <published>2018-01-10T12:44:02.000Z</published>
     <updated>2018-03-09T14:29:03.542Z</updated>
     
@@ -83,6 +83,30 @@
     </summary>
     
       <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>cookie, sessionStorage和localStorage的区别</title>
+    <link href="http://www.maksim.website/2018/01/05/3/"/>
+    <id>http://www.maksim.website/2018/01/05/3/</id>
+    <published>2018-01-04T16:00:00.000Z</published>
+    <updated>2018-01-07T10:42:39.757Z</updated>
+    
+    <content type="html"><![CDATA[<p>在HTML5出来之前，只有cookie作为本地存储的一个方法（JavaScript Web API）。</p><h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><ul><li>本身用于客户端和服务器端通信的，</li><li>但是它有本地存储的功能， 于是被“借用”</li><li>使用document.cookie = … 获取和修改即可，用起来特别麻烦</li></ul><p>缺点：</p><ul><li>存储量太小，只有4kb</li><li>所有http请求都带着，会影响获取资源的效率，所以cookie只适合保存很小的数据，如会话标识</li><li>API简单，需要封装才能用document.cookie = …</li><li><p>有效时长根据设定的过期时间而定。</p><p>​</p></li></ul><h2 id="sessionStorage-和localStorage"><a href="#sessionStorage-和localStorage" class="headerlink" title="sessionStorage 和localStorage"></a>sessionStorage 和localStorage</h2><ul><li>HTML5专门为存储而设计，因为不需要像服务端发送数据，所以最大容量5M</li><li>API简单易用：</li><li>localStorage.setItem(key, value); localStorage.getItem(key)</li><li>sessionStorage当关闭浏览器后便会被清除，localStorage则不会，即使关闭浏览器localStorage也会一直存在，直到删除</li><li>sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；localStorage 在所有同源窗口中都是共享的</li><li>在iOS Safari 隐匿模式下，localStorage.getItem会报错，建议同一使用try-catch</li><li>Web Storage 支持事件通知机制，可以将数据更新的通知发送给监听者</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在HTML5出来之前，只有cookie作为本地存储的一个方法（JavaScript Web API）。&lt;/p&gt;
+&lt;h2 id=&quot;cookie&quot;&gt;&lt;a href=&quot;#cookie&quot; class=&quot;headerlink&quot; title=&quot;cookie&quot;&gt;&lt;/a&gt;cookie&lt;/h
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.maksim.website/categories/JavaScript/"/>
     
     
   </entry>
@@ -118,33 +142,9 @@
   </entry>
   
   <entry>
-    <title>cookie, sessionStorage和localStorage的区别</title>
-    <link href="http://www.maksim.website/2018/01/05/3/"/>
-    <id>http://www.maksim.website/2018/01/05/3/</id>
-    <published>2018-01-04T16:00:00.000Z</published>
-    <updated>2018-01-07T10:42:39.757Z</updated>
-    
-    <content type="html"><![CDATA[<p>在HTML5出来之前，只有cookie作为本地存储的一个方法（JavaScript Web API）。</p><h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><ul><li>本身用于客户端和服务器端通信的，</li><li>但是它有本地存储的功能， 于是被“借用”</li><li>使用document.cookie = … 获取和修改即可，用起来特别麻烦</li></ul><p>缺点：</p><ul><li>存储量太小，只有4kb</li><li>所有http请求都带着，会影响获取资源的效率，所以cookie只适合保存很小的数据，如会话标识</li><li>API简单，需要封装才能用document.cookie = …</li><li><p>有效时长根据设定的过期时间而定。</p><p>​</p></li></ul><h2 id="sessionStorage-和localStorage"><a href="#sessionStorage-和localStorage" class="headerlink" title="sessionStorage 和localStorage"></a>sessionStorage 和localStorage</h2><ul><li>HTML5专门为存储而设计，因为不需要像服务端发送数据，所以最大容量5M</li><li>API简单易用：</li><li>localStorage.setItem(key, value); localStorage.getItem(key)</li><li>sessionStorage当关闭浏览器后便会被清除，localStorage则不会，即使关闭浏览器localStorage也会一直存在，直到删除</li><li>sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；localStorage 在所有同源窗口中都是共享的</li><li>在iOS Safari 隐匿模式下，localStorage.getItem会报错，建议同一使用try-catch</li><li>Web Storage 支持事件通知机制，可以将数据更新的通知发送给监听者</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;在HTML5出来之前，只有cookie作为本地存储的一个方法（JavaScript Web API）。&lt;/p&gt;
-&lt;h2 id=&quot;cookie&quot;&gt;&lt;a href=&quot;#cookie&quot; class=&quot;headerlink&quot; title=&quot;cookie&quot;&gt;&lt;/a&gt;cookie&lt;/h
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://www.maksim.website/categories/JavaScript/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>PHP基础手札的引用</title>
-    <link href="http://www.maksim.website/2017/10/21/cjek1d3j4001trhrd6r6g622d/"/>
-    <id>http://www.maksim.website/2017/10/21/cjek1d3j4001trhrd6r6g622d/</id>
+    <link href="http://www.maksim.website/2017/10/21/cjek1lubw001zufrdl1s5razz/"/>
+    <id>http://www.maksim.website/2017/10/21/cjek1lubw001zufrdl1s5razz/</id>
     <published>2017-10-21T10:06:24.000Z</published>
     <updated>2017-10-21T10:06:25.000Z</updated>
     
@@ -166,8 +166,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2017/10/21/cjek1d3i4000drhrdipe4d96n/"/>
-    <id>http://www.maksim.website/2017/10/21/cjek1d3i4000drhrdipe4d96n/</id>
+    <link href="http://www.maksim.website/2017/10/21/cjek1luaa000eufrdixtthh18/"/>
+    <id>http://www.maksim.website/2017/10/21/cjek1luaa000eufrdixtthh18/</id>
     <published>2017-10-21T09:59:26.000Z</published>
     <updated>2018-01-07T10:50:24.324Z</updated>
     
@@ -219,8 +219,8 @@
   
   <entry>
     <title>PHP 控制反转、依赖注入、依赖查找服务容器？</title>
-    <link href="http://www.maksim.website/2017/10/19/cjek1d3j90023rhrdswx0qmjq/"/>
-    <id>http://www.maksim.website/2017/10/19/cjek1d3j90023rhrdswx0qmjq/</id>
+    <link href="http://www.maksim.website/2017/10/19/cjek1lubp001oufrd1rxvrjfb/"/>
+    <id>http://www.maksim.website/2017/10/19/cjek1lubp001oufrd1rxvrjfb/</id>
     <published>2017-10-18T16:00:00.000Z</published>
     <updated>2017-10-22T04:09:53.000Z</updated>
     
@@ -294,8 +294,8 @@
   
   <entry>
     <title>PHP页面静态化</title>
-    <link href="http://www.maksim.website/2017/10/16/cjek1d3jl002frhrd7arohwj6/"/>
-    <id>http://www.maksim.website/2017/10/16/cjek1d3jl002frhrd7arohwj6/</id>
+    <link href="http://www.maksim.website/2017/10/16/cjek1luc6002hufrdk156x47e/"/>
+    <id>http://www.maksim.website/2017/10/16/cjek1luc6002hufrdk156x47e/</id>
     <published>2017-10-16T11:17:47.000Z</published>
     <updated>2017-10-16T11:30:35.000Z</updated>
     
@@ -311,6 +311,30 @@
       
     
     </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PHP基础手札之emtpy、isset、is_null的区别</title>
+    <link href="http://www.maksim.website/2017/10/16/2/"/>
+    <id>http://www.maksim.website/2017/10/16/2/</id>
+    <published>2017-10-15T16:00:00.000Z</published>
+    <updated>2017-10-16T01:55:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>PHP提供了3个用于测试变量值的函数，分别是isset()、empty()、is_null（从这里就可以看出PHP系统函数变量名命名的混乱，这也是一直被人诟病的地方）.这几个函数均返回布尔值，有时使用不当会造成意想不到的结果。</p><p>比如，用isset()和empty()返回的结果是相反的，但却并非一直如此。</p><p>isset()用来检测一个变量是否已声明且值不为null。只能在变量不是null时返回真。</p><p>empty()用来检测一个变量是否为空，也就是说有如下情况时返回真值：变量是一个空字符串，false，空数组,null,’’,以及被unset删除后的变量。</p><blockquote><p>在PHP5.5之后，empty()函数可以接受任意类型的表达式</p></blockquote><p>is_null()函数用来判断变量内容是否是null，即返回真值的条件仅为变量值是null，值得一提的是，is_null() 是 isset() 的反函数，区别是isset()函数可以应用到未知变量，但is_null()只能针对以声明的变量。</p><table><thead><tr><th>对比项</th><th></th><th></th><th></th></tr></thead><tbody><tr><td>变量值($var)</td><td>isset($var)</td><td>empty($var)</td><td>is_null($var)</td></tr><tr><td>“”（空字符串）</td><td>bool(true)</td><td>bool(true)</td><td>bool(false)</td></tr><tr><td>“ “(空格)</td><td>bool(true)</td><td>bool(false)</td><td>bool(false)</td></tr><tr><td>false</td><td>bool(true)</td><td>bool(true)</td><td>bool(false)</td></tr><tr><td>true</td><td>bool(true)</td><td>bool(false)</td><td>bool(false)</td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;PHP提供了3个用于测试变量值的函数，分别是isset()、empty()、is_null（从这里就可以看出PHP系统函数变量名命名的混乱，这也是一直被人诟病的地方）.这几个函数均返回布尔值，有时使用不当会造成意想不到的结果。&lt;/p&gt;
+&lt;p&gt;比如，用isset()和empt
+      
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
     
     
   </entry>
@@ -341,33 +365,9 @@
   </entry>
   
   <entry>
-    <title>PHP基础手札之emtpy、isset、is_null的区别</title>
-    <link href="http://www.maksim.website/2017/10/16/2/"/>
-    <id>http://www.maksim.website/2017/10/16/2/</id>
-    <published>2017-10-15T16:00:00.000Z</published>
-    <updated>2017-10-16T01:55:22.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>PHP提供了3个用于测试变量值的函数，分别是isset()、empty()、is_null（从这里就可以看出PHP系统函数变量名命名的混乱，这也是一直被人诟病的地方）.这几个函数均返回布尔值，有时使用不当会造成意想不到的结果。</p><p>比如，用isset()和empty()返回的结果是相反的，但却并非一直如此。</p><p>isset()用来检测一个变量是否已声明且值不为null。只能在变量不是null时返回真。</p><p>empty()用来检测一个变量是否为空，也就是说有如下情况时返回真值：变量是一个空字符串，false，空数组,null,’’,以及被unset删除后的变量。</p><blockquote><p>在PHP5.5之后，empty()函数可以接受任意类型的表达式</p></blockquote><p>is_null()函数用来判断变量内容是否是null，即返回真值的条件仅为变量值是null，值得一提的是，is_null() 是 isset() 的反函数，区别是isset()函数可以应用到未知变量，但is_null()只能针对以声明的变量。</p><table><thead><tr><th>对比项</th><th></th><th></th><th></th></tr></thead><tbody><tr><td>变量值($var)</td><td>isset($var)</td><td>empty($var)</td><td>is_null($var)</td></tr><tr><td>“”（空字符串）</td><td>bool(true)</td><td>bool(true)</td><td>bool(false)</td></tr><tr><td>“ “(空格)</td><td>bool(true)</td><td>bool(false)</td><td>bool(false)</td></tr><tr><td>false</td><td>bool(true)</td><td>bool(true)</td><td>bool(false)</td></tr><tr><td>true</td><td>bool(true)</td><td>bool(false)</td><td>bool(false)</td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></tbody></table>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;PHP提供了3个用于测试变量值的函数，分别是isset()、empty()、is_null（从这里就可以看出PHP系统函数变量名命名的混乱，这也是一直被人诟病的地方）.这几个函数均返回布尔值，有时使用不当会造成意想不到的结果。&lt;/p&gt;
-&lt;p&gt;比如，用isset()和empt
-      
-    
-    </summary>
-    
-      <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title></title>
-    <link href="http://www.maksim.website/2017/10/15/cjek1d3ij000xrhrdv57fvp4q/"/>
-    <id>http://www.maksim.website/2017/10/15/cjek1d3ij000xrhrdv57fvp4q/</id>
+    <link href="http://www.maksim.website/2017/10/15/cjek1lub60014ufrdr2pii8ly/"/>
+    <id>http://www.maksim.website/2017/10/15/cjek1lub60014ufrdr2pii8ly/</id>
     <published>2017-10-15T11:24:45.000Z</published>
     <updated>2017-10-15T11:52:43.000Z</updated>
     
@@ -387,8 +387,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2017/10/13/cjek1d3in0012rhrdm1dktew0/"/>
-    <id>http://www.maksim.website/2017/10/13/cjek1d3in0012rhrdm1dktew0/</id>
+    <link href="http://www.maksim.website/2017/10/13/cjek1lub80018ufrd3puxbzrb/"/>
+    <id>http://www.maksim.website/2017/10/13/cjek1lub80018ufrd3puxbzrb/</id>
     <published>2017-10-13T08:56:28.000Z</published>
     <updated>2018-02-27T13:04:29.467Z</updated>
     
@@ -410,8 +410,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2017/10/13/cjek1d3kl003zrhrdqn2bsqsg/"/>
-    <id>http://www.maksim.website/2017/10/13/cjek1d3kl003zrhrdqn2bsqsg/</id>
+    <link href="http://www.maksim.website/2017/10/13/cjek1lud10043ufrd4ezm55le/"/>
+    <id>http://www.maksim.website/2017/10/13/cjek1lud10043ufrd4ezm55le/</id>
     <published>2017-10-13T05:41:58.000Z</published>
     <updated>2017-10-13T05:41:58.000Z</updated>
     
@@ -425,30 +425,6 @@
       
     
     </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL体系结构</title>
-    <link href="http://www.maksim.website/2017/10/13/1/"/>
-    <id>http://www.maksim.website/2017/10/13/1/</id>
-    <published>2017-10-12T16:00:00.000Z</published>
-    <updated>2017-10-13T11:35:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>数据库产品的架构一般可以分为应用层、逻辑层、物理层，对于MySQL，同样可以理解为如下3个层次。</p><p><img src="http://ogxeww23n.bkt.clouddn.com/http://images2015.cnblogs.com/blog/676456/201707/676456-20170722164214340-166686649.jpg210050572965263.gif" alt="img"></p><p>其中<code>Connectors</code>可以理解为各种客户端、 应用服务； <code>Connection Pool</code>可以理解为<strong>应用层</strong>，负责和客户端、用户进行交互，需要和不同的客户端（<code>PHP</code>,<code>Java</code>,<code>C API</code>,<code>.Net</code>以及<code>ODBC</code>,<code>JDBC</code>等等）和中间服务器进行交互，这一层主要完成的是链接处理，授权认证，和安全等一些功能，连接到<code>MySQL</code>的客户端在其进程中，都会有一个独立的线程，连接的查询只会在这个登录线程中进行查询。</p><p><code>Management Services&amp;Utilities</code>、<code>SQL Interface</code>、 <code>Parser</code>、 <code>Optimizer</code>、 <code>Caches&amp;Buffers</code>、 <code>Pluggable Storage Engines</code>可以理解为数据库的大脑——<strong>逻辑层</strong>。</p><p>负责具体的查询处理、事务处理、存储管理、恢复管理，以及其他附加功能。查询处理器负责查询的解析、执行。当接收到客户端的查询时，数据库会分配一个县城来处理它。先友查询处理器（优化器）生成执行计划，然后交由计划执行器来执行，执行器有时需要访问更底层的事务管理器、存储管理器来操作数据，事务管理器、存储管理器主要负责事务控制、并发控制、存储管理。在其中，将由事务管理来保证“<code>ACID</code>”特性，通过锁管理器来控制并发，由日志管理器来确保数据持久化，存储故那里器一般还包括一个缓冲管理器，有它来确定磁盘和缓存之间的数据传输。</p><p>根据上面的架构图，我们可以看到在逻辑层中<code>Pluggable Storage Engines</code></p><p>这是MySQL服务逻辑架构中的第三层，是MySQL的存储引擎，MySQL提供出了存储引擎接口，第三方可以根据自己的业务逻辑需求开发自己的存储引擎，Innodb起初就是由Innobase Oy公司所开发，2006年5月被甲骨文公司并购。</p><p>服务器通过API与存储引擎通信，这些接口屏蔽了不同存储引擎之间的差异，使得这些差异对上层的查询过程透明。存储引擎API包含几十个底层函数，用于执行诸如“开始一个事务”或者“根据主键提取一行记录”等操作，但存储引擎不会去解析SQL，不同存储引擎之间也不会相互通信，而只是简单地相应上层和服务的请求。</p><blockquote><p>注意：存储引擎是针对于表的而不是针对于库的，不同的表可以使用不同的引擎；</p></blockquote><p> 最下方的Files&amp;Logs可以理解为物理层，实际物理磁盘（存储）上的数据库文件，比如数据文件、日志文件等等。</p><p>引用：</p><p>《MySQL DBA修炼之道》 作者陈晓勇  出版社：华章图书</p><p>《打造扛得住的MySQL》 电子工业出版社</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;数据库产品的架构一般可以分为应用层、逻辑层、物理层，对于MySQL，同样可以理解为如下3个层次。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://ogxeww23n.bkt.clouddn.com/http://images2015.cnblogs.com/blog/676
-      
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
     
     
   </entry>
@@ -478,13 +454,37 @@
   </entry>
   
   <entry>
-    <title>服务器硬件对MYSQL性能的影响</title>
-    <link href="http://www.maksim.website/2017/10/10/1/"/>
-    <id>http://www.maksim.website/2017/10/10/1/</id>
-    <published>2017-10-09T16:00:00.000Z</published>
-    <updated>2017-10-15T11:12:06.000Z</updated>
+    <title>MySQL体系结构</title>
+    <link href="http://www.maksim.website/2017/10/13/1/"/>
+    <id>http://www.maksim.website/2017/10/13/1/</id>
+    <published>2017-10-12T16:00:00.000Z</published>
+    <updated>2017-10-13T11:35:40.000Z</updated>
     
-    <content type="html"><![CDATA[<p>影响数据库性能的主要因素有很多，主要包括以下几点：</p><ol><li>服务器硬件</li><li>服务器系统</li><li>数据库存储引擎的选择</li><li>数据库参数配置</li><li>数据库结构设计和SQL语句</li></ol><h1 id="服务器硬件："><a href="#服务器硬件：" class="headerlink" title="服务器硬件："></a>服务器硬件：</h1><p>每当大促或者一些活动的时候，我们监控系统时会发现，CPU和可用内存的资源都是很紧张的，特别对于一些计算密集型的应用，CPU的资源可能会变成系统的瓶颈。</p><p>当我们工作所需要的热数据的大小大于可用内存大小的时候，IO系统就会变成我们的瓶颈。</p><p>网络也算是一种IO，它对于性能的影响往往发生在大量的数据被查询时，特别是使用MemCache这类缓存系统时，当缓存大量失效时，就会造成大量的网络传输从而影响服务性能。</p><p>当发生这类问题的时候，我们可以升级I/O子系统，来增加大量的内存。</p><h2 id="如何选择CPU？"><a href="#如何选择CPU？" class="headerlink" title="如何选择CPU？"></a>如何选择CPU？</h2><h4 id="我们是选择更多的CPU，还是更快的CPU？"><a href="#我们是选择更多的CPU，还是更快的CPU？" class="headerlink" title="我们是选择更多的CPU，还是更快的CPU？"></a>我们是选择更多的CPU，还是更快的CPU？</h4><p>Intel Xeon E7-8890 v2</p><p>主频2.5GHz 核心数量：18核36线程</p><p>正常情况下，这两点我们都想要，但是现实是残酷的，44499RMB的价格，并不是所有公司都能够接受的。</p><p>首先，我们需要考虑几个问题。</p><p>####我们的应用是CPU密集型的应用吗？</p><p>如果是CPU密集型的应用要加快SQL的处理速度，显然我们需要的是更快的CPU而不是核心较多的CPU。</p><p>值得注意的是，MySQL目前还不支持多CPU对同一SQL并发处理。</p><p>也就是说，一条SQL只能使用一颗CPU来进行处理，多颗CPU对于一条SQL的处理效率是没有帮助的。</p><p>我们系统的并发量如何？</p><p>虽然单个SQL无法利用到多个CPU资源，如果要提高系统的吞吐量和并发处理量呢？</p><p>这时我们就需要CPU越多越好。</p><p>在Web应用中，CPU的数量就要比频率要重要一些。</p><p>我们所使用的MySQL版本也会决定如何选择CPU，老版本的MySQL对于多核CPU的支持并不好，5.0之前的版本限制是非常严重的，5.6、5.7对多核CPU的支持已经有了很好的改善。</p><h4 id="选择32位还是64位的CPU？"><a href="#选择32位还是64位的CPU？" class="headerlink" title="选择32位还是64位的CPU？"></a>选择32位还是64位的CPU？</h4><p>这个问题已经是多余的了，目前64位已经是默认配置了，而且MySQL对于64位CPU的支持已经很好了。</p><p>不过值得注意的是，<strong>在64位CPU上使用32位操作系统</strong>，意味着我们不能使用大的内存，任何一个单独的进程都不能寻址到4G以上的内存，MySQL是一个单线程的服务，这样就会对MySQL的性能造成极大的影响。</p><h2 id="内存、更大更快？"><a href="#内存、更大更快？" class="headerlink" title="内存、更大更快？"></a>内存、更大更快？</h2><p>内存的大小直接影响数据库的性能，目前内存的IO效率要远远高于磁盘，所以把数据缓存到内存中可以大大提高数据库性能。</p><p>MyISAM会把索引缓存到内存中，数据放到系统上进行缓存。</p><p>InnoDB会在内存上同时缓存索引和数据，所以可以提高运行效率</p><p>内存的确是越多越好，可是数据库的性能影响也是有限的，并不能无限增加性能，数据库可以利用的内存是有限的。</p><p>当所有的数据都被缓存到内后，再增加内存大小就变成没有意义的了。</p><p>如果我们的数据的大小是100G，内存是64G，我们可以通过扩展内存到128G来扩大数据库的缓冲区来提高数据库性能。</p><p>可是如果此时内存以经256G了，并且数据库的缓存池大小已经达到了196G的情况下，就不能指望增加内存来提高数据库心梗了。</p><p>多余的内存可以增加操作系统等其他服务的性能。</p><p>缓存虽然不能避免磁盘的写操作，但是可以起到延缓作用，把多次写入变成一次写入。</p><p>###　内存的选择？</p><p>内存的频率越高读取也就越快，应该选择主板所支持的最高主频，组成购买升级，每个通道的内存最高相同品牌、颗粒、频率、电压、校验技术和型号。单条容量要尽可能的大。</p><p>根据数据库大小选择内存，例如现在热数据有100G，那么我们就可以选择128G的内存。但是还有一个问题，那就是数据的增长率，为了避免短时间内多次升级硬件，可以选择更大一些的内存。</p><p>##I/O子系统（磁盘的配置和选择）</p><p>虽然内存对数据库的性能影响很重要，通过增加内存大小可以解决大部分性能问题，但是并不能忽视I/O子系统对性能影响。</p><p>有时我们需要以牺牲内存为代价提高I/O子系统的性能，因为无论如何最终，数据都要通过磁盘来进行持久化的存储。</p><p>目前主流的四种磁盘配置：</p><ol><li>使用传统机器磁盘</li><li>使用RAID增强传统机器磁盘</li><li>使用固态存储SSD和PCIe卡</li><li>使用网络存储NAS和SAN</li></ol><h3 id="传统机器硬盘"><a href="#传统机器硬盘" class="headerlink" title="传统机器硬盘"></a>传统机器硬盘</h3><p>传统机器磁盘是目前最常见的选择，使用最多，这类磁盘价格低，存储空间大，但是读、写速度较慢，传统机器硬盘的读、写效率取决于它的存储机制。</p><p>传统机器硬盘读取数据的过程：</p><ol><li>移动磁头到磁盘表面的正确位置</li><li>等待磁盘旋转，使所需的数据在磁头之下</li><li>等待磁盘旋转过去，所有所需的数据都被磁头读取</li></ol><p>磁盘执行这些操作有多快，也就决定了磁盘的读取速度，第1,2步骤被称之为访问时间，第3步称之为传输速度。</p><p>如何选择传统机器硬盘</p><ol><li>存储容量</li><li>传输速度</li><li>访问时间</li><li>主轴转速</li><li>物理尺寸</li></ol><h3 id="RAID增强机器硬盘的性能"><a href="#RAID增强机器硬盘的性能" class="headerlink" title="RAID增强机器硬盘的性能"></a>RAID增强机器硬盘的性能</h3><p>首先我们要知道什么是RAID，RAID是磁盘冗余队列的简称（Redundant Arrays of independent Disks）简单来说RAID的作用就是可以把多个容量较小的磁盘组成一组容量更大的磁盘，并提供数据冗余保证数据完整性的技术。</p><h4 id="数据库中使用的RAID-0级别："><a href="#数据库中使用的RAID-0级别：" class="headerlink" title="数据库中使用的RAID 0级别："></a>数据库中使用的RAID 0级别：</h4><p><strong>RAID 0</strong>是最早出现的RAID模式，也称之为数据条带，是组建磁盘阵列中<strong>最简单</strong>的一种形式，只需要两块以上的硬盘即可，<strong>成本低</strong>，可以提高整个磁盘的性能和吞吐量。RAID 0<strong>没有提供冗余或错误修复能力</strong>，但是实现成本是最低的。</p><p><img src="http://www.maixj.net/wp-content/uploads/2015/02/raid0.png" alt="RAID 0"></p><p>RAID 0 就是多个独立的磁盘串联到一起，比如有三块300G的磁盘组合到一起，就可以组成一块900G的磁盘，在写入时可以并发同时对三块磁盘进行写入，理论上写入效率就是普通磁盘的三倍。</p><p>RAID 0可能是性价比最高的解决方案，但是如果考虑到数据的恢复、可靠性因素，RAID 0就变成了一种成本最高的一种解决方案。</p><p>因为在RAID 0 中数据没有冗余，数据损坏的几率要比单块磁盘的几率还要高，因为RAID 0中任意一块磁盘损坏了，都会造成数据丢失。</p><p>所以RAID 0比较适合于不担心数据丢失的情况，比如可以随时从其他数据库克隆的备存，或者是一次性使用的数据。</p><h4 id="数据库中使用的RAID-1级别"><a href="#数据库中使用的RAID-1级别" class="headerlink" title="数据库中使用的RAID 1级别"></a>数据库中使用的RAID 1级别</h4><p><strong>RAID 1</strong>又称磁盘镜像，原理是把一块磁盘的数据镜像到另一个磁盘上，也就是说数据写入一块磁盘的同事，会在另一块限制的磁盘上生成镜像文件，在不影响性能的情况下最大限度的保证系统的可靠性和可修复性。</p><p><img src="http://www.maixj.net/wp-content/uploads/2015/02/raid1.jpg" alt="RAID 1"></p><p>RAID 1当一块硬盘失效时，系统会忽略该硬盘，转而使用剩余的镜像盘来读取数据，拥有很好的冗余能力，虽然这样对数据的安全性而言是绝对安全的，但是却似的成本增加，磁盘的利用率仅有百分之五十，以4块300G的硬盘而言，能够利用的空间仅有600G，出现故障后的RAID系统也不在可靠了，应当及时更换损坏的硬盘，否则其他的镜像盘也出现问题了，会导致系统的崩溃。</p><p>更换硬盘后需要很长的时间同步镜像，虽然对数据的访问不会受到影响，但是对整个系统的性能是会有所下降的。</p><p>RAID 1在读的速度上要比RAID 0快。</p><p>####数据库中使用的RAID 5级别</p><p>RAID 5又称之为分布式奇偶校验磁盘阵列，通过分布式奇偶校验块把数据分散到多个磁盘上，这样如果任何一个盘数据失效，都可以从奇偶校验块中重建。但是如果两块磁盘失效，则整个卷的数据都无法恢复。</p><p><img src="http://www.maixj.net/wp-content/uploads/2015/02/raid5.gif" alt="RAID 5"></p><p>在RAID 5上随机比较慢，因为每次写都需要两次读和两次写，以计算校验位的数值，比较适合以读为主的数据库业务。</p><p>最大的性能问题，发生在磁盘失效的时候，因为数据需要重新分布到其他磁盘上，这样会严重影响数据库性能，如果要使用RAID 5的话，最好使用在从服务器上。</p><h4 id="数据库中使用的RAID-10级别"><a href="#数据库中使用的RAID-10级别" class="headerlink" title="数据库中使用的RAID 10级别"></a>数据库中使用的RAID 10级别</h4><p>RAID 10又称分片的镜像，她是对磁盘先做RAID 1之后对两组RAID 1的磁盘再做RAID 0，所以对读写都有良好的性能，相对于RAID 5重建起来更简单，速度也更快。</p><p><img src="http://www.maixj.net/wp-content/uploads/2015/02/raid01.jpg" alt="RAID 10"></p><h4 id="RAID级别的选择"><a href="#RAID级别的选择" class="headerlink" title="RAID级别的选择"></a>RAID级别的选择</h4><table><thead><tr><th style="text-align:center">等级</th><th style="text-align:center">特点</th><th style="text-align:center">是否冗余</th><th style="text-align:center">盘数</th><th style="text-align:center">读</th><th style="text-align:center">写</th></tr></thead><tbody><tr><td style="text-align:center">RAID 0</td><td style="text-align:center">便宜，快速，危险</td><td style="text-align:center">无</td><td style="text-align:center">N</td><td style="text-align:center">快</td><td style="text-align:center">快</td></tr><tr><td style="text-align:center">RAID 1</td><td style="text-align:center">高速读，简单，安全</td><td style="text-align:center">有</td><td style="text-align:center">2</td><td style="text-align:center">快</td><td style="text-align:center">慢</td></tr><tr><td style="text-align:center">RAID 5</td><td style="text-align:center">安全，成本这种</td><td style="text-align:center">有</td><td style="text-align:center">N+1</td><td style="text-align:center">快</td><td style="text-align:center">取决于最慢的盘</td></tr><tr><td style="text-align:center">RAID 10</td><td style="text-align:center">贵，告诉，安全</td><td style="text-align:center">有</td><td style="text-align:center">2N</td><td style="text-align:center">快</td><td style="text-align:center">快</td></tr></tbody></table><h3 id="固态存储"><a href="#固态存储" class="headerlink" title="固态存储"></a>固态存储</h3><ol><li>拥有更好的随机读写性能。</li><li>能够更好的支持并发</li><li>更容易损坏</li></ol><p>在数据库存储中，我们常用的固态存储设备是SSD和PCI-E SSD。</p><h4 id="SSD"><a href="#SSD" class="headerlink" title="SSD"></a>SSD</h4><ol><li>使用SATA接口，可以替换传统磁盘而无需任何改变 </li><li>SATA接口的SSD同样支持RAID技术</li></ol><h4 id="PCI-E-SSD"><a href="#PCI-E-SSD" class="headerlink" title="PCI-E SSD"></a>PCI-E SSD</h4><ol><li>无法使用SATA接口，需要独特的驱动和配置</li><li>价格相比SSD要贵，但是性能比SSD更好</li></ol><p>PCI-E会占用服务器的内存。</p><h4 id="固态存储的使用场景"><a href="#固态存储的使用场景" class="headerlink" title="固态存储的使用场景"></a>固态存储的使用场景</h4><ol><li><p>适用于存在大量随机I/O的场景</p></li><li><p>使用于解决单线程负载的I/O场景</p><p>如果只有一块固态存储设备我们更应该将其放在从服务器上，因为从服务器是单线程的，而主DB是多线程的写入，为了产生更少的延迟，我们应该增加从服务器的I/O性能，而且由于固态设备易损耗，在主服务器上使用存在一定的安全隐患。</p></li></ol><h3 id="网络存储SAN和NAS"><a href="#网络存储SAN和NAS" class="headerlink" title="网络存储SAN和NAS"></a>网络存储SAN和NAS</h3><p><strong>SAN</strong>(Storage Area Network)和<strong>NAS</strong>(Network-Attached Storage)是两种外部文件存储设备加载到服务器上的方法</p><p>SAN设备通过光纤连接到服务器，设备通过块接口访问，服务器可以将其当做硬盘使用。</p><p>NAS设备使用网络连接，通过基于文件的协议如NFS或SMB来访问。</p><h4 id="网络存储适用的场景"><a href="#网络存储适用的场景" class="headerlink" title="网络存储适用的场景"></a>网络存储适用的场景</h4><p>网络存储在随机I/O比较差，并不适合MySQL数据库存储数据，有一些人认为可以使用网络存储实现服务的高可用性，比如两台服务器挂在同一网络环境下的磁盘，当主服务器可以由主备服务器来接管磁盘来提供服务，提高系统的可用性。</p><p>虽然能够在一定条件下能够提高系统的可用性，可是却是以牺牲性能为代价，而且，一旦网络存储设备出现问题，则需要更多的时间进行恢复。</p><p>不过，我们可以利用网络存储设备来存储数据库的备份文件，当一台独立服务器出现故障，短时间内无法恢复的情况下，可以利用网络存储设备上存储的备份文件恢复是实例。</p><h3 id="网络接口设备对数据库性能的影响"><a href="#网络接口设备对数据库性能的影响" class="headerlink" title="网络接口设备对数据库性能的影响"></a>网络接口设备对数据库性能的影响</h3><ol><li>网络带宽对性能的影响</li><li>网络质量对性能的影响</li></ol><p>建议</p><ul><li>采用高性能和高贷款的网络设备和交换机</li><li>对多个网卡进行绑定，增强可用性和带宽</li><li>尽可能的进行网络隔离</li></ul><h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>CPU</p><ul><li>64位的CPU一定要工作在64位的系统下</li><li>对于并发比较高的场景CPU的数量比频率更重要</li><li>对于CPU密集性场景和复杂SQL则频率越高越好</li></ul><p>内存</p><ul><li>选择主板所能使用的最高频率的内存</li><li>内存的大小对性能很重要，所以尽可能的大</li></ul><p>I/O子系统</p><ul><li>PCie -&gt; SSD -&gt; Raid10 &gt; 磁盘 -&gt; SAN</li></ul>]]></content>
+    <content type="html"><![CDATA[<p>数据库产品的架构一般可以分为应用层、逻辑层、物理层，对于MySQL，同样可以理解为如下3个层次。</p><p><img src="http://ogxeww23n.bkt.clouddn.com/http://images2015.cnblogs.com/blog/676456/201707/676456-20170722164214340-166686649.jpg210050572965263.gif" alt="img"></p><p>其中<code>Connectors</code>可以理解为各种客户端、 应用服务； <code>Connection Pool</code>可以理解为<strong>应用层</strong>，负责和客户端、用户进行交互，需要和不同的客户端（<code>PHP</code>,<code>Java</code>,<code>C API</code>,<code>.Net</code>以及<code>ODBC</code>,<code>JDBC</code>等等）和中间服务器进行交互，这一层主要完成的是链接处理，授权认证，和安全等一些功能，连接到<code>MySQL</code>的客户端在其进程中，都会有一个独立的线程，连接的查询只会在这个登录线程中进行查询。</p><p><code>Management Services&amp;Utilities</code>、<code>SQL Interface</code>、 <code>Parser</code>、 <code>Optimizer</code>、 <code>Caches&amp;Buffers</code>、 <code>Pluggable Storage Engines</code>可以理解为数据库的大脑——<strong>逻辑层</strong>。</p><p>负责具体的查询处理、事务处理、存储管理、恢复管理，以及其他附加功能。查询处理器负责查询的解析、执行。当接收到客户端的查询时，数据库会分配一个县城来处理它。先友查询处理器（优化器）生成执行计划，然后交由计划执行器来执行，执行器有时需要访问更底层的事务管理器、存储管理器来操作数据，事务管理器、存储管理器主要负责事务控制、并发控制、存储管理。在其中，将由事务管理来保证“<code>ACID</code>”特性，通过锁管理器来控制并发，由日志管理器来确保数据持久化，存储故那里器一般还包括一个缓冲管理器，有它来确定磁盘和缓存之间的数据传输。</p><p>根据上面的架构图，我们可以看到在逻辑层中<code>Pluggable Storage Engines</code></p><p>这是MySQL服务逻辑架构中的第三层，是MySQL的存储引擎，MySQL提供出了存储引擎接口，第三方可以根据自己的业务逻辑需求开发自己的存储引擎，Innodb起初就是由Innobase Oy公司所开发，2006年5月被甲骨文公司并购。</p><p>服务器通过API与存储引擎通信，这些接口屏蔽了不同存储引擎之间的差异，使得这些差异对上层的查询过程透明。存储引擎API包含几十个底层函数，用于执行诸如“开始一个事务”或者“根据主键提取一行记录”等操作，但存储引擎不会去解析SQL，不同存储引擎之间也不会相互通信，而只是简单地相应上层和服务的请求。</p><blockquote><p>注意：存储引擎是针对于表的而不是针对于库的，不同的表可以使用不同的引擎；</p></blockquote><p> 最下方的Files&amp;Logs可以理解为物理层，实际物理磁盘（存储）上的数据库文件，比如数据文件、日志文件等等。</p><p>引用：</p><p>《MySQL DBA修炼之道》 作者陈晓勇  出版社：华章图书</p><p>《打造扛得住的MySQL》 电子工业出版社</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;数据库产品的架构一般可以分为应用层、逻辑层、物理层，对于MySQL，同样可以理解为如下3个层次。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ogxeww23n.bkt.clouddn.com/http://images2015.cnblogs.com/blog/676
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>服务器系统对MySQL性能带来的影响</title>
+    <link href="http://www.maksim.website/2017/10/10/2/"/>
+    <id>http://www.maksim.website/2017/10/10/2/</id>
+    <published>2017-10-09T16:00:00.000Z</published>
+    <updated>2017-10-13T11:39:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>影响数据库性能的主要因素有很多，主要包括以下几点：</p><ol><li>服务器硬件</li><li>服务器系统</li><li>数据库存储引擎的选择</li><li>数据库参数配置</li><li>数据库结构设计和SQL语句</li></ol><h1 id="服务器系统"><a href="#服务器系统" class="headerlink" title="服务器系统"></a>服务器系统</h1><p>MySQL本身支持很多操作系统：</p><ul><li>Windows</li><li>FreeBSD</li><li>Solaris</li><li>Linux</li></ul><p>很多人都习惯将开发环境的数据库部署在Windows上，将生产环境的数据库部署在Linux上，这就会导致一个问题，MySQL 的schema存储方式在文件系统上实际是一个目录，<strong>在Windows平台上，大小写是不敏感的</strong>，而在<strong>Linux上大小写是敏感的</strong>，所以这就会导致，数据库和表的名字在Windows是可以运行的，但是当移植到Linux下就会找不到相关数据库和表的错误。</p><h2 id="CentOS系统参数优化"><a href="#CentOS系统参数优化" class="headerlink" title="CentOS系统参数优化"></a>CentOS系统参数优化</h2><p><strong>内核相关参数</strong>（/etc/sysctl.conf）</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"># </div><div class="line">net.core.somaxconn = 65535</div><div class="line">net.core.netdev_max_backlog = 65535</div><div class="line">net.ipv4.tcp_max_syn_backlog = 65535</div><div class="line"></div><div class="line"># TCP连接回收</div><div class="line">net.ipv4.tcp_fin_timeout = 10</div><div class="line">net.ipv4.tcp_tw_reuse = 1</div><div class="line">net.ipv4.tcp_tw_recycle = 1</div><div class="line"></div><div class="line">net.core.wmen_default = 87380</div><div class="line">net.core.wmen_max = 16777216</div><div class="line">net.core.rmem_default = 87380</div><div class="line">net.core_rmem_max = 1677216</div><div class="line"></div><div class="line">net.ipv4.tcp_keeplive_time = 120</div><div class="line">net.ipv4.tcp_keepalive_intvl = 30</div><div class="line">net.ipv4.tcp_keepalive_probes = 3</div><div class="line"></div><div class="line">kernel.shmmax = 4294967295</div><div class="line"># Linux内核参数最重要的参数之一，用于定义单个共享内存段的最大值</div><div class="line"># 1. 这个参数应该设置的足够大，以便能在一个共享内存段下容纳下整个Innodb缓冲池的大小</div><div class="line"># 这个值的大小对于64位Linux系统，可取的最大值为物理内存值-1byte,建议设置为物理内存的一半，一半取决于Innodb缓冲池的大小即可，可以取物理内存-1byte</div><div class="line"></div><div class="line">vm.swappiness = 0 </div><div class="line"># 这个参数当内存不足时会对性能产生较明显的影响</div><div class="line"># Linux系统内存交换区。</div><div class="line"># 禁用交换分区所带来的风险：</div><div class="line">#1. 降低操作系统的性能</div><div class="line">#2。 容易造成内存溢出，崩溃，或者被操作系统kill掉</div><div class="line"># 在MySQL服务器上保留叫分区还是有必要的额，但是要控制何时使用交换分区，vm.swappiness = 0 ，就是告诉内核除非虚拟内存完全满了，否则就不会使用交换分区</div></pre></td></tr></table></figure><p>增加资源限制（/etc/security/limit.conf），这个文件实际上是Linux PAM也就是插入式认证模块的配置文件。</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">* soft nofile 65535</div><div class="line">* hard nofile 65535</div><div class="line"></div><div class="line"># * 表示对所有用户有效</div><div class="line"># soft 指的是当前系统生效的设置</div><div class="line"># hard 表明系统中所设定的最大值</div><div class="line"># nofile 表示所限制的资源是打开文件的额最大数目</div><div class="line"># 65535 就是限制的数量</div><div class="line"># 把可打开的文件数量增加到65535个，以保证可以打开足够多的文件句柄，这个文件的修改需要重启系统后生效</div></pre></td></tr></table></figure><p>磁盘调度策略(/sys/block/devname/queue/scheduler)</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cat /sys/block/devname/queue/scheduler</div><div class="line">noop anticipatory deadline [cfq]</div></pre></td></tr></table></figure><p><strong>noop</strong>（电梯式调度策略）<br>NOOP实现了一个FIFO队列，它像电梯的工作方式一样对I/O请求进行组织，当有一个新的请求到来时，它将请求合并到最近的请求之后，以此来保证请求同一个介质。NOOP倾向于饿死读而利于写，因此NOOP对于闪存设备，RAM以及嵌入式是最好的选择。</p><p><strong>deadline</strong>（介质时间调度策略）<br>Deadline确保了在一个截至时间内服务请求，这个截至时间是可调整的，而默认读期限短于写期限。这样就防止了写操作因为不能被读取而饿死的现象。Deadline对数据库类应用是最好的选择。</p><p><strong>anticipatory</strong>（预料I/O调度策略）<br>本质上与Deadline一样，但在最后一次读操作后，要等待6ms，才能继续进行对其他I/O请求进行调度。它会在每个6ms中插入新的I/O操作，而会将一些小写入流合并成一个大写入流，用写入延时换取最大的写入吞吐量。AS适合于写入较多的环境，比如文件服务器，AS对数据库环境表现很差。</p><p>通过下面方法修改磁盘策略：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo  deadline &gt;  /sys/block/devname/queue/scheduler</div></pre></td></tr></table></figure><h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><p>在Windows环境下，仅有FAT和NTFS两种文件系统，但其实现在只使用NTFS。</p><p>在Linux环境下就不同了，目前主流的文件系统有EXT3、EXT4、XFS。这三种文件系统都带有日志，安全性可以得到保证，江湖传闻XFS新更能更好。</p><p>EXT3/4系统的挂在参数(/etc/fstab)</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 日志写入</div><div class="line">data = writeback | ordered | jouranl</div><div class="line">noatime, nodiratime</div><div class="line">/dev/sda1/ext4 noatime,nodiratime,data=writeback 1 1</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
