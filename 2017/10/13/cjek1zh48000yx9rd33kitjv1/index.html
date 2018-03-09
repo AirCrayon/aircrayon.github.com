@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="title:MySQL服务器参数介绍categories:MySQLdate:2017-10-18 id:1人们经常问，“我的服务器有32G内存，12核CPU，怎样配置最好？”很遗憾，问题没有那么简单。服务器的配置应该符合它的工作负载、数据，以及对应需求，并不仅仅看硬件的情况。 MySQL有大量可以修改的参数——但是不应该随意去修改。通常只需要把基本的配置正确（大部分情况下至于很少的一些参数是真">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maksim&#39;s Website">
+<meta property="og:url" content="http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="title:MySQL服务器参数介绍categories:MySQLdate:2017-10-18 id:1人们经常问，“我的服务器有32G内存，12核CPU，怎样配置最好？”很遗憾，问题没有那么简单。服务器的配置应该符合它的工作负载、数据，以及对应需求，并不仅仅看硬件的情况。 MySQL有大量可以修改的参数——但是不应该随意去修改。通常只需要把基本的配置正确（大部分情况下至于很少的一些参数是真">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171013153125.png">
+<meta property="og:updated_time" content="2018-02-27T13:04:29.467Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Maksim&#39;s Website">
+<meta name="twitter:description" content="title:MySQL服务器参数介绍categories:MySQLdate:2017-10-18 id:1人们经常问，“我的服务器有32G内存，12核CPU，怎样配置最好？”很遗憾，问题没有那么简单。服务器的配置应该符合它的工作负载、数据，以及对应需求，并不仅仅看硬件的情况。 MySQL有大量可以修改的参数——但是不应该随意去修改。通常只需要把基本的配置正确（大部分情况下至于很少的一些参数是真">
+<meta name="twitter:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171013153125.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Maksim&#39;s Website</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/10/15/cjek1zh4b0013x9rdm6furr8r/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/10/13/cjek1zh680040x9rdc6vovma2/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#id-1"><span class="toc-number">1.</span> <span class="toc-text">id:1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存配置相关参数"><span class="toc-number">2.</span> <span class="toc-text">内存配置相关参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#确定需要为操作系统保留多少内存"><span class="toc-number">2.1.</span> <span class="toc-text">确定需要为操作系统保留多少内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何为缓冲池分配内存"><span class="toc-number">2.2.</span> <span class="toc-text">如何为缓冲池分配内存</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#key-buffer-size"><span class="toc-number">2.2.1.</span> <span class="toc-text">key_buffer_size</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O相关配置参数"><span class="toc-number">3.</span> <span class="toc-text">I/O相关配置参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安全相关配置参数"><span class="toc-number">4.</span> <span class="toc-text">安全相关配置参数</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Maksim's Website</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-10-13T08:56:28.000Z" itemprop="datePublished">2017-10-13</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <hr>
+<p>title:MySQL服务器参数介绍<br>categories:MySQL<br>date:2017-10-18</p>
+<h2 id="id-1"><a href="#id-1" class="headerlink" title="id:1"></a>id:1</h2><p>人们经常问，“我的服务器有32G内存，12核CPU，怎样配置最好？”很遗憾，问题没有那么简单。服务器的配置应该符合它的工作负载、数据，以及对应需求，并不仅仅看硬件的情况。</p>
+<p>MySQL有大量可以修改的参数——但是不应该随意去修改。通常只需要把基本的配置正确（大部分情况下至于很少的一些参数是真正重要的），应该更多的时间花在schema的优化、索引、以及查询设计上。在正确地配置了MySQL的基本配置项之后，再花力气去修改其他配置项的收益通常就比较小了。</p>
+<p>从另外一方面来说，没用的配置项会导致潜风险的可能更大。我们碰到过不止一个“高度调优”过的服务器不停地彭奎，停止服务或者运行缓慢，结果都是因为错误的配置导致的。</p>
+<p>##　MySQl获取配置信息路径</p>
+<ul>
+<li>命令行参数 <code>mysqld_safe --datadir=/data/sql_data</code></li>
+<li>配置文件 <code>mysqld --help --verbose | grep -A 1 &#39;Default options&#39;</code></li>
+</ul>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171013153125.png" alt=""></p>
+<p>MySQL会先从<code>/etc/my.cnf</code>文件下读取配置信息，然后是<code>/etc/mysql/my.cnf</code>。</p>
+<p>MySQL配置参数的作用域</p>
+<ul>
+<li>全局参数 <ul>
+<li><code>set global 参数名 = 参数值;</code></li>
+<li><code>set @@global。参数名:=参数值;</code></li>
+</ul>
+</li>
+<li>会话参数<ul>
+<li><code>set [session] 参数名=参数值;</code></li>
+<li><code>set @@session.参数名:=参数值;</code></li>
+</ul>
+</li>
+</ul>
+<p>会话参数在没有被单独指定的时会使用全局参数的值来当做默认值。</p>
+<p>在这里需要注意，如果在服务器运行时修改了变量的全局值，这个值对当前回话和其他任何已经存在的会话是不起作用的，这是因为会话的变量值是在连接创建时从全局值初始化来的。在每次更改之后，应该检查 SHOW GLOBAL VARIABLES 的输出，确认已经按照期望变更了。</p>
+<h2 id="内存配置相关参数"><a href="#内存配置相关参数" class="headerlink" title="内存配置相关参数"></a>内存配置相关参数</h2><p>MySQL对于内存的使用我们可以分为两个类来看。</p>
+<ul>
+<li>无法通过配置参数设置的，如MySQL运行，解析，运行，查询所需要的内存</li>
+<li>可以通过参数配置控制的，各类的缓冲池所需要的内存。</li>
+</ul>
+<p>对内存参数配置之前，我们需要进行考虑：</p>
+<ul>
+<li>确定可以使用内存的上限，最根本的一点是不能超过本身物理内存的。还有一点是系统架构的问题，如果是32位系统，那么单个进程只能设置低于3G的内存空间。</li>
+<li>确定MySQL的每个连接使用的内存，例如排序缓冲和临时表</li>
+<li><p>把剩下的内存全部给 MySQL 的缓存，例如 InnoDB 的缓冲池。</p>
+<ul>
+<li><p>sort_buffer_size</p>
+<ul>
+<li>join_buufer_szie</li>
+<li>read_buffer_size</li>
+<li>read_rnd_buffer_size  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="确定需要为操作系统保留多少内存"><a href="#确定需要为操作系统保留多少内存" class="headerlink" title="确定需要为操作系统保留多少内存"></a>确定需要为操作系统保留多少内存</h3><p>给操作系统保留的内存还需要保留，在系统中运行的其他所有服务所需要的内存，以及前面提到的我们无法为MySQL进行控制的那一部分内存。</p>
+<p>数据库最好使用专用的服务器，不要与其他服务共用服务器，不可避免的会造成内存的争用，给配置内存带来更多的考虑因素。</p>
+<p>另外也有人喜欢在一台物理服务器上，运行多个MySQL实例，从内存分配上来看这样做也不好，除非是在开发、测试中可以节约服务器成本，但是在生产环境中最好不要运行多个MySQL实例，因为这样也会造成内存和I/O的争用，影响mysql服务的性能。</p>
+<h3 id="如何为缓冲池分配内存"><a href="#如何为缓冲池分配内存" class="headerlink" title="如何为缓冲池分配内存"></a>如何为缓冲池分配内存</h3><p>Innodb_buffer_pool_size，Innodb缓冲区</p>
+<p>总内存-（每个线程所需要的内存*连接数）- 系统保留内存</p>
+<p>手册中建议大家该内存大小应该为服务器内存大小的百分之七十五以上，上面提到了MySQL是如何使用内存的，所以不能简单粗暴的设置成百分之七十五，必须还得考虑其他的一些因素。</p>
+<h4 id="key-buffer-size"><a href="#key-buffer-size" class="headerlink" title="key_buffer_size"></a>key_buffer_size</h4><p>设置这个变量可以一次性为缓冲区(key buffer，也叫键缓存 key cache)分配所指定的空间，然而</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select sum(index_length) from information_schema.tables where engine=&apos;myisam&apos;</div></pre></td></tr></table></figure>
+<h2 id="I-O相关配置参数"><a href="#I-O相关配置参数" class="headerlink" title="I/O相关配置参数"></a>I/O相关配置参数</h2><p>Innodb I/O相关配置</p>
+<h2 id="安全相关配置参数"><a href="#安全相关配置参数" class="headerlink" title="安全相关配置参数"></a>安全相关配置参数</h2><p><code>expire_logs_days</code> 指定自动清理binlog的天数，这个天数的设置，最好能够覆盖两次全备间隔的天数，如果每天都进行全备的话，最好也能够保持7天，这样以备在特殊情况下数据的查找，比如数据出现异常的情况下，就可能会使用到binlog日志进行查找。</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#id-1"><span class="toc-number">1.</span> <span class="toc-text">id:1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存配置相关参数"><span class="toc-number">2.</span> <span class="toc-text">内存配置相关参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#确定需要为操作系统保留多少内存"><span class="toc-number">2.1.</span> <span class="toc-text">确定需要为操作系统保留多少内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何为缓冲池分配内存"><span class="toc-number">2.2.</span> <span class="toc-text">如何为缓冲池分配内存</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#key-buffer-size"><span class="toc-number">2.2.1.</span> <span class="toc-text">key_buffer_size</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O相关配置参数"><span class="toc-number">3.</span> <span class="toc-text">I/O相关配置参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安全相关配置参数"><span class="toc-number">4.</span> <span class="toc-text">安全相关配置参数</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.maksim.website/2017/10/13/cjek1zh48000yx9rd33kitjv1/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 Maksim
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
