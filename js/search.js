@@ -1,141 +1,119 @@
-(function () {
+// A local search script with the help of
+// [hexo-generator-search](https://github.com/PaicHyperionDev/hexo-generator-search)
+// Copyright (C) 2015 
+// Joseph Pan <http://github.com/wzpan>
+// Shuhao Mao <http://github.com/maoshuhao>
+// This library is free software; you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as
+// published by the Free Software Foundation; either version 2.1 of the
+// License, or (at your option) any later version.
+// 
+// This library is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+// 02110-1301 USA
+ 
 
-    var G = window || this,
-        even = G.BLOG.even,
-        $ = G.BLOG.$,
-        searchIco = $('#search'),
-        searchWrap = $('#search-wrap'),
-        keyInput = $('#key'),
-        back = $('#back'),
-        searchPanel = $('#search-panel'),
-        searchResult = $('#search-result'),
-        searchTpl = $('#search-tpl').innerHTML,
-        JSON_DATA = (G.BLOG.ROOT + '/content.json').replace(/\/{2}/g, '/'),
-        searchData;
+/*exported searchFunc*/
+var searchFunc = function(path, searchId, contentId) {
+  $.ajax({
+    url: path,
+    dataType: "xml",
+    success: function(xmlResponse) {
+      // get the contents from search data
+      var datas = $("entry", xmlResponse).map(function() {
+        return {
+          title: $("title", this).text(),
+          content: $("content", this).text(),
+          url: $("link", this).attr('href')
+        };
+      }).get();
 
-    function loadData(success) {
+      var $input = document.getElementById(searchId);
+      if (!$input) { return; }
+      var $resultContent = document.getElementById(contentId);
 
-        if (!searchData) {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', JSON_DATA, true);
+      $input.addEventListener("input", function(){
+        var str="<ul class=\"search-result-list\">";
+        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+        $resultContent.innerHTML = "";
+        if (this.value.trim().length <= 0) {
+          return;
+        }
+        // perform local searching
+        datas.forEach(function(data) {
+          var isMatch = true;
+          if (!data.title || data.title.trim() === "") {
+            data.title = "Untitled";
+          }
+          var dataTitle = data.title.trim().toLowerCase();     
+          var dataContent = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+          var dataUrl = data.url;
+          var indexTitle = -1;
+          var indexContent = -1;
+          var firstOccur = -1;
+          // only match artiles with not empty contents
+          if (dataContent !== "") {
+            keywords.forEach(function(keyword, i) {
+              indexTitle = dataTitle.indexOf(keyword);
+              indexContent = dataContent.indexOf(keyword);
 
-            xhr.onload = function () {
-                if (this.status >= 200 && this.status < 300) {
-                    var res = JSON.parse(this.response);
-                    searchData = res instanceof Array ? res : res.posts;
-                    success(searchData);
-                } else {
-                    console.error(this.statusText);
+              if( indexTitle < 0 && indexContent < 0 ){
+                isMatch = false;
+              } else {
+                if (indexContent < 0) {
+                  indexContent = 0;
                 }
-            };
-
-            xhr.onerror = function () {
-                console.error(this.statusText);
-            };
-
-            xhr.send();
-
-        } else {
-            success(searchData);
-        }
-    }
-
-    function tpl(html, data) {
-        return html.replace(/\{\w+\}/g, function (str) {
-            var prop = str.replace(/\{|\}/g, '');
-            return data[prop] || '';
-        });
-    }
-
-    var noop = G.BLOG.noop;
-    var root = $('html');
-
-    var Control = {
-        show: function () {
-            G.innerWidth < 760 ? root.classList.add('lock-size') : noop;
-            searchPanel.classList.add('in');
-        },
-        hide: function () {
-            G.innerWidth < 760 ? root.classList.remove('lock-size') : noop;
-            searchPanel.classList.remove('in');
-        }
-    };
-
-    function render(data) {
-        var html = '';
-        if (data.length) {
-
-            html = data.map(function (post) {
-
-                return tpl(searchTpl, {
-                    title: post.title,
-                    path: (G.BLOG.ROOT + '/' + post.path).replace(/\/{2,}/g, '/'),
-                    date: new Date(post.date).toLocaleDateString(),
-                    tags: post.tags.map(function (tag) {
-                        return '<span>#' + tag.name + '</span>';
-                    }).join('')
-                });
-
-            }).join('');
-
-        } else {
-            html = '<li class="tips"><i class="icon icon-coffee icon-3x"></i><p>Results not found!</p></li>';
-        }
-
-        searchResult.innerHTML = html;
-    }
-
-    function regtest(raw, regExp) {
-        regExp.lastIndex = 0;
-        return regExp.test(raw);
-    }
-
-    function matcher(post, regExp) {
-        return regtest(post.title, regExp) || post.tags.some(function (tag) {
-            return regtest(tag.name, regExp);
-        }) || regtest(post.text, regExp);
-    }
-
-    function search(e) {
-        var key = this.value.trim();
-        if (!key) {
-            return;
-        }
-
-        var regExp = new RegExp(key.replace(/[ ]/g, '|'), 'gmi');
-
-        loadData(function (data) {
-
-            var result = data.filter(function (post) {
-                return matcher(post, regExp);
+                if (i == 0) {
+                  firstOccur = indexContent;
+                }
+              }
             });
+          } else {
+            isMatch = false;
+          }
+          // show search results
+          if (isMatch) {
+            str += "<li><a href='"+ dataUrl +"' class='search-result-title'>"+ dataTitle +"</a>";
+            var content = data.content.trim().replace(/<[^>]+>/g,"");
+            if (firstOccur >= 0) {
+              // cut out 100 characters
+              var start = firstOccur - 20;
+              var end = firstOccur + 80;
 
-            render(result);
-            Control.show();
+              if(start < 0){
+                start = 0;
+              }
+
+              if(start == 0){
+                end = 100;
+              }
+
+              if(end > content.length){
+                end = content.length;
+              }
+
+              var matchContent = content.substr(start, end); 
+
+              // highlight all keywords
+              keywords.forEach(function(keyword){
+                var regS = new RegExp(keyword, "gi");
+                matchContent = matchContent.replace(regS, "<em class=\"search-keyword\">"+keyword+"</em>");
+              });
+
+              str += "<p class=\"search-result\">" + matchContent +"...</p>";
+            }
+            str += "</li>";
+          }
         });
-
-        e.preventDefault();
+        str += "</ul>";
+        $resultContent.innerHTML = str;
+      });
     }
-
-
-    searchIco.addEventListener(even, function () {
-        searchWrap.classList.toggle('in');
-        keyInput.value = '';
-        searchWrap.classList.contains('in') ? keyInput.focus() : keyInput.blur();
-    });
-
-    back.addEventListener(even, function () {
-        searchWrap.classList.remove('in');
-        Control.hide();
-    });
-
-    document.addEventListener(even, function (e) {
-        if (e.target.id !== 'key' && even === 'click') {
-            Control.hide();
-        }
-    });
-
-    keyInput.addEventListener('input', search);
-    keyInput.addEventListener(even, search);
-
-}).call(this);
+  });
+};

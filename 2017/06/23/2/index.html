@@ -1,25 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
-
-    
-
-    
-
-
-
+    <!-- so meta -->
     <meta charset="utf-8">
-    
-    
-    
-    <title>提高 MySQL 的性能，从数据库设计规范开始 | Maksim&#39;s Website</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#3F51B5">
-    
-    
-    <meta name="keywords" content="MySQL 设计规范">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="这几日一直都在看慕课网的一篇有关于数据库设计的实战教程，在其中讲述了关于数据库设计的一些相关规范，可以说是受益匪浅，于是便将学习所得记录下来，如果有想要看视频版的同学可以到慕课网查看。 点我跳转到慕课网观看视频 数据库名称规范1.所有数据库对象名称必须使用小写字母并使用下划线分割由于 MySQL数据库的对象名称默认情况下是大小写敏感的，特别是在 Linux 系统下，MySQL 的数据库和表实际上的">
 <meta name="keywords" content="MySQL 设计规范">
 <meta property="og:type" content="article">
@@ -32,172 +18,128 @@
 <meta name="twitter:title" content="提高 MySQL 的性能，从数据库设计规范开始">
 <meta name="twitter:description" content="这几日一直都在看慕课网的一篇有关于数据库设计的实战教程，在其中讲述了关于数据库设计的一些相关规范，可以说是受益匪浅，于是便将学习所得记录下来，如果有想要看视频版的同学可以到慕课网查看。 点我跳转到慕课网观看视频 数据库名称规范1.所有数据库对象名称必须使用小写字母并使用下划线分割由于 MySQL数据库的对象名称默认情况下是大小写敏感的，特别是在 Linux 系统下，MySQL 的数据库和表实际上的">
     
-        <link rel="alternate" type="application/atom+xml" title="Maksim&#39;s Website" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
-
-    <!-- custom head -->
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
     
-
+    <!-- title -->
+    <title>提高 MySQL 的性能，从数据库设计规范开始</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
 </head>
 
-<body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Maksim</h5>
-          <a href="mailto:aircrayon@qq.com" title="aircrayon@qq.com" class="mail">aircrayon@qq.com</a>
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/aircrayon" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/619946234" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/about"  >
-                <i class="icon icon-lg icon-link"></i>
-                关于Maksim
-              </a>
-            </li>
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
         
       </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/07/14/cjek0p68s001rb7rdo9n1z72w/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/06/01/1/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.maksim.website/2017/06/23/2/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.maksim.website/2017/06/23/2/&text=提高 MySQL 的性能，从数据库设计规范开始"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.maksim.website/2017/06/23/2/&title=提高 MySQL 的性能，从数据库设计规范开始"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.maksim.website/2017/06/23/2/&is_video=false&description=提高 MySQL 的性能，从数据库设计规范开始"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=提高 MySQL 的性能，从数据库设计规范开始&body=Check out this article: http://www.maksim.website/2017/06/23/2/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.maksim.website/2017/06/23/2/&title=提高 MySQL 的性能，从数据库设计规范开始"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.maksim.website/2017/06/23/2/&title=提高 MySQL 的性能，从数据库设计规范开始"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.maksim.website/2017/06/23/2/&title=提高 MySQL 的性能，从数据库设计规范开始"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.maksim.website/2017/06/23/2/&title=提高 MySQL 的性能，从数据库设计规范开始"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.maksim.website/2017/06/23/2/&name=提高 MySQL 的性能，从数据库设计规范开始&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
     </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">提高 MySQL 的性能，从数据库设计规范开始</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库名称规范"><span class="toc-number">1.</span> <span class="toc-text">数据库名称规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-所有数据库对象名称必须使用小写字母并使用下划线分割"><span class="toc-number">1.1.</span> <span class="toc-text">1.所有数据库对象名称必须使用小写字母并使用下划线分割</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-所有的数据库对象名称禁止使用-MySQL-的保留字段"><span class="toc-number">1.2.</span> <span class="toc-text">2.所有的数据库对象名称禁止使用 MySQL 的保留字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-数据库对象的命名要做到见名识义，而且最好不要超过32个字符"><span class="toc-number">1.3.</span> <span class="toc-text">3. 数据库对象的命名要做到见名识义，而且最好不要超过32个字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-所有的临时表必须以-tmp为前缀并以日期为后缀"><span class="toc-number">1.4.</span> <span class="toc-text">4. 所有的临时表必须以 tmp为前缀并以日期为后缀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-备份表必须以bak为前缀并以日期为后缀"><span class="toc-number">1.5.</span> <span class="toc-text">5.备份表必须以bak为前缀并以日期为后缀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-所有存储相同数据的列明和列类型必须一致。"><span class="toc-number">1.6.</span> <span class="toc-text">6.所有存储相同数据的列明和列类型必须一致。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库基本设计规范"><span class="toc-number">2.</span> <span class="toc-text">数据库基本设计规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-在没有特殊要求的情况下，所有表必须使用-Innodb-存储引擎"><span class="toc-number">2.1.</span> <span class="toc-text">1. 在没有特殊要求的情况下，所有表必须使用 Innodb 存储引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-数据库和表的字符集使用-UTF8"><span class="toc-number">2.2.</span> <span class="toc-text">2.数据库和表的字符集使用 UTF8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-所有的表和字段都需要添加注释"><span class="toc-number">2.3.</span> <span class="toc-text">3.所有的表和字段都需要添加注释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-尽量控制单表数据量的大小，建议控制在500万行以内"><span class="toc-number">2.3.1.</span> <span class="toc-text">4.尽量控制单表数据量的大小，建议控制在500万行以内</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-谨慎的使用-MySQL-分区表。"><span class="toc-number">2.3.2.</span> <span class="toc-text">5.谨慎的使用 MySQL 分区表。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-尽量做到冷热数据分离，减小表单的宽度"><span class="toc-number">2.3.3.</span> <span class="toc-text">6.尽量做到冷热数据分离，减小表单的宽度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-禁止在表中建立预留字段"><span class="toc-number">2.3.4.</span> <span class="toc-text">7.禁止在表中建立预留字段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-禁止在数据库中存储图片，文件等二进制数据"><span class="toc-number">2.3.5.</span> <span class="toc-text">8.禁止在数据库中存储图片，文件等二进制数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-禁止在线上做数据库压力测试"><span class="toc-number">2.3.6.</span> <span class="toc-text">9.禁止在线上做数据库压力测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-禁止从开发环境，测试环境直接连生产环境数据库"><span class="toc-number">2.3.7.</span> <span class="toc-text">8.禁止从开发环境，测试环境直接连生产环境数据库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库索引设计规范"><span class="toc-number">3.</span> <span class="toc-text">数据库索引设计规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-限制每张表上的索引数量，建议单标索引不超过5个"><span class="toc-number">3.1.</span> <span class="toc-text">1.限制每张表上的索引数量，建议单标索引不超过5个</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-每一个-Innodb表都必须有一个主键"><span class="toc-number">3.2.</span> <span class="toc-text">2.每一个 Innodb表都必须有一个主键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-常见索引列建议"><span class="toc-number">3.3.</span> <span class="toc-text">3.常见索引列建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-如何选择索引列的顺序"><span class="toc-number">3.4.</span> <span class="toc-text">4.如何选择索引列的顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-对于频繁的查询优先考虑使用覆盖索引"><span class="toc-number">3.5.</span> <span class="toc-text">5.对于频繁的查询优先考虑使用覆盖索引</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库字段设计规范"><span class="toc-number">4.</span> <span class="toc-text">数据库字段设计规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-优先选择符合存储需要的最小的数据类型"><span class="toc-number">4.1.</span> <span class="toc-text">1.优先选择符合存储需要的最小的数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-避免使用-Text、BLOG-的数据类型"><span class="toc-number">4.2.</span> <span class="toc-text">2.避免使用 Text、BLOG 的数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-避免使用-ENUM-数据类型"><span class="toc-number">4.3.</span> <span class="toc-text">3.避免使用 ENUM 数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-尽量可能把所有列定义为-NOT-NULL"><span class="toc-number">4.4.</span> <span class="toc-text">4.尽量可能把所有列定义为 NOT NULL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-使用-TIMESTAMP-或DATETIME-类型存储时间"><span class="toc-number">4.5.</span> <span class="toc-text">5.使用 TIMESTAMP 或DATETIME 类型存储时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-同财务相关的金额类数据，必须使用-decimal-类型"><span class="toc-number">4.6.</span> <span class="toc-text">6.同财务相关的金额类数据，必须使用 decimal 类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库-SQL-开发规范"><span class="toc-number">5.</span> <span class="toc-text">数据库 SQL 开发规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-建议使用预编译语句进行数据库"><span class="toc-number">5.1.</span> <span class="toc-text">1.建议使用预编译语句进行数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-避免数据类型的隐式转换"><span class="toc-number">5.2.</span> <span class="toc-text">2.避免数据类型的隐式转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-充分利用表上已经存在的索引"><span class="toc-number">5.3.</span> <span class="toc-text">3.充分利用表上已经存在的索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-程序链接不同的数据库使用不同的账号，禁止跨库查询。"><span class="toc-number">5.4.</span> <span class="toc-text">4.程序链接不同的数据库使用不同的账号，禁止跨库查询。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-禁止使用-SELECT-必须使用-SELECT-lt-字段列表-gt-查询"><span class="toc-number">5.5.</span> <span class="toc-text">5.禁止使用 SELECT *必须使用 SELECT&lt;字段列表&gt;查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-禁止使用不含字段列表的-insert-语句"><span class="toc-number">5.6.</span> <span class="toc-text">6.禁止使用不含字段列表的 insert 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-避免使用子查询，可以把子查询优化为join"><span class="toc-number">5.7.</span> <span class="toc-text">7.避免使用子查询，可以把子查询优化为join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-避免使用-JOIN-关联太多的表"><span class="toc-number">5.8.</span> <span class="toc-text">8.避免使用 JOIN 关联太多的表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-减少同数据库的交互次数"><span class="toc-number">5.9.</span> <span class="toc-text">9.减少同数据库的交互次数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-使用-in-代替or"><span class="toc-number">5.10.</span> <span class="toc-text">10.使用 in 代替or</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-禁止使用-order-by-rand-）进行随机排序"><span class="toc-number">5.11.</span> <span class="toc-text">11.禁止使用 order by rand(）进行随机排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-WHERE-从句中禁止对列进行函数转换和计算"><span class="toc-number">5.12.</span> <span class="toc-text">12.WHERE 从句中禁止对列进行函数转换和计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-有明显不会重复值时使用-UNION-ALL-而不是UNION"><span class="toc-number">5.13.</span> <span class="toc-text">13.有明显不会重复值时使用 UNION ALL 而不是UNION</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-拆分复杂的大-SQL-为多个小-SQL"><span class="toc-number">5.14.</span> <span class="toc-text">14.拆分复杂的大 SQL 为多个小 SQL</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库操作行为规范"><span class="toc-number">6.</span> <span class="toc-text">数据库操作行为规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-超100万行的批量写操作，需分批多次进行操作"><span class="toc-number">6.1.</span> <span class="toc-text">1.超100万行的批量写操作，需分批多次进行操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-对大表数据结构的修改一定要谨慎，会造成严重的锁表操作。尤其是生产环境，是不能忍受的。"><span class="toc-number">6.2.</span> <span class="toc-text">2.对大表数据结构的修改一定要谨慎，会造成严重的锁表操作。尤其是生产环境，是不能忍受的。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-禁止为程序使用的账户赋予-super-权限"><span class="toc-number">6.3.</span> <span class="toc-text">3.禁止为程序使用的账户赋予 super 权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-对于程序链接数据库账户，遵循权限最小原则"><span class="toc-number">6.4.</span> <span class="toc-text">4.对于程序链接数据库账户，遵循权限最小原则</span></a></li></ol></li></ol>
     </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">提高 MySQL 的性能，从数据库设计规范开始</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2017-06-22T16:00:00.000Z" itemprop="datePublished" class="page-time">
-  2017-06-23
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/MySQL/">MySQL</a></li></ul>
-
-            
-        </h5>
-    </div>
+  </span>
+</div>
 
     
-
-
-</header>
-
-
-<div class="container body-wrap">
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库名称规范"><span class="post-toc-number">1.</span> <span class="post-toc-text">数据库名称规范</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-所有数据库对象名称必须使用小写字母并使用下划线分割"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.所有数据库对象名称必须使用小写字母并使用下划线分割</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-所有的数据库对象名称禁止使用-MySQL-的保留字段"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2.所有的数据库对象名称禁止使用 MySQL 的保留字段</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-数据库对象的命名要做到见名识义，而且最好不要超过32个字符"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3. 数据库对象的命名要做到见名识义，而且最好不要超过32个字符</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-所有的临时表必须以-tmp为前缀并以日期为后缀"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">4. 所有的临时表必须以 tmp为前缀并以日期为后缀</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-备份表必须以bak为前缀并以日期为后缀"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">5.备份表必须以bak为前缀并以日期为后缀</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-所有存储相同数据的列明和列类型必须一致。"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">6.所有存储相同数据的列明和列类型必须一致。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库基本设计规范"><span class="post-toc-number">2.</span> <span class="post-toc-text">数据库基本设计规范</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-在没有特殊要求的情况下，所有表必须使用-Innodb-存储引擎"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1. 在没有特殊要求的情况下，所有表必须使用 Innodb 存储引擎</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-数据库和表的字符集使用-UTF8"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.数据库和表的字符集使用 UTF8</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-所有的表和字段都需要添加注释"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3.所有的表和字段都需要添加注释</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-尽量控制单表数据量的大小，建议控制在500万行以内"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">4.尽量控制单表数据量的大小，建议控制在500万行以内</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-谨慎的使用-MySQL-分区表。"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">5.谨慎的使用 MySQL 分区表。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-尽量做到冷热数据分离，减小表单的宽度"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">6.尽量做到冷热数据分离，减小表单的宽度</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-禁止在表中建立预留字段"><span class="post-toc-number">2.3.4.</span> <span class="post-toc-text">7.禁止在表中建立预留字段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-禁止在数据库中存储图片，文件等二进制数据"><span class="post-toc-number">2.3.5.</span> <span class="post-toc-text">8.禁止在数据库中存储图片，文件等二进制数据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-禁止在线上做数据库压力测试"><span class="post-toc-number">2.3.6.</span> <span class="post-toc-text">9.禁止在线上做数据库压力测试</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-禁止从开发环境，测试环境直接连生产环境数据库"><span class="post-toc-number">2.3.7.</span> <span class="post-toc-text">8.禁止从开发环境，测试环境直接连生产环境数据库</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库索引设计规范"><span class="post-toc-number">3.</span> <span class="post-toc-text">数据库索引设计规范</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-限制每张表上的索引数量，建议单标索引不超过5个"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">1.限制每张表上的索引数量，建议单标索引不超过5个</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-每一个-Innodb表都必须有一个主键"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">2.每一个 Innodb表都必须有一个主键</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-常见索引列建议"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">3.常见索引列建议</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-如何选择索引列的顺序"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">4.如何选择索引列的顺序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-对于频繁的查询优先考虑使用覆盖索引"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">5.对于频繁的查询优先考虑使用覆盖索引</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库字段设计规范"><span class="post-toc-number">4.</span> <span class="post-toc-text">数据库字段设计规范</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-优先选择符合存储需要的最小的数据类型"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">1.优先选择符合存储需要的最小的数据类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-避免使用-Text、BLOG-的数据类型"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">2.避免使用 Text、BLOG 的数据类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-避免使用-ENUM-数据类型"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">3.避免使用 ENUM 数据类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-尽量可能把所有列定义为-NOT-NULL"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">4.尽量可能把所有列定义为 NOT NULL</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-使用-TIMESTAMP-或DATETIME-类型存储时间"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">5.使用 TIMESTAMP 或DATETIME 类型存储时间</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-同财务相关的金额类数据，必须使用-decimal-类型"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">6.同财务相关的金额类数据，必须使用 decimal 类型</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库-SQL-开发规范"><span class="post-toc-number">5.</span> <span class="post-toc-text">数据库 SQL 开发规范</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-建议使用预编译语句进行数据库"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">1.建议使用预编译语句进行数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-避免数据类型的隐式转换"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">2.避免数据类型的隐式转换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-充分利用表上已经存在的索引"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">3.充分利用表上已经存在的索引</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-程序链接不同的数据库使用不同的账号，禁止跨库查询。"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">4.程序链接不同的数据库使用不同的账号，禁止跨库查询。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-禁止使用-SELECT-必须使用-SELECT-lt-字段列表-gt-查询"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">5.禁止使用 SELECT *必须使用 SELECT&lt;字段列表&gt;查询</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-禁止使用不含字段列表的-insert-语句"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">6.禁止使用不含字段列表的 insert 语句</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-避免使用子查询，可以把子查询优化为join"><span class="post-toc-number">5.7.</span> <span class="post-toc-text">7.避免使用子查询，可以把子查询优化为join</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-避免使用-JOIN-关联太多的表"><span class="post-toc-number">5.8.</span> <span class="post-toc-text">8.避免使用 JOIN 关联太多的表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-减少同数据库的交互次数"><span class="post-toc-number">5.9.</span> <span class="post-toc-text">9.减少同数据库的交互次数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-使用-in-代替or"><span class="post-toc-number">5.10.</span> <span class="post-toc-text">10.使用 in 代替or</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-禁止使用-order-by-rand-）进行随机排序"><span class="post-toc-number">5.11.</span> <span class="post-toc-text">11.禁止使用 order by rand(）进行随机排序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-WHERE-从句中禁止对列进行函数转换和计算"><span class="post-toc-number">5.12.</span> <span class="post-toc-text">12.WHERE 从句中禁止对列进行函数转换和计算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-有明显不会重复值时使用-UNION-ALL-而不是UNION"><span class="post-toc-number">5.13.</span> <span class="post-toc-text">13.有明显不会重复值时使用 UNION ALL 而不是UNION</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-拆分复杂的大-SQL-为多个小-SQL"><span class="post-toc-number">5.14.</span> <span class="post-toc-text">14.拆分复杂的大 SQL 为多个小 SQL</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库操作行为规范"><span class="post-toc-number">6.</span> <span class="post-toc-text">数据库操作行为规范</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-超100万行的批量写操作，需分批多次进行操作"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">1.超100万行的批量写操作，需分批多次进行操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-对大表数据结构的修改一定要谨慎，会造成严重的锁表操作。尤其是生产环境，是不能忍受的。"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">2.对大表数据结构的修改一定要谨慎，会造成严重的锁表操作。尤其是生产环境，是不能忍受的。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-禁止为程序使用的账户赋予-super-权限"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">3.禁止为程序使用的账户赋予 super 权限</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-对于程序链接数据库账户，遵循权限最小原则"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">4.对于程序链接数据库账户，遵循权限最小原则</span></a></li></ol></li></ol>
-        </nav>
-    </aside>
-    
-<article id="post-数据库设计规范实例"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">提高 MySQL 的性能，从数据库设计规范开始</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2017-06-23 00:00:00" datetime="2017-06-22T16:00:00.000Z"  itemprop="datePublished">2017-06-23</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/MySQL/">MySQL</a></li></ul>
+    <h1 class="posttitle" itemprop="name headline">
+        提高 MySQL 的性能，从数据库设计规范开始
+    </h1>
 
 
 
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Maksim's Website</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-06-22T16:00:00.000Z" itemprop="datePublished">2017-06-23</time>
+    </div>
 
 
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <p>这几日一直都在看慕课网的一篇有关于数据库设计的实战教程，在其中讲述了关于数据库设计的一些相关规范，可以说是受益匪浅，于是便将学习所得记录下来，如果有想要看视频版的同学可以到慕课网查看。</p>
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/MySQL-设计规范/">MySQL 设计规范</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>这几日一直都在看慕课网的一篇有关于数据库设计的实战教程，在其中讲述了关于数据库设计的一些相关规范，可以说是受益匪浅，于是便将学习所得记录下来，如果有想要看视频版的同学可以到慕课网查看。</p>
 <p><a href="http://coding.imooc.com/class/79.html" target="_blank" rel="noopener">点我跳转到慕课网观看视频</a></p>
 <h2 id="数据库名称规范"><a href="#数据库名称规范" class="headerlink" title="数据库名称规范"></a>数据库名称规范</h2><h3 id="1-所有数据库对象名称必须使用小写字母并使用下划线分割"><a href="#1-所有数据库对象名称必须使用小写字母并使用下划线分割" class="headerlink" title="1.所有数据库对象名称必须使用小写字母并使用下划线分割"></a>1.所有数据库对象名称必须使用小写字母并使用下划线分割</h3><p>由于 MySQL数据库的对象名称默认情况下是大小写敏感的，特别是在 Linux 系统下，MySQL 的数据库和表实际上的存储方式就是 Linux 下的一个文件，由于 Linux 系统是对大小写敏感的，所以 MySQL 也就对大小写敏感，这就意味着 DbName dbname 是完全不同的两个数据库。</p>
 <p>如果在开发过程中使用大小写混用的情况下，就会对未来的开发工作造成很多不必要的麻烦，要时刻注意数据库对象的大小写。</p>
@@ -335,285 +277,100 @@
 <li>程序使用账号原则上不准有 drop权限</li>
 </ol>
 
-        </div>
-
-        <blockquote class="post-copyright">
-    <div class="content">
-        
-<span class="post-time">
-    Last updated: <time datetime="2017-08-04T04:41:58.000Z" itemprop="dateUpdated">2017-08-04 12:41:58</time>
-</span><br>
-
-
-        
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/06/23/2/" target="_blank" rel="external">http://www.maksim.website/2017/06/23/2/</a>
-        
-    </div>
-    <footer>
-        <a href="http://www.maksim.website">
-            <img src="/img/avatar.jpg" alt="Maksim">
-            Maksim
-        </a>
-    </footer>
-</blockquote>
-
-        
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL-设计规范/">MySQL 设计规范</a></li></ul>
-
-
-            
-<div class="page-share-wrap">
-    
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2017/06/23/2/&title=《提高 MySQL 的性能，从数据库设计规范开始》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2017/06/23/2/&title=《提高 MySQL 的性能，从数据库设计规范开始》 — Maksim's Website&source=" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2017/06/23/2/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《提高 MySQL 的性能，从数据库设计规范开始》 — Maksim's Website&url=http://www.maksim.website/2017/06/23/2/&via=http://www.maksim.website" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2017/06/23/2/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
-</div>
-
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2017/07/14/cje5qox1q001gwurdr7fdnzz6/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">PHP7 微信支付不能回调，让我们的团队损失1.00CNY。</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2017/06/01/1/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">利用规约设计模式（Specification）开发整洁的规格校验（PHP 语言描述）</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
+  </div>
 </article>
 
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        谢谢大爷~
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/" alt="打赏二维码">
-        </div>
-        
+
+
     </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库名称规范"><span class="toc-number">1.</span> <span class="toc-text">数据库名称规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-所有数据库对象名称必须使用小写字母并使用下划线分割"><span class="toc-number">1.1.</span> <span class="toc-text">1.所有数据库对象名称必须使用小写字母并使用下划线分割</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-所有的数据库对象名称禁止使用-MySQL-的保留字段"><span class="toc-number">1.2.</span> <span class="toc-text">2.所有的数据库对象名称禁止使用 MySQL 的保留字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-数据库对象的命名要做到见名识义，而且最好不要超过32个字符"><span class="toc-number">1.3.</span> <span class="toc-text">3. 数据库对象的命名要做到见名识义，而且最好不要超过32个字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-所有的临时表必须以-tmp为前缀并以日期为后缀"><span class="toc-number">1.4.</span> <span class="toc-text">4. 所有的临时表必须以 tmp为前缀并以日期为后缀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-备份表必须以bak为前缀并以日期为后缀"><span class="toc-number">1.5.</span> <span class="toc-text">5.备份表必须以bak为前缀并以日期为后缀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-所有存储相同数据的列明和列类型必须一致。"><span class="toc-number">1.6.</span> <span class="toc-text">6.所有存储相同数据的列明和列类型必须一致。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库基本设计规范"><span class="toc-number">2.</span> <span class="toc-text">数据库基本设计规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-在没有特殊要求的情况下，所有表必须使用-Innodb-存储引擎"><span class="toc-number">2.1.</span> <span class="toc-text">1. 在没有特殊要求的情况下，所有表必须使用 Innodb 存储引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-数据库和表的字符集使用-UTF8"><span class="toc-number">2.2.</span> <span class="toc-text">2.数据库和表的字符集使用 UTF8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-所有的表和字段都需要添加注释"><span class="toc-number">2.3.</span> <span class="toc-text">3.所有的表和字段都需要添加注释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-尽量控制单表数据量的大小，建议控制在500万行以内"><span class="toc-number">2.3.1.</span> <span class="toc-text">4.尽量控制单表数据量的大小，建议控制在500万行以内</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-谨慎的使用-MySQL-分区表。"><span class="toc-number">2.3.2.</span> <span class="toc-text">5.谨慎的使用 MySQL 分区表。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-尽量做到冷热数据分离，减小表单的宽度"><span class="toc-number">2.3.3.</span> <span class="toc-text">6.尽量做到冷热数据分离，减小表单的宽度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-禁止在表中建立预留字段"><span class="toc-number">2.3.4.</span> <span class="toc-text">7.禁止在表中建立预留字段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-禁止在数据库中存储图片，文件等二进制数据"><span class="toc-number">2.3.5.</span> <span class="toc-text">8.禁止在数据库中存储图片，文件等二进制数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-禁止在线上做数据库压力测试"><span class="toc-number">2.3.6.</span> <span class="toc-text">9.禁止在线上做数据库压力测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-禁止从开发环境，测试环境直接连生产环境数据库"><span class="toc-number">2.3.7.</span> <span class="toc-text">8.禁止从开发环境，测试环境直接连生产环境数据库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库索引设计规范"><span class="toc-number">3.</span> <span class="toc-text">数据库索引设计规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-限制每张表上的索引数量，建议单标索引不超过5个"><span class="toc-number">3.1.</span> <span class="toc-text">1.限制每张表上的索引数量，建议单标索引不超过5个</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-每一个-Innodb表都必须有一个主键"><span class="toc-number">3.2.</span> <span class="toc-text">2.每一个 Innodb表都必须有一个主键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-常见索引列建议"><span class="toc-number">3.3.</span> <span class="toc-text">3.常见索引列建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-如何选择索引列的顺序"><span class="toc-number">3.4.</span> <span class="toc-text">4.如何选择索引列的顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-对于频繁的查询优先考虑使用覆盖索引"><span class="toc-number">3.5.</span> <span class="toc-text">5.对于频繁的查询优先考虑使用覆盖索引</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库字段设计规范"><span class="toc-number">4.</span> <span class="toc-text">数据库字段设计规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-优先选择符合存储需要的最小的数据类型"><span class="toc-number">4.1.</span> <span class="toc-text">1.优先选择符合存储需要的最小的数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-避免使用-Text、BLOG-的数据类型"><span class="toc-number">4.2.</span> <span class="toc-text">2.避免使用 Text、BLOG 的数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-避免使用-ENUM-数据类型"><span class="toc-number">4.3.</span> <span class="toc-text">3.避免使用 ENUM 数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-尽量可能把所有列定义为-NOT-NULL"><span class="toc-number">4.4.</span> <span class="toc-text">4.尽量可能把所有列定义为 NOT NULL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-使用-TIMESTAMP-或DATETIME-类型存储时间"><span class="toc-number">4.5.</span> <span class="toc-text">5.使用 TIMESTAMP 或DATETIME 类型存储时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-同财务相关的金额类数据，必须使用-decimal-类型"><span class="toc-number">4.6.</span> <span class="toc-text">6.同财务相关的金额类数据，必须使用 decimal 类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库-SQL-开发规范"><span class="toc-number">5.</span> <span class="toc-text">数据库 SQL 开发规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-建议使用预编译语句进行数据库"><span class="toc-number">5.1.</span> <span class="toc-text">1.建议使用预编译语句进行数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-避免数据类型的隐式转换"><span class="toc-number">5.2.</span> <span class="toc-text">2.避免数据类型的隐式转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-充分利用表上已经存在的索引"><span class="toc-number">5.3.</span> <span class="toc-text">3.充分利用表上已经存在的索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-程序链接不同的数据库使用不同的账号，禁止跨库查询。"><span class="toc-number">5.4.</span> <span class="toc-text">4.程序链接不同的数据库使用不同的账号，禁止跨库查询。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-禁止使用-SELECT-必须使用-SELECT-lt-字段列表-gt-查询"><span class="toc-number">5.5.</span> <span class="toc-text">5.禁止使用 SELECT *必须使用 SELECT&lt;字段列表&gt;查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-禁止使用不含字段列表的-insert-语句"><span class="toc-number">5.6.</span> <span class="toc-text">6.禁止使用不含字段列表的 insert 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-避免使用子查询，可以把子查询优化为join"><span class="toc-number">5.7.</span> <span class="toc-text">7.避免使用子查询，可以把子查询优化为join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-避免使用-JOIN-关联太多的表"><span class="toc-number">5.8.</span> <span class="toc-text">8.避免使用 JOIN 关联太多的表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-减少同数据库的交互次数"><span class="toc-number">5.9.</span> <span class="toc-text">9.减少同数据库的交互次数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-使用-in-代替or"><span class="toc-number">5.10.</span> <span class="toc-text">10.使用 in 代替or</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-禁止使用-order-by-rand-）进行随机排序"><span class="toc-number">5.11.</span> <span class="toc-text">11.禁止使用 order by rand(）进行随机排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-WHERE-从句中禁止对列进行函数转换和计算"><span class="toc-number">5.12.</span> <span class="toc-text">12.WHERE 从句中禁止对列进行函数转换和计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-有明显不会重复值时使用-UNION-ALL-而不是UNION"><span class="toc-number">5.13.</span> <span class="toc-text">13.有明显不会重复值时使用 UNION ALL 而不是UNION</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-拆分复杂的大-SQL-为多个小-SQL"><span class="toc-number">5.14.</span> <span class="toc-text">14.拆分复杂的大 SQL 为多个小 SQL</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库操作行为规范"><span class="toc-number">6.</span> <span class="toc-text">数据库操作行为规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-超100万行的批量写操作，需分批多次进行操作"><span class="toc-number">6.1.</span> <span class="toc-text">1.超100万行的批量写操作，需分批多次进行操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-对大表数据结构的修改一定要谨慎，会造成严重的锁表操作。尤其是生产环境，是不能忍受的。"><span class="toc-number">6.2.</span> <span class="toc-text">2.对大表数据结构的修改一定要谨慎，会造成严重的锁表操作。尤其是生产环境，是不能忍受的。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-禁止为程序使用的账户赋予-super-权限"><span class="toc-number">6.3.</span> <span class="toc-text">3.禁止为程序使用的账户赋予 super 权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-对于程序链接数据库账户，遵循权限最小原则"><span class="toc-number">6.4.</span> <span class="toc-text">4.对于程序链接数据库账户，遵循权限最小原则</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.maksim.website/2017/06/23/2/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.maksim.website/2017/06/23/2/&text=提高 MySQL 的性能，从数据库设计规范开始"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.maksim.website/2017/06/23/2/&title=提高 MySQL 的性能，从数据库设计规范开始"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.maksim.website/2017/06/23/2/&is_video=false&description=提高 MySQL 的性能，从数据库设计规范开始"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=提高 MySQL 的性能，从数据库设计规范开始&body=Check out this article: http://www.maksim.website/2017/06/23/2/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.maksim.website/2017/06/23/2/&title=提高 MySQL 的性能，从数据库设计规范开始"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.maksim.website/2017/06/23/2/&title=提高 MySQL 的性能，从数据库设计规范开始"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.maksim.website/2017/06/23/2/&title=提高 MySQL 的性能，从数据库设计规范开始"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.maksim.website/2017/06/23/2/&title=提高 MySQL 的性能，从数据库设计规范开始"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.maksim.website/2017/06/23/2/&name=提高 MySQL 的性能，从数据库设计规范开始&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
 </div>
 
-
-
-</div>
-
-        <footer class="footer">
-    <div class="top">
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 Maksim
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            
-                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Maksim &copy; 2015 - 2018</span>
-            <span>
-                
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
-    </div>
+      </ul>
+    </nav>
+  </div>
 </footer>
-
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2017/06/23/2/&title=《提高 MySQL 的性能，从数据库设计规范开始》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2017/06/23/2/&title=《提高 MySQL 的性能，从数据库设计规范开始》 — Maksim's Website&source=" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2017/06/23/2/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《提高 MySQL 的性能，从数据库设计规范开始》 — Maksim's Website&url=http://www.maksim.website/2017/06/23/2/&via=http://www.maksim.website" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2017/06/23/2/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwUlEQVR42u3aUXICIRAEUO9/aXMA49rNCJrU48tKbeCxH1NMs7dbPO4P4/Hv108+m/O2Y+Di4o6598uRP5Owrn9H8+Pi4h7k5stc15br5a+fj4odLi7uF3OT8pRsCRcX9/9x2yNRWyhxcXE/y02Wz6HJzNt7NVxc3HfmGKNoY+33lnwXFxd3iXsvx1qpyo9HL2bAxcU9ws0LSruBdoY8isXFxT3DTYKP9tAzaWCi/8XFxd3GTZacbCl5W0UUi4uLe4Q7SRsmH13lH238siVcXNzN3Mnya+3NJEDBxcU9z127Rl3stJaubXBxcc9z80aljTvzkOXFMQgXF/cgN780bePOScjytPnBxcXdzG0vTvLLlba05dEJLi7uN3Dbq9Z52Bq9Alxc3M3cSfDRHk2un4leFi4u7kFuW9raGCWvqdGdMC4u7nFue1kyvz4pmihcXNzN3MknWXnLlEQe0SZxcXGPcNvi0rZJeeTRvg5cXNzd3LzozFuXNzROuLi4B7ltoVm7HG0raB2Y4uLifpQ7iUuScvkiHMHFxf0j3LX4tZ4TFxf3ILc9siQtTRuMRkUNFxf3CLctJfNJ2w3g4uIe5P4Ar4/iMYRzBnEAAAAASUVORK5CYII=" alt="微信分享二维码">
-</div>
-
-
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
-
-
-
-
-
-
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '死鬼去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
-
-
 
 </body>
 </html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+

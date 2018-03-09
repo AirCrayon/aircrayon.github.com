@@ -1,25 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
-
-    
-
-    
-
-
-
+    <!-- so meta -->
     <meta charset="utf-8">
-    
-    
-    
-    <title>CGFloat、CGPoint、CGSize和CGRect | Maksim&#39;s Website</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#3F51B5">
-    
-    
-    <meta name="keywords" content="iOS">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="CGFloat、CGPoint、CGSize和CGRect主要是用来描述UI控件的几何属性的基本类型。  CGFloat: 浮点值的基本类型 CGPoint: 表示一个二维坐标系中的点 CGSize: 表示一个矩形的宽度和高度 CGRect: 表示一个矩形的位置和大小  CGFloatCGFloat是这四种类型中最基本的类型，这是一个浮点型的数据，他就是一个数值，下面三种类型都需要使用该数值来进行">
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
@@ -32,172 +18,128 @@
 <meta name="twitter:title" content="CGFloat、CGPoint、CGSize和CGRect">
 <meta name="twitter:description" content="CGFloat、CGPoint、CGSize和CGRect主要是用来描述UI控件的几何属性的基本类型。  CGFloat: 浮点值的基本类型 CGPoint: 表示一个二维坐标系中的点 CGSize: 表示一个矩形的宽度和高度 CGRect: 表示一个矩形的位置和大小  CGFloatCGFloat是这四种类型中最基本的类型，这是一个浮点型的数据，他就是一个数值，下面三种类型都需要使用该数值来进行">
     
-        <link rel="alternate" type="application/atom+xml" title="Maksim&#39;s Website" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
-
-    <!-- custom head -->
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
     
-
+    <!-- title -->
+    <title>CGFloat、CGPoint、CGSize和CGRect</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
 </head>
 
-<body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Maksim</h5>
-          <a href="mailto:aircrayon@qq.com" title="aircrayon@qq.com" class="mail">aircrayon@qq.com</a>
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/aircrayon" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/619946234" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/about"  >
-                <i class="icon icon-lg icon-link"></i>
-                关于Maksim
-              </a>
-            </li>
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
         
       </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2016/02/17/231/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/01/30/219/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.maksim.website/2016/01/31/2/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.maksim.website/2016/01/31/2/&text=CGFloat、CGPoint、CGSize和CGRect"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.maksim.website/2016/01/31/2/&title=CGFloat、CGPoint、CGSize和CGRect"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.maksim.website/2016/01/31/2/&is_video=false&description=CGFloat、CGPoint、CGSize和CGRect"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CGFloat、CGPoint、CGSize和CGRect&body=Check out this article: http://www.maksim.website/2016/01/31/2/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.maksim.website/2016/01/31/2/&title=CGFloat、CGPoint、CGSize和CGRect"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.maksim.website/2016/01/31/2/&title=CGFloat、CGPoint、CGSize和CGRect"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.maksim.website/2016/01/31/2/&title=CGFloat、CGPoint、CGSize和CGRect"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.maksim.website/2016/01/31/2/&title=CGFloat、CGPoint、CGSize和CGRect"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.maksim.website/2016/01/31/2/&name=CGFloat、CGPoint、CGSize和CGRect&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
     </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">CGFloat、CGPoint、CGSize和CGRect</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CGFloat"><span class="toc-number">1.</span> <span class="toc-text">CGFloat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CGPoint"><span class="toc-number">2.</span> <span class="toc-text">CGPoint</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CGSize"><span class="toc-number">3.</span> <span class="toc-text">CGSize</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CGRect"><span class="toc-number">4.</span> <span class="toc-text">CGRect</span></a></li></ol>
     </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">CGFloat、CGPoint、CGSize和CGRect</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2016-01-30T16:27:31.000Z" itemprop="datePublished" class="page-time">
-  2016-01-31
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/iOS/">iOS</a></li></ul>
-
-            
-        </h5>
-    </div>
+  </span>
+</div>
 
     
-
-
-</header>
-
-
-<div class="container body-wrap">
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CGFloat"><span class="post-toc-number">1.</span> <span class="post-toc-text">CGFloat</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CGPoint"><span class="post-toc-number">2.</span> <span class="post-toc-text">CGPoint</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CGSize"><span class="post-toc-number">3.</span> <span class="post-toc-text">CGSize</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CGRect"><span class="post-toc-number">4.</span> <span class="post-toc-text">CGRect</span></a></li></ol>
-        </nav>
-    </aside>
-    
-<article id="post- CGFloat、CGPoint、CGSize和CGRect"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">CGFloat、CGPoint、CGSize和CGRect</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2016-01-31 00:27:31" datetime="2016-01-30T16:27:31.000Z"  itemprop="datePublished">2016-01-31</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/iOS/">iOS</a></li></ul>
+    <h1 class="posttitle" itemprop="name headline">
+        CGFloat、CGPoint、CGSize和CGRect
+    </h1>
 
 
 
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Maksim's Website</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2016-01-30T16:27:31.000Z" itemprop="datePublished">2016-01-31</time>
+    </div>
 
 
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <p>CGFloat、CGPoint、CGSize和CGRect主要是用来描述UI控件的几何属性的基本类型。</p>
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/iOS/">iOS</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>CGFloat、CGPoint、CGSize和CGRect主要是用来描述UI控件的几何属性的基本类型。</p>
 <ul>
 <li>CGFloat: 浮点值的基本类型</li>
 <li>CGPoint: 表示一个二维坐标系中的点</li>
@@ -215,285 +157,100 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CGSize</span> &#123;</span></div><div class="line">    CGFloat width;</div><div class="line">    CGFloat height;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">CGSize</span> <span class="title">CGSize</span>;</span></div></pre></td></tr></table></figure>
 <h2 id="CGRect"><a href="#CGRect" class="headerlink" title="CGRect"></a>CGRect</h2><p>CGRect同样也是一个结构体，通过上面的了解，我们知道了原来CGRect是由CGSize和CGPoint组成，这样一来便可以确定一个UI空间的大小与位置。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CGRect</span> &#123;</span></div><div class="line">    CGPoint origin;</div><div class="line">    CGSize size;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">CGRect</span> <span class="title">CGRect</span>;</span></div></pre></td></tr></table></figure>
-        </div>
-
-        <blockquote class="post-copyright">
-    <div class="content">
-        
-<span class="post-time">
-    Last updated: <time datetime="2017-10-18T12:21:22.000Z" itemprop="dateUpdated">2017-10-18 20:21:22</time>
-</span><br>
-
-
-        
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/01/31/2/" target="_blank" rel="external">http://www.maksim.website/2016/01/31/2/</a>
-        
-    </div>
-    <footer>
-        <a href="http://www.maksim.website">
-            <img src="/img/avatar.jpg" alt="Maksim">
-            Maksim
-        </a>
-    </footer>
-</blockquote>
-
-        
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-
-
-            
-<div class="page-share-wrap">
-    
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/01/31/2/&title=《CGFloat、CGPoint、CGSize和CGRect》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/01/31/2/&title=《CGFloat、CGPoint、CGSize和CGRect》 — Maksim's Website&source=" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2016/01/31/2/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《CGFloat、CGPoint、CGSize和CGRect》 — Maksim's Website&url=http://www.maksim.website/2016/01/31/2/&via=http://www.maksim.website" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2016/01/31/2/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
-</div>
-
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2016/02/17/231/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Objective-C Block的基本使用</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2016/01/30/219/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">懒加载与模型转换</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
+  </div>
 </article>
 
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        谢谢大爷~
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/" alt="打赏二维码">
-        </div>
-        
+
+
     </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CGFloat"><span class="toc-number">1.</span> <span class="toc-text">CGFloat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CGPoint"><span class="toc-number">2.</span> <span class="toc-text">CGPoint</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CGSize"><span class="toc-number">3.</span> <span class="toc-text">CGSize</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CGRect"><span class="toc-number">4.</span> <span class="toc-text">CGRect</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.maksim.website/2016/01/31/2/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.maksim.website/2016/01/31/2/&text=CGFloat、CGPoint、CGSize和CGRect"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.maksim.website/2016/01/31/2/&title=CGFloat、CGPoint、CGSize和CGRect"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.maksim.website/2016/01/31/2/&is_video=false&description=CGFloat、CGPoint、CGSize和CGRect"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CGFloat、CGPoint、CGSize和CGRect&body=Check out this article: http://www.maksim.website/2016/01/31/2/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.maksim.website/2016/01/31/2/&title=CGFloat、CGPoint、CGSize和CGRect"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.maksim.website/2016/01/31/2/&title=CGFloat、CGPoint、CGSize和CGRect"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.maksim.website/2016/01/31/2/&title=CGFloat、CGPoint、CGSize和CGRect"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.maksim.website/2016/01/31/2/&title=CGFloat、CGPoint、CGSize和CGRect"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.maksim.website/2016/01/31/2/&name=CGFloat、CGPoint、CGSize和CGRect&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
 </div>
 
-
-
-</div>
-
-        <footer class="footer">
-    <div class="top">
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 Maksim
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            
-                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Maksim &copy; 2015 - 2018</span>
-            <span>
-                
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
-    </div>
+      </ul>
+    </nav>
+  </div>
 </footer>
-
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/01/31/2/&title=《CGFloat、CGPoint、CGSize和CGRect》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/01/31/2/&title=《CGFloat、CGPoint、CGSize和CGRect》 — Maksim's Website&source=" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2016/01/31/2/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《CGFloat、CGPoint、CGSize和CGRect》 — Maksim's Website&url=http://www.maksim.website/2016/01/31/2/&via=http://www.maksim.website" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2016/01/31/2/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABx0lEQVR42u3aQW7DMAwEwP7/0y7QaxB5SVqCC4xOQdpaUx8Iaqmfn3hdfyv5/vpY1Wc+sHBxccfca7k+H/35ef3NepfcgIuLe567LjTrwvQNt37Ot9+5seHi4r6M26OvSx4uLu5/5yZb5ghcXNz3c/PDSTWpWB+ENp7VcHFxB9xqYLrj88Z8FxcXt8i9iqs6blnjyrvj4uIe4SbbrFuTXoOStFBfXxAuLu5mbq88Va9fVFuZQgnDxcXdxs0fl5SbeYDytbDi4uIe4e4OMSeh583f4uLibuP2BieT5mY0dMHFxT3IzZuYalHLX0dhGoyLi7uZW21Nkisa1VI4umaBi4u7jXu1Vj5YzcOOaBdcXNzN3F7MUT3G9P5hXFzc93Dno47eT5uTH1xc3A3c9ePyo8tkBFse2eLi4m7mJsFENORohSblaBUXF/cgd0KcjE/K0S0uLu5Bbu/As26DenHJw0MUXFzcR4esvag0KYJPhSm4uLi7ufNhan4cmlzbwsXFPc/Ni1cvPO1V0Jt8FxcX9wXcaseU4MqHK1xc3Fdyc0SvlbnZCxcX9yC3F27mV7XyMcxjsQguLu6AOwlMJweh5EXg4uIe5/4CbnndRDnWNuUAAAAASUVORK5CYII=" alt="微信分享二维码">
-</div>
-
-
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
-
-
-
-
-
-
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '死鬼去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
-
-
 
 </body>
 </html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+

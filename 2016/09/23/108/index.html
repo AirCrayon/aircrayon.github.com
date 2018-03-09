@@ -1,25 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
-
-    
-
-    
-
-
-
+    <!-- so meta -->
     <meta charset="utf-8">
-    
-    
-    
-    <title>使用策略模式敲开设计模式的大门(PHP语言描述) | Maksim&#39;s Website</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#3F51B5">
-    
-    
-    <meta name="keywords" content="设计模式">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问，设计模式于己于他人于系统都是多赢的；设计模式使代码编制真正工程化；设计模式是软件工程的基石脉络，如同大厦的结构一样。  前言 本系列文章不会直接上代码直接进行解释，我一直认为带着问题来学习是效率最高的学习方式">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
@@ -35,172 +21,128 @@
 <meta name="twitter:description" content="设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问，设计模式于己于他人于系统都是多赢的；设计模式使代码编制真正工程化；设计模式是软件工程的基石脉络，如同大厦的结构一样。  前言 本系列文章不会直接上代码直接进行解释，我一直认为带着问题来学习是效率最高的学习方式">
 <meta name="twitter:image" content="http://wanzao2.b0.upaiyun.com/system/pictures/17809564/original/5a08021694a003ca.gif">
     
-        <link rel="alternate" type="application/atom+xml" title="Maksim&#39;s Website" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
-
-    <!-- custom head -->
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
     
-
+    <!-- title -->
+    <title>使用策略模式敲开设计模式的大门(PHP语言描述)</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
 </head>
 
-<body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Maksim</h5>
-          <a href="mailto:aircrayon@qq.com" title="aircrayon@qq.com" class="mail">aircrayon@qq.com</a>
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/aircrayon" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/619946234" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/about"  >
-                <i class="icon icon-lg icon-link"></i>
-                关于Maksim
-              </a>
-            </li>
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
         
       </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2016/12/13/cjek0p6ac0043b7rdl4mmv7h9/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/07/30/194/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.maksim.website/2016/09/23/108/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.maksim.website/2016/09/23/108/&text=使用策略模式敲开设计模式的大门(PHP语言描述)"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.maksim.website/2016/09/23/108/&title=使用策略模式敲开设计模式的大门(PHP语言描述)"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.maksim.website/2016/09/23/108/&is_video=false&description=使用策略模式敲开设计模式的大门(PHP语言描述)"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=使用策略模式敲开设计模式的大门(PHP语言描述)&body=Check out this article: http://www.maksim.website/2016/09/23/108/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.maksim.website/2016/09/23/108/&title=使用策略模式敲开设计模式的大门(PHP语言描述)"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.maksim.website/2016/09/23/108/&title=使用策略模式敲开设计模式的大门(PHP语言描述)"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.maksim.website/2016/09/23/108/&title=使用策略模式敲开设计模式的大门(PHP语言描述)"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.maksim.website/2016/09/23/108/&title=使用策略模式敲开设计模式的大门(PHP语言描述)"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.maksim.website/2016/09/23/108/&name=使用策略模式敲开设计模式的大门(PHP语言描述)&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
     </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">使用策略模式敲开设计模式的大门(PHP语言描述)</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#怎么样才可以进行设计模式的学习"><span class="toc-number">2.</span> <span class="toc-text">怎么样才可以进行设计模式的学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计模式尝鲜（策略模式）"><span class="toc-number">3.</span> <span class="toc-text">设计模式尝鲜（策略模式）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">使用策略模式敲开设计模式的大门(PHP语言描述)</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2016-09-23T14:15:16.000Z" itemprop="datePublished" class="page-time">
-  2016-09-23
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP/">PHP</a></li></ul>
-
-            
-        </h5>
-    </div>
+  </span>
+</div>
 
     
-
-
-</header>
-
-
-<div class="container body-wrap">
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#怎么样才可以进行设计模式的学习"><span class="post-toc-number">2.</span> <span class="post-toc-text">怎么样才可以进行设计模式的学习</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设计模式尝鲜（策略模式）"><span class="post-toc-number">3.</span> <span class="post-toc-text">设计模式尝鲜（策略模式）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">4.</span> <span class="post-toc-text">参考</span></a></li></ol>
-        </nav>
-    </aside>
-    
-<article id="post-PHP设计模式系列之入门"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">使用策略模式敲开设计模式的大门(PHP语言描述)</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2016-09-23 22:15:16" datetime="2016-09-23T14:15:16.000Z"  itemprop="datePublished">2016-09-23</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP/">PHP</a></li></ul>
+    <h1 class="posttitle" itemprop="name headline">
+        使用策略模式敲开设计模式的大门(PHP语言描述)
+    </h1>
 
 
 
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Maksim's Website</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2016-09-23T14:15:16.000Z" itemprop="datePublished">2016-09-23</time>
+    </div>
 
 
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <blockquote>
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/设计模式/">设计模式</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
 <p>设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问，设计模式于己于他人于系统都是多赢的；设计模式使代码编制真正工程化；设计模式是软件工程的基石脉络，如同大厦的结构一样。</p>
 </blockquote>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
@@ -212,26 +154,14 @@
 </li>
 </ul>
 <h2 id="怎么样才可以进行设计模式的学习"><a href="#怎么样才可以进行设计模式的学习" class="headerlink" title="怎么样才可以进行设计模式的学习"></a>怎么样才可以进行设计模式的学习</h2><p>步子迈大了容易扯到蛋，如果在没有熟悉 OOP 编程思想前就开始学习设计模式，我感觉会有两种可能，不是“扯蛋”，就是“拉跨”。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://wanzao2.b0.upaiyun.com/system/pictures/17809564/original/5a08021694a003ca.gif" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="http://wanzao2.b0.upaiyun.com/system/pictures/17809564/original/5a08021694a003ca.gif" alt=""></p>
 <p>当然上面的话是一句玩笑话，学习设计模式可以有效的提高我们的代码质量与深入的理解 OOP 编程理念，如但是果在没有扎实的功底（至少要要理解了抽象、接口、多态）前就开始学习设计模式会越学越难，脑子越来越浑，那就真变成了从入门到放弃了，因为你的思维还没有真正的走进 OOP(单身狗表示完全无法面向对象^_^)。</p>
 <p>对于设计模式的不理解我感觉主要分为两种，一种是不知道怎么实现的，原因就是如上所述，另外一种是不知道为什么要这么用的，其实没有必要纠结于为什么这么用，这么用了有啥作用，设计模式不过是与算法一样只是为了实现某个特定环境下可以使用的一种更好的选择。</p>
 <p>更好一点的例子就是当我们对一些数据进行排序的时候，我们首先想到就是那几个排序算法一样，当我们打着打着代码突然灵光一闪，好像这个地方用这个设计模式写起来会轻松一点。</p>
 <p>当碰到不懂得地方，思考一下，想不通，就出去走走，把这个东西放下来，反正就算看到第二天凌晨也也是无用的，当真正遇到问题的时候，灵光一闪这个东西可以这么写，然后去实践，这就是我的学习之道。还有就是尽量去学实例，而不是去死扣概念，当你真正用起来了，你也就差不多懂了，算法与数据结构亦是如此。</p>
 <p>本系列文章尽量以推导的形式来进行书写，而不是以现成的代码来进行讲解，让读者知道设计模式是怎么来的也就是如何演化出来的，希望各位能够喜欢。<strong>另外本系列的文章并不会提供运行界面的截图，如果想看看结果是否正确，为什么不自己试试呢？</strong></p>
 <h2 id="设计模式尝鲜（策略模式）"><a href="#设计模式尝鲜（策略模式）" class="headerlink" title="设计模式尝鲜（策略模式）"></a>设计模式尝鲜（策略模式）</h2><p>开头引用的话来自于百度百科，我相信很多刚刚开始接触编程的人都会犯晕，因为所有人都不喜欢被学术化的文字，我们以设计模式中较为常用的策略模式来进行演示，当我们编写一个广告模块的时候，公司给的要求是根据访问者的性别来进行显示广告以提高转化率，那我们应该怎么写呢？</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1474639306&di=8cd977b3c8e7d09c8a22672b95423266&src=http://img01.taopic.com/151015/234716-15101509225378.jpg" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&amp;quality=100&amp;size=b4000_4000&amp;sec=1474639306&amp;di=8cd977b3c8e7d09c8a22672b95423266&amp;src=http://img01.taopic.com/151015/234716-15101509225378.jpg" alt=""></p>
 <p>首先我们想到的是在每一个广告位上面都使用 if 判断来判断访客的性别，这样就能够解决这样的需求，那么我们的每一个广告代码的代码块可能是这个样子的：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">判断 男 <span class="keyword">or</span> 女&#123;</div><div class="line">	如果是男的就是男人的广告</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">	显示女人的广告</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>既然伪代码想好了，那么我们就可以着手进行开发了，然后我们在 if 代码块中添加各自的家在广告代码，于是就变成了下面的样子：</p>
@@ -262,285 +192,100 @@
 </li>
 </ul>
 
-        </div>
-
-        <blockquote class="post-copyright">
-    <div class="content">
-        
-<span class="post-time">
-    Last updated: <time datetime="2017-10-18T13:12:08.000Z" itemprop="dateUpdated">2017-10-18 21:12:08</time>
-</span><br>
-
-
-        
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/09/23/108/" target="_blank" rel="external">http://www.maksim.website/2016/09/23/108/</a>
-        
-    </div>
-    <footer>
-        <a href="http://www.maksim.website">
-            <img src="/img/avatar.jpg" alt="Maksim">
-            Maksim
-        </a>
-    </footer>
-</blockquote>
-
-        
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-
-            
-<div class="page-share-wrap">
-    
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/09/23/108/&title=《使用策略模式敲开设计模式的大门(PHP语言描述)》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/09/23/108/&title=《使用策略模式敲开设计模式的大门(PHP语言描述)》 — Maksim's Website&source=" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2016/09/23/108/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用策略模式敲开设计模式的大门(PHP语言描述)》 — Maksim's Website&url=http://www.maksim.website/2016/09/23/108/&via=http://www.maksim.website" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2016/09/23/108/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
-</div>
-
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2016/12/13/cje5qox3i0042wurdoauougja/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">使用 Vagrant 统一公司内开发环境</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2016/07/30/194/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">AV Foundation那些事系列（一）AVFunction入门了解</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
+  </div>
 </article>
 
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        谢谢大爷~
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/" alt="打赏二维码">
-        </div>
-        
+
+
     </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#怎么样才可以进行设计模式的学习"><span class="toc-number">2.</span> <span class="toc-text">怎么样才可以进行设计模式的学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计模式尝鲜（策略模式）"><span class="toc-number">3.</span> <span class="toc-text">设计模式尝鲜（策略模式）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.maksim.website/2016/09/23/108/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.maksim.website/2016/09/23/108/&text=使用策略模式敲开设计模式的大门(PHP语言描述)"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.maksim.website/2016/09/23/108/&title=使用策略模式敲开设计模式的大门(PHP语言描述)"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.maksim.website/2016/09/23/108/&is_video=false&description=使用策略模式敲开设计模式的大门(PHP语言描述)"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=使用策略模式敲开设计模式的大门(PHP语言描述)&body=Check out this article: http://www.maksim.website/2016/09/23/108/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.maksim.website/2016/09/23/108/&title=使用策略模式敲开设计模式的大门(PHP语言描述)"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.maksim.website/2016/09/23/108/&title=使用策略模式敲开设计模式的大门(PHP语言描述)"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.maksim.website/2016/09/23/108/&title=使用策略模式敲开设计模式的大门(PHP语言描述)"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.maksim.website/2016/09/23/108/&title=使用策略模式敲开设计模式的大门(PHP语言描述)"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.maksim.website/2016/09/23/108/&name=使用策略模式敲开设计模式的大门(PHP语言描述)&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
 </div>
 
-
-
-</div>
-
-        <footer class="footer">
-    <div class="top">
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 Maksim
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            
-                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Maksim &copy; 2015 - 2018</span>
-            <span>
-                
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
-    </div>
+      </ul>
+    </nav>
+  </div>
 </footer>
-
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/09/23/108/&title=《使用策略模式敲开设计模式的大门(PHP语言描述)》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/09/23/108/&title=《使用策略模式敲开设计模式的大门(PHP语言描述)》 — Maksim's Website&source=" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2016/09/23/108/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用策略模式敲开设计模式的大门(PHP语言描述)》 — Maksim's Website&url=http://www.maksim.website/2016/09/23/108/&via=http://www.maksim.website" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2016/09/23/108/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxUlEQVR42u3aS27DMAwFwN7/0inQVRa1+0hKiguMV4ERSOMNwd/XV/y8fp6r31dv3t/fn7n4wcXFHXNft0/CvTotuSU34OLinucmwSv5mOo5uQEXF/eZ3OS4+3/mAREXF/e/cO9Lmmp4wsXFfT43L06Si6sF0pZaDRcXd8CdN0znv4/2d3FxcQdTiV4Lo9dajW7HxcU9wu21Nnpzz3lihIuLe5LbS2iqxcwkk8HFxT3Jzdet1o5eCgnN+2m4uLhHuPn4JAl5vROScFaIuLi4uEu51ZFnvnxZDWQRGhcXdxs3SSnygWvvk+4/I4ptuLi4G7hJg3JHQ2RZtwYXF3cbNwkovXFs3uz4Y6yLi4t7kJsMOFc1OHp34eLifpZbDVu9Uir/GFxc3PPc6ppUdQhaCFJ5AMXFxd3MTdKOSenSY13ejouLe5Cbrz7MWxvV8gkXF/dT3F4btDounQxdCrsbuLi4Y241oFRXr6rLnb0BMC4u7g5uL3hV05plyRAuLu5B7mT5ctJMGaUvuLi4D+BGzYsi7j5s/fIeFxf3wdy82ZqnMsnaFi4u7knupLm5qjEalVu4uLhHuKsqjqRwSpoyuLi4H+V+A4uelYxZRWrPAAAAAElFTkSuQmCC" alt="微信分享二维码">
-</div>
-
-
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
-
-
-
-
-
-
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '死鬼去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
-
-
 
 </body>
 </html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+

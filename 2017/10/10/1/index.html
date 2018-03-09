@@ -1,25 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
-
-    
-
-    
-
-
-
+    <!-- so meta -->
     <meta charset="utf-8">
-    
-    
-    
-    <title>服务器硬件对MYSQL性能的影响 | Maksim&#39;s Website</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#3F51B5">
-    
-    
-    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="影响数据库性能的主要因素有很多，主要包括以下几点：  服务器硬件 服务器系统 数据库存储引擎的选择 数据库参数配置 数据库结构设计和SQL语句  服务器硬件：每当大促或者一些活动的时候，我们监控系统时会发现，CPU和可用内存的资源都是很紧张的，特别对于一些计算密集型的应用，CPU的资源可能会变成系统的瓶颈。 当我们工作所需要的热数据的大小大于可用内存大小的时候，IO系统就会变成我们的瓶颈。 网络也">
 <meta property="og:type" content="article">
 <meta property="og:title" content="服务器硬件对MYSQL性能的影响">
@@ -36,172 +22,123 @@
 <meta name="twitter:description" content="影响数据库性能的主要因素有很多，主要包括以下几点：  服务器硬件 服务器系统 数据库存储引擎的选择 数据库参数配置 数据库结构设计和SQL语句  服务器硬件：每当大促或者一些活动的时候，我们监控系统时会发现，CPU和可用内存的资源都是很紧张的，特别对于一些计算密集型的应用，CPU的资源可能会变成系统的瓶颈。 当我们工作所需要的热数据的大小大于可用内存大小的时候，IO系统就会变成我们的瓶颈。 网络也">
 <meta name="twitter:image" content="http://www.maixj.net/wp-content/uploads/2015/02/raid0.png">
     
-        <link rel="alternate" type="application/atom+xml" title="Maksim&#39;s Website" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
-
-    <!-- custom head -->
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
     
-
+    <!-- title -->
+    <title>服务器硬件对MYSQL性能的影响</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
 </head>
 
-<body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Maksim</h5>
-          <a href="mailto:aircrayon@qq.com" title="aircrayon@qq.com" class="mail">aircrayon@qq.com</a>
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/aircrayon" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/619946234" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/about"  >
-                <i class="icon icon-lg icon-link"></i>
-                关于Maksim
-              </a>
-            </li>
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
         
       </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/10/10/2/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/09/18/1/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.maksim.website/2017/10/10/1/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.maksim.website/2017/10/10/1/&text=服务器硬件对MYSQL性能的影响"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.maksim.website/2017/10/10/1/&title=服务器硬件对MYSQL性能的影响"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.maksim.website/2017/10/10/1/&is_video=false&description=服务器硬件对MYSQL性能的影响"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=服务器硬件对MYSQL性能的影响&body=Check out this article: http://www.maksim.website/2017/10/10/1/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.maksim.website/2017/10/10/1/&title=服务器硬件对MYSQL性能的影响"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.maksim.website/2017/10/10/1/&title=服务器硬件对MYSQL性能的影响"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.maksim.website/2017/10/10/1/&title=服务器硬件对MYSQL性能的影响"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.maksim.website/2017/10/10/1/&title=服务器硬件对MYSQL性能的影响"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.maksim.website/2017/10/10/1/&name=服务器硬件对MYSQL性能的影响&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
     </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">服务器硬件对MYSQL性能的影响</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#服务器硬件："><span class="toc-number">1.</span> <span class="toc-text">服务器硬件：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何选择CPU？"><span class="toc-number">1.1.</span> <span class="toc-text">如何选择CPU？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#我们是选择更多的CPU，还是更快的CPU？"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">我们是选择更多的CPU，还是更快的CPU？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选择32位还是64位的CPU？"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">选择32位还是64位的CPU？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存、更大更快？"><span class="toc-number">1.2.</span> <span class="toc-text">内存、更大更快？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#传统机器硬盘"><span class="toc-number">1.2.1.</span> <span class="toc-text">传统机器硬盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RAID增强机器硬盘的性能"><span class="toc-number">1.2.2.</span> <span class="toc-text">RAID增强机器硬盘的性能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库中使用的RAID-0级别："><span class="toc-number">1.2.2.1.</span> <span class="toc-text">数据库中使用的RAID 0级别：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库中使用的RAID-1级别"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">数据库中使用的RAID 1级别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库中使用的RAID-10级别"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">数据库中使用的RAID 10级别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RAID级别的选择"><span class="toc-number">1.2.2.4.</span> <span class="toc-text">RAID级别的选择</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#固态存储"><span class="toc-number">1.2.3.</span> <span class="toc-text">固态存储</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SSD"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">SSD</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PCI-E-SSD"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">PCI-E SSD</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#固态存储的使用场景"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">固态存储的使用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络存储SAN和NAS"><span class="toc-number">1.2.4.</span> <span class="toc-text">网络存储SAN和NAS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#网络存储适用的场景"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">网络存储适用的场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络接口设备对数据库性能的影响"><span class="toc-number">1.2.5.</span> <span class="toc-text">网络接口设备对数据库性能的影响</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结："><span class="toc-number">1.3.</span> <span class="toc-text">总结：</span></a></li></ol></li></ol>
     </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">服务器硬件对MYSQL性能的影响</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2017-10-09T16:00:00.000Z" itemprop="datePublished" class="page-time">
-  2017-10-10
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/MySQL/">MySQL</a></li></ul>
-
-            
-        </h5>
-    </div>
+  </span>
+</div>
 
     
-
-
-</header>
-
-
-<div class="container body-wrap">
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#服务器硬件："><span class="post-toc-number">1.</span> <span class="post-toc-text">服务器硬件：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何选择CPU？"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">如何选择CPU？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#我们是选择更多的CPU，还是更快的CPU？"><span class="post-toc-number">1.1.0.1.</span> <span class="post-toc-text">我们是选择更多的CPU，还是更快的CPU？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#选择32位还是64位的CPU？"><span class="post-toc-number">1.1.0.2.</span> <span class="post-toc-text">选择32位还是64位的CPU？</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内存、更大更快？"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">内存、更大更快？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#传统机器硬盘"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">传统机器硬盘</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RAID增强机器硬盘的性能"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">RAID增强机器硬盘的性能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据库中使用的RAID-0级别："><span class="post-toc-number">1.2.2.1.</span> <span class="post-toc-text">数据库中使用的RAID 0级别：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据库中使用的RAID-1级别"><span class="post-toc-number">1.2.2.2.</span> <span class="post-toc-text">数据库中使用的RAID 1级别</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据库中使用的RAID-10级别"><span class="post-toc-number">1.2.2.3.</span> <span class="post-toc-text">数据库中使用的RAID 10级别</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#RAID级别的选择"><span class="post-toc-number">1.2.2.4.</span> <span class="post-toc-text">RAID级别的选择</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#固态存储"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">固态存储</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#SSD"><span class="post-toc-number">1.2.3.1.</span> <span class="post-toc-text">SSD</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#PCI-E-SSD"><span class="post-toc-number">1.2.3.2.</span> <span class="post-toc-text">PCI-E SSD</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#固态存储的使用场景"><span class="post-toc-number">1.2.3.3.</span> <span class="post-toc-text">固态存储的使用场景</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网络存储SAN和NAS"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">网络存储SAN和NAS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#网络存储适用的场景"><span class="post-toc-number">1.2.4.1.</span> <span class="post-toc-text">网络存储适用的场景</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网络接口设备对数据库性能的影响"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">网络接口设备对数据库性能的影响</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结："><span class="post-toc-number">1.3.</span> <span class="post-toc-text">总结：</span></a></li></ol></li></ol>
-        </nav>
-    </aside>
-    
-<article id="post-服务器硬件对MYSQL性能的影响"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">服务器硬件对MYSQL性能的影响</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2017-10-10 00:00:00" datetime="2017-10-09T16:00:00.000Z"  itemprop="datePublished">2017-10-10</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/MySQL/">MySQL</a></li></ul>
+    <h1 class="posttitle" itemprop="name headline">
+        服务器硬件对MYSQL性能的影响
+    </h1>
 
 
 
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Maksim's Website</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-10-09T16:00:00.000Z" itemprop="datePublished">2017-10-10</time>
+    </div>
 
 
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <p>影响数据库性能的主要因素有很多，主要包括以下几点：</p>
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>影响数据库性能的主要因素有很多，主要包括以下几点：</p>
 <ol>
 <li>服务器硬件</li>
 <li>服务器系统</li>
@@ -268,47 +205,23 @@
 </ol>
 <h3 id="RAID增强机器硬盘的性能"><a href="#RAID增强机器硬盘的性能" class="headerlink" title="RAID增强机器硬盘的性能"></a>RAID增强机器硬盘的性能</h3><p>首先我们要知道什么是RAID，RAID是磁盘冗余队列的简称（Redundant Arrays of independent Disks）简单来说RAID的作用就是可以把多个容量较小的磁盘组成一组容量更大的磁盘，并提供数据冗余保证数据完整性的技术。</p>
 <h4 id="数据库中使用的RAID-0级别："><a href="#数据库中使用的RAID-0级别：" class="headerlink" title="数据库中使用的RAID 0级别："></a>数据库中使用的RAID 0级别：</h4><p><strong>RAID 0</strong>是最早出现的RAID模式，也称之为数据条带，是组建磁盘阵列中<strong>最简单</strong>的一种形式，只需要两块以上的硬盘即可，<strong>成本低</strong>，可以提高整个磁盘的性能和吞吐量。RAID 0<strong>没有提供冗余或错误修复能力</strong>，但是实现成本是最低的。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://www.maixj.net/wp-content/uploads/2015/02/raid0.png" alt="RAID 0" title="">
-                </div>
-                <div class="image-caption">RAID 0</div>
-            </figure>
+<p><img src="http://www.maixj.net/wp-content/uploads/2015/02/raid0.png" alt="RAID 0"></p>
 <p>RAID 0 就是多个独立的磁盘串联到一起，比如有三块300G的磁盘组合到一起，就可以组成一块900G的磁盘，在写入时可以并发同时对三块磁盘进行写入，理论上写入效率就是普通磁盘的三倍。</p>
 <p>RAID 0可能是性价比最高的解决方案，但是如果考虑到数据的恢复、可靠性因素，RAID 0就变成了一种成本最高的一种解决方案。</p>
 <p>因为在RAID 0 中数据没有冗余，数据损坏的几率要比单块磁盘的几率还要高，因为RAID 0中任意一块磁盘损坏了，都会造成数据丢失。</p>
 <p>所以RAID 0比较适合于不担心数据丢失的情况，比如可以随时从其他数据库克隆的备存，或者是一次性使用的数据。</p>
 <h4 id="数据库中使用的RAID-1级别"><a href="#数据库中使用的RAID-1级别" class="headerlink" title="数据库中使用的RAID 1级别"></a>数据库中使用的RAID 1级别</h4><p><strong>RAID 1</strong>又称磁盘镜像，原理是把一块磁盘的数据镜像到另一个磁盘上，也就是说数据写入一块磁盘的同事，会在另一块限制的磁盘上生成镜像文件，在不影响性能的情况下最大限度的保证系统的可靠性和可修复性。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://www.maixj.net/wp-content/uploads/2015/02/raid1.jpg" alt="RAID 1" title="">
-                </div>
-                <div class="image-caption">RAID 1</div>
-            </figure>
+<p><img src="http://www.maixj.net/wp-content/uploads/2015/02/raid1.jpg" alt="RAID 1"></p>
 <p>RAID 1当一块硬盘失效时，系统会忽略该硬盘，转而使用剩余的镜像盘来读取数据，拥有很好的冗余能力，虽然这样对数据的安全性而言是绝对安全的，但是却似的成本增加，磁盘的利用率仅有百分之五十，以4块300G的硬盘而言，能够利用的空间仅有600G，出现故障后的RAID系统也不在可靠了，应当及时更换损坏的硬盘，否则其他的镜像盘也出现问题了，会导致系统的崩溃。</p>
 <p>更换硬盘后需要很长的时间同步镜像，虽然对数据的访问不会受到影响，但是对整个系统的性能是会有所下降的。</p>
 <p>RAID 1在读的速度上要比RAID 0快。</p>
 <p>####数据库中使用的RAID 5级别</p>
 <p>RAID 5又称之为分布式奇偶校验磁盘阵列，通过分布式奇偶校验块把数据分散到多个磁盘上，这样如果任何一个盘数据失效，都可以从奇偶校验块中重建。但是如果两块磁盘失效，则整个卷的数据都无法恢复。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://www.maixj.net/wp-content/uploads/2015/02/raid5.gif" alt="RAID 5" title="">
-                </div>
-                <div class="image-caption">RAID 5</div>
-            </figure>
+<p><img src="http://www.maixj.net/wp-content/uploads/2015/02/raid5.gif" alt="RAID 5"></p>
 <p>在RAID 5上随机比较慢，因为每次写都需要两次读和两次写，以计算校验位的数值，比较适合以读为主的数据库业务。</p>
 <p>最大的性能问题，发生在磁盘失效的时候，因为数据需要重新分布到其他磁盘上，这样会严重影响数据库性能，如果要使用RAID 5的话，最好使用在从服务器上。</p>
 <h4 id="数据库中使用的RAID-10级别"><a href="#数据库中使用的RAID-10级别" class="headerlink" title="数据库中使用的RAID 10级别"></a>数据库中使用的RAID 10级别</h4><p>RAID 10又称分片的镜像，她是对磁盘先做RAID 1之后对两组RAID 1的磁盘再做RAID 0，所以对读写都有良好的性能，相对于RAID 5重建起来更简单，速度也更快。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://www.maixj.net/wp-content/uploads/2015/02/raid01.jpg" alt="RAID 10" title="">
-                </div>
-                <div class="image-caption">RAID 10</div>
-            </figure>
+<p><img src="http://www.maixj.net/wp-content/uploads/2015/02/raid01.jpg" alt="RAID 10"></p>
 <h4 id="RAID级别的选择"><a href="#RAID级别的选择" class="headerlink" title="RAID级别的选择"></a>RAID级别的选择</h4><table>
 <thead>
 <tr>
@@ -409,283 +322,100 @@
 <li>PCie -&gt; SSD -&gt; Raid10 &gt; 磁盘 -&gt; SAN</li>
 </ul>
 
-        </div>
-
-        <blockquote class="post-copyright">
-    <div class="content">
-        
-<span class="post-time">
-    Last updated: <time datetime="2017-10-15T11:12:06.000Z" itemprop="dateUpdated">2017-10-15 19:12:06</time>
-</span><br>
-
-
-        
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/10/10/1/" target="_blank" rel="external">http://www.maksim.website/2017/10/10/1/</a>
-        
-    </div>
-    <footer>
-        <a href="http://www.maksim.website">
-            <img src="/img/avatar.jpg" alt="Maksim">
-            Maksim
-        </a>
-    </footer>
-</blockquote>
-
-        
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
-
-
-        <div class="post-footer">
-            
-
-            
-<div class="page-share-wrap">
-    
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2017/10/10/1/&title=《服务器硬件对MYSQL性能的影响》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2017/10/10/1/&title=《服务器硬件对MYSQL性能的影响》 — Maksim's Website&source=" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2017/10/10/1/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《服务器硬件对MYSQL性能的影响》 — Maksim's Website&url=http://www.maksim.website/2017/10/10/1/&via=http://www.maksim.website" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2017/10/10/1/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
-</div>
-
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2017/10/13/1/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">MySQL体系结构</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2017/10/10/2/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">服务器系统对MySQL性能带来的影响</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
+  </div>
 </article>
 
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        谢谢大爷~
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/" alt="打赏二维码">
-        </div>
-        
+
+
     </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#服务器硬件："><span class="toc-number">1.</span> <span class="toc-text">服务器硬件：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何选择CPU？"><span class="toc-number">1.1.</span> <span class="toc-text">如何选择CPU？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#我们是选择更多的CPU，还是更快的CPU？"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">我们是选择更多的CPU，还是更快的CPU？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选择32位还是64位的CPU？"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">选择32位还是64位的CPU？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存、更大更快？"><span class="toc-number">1.2.</span> <span class="toc-text">内存、更大更快？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#传统机器硬盘"><span class="toc-number">1.2.1.</span> <span class="toc-text">传统机器硬盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RAID增强机器硬盘的性能"><span class="toc-number">1.2.2.</span> <span class="toc-text">RAID增强机器硬盘的性能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库中使用的RAID-0级别："><span class="toc-number">1.2.2.1.</span> <span class="toc-text">数据库中使用的RAID 0级别：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库中使用的RAID-1级别"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">数据库中使用的RAID 1级别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库中使用的RAID-10级别"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">数据库中使用的RAID 10级别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RAID级别的选择"><span class="toc-number">1.2.2.4.</span> <span class="toc-text">RAID级别的选择</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#固态存储"><span class="toc-number">1.2.3.</span> <span class="toc-text">固态存储</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SSD"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">SSD</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PCI-E-SSD"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">PCI-E SSD</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#固态存储的使用场景"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">固态存储的使用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络存储SAN和NAS"><span class="toc-number">1.2.4.</span> <span class="toc-text">网络存储SAN和NAS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#网络存储适用的场景"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">网络存储适用的场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络接口设备对数据库性能的影响"><span class="toc-number">1.2.5.</span> <span class="toc-text">网络接口设备对数据库性能的影响</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结："><span class="toc-number">1.3.</span> <span class="toc-text">总结：</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.maksim.website/2017/10/10/1/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.maksim.website/2017/10/10/1/&text=服务器硬件对MYSQL性能的影响"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.maksim.website/2017/10/10/1/&title=服务器硬件对MYSQL性能的影响"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.maksim.website/2017/10/10/1/&is_video=false&description=服务器硬件对MYSQL性能的影响"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=服务器硬件对MYSQL性能的影响&body=Check out this article: http://www.maksim.website/2017/10/10/1/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.maksim.website/2017/10/10/1/&title=服务器硬件对MYSQL性能的影响"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.maksim.website/2017/10/10/1/&title=服务器硬件对MYSQL性能的影响"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.maksim.website/2017/10/10/1/&title=服务器硬件对MYSQL性能的影响"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.maksim.website/2017/10/10/1/&title=服务器硬件对MYSQL性能的影响"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.maksim.website/2017/10/10/1/&name=服务器硬件对MYSQL性能的影响&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
 </div>
 
-
-
-</div>
-
-        <footer class="footer">
-    <div class="top">
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 Maksim
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            
-                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Maksim &copy; 2015 - 2018</span>
-            <span>
-                
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
-    </div>
+      </ul>
+    </nav>
+  </div>
 </footer>
-
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2017/10/10/1/&title=《服务器硬件对MYSQL性能的影响》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2017/10/10/1/&title=《服务器硬件对MYSQL性能的影响》 — Maksim's Website&source=" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2017/10/10/1/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《服务器硬件对MYSQL性能的影响》 — Maksim's Website&url=http://www.maksim.website/2017/10/10/1/&via=http://www.maksim.website" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2017/10/10/1/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzUlEQVR42u3aQW7DMAwEwPz/0ynQU4rWya4kyy4wPhmJTI8vhETy8Yiv5/f1ev/6y++V79f8jrn4wsXFneY+315Hod+vTH5P/v3jk3BxcTdyx5JX/mzyMVGyw8XFvRm3feoo8SXxcXFx/ws3eWWOwMXFvT931eGkXXPiWQ0XF3eCO1YwXXt/en0XFxd3UVciSUZ5CsvXH8bBxcXdwp0vebQfmWxxPqQ5XFzc7dx8zKLdh8xEwMXFvYqbpJW87ZqPbdXbKVxc3I3cdssy1jIZS2dFhwcXF3cptzh+TGxuxlLYYd7FxcU9gZsHzQcy8jhJAo1yGy4u7lJugs7LJW0SHCyd4OLinswdC9oeimbatD9W4uLi3oDbFjuSDU07loGLi3sVN083yXak3foUBlxc3C3cfDCrbZrmB602qeHi4p7NbRPT2FDFWDrDxcW9ltuOVSWflLRP6mIuLi7uRu5YSXRmzGKqlYKLi3syt00oeeGjPVDNt2xxcXHXctujy6pU1Y5t4eLi7ufmR5q89JkXXouhMVxc3Jtx81GMHFdHwMXFvT03SXPtVubDe3FxcTdy29BjTZSxhu7gWQ0XF3eCO18wTV6Wj27g4uJeyv0ClflswyXwANsAAAAASUVORK5CYII=" alt="微信分享二维码">
-</div>
-
-
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
-
-
-
-
-
-
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '死鬼去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
-
-
 
 </body>
 </html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+

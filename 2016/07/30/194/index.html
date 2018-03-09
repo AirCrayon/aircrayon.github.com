@@ -1,25 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
-
-    
-
-    
-
-
-
+    <!-- so meta -->
     <meta charset="utf-8">
-    
-    
-    
-    <title>AV Foundation那些事系列（一）AVFunction入门了解 | Maksim&#39;s Website</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#3F51B5">
-    
-    
-    <meta name="keywords" content="iOS">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="前言Hello，大家好，先做一个简短的自我介绍，我是AirCrayon，目前就职于齐齐哈尔的一家创业型公司，从今天开始，每周末我都将为大家带来一篇博文，今天为大家带阿里的是 AVFunction 的那些事系列博文的第一章——AV Foundation入门。 苹果公司一直以来都是一家擅长引领潮流的一家公司，不论是产品设计开始技术革新，1991年苹果公司推出了QuickTime首次将数字音频和数字视频">
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
@@ -32,172 +18,128 @@
 <meta name="twitter:title" content="AV Foundation那些事系列（一）AVFunction入门了解">
 <meta name="twitter:description" content="前言Hello，大家好，先做一个简短的自我介绍，我是AirCrayon，目前就职于齐齐哈尔的一家创业型公司，从今天开始，每周末我都将为大家带来一篇博文，今天为大家带阿里的是 AVFunction 的那些事系列博文的第一章——AV Foundation入门。 苹果公司一直以来都是一家擅长引领潮流的一家公司，不论是产品设计开始技术革新，1991年苹果公司推出了QuickTime首次将数字音频和数字视频">
     
-        <link rel="alternate" type="application/atom+xml" title="Maksim&#39;s Website" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
-
-    <!-- custom head -->
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
     
-
+    <!-- title -->
+    <title>AV Foundation那些事系列（一）AVFunction入门了解</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
 </head>
 
-<body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Maksim</h5>
-          <a href="mailto:aircrayon@qq.com" title="aircrayon@qq.com" class="mail">aircrayon@qq.com</a>
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/aircrayon" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/619946234" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/about"  >
-                <i class="icon icon-lg icon-link"></i>
-                关于Maksim
-              </a>
-            </li>
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
         
       </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2016/09/23/108/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/07/20/cjek0p6a1003ob7rdglvs4zlz/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.maksim.website/2016/07/30/194/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.maksim.website/2016/07/30/194/&text=AV Foundation那些事系列（一）AVFunction入门了解"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.maksim.website/2016/07/30/194/&title=AV Foundation那些事系列（一）AVFunction入门了解"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.maksim.website/2016/07/30/194/&is_video=false&description=AV Foundation那些事系列（一）AVFunction入门了解"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=AV Foundation那些事系列（一）AVFunction入门了解&body=Check out this article: http://www.maksim.website/2016/07/30/194/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.maksim.website/2016/07/30/194/&title=AV Foundation那些事系列（一）AVFunction入门了解"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.maksim.website/2016/07/30/194/&title=AV Foundation那些事系列（一）AVFunction入门了解"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.maksim.website/2016/07/30/194/&title=AV Foundation那些事系列（一）AVFunction入门了解"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.maksim.website/2016/07/30/194/&title=AV Foundation那些事系列（一）AVFunction入门了解"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.maksim.website/2016/07/30/194/&name=AV Foundation那些事系列（一）AVFunction入门了解&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
     </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">AV Foundation那些事系列（一）AVFunction入门了解</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AV-Foundation-的含义"><span class="toc-number">1.1.</span> <span class="toc-text">AV Foundation 的含义</span></a></li></ol></li></ol>
     </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">AV Foundation那些事系列（一）AVFunction入门了解</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2016-07-30T12:38:29.000Z" itemprop="datePublished" class="page-time">
-  2016-07-30
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Objective-C/">Objective-C</a></li></ul>
-
-            
-        </h5>
-    </div>
+  </span>
+</div>
 
     
-
-
-</header>
-
-
-<div class="container body-wrap">
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AV-Foundation-的含义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">AV Foundation 的含义</span></a></li></ol></li></ol>
-        </nav>
-    </aside>
-    
-<article id="post-文字转语音"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">AV Foundation那些事系列（一）AVFunction入门了解</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2016-07-30 20:38:29" datetime="2016-07-30T12:38:29.000Z"  itemprop="datePublished">2016-07-30</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Objective-C/">Objective-C</a></li></ul>
+    <h1 class="posttitle" itemprop="name headline">
+        AV Foundation那些事系列（一）AVFunction入门了解
+    </h1>
 
 
 
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Maksim's Website</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2016-07-30T12:38:29.000Z" itemprop="datePublished">2016-07-30</time>
+    </div>
 
 
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Hello，大家好，先做一个简短的自我介绍，我是AirCrayon，目前就职于齐齐哈尔的一家创业型公司，从今天开始，每周末我都将为大家带来一篇博文，今天为大家带阿里的是 AVFunction 的那些事系列博文的第一章——AV Foundation入门。</p>
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/iOS/">iOS</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Hello，大家好，先做一个简短的自我介绍，我是AirCrayon，目前就职于齐齐哈尔的一家创业型公司，从今天开始，每周末我都将为大家带来一篇博文，今天为大家带阿里的是 AVFunction 的那些事系列博文的第一章——AV Foundation入门。</p>
 <p>苹果公司一直以来都是一家擅长引领潮流的一家公司，不论是产品设计开始技术革新，1991年苹果公司推出了QuickTime首次将数字音频和数字视频展现在用户面前。</p>
 <blockquote>
 <p>QuickTime不仅仅是一个媒体播放器，而且是一个完整的多媒体架构，可以用来进行多种媒体的创建、生产和分发，并为这一过程提供端到端的支持：包括媒体的实时捕捉，以编程的方式合成媒体，导入和导出现有的媒体，还有编辑和制作、压缩、分发，以及用户回放等多个环节。</p>
@@ -206,285 +148,100 @@
 <h2 id="AV-Foundation-的含义"><a href="#AV-Foundation-的含义" class="headerlink" title="AV Foundation 的含义"></a>AV Foundation 的含义</h2><p>AV Foundation是MacOS（目前还叫 OS X ，但最新版本的名字将叫做 MacOS）和 iOS 系统中用于处理基于时间的媒体数据的高级Objective-C框架。通过开发所需要的工具提供了大量的功能集，让开发者能够基于 Apple 平台创建媒体应用程序。AV Foundation 的构建考虑到了目前的硬件环境和应用程序，其设计过程高度依赖于多线程机制。充分利用了多和设备的有时并且使用了大量的 block 和 GCD 机制将复杂的计算放在后台线程中会自动提供硬件加速操作，确保在大部分设备上应用程序以最佳的性能运行。AV Foundation 的设计也充分考虑了电量效率来满足注入 iPhone 和 iPad 这类的移动设备，此外从一开始该框架就是针对于64位处理器设计，可以发挥64为处理器的所有优势。</p>
 <p>在iOS7下的AVFoundation下增加了一个类用于文字转成语音,需要注意的是其转换的语音与你的手机语言环境有关,如果手机是英文环境,则无法读取中文字符串,但是中文环境下可以读取英文.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">AVSpeechSynthesizer *xx = [[AVSpeechSynthesizer alloc]init]; //开始播放</div><div class="line">[xx speakUtterance:[AVSpeechUtterance speechUtteranceWithString:@&quot;语音转换&quot;]];</div></pre></td></tr></table></figure>
-        </div>
-
-        <blockquote class="post-copyright">
-    <div class="content">
-        
-<span class="post-time">
-    Last updated: <time datetime="2016-07-30T13:36:40.000Z" itemprop="dateUpdated">2016-07-30 21:36:40</time>
-</span><br>
-
-
-        
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2016/07/30/194/" target="_blank" rel="external">http://www.maksim.website/2016/07/30/194/</a>
-        
-    </div>
-    <footer>
-        <a href="http://www.maksim.website">
-            <img src="/img/avatar.jpg" alt="Maksim">
-            Maksim
-        </a>
-    </footer>
-</blockquote>
-
-        
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-
-
-            
-<div class="page-share-wrap">
-    
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/07/30/194/&title=《AV Foundation那些事系列（一）AVFunction入门了解》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/07/30/194/&title=《AV Foundation那些事系列（一）AVFunction入门了解》 — Maksim's Website&source=" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2016/07/30/194/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《AV Foundation那些事系列（一）AVFunction入门了解》 — Maksim's Website&url=http://www.maksim.website/2016/07/30/194/&via=http://www.maksim.website" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2016/07/30/194/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
-</div>
-
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2016/09/23/108/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">使用策略模式敲开设计模式的大门(PHP语言描述)</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2016/07/20/cje5qox38003iwurdoo0qamrz/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">对于未来的规划</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
+  </div>
 </article>
 
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        谢谢大爷~
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/" alt="打赏二维码">
-        </div>
-        
+
+
     </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AV-Foundation-的含义"><span class="toc-number">1.1.</span> <span class="toc-text">AV Foundation 的含义</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.maksim.website/2016/07/30/194/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.maksim.website/2016/07/30/194/&text=AV Foundation那些事系列（一）AVFunction入门了解"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.maksim.website/2016/07/30/194/&title=AV Foundation那些事系列（一）AVFunction入门了解"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.maksim.website/2016/07/30/194/&is_video=false&description=AV Foundation那些事系列（一）AVFunction入门了解"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=AV Foundation那些事系列（一）AVFunction入门了解&body=Check out this article: http://www.maksim.website/2016/07/30/194/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.maksim.website/2016/07/30/194/&title=AV Foundation那些事系列（一）AVFunction入门了解"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.maksim.website/2016/07/30/194/&title=AV Foundation那些事系列（一）AVFunction入门了解"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.maksim.website/2016/07/30/194/&title=AV Foundation那些事系列（一）AVFunction入门了解"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.maksim.website/2016/07/30/194/&title=AV Foundation那些事系列（一）AVFunction入门了解"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.maksim.website/2016/07/30/194/&name=AV Foundation那些事系列（一）AVFunction入门了解&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
 </div>
 
-
-
-</div>
-
-        <footer class="footer">
-    <div class="top">
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 Maksim
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            
-                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Maksim &copy; 2015 - 2018</span>
-            <span>
-                
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
-    </div>
+      </ul>
+    </nav>
+  </div>
 </footer>
-
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.maksim.website/2016/07/30/194/&title=《AV Foundation那些事系列（一）AVFunction入门了解》 — Maksim's Website&pic=http://www.maksim.website/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.maksim.website/2016/07/30/194/&title=《AV Foundation那些事系列（一）AVFunction入门了解》 — Maksim's Website&source=" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.maksim.website/2016/07/30/194/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《AV Foundation那些事系列（一）AVFunction入门了解》 — Maksim's Website&url=http://www.maksim.website/2016/07/30/194/&via=http://www.maksim.website" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.maksim.website/2016/07/30/194/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByUlEQVR42u3aQY7DMAwEQf//094HBFZ6yJDwAq2TYSRW6TIQKV0XHvfH+Hx//uXTN6+JIVeu3Db3Po4n1vn9eTFPz2eDXLly97nnoCHQ829I/KGwkytX7ou5tYlJqMmVK/f/cvmW6Lw9kitX7pu5ZHoSTHxh47WaXLlyG1zepZx7HunvypUrt8S9w3FeAD9QuUtDrly5O1weKOmGhqdQOq9cuXKnuWlDJL1aUStg4giTK1fuT7npBSx+bYJPn7Zi5cqVu8NNy5j0OkX6ry/tWrly5Q5zSfSkjc5+Q+RL8SNXrtxhLil7SJsj/W/t2EauXLk73JTSwfHFP35Zrly5K1zenuCL6Ry6oFpNrly5w9y0MZpudPgWKshduXLlDnMnNjdpy4Mf98qVK3eT27kekU6WtmKDOyNy5cod4MbHGCUcSSR0JixXrtx1LpkgLlRKRyk/y1G5cuVi7h2OdAPEWx7o+3Llyl3h1gqeTpO01haJFyNXrtw2l4cOCaD0eIZf7pQrV+4+txM0pDSqNWdHclGuXLkDXB49admDtk1y5cp9JZcsZrCFKleu3EVuGj38AJU3RlGoyZUrd4XbuVpRC6x0AXLlyl3k/gFYOlLBwsFo9gAAAABJRU5ErkJggg==" alt="微信分享二维码">
-</div>
-
-
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
-
-
-
-
-
-
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '死鬼去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
-
-
 
 </body>
 </html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
