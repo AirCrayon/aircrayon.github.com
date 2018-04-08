@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="什么是mysql主从同步？当master(主)库的数据发生变化的时候，变化会实时的同步到slave(从)库。 ##主从同步有什么好处？  水平扩展数据库的负载能力。 容错，高可用。Failover(失败切换)/High Availability 数据备份。  主从同步的原理是什么？首先我们来了解master-slave的体系结构。 如下图： 不管是delete、update、insert，还是创建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL主从数据库">
+<meta property="og:url" content="http://www.maksim.website/2017/09/10/1/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="什么是mysql主从同步？当master(主)库的数据发生变化的时候，变化会实时的同步到slave(从)库。 ##主从同步有什么好处？  水平扩展数据库的负载能力。 容错，高可用。Failover(失败切换)/High Availability 数据备份。  主从同步的原理是什么？首先我们来了解master-slave的体系结构。 如下图： 不管是delete、update、insert，还是创建">
+<meta property="og:image" content="https://segmentfault.com/img/remote/1460000008663004?w=601&h=152">
+<meta property="og:image" content="https://segmentfault.com/img/remote/1460000008663005?w=604&h=448">
+<meta property="og:image" content="https://segmentfault.com/img/remote/1460000008663006?w=626&h=592">
+<meta property="og:image" content="https://segmentfault.com/img/remote/1460000008663007?w=630&h=568">
+<meta property="og:updated_time" content="2018-04-07T09:39:32.139Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL主从数据库">
+<meta name="twitter:description" content="什么是mysql主从同步？当master(主)库的数据发生变化的时候，变化会实时的同步到slave(从)库。 ##主从同步有什么好处？  水平扩展数据库的负载能力。 容错，高可用。Failover(失败切换)/High Availability 数据备份。  主从同步的原理是什么？首先我们来了解master-slave的体系结构。 如下图： 不管是delete、update、insert，还是创建">
+<meta name="twitter:image" content="https://segmentfault.com/img/remote/1460000008663004?w=601&h=152">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>MySQL主从数据库</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/09/16/1/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/09/05/1/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.maksim.website/2017/09/10/1/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.maksim.website/2017/09/10/1/&text=MySQL主从数据库"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.maksim.website/2017/09/10/1/&title=MySQL主从数据库"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.maksim.website/2017/09/10/1/&is_video=false&description=MySQL主从数据库"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=MySQL主从数据库&body=Check out this article: http://www.maksim.website/2017/09/10/1/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.maksim.website/2017/09/10/1/&title=MySQL主从数据库"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.maksim.website/2017/09/10/1/&title=MySQL主从数据库"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.maksim.website/2017/09/10/1/&title=MySQL主从数据库"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.maksim.website/2017/09/10/1/&title=MySQL主从数据库"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.maksim.website/2017/09/10/1/&name=MySQL主从数据库&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是mysql主从同步？"><span class="toc-number">1.</span> <span class="toc-text">什么是mysql主从同步？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主从同步的原理是什么？"><span class="toc-number">2.</span> <span class="toc-text">主从同步的原理是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#主从同步事件有哪些"><span class="toc-number">2.1.</span> <span class="toc-text">主从同步事件有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在master机器上的操作"><span class="toc-number">2.2.</span> <span class="toc-text">在master机器上的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#binlog-dump线程"><span class="toc-number">2.2.1.</span> <span class="toc-text">binlog dump线程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在slave机器上的操作"><span class="toc-number">2.3.</span> <span class="toc-text">在slave机器上的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何在master、slave上查看上述的线程？"><span class="toc-number">2.4.</span> <span class="toc-text">如何在master、slave上查看上述的线程？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#讲了这么多，一图以蔽之"><span class="toc-number">3.</span> <span class="toc-text">讲了这么多，一图以蔽之</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实战"><span class="toc-number">4.</span> <span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境"><span class="toc-number">4.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#master机器上的操作"><span class="toc-number">4.2.</span> <span class="toc-text">master机器上的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、更改配置文件"><span class="toc-number">4.2.1.</span> <span class="toc-text">1、更改配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、重启MySQL"><span class="toc-number">4.2.2.</span> <span class="toc-text">2、重启MySQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、创建主从同步的mysql-user。"><span class="toc-number">4.2.3.</span> <span class="toc-text">3、创建主从同步的mysql user。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、为MYSQL加读锁"><span class="toc-number">4.2.4.</span> <span class="toc-text">4、为MYSQL加读锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、记录下来MASTER-REPLICATION-LOG-的位置"><span class="toc-number">4.2.5.</span> <span class="toc-text">5、记录下来MASTER REPLICATION LOG 的位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、将master-DB中现有的数据信息导出"><span class="toc-number">4.2.6.</span> <span class="toc-text">6、将master DB中现有的数据信息导出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7、接触master-DB的读锁"><span class="toc-number">4.2.7.</span> <span class="toc-text">7、接触master DB的读锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8、将步骤6中的dbdump-sql文件copy到slave"><span class="toc-number">4.2.8.</span> <span class="toc-text">8、将步骤6中的dbdump.sql文件copy到slave</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slave机器上的操作"><span class="toc-number">4.3.</span> <span class="toc-text">slave机器上的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、更改配置文件-1"><span class="toc-number">4.3.1.</span> <span class="toc-text">1、更改配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、重启mysql，以使配置文件生效"><span class="toc-number">4.3.2.</span> <span class="toc-text">2、重启mysql，以使配置文件生效</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、导入从master-DB。-导出的dbdump-sql文件，以使master-slave数据一致"><span class="toc-number">4.3.3.</span> <span class="toc-text">3、导入从master DB。 导出的dbdump.sql文件，以使master-slave数据一致</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、使slave与master建立连接，从而同步"><span class="toc-number">4.3.4.</span> <span class="toc-text">4、使slave与master建立连接，从而同步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP代码实现数据库读写分离"><span class="toc-number">5.</span> <span class="toc-text">PHP代码实现数据库读写分离</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        MySQL主从数据库
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Maksim's Website</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-09-09T16:00:00.000Z" itemprop="datePublished">2017-09-10</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="什么是mysql主从同步？"><a href="#什么是mysql主从同步？" class="headerlink" title="什么是mysql主从同步？"></a>什么是mysql主从同步？</h2><p>当master(主)库的数据发生变化的时候，变化会实时的同步到slave(从)库。</p>
+<p>##主从同步有什么好处？</p>
+<ul>
+<li>水平扩展数据库的负载能力。</li>
+<li>容错，高可用。Failover(失败切换)/High Availability</li>
+<li>数据备份。</li>
+</ul>
+<h2 id="主从同步的原理是什么？"><a href="#主从同步的原理是什么？" class="headerlink" title="主从同步的原理是什么？"></a>主从同步的原理是什么？</h2><p>首先我们来了解<strong>master-slave</strong>的体系结构。</p>
+<p>如下图：<br><img src="https://segmentfault.com/img/remote/1460000008663004?w=601&amp;h=152" alt="img"></p>
+<p>不管是delete、update、insert，还是创建函数、存储过程，所有的操作都在master上。<br>当master有操作的时候,slave会快速的接收到这些操作，从而做同步。</p>
+<p>但是，这个机制是怎么实现的呢？</p>
+<blockquote>
+<p>在master机器上，主从同步事件会被写到特殊的log文件中(binary-log);<br>在slave机器上，slave读取主从同步事件，并根据读取的事件变化，在slave库上做相应的更改。</p>
+</blockquote>
+<p>如此，就实现了主从同步了！</p>
+<p>下面我们来详细的了解。</p>
+<h3 id="主从同步事件有哪些"><a href="#主从同步事件有哪些" class="headerlink" title="主从同步事件有哪些"></a>主从同步事件有哪些</h3><p>上面说到：</p>
+<blockquote>
+<p>在master机器上，主从同步事件会被写到特殊的log文件中(binary-log);</p>
+</blockquote>
+<p>主从同步事件有3种形式:statement、row、mixed。</p>
+<ul>
+<li>statement：会将对数据库操作的sql语句写入到binlog中。</li>
+<li>row：会将每一条数据的变化写入到binlog中。</li>
+<li>mixed：statement与row的混合。Mysql决定什么时候写statement格式的，什么时候写row格式的binlog。</li>
+</ul>
+<h3 id="在master机器上的操作"><a href="#在master机器上的操作" class="headerlink" title="在master机器上的操作"></a>在master机器上的操作</h3><ul>
+<li>当master上的数据发生改变的时候，该事件(insert、update、delete)变化会按照顺序写入到binlog中。</li>
+</ul>
+<h4 id="binlog-dump线程"><a href="#binlog-dump线程" class="headerlink" title="binlog dump线程"></a>binlog dump线程</h4><ul>
+<li>当slave连接到master的时候，master机器会为slave开启binlog dump线程。</li>
+<li>当master 的 binlog发生变化的时候，binlog dump线程会通知slave，并将相应的binlog内容发送给slave。</li>
+</ul>
+<h3 id="在slave机器上的操作"><a href="#在slave机器上的操作" class="headerlink" title="在slave机器上的操作"></a>在slave机器上的操作</h3><p>当主从同步开启的时候，slave上会创建2个线程。</p>
+<ul>
+<li>I/O线程。该线程连接到master机器，master机器上的<strong>binlog dump线程</strong>会将binlog的内容发送给该<strong>I/O线程</strong>。该<strong>I/O线程</strong>接收到binlog内容后，再将内容写入到本地的relay log。</li>
+<li>SQL线程。该线程读取I/O线程写入的relay log。并且根据relay log的内容对slave数据库做相应的操作。</li>
+</ul>
+<h3 id="如何在master、slave上查看上述的线程？"><a href="#如何在master、slave上查看上述的线程？" class="headerlink" title="如何在master、slave上查看上述的线程？"></a>如何在master、slave上查看上述的线程？</h3><p>使用<code>SHOW PROCESSLIST</code>命令可以查看。</p>
+<p>如图，在master机器上查看binlog dump线程。<br><img src="https://segmentfault.com/img/remote/1460000008663005?w=604&amp;h=448" alt="img"></p>
+<p>如图，在slave机器上查看I/O、SQL线程。<br><img src="https://segmentfault.com/img/remote/1460000008663006?w=626&amp;h=592" alt="img"></p>
+<h2 id="讲了这么多，一图以蔽之"><a href="#讲了这么多，一图以蔽之" class="headerlink" title="讲了这么多，一图以蔽之"></a>讲了这么多，一图以蔽之</h2><p><img src="https://segmentfault.com/img/remote/1460000008663007?w=630&amp;h=568" alt="img"></p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">os:ubuntu16.04</div><div class="line">mysql:5.7.17</div><div class="line"></div><div class="line">master IP:192.168.33.22</div><div class="line">slave  IP:192.168.33.33</div></pre></td></tr></table></figure>
+<h3 id="master机器上的操作"><a href="#master机器上的操作" class="headerlink" title="master机器上的操作"></a>master机器上的操作</h3><h4 id="1、更改配置文件"><a href="#1、更改配置文件" class="headerlink" title="1、更改配置文件"></a>1、更改配置文件</h4><p>我们找到文件 <code>/etc/mysql/mysql.conf.d/mysqld.cnf</code>。<br>配置如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">bind-address = 192.168.33.22 #your master ip</div><div class="line">server-id = 1 #在master-slave架构中，每台机器节点都需要有唯一的server-id</div><div class="line">log_bin = /var/log/mysql/mysql-bin.log #开启binlog</div></pre></td></tr></table></figure>
+<h4 id="2、重启MySQL"><a href="#2、重启MySQL" class="headerlink" title="2、重启MySQL"></a>2、重启MySQL</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo systemctl restart mysql</div></pre></td></tr></table></figure>
+<h4 id="3、创建主从同步的mysql-user。"><a href="#3、创建主从同步的mysql-user。" class="headerlink" title="3、创建主从同步的mysql user。"></a>3、创建主从同步的mysql user。</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> mysql -u root -p</div><div class="line">Password:</div><div class="line"><span class="meta"></span></div><div class="line">##创建slave1用户，并指定该用户只能在主机192.168.33.33上登录。</div><div class="line"><span class="meta">mysql&gt;</span> CREATE USER 'slave1'@'192.168.33.33' IDENTIFIED BY 'slavepass';</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div><div class="line"><span class="meta"></span></div><div class="line">##为slave1赋予REPLICATION SLAVE权限。</div><div class="line"><span class="meta">mysql&gt;</span> GRANT REPLICATION SLAVE ON *.* TO 'slave1'@'192.168.33.33';</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="4、为MYSQL加读锁"><a href="#4、为MYSQL加读锁" class="headerlink" title="4、为MYSQL加读锁"></a>4、为MYSQL加读锁</h4><p>为了主库与从库的数据保持一致，我们先为mysql加入读锁，使其变为只读。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; FLUSH TABLES WITH READ LOCK;</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="5、记录下来MASTER-REPLICATION-LOG-的位置"><a href="#5、记录下来MASTER-REPLICATION-LOG-的位置" class="headerlink" title="5、记录下来MASTER REPLICATION LOG 的位置"></a>5、记录下来MASTER REPLICATION LOG 的位置</h4><p>该信息稍后会用到。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW MASTER STATUS;</div><div class="line">+------------------+----------+--------------+------------------+-------------------+</div><div class="line">| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |</div><div class="line">+------------------+----------+--------------+------------------+-------------------+</div><div class="line">| mysql-bin.000001 |      613 |              |                  |                   |</div><div class="line">+------------------+----------+--------------+------------------+-------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="6、将master-DB中现有的数据信息导出"><a href="#6、将master-DB中现有的数据信息导出" class="headerlink" title="6、将master DB中现有的数据信息导出"></a>6、将master DB中现有的数据信息导出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mysqldump -u root -p --all-databases --master-data &gt; dbdump.sql</div></pre></td></tr></table></figure>
+<h4 id="7、接触master-DB的读锁"><a href="#7、接触master-DB的读锁" class="headerlink" title="7、接触master DB的读锁"></a>7、接触master DB的读锁</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; UNLOCK TABLES;</div></pre></td></tr></table></figure>
+<h4 id="8、将步骤6中的dbdump-sql文件copy到slave"><a href="#8、将步骤6中的dbdump-sql文件copy到slave" class="headerlink" title="8、将步骤6中的dbdump.sql文件copy到slave"></a>8、将步骤6中的dbdump.sql文件copy到slave</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp dbdump.sql ubuntu@192.168.33.33:/home/ubuntu</div></pre></td></tr></table></figure>
+<h3 id="slave机器上的操作"><a href="#slave机器上的操作" class="headerlink" title="slave机器上的操作"></a>slave机器上的操作</h3><h4 id="1、更改配置文件-1"><a href="#1、更改配置文件-1" class="headerlink" title="1、更改配置文件"></a>1、更改配置文件</h4><p>我们找到文件 <code>/etc/mysql/mysql.conf.d/mysqld.cnf</code>。<br>更改配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">bind-address = 192.168.33.33 #your slave ip</div><div class="line">server-id = 2 #master-slave结构中，唯一的server-id</div><div class="line">log_bin = /var/log/mysql/mysql-bin.log #开启binlog</div></pre></td></tr></table></figure>
+<h4 id="2、重启mysql，以使配置文件生效"><a href="#2、重启mysql，以使配置文件生效" class="headerlink" title="2、重启mysql，以使配置文件生效"></a>2、重启mysql，以使配置文件生效</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo systemctl restart mysql</div></pre></td></tr></table></figure>
+<h4 id="3、导入从master-DB。-导出的dbdump-sql文件，以使master-slave数据一致"><a href="#3、导入从master-DB。-导出的dbdump-sql文件，以使master-slave数据一致" class="headerlink" title="3、导入从master DB。 导出的dbdump.sql文件，以使master-slave数据一致"></a>3、导入从master DB。 导出的dbdump.sql文件，以使master-slave数据一致</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mysql -u root -p &lt; /home/ubuntu/dbdump.sql</div></pre></td></tr></table></figure>
+<h4 id="4、使slave与master建立连接，从而同步"><a href="#4、使slave与master建立连接，从而同步" class="headerlink" title="4、使slave与master建立连接，从而同步"></a>4、使slave与master建立连接，从而同步</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">$ mysql -u root -p</div><div class="line">Password:</div><div class="line"></div><div class="line">mysql&gt; STOP SLAVE;</div><div class="line">Query OK, 0 rows affected, 1 warning (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; CHANGE MASTER TO</div><div class="line">    -&gt; MASTER_HOST=&apos;192.168.33.22&apos;,</div><div class="line">    -&gt; MASTER_USER=&apos;slave1&apos;,</div><div class="line">    -&gt; MASTER_PASSWORD=&apos;slavepass&apos;,</div><div class="line">    -&gt; MASTER_LOG_FILE=&apos;mysql-bin.000001&apos;,</div><div class="line">    -&gt; MASTER_LOG_POS=613;</div><div class="line">Query OK, 0 rows affected, 2 warnings (0.01 sec)</div><div class="line"></div><div class="line">mysql&gt; START SLAVE;</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div></pre></td></tr></table></figure>
+<p><code>MASTER_LOG_FILE=&#39;mysql-bin.000001&#39;</code>与<code>MASTER_LOG_POS=613</code>的值，是从上面的 <code>SHOW MASTER STATUS</code> 得到的。</p>
+<p>经过如此设置之后，就可以进行master-slave同步了~</p>
+<h2 id="PHP代码实现数据库读写分离"><a href="#PHP代码实现数据库读写分离" class="headerlink" title="PHP代码实现数据库读写分离"></a>PHP代码实现数据库读写分离</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Db</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">private</span> $res;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($sql)</span></span></div><div class="line">    &#123;</div><div class="line">        $querystr = strtolower(trim(substr($sql,<span class="number">0</span>,<span class="number">6</span>)));</div><div class="line">        <span class="comment">//如果是select，就连接slave服务器</span></div><div class="line">        <span class="keyword">if</span>($querystr == <span class="string">'select'</span>)</div><div class="line">        &#123;</div><div class="line">            $res=<span class="keyword">$this</span>-&gt;slave_select($sql);</div><div class="line">            <span class="keyword">$this</span>-&gt;res=$res;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//如果不是select，就连接master服务器</span></div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            $res=<span class="keyword">$this</span>-&gt;master_change($sql);</div><div class="line">            <span class="keyword">$this</span>-&gt;res=$res;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * slave从库返回sql查询结果</div><div class="line">     * <span class="doctag">@param</span> $sql</div><div class="line">     * <span class="doctag">@return</span> array</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">slave_select</span><span class="params">($sql)</span></span>&#123;</div><div class="line">        <span class="comment">//该处只是随机获取slave节点的ip，当然，还可以采用其他算法获取slave_ip</span></div><div class="line">        $slave_server=<span class="keyword">$this</span>-&gt;get_slave_ip();</div><div class="line">        $dsn=<span class="string">"mysql:host=$slave_server;dbname=test"</span>;</div><div class="line">        $user=<span class="string">'root'</span>;</div><div class="line">        $pass=<span class="string">'123456'</span>;</div><div class="line">        $dbh=<span class="keyword">new</span> PDO($dsn, $user, $pass);</div><div class="line">        <span class="keyword">return</span> $dbh-&gt;query($sql)-&gt;fetchAll(PDO::FETCH_ASSOC);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**master主库返回sql执行结果</span></div><div class="line">     * <span class="doctag">@param</span> $sql</div><div class="line">     * <span class="doctag">@return</span> int</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">master_change</span><span class="params">($sql)</span></span>&#123;</div><div class="line">        $master_server=<span class="string">'192.168.33.22'</span>;</div><div class="line">        $dsn=<span class="string">"mysql:host=$master_server;dbname=test"</span>;</div><div class="line">        $user=<span class="string">'root'</span>;</div><div class="line">        $pass=<span class="string">'123456'</span>;</div><div class="line">        $dbh=<span class="keyword">new</span> PDO($dsn, $user, $pass);</div><div class="line">        <span class="keyword">return</span> $dbh-&gt;exec($sql);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 随机获取slave-ip</div><div class="line">     * <span class="doctag">@return</span> mixed</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">get_slave_ip</span><span class="params">()</span></span>&#123;</div><div class="line">        $slave_ips=[<span class="string">'192.168.33.33'</span>,<span class="string">'192.168.33.44'</span>];</div><div class="line">        $count=count($slave_ips)<span class="number">-1</span>;</div><div class="line">        $random_key=mt_rand(<span class="number">0</span>,$count);</div><div class="line">        <span class="keyword">return</span> $slave_ips[$random_key];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 获取结果</div><div class="line">     * <span class="doctag">@return</span> int</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">get_res</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;res;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$sql1 = <span class="string">"select * from t1"</span>;</div><div class="line">$sql2 = <span class="string">"insert into t1 (name) values ('haha')"</span>;</div><div class="line">$sql3 = <span class="string">"delete from t1 where id=1"</span>;</div><div class="line">$sql4 = <span class="string">"update t1 set name='Jerry' where id=2"</span>;</div><div class="line"></div><div class="line">$db = <span class="keyword">new</span> Db($sql1);</div><div class="line"><span class="comment">//$db = new Db($sql2);</span></div><div class="line"><span class="comment">//$db = new Db($sql3);</span></div><div class="line"><span class="comment">//$db = new Db($sql4);</span></div><div class="line"></div><div class="line">var_dump($db-&gt;get_res());</div></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是mysql主从同步？"><span class="toc-number">1.</span> <span class="toc-text">什么是mysql主从同步？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主从同步的原理是什么？"><span class="toc-number">2.</span> <span class="toc-text">主从同步的原理是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#主从同步事件有哪些"><span class="toc-number">2.1.</span> <span class="toc-text">主从同步事件有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在master机器上的操作"><span class="toc-number">2.2.</span> <span class="toc-text">在master机器上的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#binlog-dump线程"><span class="toc-number">2.2.1.</span> <span class="toc-text">binlog dump线程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在slave机器上的操作"><span class="toc-number">2.3.</span> <span class="toc-text">在slave机器上的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何在master、slave上查看上述的线程？"><span class="toc-number">2.4.</span> <span class="toc-text">如何在master、slave上查看上述的线程？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#讲了这么多，一图以蔽之"><span class="toc-number">3.</span> <span class="toc-text">讲了这么多，一图以蔽之</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实战"><span class="toc-number">4.</span> <span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境"><span class="toc-number">4.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#master机器上的操作"><span class="toc-number">4.2.</span> <span class="toc-text">master机器上的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、更改配置文件"><span class="toc-number">4.2.1.</span> <span class="toc-text">1、更改配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、重启MySQL"><span class="toc-number">4.2.2.</span> <span class="toc-text">2、重启MySQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、创建主从同步的mysql-user。"><span class="toc-number">4.2.3.</span> <span class="toc-text">3、创建主从同步的mysql user。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、为MYSQL加读锁"><span class="toc-number">4.2.4.</span> <span class="toc-text">4、为MYSQL加读锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、记录下来MASTER-REPLICATION-LOG-的位置"><span class="toc-number">4.2.5.</span> <span class="toc-text">5、记录下来MASTER REPLICATION LOG 的位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、将master-DB中现有的数据信息导出"><span class="toc-number">4.2.6.</span> <span class="toc-text">6、将master DB中现有的数据信息导出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7、接触master-DB的读锁"><span class="toc-number">4.2.7.</span> <span class="toc-text">7、接触master DB的读锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8、将步骤6中的dbdump-sql文件copy到slave"><span class="toc-number">4.2.8.</span> <span class="toc-text">8、将步骤6中的dbdump.sql文件copy到slave</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slave机器上的操作"><span class="toc-number">4.3.</span> <span class="toc-text">slave机器上的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、更改配置文件-1"><span class="toc-number">4.3.1.</span> <span class="toc-text">1、更改配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、重启mysql，以使配置文件生效"><span class="toc-number">4.3.2.</span> <span class="toc-text">2、重启mysql，以使配置文件生效</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、导入从master-DB。-导出的dbdump-sql文件，以使master-slave数据一致"><span class="toc-number">4.3.3.</span> <span class="toc-text">3、导入从master DB。 导出的dbdump.sql文件，以使master-slave数据一致</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、使slave与master建立连接，从而同步"><span class="toc-number">4.3.4.</span> <span class="toc-text">4、使slave与master建立连接，从而同步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP代码实现数据库读写分离"><span class="toc-number">5.</span> <span class="toc-text">PHP代码实现数据库读写分离</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.maksim.website/2017/09/10/1/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.maksim.website/2017/09/10/1/&text=MySQL主从数据库"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.maksim.website/2017/09/10/1/&title=MySQL主从数据库"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.maksim.website/2017/09/10/1/&is_video=false&description=MySQL主从数据库"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=MySQL主从数据库&body=Check out this article: http://www.maksim.website/2017/09/10/1/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.maksim.website/2017/09/10/1/&title=MySQL主从数据库"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.maksim.website/2017/09/10/1/&title=MySQL主从数据库"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.maksim.website/2017/09/10/1/&title=MySQL主从数据库"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.maksim.website/2017/09/10/1/&title=MySQL主从数据库"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.maksim.website/2017/09/10/1/&name=MySQL主从数据库&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 Maksim
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+

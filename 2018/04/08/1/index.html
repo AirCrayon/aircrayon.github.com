@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="平时比较常用的时间、字符串、时间戳之间的互相转换，虽然常用但是几乎每次使用时候都喜欢去搜索一下用法；本文将作为一个笔记，整理一下三者之间的 转换（即：date转字符串、date转时间戳、字符串转date、字符串转时间戳、时间戳转date，时间戳转字符串）用法，方便日后查看； 涉及的函数date_format(date, format) 函数MySQL日期格式化函数date_format() str">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在MYSQL中进行日期操作">
+<meta property="og:url" content="http://www.maksim.website/2018/04/08/1/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="平时比较常用的时间、字符串、时间戳之间的互相转换，虽然常用但是几乎每次使用时候都喜欢去搜索一下用法；本文将作为一个笔记，整理一下三者之间的 转换（即：date转字符串、date转时间戳、字符串转date、字符串转时间戳、时间戳转date，时间戳转字符串）用法，方便日后查看； 涉及的函数date_format(date, format) 函数MySQL日期格式化函数date_format() str">
+<meta property="og:updated_time" content="2018-04-08T14:25:32.113Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在MYSQL中进行日期操作">
+<meta name="twitter:description" content="平时比较常用的时间、字符串、时间戳之间的互相转换，虽然常用但是几乎每次使用时候都喜欢去搜索一下用法；本文将作为一个笔记，整理一下三者之间的 转换（即：date转字符串、date转时间戳、字符串转date、字符串转时间戳、时间戳转date，时间戳转字符串）用法，方便日后查看； 涉及的函数date_format(date, format) 函数MySQL日期格式化函数date_format() str">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>在MYSQL中进行日期操作</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/04/08/3/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/04/08/2/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.maksim.website/2018/04/08/1/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.maksim.website/2018/04/08/1/&text=在MYSQL中进行日期操作"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.maksim.website/2018/04/08/1/&title=在MYSQL中进行日期操作"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.maksim.website/2018/04/08/1/&is_video=false&description=在MYSQL中进行日期操作"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=在MYSQL中进行日期操作&body=Check out this article: http://www.maksim.website/2018/04/08/1/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.maksim.website/2018/04/08/1/&title=在MYSQL中进行日期操作"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.maksim.website/2018/04/08/1/&title=在MYSQL中进行日期操作"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.maksim.website/2018/04/08/1/&title=在MYSQL中进行日期操作"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.maksim.website/2018/04/08/1/&title=在MYSQL中进行日期操作"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.maksim.website/2018/04/08/1/&name=在MYSQL中进行日期操作&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#涉及的函数"><span class="toc-number">1.</span> <span class="toc-text">涉及的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#时间转换"><span class="toc-number">2.</span> <span class="toc-text">时间转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间转字符串"><span class="toc-number">2.1.</span> <span class="toc-text">时间转字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间转时间戳"><span class="toc-number">2.2.</span> <span class="toc-text">时间转时间戳</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串转时间"><span class="toc-number">2.3.</span> <span class="toc-text">字符串转时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串转时间戳"><span class="toc-number">2.4.</span> <span class="toc-text">字符串转时间戳</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间戳转时间"><span class="toc-number">2.5.</span> <span class="toc-text">时间戳转时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间戳转字符串"><span class="toc-number">2.6.</span> <span class="toc-text">时间戳转字符串</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附表"><span class="toc-number">3.</span> <span class="toc-text">附表</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        在MYSQL中进行日期操作
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Maksim's Website</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-04-07T16:00:00.000Z" itemprop="datePublished">2018-04-08</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>平时比较常用的时间、字符串、时间戳之间的互相转换，虽然常用但是几乎每次使用时候都喜欢去搜索一下用法；本文将作为一个笔记，整理一下三者之间的 转换（即：date转字符串、date转时间戳、字符串转date、字符串转时间戳、时间戳转date，时间戳转字符串）用法，方便日后查看；</p>
+<h2 id="涉及的函数"><a href="#涉及的函数" class="headerlink" title="涉及的函数"></a>涉及的函数</h2><p>date_format(date, format) 函数MySQL日期格式化函数date_format()</p>
+<p>str_to_date(str, format) 函数 把字符串转换为日期</p>
+<p>from_unixtime(unix_timestamp, format) 函数，MySQL时间戳格式化函数from_unixtime</p>
+<h2 id="时间转换"><a href="#时间转换" class="headerlink" title="时间转换"></a>时间转换</h2><h3 id="时间转字符串"><a href="#时间转字符串" class="headerlink" title="时间转字符串"></a>时间转字符串</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select date_format(now(), '%Y-%m-%d');   #结果：2016-01-05</div></pre></td></tr></table></figure>
+<h3 id="时间转时间戳"><a href="#时间转时间戳" class="headerlink" title="时间转时间戳"></a>时间转时间戳</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select unix_timestamp(now());  #结果：1452001082</div></pre></td></tr></table></figure>
+<h3 id="字符串转时间"><a href="#字符串转时间" class="headerlink" title="字符串转时间"></a>字符串转时间</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select str_to_date('2016-01-02', '%Y-%m-%d %H');  #结果：2016-01-02 00:00:00</div></pre></td></tr></table></figure>
+<h3 id="字符串转时间戳"><a href="#字符串转时间戳" class="headerlink" title="字符串转时间戳"></a>字符串转时间戳</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select unix_timestamp('2016-01-02');  #结果：1451664000</div></pre></td></tr></table></figure>
+<h3 id="时间戳转时间"><a href="#时间戳转时间" class="headerlink" title="时间戳转时间"></a>时间戳转时间</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select from_unixtime(1451997924);  #结果：2016-01-05 20:45:24</div></pre></td></tr></table></figure>
+<h3 id="时间戳转字符串"><a href="#时间戳转字符串" class="headerlink" title="时间戳转字符串"></a>时间戳转字符串</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select from_unixtime(1451997924,'%Y-%d');  #结果：2016-01-05 20:45:24</div></pre></td></tr></table></figure>
+<h2 id="附表"><a href="#附表" class="headerlink" title="附表"></a>附表</h2><p>MySQL日期格式化（format）取值范围。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>秒</td>
+<td>%S、%s</td>
+<td>两位数字形式的秒（ 00,01, …, 59）</td>
+</tr>
+<tr>
+<td>分</td>
+<td>%I、%i</td>
+<td>两位数字形式的分（ 00,01, …, 59）</td>
+</tr>
+<tr>
+<td>小时</td>
+<td>%H</td>
+<td>24小时制，两位数形式小时（00,01, …,23）</td>
+</tr>
+<tr>
+<td>%h</td>
+<td>12小时制，两位数形式小时（00,01, …,12）</td>
+<td></td>
+</tr>
+<tr>
+<td>%k</td>
+<td>24小时制，数形式小时（0,1, …,23）</td>
+<td></td>
+</tr>
+<tr>
+<td>%l</td>
+<td>12小时制，数形式小时（0,1, …,12）</td>
+<td></td>
+</tr>
+<tr>
+<td>%T</td>
+<td>24小时制，时间形式（HH:mm:ss）</td>
+<td></td>
+</tr>
+<tr>
+<td>%r</td>
+<td>12小时制，时间形式（hh:mm:ss AM 或 PM）</td>
+<td></td>
+</tr>
+<tr>
+<td>%p</td>
+<td>AM上午或PM下午</td>
+<td></td>
+</tr>
+<tr>
+<td>周</td>
+<td>%W</td>
+<td>一周中每一天的名称（Sunday,Monday, …,Saturday）</td>
+</tr>
+<tr>
+<td>%a</td>
+<td>一周中每一天名称的缩写（Sun,Mon, …,Sat）</td>
+<td></td>
+</tr>
+<tr>
+<td>%w</td>
+<td>以数字形式标识周（0=Sunday,1=Monday, …,6=Saturday）</td>
+<td></td>
+</tr>
+<tr>
+<td>%U</td>
+<td>数字表示周数，星期天为周中第一天</td>
+<td></td>
+</tr>
+<tr>
+<td>%u</td>
+<td>数字表示周数，星期一为周中第一天</td>
+<td></td>
+</tr>
+<tr>
+<td>天</td>
+<td>%d</td>
+<td>两位数字表示月中天数（01,02, …,31）</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>数字表示月中天数（1,2, …,31）</td>
+<td></td>
+</tr>
+<tr>
+<td>%D</td>
+<td>英文后缀表示月中天数（1st,2nd,3rd …）</td>
+<td></td>
+</tr>
+<tr>
+<td>%j</td>
+<td>以三位数字表示年中天数（001,002, …,366）</td>
+<td></td>
+</tr>
+<tr>
+<td>月</td>
+<td>%M</td>
+<td>英文月名（January,February, …,December）</td>
+</tr>
+<tr>
+<td>%b</td>
+<td>英文缩写月名（Jan,Feb, …,Dec）</td>
+<td></td>
+</tr>
+<tr>
+<td>%m</td>
+<td>两位数字表示月份（01,02, …,12）</td>
+<td></td>
+</tr>
+<tr>
+<td>%c</td>
+<td>数字表示月份（1,2, …,12）</td>
+<td></td>
+</tr>
+<tr>
+<td>年</td>
+<td>%Y</td>
+<td>四位数字表示的年份（2015,2016…）</td>
+</tr>
+<tr>
+<td>%y</td>
+<td>两位数字表示的年份（15,16…）</td>
+<td></td>
+</tr>
+<tr>
+<td>文字输出</td>
+<td>%文字</td>
+<td>直接输出文字内容</td>
+</tr>
+</tbody>
+</table>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#涉及的函数"><span class="toc-number">1.</span> <span class="toc-text">涉及的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#时间转换"><span class="toc-number">2.</span> <span class="toc-text">时间转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间转字符串"><span class="toc-number">2.1.</span> <span class="toc-text">时间转字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间转时间戳"><span class="toc-number">2.2.</span> <span class="toc-text">时间转时间戳</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串转时间"><span class="toc-number">2.3.</span> <span class="toc-text">字符串转时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串转时间戳"><span class="toc-number">2.4.</span> <span class="toc-text">字符串转时间戳</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间戳转时间"><span class="toc-number">2.5.</span> <span class="toc-text">时间戳转时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间戳转字符串"><span class="toc-number">2.6.</span> <span class="toc-text">时间戳转字符串</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附表"><span class="toc-number">3.</span> <span class="toc-text">附表</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.maksim.website/2018/04/08/1/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.maksim.website/2018/04/08/1/&text=在MYSQL中进行日期操作"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.maksim.website/2018/04/08/1/&title=在MYSQL中进行日期操作"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.maksim.website/2018/04/08/1/&is_video=false&description=在MYSQL中进行日期操作"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=在MYSQL中进行日期操作&body=Check out this article: http://www.maksim.website/2018/04/08/1/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.maksim.website/2018/04/08/1/&title=在MYSQL中进行日期操作"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.maksim.website/2018/04/08/1/&title=在MYSQL中进行日期操作"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.maksim.website/2018/04/08/1/&title=在MYSQL中进行日期操作"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.maksim.website/2018/04/08/1/&title=在MYSQL中进行日期操作"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.maksim.website/2018/04/08/1/&name=在MYSQL中进行日期操作&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 Maksim
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/Search/">Search</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
