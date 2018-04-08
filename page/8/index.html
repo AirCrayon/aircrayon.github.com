@@ -78,7 +78,7 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/03/04/cjfqxlvwa0067sirdpz70q62b/" title="统一设置tabBarItem字体样式" itemprop="url">统一设置tabBarItem字体样式</a>
+      <a href="/2016/03/04/cjfqxnxzq006gtxrd1vop9hi5/" title="统一设置tabBarItem字体样式" itemprop="url">统一设置tabBarItem字体样式</a>
   </h1>
   <p class="article-author">By
        
@@ -108,6 +108,70 @@
     </div>
     <footer class="article-footer clearfix">
 <div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/03/244/" title="使用iOS本地通知" itemprop="url">使用iOS本地通知</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Maksim" target="_blank" itemprop="author">Maksim</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-03T07:06:05.000Z" itemprop="datePublished"> Published 2016-03-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>在 iOS 开发中推送通知被分为两种，本地通知与推送通知，</p>
+<p>本地通知是应用在后台运行时，把一些消息提示给用户，一个很好的例子就是基于定位的应用，这类应用在后台运行，到他发现到达某个特殊地点是给予用户提醒，本地通知只能使用在 iOS 设备中，他可以立即发出通知也可以在计划时间后发出。</p>
+<p>本地通知只是应用所在设备上给用户通知，而推送通知是远程通知，它是由远程服务器推送过来的。无论是哪一种，通知的形式都是一样的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">//本地推送,主要用于一些常规类的提醒</div><div class="line">    /**</div><div class="line">     *  1.健康类 定时几点运动</div><div class="line">     *  2.社交类 几点约会</div><div class="line">     *  3.游戏类 到时见领取奖励</div><div class="line">     *  4.新闻类 每日早间提醒阅读</div><div class="line">     *  5.医药类 你该吃药了,药别停</div><div class="line">     */</div><div class="line">     </div><div class="line">    //在iOS8下需要注册一下本地推送</div><div class="line">    [[UIApplication sharedApplication] registerUserNotificationSettings: [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeAlert|UIUserNotificationTypeSound categories:nil]];</div><div class="line">    //初始创建本地推送</div><div class="line">    UILocalNotification *local = [[UILocalNotification alloc]init];</div><div class="line">    //设置推送时间</div><div class="line">    local.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];</div><div class="line">    //设置推送的内容</div><div class="line">    local.alertBody = @&quot;你该吃药了!&quot;;</div><div class="line">    //设置时区 根据当前手机时区设置的</div><div class="line">    local.timeZone = [NSTimeZone defaultTimeZone];</div><div class="line">    //设置重复的间隔</div><div class="line">    local.repeatInterval = kCFCalendarUnitDay;</div><div class="line">    //设置推送声音(本地需要有相对应的声音,该声音需要少于三十秒)</div><div class="line">    //local.soundName = UILocalNotificationDefaultSoundName;</div><div class="line">    local.soundName = @&quot;音效.caf&quot;;</div><div class="line">    local.userInfo = @&#123;@&quot;name&quot;:@&quot;王花花&quot;&#125;;</div><div class="line">    local.applicationIconBadgeNumber = 9999;</div><div class="line">    //加入到系统级推送</div><div class="line">    [[UIApplication sharedApplication] scheduleLocalNotification:local];</div></pre></td></tr></table></figure>
+<p>清除本地推送</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//如何取消推送</div><div class="line">//获取目前已经加入本地消息推送的有几个.</div><div class="line">NSArray *array = [[UIApplication sharedApplication]scheduledLocalNotifications];</div><div class="line">//遍历推送内容</div><div class="line">for (UILocalNotification *notification in array) &#123;</div><div class="line">    NSLog(@&quot;%@&quot;,notification.userInfo);</div><div class="line">    //如果遇到我们想要取消的本地推送</div><div class="line">    [[UIApplication sharedApplication] cancelLocalNotification:notification];</div><div class="line">&#125;</div><div class="line">//如果全部取消</div><div class="line">//[[UIApplication sharedApplication]cancelAllLocalNotifications];</div></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
 
 
   <div class="article-tags">
@@ -206,71 +270,7 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/03/03/244/" title="使用iOS本地通知" itemprop="url">使用iOS本地通知</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Maksim" target="_blank" itemprop="author">Maksim</a>
-		
-  <p class="article-time">
-    <time datetime="2016-03-03T07:06:05.000Z" itemprop="datePublished"> Published 2016-03-03</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>在 iOS 开发中推送通知被分为两种，本地通知与推送通知，</p>
-<p>本地通知是应用在后台运行时，把一些消息提示给用户，一个很好的例子就是基于定位的应用，这类应用在后台运行，到他发现到达某个特殊地点是给予用户提醒，本地通知只能使用在 iOS 设备中，他可以立即发出通知也可以在计划时间后发出。</p>
-<p>本地通知只是应用所在设备上给用户通知，而推送通知是远程通知，它是由远程服务器推送过来的。无论是哪一种，通知的形式都是一样的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">//本地推送,主要用于一些常规类的提醒</div><div class="line">    /**</div><div class="line">     *  1.健康类 定时几点运动</div><div class="line">     *  2.社交类 几点约会</div><div class="line">     *  3.游戏类 到时见领取奖励</div><div class="line">     *  4.新闻类 每日早间提醒阅读</div><div class="line">     *  5.医药类 你该吃药了,药别停</div><div class="line">     */</div><div class="line">     </div><div class="line">    //在iOS8下需要注册一下本地推送</div><div class="line">    [[UIApplication sharedApplication] registerUserNotificationSettings: [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeAlert|UIUserNotificationTypeSound categories:nil]];</div><div class="line">    //初始创建本地推送</div><div class="line">    UILocalNotification *local = [[UILocalNotification alloc]init];</div><div class="line">    //设置推送时间</div><div class="line">    local.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];</div><div class="line">    //设置推送的内容</div><div class="line">    local.alertBody = @&quot;你该吃药了!&quot;;</div><div class="line">    //设置时区 根据当前手机时区设置的</div><div class="line">    local.timeZone = [NSTimeZone defaultTimeZone];</div><div class="line">    //设置重复的间隔</div><div class="line">    local.repeatInterval = kCFCalendarUnitDay;</div><div class="line">    //设置推送声音(本地需要有相对应的声音,该声音需要少于三十秒)</div><div class="line">    //local.soundName = UILocalNotificationDefaultSoundName;</div><div class="line">    local.soundName = @&quot;音效.caf&quot;;</div><div class="line">    local.userInfo = @&#123;@&quot;name&quot;:@&quot;王花花&quot;&#125;;</div><div class="line">    local.applicationIconBadgeNumber = 9999;</div><div class="line">    //加入到系统级推送</div><div class="line">    [[UIApplication sharedApplication] scheduleLocalNotification:local];</div></pre></td></tr></table></figure>
-<p>清除本地推送</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//如何取消推送</div><div class="line">//获取目前已经加入本地消息推送的有几个.</div><div class="line">NSArray *array = [[UIApplication sharedApplication]scheduledLocalNotifications];</div><div class="line">//遍历推送内容</div><div class="line">for (UILocalNotification *notification in array) &#123;</div><div class="line">    NSLog(@&quot;%@&quot;,notification.userInfo);</div><div class="line">    //如果遇到我们想要取消的本地推送</div><div class="line">    [[UIApplication sharedApplication] cancelLocalNotification:notification];</div><div class="line">&#125;</div><div class="line">//如果全部取消</div><div class="line">//[[UIApplication sharedApplication]cancelAllLocalNotifications];</div></pre></td></tr></table></figure>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/iOS/">iOS</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/03/01/cjfqxlvw70064sirdm7gu4iaw/" title="iOS多线程.01 简介" itemprop="url">iOS多线程.01 简介</a>
+      <a href="/2016/03/01/cjfqxnxzt006htxrd0pdd5a1d/" title="iOS多线程.01 简介" itemprop="url">iOS多线程.01 简介</a>
   </h1>
   <p class="article-author">By
        
@@ -890,15 +890,15 @@
 			
 		
 			
-				<li><a href="/tags/Linux-GNU/" title="Linux,GNU">Linux,GNU<sup>1</sup></a></li>
+				<li><a href="/tags/算法/" title="算法">算法<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wechat-pay-php-php7-php-input/" title="wechat pay, php, php7, php://input">wechat pay, php, php7, php://input<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/服务容器/" title="服务容器">服务容器<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Closures/" title="Closures">Closures<sup>1</sup></a></li>
 			
 		
 			
@@ -918,11 +918,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat-pay-php-php7-php-input/" title="wechat pay, php, php7, php://input">wechat pay, php, php7, php://input<sup>1</sup></a></li>
+				<li><a href="/tags/Closures/" title="Closures">Closures<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/算法/" title="算法">算法<sup>1</sup></a></li>
+				<li><a href="/tags/Linux-GNU/" title="Linux,GNU">Linux,GNU<sup>1</sup></a></li>
 			
 		
 			
