@@ -18,8 +18,8 @@
   
   <entry>
     <title>PHP中的$this</title>
-    <link href="http://www.maksim.website/2018/04/08/cjfqx80i60022h7rdjx21vdkw/"/>
-    <id>http://www.maksim.website/2018/04/08/cjfqx80i60022h7rdjx21vdkw/</id>
+    <link href="http://www.maksim.website/2018/04/08/cjfqxlvsb0020sird0dzci9x4/"/>
+    <id>http://www.maksim.website/2018/04/08/cjfqxlvsb0020sird0dzci9x4/</id>
     <published>2018-04-08T14:25:32.113Z</published>
     <updated>2018-04-08T14:25:32.113Z</updated>
     
@@ -33,6 +33,29 @@
       
     
     </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>在MYSQL中进行日期操作</title>
+    <link href="http://www.maksim.website/2018/04/08/1/"/>
+    <id>http://www.maksim.website/2018/04/08/1/</id>
+    <published>2018-04-07T16:00:00.000Z</published>
+    <updated>2018-04-08T14:25:32.113Z</updated>
+    
+    <content type="html"><![CDATA[<p>平时比较常用的时间、字符串、时间戳之间的互相转换，虽然常用但是几乎每次使用时候都喜欢去搜索一下用法；本文将作为一个笔记，整理一下三者之间的 转换（即：date转字符串、date转时间戳、字符串转date、字符串转时间戳、时间戳转date，时间戳转字符串）用法，方便日后查看；</p><h2 id="涉及的函数"><a href="#涉及的函数" class="headerlink" title="涉及的函数"></a>涉及的函数</h2><p>date_format(date, format) 函数MySQL日期格式化函数date_format()</p><p>str_to_date(str, format) 函数 把字符串转换为日期</p><p>from_unixtime(unix_timestamp, format) 函数，MySQL时间戳格式化函数from_unixtime</p><h2 id="时间转换"><a href="#时间转换" class="headerlink" title="时间转换"></a>时间转换</h2><h3 id="时间转字符串"><a href="#时间转字符串" class="headerlink" title="时间转字符串"></a>时间转字符串</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select date_format(now(), '%Y-%m-%d');   #结果：2016-01-05</div></pre></td></tr></table></figure><h3 id="时间转时间戳"><a href="#时间转时间戳" class="headerlink" title="时间转时间戳"></a>时间转时间戳</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select unix_timestamp(now());  #结果：1452001082</div></pre></td></tr></table></figure><h3 id="字符串转时间"><a href="#字符串转时间" class="headerlink" title="字符串转时间"></a>字符串转时间</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select str_to_date('2016-01-02', '%Y-%m-%d %H');  #结果：2016-01-02 00:00:00</div></pre></td></tr></table></figure><h3 id="字符串转时间戳"><a href="#字符串转时间戳" class="headerlink" title="字符串转时间戳"></a>字符串转时间戳</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select unix_timestamp('2016-01-02');  #结果：1451664000</div></pre></td></tr></table></figure><h3 id="时间戳转时间"><a href="#时间戳转时间" class="headerlink" title="时间戳转时间"></a>时间戳转时间</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select from_unixtime(1451997924);  #结果：2016-01-05 20:45:24</div></pre></td></tr></table></figure><h3 id="时间戳转字符串"><a href="#时间戳转字符串" class="headerlink" title="时间戳转字符串"></a>时间戳转字符串</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select from_unixtime(1451997924,'%Y-%d');  #结果：2016-01-05 20:45:24</div></pre></td></tr></table></figure><h2 id="附表"><a href="#附表" class="headerlink" title="附表"></a>附表</h2><p>MySQL日期格式化（format）取值范围。</p><table><thead><tr><th></th><th>值</th><th>含义</th></tr></thead><tbody><tr><td>秒</td><td>%S、%s</td><td>两位数字形式的秒（ 00,01, …, 59）</td></tr><tr><td>分</td><td>%I、%i</td><td>两位数字形式的分（ 00,01, …, 59）</td></tr><tr><td>小时</td><td>%H</td><td>24小时制，两位数形式小时（00,01, …,23）</td></tr><tr><td>%h</td><td>12小时制，两位数形式小时（00,01, …,12）</td><td></td></tr><tr><td>%k</td><td>24小时制，数形式小时（0,1, …,23）</td><td></td></tr><tr><td>%l</td><td>12小时制，数形式小时（0,1, …,12）</td><td></td></tr><tr><td>%T</td><td>24小时制，时间形式（HH:mm:ss）</td><td></td></tr><tr><td>%r</td><td>12小时制，时间形式（hh:mm:ss AM 或 PM）</td><td></td></tr><tr><td>%p</td><td>AM上午或PM下午</td><td></td></tr><tr><td>周</td><td>%W</td><td>一周中每一天的名称（Sunday,Monday, …,Saturday）</td></tr><tr><td>%a</td><td>一周中每一天名称的缩写（Sun,Mon, …,Sat）</td><td></td></tr><tr><td>%w</td><td>以数字形式标识周（0=Sunday,1=Monday, …,6=Saturday）</td><td></td></tr><tr><td>%U</td><td>数字表示周数，星期天为周中第一天</td><td></td></tr><tr><td>%u</td><td>数字表示周数，星期一为周中第一天</td><td></td></tr><tr><td>天</td><td>%d</td><td>两位数字表示月中天数（01,02, …,31）</td></tr><tr><td>%e</td><td>数字表示月中天数（1,2, …,31）</td><td></td></tr><tr><td>%D</td><td>英文后缀表示月中天数（1st,2nd,3rd …）</td><td></td></tr><tr><td>%j</td><td>以三位数字表示年中天数（001,002, …,366）</td><td></td></tr><tr><td>月</td><td>%M</td><td>英文月名（January,February, …,December）</td></tr><tr><td>%b</td><td>英文缩写月名（Jan,Feb, …,Dec）</td><td></td></tr><tr><td>%m</td><td>两位数字表示月份（01,02, …,12）</td><td></td></tr><tr><td>%c</td><td>数字表示月份（1,2, …,12）</td><td></td></tr><tr><td>年</td><td>%Y</td><td>四位数字表示的年份（2015,2016…）</td></tr><tr><td>%y</td><td>两位数字表示的年份（15,16…）</td><td></td></tr><tr><td>文字输出</td><td>%文字</td><td>直接输出文字内容</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;平时比较常用的时间、字符串、时间戳之间的互相转换，虽然常用但是几乎每次使用时候都喜欢去搜索一下用法；本文将作为一个笔记，整理一下三者之间的 转换（即：date转字符串、date转时间戳、字符串转date、字符串转时间戳、时间戳转date，时间戳转字符串）用法，方便日后查看；
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
     
     
   </entry>
@@ -57,29 +80,6 @@
     </summary>
     
       <category term="读书笔记" scheme="http://www.maksim.website/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>在MYSQL中进行日期操作</title>
-    <link href="http://www.maksim.website/2018/04/08/1/"/>
-    <id>http://www.maksim.website/2018/04/08/1/</id>
-    <published>2018-04-07T16:00:00.000Z</published>
-    <updated>2018-04-08T14:25:32.113Z</updated>
-    
-    <content type="html"><![CDATA[<p>平时比较常用的时间、字符串、时间戳之间的互相转换，虽然常用但是几乎每次使用时候都喜欢去搜索一下用法；本文将作为一个笔记，整理一下三者之间的 转换（即：date转字符串、date转时间戳、字符串转date、字符串转时间戳、时间戳转date，时间戳转字符串）用法，方便日后查看；</p><h2 id="涉及的函数"><a href="#涉及的函数" class="headerlink" title="涉及的函数"></a>涉及的函数</h2><p>date_format(date, format) 函数MySQL日期格式化函数date_format()</p><p>str_to_date(str, format) 函数 把字符串转换为日期</p><p>from_unixtime(unix_timestamp, format) 函数，MySQL时间戳格式化函数from_unixtime</p><h2 id="时间转换"><a href="#时间转换" class="headerlink" title="时间转换"></a>时间转换</h2><h3 id="时间转字符串"><a href="#时间转字符串" class="headerlink" title="时间转字符串"></a>时间转字符串</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select date_format(now(), '%Y-%m-%d');   #结果：2016-01-05</div></pre></td></tr></table></figure><h3 id="时间转时间戳"><a href="#时间转时间戳" class="headerlink" title="时间转时间戳"></a>时间转时间戳</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select unix_timestamp(now());  #结果：1452001082</div></pre></td></tr></table></figure><h3 id="字符串转时间"><a href="#字符串转时间" class="headerlink" title="字符串转时间"></a>字符串转时间</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select str_to_date('2016-01-02', '%Y-%m-%d %H');  #结果：2016-01-02 00:00:00</div></pre></td></tr></table></figure><h3 id="字符串转时间戳"><a href="#字符串转时间戳" class="headerlink" title="字符串转时间戳"></a>字符串转时间戳</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select unix_timestamp('2016-01-02');  #结果：1451664000</div></pre></td></tr></table></figure><h3 id="时间戳转时间"><a href="#时间戳转时间" class="headerlink" title="时间戳转时间"></a>时间戳转时间</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select from_unixtime(1451997924);  #结果：2016-01-05 20:45:24</div></pre></td></tr></table></figure><h3 id="时间戳转字符串"><a href="#时间戳转字符串" class="headerlink" title="时间戳转字符串"></a>时间戳转字符串</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select from_unixtime(1451997924,'%Y-%d');  #结果：2016-01-05 20:45:24</div></pre></td></tr></table></figure><h2 id="附表"><a href="#附表" class="headerlink" title="附表"></a>附表</h2><p>MySQL日期格式化（format）取值范围。</p><table><thead><tr><th></th><th>值</th><th>含义</th></tr></thead><tbody><tr><td>秒</td><td>%S、%s</td><td>两位数字形式的秒（ 00,01, …, 59）</td></tr><tr><td>分</td><td>%I、%i</td><td>两位数字形式的分（ 00,01, …, 59）</td></tr><tr><td>小时</td><td>%H</td><td>24小时制，两位数形式小时（00,01, …,23）</td></tr><tr><td>%h</td><td>12小时制，两位数形式小时（00,01, …,12）</td><td></td></tr><tr><td>%k</td><td>24小时制，数形式小时（0,1, …,23）</td><td></td></tr><tr><td>%l</td><td>12小时制，数形式小时（0,1, …,12）</td><td></td></tr><tr><td>%T</td><td>24小时制，时间形式（HH:mm:ss）</td><td></td></tr><tr><td>%r</td><td>12小时制，时间形式（hh:mm:ss AM 或 PM）</td><td></td></tr><tr><td>%p</td><td>AM上午或PM下午</td><td></td></tr><tr><td>周</td><td>%W</td><td>一周中每一天的名称（Sunday,Monday, …,Saturday）</td></tr><tr><td>%a</td><td>一周中每一天名称的缩写（Sun,Mon, …,Sat）</td><td></td></tr><tr><td>%w</td><td>以数字形式标识周（0=Sunday,1=Monday, …,6=Saturday）</td><td></td></tr><tr><td>%U</td><td>数字表示周数，星期天为周中第一天</td><td></td></tr><tr><td>%u</td><td>数字表示周数，星期一为周中第一天</td><td></td></tr><tr><td>天</td><td>%d</td><td>两位数字表示月中天数（01,02, …,31）</td></tr><tr><td>%e</td><td>数字表示月中天数（1,2, …,31）</td><td></td></tr><tr><td>%D</td><td>英文后缀表示月中天数（1st,2nd,3rd …）</td><td></td></tr><tr><td>%j</td><td>以三位数字表示年中天数（001,002, …,366）</td><td></td></tr><tr><td>月</td><td>%M</td><td>英文月名（January,February, …,December）</td></tr><tr><td>%b</td><td>英文缩写月名（Jan,Feb, …,Dec）</td><td></td></tr><tr><td>%m</td><td>两位数字表示月份（01,02, …,12）</td><td></td></tr><tr><td>%c</td><td>数字表示月份（1,2, …,12）</td><td></td></tr><tr><td>年</td><td>%Y</td><td>四位数字表示的年份（2015,2016…）</td></tr><tr><td>%y</td><td>两位数字表示的年份（15,16…）</td><td></td></tr><tr><td>文字输出</td><td>%文字</td><td>直接输出文字内容</td></tr></tbody></table>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;平时比较常用的时间、字符串、时间戳之间的互相转换，虽然常用但是几乎每次使用时候都喜欢去搜索一下用法；本文将作为一个笔记，整理一下三者之间的 转换（即：date转字符串、date转时间戳、字符串转date、字符串转时间戳、时间戳转date，时间戳转字符串）用法，方便日后查看；
-      
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
     
     
   </entry>
@@ -111,8 +111,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2018/04/03/cjfqx80jx004oh7rdpt6q63k4/"/>
-    <id>http://www.maksim.website/2018/04/03/cjfqx80jx004oh7rdpt6q63k4/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjfqxlvuk004psirdj9od4w2m/"/>
+    <id>http://www.maksim.website/2018/04/03/cjfqxlvuk004psirdj9od4w2m/</id>
     <published>2018-04-03T14:53:43.524Z</published>
     <updated>2018-04-03T14:53:43.527Z</updated>
     
@@ -132,8 +132,8 @@
   
   <entry>
     <title>一个新的开始</title>
-    <link href="http://www.maksim.website/2018/04/03/cjfqx80jn0047h7rdexamhizs/"/>
-    <id>http://www.maksim.website/2018/04/03/cjfqx80jn0047h7rdexamhizs/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjfqxlvtx0049sirdq70uqufy/"/>
+    <id>http://www.maksim.website/2018/04/03/cjfqxlvtx0049sirdq70uqufy/</id>
     <published>2018-04-03T14:53:43.504Z</published>
     <updated>2018-04-03T14:53:43.507Z</updated>
     
@@ -152,8 +152,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2018/04/03/cjfqx80k3004th7rdomdxois2/"/>
-    <id>http://www.maksim.website/2018/04/03/cjfqx80k3004th7rdomdxois2/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjfqxlvtr0044sird2z749abl/"/>
+    <id>http://www.maksim.website/2018/04/03/cjfqxlvtr0044sird2z749abl/</id>
     <published>2018-04-03T14:53:43.478Z</published>
     <updated>2018-04-03T14:53:43.482Z</updated>
     
@@ -173,8 +173,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2018/04/03/cjfqx80k1004sh7rdbd0dfa85/"/>
-    <id>http://www.maksim.website/2018/04/03/cjfqx80k1004sh7rdbd0dfa85/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjfqxlvuu004zsirdl9tlunde/"/>
+    <id>http://www.maksim.website/2018/04/03/cjfqxlvuu004zsirdl9tlunde/</id>
     <published>2018-04-03T14:53:43.475Z</published>
     <updated>2018-04-03T14:53:43.478Z</updated>
     
@@ -194,8 +194,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2018/04/03/cjfqx80k7004wh7rda8c6j560/"/>
-    <id>http://www.maksim.website/2018/04/03/cjfqx80k7004wh7rda8c6j560/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjfqxlvux0052sird06gy6r7l/"/>
+    <id>http://www.maksim.website/2018/04/03/cjfqxlvux0052sird06gy6r7l/</id>
     <published>2018-04-03T14:53:43.470Z</published>
     <updated>2018-04-03T14:53:43.473Z</updated>
     
@@ -217,8 +217,8 @@
   
   <entry>
     <title>使用Object.defineProperty()模拟双向数据绑定</title>
-    <link href="http://www.maksim.website/2018/04/03/cjfqx80jt004hh7rd1mmrdjbk/"/>
-    <id>http://www.maksim.website/2018/04/03/cjfqx80jt004hh7rd1mmrdjbk/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjfqxlvue004ksird5s8u0p6c/"/>
+    <id>http://www.maksim.website/2018/04/03/cjfqxlvue004ksird5s8u0p6c/</id>
     <published>2018-04-03T14:53:43.463Z</published>
     <updated>2018-04-03T14:53:43.464Z</updated>
     
@@ -239,8 +239,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2018/04/03/cjfqx80iq002wh7rd7pp5wonm/"/>
-    <id>http://www.maksim.website/2018/04/03/cjfqx80iq002wh7rd7pp5wonm/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjfqxlvsx002xsirdxohn9150/"/>
+    <id>http://www.maksim.website/2018/04/03/cjfqxlvsx002xsirdxohn9150/</id>
     <published>2018-04-03T14:53:43.439Z</published>
     <updated>2018-04-03T14:53:43.440Z</updated>
     
@@ -260,8 +260,8 @@
   
   <entry>
     <title>PHP基础手札的引用</title>
-    <link href="http://www.maksim.website/2018/04/03/cjfqx80id002bh7rds6ygvj50/"/>
-    <id>http://www.maksim.website/2018/04/03/cjfqx80id002bh7rds6ygvj50/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjfqxlvsd0022sirdxz3s0pxn/"/>
+    <id>http://www.maksim.website/2018/04/03/cjfqxlvsd0022sirdxz3s0pxn/</id>
     <published>2018-04-03T14:53:43.433Z</published>
     <updated>2018-04-03T14:53:43.433Z</updated>
     
@@ -283,8 +283,8 @@
   
   <entry>
     <title>PHP页面静态化</title>
-    <link href="http://www.maksim.website/2018/04/03/cjfqx80il002nh7rdv1vjlk38/"/>
-    <id>http://www.maksim.website/2018/04/03/cjfqx80il002nh7rdv1vjlk38/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjfqxlvst002qsirdl9jfam7w/"/>
+    <id>http://www.maksim.website/2018/04/03/cjfqxlvst002qsirdl9jfam7w/</id>
     <published>2018-04-03T14:53:43.431Z</published>
     <updated>2018-04-03T14:53:43.432Z</updated>
     
@@ -306,8 +306,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2018/04/03/cjfqx80hk0015h7rduae6h7io/"/>
-    <id>http://www.maksim.website/2018/04/03/cjfqx80hk0015h7rduae6h7io/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjfqxlvro0017sirdsn1qnnvc/"/>
+    <id>http://www.maksim.website/2018/04/03/cjfqxlvro0017sirdsn1qnnvc/</id>
     <published>2018-04-03T14:53:43.410Z</published>
     <updated>2018-04-03T14:53:43.411Z</updated>
     
@@ -329,8 +329,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2018/04/03/cjfqx80hi0013h7rdgnz98m1m/"/>
-    <id>http://www.maksim.website/2018/04/03/cjfqx80hi0013h7rdgnz98m1m/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjfqxlvrd000tsirdr854kl2s/"/>
+    <id>http://www.maksim.website/2018/04/03/cjfqxlvrd000tsirdr854kl2s/</id>
     <published>2018-04-03T14:53:43.409Z</published>
     <updated>2018-04-03T14:53:43.410Z</updated>
     
@@ -350,8 +350,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2018/04/03/cjfqx80hq001eh7rdo8nw566m/"/>
-    <id>http://www.maksim.website/2018/04/03/cjfqx80hq001eh7rdo8nw566m/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjfqxlvrm0014sirdp2ndo6y7/"/>
+    <id>http://www.maksim.website/2018/04/03/cjfqxlvrm0014sirdp2ndo6y7/</id>
     <published>2018-04-03T14:53:43.408Z</published>
     <updated>2018-04-03T14:53:43.408Z</updated>
     
@@ -373,8 +373,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2018/04/03/cjfqx80h6000kh7rdek12kyvc/"/>
-    <id>http://www.maksim.website/2018/04/03/cjfqx80h6000kh7rdek12kyvc/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjfqxlvqy000csirdph8rowgs/"/>
+    <id>http://www.maksim.website/2018/04/03/cjfqxlvqy000csirdph8rowgs/</id>
     <published>2018-04-03T14:53:43.401Z</published>
     <updated>2018-04-03T14:53:43.402Z</updated>
     
@@ -396,8 +396,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2018/04/03/cjfqx80ip002th7rd3ue4nnc6/"/>
-    <id>http://www.maksim.website/2018/04/03/cjfqx80ip002th7rd3ue4nnc6/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjfqxlvso002hsird0jgsqnya/"/>
+    <id>http://www.maksim.website/2018/04/03/cjfqxlvso002hsird0jgsqnya/</id>
     <published>2018-04-03T14:53:03.331Z</published>
     <updated>2018-04-03T14:53:03.331Z</updated>
     

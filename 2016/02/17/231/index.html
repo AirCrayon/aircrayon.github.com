@@ -1,11 +1,16 @@
-<!DOCTYPE html>
-<html>
+
+ <!DOCTYPE HTML>
+<html >
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta charset="UTF-8">
+  
+    <title>Objective-C Block的基本使用 | Maksim&#39;s Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Maksim">
+    
+
+    
     <meta name="description" content="一、Block 的定义定义和使用Block， 1234567891011121314151617181920212223242526- (void)viewDidLoad &amp;#123;	[super viewDidLoad];  	//（1）定义无参无返回值的Block	void (^printBlock)() = ^()&amp;#123;		printf(&amp;quot;no number&amp;quot;);">
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
@@ -17,129 +22,86 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C Block的基本使用">
 <meta name="twitter:description" content="一、Block 的定义定义和使用Block， 1234567891011121314151617181920212223242526- (void)viewDidLoad &amp;#123;	[super viewDidLoad];  	//（1）定义无参无返回值的Block	void (^printBlock)() = ^()&amp;#123;		printf(&amp;quot;no number&amp;quot;);">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Maksim&#39;s Website" type="application/atom+xml">
     
     
-        
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
-        
-        
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
-        
-        
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
-        
+    <link rel="icon" href="/img/favicon.ico">
     
-    <!-- title -->
-    <title>Objective-C Block的基本使用</title>
-    <!-- styles -->
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
     <link rel="stylesheet" href="/css/style.css">
-    <!-- rss -->
-    
-    
 </head>
 
-<body class="max-width mx-auto px3">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Writing</a></li>
-         
-          <li><a href="/Search/">Search</a></li>
-         
-          <li><a href="/projects_url">Projects</a></li>
-        
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" href="/2016/03/01/cjfqx80lb006eh7rdhvli1pif/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" href="/2016/01/31/2/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.maksim.website/2016/02/17/231/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://www.maksim.website/2016/02/17/231/&text=Objective-C Block的基本使用"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.maksim.website/2016/02/17/231/&title=Objective-C Block的基本使用"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.maksim.website/2016/02/17/231/&is_video=false&description=Objective-C Block的基本使用"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Objective-C Block的基本使用&body=Check out this article: http://www.maksim.website/2016/02/17/231/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://www.maksim.website/2016/02/17/231/&title=Objective-C Block的基本使用"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://www.maksim.website/2016/02/17/231/&title=Objective-C Block的基本使用"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.maksim.website/2016/02/17/231/&title=Objective-C Block的基本使用"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://www.maksim.website/2016/02/17/231/&title=Objective-C Block的基本使用"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.maksim.website/2016/02/17/231/&name=Objective-C Block的基本使用&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-    <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Block-的定义"><span class="toc-number">1.</span> <span class="toc-text">一、Block 的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、-block关键字的使用"><span class="toc-number">2.</span> <span class="toc-text">二、__block关键字的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Block作为Property属性实现页面之间传值"><span class="toc-number">3.</span> <span class="toc-text">三、Block作为Property属性实现页面之间传值</span></a></li></ol>
-    </div>
-  </span>
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Maksim&#39;s Website" title="Maksim&#39;s Website"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Maksim&#39;s Website">Maksim&#39;s Website</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.maksim.website">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
 </div>
-
-    
-    <div class="content index my4">
-        
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle" itemprop="name headline">
-        Objective-C Block的基本使用
-    </h1>
-
-
-
-    <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">Maksim's Website</span>
-      </span>
-      
-    <div class="postdate">
-        <time datetime="2016-02-17T08:05:19.000Z" itemprop="datePublished">2016-02-17</time>
-    </div>
-
-
-      
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/iOS/">iOS</a>
-    </div>
-
-
-    </div>
-  </header>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
   
-
-  <div class="content" itemprop="articleBody">
-    <h2 id="一、Block-的定义"><a href="#一、Block-的定义" class="headerlink" title="一、Block 的定义"></a>一、Block 的定义</h2><p>定义和使用Block，</p>
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/02/17/231/" title="Objective-C Block的基本使用" itemprop="url">Objective-C Block的基本使用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Maksim" target="_blank" itemprop="author">Maksim</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-17T08:05:19.000Z" itemprop="datePublished"> Published 2016-02-17</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Block-的定义"><span class="toc-number">1.</span> <span class="toc-text">一、Block 的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、-block关键字的使用"><span class="toc-number">2.</span> <span class="toc-text">二、__block关键字的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Block作为Property属性实现页面之间传值"><span class="toc-number">3.</span> <span class="toc-text">三、Block作为Property属性实现页面之间传值</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="一、Block-的定义"><a href="#一、Block-的定义" class="headerlink" title="一、Block 的定义"></a>一、Block 的定义</h2><p>定义和使用Block，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">	[super viewDidLoad];</div><div class="line">  </div><div class="line">	//（1）定义无参无返回值的Block</div><div class="line">	void (^printBlock)() = ^()&#123;</div><div class="line">		printf(&quot;no number&quot;);</div><div class="line">	&#125;;</div><div class="line">  </div><div class="line">	printBlock();</div><div class="line">	printBlock(9);</div><div class="line">  </div><div class="line">	int mutiplier = 7;</div><div class="line">	//（3）定义名为myBlock的代码块，返回值类型为int</div><div class="line">	int (^myBlock)(int) = ^(int num)&#123;</div><div class="line">		return num*mutiplier;</div><div class="line">	&#125;</div><div class="line">	//使用定义的myBlock</div><div class="line">	int newMutiplier = myBlock(3);</div><div class="line">		printf(&quot;newMutiplier is %d&quot;,myBlock(3));</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	//定义在-viewDidLoad方法外部</div><div class="line">	//（2）定义一个有参数，没有返回值的Block</div><div class="line">	void (^printNumBlock)(int) = ^(int num)&#123;</div><div class="line">		printf(&quot;int number is %d&quot;,num);</div><div class="line">	&#125;;</div></pre></td></tr></table></figure>
 <p>定义Block变量，就相当于定义了一个函数。但是区别也很明显，因为函数肯定是在-viewDidLoad方法外面定义，而Block变量定义在了viewDidLoad方法内部。当然，我们也可以把Block定义在-viewDidLoad方法外部，例如上面的代码块printNumBlock的定义，就在-viewDidLoad外面。</p>
 <p>再来看看上面代码运行的顺序问题，以第（3）个myBlock距离来说，在定义的地方，并不会执行Block{}内部的代码，而在myBlock(3)调用之后才会执行其中的代码，这跟函数的理解其实差不多，就是只要在调用Block（函数）的时候才会执行Block体内（函数体内）的代码。所以上面的简单代码示例，我可以作出如下的结论，</p>
@@ -175,101 +137,502 @@
 <p>Github中的代码，可以开启两种调试模式，你需要在项目的配置文件BlockSamp-Prefix.pch中注释或者解注释下面的代码.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define Debug_BlcokPassValueEnable</div></pre></td></tr></table></figure>
 <p>即可开启两种调试的方式，如果注释了上面的语句就是使用Delegate进行调试；否则使用Block进行调试。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
 
-  </div>
-</article>
-
-
-
-    </div>
-    
-      <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Writing</a></li>
-         
-          <li><a href="/Search/">Search</a></li>
-         
-          <li><a href="/projects_url">Projects</a></li>
-        
-      </ul>
-    </div>
-
-    <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Block-的定义"><span class="toc-number">1.</span> <span class="toc-text">一、Block 的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、-block关键字的使用"><span class="toc-number">2.</span> <span class="toc-text">二、__block关键字的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Block作为Property属性实现页面之间传值"><span class="toc-number">3.</span> <span class="toc-text">三、Block作为Property属性实现页面之间传值</span></a></li></ol>
-    </div>
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.maksim.website/2016/02/17/231/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://www.maksim.website/2016/02/17/231/&text=Objective-C Block的基本使用"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.maksim.website/2016/02/17/231/&title=Objective-C Block的基本使用"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.maksim.website/2016/02/17/231/&is_video=false&description=Objective-C Block的基本使用"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Objective-C Block的基本使用&body=Check out this article: http://www.maksim.website/2016/02/17/231/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://www.maksim.website/2016/02/17/231/&title=Objective-C Block的基本使用"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://www.maksim.website/2016/02/17/231/&title=Objective-C Block的基本使用"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.maksim.website/2016/02/17/231/&title=Objective-C Block的基本使用"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://www.maksim.website/2016/02/17/231/&title=Objective-C Block的基本使用"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.maksim.website/2016/02/17/231/&name=Objective-C Block的基本使用&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
-    </div>
-
-  </div>
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/ios/">ios</a>
 </div>
 
-    
-    <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy; 2018 Maksim
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
   </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Writing</a></li>
-         
-          <li><a href="/Search/">Search</a></li>
-         
-          <li><a href="/projects_url">Projects</a></li>
-        
-      </ul>
-    </nav>
-  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://www.maksim.website/2016/02/17/231/" data-title="Objective-C Block的基本使用 | Maksim&#39;s Website" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
 </footer>
 
-</body>
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/03/01/cjfqxlvw70064sirdm7gu4iaw/" title="iOS多线程.01 简介">
+  <strong>上一篇：</strong><br/>
+  <span>
+  iOS多线程.01 简介</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/01/31/2/"  title="CGFloat、CGPoint、CGSize和CGRect">
+ <strong>下一篇：</strong><br/> 
+ <span>CGFloat、CGPoint、CGSize和CGRect
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Block-的定义"><span class="toc-number">1.</span> <span class="toc-text">一、Block 的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、-block关键字的使用"><span class="toc-number">2.</span> <span class="toc-text">二、__block关键字的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Block作为Property属性实现页面之间传值"><span class="toc-number">3.</span> <span class="toc-text">三、Block作为Property属性实现页面之间传值</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/C-C/" title="C/C++">C/C++<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/JavaScript/" title="JavaScript">JavaScript<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>12</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Objective-C/" title="Objective-C">Objective-C<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>20</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ios/" title="ios">ios<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/javascript/" title="javascript">javascript<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/工具/" title="工具">工具<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/设计/" title="设计">设计<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书笔记/" title="读书笔记">读书笔记<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/随笔/" title="随笔">随笔<sup>4</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>14</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/随笔/" title="随笔">随笔<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP/" title="PHP">PHP<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux-Centos/" title="Linux,Centos">Linux,Centos<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP基础/" title="PHP基础">PHP基础<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux-GNU/" title="Linux,GNU">Linux,GNU<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/服务容器/" title="服务容器">服务容器<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Closures/" title="Closures">Closures<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php/" title="php">php<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C-C-算法/" title="C/C++,算法">C/C++,算法<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Objc-多线程/" title="Objc,多线程">Objc,多线程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/INSERT/" title="INSERT">INSERT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wechat-pay-php-php7-php-input/" title="wechat pay, php, php7, php://input">wechat pay, php, php7, php://input<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/算法/" title="算法">算法<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多线程-PHP7-2-编译安装-GCC/" title="多线程,PHP7.2,编译安装,GCC">多线程,PHP7.2,编译安装,GCC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/内存管理/" title="内存管理">内存管理<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/面试/" title="面试">面试<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="Maksim">Maksim</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
 </html>
-<!-- styles -->
-<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
-
-<!-- jquery -->
-<script src="/lib/jquery/jquery.min.js"></script>
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
-<script src="/js/main.js"></script>
-<!-- search -->
-
-<!-- Google Analytics -->
-
-<!-- Disqus Comments -->
-
-

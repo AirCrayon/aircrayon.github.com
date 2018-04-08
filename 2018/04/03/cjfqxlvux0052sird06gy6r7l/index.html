@@ -1,0 +1,611 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Maksim&#39;s Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Maksim">
+    
+
+    
+    <meta name="description" content="title:iOS图层树categories:iOSdate:2015-12-21 id:1图层树Core Animation 是一个符合引擎，塔的职责就是尽可能快地组合屏幕上不同的可视内容，这个内容被分分解成独立的图层，存储在一个叫做图层数的体系中，于是这个树形成了 UIKit 以及在 iOS 10应用程序当中你所看能在屏幕上看见的一切的基础。 图层与视图如果你曾经在 iOS 10或MacOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maksim&#39;s Website">
+<meta property="og:url" content="http://www.maksim.website/2018/04/03/cjfqxlvux0052sird06gy6r7l/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="title:iOS图层树categories:iOSdate:2015-12-21 id:1图层树Core Animation 是一个符合引擎，塔的职责就是尽可能快地组合屏幕上不同的可视内容，这个内容被分分解成独立的图层，存储在一个叫做图层数的体系中，于是这个树形成了 UIKit 以及在 iOS 10应用程序当中你所看能在屏幕上看见的一切的基础。 图层与视图如果你曾经在 iOS 10或MacOS">
+<meta property="og:image" content="https://zsisme.gitbooks.io/ios-/content/chapter1/1.1.jpeg">
+<meta property="og:image" content="https://zsisme.gitbooks.io/ios-/content/chapter1/1.2.jpeg">
+<meta property="og:updated_time" content="2018-04-03T14:53:43.473Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Maksim&#39;s Website">
+<meta name="twitter:description" content="title:iOS图层树categories:iOSdate:2015-12-21 id:1图层树Core Animation 是一个符合引擎，塔的职责就是尽可能快地组合屏幕上不同的可视内容，这个内容被分分解成独立的图层，存储在一个叫做图层数的体系中，于是这个树形成了 UIKit 以及在 iOS 10应用程序当中你所看能在屏幕上看见的一切的基础。 图层与视图如果你曾经在 iOS 10或MacOS">
+<meta name="twitter:image" content="https://zsisme.gitbooks.io/ios-/content/chapter1/1.1.jpeg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Maksim&#39;s Website" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Maksim&#39;s Website" title="Maksim&#39;s Website"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Maksim&#39;s Website">Maksim&#39;s Website</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.maksim.website">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/04/03/cjfqxlvux0052sird06gy6r7l/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Maksim" target="_blank" itemprop="author">Maksim</a>
+		
+  <p class="article-time">
+    <time datetime="2018-04-03T14:53:43.470Z" itemprop="datePublished"> Published 2018-04-03</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#id-1"><span class="toc-number">1.</span> <span class="toc-text">id:1</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#图层树"><span class="toc-number"></span> <span class="toc-text">图层树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#图层与视图"><span class="toc-number">1.</span> <span class="toc-text">图层与视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CALayer"><span class="toc-number">2.</span> <span class="toc-text">CALayer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#平行的层级关系"><span class="toc-number">3.</span> <span class="toc-text">平行的层级关系</span></a></li></ol>
+		
+		</div>
+		
+		<hr>
+<p>title:iOS图层树<br>categories:iOS<br>date:2015-12-21</p>
+<h2 id="id-1"><a href="#id-1" class="headerlink" title="id:1"></a>id:1</h2><h1 id="图层树"><a href="#图层树" class="headerlink" title="图层树"></a>图层树</h1><p>Core Animation 是一个符合引擎，塔的职责就是尽可能快地组合屏幕上不同的可视内容，这个内容被分分解成独立的图层，存储在一个叫做图层数的体系中，于是这个树形成了 UIKit 以及在 iOS 10应用程序当中你所看能在屏幕上看见的一切的基础。</p>
+<h2 id="图层与视图"><a href="#图层与视图" class="headerlink" title="图层与视图"></a>图层与视图</h2><p>如果你曾经在 iOS 10或MacOS 平台上面写过应用程序，你可能能会对视图的概念比较熟悉。一个视图就是在屏幕上显示一个矩形块（比如图片，文字或者视频），它能拦截类似于鼠标点击或者触摸手势等用户输入。视图在层级关系中可以互相嵌套，一个视图可以管理它的所有子视图的位置。图1.1显示了一种典型的视图层级关系。</p>
+<p><img src="https://zsisme.gitbooks.io/ios-/content/chapter1/1.1.jpeg" alt=""></p>
+<p>图1.1一种典型的 iOS 屏幕（左边）和型城市图的层级关系（右边）</p>
+<p>在 iOS 中，所有的视图都从一个叫做 UIview 的基类派生而来，UIView 可以处理触摸事件，可以支持基于 Core Graphics 绘图，可以做仿射变换（例如旋转或者缩放），或者简单的类似于滑动或者渐变的动画。</p>
+<h2 id="CALayer"><a href="#CALayer" class="headerlink" title="CALayer"></a>CALayer</h2><p>CALayer类在概念上和 UIView 类似，同样也是一些被层级关系树管理的矩形块，同样可以包含一些内容（像图片，文本或者背景色），管理子视图的位置。它们有一些方法和尚需经用来做动画和变换。</p>
+<p>和 UIview 最大的不同是 CALayer 不处理用户的交互。</p>
+<p>CALayer 兵不清楚具体的响应链（iOS通过视图层级关系用来传递触摸事件的机制），于是它并不能够响应事件，即使它提供了一些方法来判断是否一个触电在图层的范围之内。</p>
+<h2 id="平行的层级关系"><a href="#平行的层级关系" class="headerlink" title="平行的层级关系"></a>平行的层级关系</h2><p>每一个 UIView 都有一个 CALayer 实例的图层属性，也就是所谓的 Backing layer,视图的职责就是创建并管理这个图层，以确保子视图在层级关系中添加或者被移除的时候，他们关联的图层也同样对应是在层级关系树当中有相同的操作（见图1.2）</p>
+<p><img src="https://zsisme.gitbooks.io/ios-/content/chapter1/1.2.jpeg" alt=""></p>
+<p>图1.2 图层的树状结构（左边）以及对应的视图层级（右边）</p>
+<p>实际上这些背后关联的图层才是真正用来在屏幕上显示和做动画，UIView 仅仅是对它的一个封装，提供了一些 iOS 类似于处理触摸事件的具体功能，以及 Core Animation 底层方法的高级借口。</p>
+<p>但是为什么 iOS 要基于 UIview 和 CALayer 提供两个平行的层级关系呢？为什么不用一个简单的层级来处理所有事情呢？原因在于要做职责分离，这也是能避免很多重复代码。在 iOS 和 Mac OS两个平台上，时间和用户交互有很多地方不同，基于多点触控的用户界面和基于鼠标键盘有着本质的区别，这就是为什么 iOS有 UIKit 和 UIView，但是 MacOS 有 APPKit 和 NSView 的元婴。他们功能上很类似，但是在实现上有着显著的区别。</p>
+<p>绘图，布局和动画，相比之下就是类似Mac笔记本和桌面系列一样应用于iPhone和iPad触屏的概念。把这种功能的逻辑分开并应用到独立的Core Animation框架，苹果就能够在iOS和Mac OS之间共享代码，使得对苹果自己的OS开发团队和第三方开发者去开发两个平台的应用更加便捷。+</p>
+<p>实际上，这里并不是两个层级关系，而是四个，每一个都扮演不同的角色，除了视图层级和图层树之外，还存在呈现树和渲染树，</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://www.maksim.website/2018/04/03/cjfqxlvux0052sird06gy6r7l/" data-title="Maksim&#39;s Website" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/04/03/cjfqxlvuu004zsirdl9tlunde/" title="">
+  <strong>上一篇：</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/04/03/cjfqxlvue004ksird5s8u0p6c/"  title="使用Object.defineProperty()模拟双向数据绑定">
+ <strong>下一篇：</strong><br/> 
+ <span>使用Object.defineProperty()模拟双向数据绑定
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#id-1"><span class="toc-number">1.</span> <span class="toc-text">id:1</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#图层树"><span class="toc-number"></span> <span class="toc-text">图层树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#图层与视图"><span class="toc-number">1.</span> <span class="toc-text">图层与视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CALayer"><span class="toc-number">2.</span> <span class="toc-text">CALayer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#平行的层级关系"><span class="toc-number">3.</span> <span class="toc-text">平行的层级关系</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/C-C/" title="C/C++">C/C++<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/JavaScript/" title="JavaScript">JavaScript<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>12</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Objective-C/" title="Objective-C">Objective-C<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>20</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ios/" title="ios">ios<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/javascript/" title="javascript">javascript<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/工具/" title="工具">工具<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/设计/" title="设计">设计<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书笔记/" title="读书笔记">读书笔记<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/随笔/" title="随笔">随笔<sup>4</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>14</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/随笔/" title="随笔">随笔<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP/" title="PHP">PHP<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux-Centos/" title="Linux,Centos">Linux,Centos<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP基础/" title="PHP基础">PHP基础<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux-GNU/" title="Linux,GNU">Linux,GNU<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/服务容器/" title="服务容器">服务容器<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Closures/" title="Closures">Closures<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php/" title="php">php<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C-C-算法/" title="C/C++,算法">C/C++,算法<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Objc-多线程/" title="Objc,多线程">Objc,多线程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/INSERT/" title="INSERT">INSERT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wechat-pay-php-php7-php-input/" title="wechat pay, php, php7, php://input">wechat pay, php, php7, php://input<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/算法/" title="算法">算法<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多线程-PHP7-2-编译安装-GCC/" title="多线程,PHP7.2,编译安装,GCC">多线程,PHP7.2,编译安装,GCC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/内存管理/" title="内存管理">内存管理<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/面试/" title="面试">面试<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="Maksim">Maksim</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
