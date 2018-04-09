@@ -75,56 +75,6 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2017/10/18/10/" title="一本深入学习PHP内核的书 -《PHP internals Book》" itemprop="url">
-  
-    <h1 itemprop="name">一本深入学习PHP内核的书 -《PHP internals Book》</h1>
-    
-     
-           <p itemprop="description" >今天给大家介绍一本 PHP 扩展开发相关的书籍《PHP internals Book》，这本书是几个PHP开发人员之间的协作努力，可以更好地记录和描述PHP内部的工作原理。
-《PHP internals Book》 有三个主要目标：
-
-记录和描述PHP内部工作原理。
-记录并描述如</p>
-        
-    
-    <time datetime="2017-10-17T16:00:00.000Z" itemprop="datePublished">2017-10-18</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2017/10/18/1/" title="PHP基础解惑： =与==、===的区别" itemprop="url">
-  
-    <h1 itemprop="name">PHP基础解惑： =与==、===的区别</h1>
-    
-     
-           <p itemprop="description" >首先等于号（=）在大多数语言中都是赋值操作；
-==和===都是比较运算符，用来比较两个变量间的关系，他们两个都有“等于”的含义，不过===是恒等计算符。两侧数据类型不一致时会返回 false，在官方文档中给出如下：
-==如果两侧的变量类型不同时，会转化类型后在进行比较。
-
-
-
-例</p>
-        
-    
-    <time datetime="2017-10-17T16:00:00.000Z" itemprop="datePublished">2017-10-18</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
     <a href="/2017/10/16/2/" title="PHP基础手札之emtpy、isset、is_null的区别" itemprop="url">
   
     <h1 itemprop="name">PHP基础手札之emtpy、isset、is_null的区别</h1>
@@ -146,16 +96,17 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2017/10/16/1/" title="PHP基础解惑：省略结束标签" itemprop="url">
+    <a href="/2017/10/13/2/" title="MySQL常用存储引擎之MyISAM" itemprop="url">
   
-    <h1 itemprop="name">PHP基础解惑：省略结束标签</h1>
+    <h1 itemprop="name">MySQL常用存储引擎之MyISAM</h1>
     
      
-           <p itemprop="description" >对于PHP编译器来说，脚本的结束标签?&amp;gt;是可选的，在写程序时你可以忽略它。你或许碰见过：在使用include()、require()或输入输出缓冲函数时，页面顶部有时会多空行或者出现“header had send”之类的错误信息，这类问题与结束标签有关。
-省略结束标签适合</p>
+           <p itemprop="description" >MyISAM存储引擎是MySQL5.5之前版本默认的存储引擎，由于这个原因，现在还有大量的数据库在使用MyISAM的表。
+同时它也是MySQL大部分系统表和临时表使用的而存储引擎，这个临时表并非是我们使用CREATE TEMPORARY TABLE所建立的临时表。
+使用CREAT</p>
         
     
-    <time datetime="2017-10-15T16:00:00.000Z" itemprop="datePublished">2017-10-16</time>
+    <time datetime="2017-10-12T16:00:00.000Z" itemprop="datePublished">2017-10-13</time>
   </a>
 </section>
 
@@ -175,28 +126,6 @@
            <p itemprop="description" >数据库产品的架构一般可以分为应用层、逻辑层、物理层，对于MySQL，同样可以理解为如下3个层次。
 
 其中Connectors可以理解为各种客户端、 应用服务； Connection Pool可以理解为应用层，负责和客户端、用户进行交互，需要和不同的客户端（PHP,Java,C A</p>
-        
-    
-    <time datetime="2017-10-12T16:00:00.000Z" itemprop="datePublished">2017-10-13</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2017/10/13/2/" title="MySQL常用存储引擎之MyISAM" itemprop="url">
-  
-    <h1 itemprop="name">MySQL常用存储引擎之MyISAM</h1>
-    
-     
-           <p itemprop="description" >MyISAM存储引擎是MySQL5.5之前版本默认的存储引擎，由于这个原因，现在还有大量的数据库在使用MyISAM的表。
-同时它也是MySQL大部分系统表和临时表使用的而存储引擎，这个临时表并非是我们使用CREATE TEMPORARY TABLE所建立的临时表。
-使用CREAT</p>
         
     
     <time datetime="2017-10-12T16:00:00.000Z" itemprop="datePublished">2017-10-13</time>
@@ -274,6 +203,27 @@ Linux
   
 <section class="post" itemscope itemprop="blogitem">
   
+    <a href="/2017/09/18/1/" title="利用 INSERT 命令将表中字段导入到新表中" itemprop="url">
+  
+    <h1 itemprop="name">利用 INSERT 命令将表中字段导入到新表中</h1>
+    
+     
+           <p itemprop="description" >最近为公司内部系统写了一个爬虫，爬了一个问答社区的三万多条数据，由于一开始的设计不够合理，将所有记录都放入了一个表中，由于是问答系统，合理的数据库设计，应该是将问题和答案分离开来，这样的结构更加合理，也易于未来的扩展。
+我刚开始做iOS 的，转到 PHP 有一年多了，大学时有自学</p>
+        
+    
+    <time datetime="2017-09-17T16:00:00.000Z" itemprop="datePublished">2017-09-18</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
     <a href="/2017/09/18/1/" title="大表会对数据库带来的那些问题！" itemprop="url">
   
     <h1 itemprop="name">大表会对数据库带来的那些问题！</h1>
@@ -297,16 +247,67 @@ Linux
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2017/09/18/1/" title="利用 INSERT 命令将表中字段导入到新表中" itemprop="url">
+    <a href="/2017/09/16/1/" title="大事务对MySQL性能带来的影响" itemprop="url">
   
-    <h1 itemprop="name">利用 INSERT 命令将表中字段导入到新表中</h1>
+    <h1 itemprop="name">大事务对MySQL性能带来的影响</h1>
     
      
-           <p itemprop="description" >最近为公司内部系统写了一个爬虫，爬了一个问答社区的三万多条数据，由于一开始的设计不够合理，将所有记录都放入了一个表中，由于是问答系统，合理的数据库设计，应该是将问题和答案分离开来，这样的结构更加合理，也易于未来的扩展。
-我刚开始做iOS 的，转到 PHP 有一年多了，大学时有自学</p>
+           <p itemprop="description" >引言在我们的日常开发过程当中，为了保持数据的一致性，多多少少都会用到事务。
+当面对大量数据时，使用事务一定要谨小慎微，因为一旦编写的事务中设计的数据量过大，就会严重的影响系统性能，如果操作的数据量特别巨大，则会造成服务器的阻塞，导致业务逻辑无法访问。
+什么是事务？在了解大事务对 </p>
         
     
-    <time datetime="2017-09-17T16:00:00.000Z" itemprop="datePublished">2017-09-18</time>
+    <time datetime="2017-09-15T16:00:00.000Z" itemprop="datePublished">2017-09-16</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/09/10/1/" title="MySQL主从数据库" itemprop="url">
+  
+    <h1 itemprop="name">MySQL主从数据库</h1>
+    
+     
+           <p itemprop="description" >什么是mysql主从同步？当master(主)库的数据发生变化的时候，变化会实时的同步到slave(从)库。
+##主从同步有什么好处？
+
+水平扩展数据库的负载能力。
+容错，高可用。Failover(失败切换)/High Availability
+数据备份。
+
+主从同步的原理是什么</p>
+        
+    
+    <time datetime="2017-09-09T16:00:00.000Z" itemprop="datePublished">2017-09-10</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2017/09/05/1/" title="法律结构条、款、项、目" itemprop="url">
+  
+    <h1 itemprop="name">法律结构条、款、项、目</h1>
+    
+     
+           <p itemprop="description" >公司的新项目上线了，我们要为律师团队开发一套内部系统，其中包括爬虫抓来的问答、法律条款的检索。
+而法律条文不能直接以文章的形式存储，因为后期可能会涉及到法律条文的引用，例如：
+《烟草专卖法》第二条第二款
+一般来讲，一件(部)法律由章、节、条、款、项、目组成，个别重要的法典还分编。</p>
+        
+    
+    <time datetime="2017-09-04T16:00:00.000Z" itemprop="datePublished">2017-09-05</time>
   </a>
 </section>
 
@@ -336,7 +337,7 @@ Linux
 		<ul>
 		
 		  
-			<li><a href="/categories/Andriod/" title="-Andriod">-Andriod<sup>1</sup></a></li>
+			<li><a href="/categories/Andriod/" title="Andriod">Andriod<sup>1</sup></a></li>
 		  
 		
 		  
@@ -356,7 +357,7 @@ Linux
 		  
 		
 		  
-			<li><a href="/categories/Objective-C/" title="Objective-C">Objective-C<sup>6</sup></a></li>
+			<li><a href="/categories/Objective-C/" title="Objective-C">Objective-C<sup>5</sup></a></li>
 		  
 		
 		  
@@ -364,7 +365,7 @@ Linux
 		  
 		
 		  
-			<li><a href="/categories/iOS/" title="iOS">iOS<sup>5</sup></a></li>
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>7</sup></a></li>
 		  
 		
 		  
@@ -380,7 +381,7 @@ Linux
 		  
 		
 		  
-			<li><a href="/categories/设计/" title="设计">设计<sup>1</sup></a></li>
+			<li><a href="/categories/设计/" title="设计">设计<sup>2</sup></a></li>
 		  
 		
 		  
@@ -417,11 +418,11 @@ Linux
 			
 		
 			
-				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>2</sup></a></li>
+				<li><a href="/tags/Linux-Centos/" title="Linux,Centos">Linux,Centos<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Linux-Centos/" title="Linux,Centos">Linux,Centos<sup>2</sup></a></li>
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>2</sup></a></li>
 			
 		
 			
@@ -429,15 +430,15 @@ Linux
 			
 		
 			
-				<li><a href="/tags/Linux-GNU/" title="Linux,GNU">Linux,GNU<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/服务容器/" title="服务容器">服务容器<sup>1</sup></a></li>
+				<li><a href="/tags/算法/" title="算法">算法<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/wechat-pay-php-php7-php-input/" title="wechat pay, php, php7, php://input">wechat pay, php, php7, php://input<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/服务容器/" title="服务容器">服务容器<sup>1</sup></a></li>
 			
 		
 			
@@ -461,7 +462,7 @@ Linux
 			
 		
 			
-				<li><a href="/tags/算法/" title="算法">算法<sup>1</sup></a></li>
+				<li><a href="/tags/Linux-GNU/" title="Linux,GNU">Linux,GNU<sup>1</sup></a></li>
 			
 		
 			
@@ -477,7 +478,7 @@ Linux
 			
 		
 			
-				<li><a href="/tags/MySQL-设计规范/" title="MySQL 设计规范">MySQL 设计规范<sup>1</sup></a></li>
+				<li><a href="/tags/面试/" title="面试">面试<sup>1</sup></a></li>
 			
 		
 		</ul>
