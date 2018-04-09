@@ -1,0 +1,802 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>人人都懂设计模式1、创建型模式 | Maksim&#39;s Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Maksim">
+    
+
+    
+    <meta name="description" content="英文：kamranahmedse， 编译：伯乐在线 - Justin_YGG  简介设计模式用于解决反复出现的问题，是解决特定问题的指导方针。设计模式不是在应用中引用的类、package 或者库，而是在某些特定场景下解决特定问题的指导方针。 设计模式用于解决反复出现的问题，是解决某些特定问题的指导方针。 维基百科中这样描述设计模式：  在软件工程中，设计模式是针对软件设计中普遍存在（反复出现）的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人人都懂设计模式1、创建型模式">
+<meta property="og:url" content="http://www.maksim.website/2017/07/14/1/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="英文：kamranahmedse， 编译：伯乐在线 - Justin_YGG  简介设计模式用于解决反复出现的问题，是解决特定问题的指导方针。设计模式不是在应用中引用的类、package 或者库，而是在某些特定场景下解决特定问题的指导方针。 设计模式用于解决反复出现的问题，是解决某些特定问题的指导方针。 维基百科中这样描述设计模式：  在软件工程中，设计模式是针对软件设计中普遍存在（反复出现）的">
+<meta property="og:updated_time" content="2018-04-09T11:31:31.781Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="人人都懂设计模式1、创建型模式">
+<meta name="twitter:description" content="英文：kamranahmedse， 编译：伯乐在线 - Justin_YGG  简介设计模式用于解决反复出现的问题，是解决特定问题的指导方针。设计模式不是在应用中引用的类、package 或者库，而是在某些特定场景下解决特定问题的指导方针。 设计模式用于解决反复出现的问题，是解决某些特定问题的指导方针。 维基百科中这样描述设计模式：  在软件工程中，设计模式是针对软件设计中普遍存在（反复出现）的">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Maksim&#39;s Website" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Maksim&#39;s Website" title="Maksim&#39;s Website"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Maksim&#39;s Website">Maksim&#39;s Website</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.maksim.website">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/07/14/1/" title="人人都懂设计模式1、创建型模式" itemprop="url">人人都懂设计模式1、创建型模式</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Maksim" target="_blank" itemprop="author">Maksim</a>
+		
+  <p class="article-time">
+    <time datetime="2017-07-13T16:00:00.000Z" itemprop="datePublished"> Published 2017-07-14</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意"><span class="toc-number">2.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计模式分类"><span class="toc-number">3.</span> <span class="toc-text">设计模式分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单工厂模式"><span class="toc-number">3.1.</span> <span class="toc-text">简单工厂模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工厂方法模式"><span class="toc-number">3.2.</span> <span class="toc-text">工厂方法模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#抽象工厂模式"><span class="toc-number">3.3.</span> <span class="toc-text">抽象工厂模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成器模式"><span class="toc-number">3.4.</span> <span class="toc-text">生成器模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型模式"><span class="toc-number">3.5.</span> <span class="toc-text">原型模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单例模式"><span class="toc-number">3.6.</span> <span class="toc-text">单例模式</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<blockquote>
+<p>英文：kamranahmedse，</p>
+<p>编译：伯乐在线 - Justin_YGG</p>
+</blockquote>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>设计模式用于解决反复出现的问题，是解决特定问题的指导方针。设计模式不是在应用中引用的类、package 或者库，而是在某些特定场景下解决特定问题的指导方针。</p>
+<p>设计模式用于解决反复出现的问题，是解决某些特定问题的指导方针。</p>
+<p>维基百科中这样描述设计模式：</p>
+<blockquote>
+<p>在软件工程中，设计模式是针对软件设计中普遍存在（反复出现）的各种问题，所提出的可复用型解决方案。设计模式并不直接完成代码的编写，而是描述在不同情况下如何解决问题。</p>
+</blockquote>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
+<li>设计模式并非解决所有问题的银弹。</li>
+<li>不要强制使用设计模式，否则结果可能适得其反。谨记：设计模式是用来解决问题的，而不是来寻找问题的，不要过度思考。</li>
+<li>如果在对的地方对的时机使用设计模式，它会是你的救世主。反之，将会一团糟。</li>
+</ul>
+<p>另注：下面的示例代码是用 PHP7 实现的，因为概念是一样的，所以语言并不会阻碍你理解设计模式。其他语言版本的实现正在进行中。</p>
+<h2 id="设计模式分类"><a href="#设计模式分类" class="headerlink" title="设计模式分类"></a>设计模式分类</h2><ul>
+<li>创建型模式</li>
+<li>结构型模式</li>
+<li>行为型模式</li>
+</ul>
+<p><strong>创建型模式</strong></p>
+<ul>
+<li>概述</li>
+</ul>
+<p>创建型模式专注于如何初始化对象 。</p>
+<ul>
+<li>维基百科</li>
+</ul>
+<p>在软件工程中，创建型模式是处理对象创建的设计模式，试图根据实际情况使用合适的方式创建对象。基本的对象创建方式可能会导致设计上的问题，或增加设计的复杂度。创建型模式通过以某种方式控制对象的创建来解决这些问题。</p>
+<ul>
+<li>分类</li>
+</ul>
+<ul>
+<li>简单工厂模式</li>
+<li>工厂方法模式</li>
+<li>抽象工厂模式</li>
+<li>生成器模式</li>
+<li>原型模式</li>
+<li>单例模式</li>
+</ul>
+<h3 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h3><ul>
+<li>现实生活示例</li>
+</ul>
+<p>想象一下，你正在建造一座房子而且需要几扇房门，如果每次需要房门的时候，不是用工厂制造的房门，而是穿上木匠服，然后开始自己制造房门，将会搞得一团糟。</p>
+<ul>
+<li>概述</li>
+</ul>
+<p>简单工厂模式只是为客户端创建实例，而不将任何实例化逻辑暴露给客户端。</p>
+<ul>
+<li>维基百科</li>
+</ul>
+<p>在面向对象程序设计中，工厂通常是一个用来创建其他对象的对象。通常来讲，工厂是指某个功能或方法，此功能或方法返回不同类型的对象或者类的某个方法调用，返回的东西看起来是「新的」。</p>
+<ul>
+<li>程序示例</li>
+</ul>
+<p>首先是房门的接口和实现</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Door</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getWidth</span><span class="params">()</span>: <span class="title">float</span></span>;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getHeight</span><span class="params">()</span>: <span class="title">float</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">WoodenDoor</span> <span class="keyword">implements</span> <span class="title">Door</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> $width;</div><div class="line">    <span class="keyword">protected</span> $height;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(float width, float height)</span></span></div><div class="line">    &#123;</div><div class="line">        this-&gt;width = width;</div><div class="line"></div><div class="line">        this-&gt;height = height;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getWidth</span><span class="params">()</span>: <span class="title">float</span></span></div><div class="line">    &#123;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;width;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getHeight</span><span class="params">()</span>: <span class="title">float</span></span></div><div class="line"></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;height;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后是生产房门的工厂</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DoorFactory</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">makeDoor</span><span class="params">(width, height)</span>: <span class="title">Door</span></span></div><div class="line">    &#123;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> WoodenDoor(width, height);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这样使用</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$door = DoorFactory::makeDoor(<span class="number">100</span>, <span class="number">200</span>);</div><div class="line"></div><div class="line"><span class="keyword">echo</span> <span class="string">'Width: '</span> . $door-&gt;getWidth();</div><div class="line"></div><div class="line"><span class="keyword">echo</span> <span class="string">'Height: '</span> . $door-&gt;getHeight();</div></pre></td></tr></table></figure>
+<ul>
+<li>何时使用？</li>
+</ul>
+<p>如果创建对象不仅仅是一些变量的初始化，还涉及某些逻辑，那么将其封装到一个专用工厂中取代随处使用的重复代码是有意义的。</p>
+<h3 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h3><ul>
+<li>现实生活示例</li>
+</ul>
+<p>考虑招聘经理的情况。一个人不可能应付所有职位的面试，对于空缺职位，招聘经理必须委派不同的人去面试。</p>
+<ul>
+<li>概述</li>
+</ul>
+<p>工厂方法模式提供了一种将实例化逻辑委托给子类的方法。</p>
+<ul>
+<li>维基百科</li>
+</ul>
+<p>在基于类的编程中，工厂方法模式是一种使用了工厂方法的创建型设计模式，在不指定对象具体类型的情况下，处理创建对象的问题。创建对象不是通过调用构造器而是通过调用工厂方法（在接口中指定工厂方法并在子类中实现或者在基类中实现，随意在派生类中重写）来完成。</p>
+<ul>
+<li>程序示例</li>
+</ul>
+<p>以上述招聘经理为例，首先给出一个面试官接口及实现</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Interviewer</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">askQuestions</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Developer</span> <span class="keyword">implements</span> <span class="title">Interviewer</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">askQuestions</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line"></div><div class="line">        <span class="keyword">echo</span> <span class="string">'Asking about design patterns!'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CommunityExecutive</span> <span class="keyword">implements</span> <span class="title">Interviewer</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">askQuestions</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">'Asking about community building'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后创建 HiringManager</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">HiringManager</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// Factory method</span></div><div class="line"></div><div class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeInterviewer</span><span class="params">()</span>: <span class="title">Interviewer</span></span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">takeInterview</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $interviewer = <span class="keyword">$this</span>-&gt;makeInterviewer();</div><div class="line">        $interviewer-&gt;askQuestions();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在，任何子类都可以继承 HiringManager 并委派相应的面试官</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DevelopmentManager</span> <span class="keyword">extends</span> <span class="title">HiringManager</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeInterviewer</span><span class="params">()</span>: <span class="title">Interviewer</span></span></div><div class="line"></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Developer();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MarketingManager</span> <span class="keyword">extends</span> <span class="title">HiringManager</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeInterviewer</span><span class="params">()</span>: <span class="title">Interviewer</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> CommunityExecutive();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这样使用</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$devManager = <span class="keyword">new</span> DevelopmentManager();</div><div class="line">$devManager-&gt;takeInterview(); <span class="comment">// Output: Asking about design patterns</span></div><div class="line"></div><div class="line">$marketingManager = <span class="keyword">new</span> MarketingManager();</div><div class="line">$marketingManager-&gt;takeInterview(); <span class="comment">// Output: Asking about community building.</span></div></pre></td></tr></table></figure>
+<ul>
+<li>何时使用？</li>
+</ul>
+<p>类中的一些常见处理需要在运行时动态决定所需的子类，换句话说，当客户端不知道可能需要的确切子类时，使用工厂方法模式。</p>
+<h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3><ul>
+<li>现实生活示例</li>
+</ul>
+<p>扩展一下简单工厂模式中的房门例子。基于所需，你可能需要从木门店获取木门，从铁门店获取铁门或者从相关的门店获取 PVC 门。进一步讲，你可能需要不同种类的专家来安装房门，比如木匠安装木门，焊接工安装铁门等等。正如你所料，房门有了依赖，木门需要木匠，铁门需要焊接工。</p>
+<ul>
+<li>概述</li>
+</ul>
+<p>一组工厂的工厂：将相关或者互相依赖的单个工厂聚集在一起，而不指定这些工厂的具体类。</p>
+<ul>
+<li>维基百科</li>
+</ul>
+<p>抽象工厂模式提供了一种方式，这种方式可以封装一组具有共同主题的个体工厂，而不指定这些工厂的具体类。</p>
+<ul>
+<li>编程示例</li>
+</ul>
+<p>以上述房门为例，首先给出 Door 接口和一些实现</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Door</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getDescription</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">WoodenDoor</span> <span class="keyword">implements</span> <span class="title">Door</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getDescription</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">'I am a wooden door'</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">IronDoor</span> <span class="keyword">implements</span> <span class="title">Door</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getDescription</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">'I am an iron door'</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后根据每种房门类型给出对应的安装专家</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">DoorFittingExpert</span></span></div><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getDescription</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Welder</span> <span class="keyword">implements</span> <span class="title">DoorFittingExpert</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getDescription</span><span class="params">()</span></span></div><div class="line"></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">'I can only fit iron doors'</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Carpenter</span> <span class="keyword">implements</span> <span class="title">DoorFittingExpert</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getDescription</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">'I can only fit wooden doors'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在抽象工厂可以将相关的对象组建在一起，也就是说，木门工厂会生成木门并提供木门安装专家，铁门工厂会生产铁门并提供铁门安装专家。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">DoorFactory</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeDoor</span><span class="params">()</span>: <span class="title">Door</span></span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeFittingExpert</span><span class="params">()</span>: <span class="title">DoorFittingExpert</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// Wooden factory to return carpenter and wooden door</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">WoodenDoorFactory</span> <span class="keyword">implements</span> <span class="title">DoorFactory</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeDoor</span><span class="params">()</span>: <span class="title">Door</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> WoodenDoor();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeFittingExpert</span><span class="params">()</span>: <span class="title">DoorFittingExpert</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Carpenter();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"> </div><div class="line"><span class="comment">// Iron door factory to get iron door and the relevant fitting expert</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">IronDoorFactory</span> <span class="keyword">implements</span> <span class="title">DoorFactory</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeDoor</span><span class="params">()</span>: <span class="title">Door</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> IronDoor();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeFittingExpert</span><span class="params">()</span>: <span class="title">DoorFittingExpert</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Welder();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这样使用</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">$woodenFactory = <span class="keyword">new</span> WoodenDoorFactory();</div><div class="line"></div><div class="line">$door = $woodenFactory-&gt;makeDoor();</div><div class="line"></div><div class="line">$expert = $woodenFactory-&gt;makeFittingExpert();</div><div class="line"></div><div class="line">$door-&gt;getDescription();  <span class="comment">// Output: I am a wooden door</span></div><div class="line"></div><div class="line">$expert-&gt;getDescription(); <span class="comment">// Output: I can only fit wooden doors</span></div><div class="line"> </div><div class="line"></div><div class="line"><span class="comment">// Same for Iron Factory</span></div><div class="line"></div><div class="line">$ironFactory = <span class="keyword">new</span> IronDoorFactory();</div><div class="line"></div><div class="line">$door = $ironFactory-&gt;makeDoor();</div><div class="line"></div><div class="line">$expert = $ironFactory-&gt;makeFittingExpert();</div><div class="line"></div><div class="line">$door-&gt;getDescription();  <span class="comment">// Output: I am an iron door</span></div><div class="line"></div><div class="line">$expert-&gt;getDescription(); <span class="comment">// Output: I can only fit iron doors</span></div></pre></td></tr></table></figure>
+<p>正如你看到的，木门工厂将木匠和木门封装在一起，同样地，铁门工厂将铁门和焊接工封装在一起。这样就可以帮助我们确保，对于每一扇生产出来的门，都能搭配正确的安装工。</p>
+<ul>
+<li>何时使用？</li>
+</ul>
+<p>当存在相关的依赖并涉及到稍复杂的创建逻辑时，使用抽象工厂模式。</p>
+<h3 id="生成器模式"><a href="#生成器模式" class="headerlink" title="生成器模式"></a>生成器模式</h3><ul>
+<li>现实生活示例</li>
+</ul>
+<p>想象一下你在 Hardee’s 餐厅点了某个套餐，比如「大 Hardee 套餐」，然后工作人员会正常出餐，这是简单工厂模式。但是在很多情况下，创建逻辑可能涉及到更多步骤。比如，你想要一个定制的 Subway 套餐，对于你的汉堡如何制作有几个选项可供选择，比如你想要什么类型的酱汁？你想要什么奶酪？ 在这种情况下，建造者模式便可以派上用场。</p>
+<ul>
+<li>概述</li>
+</ul>
+<p>允许创建不同风格的对象，同时避免构造器污染。当创建多种风格的对象时或者创建对象时涉及很多步骤，可以使用生成器模式。</p>
+<ul>
+<li>维基百科</li>
+</ul>
+<p>生成器模式是一种对象创建软件设计模式，其目的是找到重叠构造器反面模式的解决方案。</p>
+<p>既然提到了，那我就补充一下什么是重叠构造器反面模式。 我们时不时地会看到如下构造函数：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($size, $cheese = true, $pepperoni = true, $tomato = false, $lettuce= true)</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>正如你看到的，构造器参数的数量可能会迅速失控，并且参数的排列可能让人难以理解。 如果将来要添加更多选项，此参数列表可能会不断增长，这被称为重叠构造器反面模式。</p>
+<p><strong>程序示例</strong></p>
+<p>理想之选是使用生成器模式，首先给出汉堡类</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Burger</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">protected</span> $size;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> $cheese = <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> $pepperoni = <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> $lettuce = <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> $tomato = <span class="keyword">false</span>;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(BurgerBuilder $builder)</span></span></div><div class="line"></div><div class="line">    &#123;</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;size = $builder-&gt;size;</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;cheese = $builder-&gt;cheese;</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;pepperoni = $builder-&gt;pepperoni;</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;lettuce = $builder-&gt;lettuce;</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;tomato = $builder-&gt;tomato;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后是 builder</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BurgerBuilder</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> $size;</div><div class="line">    <span class="keyword">public</span> $cheese = <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">public</span> $pepperoni = <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">public</span> $lettuce = <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">public</span> $tomato = <span class="keyword">false</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(int $size)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;size = $size;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addPepperoni</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;pepperoni = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addLettuce</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;lettuce = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addCheese</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;cheese = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addTomato</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;tomato = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">build</span><span class="params">()</span>: <span class="title">Burger</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Burger(<span class="keyword">$this</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这样使用</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$burger = (<span class="keyword">new</span> BurgerBuilder(<span class="number">14</span>))</div><div class="line"></div><div class="line">                    -&gt;addPepperoni()</div><div class="line"></div><div class="line">                    -&gt;addLettuce()</div><div class="line"></div><div class="line">                    -&gt;addTomato()</div><div class="line"></div><div class="line">                    -&gt;build();</div></pre></td></tr></table></figure>
+<ul>
+<li>何时使用？</li>
+</ul>
+<p>当需要构建不同风格的对象，同时需要避免构造器重叠时使用生成器模式。与工厂模式的主要区别在于：当创建过程一步到位时，使用工厂模式，而当创建过程需要多个步骤时，使用生成器模式。</p>
+<h3 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h3><ul>
+<li>现实生活示例</li>
+</ul>
+<p>还记得多莉吗？那只克隆羊。这里不深入细节，关键点在于克隆。</p>
+<ul>
+<li>概述</li>
+</ul>
+<p>基于现有对象通过克隆创建对象。</p>
+<ul>
+<li>维基百科</li>
+</ul>
+<p>在软件开发过程中，原型模式是一种创建型设计模式。当要创建的对象类型由原型实例确定时，将通过克隆原型实例生成新对象。</p>
+<p>简言之，原型模式允许你创建现有对象的副本并根据需要进行修改，而不是从头开始创建对象并进行设置。</p>
+<ul>
+<li>编程示例</li>
+</ul>
+<p>使用 PHP 的 clone 方法可以轻松实现</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sheep</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> $name;</div><div class="line">    <span class="keyword">protected</span> $category;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(string name, string category = <span class="string">'Mountain Sheep'</span>)</span></span></div><div class="line">    &#123;</div><div class="line">        this-&gt;name = name;</div><div class="line"></div><div class="line">        this-&gt;category = category;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setName</span><span class="params">(string $name)</span></span></div><div class="line">    &#123;</div><div class="line">        this-&gt;name = name;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getName</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setCategory</span><span class="params">(string $category)</span></span></div><div class="line">    &#123;</div><div class="line">        this-&gt;category = category;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getCategory</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;category;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以像下面这样克隆</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">$original = <span class="keyword">new</span> Sheep(<span class="string">'Jolly'</span>);</div><div class="line"></div><div class="line"><span class="keyword">echo</span> $original-&gt;getName(); <span class="comment">// Jolly</span></div><div class="line"></div><div class="line"><span class="keyword">echo</span> $original-&gt;getCategory(); <span class="comment">// Mountain Sheep</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// Clone and modify what is required</span></div><div class="line"></div><div class="line">cloned = <span class="keyword">clone</span> original;</div><div class="line"></div><div class="line">$cloned-&gt;setName(<span class="string">'Dolly'</span>);</div><div class="line"></div><div class="line"><span class="keyword">echo</span> $cloned-&gt;getName(); <span class="comment">// Dolly</span></div><div class="line"></div><div class="line"><span class="keyword">echo</span> $cloned-&gt;getCategory(); <span class="comment">// Mountain sheep</span></div></pre></td></tr></table></figure>
+<p>此外，你可以使用魔术方法 **clone 来修改克隆行为。</p>
+<ul>
+<li>何时使用</li>
+</ul>
+<p>当需要创建一个与已有对象类似的对象，或者当创建对象的成本比克隆更高时，使用原型模式。</p>
+<h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><ul>
+<li>现实生活示例</li>
+</ul>
+<p>一个国家同一时间只能有一位总统。只要使命召唤，这个总统就必须采取行动。 这里的总统就是一个单例。</p>
+<ul>
+<li>概述</li>
+</ul>
+<p>确保特定类的对象只被创建一次。</p>
+<ul>
+<li>维基百科</li>
+</ul>
+<p>在软件工程中，单例模式是一种软件设计模式，用来限制类初始化为对象。当恰恰只需要一个对象来协调整个系统的功能时，单例模式非常有用。</p>
+<p>实际上，单例模式被认为是反模式，应该避免过度使用。 单例模式并非不好，可能有时候很有用，但应谨慎使用，因为它在你的应用程序中引入了全局状态，一处更改可能会影响其他地方，并且可能会变得很难调试。 另外不好的一点是单例模式会使代码紧耦合，单例也很难mock。</p>
+<ul>
+<li>编程示例</li>
+</ul>
+<p>要创建一个单例，需要将构造函数设为 private，禁用克隆，禁用扩展名，并创建静态变量来容纳实例</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">President</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> $instance;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="comment">// Hide the constructor</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getInstance</span><span class="params">()</span>: <span class="title">President</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (!<span class="keyword">self</span>::$instance) &#123;</div><div class="line">            <span class="keyword">self</span>::$instance = <span class="keyword">new</span> <span class="keyword">self</span>();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>::$instance;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">__clone</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="comment">// Disable cloning</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="comment">// Disable unserialize</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这样使用</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$president1 = President::getInstance();</div><div class="line">$president2 = President::getInstance();</div><div class="line">var_dump(president1 === president2); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/PHP/">PHP</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://www.maksim.website/2017/07/14/1/" data-title="人人都懂设计模式1、创建型模式 | Maksim&#39;s Website" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/07/14/cjfs5rrzn0023dlrdd10bwuqz/" title="PHP7 微信支付不能回调，让我们的团队损失1.00CNY。">
+  <strong>上一篇：</strong><br/>
+  <span>
+  PHP7 微信支付不能回调，让我们的团队损失1.00CNY。</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/06/23/2/"  title="提高 MySQL 的性能，从数据库设计规范开始">
+ <strong>下一篇：</strong><br/> 
+ <span>提高 MySQL 的性能，从数据库设计规范开始
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意"><span class="toc-number">2.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计模式分类"><span class="toc-number">3.</span> <span class="toc-text">设计模式分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单工厂模式"><span class="toc-number">3.1.</span> <span class="toc-text">简单工厂模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工厂方法模式"><span class="toc-number">3.2.</span> <span class="toc-text">工厂方法模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#抽象工厂模式"><span class="toc-number">3.3.</span> <span class="toc-text">抽象工厂模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成器模式"><span class="toc-number">3.4.</span> <span class="toc-text">生成器模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型模式"><span class="toc-number">3.5.</span> <span class="toc-text">原型模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单例模式"><span class="toc-number">3.6.</span> <span class="toc-text">单例模式</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Andriod/" title="-Andriod">-Andriod<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/C-C/" title="C/C++">C/C++<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/JavaScript/" title="JavaScript">JavaScript<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>13</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Objective-C/" title="Objective-C">Objective-C<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>22</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ios/" title="ios">ios<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/javascript/" title="javascript">javascript<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/工具/" title="工具">工具<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/设计/" title="设计">设计<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书笔记/" title="读书笔记">读书笔记<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/随笔/" title="随笔">随笔<sup>4</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>14</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/随笔/" title="随笔">随笔<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP/" title="PHP">PHP<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux-Centos/" title="Linux,Centos">Linux,Centos<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP基础/" title="PHP基础">PHP基础<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux-GNU/" title="Linux,GNU">Linux,GNU<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/服务容器/" title="服务容器">服务容器<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wechat-pay-php-php7-php-input/" title="wechat pay, php, php7, php://input">wechat pay, php, php7, php://input<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php/" title="php">php<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C-C-算法/" title="C/C++,算法">C/C++,算法<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/INSERT/" title="INSERT">INSERT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Objc-多线程/" title="Objc,多线程">Objc,多线程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Closures/" title="Closures">Closures<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/算法/" title="算法">算法<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多线程-PHP7-2-编译安装-GCC/" title="多线程,PHP7.2,编译安装,GCC">多线程,PHP7.2,编译安装,GCC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/内存管理/" title="内存管理">内存管理<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MySQL-设计规范/" title="MySQL 设计规范">MySQL 设计规范<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="Maksim">Maksim</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

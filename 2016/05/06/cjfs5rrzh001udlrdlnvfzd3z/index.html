@@ -1,0 +1,692 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>读书总结之NSObject | Maksim&#39;s Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Maksim">
+    
+
+    
+    <meta name="description" content="使用 Objectvice-C 进行全面对象编程时，除了需要知道语言本身的语法和面向对象的知识外，还需要了解Objectvice-C的根类 NSObject 的信息。  NSObject根类的作用作为一门动态编程语言，Objectstvice-C有很多动态的特性，因此，Objectvice-C不进需要编译环境，同时还需要一个运行时系统（runtime system）来执行编译好的代码。运行时系统">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读书总结之NSObject">
+<meta property="og:url" content="http://www.maksim.website/2016/05/06/cjfs5rrzh001udlrdlnvfzd3z/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="使用 Objectvice-C 进行全面对象编程时，除了需要知道语言本身的语法和面向对象的知识外，还需要了解Objectvice-C的根类 NSObject 的信息。  NSObject根类的作用作为一门动态编程语言，Objectstvice-C有很多动态的特性，因此，Objectvice-C不进需要编译环境，同时还需要一个运行时系统（runtime system）来执行编译好的代码。运行时系统">
+<meta property="og:image" content="http://i3.buimg.com/1eb8e25c5b87d1ec.jpg">
+<meta property="og:updated_time" content="2018-04-03T14:53:43.413Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读书总结之NSObject">
+<meta name="twitter:description" content="使用 Objectvice-C 进行全面对象编程时，除了需要知道语言本身的语法和面向对象的知识外，还需要了解Objectvice-C的根类 NSObject 的信息。  NSObject根类的作用作为一门动态编程语言，Objectstvice-C有很多动态的特性，因此，Objectvice-C不进需要编译环境，同时还需要一个运行时系统（runtime system）来执行编译好的代码。运行时系统">
+<meta name="twitter:image" content="http://i3.buimg.com/1eb8e25c5b87d1ec.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Maksim&#39;s Website" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Maksim&#39;s Website" title="Maksim&#39;s Website"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Maksim&#39;s Website">Maksim&#39;s Website</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.maksim.website">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/05/06/cjfs5rrzh001udlrdlnvfzd3z/" title="读书总结之NSObject" itemprop="url">读书总结之NSObject</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Maksim" target="_blank" itemprop="author">Maksim</a>
+		
+  <p class="article-time">
+    <time datetime="2016-05-06T03:03:16.000Z" itemprop="datePublished"> Published 2016-05-06</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NSObject"><span class="toc-number">1.</span> <span class="toc-text">NSObject</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#根类的作用"><span class="toc-number">1.1.</span> <span class="toc-text">根类的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类和实例"><span class="toc-number">1.2.</span> <span class="toc-text">类和实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例对象的生成和释放"><span class="toc-number">1.3.</span> <span class="toc-text">实例对象的生成和释放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化"><span class="toc-number">1.4.</span> <span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的比较"><span class="toc-number">1.5.</span> <span class="toc-text">对象的比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的内容描述"><span class="toc-number">1.6.</span> <span class="toc-text">对象的内容描述</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消息发送机制"><span class="toc-number">2.</span> <span class="toc-text">消息发送机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#选择器和-SEL-类型"><span class="toc-number">2.1.</span> <span class="toc-text">选择器和 SEL 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#消息搜索"><span class="toc-number">2.2.</span> <span class="toc-text">消息搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一函数的形式来调用方法"><span class="toc-number">2.3.</span> <span class="toc-text">一函数的形式来调用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类对象和跟对象"><span class="toc-number">2.4.</span> <span class="toc-text">类对象和跟对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">3.</span> <span class="toc-text">参考文献</span></a></li></ol>
+		
+		</div>
+		
+		<blockquote>
+<p>使用 Objectvice-C 进行全面对象编程时，除了需要知道语言本身的语法和面向对象的知识外，还需要了解Objectvice-C的根类 NSObject 的信息。</p>
+</blockquote>
+<h2 id="NSObject"><a href="#NSObject" class="headerlink" title="NSObject"></a>NSObject</h2><h3 id="根类的作用"><a href="#根类的作用" class="headerlink" title="根类的作用"></a>根类的作用</h3><p>作为一门动态编程语言，Objectstvice-C有很多动态的特性，因此，Objectvice-C不进需要编译环境，同时还需要一个<strong>运行时系统</strong>（runtime system）来执行编译好的代码。运行时系统扮演的角色类似于Objectvice-C的操作系统，他负责完成对象生成、释放时的内存管理、发来的消息查找对应的处理方法等工作。</p>
+<p>通常情况下，程序无法直接使用运行时系统提供的功能。根类方法提供了运行时系统的基本工恩给你。继承了 NSObject 的所有类都可以自由的使用运行时系统的功能，也就是说，根类就想到于系统的一个借口。</p>
+<p>根类通过哪些方式提供了哪些功能对系统有很大的影响。因此，根类不同的系统之间是无法开发出通用的程序的。</p>
+<p>Cocoa 是以OPENSTEPDE的核心 API 为基础发展起来的。OPENSTEP的前身为 NeXTstep。在 NeXTstep 时代，根类是累 Object,而在 OPENSTEP 时代，根类则变为了 NSObject，同时类的设计也得到了大幅度的改进。</p>
+<a id="more"></a>
+<blockquote>
+<p>NSArray,NSString 等等NS前缀类、函数归属于cocoa Fundation基础类库,其”NS”的由来据说是这样的：乔布斯被苹果开除后,创立了NeSt公司,而cocoa Fundation基础类库就是出自于NeST公司,NeST中的”NS”被作为Fundation中所有成员的前缀</p>
+</blockquote>
+<h3 id="类和实例"><a href="#类和实例" class="headerlink" title="类和实例"></a>类和实例</h3><p>NSObject 只是一个实例变量，就是 Class 类型的变量 isa。isa 用于表示实例对象属于哪个类对象。因为 isa 决定着实例变量和类的关系，非常重要，所以子类不可以修改 isa 的值。另外，也不能通过直接访问 isa 来查询实例变量到底属于哪个类，而是要通过实例方法 class 来完成查询。</p>
+<p>在运行时的代码中我们可以查看到objc_class的定义如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// An opaque type that represents an Objective-C class.</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_class *Class;</div><div class="line"></div><div class="line"><span class="comment">/// Represents an instance of a class.</span></div><div class="line"><span class="keyword">struct</span> objc_object &#123;</div><div class="line">    Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>下面对类和实例变量的相关方法进行说明。NSObject 的方法与其说是为自己定义的，不如说是为了其子类和所有实例对象而定义的。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">class</span>) <span class="keyword">class</span></div><div class="line">	返回消息接收者所属类的类对象</div><div class="line"></div><div class="line">+ (<span class="keyword">class</span>) <span class="keyword">class</span></div><div class="line">	返回类型对</div><div class="line">	虽然可以使用类名作为消息的接受者来调用类方法，但类对象是其他消息的参数，或者将类对象赋值给变量的时候，需要通过这个方法来获取类的参数</div><div class="line"></div><div class="line">- (<span class="keyword">id</span>) <span class="keyword">self</span></div><div class="line">	返回接受者自身。是一个无任何实际动作但很有用的方法。</div><div class="line"></div><div class="line">-(<span class="built_in">BOOL</span>) isMemberOfClass: (Class) aClass</div><div class="line">	判断消息接受者是不是参数 aClass 类的对象</div><div class="line">	</div><div class="line">-(<span class="built_in">BOOL</span>) isKindOfClass: (Class) aClass</div><div class="line">	判断消息接受者是否是参数 aClass 类或者 aClass 的子类的实例。这个函数和 isMemberOfClass:的区别在于当消息的接受者是 aClass 的子类的实例时也返回 <span class="literal">YES</span>。</div><div class="line">	</div><div class="line">- (<span class="built_in">BOOL</span>) isSubclassOfClass: (Class) aClass</div><div class="line">	判断消息接受者是不是参数 aClass 的子类或自身，如果是则返回 <span class="literal">YES</span></div><div class="line">	</div><div class="line">- (Class) superclass</div><div class="line">	返回消息接受者所在类的父类的类对象。</div><div class="line">	</div><div class="line">+ (Class) superclass</div><div class="line">	返回消息接收类的父类和类对象</div></pre></td></tr></table></figure>
+<h3 id="实例对象的生成和释放"><a href="#实例对象的生成和释放" class="headerlink" title="实例对象的生成和释放"></a>实例对象的生成和释放</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">+ (<span class="keyword">id</span>) alloc</div><div class="line">	生成消息接收类的实例对象。通常和 init 或者 init 开头的方法连用，生成实例化对象的同事需要对其进行初始化。子类中不润徐重写 alloc 方法</div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>) dealloc</div><div class="line">	释放实例对象。dealloc 被称之为 release 的结果调用。除了在子类中重写 dealloc 的情况之外，程序不润徐直接调用 dealloc</div><div class="line"></div><div class="line">- (<span class="keyword">oneway</span> <span class="keyword">void</span>)release</div><div class="line">	将消息接受者的引用计数减<span class="number">1.</span>引用计数变为<span class="number">0</span>时，dealloc 方法被调用，消息接受者被释放</div><div class="line"></div><div class="line">- (<span class="keyword">id</span>)<span class="keyword">retain</span></div><div class="line">	为消息接收者的引用计数加<span class="number">1</span>，同事返回消息接收者</div><div class="line"></div><div class="line">- (<span class="keyword">id</span>)autorelease</div><div class="line">	把消息的接受者加入到自动释放池中，同事返回消息接受者</div><div class="line">	</div><div class="line">- (<span class="built_in">NSUinteger</span>) retainCount</div><div class="line">	返回消息接受者的引用计数，可在调试时使用这个方法。<span class="built_in">NSUInteger</span> 是无符号证书类型</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)finalize</div><div class="line">	垃圾收集器在释放接受者对象之前会执行该 finalize 方法。</div></pre></td></tr></table></figure>
+<p>上面从 dealloc 到 retainCount 都是手动引用计数管理内存时使用的方法，使用 ARC 时不可用。finalize 仅供垃圾回收有效时使用。</p>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">id</span>) init</div><div class="line">	init 可对 alloc 生成的实例对象进行初始化。子类中可以重写 init 或者自定义的心的以 init 开头的初始化函数。</div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>)initialize</div><div class="line">	被用于类的初始化，也就是对类中共同使用的变量进行初始化设定等。这个方法会在类收到第一个消息之前被自动执行，不需手动调用</div><div class="line">	</div><div class="line">+ (<span class="keyword">id</span>) new</div><div class="line">	new 是 alloc 和 init 的组合。new 方法返回的实例对象的所有者就是调用 new 方法的对象。但是把 alloc 和 init 组合定义为 new 没有什么优点，并不建议使用。</div><div class="line">	根据类的实现不同，new 方法并不会每次都返回一个全新的实例对象。有时new 方法会返回对象池中预先生成的对象，也有可能每次都返回同一个对象。</div></pre></td></tr></table></figure>
+<h3 id="对象的比较"><a href="#对象的比较" class="headerlink" title="对象的比较"></a>对象的比较</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">BOOL</span>) isEqual: (<span class="keyword">id</span>) anObject</div><div class="line">	消息的接受者如果和参数 anObject 相等则返回 <span class="literal">YES</span></div><div class="line">	</div><div class="line">- (<span class="built_in">NSUInteger</span>) hash</div><div class="line">	把对象放入容器的时候，返回系统内部用的散列表</div></pre></td></tr></table></figure>
+<p>原则上来讲，具有相同 id 值也就是同一个指针指向的对象被认为是相等的。而子类在这个基础上进行了扩展，把拥有相同值认为是相等。我们可以根据需求对“想通知”激进型定义，但一般都会让具备“相同值”的对象返回相同的散列表，因此就需要对散列表方法进行重新定义。而反之则并不成立，也就是说，散列值相等的两个对象不一定相等。</p>
+<p>另外，有的累中还自定义了 compare:或者isEqualTo 之类的方法。至于到底是哪个方法或者自定义类的时候是否需要定义比较的方法，都需要根据目的和类的内容做具体分析。</p>
+<h3 id="对象的内容描述"><a href="#对象的内容描述" class="headerlink" title="对象的内容描述"></a>对象的内容描述</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">NSString</span>*) description</div><div class="line">	返回一个 <span class="built_in">NSString</span> 类型的字符串，表示消息接受者所属类的内容。通常是这个类的名称。</div><div class="line"></div><div class="line">- (<span class="built_in">NSString</span>*)description</div><div class="line">	返回一个 <span class="built_in">NSString</span> 类型的字符串，表示消息接受者的实例对象的内容。通常是类名家 <span class="keyword">id</span> 值。子类中可以重新定义 description 的返回值。例如 <span class="built_in">NSString</span>的实例会返回字符串的内容，<span class="built_in">NSArray</span> 的实例会对数组中的每一个元素调用 description，然后将调用结果用句号进行分割，并且一起返回。</div></pre></td></tr></table></figure>
+<h2 id="消息发送机制"><a href="#消息发送机制" class="headerlink" title="消息发送机制"></a>消息发送机制</h2><h3 id="选择器和-SEL-类型"><a href="#选择器和-SEL-类型" class="headerlink" title="选择器和 SEL 类型"></a>选择器和 SEL 类型</h3><p>至今为止我们把选择器（方法名）和消息关键字放在一起进行说明。程序中的方法名（选择器）在便有被一个内部标识符所代替，这个内部标识符所对应的数据类型就是 SEL 类型。</p>
+<p>Objective-C为了能够在程序中操作编译后的选择器，定义了@selector()指令。通过使用@selector()指令，就可以直接饮用编译后的选择器。使用方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@selector(mutableCopy)</div><div class="line">@selector(compare:)</div><div class="line">@selector(replaceObjectAtIndex:withObject:)</div></pre></td></tr></table></figure>
+<p>也可以声明 SEL 类型的变量</p>
+<p>选择器不同的情况下，编译器转换后生成的 SEL 类型的值也一定不同，相同的算择期对应的 SEL 类型的值一定相同。Objective-C的程序员不需要知道选择器对应的 SEL 类型的值到底是什么，具体的值是和处理器相关的。但是如果 SEL 类型的便利功能无效的话，可设其为 NULL，或者也可以使用(SEL)0这种常见的表达方式</p>
+<p>可以使用 SEL 类型的变量来发送消息，为此，NSObject 中准备了如下方法</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">id</span>)performSelector: (SEL) aSelector</div><div class="line">	向消息的接收者发送 aSelector代表的消息，返回这个消息的执行结果</div><div class="line">	</div><div class="line">-(<span class="keyword">id</span>)performSelector: (SEL) aSelector </div><div class="line">			withObject: (<span class="keyword">id</span>) anObject</div><div class="line">	与上面的方法一直，不过可以传递参数</div></pre></td></tr></table></figure>
+<p>例如下面两个消息表达式进行的处理是相同的</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[target description]</div><div class="line">[targ performSelector: <span class="keyword">@selector</span>(description)];</div></pre></td></tr></table></figure>
+<p>下面的例子展示了如何根据条件动态决定执行那个方法</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SEL method = (void1) ? <span class="keyword">@selector</span>(activate:) : <span class="keyword">@selector</span>(hide:);</div><div class="line"><span class="keyword">id</span> obj = (cond2) ? MyDocument : defaultDocument;</div><div class="line">[target performSelector:method withObject:obj]</div></pre></td></tr></table></figure>
+<p>这种调用方式很想 C 语言中函数指针的用法，使用函数指针可以实现和上面的程序同样的功能。</p>
+<p>函数指针是函数在内存中的地址。指针对应的函数是在编译的时候决定的，不能够执行指定之外的函数。SEL 类型就相当于方法名，根据消息接受者的不同（上例子中 target 的赋值），来动态执行不同的方法。</p>
+<p>通过 SEL 类型来指定要中子星的方法，这就是 Objectivce-C消息发送的方式。也正是通过这种方法才实现了 Objectivce-C的动态性</p>
+<h3 id="消息搜索"><a href="#消息搜索" class="headerlink" title="消息搜索"></a>消息搜索</h3><p>对象收到一个消息后执行哪个方法是动态决定的。</p>
+<p>所有的实例变量都存在一个 Class 类型的 isa 变量，它就是类对象。当收到消息后，运行时系统会检查类内是否有和这个消息选择器相同的方法，如果有就执行对应的方法，如果没有就通过类对象中指向父类的指针来查找父类中是否有对应的方法。如果一直找到根类都没有找到对应的方法，就会提示执行时错误。</p>
+<p>如果每次收到消息都需要查找对应的方法的话，消息发送过程的开销就会很大，是针对这种情况，运行时内部会缓存一个散列表，表中记录着某个类拥有和什么样的选择器相对应的方法、方法被定义在何处等信息。这样一来，当下次在收到同样的消息时，直接利用上次缓存好的信息即可。</p>
+<p>NSObject 中定义了可以动态检查一个对象是否能够响应某个选择器的方法。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">BOOL</span>) respondsToSelector: (SEL) aSelector</div><div class="line">	查询消息的接收者中是否能够响应 aSelector 的方法，包括从父类继承来的方法，如果存在的话则返回 <span class="literal">YES</span></div><div class="line"></div><div class="line">- (<span class="built_in">BOOL</span>) instancesRespondToSelector: (SEL) aSelector</div><div class="line">	查询消息的接收者所属的类中是否能够响应 aSelector 的实例方法，如果存在的话则返回 <span class="literal">YES</span></div></pre></td></tr></table></figure>
+<h3 id="一函数的形式来调用方法"><a href="#一函数的形式来调用方法" class="headerlink" title="一函数的形式来调用方法"></a>一函数的形式来调用方法</h3><p>类中定义的方法通常是以函数的形式来实现的，但通常在编程的时候并不会直接操作方法所对应的函数。</p>
+<p>但如果想尽可能第让程序更快一点，或者需要按照 C 语言的管理传递函数指针的时候，可以直接调用方法对应的函数，以节省发送消息的开销。另外执行时动态加载方法的定义等时，也可以将方法作为函数调用。但是需要注意的是，如果以函数的形式来调用方法的话，将无法利用面向对象的动态绑定等功能。虽然消息发送同函数调用相比确实慢一点，但却有面向对象的动态绑定、多态等优点。同这些优点相比，速度上略微的损失是不值得一提的。而其实消息发送的速度也非常的快。</p>
+<p>通过使用下面的方法，可以获得某个对象持有的方法的函数指针，这些方法都被定义在 NSObject 中。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (IMP) methodForSelector: (SEL) aSelector</div><div class="line">	搜索和执行选择器对应的方法，并返回指向该方法实现的函数指针。实例对象和类对象都可以使用这个方法。对实例对象使用时，会返回实例方法对应的函数，对类对象使用时，会返回类对象对应的函数</div><div class="line">+ (IMP) instanceMethodForSelector: (SEL)aSelector;</div><div class="line">	搜索和制定选择器相对应的实例方法，并返回该指向实例方法实现的函数指针</div></pre></td></tr></table></figure>
+<p>IMP 是“implemention”的缩写，它是一个函数指针，指向了方法实现代码的入口</p>
+<p>IMP 的定义为：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#if !OBJC_OLD_DISPATCH_PROTOTYPES</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">void</span> (*IMP)(<span class="keyword">void</span> <span class="comment">/* id, SEL, ... */</span> ); </div><div class="line"><span class="meta">#else</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">id</span> (*IMP)(<span class="keyword">id</span>, SEL, ...); </div><div class="line"><span class="meta">#endif</span></div></pre></td></tr></table></figure>
+<p>这个被指向的函数包括 id(self 指针)、调用的 SEL（方法名），以及其他参数</p>
+<p>例如：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">id</span>)setBox:(<span class="keyword">id</span>)obj1 title:(<span class="keyword">id</span>)obj2;</div></pre></td></tr></table></figure>
+<p>foo 是这个方法所属类的一个实例变量。获取指向 setBox 的函数指针，并且通过该指针进行函数调用的过程如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">IMP funcp;</div><div class="line">funcp = [foo methodForSelector:<span class="keyword">@selector</span>[setBox:title]];</div><div class="line">xyz = (*funcp)(foo,<span class="keyword">@selector</span>[setBox:title:],param1,param2)</div></pre></td></tr></table></figure>
+<h3 id="类对象和跟对象"><a href="#类对象和跟对象" class="headerlink" title="类对象和跟对象"></a>类对象和跟对象</h3><p>因为累对象也是一个对象，所以累对象可以作为根类 NSObject 的某个子类的对象来使用。下面这句话看上去好像比较奇怪，但是实际上他是正确的，会返回 YES</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="built_in">NSString</span> <span class="keyword">class</span>] isKindOfClass:[<span class="built_in">NSObject</span> <span class="keyword">class</span>]]</div></pre></td></tr></table></figure>
+<p>这就说明了相当于类对象的类的对象是存在的。而类对象的类就被叫做元类(metaclass)。实例对象(instance object)所属的类是 class，类对象(class object)所属的类是 metaclass。</p>
+<p>Objective-C 中的很多概念都来源于 Smalltalk，元类的概念就是其中之一。但现在的 Objective-C中已经不存在元类的概念了，程序中不能操作元类。用于表示对象的 id 类型和表示类的 Class 类实际上都是指向结构体的指针。被详细定义在/usr/include/objc 下面的 objc.h 头文件中。通过查看 objc.h 中 id和 Class 的定义，就会发现类和元类的关系如图所示。Objective-C2.0更新了基本的数据结构，但是没有改变类和元类的关系。</p>
+<p><img src="http://i3.buimg.com/1eb8e25c5b87d1ec.jpg" alt=""></p>
+<p>类 A 是 NSObject 的子类，类 B是 A 的子类。类对象和实例对象都存在一个成员变量 isa，它是一个 objc_class 类型的指针</p>
+<p>图中带有 isa 的实现表明了 isa 指向的对象，带有 super_class 的虚线则表明了父类的关系。</p>
+<p>类对象中保存的是实例方法，元对象中保存的是累方法。通过这样的定义能够统一实现实例方法和类方法的调用机制。</p>
+<p>因为编程时不可以直接操作元类，所以并不需要完全了解图中的细节。大家只需要记住任何一个类对象都是继承了根类的元对象的一个实例即可。也就是说，类对象可以执行根类对象的实例方法。</p>
+<p>例如，类对象可以执行 NSObject 的实例方法 performSelector:和 respondsToSelector:。当然提前是没有将这些方法作为类方法再次定义。</p>
+<p>下面让我们总结一下。其中（1）和（2）我们已经介绍过了。（3）比较不容易理解，</p>
+<ol>
+<li><p>所有类的实例对象都可以执行根类的实例方法</p>
+<ul>
+<li>如果在派生类中重新定义了实例方法，新定义的方法会被执行</li>
+</ul>
+</li>
+<li><p>所有类的类对象都可以执行根类的类方法</p>
+<ul>
+<li>如果在派生类中重新定义了类方法，新定义的方法会被执行</li>
+</ul>
+</li>
+<li><p>所有类的类对象都可以执行根类的实例方法</p>
+<ul>
+<li>即使在派生类中重新定义了实例方法，根类中的方法也会被执行</li>
+<li>如果在派生类中将实例方法作为类方法重新定义了的话，新定义的方法会被执行</li>
+</ul>
+</li>
+</ol>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>① Objectivce-C编程全解（第三版） [日]荻原刚志 著 唐璐 翟俊杰 译</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://www.maksim.website/2016/05/06/cjfs5rrzh001udlrdlnvfzd3z/" data-title="读书总结之NSObject | Maksim&#39;s Website" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/05/06/cjfs5rs1k005adlrdhqfyl0li/" title="内存管理 Form《Objectivce-C编程全解》&amp;《Objectivce-C编程》">
+  <strong>上一篇：</strong><br/>
+  <span>
+  内存管理 Form《Objectivce-C编程全解》&amp;《Objectivce-C编程》</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/04/23/cjfs5rs0k003mdlrd96n1uw6s/"  title="UITableView 系统 API实现滑动删除Cell">
+ <strong>下一篇：</strong><br/> 
+ <span>UITableView 系统 API实现滑动删除Cell
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NSObject"><span class="toc-number">1.</span> <span class="toc-text">NSObject</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#根类的作用"><span class="toc-number">1.1.</span> <span class="toc-text">根类的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类和实例"><span class="toc-number">1.2.</span> <span class="toc-text">类和实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例对象的生成和释放"><span class="toc-number">1.3.</span> <span class="toc-text">实例对象的生成和释放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化"><span class="toc-number">1.4.</span> <span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的比较"><span class="toc-number">1.5.</span> <span class="toc-text">对象的比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的内容描述"><span class="toc-number">1.6.</span> <span class="toc-text">对象的内容描述</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消息发送机制"><span class="toc-number">2.</span> <span class="toc-text">消息发送机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#选择器和-SEL-类型"><span class="toc-number">2.1.</span> <span class="toc-text">选择器和 SEL 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#消息搜索"><span class="toc-number">2.2.</span> <span class="toc-text">消息搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一函数的形式来调用方法"><span class="toc-number">2.3.</span> <span class="toc-text">一函数的形式来调用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类对象和跟对象"><span class="toc-number">2.4.</span> <span class="toc-text">类对象和跟对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">3.</span> <span class="toc-text">参考文献</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Andriod/" title="-Andriod">-Andriod<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/C-C/" title="C/C++">C/C++<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/JavaScript/" title="JavaScript">JavaScript<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>13</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Objective-C/" title="Objective-C">Objective-C<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>22</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ios/" title="ios">ios<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/javascript/" title="javascript">javascript<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/工具/" title="工具">工具<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/设计/" title="设计">设计<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书笔记/" title="读书笔记">读书笔记<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/随笔/" title="随笔">随笔<sup>4</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>14</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/随笔/" title="随笔">随笔<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP/" title="PHP">PHP<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux-Centos/" title="Linux,Centos">Linux,Centos<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP基础/" title="PHP基础">PHP基础<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux-GNU/" title="Linux,GNU">Linux,GNU<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/服务容器/" title="服务容器">服务容器<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wechat-pay-php-php7-php-input/" title="wechat pay, php, php7, php://input">wechat pay, php, php7, php://input<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php/" title="php">php<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C-C-算法/" title="C/C++,算法">C/C++,算法<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/INSERT/" title="INSERT">INSERT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Objc-多线程/" title="Objc,多线程">Objc,多线程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Closures/" title="Closures">Closures<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/算法/" title="算法">算法<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多线程-PHP7-2-编译安装-GCC/" title="多线程,PHP7.2,编译安装,GCC">多线程,PHP7.2,编译安装,GCC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/内存管理/" title="内存管理">内存管理<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MySQL-设计规范/" title="MySQL 设计规范">MySQL 设计规范<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="Maksim">Maksim</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
