@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -88,7 +88,7 @@
 <meta property="og:url" content="http://www.maksim.website/page/9/index.html">
 <meta property="og:site_name" content="Maksim&#39;s Website">
 <meta property="og:description" content="Maksim&apos;s Website，分享成长的点点滴滴，关注PHP、JavaScript、Linux、C/C++、Go、SQL、MySQL、Redis、iOS、安卓开发，努力做一个值得收藏的博客。">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maksim&#39;s Website">
 <meta name="twitter:description" content="Maksim&apos;s Website，分享成长的点点滴滴，关注PHP、JavaScript、Linux、C/C++、Go、SQL、MySQL、Redis、iOS、安卓开发，努力做一个值得收藏的博客。">
@@ -99,7 +99,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -107,7 +107,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -139,7 +139,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -188,7 +188,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            首页
           </a>
         </li>
       
@@ -198,7 +198,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            Über
+            关于
           </a>
         </li>
       
@@ -208,7 +208,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
@@ -218,7 +218,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Kategorien
+            分类
           </a>
         </li>
       
@@ -228,7 +228,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            归档
           </a>
         </li>
       
@@ -238,7 +238,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
             
-            Commonweal 404
+            公益404
           </a>
         </li>
       
@@ -275,12 +275,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2015/12/21/cjftk4k9f000arlrdcfufcvny/">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2015/12/21/cjftlwson000837rdf7vw03zr/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -294,7 +294,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/12/21/cjftk4k9f000arlrdcfufcvny/" itemprop="url">iOS图层树</a></h1>
+                <a class="post-title-link" href="/2015/12/21/cjftlwson000837rdf7vw03zr/" itemprop="url">iOS图层树</a></h1>
         
 
         <div class="post-meta">
@@ -304,9 +304,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-21T00:00:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-21T00:00:00+08:00">
                 2015-12-21
               </time>
             
@@ -325,7 +325,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -368,23 +368,16 @@
       
         
           
-            <h1 id="图层树"><a href="#图层树" class="headerlink" title="图层树"></a>图层树</h1><p>Core Animation 是一个符合引擎，塔的职责就是尽可能快地组合屏幕上不同的可视内容，这个内容被分分解成独立的图层，存储在一个叫做图层数的体系中，于是这个树形成了 UIKit 以及在 iOS 10应用程序当中你所看能在屏幕上看见的一切的基础。</p>
-<h2 id="图层与视图"><a href="#图层与视图" class="headerlink" title="图层与视图"></a>图层与视图</h2><p>如果你曾经在 iOS 10或MacOS 平台上面写过应用程序，你可能能会对视图的概念比较熟悉。一个视图就是在屏幕上显示一个矩形块（比如图片，文字或者视频），它能拦截类似于鼠标点击或者触摸手势等用户输入。视图在层级关系中可以互相嵌套，一个视图可以管理它的所有子视图的位置。图1.1显示了一种典型的视图层级关系。</p>
-<p><img src="https://zsisme.gitbooks.io/ios-/content/chapter1/1.1.jpeg" alt=""></p>
-<p>图1.1一种典型的 iOS 屏幕（左边）和型城市图的层级关系（右边）</p>
-<p>在 iOS 中，所有的视图都从一个叫做 UIview 的基类派生而来，UIView 可以处理触摸事件，可以支持基于 Core Graphics 绘图，可以做仿射变换（例如旋转或者缩放），或者简单的类似于滑动或者渐变的动画。</p>
-<h2 id="CALayer"><a href="#CALayer" class="headerlink" title="CALayer"></a>CALayer</h2><p>CALayer类在概念上和 UIView 类似，同样也是一些被层级关系树管理的矩形块，同样可以包含一些内容（像图片，文本或者背景色），管理子视图的位置。它们有一些方法和尚需经用来做动画和变换。</p>
-<p>和 UIview 最大的不同是 CALayer 不处理用户的交互。</p>
-<p>CALayer 兵不清楚具体的响应链（iOS通过视图层级关系用来传递触摸事件的机制），于是它并不能够响应事件，即使它提供了一些方法来判断是否一个触电在图层的范围之内。</p>
-<h2 id="平行的层级关系"><a href="#平行的层级关系" class="headerlink" title="平行的层级关系"></a>平行的层级关系</h2><p>每一个 UIView 都有一个 CALayer 实例的图层属性，也就是所谓的 Backing layer,视图的职责就是创建并管理这个图层，以确保子视图在层级关系中添加或者被移除的时候，他们关联的图层也同样对应是在层级关系树当中有相同的操作（见图1.2）</p>
-<p><img src="https://zsisme.gitbooks.io/ios-/content/chapter1/1.2.jpeg" alt=""></p>
-<p>图1.2 图层的树状结构（左边）以及对应的视图层级（右边）</p>
-<p>实际上这些背后关联的图层才是真正用来在屏幕上显示和做动画，UIView 仅仅是对它的一个封装，提供了一些 iOS 类似于处理触摸事件的具体功能，以及 Core Animation 底层方法的高级借口。</p>
-<p>但是为什么 iOS 要基于 UIview 和 CALayer 提供两个平行的层级关系呢？为什么不用一个简单的层级来处理所有事情呢？原因在于要做职责分离，这也是能避免很多重复代码。在 iOS 和 Mac OS两个平台上，时间和用户交互有很多地方不同，基于多点触控的用户界面和基于鼠标键盘有着本质的区别，这就是为什么 iOS有 UIKit 和 UIView，但是 MacOS 有 APPKit 和 NSView 的元婴。他们功能上很类似，但是在实现上有着显著的区别。</p>
-<p>绘图，布局和动画，相比之下就是类似Mac笔记本和桌面系列一样应用于iPhone和iPad触屏的概念。把这种功能的逻辑分开并应用到独立的Core Animation框架，苹果就能够在iOS和Mac OS之间共享代码，使得对苹果自己的OS开发团队和第三方开发者去开发两个平台的应用更加便捷。+</p>
-<p>实际上，这里并不是两个层级关系，而是四个，每一个都扮演不同的角色，除了视图层级和图层树之外，还存在呈现树和渲染树，</p>
-
-          
+          图层树Core Animation 是一个符合引擎，塔的职责就是尽可能快地组合屏幕上不同的可视内容，这个内容被分分解成独立的图层，存储在一个叫做图层数的体系中，于是这个树形成了 UIKit 以及在 iOS 10应用程序当中你所看能在屏幕上看见的一切的基础。
+图层与视图如果你曾经在 iOS 10或Ma
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/12/21/cjftlwson000837rdf7vw03zr/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -436,7 +429,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -460,9 +453,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-10T16:04:12+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-10T16:04:12+08:00">
                 2015-12-10
               </time>
             
@@ -481,7 +474,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -524,21 +517,17 @@
       
         
           
-            <p>NSObject 提供了以 performSelector 为前缀的一系列方法。它们可以让用户在制定的线程中、或者立即、延迟执行某个方法调用个。这个方法给用户实现多线程编程最简单的方法。</p>
-<p>在当前线程中执行方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (void)performSelector:(SEL)aSelector withObject:(id)anArgument afterDelay:(NSTimeInterval)delay</div><div class="line"></div><div class="line">- (void)performSelector:(SEL)aSelector withObject:(id)anArgument afterDelay: (NSTimeInterval)delay inModes:(NSArray *)modes</div></pre></td></tr></table></figure>
-<p>在指定线程中执行方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (void)performSelector:(SEL)aSelector onThread:(NSThread *)thread </div><div class="line">withObject:(id)arg waitUntilDone:(BOOL)wait</div><div class="line"></div><div class="line">- (void)performSelector:(SEL)aSelector onThread:(NSThread *)thread withObject:</div><div class="line">(id)arg waitUntilDone:(BOOL)wait modes:(NSArray *)array</div></pre></td></tr></table></figure>
-<p>在主线程中执行方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (void)performSelectorOnMainThread: (SEL)selector withObject:(id)argument </div><div class="line">waitUntilDone:(BOOL)wait</div><div class="line"></div><div class="line">- (void)performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg </div><div class="line">waitUntilDone:(BOOL)wait modes:(NSArray *)array</div></pre></td></tr></table></figure>
-<p>在后台线程中执行方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)performSelectorInBackground:(SEL)aSelector withObject:(id)arg</div></pre></td></tr></table></figure>
-<p>这一系列方法简单易用，但只提供了有限的几个选择：指定执行的方法（但传入方法的参数数量有限制）；指定是在当前线程，还是在主线程，还是在后台线程执行；指定是否需要阻塞当前线程等待结果。</p>
-<p>例如，以下代码使得方法 foo: 在一个新的后台线程执行，并传入了 object 参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SEL selector ＝ @selector(foo:);</div><div class="line">[self performSelectorInBackground:selector withObject:object];</div></pre></td></tr></table></figure>
-<p>以下代码使得 updateUI 方法在主线程内得到执行，并且当前线程会被阻塞，直到主线程执行完该函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self performSelectorOnMainThread:@selector(updateUI) withObject:nil waitUntilDone:YES];</div></pre></td></tr></table></figure>
-          
+          NSObject 提供了以 performSelector 为前缀的一系列方法。它们可以让用户在制定的线程中、或者立即、延迟执行某个方法调用个。这个方法给用户实现多线程编程最简单的方法。
+在当前线程中执行方法：
+123- (void)performSelector:(SEL)aSelector wi
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/12/10/1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -590,7 +579,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -614,9 +603,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-20T00:00:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-20T00:00:00+08:00">
                 2015-10-20
               </time>
             
@@ -635,7 +624,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -678,26 +667,16 @@
       
         
           
-            <p>我们知道，session是一种会话技术，用来实现跨脚本共享数据。session是存放在服务器端的文件里的，因此session有可能因为文件数量过多，会在查询session文件以及读取的时候产生压力。一般我们有三种解决方案</p>
-<p>1.使用文件分层（缺点：I/O操作是系统的一个瓶颈，即使分层也不能避免此问题）</p>
-<p>2.将session放入数据库</p>
-<p>3.将session放在内存中（非关系性数据库）（缺点：对服务器内存要求教高）</p>
-<p>因此我们选用一个折中的办法，将session存入mysql数据库，也就是我们要讲的重点，</p>
-<p>session入库技术：</p>
-<p>要实现session入库，首先我们要了解session 机制：</p>
-<p>什么是session机制：</p>
-<p>在php中，session可以理解为一套单独的小系统，在该系统中有很多关于session的处理方法，用来解决各种问题，用户只需要在session之外，调用session_start函数（session系统的一个接口）</p>
-<p>其他操作都是session系统帮忙去处理</p>
-<p><img src="https://images2015.cnblogs.com/blog/528226/201603/528226-20160317093240693-1557806104.png" alt="img"></p>
-<p>由图可知我们应该修改session机制中的session的读取和最终的写入。</p>
-<p>要修改session机制要借助一个系统函数</p>
-<p>session_set_save_handler():用来使用外部用户定义的函数，来取代session系统本身的函数。</p>
-<p>session_set_save_handler(开启session机制函数，关闭session机制函数，读取session数据函数，写入session函数，销毁session函数，后手过期session函数)。</p>
-<p>因此我们要准备六个函数。</p>
-<p>代码实现：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="comment">//session入库</span></div><div class="line"></div><div class="line"><span class="comment">//以为修改session机制必须借助session_set_save_handler()函数，该函数需要6个可以调用的回调函数，因此需要创建6个人对应的函数</span></div><div class="line"></div><div class="line"><span class="comment">//1.开启session机制</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sess_open</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">//开启资源</span></div><div class="line">    <span class="comment">//连接数据库</span></div><div class="line">    mysql_connect(<span class="string">'localhost'</span>,<span class="string">'root'</span>,<span class="string">''</span>);</div><div class="line">    mysql_query(<span class="string">'set names utf8'</span>);</div><div class="line">    mysql_query(<span class="string">'use session'</span>);</div><div class="line">    <span class="keyword">echo</span> <span class="function"><span class="keyword">FUNCTION</span>,'&lt;<span class="title">br</span>/&gt;'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//2.关闭session</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sess_close</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">//关闭资源</span></div><div class="line">    mysql_close();</div><div class="line">    <span class="keyword">echo</span> <span class="function"><span class="keyword">FUNCTION</span>,'&lt;<span class="title">br</span>/&gt;'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//3.读取session</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sess_read</span><span class="params">($sess_id)</span> </span>&#123;</div><div class="line">    <span class="comment">//从数据库读取数据</span></div><div class="line">    <span class="comment">//根据sess_id（由系统提供）获取数据</span></div><div class="line">    <span class="comment">//读数据时要过滤掉过期的数据</span></div><div class="line">    $expire=time()-ini_get(<span class="string">'session.gc_maxlifetime'</span>);</div><div class="line">    $sql=<span class="string">"selsct * from session where sess_id='&#123;$sess_id&#125;' and sess_expire&gt;='&#123;$expire&#125;'"</span>;</div><div class="line">    res=mysql_query(sql);</div><div class="line"></div><div class="line">    <span class="comment">//得到的是一个数组</span></div><div class="line">    <span class="keyword">if</span>(sess=@mysql_fetch_assoc(res)) &#123;</div><div class="line">        <span class="comment">//得到一个序列化后的字符串</span></div><div class="line">        <span class="comment">//要进行反序列化，read只负责读取数据，不负责加工数据</span></div><div class="line">        <span class="keyword">return</span> $sess[<span class="string">'sess_info'</span>];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">echo</span> <span class="function"><span class="keyword">FUNCTION</span>,'&lt;<span class="title">br</span>/&gt;'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//4.写入session</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sess_write</span><span class="params">(sess_id,sess_info)</span> </span>&#123;</div><div class="line">    <span class="comment">//向数据库中写入数据</span></div><div class="line">    $time=time();</div><div class="line">    $sql=<span class="string">"replace into session values('&#123;$sess_id&#125;','&#123;$sess_info&#125;','&#123;$time&#125;')"</span>;</div><div class="line">    mysql_query($sql);</div><div class="line">    <span class="keyword">echo</span> <span class="function"><span class="keyword">FUNCTION</span>,'&lt;<span class="title">br</span>/&gt;'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//5.销毁session</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sess_destroy</span><span class="params">($sess_id)</span> </span>&#123;</div><div class="line">    $sql=<span class="string">"delete from session where sess_id='&#123;$sess_id&#125;'"</span>;</div><div class="line">    <span class="keyword">return</span> mysql_query($sql);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//6.回收session</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sess_gc</span><span class="params">()</span> </span>&#123; </div><div class="line">    <span class="comment">//从数据库删除过期的session数据</span></div><div class="line">    <span class="comment">//判断session是否过期，过期的删除</span></div><div class="line">    $expire=ini_get(<span class="string">'session.gc_maxlifetime'</span>);</div><div class="line">    <span class="comment">//得到最迟的时间，在$expire之前的都是过期的</span></div><div class="line">    expire=time()-expire;</div><div class="line">    $sql=<span class="string">"delete from session where sess_expire &lt; '&#123;expire&#125;'"</span>;</div><div class="line">    <span class="keyword">return</span> mysql_query($sql);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//使用session_set_save_handler()修改session机制</span></div><div class="line">session_set_save_handler(<span class="string">'sess_open'</span>,<span class="string">'sess_close'</span>,<span class="string">'sess_read'</span>,<span class="string">'sess_write'</span>,<span class="string">'sess_destroy'</span>,<span class="string">'sess_gc'</span>);</div><div class="line"></div><div class="line"><span class="comment">//想要使用session，必须要用session_start()来开启</span></div><div class="line">session_start();</div><div class="line"></div><div class="line">$_SESSION[<span class="string">'name'</span>]=<span class="string">'wangqixing'</span>;</div><div class="line"></div><div class="line">$_SESSION[<span class="string">'age'</span>]=<span class="string">'23'</span>;</div><div class="line"></div><div class="line"><span class="comment">//session_destroy();</span></div></pre></td></tr></table></figure>
-
-          
+          我们知道，session是一种会话技术，用来实现跨脚本共享数据。session是存放在服务器端的文件里的，因此session有可能因为文件数量过多，会在查询session文件以及读取的时候产生压力。一般我们有三种解决方案
+1.使用文件分层（缺点：I/O操作是系统的一个瓶颈，即使分层也不能避免此问题）
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/10/20/1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -749,7 +728,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -773,9 +752,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-08-28T01:03:16+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-28T01:03:16+08:00">
                 2015-08-28
               </time>
             
@@ -794,7 +773,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -837,10 +816,17 @@
       
         
           
-            <p>额，以前一直没有注意，就这样的一个pw结尾的域名竟然都会被劫持，我也真是醉了。</p>
-<p>以前DNSPOD提示我有异常登陆，我也没在意，结果今天site了一下域名，结果尴尬的发现被泛解析了，我也真是醉了，全都是博彩网站。</p>
+          额，以前一直没有注意，就这样的一个pw结尾的域名竟然都会被劫持，我也真是醉了。
+以前DNSPOD提示我有异常登陆，我也没在意，结果今天site了一下域名，结果尴尬的发现被泛解析了，我也真是醉了，全都是博彩网站。
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/08/28/108/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -892,7 +878,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -916,9 +902,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-08-17T20:12:44+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-17T20:12:44+08:00">
                 2015-08-17
               </time>
             
@@ -937,7 +923,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -980,10 +966,15 @@
       
         
           
-            <p>Base64是网络上最常见的用于传输8Bit字节代码的编码方式之一，大家可以查看RFC2045～RFC2049，上面有MIME的详细规范。Base64编码可用于在HTTP环境下传递较长的标识信息。例如，在Java Persistence系统Hibernate中，就采用了Base64来将一个较长的唯一标识符（一般为128-bit的UUID）编码为一个字符串，用作HTTP表单和HTTP GET URL中的参数。在其他应用程序中，也常常需要把二进制数据编码为适合放在URL（包括隐藏表单域）中的形式。此时，采用Base64编码具有不可读性，即所编码的数据不会被人用肉眼所直接看到。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class DataBase64&#123;</div><div class="line">		public $file = &apos;&apos;;</div><div class="line">		public function __construct($file)&#123;</div><div class="line">			$this-&gt;file = $file;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		public function getBase64()&#123;</div><div class="line">			$type = getimagesize($this-&gt;file);	</div><div class="line">			$fp = fopen($this-&gt;file, &apos;r&apos;) or die(&quot;Can&apos;t open file&quot;);</div><div class="line">			$file_content= chunk_split(base64_encode(fread($fp, filesize($this-&gt;file)))) ;</div><div class="line">			switch($type[2])&#123;//判读图片类型  </div><div class="line">				case 1:$img_type=&quot;gif&quot;;break;  </div><div class="line">				case 2:$img_type=&quot;jpg&quot;;break;  </div><div class="line">				case 3:$img_type=&quot;png&quot;;break;  </div><div class="line">			&#125;  </div><div class="line">			return $img=&apos;data:image/&apos;.$img_type.&apos;;base64,&apos;.$file_content;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	$data = new DataBase64(&apos;image/1.jpg&apos;);</div><div class="line">	$img = $data-&gt;getBase64();</div></pre></td></tr></table></figure>
-
-          
+          Base64是网络上最常见的用于传输8Bit字节代码的编码方式之一，大家可以查看RFC2045～RFC2049，上面有MIME的详细规范。Base64编码可用于在HTTP环境下传递较长的标识信息。例如，在Java Persistence系统Hibernate中，就采用了Base64来将一个较长的唯一
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/08/17/94/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1035,7 +1026,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1059,9 +1050,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-07-30T08:22:04+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-30T08:22:04+08:00">
                 2015-07-30
               </time>
             
@@ -1080,7 +1071,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1123,14 +1114,19 @@
       
         
           
-            <p><strong>DIRECTORY_SEPARATOR（string）</strong></p>
-<p>目录分隔符，这是PHP内置的一个常量，代表着”/“或“”</p>
-<p>因为系统原因，目录的分隔符被分为两种，在windows中目录的分割符号可以使用‘/’或者‘’，但是在linux中目录分隔符只能使用’/‘;</p>
-<p><strong>PATH_SEPARATOR</strong></p>
-<p>路径分隔符，同样是PHP内置的一个常量，在windows系统中，如果使用include包含多个路径可以使用分号（;）来进行分割，可是在linux系统中却要使用冒号（：）。</p>
-<p>这两个常量主要就是用来解决linux与windows的兼容问题，避免因为系统差异出现的错误，可以增强移植性。</p>
-
-          
+          DIRECTORY_SEPARATOR（string）
+目录分隔符，这是PHP内置的一个常量，代表着”/“或“”
+因为系统原因，目录的分隔符被分为两种，在windows中目录的分割符号可以使用‘/’或者‘’，但是在linux中目录分隔符只能使用’/‘;
+PATH_SEPARATOR
+路径分隔符，同样
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/07/30/46/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1182,7 +1178,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1206,9 +1202,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-05-26T09:56:08+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-26T09:56:08+08:00">
                 2015-05-26
               </time>
             
@@ -1227,7 +1223,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1270,12 +1266,15 @@
       
         
           
-            <p>一直没用过linux开发PHP，昨天试了一下，却发现deepin下安装的php默认是不开其扩展的，可是PHP.INI中却没有开启扩展的选项，无奈之下百度了一番，却发现文章很少，但是却找到了ubuntu的命令，型号deepin的命令跟ubuntu一样，到是解决了PHP扩展的一些问题，原来只需要将所需要的扩展下载下来，重启服务器便可。</p>
-<p>代码如下： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install php5-你所需要的扩展。</div><div class="line"></div><div class="line">sudo service apache2 restart</div></pre></td></tr></table></figure>
-<p>这样用来扩展就可以使用了。</p>
-
-          
+          一直没用过linux开发PHP，昨天试了一下，却发现deepin下安装的php默认是不开其扩展的，可是PHP.INI中却没有开启扩展的选项，无奈之下百度了一番，却发现文章很少，但是却找到了ubuntu的命令，型号deepin的命令跟ubuntu一样，到是解决了PHP扩展的一些问题，原来只需要将所需要
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/05/26/36/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1327,7 +1326,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1351,9 +1350,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-05-21T22:10:59+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-21T22:10:59+08:00">
                 2015-05-21
               </time>
             
@@ -1372,7 +1371,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1415,8 +1414,15 @@
       
         
           
-            <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// load Smarty library </span></div><div class="line">   <span class="keyword">require</span>(<span class="string">'Smarty.class.php'</span>); </div><div class="line"><span class="comment">// The setup.php file is a good place to load </span></div><div class="line"><span class="comment">// required application library files, and you </span></div><div class="line"><span class="comment">// can do that right here. An example: </span></div><div class="line">   <span class="keyword">require</span>(<span class="string">'guestbook/guestbook.lib.php'</span>); </div><div class="line">   <span class="class"><span class="keyword">class</span> <span class="title">Smarty_GuestBook</span> <span class="keyword">extends</span> <span class="title">Smarty</span> </span>&#123;    </div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span> </span>&#123;         </div><div class="line"><span class="comment">// Class Constructor.         </span></div><div class="line"><span class="comment">// These automatically get set with each new instance.         </span></div><div class="line">        <span class="keyword">parent</span>::__construct();         </div><div class="line">        <span class="keyword">$this</span>-&gt;setTemplateDir(<span class="string">'/web/www.example.com/guestbook/templates/'</span>);</div><div class="line">        <span class="keyword">$this</span>-&gt;setCompileDir(<span class="string">'/web/www.example.com/guestbook/templates_c/'</span>);</div><div class="line">        <span class="keyword">$this</span>-&gt;setConfigDir(<span class="string">'/web/www.example.com/guestbook/configs/'</span>);</div><div class="line">        <span class="keyword">$this</span>-&gt;setCacheDir(<span class="string">'/web/www.example.com/guestbook/cache/'</span>);</div><div class="line">        <span class="keyword">$this</span>-&gt;caching = Smarty::CACHING_LIFETIME_CURRENT;</div><div class="line">        <span class="keyword">$this</span>-&gt;assign(<span class="string">'app_name'</span>, <span class="string">'Guest Book'</span>);</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
+          12345678910111213141516171819// load Smarty library    require('Smarty.class.php'); // The setup.php file is a good place to load // required applicat
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/05/21/200/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1463,12 +1469,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2015/04/30/cjftk4kbs003yrlrdzs1gjvca/">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2015/04/30/cjftlwsta004137rdnhmpbko3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1482,7 +1488,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/04/30/cjftk4kbs003yrlrdzs1gjvca/" itemprop="url">PHP框架编写（二）单入口路由</a></h1>
+                <a class="post-title-link" href="/2015/04/30/cjftlwsta004137rdnhmpbko3/" itemprop="url">PHP框架编写（二）单入口路由</a></h1>
         
 
         <div class="post-meta">
@@ -1492,9 +1498,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-04-30T16:05:19+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-30T16:05:19+08:00">
                 2015-04-30
               </time>
             
@@ -1513,7 +1519,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1556,9 +1562,16 @@
       
         
           
-            <h1 id="PHP框架编写（二）单入口路由"><a href="#PHP框架编写（二）单入口路由" class="headerlink" title="PHP框架编写（二）单入口路由"></a>PHP框架编写（二）单入口路由</h1><p>基本思路是浏览器端通过URL字符串提供控制器类的名字和方法的名字，PHP据此找到对应的类和方法。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/******************************************************* </span></div><div class="line"> * </div><div class="line"> * URL 路由原理展示代码 </div><div class="line"> * </div><div class="line"> * 浏览器访问地址: http://server/index.php?C=Controler1&amp;M=Method1 </div><div class="line"> * 根据C找到控制器类，再根据M找到方法，然后执行这个方法 </div><div class="line"> *  </div><div class="line"> * ****************************************************/ </div><div class="line">  </div><div class="line">$C = <span class="keyword">isset</span>($_GET[<span class="string">'C'</span>]) ? $_GET[<span class="string">'C'</span>]: <span class="keyword">null</span>;  </div><div class="line">$M = <span class="keyword">isset</span>($_GET[<span class="string">'M'</span>]) ? $_GET[<span class="string">'M'</span>]: <span class="keyword">null</span>;  </div><div class="line">  </div><div class="line"><span class="keyword">if</span>($C != <span class="keyword">NULL</span> &amp;&amp; $M != <span class="keyword">NULL</span> &amp;&amp; class_exists($C) &amp;&amp; method_exists($C, $M)) &#123;  </div><div class="line">    $cObj = <span class="keyword">new</span> $C();  </div><div class="line">    $cObj-&gt;$M();  </div><div class="line">&#125;<span class="keyword">else</span>&#123;  </div><div class="line">    <span class="keyword">echo</span> <span class="string">'找不到控制器或方法'</span>;  </div><div class="line">    <span class="keyword">exit</span>;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="comment">// 控制器1  </span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Controler1</span>  </span></div><div class="line">&#123;  </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">Method1</span><span class="params">()</span>  </span></div><div class="line">    &#123;     </div><div class="line">        <span class="keyword">echo</span> <span class="string">'Controler1, Method1'</span>;  </div><div class="line">    &#125;     </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">Method2</span><span class="params">()</span>  </span></div><div class="line">    &#123;     </div><div class="line">        <span class="keyword">echo</span> <span class="string">'Controler1, Method2'</span>;  </div><div class="line">    &#125;     </div><div class="line">&#125;  </div><div class="line"><span class="comment">// 控制器2  </span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Controler2</span>  </span></div><div class="line">&#123;  </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">Method1</span><span class="params">()</span>  </span></div><div class="line">    &#123;     </div><div class="line">        <span class="keyword">echo</span> <span class="string">'Controler2, Method1'</span>;  </div><div class="line">    &#125;     </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">Method2</span><span class="params">()</span>  </span></div><div class="line">    &#123;     </div><div class="line">        <span class="keyword">echo</span> <span class="string">'Controler2, Method2'</span>;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
+          PHP框架编写（二）单入口路由基本思路是浏览器端通过URL字符串提供控制器类的名字和方法的名字，PHP据此找到对应的类和方法。
+1234567891011121314151617181920212223242526272829303132333435363738394041424344/******
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/04/30/cjftlwsta004137rdnhmpbko3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1610,7 +1623,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1634,9 +1647,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-04-29T22:02:49+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-29T22:02:49+08:00">
                 2015-04-29
               </time>
             
@@ -1655,7 +1668,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1698,20 +1711,16 @@
       
         
           
-            <p>首先欢迎各位进入我的博客，我感觉非常荣幸，我并不是什么高手，现在的我不过是个在校的大学生，写这篇系列的博文只不过是为了加深自己对PHP的理解，以及对之前的学习做一个总结，同时也希望各位能够给我提一些意见。</p>
-<p> PHP框架总给人以高大上的感觉，很多人学框架都学的头晕脑胀，百思不得其解，看完这篇博文后应该可以让还处于迷茫中的学习者找到一个入门的道路。</p>
-<p>PHP框架到底是什么，框架不过是其他程序员提供的一个快速开发的一个代码而已，他帮助PHP开发者能够快速的开发，免去一些代码而已，PHP框架目前的核心就是MVC和数据库操作，更加大白话一点其实就是编程中最基础的增删改查，不过就是将他变的更加漂亮而已。</p>
-<p>那么什么是MVC呢，M模型,V显示,C控制器。</p>
-<p>这基本上是所有教程和书中都会提及的概念，也就不再多进行赘述模糊不清的概念了。</p>
-<p>M是啥，字面上理解太费劲了，其实M模型我感觉表面上就是对数据库的操作，以及业务逻辑的梳理，这便是M模型，主要进行逻辑分析，将分析的结果传递给C也就是控制器，M就是一个深藏功与名的人，他默默就默默地站在幕后，干着最累的工作。</p>
-<p>V就是显示，也就是其中最好面子的人，他们两个人忙活半天，其实都是在给我忙活，所有东西都处理完了，拿到他这里来显示。</p>
-<p>C控制器，这个字面上就好理解了，那就是起到控制的作用，他控制着全局，属于M和C的一个中间层。（如果说错了，还请高手指正）</p>
-<p>现在市面上的PHP框架基本上都是单一入口的文件。下面就是一个PHP框架的运行的简单流程图。</p>
-<p> 对PHP框架有了一定的了解之后，我们下一篇就开始讲PHP框架的目录结构了。</p>
-<p>仅以此文先给刚刚入门的菜鸟，和正在努力奋斗的程序员们，祝各位早日成为攻城狮！出任CTO，赢取白富美，走向人生巅峰。</p>
-<p>（如有转载，请注明出处，小弟感激不尽。）</p>
-
-          
+          首先欢迎各位进入我的博客，我感觉非常荣幸，我并不是什么高手，现在的我不过是个在校的大学生，写这篇系列的博文只不过是为了加深自己对PHP的理解，以及对之前的学习做一个总结，同时也希望各位能够给我提一些意见。
+ PHP框架总给人以高大上的感觉，很多人学框架都学的头晕脑胀，百思不得其解，看完这篇博文后应该
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/04/29/6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1784,6 +1793,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="http://ogxeww23n.bkt.clouddn.com/timg.jpeg"
+                alt="Maksim" />
+            
               <p class="site-author-name" itemprop="name">Maksim</p>
               <p class="site-description motion-element" itemprop="description">Maksim's Website，分享成长的点点滴滴，关注PHP、JavaScript、Linux、C/C++、Go、SQL、MySQL、Redis、iOS、安卓开发，努力做一个值得收藏的博客。</p>
           </div>
@@ -1796,7 +1809,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">90</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
@@ -1805,10 +1818,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">14</span>
-                  <span class="site-state-item-name">Kategorien</span>
-                
+                  <span class="site-state-item-name">分类</span>
+                </a>
               </div>
             
 
@@ -1816,10 +1829,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">22</span>
-                  <span class="site-state-item-name">Tags</span>
-                
+                  <span class="site-state-item-name">标签</span>
+                </a>
               </div>
             
 
@@ -1834,6 +1847,22 @@
             </div>
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/aircrayon" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aircrayon@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -1861,7 +1890,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1871,7 +1900,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -1879,7 +1908,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
@@ -1978,6 +2007,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
 

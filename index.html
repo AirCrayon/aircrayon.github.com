@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -88,7 +88,7 @@
 <meta property="og:url" content="http://www.maksim.website/index.html">
 <meta property="og:site_name" content="Maksim&#39;s Website">
 <meta property="og:description" content="Maksim&apos;s Website，分享成长的点点滴滴，关注PHP、JavaScript、Linux、C/C++、Go、SQL、MySQL、Redis、iOS、安卓开发，努力做一个值得收藏的博客。">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maksim&#39;s Website">
 <meta name="twitter:description" content="Maksim&apos;s Website，分享成长的点点滴滴，关注PHP、JavaScript、Linux、C/C++、Go、SQL、MySQL、Redis、iOS、安卓开发，努力做一个值得收藏的博客。">
@@ -99,7 +99,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -107,7 +107,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -139,7 +139,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -188,7 +188,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            首页
           </a>
         </li>
       
@@ -198,7 +198,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            Über
+            关于
           </a>
         </li>
       
@@ -208,7 +208,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
@@ -218,7 +218,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Kategorien
+            分类
           </a>
         </li>
       
@@ -228,7 +228,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            归档
           </a>
         </li>
       
@@ -238,7 +238,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
             
-            Commonweal 404
+            公益404
           </a>
         </li>
       
@@ -275,12 +275,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/04/09/cjftk4kaq0023rlrdrfxgghsh/">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/04/09/cjftlwsr3002537rdk8z8y8ak/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -294,7 +294,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/09/cjftk4kaq0023rlrdrfxgghsh/" itemprop="url">PHP中的$this</a></h1>
+                <a class="post-title-link" href="/2018/04/09/cjftlwsr3002537rdk8z8y8ak/" itemprop="url">PHP中的$this</a></h1>
         
 
         <div class="post-meta">
@@ -304,9 +304,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-09T18:30:21+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-09T18:30:21+08:00">
                 2018-04-09
               </time>
             
@@ -346,181 +346,15 @@
       
         
           
-            <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SimpleClass</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// property declaration</span></div><div class="line">    <span class="keyword">public</span> $var = <span class="string">'a default value'</span>;</div><div class="line"></div><div class="line">    <span class="comment">// method declaration</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">displayVar</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;var;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-<p>当一个方法在类定义内部被调用时，有一个可用的伪变量 \$this。\$this 是<strong>一个到主叫对象的引用</strong>（通常是该方法所从属的对象，但如果是从第二个对象静态调用时也可能是另一个对象）。</p>
-<p><strong>$this 伪变量的示例</strong></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></div><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="keyword">$this</span>)) &#123;</div><div class="line">            <span class="keyword">echo</span> <span class="string">'$this is defined ('</span>;</div><div class="line">            <span class="keyword">echo</span> get_class(<span class="keyword">$this</span>);</div><div class="line">            <span class="keyword">echo</span> <span class="string">")\n"</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">echo</span> <span class="string">"\$this is not defined.\n"</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span></div><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="comment">// <span class="doctag">Note:</span> the next line will issue a warning if E_STRICT is enabled.</span></div><div class="line">        A::foo();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$a = <span class="keyword">new</span> A();</div><div class="line">$a-&gt;foo();</div><div class="line"></div><div class="line"><span class="comment">// <span class="doctag">Note:</span> the next line will issue a warning if E_STRICT is enabled.</span></div><div class="line">A::foo();</div><div class="line">$b = <span class="keyword">new</span> B();</div><div class="line">$b-&gt;bar();</div><div class="line"></div><div class="line"><span class="comment">// <span class="doctag">Note:</span> the next line will issue a warning if E_STRICT is enabled.</span></div><div class="line">B::bar();</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-<p>以上例程会输出：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span>this is defined (A)</div><div class="line"><span class="meta"></span></div><div class="line">$this is not defined.</div><div class="line"><span class="meta"></span></div><div class="line">$this is defined (B)</div><div class="line"><span class="meta"></span></div><div class="line">$this is not defined.</div></pre></td></tr></table></figure>
-<p>由于静态方法不需要通过对象即可调用，所以伪变量 $this 在静态方法中不可用。用静态方式调用一个非静态方法会导致一个 <strong>E_STRICT</strong> 级别的错误。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/04/08/3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Maksim">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Maksim's Website">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/08/3/" itemprop="url">美国航空航天局科学家给赞比亚修女的一封信</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-08T00:00:00+08:00">
-                2018-04-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>背景： 1970年，赞比亚修女玛丽·尤肯达给美国航空航天局科学家恩斯特·施图林格博士问道：目前地球上还有这么多小孩子吃不上饭，他怎么能舍得为远在火星的项目花费数十亿美元。</p>
-<p>1970年，赞比亚修女玛丽·尤肯达（Mary Jucunda）给恩斯特·施图林格（Ernst Stuhlinger）博士写了一封信。施图林格因在火星之旅工程中的原创性研究，成为NASA（美国航空航天局）马绍尔太空航行中心的科学副总监。信中，玛丽·尤肯达修女问道：目前地球上还有这么多小孩子吃不上饭，他怎么能舍得为远在火星的项目花费数十亿美元。施图林格很快给尤肯达修女回了信，同时还附带了一张题为“升起的地球”的照片，这张标志性的照片是宇航员威廉·安德斯于1968年在月球轨道上拍摄的（照片中可以看到月球的地面）。他这封真挚的回信随后由NASA以《为什么要探索宇宙》为标题发表。</p>
-<p>1970年5月6日</p>
-<p>亲爱的玛丽·尤肯达修女：每天，我都会收到很多类似的来信，但这封对我的触动最深，因为它来自一颗慈悲的饱含探求精神的心灵。我会尽自己所能来回答你这个问题。首先，请允许我向你以及你勇敢的姐妹们表达深深的敬意，你们献身于人类最崇高的事业：帮助身处困境的同胞。</p>
-<p>在来信中，你问我在目前地球上还有儿童由于饥饿面临死亡威胁的情况下，为什么还要花费数十亿美元来进行飞向火星的航行。 我清楚你肯定不希望这样的答案：“哦，我之前不知道还有小孩子快饿死了，好吧，从现在开始，暂停所有的太空项目，直到孩子们都吃上饭再说。”事实上，早在了解火星之旅的技术之前，我已经对儿童的饥荒问题有所了解。而且，同我很多朋友的看法一样，我认为此时此刻，我们就应该开始通往月球、火星乃至其他行星的伟大探险。从长远来看，相对于那些要么只有年复一年的辩论和争吵，要么连妥协之后也迟迟无法落实的各种援助计划来说，我甚至觉得探索太空的工程给更有助于解决人类目前所面临的种种危机。</p>
-<p>在详细说明我们的太空项目如何帮助解决地面上的危机之前，我想先简短讲一个真实的故事。那是在400年前，德国某小镇里有一位伯爵。他是个心地善良的人，他将自己收入的一大部分捐给了镇子上的穷人。这十分令人钦佩，因为中世纪时穷人很多，而且那时经常爆发席卷全国的瘟疫。一天，伯爵碰到了一个奇怪的人，他家中有一个工作台和一个小实验室，他白天卖力工作，每天晚上的几小时的时间专心进行研究。他把小玻璃片研磨成镜片，然后把研磨好的镜片装到镜筒里，用此来观察细小的物件。伯爵被这个前所未见的可以把东西放大观察的小发明迷住了。他邀请这个怪人住到了他的城堡里，作为伯爵的门客，此后他可以专心投入所有的时间来研究这些光学器件。</p>
-<p>然而，镇子上的人得知伯爵在这么一个怪人和他那些无用的玩意儿上花费金钱之后，都很生气，“我们还在受瘟疫的苦”，他们抱怨道，“而他却为那个闲人和他没用的爱好乱花钱！”伯爵听到后不为所动，“我会尽可能地接济大家”，他表示，“但我会继续资助这个人和他的工作，我确信终有一天会有回报。”</p>
-<p>果不其然，他的工作赢来了丰厚的回报：显微镜。显微镜的发明给医学带来了前所未有的发展，由此展开的研究及其成果，消除了世界上大部分地区肆虐的瘟疫和其他一些传染性疾病。</p>
-<p>伯爵为支持这项研究发明所花费的金钱，其最终结果大大减轻了人类所遭受的苦难，这回报远远超过单纯将这些钱用来救济那些遭受瘟疫的人。</p>
-<p>我们目前面临类似的问题。美国总统的年度预算共有2000亿美元，这些钱将用于医疗、教育、福利、城市建设、高速公路、交通运输、海外援助、国防、环保、科技、农业以及其他多项国内外的工程。今年，预算中的1.6%将用于探索宇宙，这些花销将用于阿波罗以计划、其他一些涵盖了天体物理学、深空天文学、空间生物学、行星探测工程、地球资源工程的小项目以及空间工程技术。为担负这些太空项目的支出，平均每个年收入10,000美元的美国纳税人需要支付约30美元给太空，剩下的9,970美元则可用于一般生活开支、休闲娱乐、储蓄、别的税项等花销。</p>
-<p>也许你会问：“为什么不从纳税人为太空支付的30美元里抽出5美元或3美元或是1美元来救济饥饿的儿童呢？”为了回答这个问题，我需要先简单解释一下我们国家的经济是如何运行的，其他国家也是类似的情形。政府由几个部门（如内政部、司法部、卫生部与公众福利部、教育部、运输部、国防部等）和几个机构（国家科学基金会、国家航空航天局等）组成，这些部门和机构根据自己的职能制定相应的年度预算，并严格执行以应对国务委员会的监督，同时还要应付来自预算部门和总统对于其经济效益的压力。当资金最终由国会拨出后，将严格用于经预算批准的计划中的项目。</p>
-<p>显然，NASA的预算中所包含的项目都是和航空航天有关的。未经国会批准的预算项目，是不会得到资金支持的，自然也不会被课税，除非有其他部门的预算涵盖了该项目，借此花掉没有分配给太空项目的资金。由这段简短的说明可以看出，要想援助饥饿的儿童，或在美国已有的对外援助项目上增加援助金额，需要首先由相关部门提出预算，然后由国会批准才行。</p>
-<p>要问是否同意政府实施类似的政策，我个人的意见是绝对赞成。我完全不介意每年多付出一点点税款来帮助饥饿的儿童，无论他们身在何处。</p>
-<p>我相信我的朋友们也会持相同的态度。然而，事情并不是仅靠把去往火星航行的计划取消就能轻易实现的。相对的，我甚至认为可以通过太空项目，来为缓解乃至最终解决地球上的贫穷和饥饿问题作出贡献。解决饥饿问题的关键有两部分：食物的生产和食物的发放。食物的生产所涉及的农业、畜牧业、渔业及其他大规模生产活动在世界上的一些地区高效高产，而在有的地区则产量严重不足。通过高科技手段，如灌溉管理，肥料的使用，天气预报，产量评估，程序化种植，农田优选，作物的习性与耕作时间选择，农作物调查及收割计划，可以显著提高土地的生产效率。</p>
-<p>人造地球卫星无疑是改进这两个关键问题最有力的工具。在远离地面的运行轨道上，卫星能够在很短的时间里扫描大片的陆地，可以同时观察计算农作物生长所需要的多项指标，土壤、旱情、雨雪天气等等，并且可以将这些信息广播至地面接收站以便做进一步处理。事实证明，配备有土地资源传感器及相应的农业程序的人造卫星系统，即便是最简单的型号，也能给农作物的年产量带来数以十亿美元计的提升。</p>
-<p>如何将食品发放给需要的人则是另外一个全新的问题，关键不在于轮船的容量，而在于国际间的合作。小国统治者对于来自大国的大量食品的输入很难做出准确的判断，他们害怕伴随着食物一同而来的还有外国势力对其统治地位的影响。恐怕在国与国之间消除隔阂之前，饥饿问题无法得以高效解决了。我不认为太空计划能一夜之间创造奇迹，然而，探索宇宙有助于促使问题向着良好的方向发展。</p>
-<p>以最近发生的阿波罗13号事故为例。当宇航员处于关键的大气层再入期时，为了保证通讯畅通，苏联关闭了境内与阿波罗飞船所用频带相同的所有广播通信。同时派出舰艇到太平洋和大西洋海域以备第一时间进行搜救工作。如果宇航员的救生舱降落到俄方舰船附近，俄方人员会像对待从太空返回的本国宇航员一样对他们进行救助。同样，如果俄方的宇宙飞船遇到了类似的紧急情况，美国也一定会毫不犹豫地提供援助。 </p>
-<p>通过卫星进行监测与分析来提高食品产量，以及通过改善国际关系提高食品发放的效率，只是通过太空项目提高人类生活质量的两个方面。下面我想介绍另外两个重要作用：促进科学技术的发展和提高一代人的科学素养。</p>
-<p>登月工程需要历史上前所未有的高精度和高可靠性。面对如此严苛的要求，我们要寻找新材料，新方法；开发出更好的工程系统；用更可靠的制作流程；让仪器的工作寿命更长久；甚至需要探索全新的自然规律。</p>
-<p>这些为登月发明的新技术同样可以用于地面上的工程项目。每年，都有大概一千项从太空项目中发展出来的新技术被用于日常生活中，这些技术打造出更好的厨房用具和农场设备，更好的缝纫机和收音机，更好的轮船和飞机，更精确的天气预报和风暴预警，更好的通讯设施，更好的医疗设备，乃至更好的日常小工具。你可能会问为什么先设计出宇航员登月舱的维生系统，而不是先为听力障碍患者造出有声阅读设备呢。答案很简单：解决工程问题时，重要的技术突破往往并不是按部就班直接得到的，而是来自能够激发出强大创新精神，能够燃起的想象力和坚定的行动力，以及能够整合好所有资源的充满挑战的目标。</p>
-<p>太空旅行无可置疑地是一项充满挑战的事业。通往火星的航行并不能直接提供食物解决饥荒问题。然而，它所带来大量的新技术和新方法可以用在火星项目之外，这将产生数倍于原始花费的收益。若希望人类生活得越来越好，除了需要新的技术，我们还需要基础科学不断有新的进展。包括物理学和化学，生物学和生理学，特别是医学，用来照看人类的健康，应对饥饿、疾病、食物和水的污染以及环境污染等问题。</p>
-<p>我们需要更多的年轻人投入到科学事业中来，我们需要给予那些投身科研事业的有天分的科学家更多的帮助。随时要有富于挑战的研究项目，同时要保证对项目给予充分的资源支持。在此我要重申，太空项目是科技进步的催化剂，它为学术研究工作提供了绝佳和实践机会，包括对月球和其他行星的眼睛、物理学和天文学、生物学和医学科学等学科，有它，科学界源源不断出现令人激动不已研究课题，人类得以窥见宇宙无比瑰丽的景象；为了它，新技术新方法不断涌现。</p>
-<p>由美国政府控制并提供资金支持的所有活动中，太空项目无疑最引人瞩目也最容易引起争议，尽管其仅占全部预算的1.6%，不到全民生产总值的千分之三。作为新技术的驱动者和催化剂，太空项目开展了多项基础科学的研究，它的地位注定不同于其他活动。从某种意义上来说，以太空项目的对社会的影响，其地位相当于3-4千年前的战争活动。</p>
-<p>如果国家之间不再比拼轰炸机和远程导弹，取而代之比拼月球飞船的性能，那将避免多少战乱之苦！聪慧的胜利者将满怀希望，失败者也不用饱尝痛苦，不再埋下仇恨的种子，不再带来复仇的战争。</p>
-<p>尽管我们开展的太空项目研究的东西离地球很遥远，已经将人类的视野延伸至月亮、至太阳、至星球、直至那遥远的星辰，但天文学家对地球的关注，超过以上所有天外之物。太空项目带来的不仅有那些新技术所所提供的生活品质的提升，随着对宇宙研究的深入，我们对地球，对生命，对人类自身的感激之情将越深。太空探索让地球更美好。</p>
-
-          
+          123456789101112&lt;?phpclass SimpleClass&#123;    // property declaration    public $var = 'a default value';    // method declaration    public funct
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/09/cjftlwsr3002537rdk8z8y8ak/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -572,7 +406,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -596,9 +430,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-08T00:00:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-08T00:00:00+08:00">
                 2018-04-08
               </time>
             
@@ -617,7 +451,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -660,155 +494,165 @@
       
         
           
-            <p>平时比较常用的时间、字符串、时间戳之间的互相转换，虽然常用但是几乎每次使用时候都喜欢去搜索一下用法；本文将作为一个笔记，整理一下三者之间的 转换（即：date转字符串、date转时间戳、字符串转date、字符串转时间戳、时间戳转date，时间戳转字符串）用法，方便日后查看；</p>
-<h2 id="涉及的函数"><a href="#涉及的函数" class="headerlink" title="涉及的函数"></a>涉及的函数</h2><p>date_format(date, format) 函数MySQL日期格式化函数date_format()</p>
-<p>str_to_date(str, format) 函数 把字符串转换为日期</p>
-<p>from_unixtime(unix_timestamp, format) 函数，MySQL时间戳格式化函数from_unixtime</p>
-<h2 id="时间转换"><a href="#时间转换" class="headerlink" title="时间转换"></a>时间转换</h2><h3 id="时间转字符串"><a href="#时间转字符串" class="headerlink" title="时间转字符串"></a>时间转字符串</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select date_format(now(), '%Y-%m-%d');   #结果：2016-01-05</div></pre></td></tr></table></figure>
-<h3 id="时间转时间戳"><a href="#时间转时间戳" class="headerlink" title="时间转时间戳"></a>时间转时间戳</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select unix_timestamp(now());  #结果：1452001082</div></pre></td></tr></table></figure>
-<h3 id="字符串转时间"><a href="#字符串转时间" class="headerlink" title="字符串转时间"></a>字符串转时间</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select str_to_date('2016-01-02', '%Y-%m-%d %H');  #结果：2016-01-02 00:00:00</div></pre></td></tr></table></figure>
-<h3 id="字符串转时间戳"><a href="#字符串转时间戳" class="headerlink" title="字符串转时间戳"></a>字符串转时间戳</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select unix_timestamp('2016-01-02');  #结果：1451664000</div></pre></td></tr></table></figure>
-<h3 id="时间戳转时间"><a href="#时间戳转时间" class="headerlink" title="时间戳转时间"></a>时间戳转时间</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select from_unixtime(1451997924);  #结果：2016-01-05 20:45:24</div></pre></td></tr></table></figure>
-<h3 id="时间戳转字符串"><a href="#时间戳转字符串" class="headerlink" title="时间戳转字符串"></a>时间戳转字符串</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select from_unixtime(1451997924,'%Y-%d');  #结果：2016-01-05 20:45:24</div></pre></td></tr></table></figure>
-<h2 id="附表"><a href="#附表" class="headerlink" title="附表"></a>附表</h2><p>MySQL日期格式化（format）取值范围。</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>值</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>秒</td>
-<td>%S、%s</td>
-<td>两位数字形式的秒（ 00,01, …, 59）</td>
-</tr>
-<tr>
-<td>分</td>
-<td>%I、%i</td>
-<td>两位数字形式的分（ 00,01, …, 59）</td>
-</tr>
-<tr>
-<td>小时</td>
-<td>%H</td>
-<td>24小时制，两位数形式小时（00,01, …,23）</td>
-</tr>
-<tr>
-<td>%h</td>
-<td>12小时制，两位数形式小时（00,01, …,12）</td>
-<td></td>
-</tr>
-<tr>
-<td>%k</td>
-<td>24小时制，数形式小时（0,1, …,23）</td>
-<td></td>
-</tr>
-<tr>
-<td>%l</td>
-<td>12小时制，数形式小时（0,1, …,12）</td>
-<td></td>
-</tr>
-<tr>
-<td>%T</td>
-<td>24小时制，时间形式（HH:mm:ss）</td>
-<td></td>
-</tr>
-<tr>
-<td>%r</td>
-<td>12小时制，时间形式（hh:mm:ss AM 或 PM）</td>
-<td></td>
-</tr>
-<tr>
-<td>%p</td>
-<td>AM上午或PM下午</td>
-<td></td>
-</tr>
-<tr>
-<td>周</td>
-<td>%W</td>
-<td>一周中每一天的名称（Sunday,Monday, …,Saturday）</td>
-</tr>
-<tr>
-<td>%a</td>
-<td>一周中每一天名称的缩写（Sun,Mon, …,Sat）</td>
-<td></td>
-</tr>
-<tr>
-<td>%w</td>
-<td>以数字形式标识周（0=Sunday,1=Monday, …,6=Saturday）</td>
-<td></td>
-</tr>
-<tr>
-<td>%U</td>
-<td>数字表示周数，星期天为周中第一天</td>
-<td></td>
-</tr>
-<tr>
-<td>%u</td>
-<td>数字表示周数，星期一为周中第一天</td>
-<td></td>
-</tr>
-<tr>
-<td>天</td>
-<td>%d</td>
-<td>两位数字表示月中天数（01,02, …,31）</td>
-</tr>
-<tr>
-<td>%e</td>
-<td>数字表示月中天数（1,2, …,31）</td>
-<td></td>
-</tr>
-<tr>
-<td>%D</td>
-<td>英文后缀表示月中天数（1st,2nd,3rd …）</td>
-<td></td>
-</tr>
-<tr>
-<td>%j</td>
-<td>以三位数字表示年中天数（001,002, …,366）</td>
-<td></td>
-</tr>
-<tr>
-<td>月</td>
-<td>%M</td>
-<td>英文月名（January,February, …,December）</td>
-</tr>
-<tr>
-<td>%b</td>
-<td>英文缩写月名（Jan,Feb, …,Dec）</td>
-<td></td>
-</tr>
-<tr>
-<td>%m</td>
-<td>两位数字表示月份（01,02, …,12）</td>
-<td></td>
-</tr>
-<tr>
-<td>%c</td>
-<td>数字表示月份（1,2, …,12）</td>
-<td></td>
-</tr>
-<tr>
-<td>年</td>
-<td>%Y</td>
-<td>四位数字表示的年份（2015,2016…）</td>
-</tr>
-<tr>
-<td>%y</td>
-<td>两位数字表示的年份（15,16…）</td>
-<td></td>
-</tr>
-<tr>
-<td>文字输出</td>
-<td>%文字</td>
-<td>直接输出文字内容</td>
-</tr>
-</tbody>
-</table>
+          平时比较常用的时间、字符串、时间戳之间的互相转换，虽然常用但是几乎每次使用时候都喜欢去搜索一下用法；本文将作为一个笔记，整理一下三者之间的 转换（即：date转字符串、date转时间戳、字符串转date、字符串转时间戳、时间戳转date，时间戳转字符串）用法，方便日后查看；
+涉及的函数date_fo
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/08/1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/04/08/3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Maksim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maksim's Website">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/08/3/" itemprop="url">美国航空航天局科学家给赞比亚修女的一封信</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-08T00:00:00+08:00">
+                2018-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          背景： 1970年，赞比亚修女玛丽·尤肯达给美国航空航天局科学家恩斯特·施图林格博士问道：目前地球上还有这么多小孩子吃不上饭，他怎么能舍得为远在火星的项目花费数十亿美元。
+1970年，赞比亚修女玛丽·尤肯达（Mary Jucunda）给恩斯特·施图林格（Ernst Stuhlinger）博士写了一封
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/08/3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -860,7 +704,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -884,9 +728,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-08T00:00:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-08T00:00:00+08:00">
                 2018-04-08
               </time>
             
@@ -905,7 +749,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -948,162 +792,14 @@
       
         
           
-            <p>写作需要明确目标、确定读者、用头脑风暴总结出中心思想、组织内容、写初稿以及修改。但在大多数写作课上，这些步骤以现行的方式展现的，像这样：</p>
-<p>目标 → 读者 → 头脑风暴 → 组织 → 写初稿 → 修改</p>
-<p>从理论上讲，按照这个顺序操作，你就能得到一篇组织得当、逻辑严谨的完美稿件。这个方法对一部分人是有用的，但是如果你和大多数人一样，那么他可能就不适合你。在现实生活中，大部分都不是线性思维的写作者。</p>
-<p>这六个步骤没错，错的是这个强制性的顺序。当遵循渐进编程了因循守旧，它可能会阻碍你写作能力的发挥。</p>
-<p>你可以以这个步骤中任意一步作为起点，头脑风暴、提纲或者是写初稿。</p>
-<h2 id="明确目标"><a href="#明确目标" class="headerlink" title="明确目标"></a>明确目标</h2><p>当要写作时，首先我们要确定自己的目标是什么，你希望达到什么目的。</p>
-<p>仔细思考写作目的能帮你搞清楚该说什么，以及怎么说。又去的是，这样一来你的读者也会更加轻松，如果你也有过收到大量简历的经理，你就会知道一封周到、工整且有针对性的求职信会让你干到多么轻松。</p>
-<h2 id="了解你的读者"><a href="#了解你的读者" class="headerlink" title="了解你的读者"></a>了解你的读者</h2><p>除了私人日记之外，所有的作品都是有读者的，你的作品需要指向这些特定的读者。</p>
-<p>站在读者的角度进行思考，有两个关键问题：</p>
-<ul>
-<li>信息</li>
-<li>态度</li>
-</ul>
-<p>选择信息的黄金法则是：<strong>要有足量的有效信息，让你的读者行动起来。</strong></p>
-<p>了解读者潜在的态度也是成功的关键。</p>
-<ul>
-<li>你的读者会有什么样的反应？</li>
-<li>他们很容易接受你的信息吗?</li>
-<li>还是会有抵触情绪？</li>
-<li>他们是否怀有敌意。</li>
-</ul>
-<blockquote>
-<p>笔者说：</p>
-<p>在这里，可以读《美国航空航天局科学家给赞比亚修女的一封信》，这是一封大师级的回信。</p>
-</blockquote>
-<h2 id="用他头脑风暴锁定你想表达的内容"><a href="#用他头脑风暴锁定你想表达的内容" class="headerlink" title="用他头脑风暴锁定你想表达的内容"></a>用他头脑风暴锁定你想表达的内容</h2><p>头脑风暴有一些规则。如果你在学校或者工作的地方参加过头脑风暴式的讨论，那么你很可能看到过这些规则：</p>
-<ol>
-<li>相处的点子越多越好。如果你能把注意力放在数量而非质量上，那么提出有用的点子概率就会更大，点子都多多益善。</li>
-<li>不要审查，不要评论。头脑风暴时，让你的思绪自由发散。这并不是对点子进行评论的时候，不要说这个点子不太好，那个点子不合适。把脑袋里评论的声音关掉，把所有想到的东西都写出来。你可以之后再删除。</li>
-<li>接受不同寻常的想法。不要考虑你的想法靠不靠谱。你的这些想法可能完全超出预料，但它们当中可能会有一个非常有用，或至少能为你的思考指引方向的点子。充分发挥自己的想象力。</li>
-<li>合并改进你的点子。如果你任由思绪自由发散，那么点子很可能会有一些重合。观察它们的相似之处，并加以合并调整。</li>
-</ol>
-<p>当写完初稿后，发现内容不够完整，不够有说服力时候甚至可以重新进行头脑风暴。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/04/03/cjftk4kcu005hrlrd7drnzlay/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Maksim">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Maksim's Website">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/03/cjftk4kcu005hrlrd7drnzlay/" itemprop="url">一个新的开始</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-03T22:53:43+08:00">
-                2018-04-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>人生又要开启新的篇章了，而我也将重头开始，接触网络文学也有五六年了，断断续续的也算是写了很多东西，但都无疾而终了，可能是那几分钟的热度退去了，仔细回想倒是感觉真的欠缺了自己很多东西，说起来也是蛮遗憾的，为了不让我的青春有遗憾，我做了很多事情，唯独欠缺的可能就是曾经在上大学前许下的承诺，在大学毕业的时候写一本完本的小说。</p>
+          写作需要明确目标、确定读者、用头脑风暴总结出中心思想、组织内容、写初稿以及修改。但在大多数写作课上，这些步骤以现行的方式展现的，像这样：
+目标 → 读者 → 头脑风暴 → 组织 → 写初稿 → 修改
+从理论上讲，按照这个顺序操作，你就能得到一篇组织得当、逻辑严谨的完美稿件。这个方法对一部分人是有用的
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/04/03/cjftk4kcu005hrlrd7drnzlay/#more" rel="contents">
-              Weiterlesen &raquo;
+            <a class="btn" href="/2018/04/08/2/#more" rel="contents">
+              阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1153,12 +849,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/04/03/cjftk4kd3005qrlrdo1l17e06/">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/04/03/cjftlwsub005r37rds8bvolno/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1172,7 +868,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/03/cjftk4kd3005qrlrdo1l17e06/" itemprop="url">Unbenannt</a></h1>
+                <a class="post-title-link" href="/2018/04/03/cjftlwsub005r37rds8bvolno/" itemprop="url">一个新的开始</a></h1>
         
 
         <div class="post-meta">
@@ -1182,9 +878,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-03T22:53:43+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-03T22:53:43+08:00">
                 2018-04-03
               </time>
             
@@ -1223,20 +919,14 @@
 
       
         
-          
-            <h1 id="业务评估"><a href="#业务评估" class="headerlink" title="业务评估"></a>业务评估</h1><h2 id="业务需求"><a href="#业务需求" class="headerlink" title="业务需求"></a>业务需求</h2><ul>
-<li>响应时间（request time）</li>
-<li>数据总量</li>
-<li>每秒请求量</li>
-<li>读写比</li>
-<li>重要程度</li>
-</ul>
-<p><strong>响应时间</strong>是与整个数据库的状态有关，不仅与CPU、数据总量、每秒请求量、读写比以及各种场景都是有关系的。所以说相应时间是一个综合指标。</p>
-<p>对于DBA来说最关心的就是业务的相应时间能不能够满足，在满足的情况下再去优化以下的这些点，才是有意义的。</p>
-<p>数据总量往往需要业务方提供一个一到两年的数据总量，这是因为如果没有数据总量，前期是没有办法规划我们的数据库实例的。当然也有很多的不确定因素，比如互联网行业，比如有的业务会爆发性的增长，这些规划可能是不合理的，但是在我们也要有一个大概的评估，因为这是前期资源申请和资源分配的策略。</p>
-<p>每秒请求量</p>
-
-          
+          <p>人生又要开启新的篇章了，而我也将重头开始，接触网络文学也有五六年了，断断续续的也算是写了很多东西，但都无疾而终了，可能是那几分钟的热度退去了，仔细回想倒是感觉真的欠缺了自己很多东西，说起来也是蛮遗憾的，为了不让我的青春有遗憾，我做了很多事情，唯独欠缺的可能就是曾经在上大学前许下的承诺，在大学毕业的时候写一本完本的小说。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/03/cjftlwsub005r37rds8bvolno/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1283,12 +973,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/04/03/cjftk4kd5005srlrdghq72xzr/">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/04/03/cjftlwsue005y37rdxb6w93fj/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1302,7 +992,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/03/cjftk4kd5005srlrdghq72xzr/" itemprop="url">使用Object.defineProperty()模拟双向数据绑定</a></h1>
+                <a class="post-title-link" href="/2018/04/03/cjftlwsue005y37rdxb6w93fj/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -1312,9 +1002,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-03T22:53:43+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-03T22:53:43+08:00">
                 2018-04-03
               </time>
             
@@ -1354,12 +1044,23 @@
       
         
           
-            <p>对象是由多键值对组成的无序集合，对象中的每个属性对应任意类型的值。定义对象可以使用构造函数或字面量的形式。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>(); <span class="comment">//obj = &#123;&#125;</span></div><div class="line">obj.name = <span class="string">'Maksim'</span>;     <span class="comment">//添加属性</span></div><div class="line">obj.say = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;; <span class="comment">//添加方法</span></div></pre></td></tr></table></figure>
-<p>为对象添加属性我们还可以使用 Object.defineProperty 定义和修改属性。</p>
-<p>语法：<code>Object.defineProperty(obj, prop, descriptor)</code></p>
+          业务评估业务需求
+响应时间（request time）
+数据总量
+每秒请求量
+读写比
+重要程度
 
-          
+响应时间是与整个数据库的状态有关，不仅与CPU、数据总量、每秒请求量、读写比以及各种场景都是有关系的。所以说相应时间是一个综合指标。
+对于DBA来说最关心的就是业务的相应时间能不能够满足，在满足的情况下
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/03/cjftlwsue005y37rdxb6w93fj/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1406,12 +1107,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/04/03/cjftk4kbn003qrlrdcidci981/">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/04/03/cjftlwsuf006037rdcotsfgez/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1425,7 +1126,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/03/cjftk4kbn003qrlrdcidci981/" itemprop="url">PHP基础手札的引用</a></h1>
+                <a class="post-title-link" href="/2018/04/03/cjftlwsuf006037rdcotsfgez/" itemprop="url">使用Object.defineProperty()模拟双向数据绑定</a></h1>
         
 
         <div class="post-meta">
@@ -1435,9 +1136,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-03T22:53:43+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-03T22:53:43+08:00">
                 2018-04-03
               </time>
             
@@ -1477,10 +1178,16 @@
       
         
           
-            <p>在 C 或C++里，我们都知道有“指针”的概念，它是一个指向内存地址的变量，这也是被称为指针的原因。C++的指针在内部，对于开发者来说不可见，它的特点是可直接访问到需要的内容，速度更快。</p>
-<p>PHP 的指针域这些语言机制相同，即可以用一个变量</p>
-
-          
+          对象是由多键值对组成的无序集合，对象中的每个属性对应任意类型的值。定义对象可以使用构造函数或字面量的形式。
+123var obj = new Object(); //obj = &#123;&#125;obj.name = 'Maksim';     //添加属性obj.say = function
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/03/cjftlwsuf006037rdcotsfgez/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1527,12 +1234,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/04/03/cjftk4kbv0044rlrdzp5380md/">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/04/03/cjftlwst7003v37rdumim5dx4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1546,7 +1253,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/03/cjftk4kbv0044rlrdzp5380md/" itemprop="url">PHP页面静态化</a></h1>
+                <a class="post-title-link" href="/2018/04/03/cjftlwst7003v37rdumim5dx4/" itemprop="url">PHP基础手札的引用</a></h1>
         
 
         <div class="post-meta">
@@ -1556,9 +1263,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-03T22:53:43+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-03T22:53:43+08:00">
                 2018-04-03
               </time>
             
@@ -1598,30 +1305,17 @@
       
         
           
-            <h1 id="关于页面"><a href="#关于页面" class="headerlink" title="关于页面"></a>关于页面</h1><p>要了解静态化页面，首先我们就要知道什么是页面？</p>
-<p>一、静态web页面：</p>
-<p>1、在静态Web程序中，客户端使用Web浏览器（IE、FireFox等）经过网络(Network)连接到服务器上，使用HTTP协议发起一个请求（Request），告诉服务器我现在需要得到哪个页面，所有的请求交给Web服务器，之后WEB服务器根据用户的需要，从文件系统（存放了所有静态页面的磁盘）取出内容。之后通过Web服务器返回给客户端，客户端接收到内容之后经过浏览器渲染解析，得到显示的效果。</p>
-<p>2、为了让静态web页面显示更加好看，使用javascript／VBScript／ajax（AJAX即“Asynchronous Javascript And XML”（异步JavaScript和XML），是指一种创建交互式网页应用的网页开发技术。）但是这些特效都是在客户端上借助于浏览器展现给用户的，所以在服务器上本身并没有任何的变化。</p>
-<p>3、静态web无法连接数据库；</p>
-<p>4、静态web资源开发技术：HTML；</p>
-<p>5、由于现在的web页面中，大量使用JS，导致浏览器打开页面，就会占用大量的内存，服务端的压力是减轻了，但压力转移到了客户端。</p>
-<p>二、动态web页面：</p>
-<p>动态WEB中，程序依然使用客户端和服务端，客户端依然使用浏览器（IE、FireFox等），通过网络(Network)连接到服务器上，使用HTTP协议发起请求（Request），现在的所有请求都先经过一个WEB Server来处理。</p>
-<p>如果客户端请求的是静态资源(<em>.htm或者是</em>.htm)，则将请求直接转交给WEB服务器，之后WEB服务器从文件系统中取出内容，发送回客户端浏览器进行解析执行。</p>
-<p>如果客户端请求的是动态资源（<em>.jsp、</em>.asp/<em>.aspx、</em>.php），则先将请求转交给WEB Container(WEB容器)，在WEB Container中连接数据库，从数据库中取出数据等一系列操作后动态拼凑页面的展示内容，拼凑页面的展示内容后，把所有的展示内容交给WEB服务器，之后通过WEB服务器将内容发送回客户端浏览器进行解析执行。</p>
-<p>#静态化</p>
-<p>PHP静态化分为：纯静态化 和 伪静态化；纯静态化又分为：局部静态化 和 完全静态化</p>
-<p>纯静态化：是把PHP生成的动态页面保存成静态的html文件，用户访问该静态页面，而不是用户每一次访问都重新生成一张相同的网页，优点就是减小服务器开销，</p>
-<ul>
-<li>局部静态化：是生成的静态文件中，有局部的数据还是通过ajax技术动态获取的；</li>
-<li>完全静态化：即不存在动态获取数据的情况，所以内容都来自静态的html页面</li>
-</ul>
-<p>伪静态化：其实还是动态访问，其实质是动态生成数据，你访问的网址类似于”<a href="http://yourhost,com/index/post/12&quot;,是一个静态地址，该地址多见于博客地址，但伪静态化中，你访问的网址实际上经过服务器解析，还是会解析成类似于&quot;http://yourhost,com/?c=index&amp;a=post&amp;id=12&quot;的地址，所以称之为伪静态化" target="_blank" rel="noopener">http://yourhost,com/index/post/12&quot;,是一个静态地址，该地址多见于博客地址，但伪静态化中，你访问的网址实际上经过服务器解析，还是会解析成类似于&quot;http://yourhost,com/?c=index&amp;a=post&amp;id=12&quot;的地址，所以称之为伪静态化</a></p>
-<p>　　伪静态的优点：美观；便于搜索引擎收录</p>
-<p>buffer 概括</p>
-<p>buffer 其实就是缓冲区，一个内存地址空间，主要是用于存储数据的区域。</p>
+          在 C 或C++里，我们都知道有“指针”的概念，它是一个指向内存地址的变量，这也是被称为指针的原因。C++的指针在内部，对于开发者来说不可见，它的特点是可直接访问到需要的内容，速度更快。
+PHP 的指针域这些语言机制相同，即可以用一个变量
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/03/cjftlwst7003v37rdumim5dx4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1668,12 +1362,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/04/03/cjftk4kb3002prlrd3l4p247b/">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/04/03/cjftlwstf004737rdwckjscxw/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1687,7 +1381,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/03/cjftk4kb3002prlrd3l4p247b/" itemprop="url">Unbenannt</a></h1>
+                <a class="post-title-link" href="/2018/04/03/cjftlwstf004737rdwckjscxw/" itemprop="url">PHP页面静态化</a></h1>
         
 
         <div class="post-meta">
@@ -1697,9 +1391,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-03T22:53:43+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-03T22:53:43+08:00">
                 2018-04-03
               </time>
             
@@ -1739,26 +1433,144 @@
       
         
           
-            <h1 id="MySQL常用存储引擎之Innodb"><a href="#MySQL常用存储引擎之Innodb" class="headerlink" title="MySQL常用存储引擎之Innodb"></a>MySQL常用存储引擎之Innodb</h1><p>Mysql5.5(5.58)及之后的版本默认的存储引擎由 MyISAM 引擎替换为 Innodb。</p>
-<p>和 MyISAM 存储引擎不同，InnoDB是事务型引擎，也是最重要、使用最广泛的存储引擎。它被设计用来处理大量的短期（short-lived）事务，短期事务大部分情况下是正常提交的，很少会被回滚。InnoDB 的性能和自动崩溃恢复特性，使得它在非实物型存储的需求中也很六星。除非有非常特别的原因需要使用其他的存储引擎，否则应该优先考虑 innoDB 引擎。</p>
-<p>特点：</p>
-<ul>
-<li>灾难恢复性好</li>
-<li>支持全部四种级别的事务。默认的事务隔离级别是可重复度（Repeatable Read），它的事务支持通过多版本并发控制（MVVC）来提供的</li>
-<li>使用行级锁</li>
-<li>对于 InnoDB 引擎的表，其数据的物理组织形式是簇表（Cluster Table），数据按主键来组织，也就是说主键索引和数据是在一起的，数据主键的顺序物理分布。数据表的另一种常见形式是非簇表，其索引是有序的，而数据时无序的</li>
-<li>实现了缓冲管理，不仅能缓冲索引也能缓冲数据，并且会自动创建散列索引以加快数据的读取。相比之下，MyISAM 只是缓存了索引</li>
-<li>支持外键</li>
-<li>支持热备份</li>
-</ul>
-<p>Innodb 拥有表空间的概念，表中的数据时存储在表空间之中的，具体存储在什么样的表空间之中则由<code>innodb_file_per_table</code>这个参数决定。</p>
-<p>如果值为 <code>ON</code>,会为每个 innodb 表建立一个<code>tablename.ibd</code>的系统文件，如果该参数为<code>OFF</code>时会把数据存储到系统的表空间<code>ibdataX</code></p>
-<p>引用</p>
-<p>《打造扛得住的 MySQL》 慕课网</p>
-<p>《高性能 MySQL》</p>
-<p>《My》</p>
+          关于页面要了解静态化页面，首先我们就要知道什么是页面？
+一、静态web页面：
+1、在静态Web程序中，客户端使用Web浏览器（IE、FireFox等）经过网络(Network)连接到服务器上，使用HTTP协议发起一个请求（Request），告诉服务器我现在需要得到哪个页面，所有的请求交给Web服务器
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/03/cjftlwstf004737rdwckjscxw/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/04/03/cjftlwssb002x37rd2unnljw7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Maksim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maksim's Website">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/03/cjftlwssb002x37rd2unnljw7/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-03T22:53:43+08:00">
+                2018-04-03
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          MySQL常用存储引擎之InnodbMysql5.5(5.58)及之后的版本默认的存储引擎由 MyISAM 引擎替换为 Innodb。
+和 MyISAM 存储引擎不同，InnoDB是事务型引擎，也是最重要、使用最广泛的存储引擎。它被设计用来处理大量的短期（short-lived）事务，短期事务大部分
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/03/cjftlwssb002x37rd2unnljw7/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1831,6 +1643,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="http://ogxeww23n.bkt.clouddn.com/timg.jpeg"
+                alt="Maksim" />
+            
               <p class="site-author-name" itemprop="name">Maksim</p>
               <p class="site-description motion-element" itemprop="description">Maksim's Website，分享成长的点点滴滴，关注PHP、JavaScript、Linux、C/C++、Go、SQL、MySQL、Redis、iOS、安卓开发，努力做一个值得收藏的博客。</p>
           </div>
@@ -1843,7 +1659,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">90</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
@@ -1852,10 +1668,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">14</span>
-                  <span class="site-state-item-name">Kategorien</span>
-                
+                  <span class="site-state-item-name">分类</span>
+                </a>
               </div>
             
 
@@ -1863,10 +1679,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">22</span>
-                  <span class="site-state-item-name">Tags</span>
-                
+                  <span class="site-state-item-name">标签</span>
+                </a>
               </div>
             
 
@@ -1881,6 +1697,22 @@
             </div>
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/aircrayon" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aircrayon@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -1908,7 +1740,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1918,7 +1750,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -1926,7 +1758,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
@@ -2025,6 +1857,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
 

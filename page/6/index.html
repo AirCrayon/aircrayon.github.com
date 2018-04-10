@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -88,7 +88,7 @@
 <meta property="og:url" content="http://www.maksim.website/page/6/index.html">
 <meta property="og:site_name" content="Maksim&#39;s Website">
 <meta property="og:description" content="Maksim&apos;s Website，分享成长的点点滴滴，关注PHP、JavaScript、Linux、C/C++、Go、SQL、MySQL、Redis、iOS、安卓开发，努力做一个值得收藏的博客。">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maksim&#39;s Website">
 <meta name="twitter:description" content="Maksim&apos;s Website，分享成长的点点滴滴，关注PHP、JavaScript、Linux、C/C++、Go、SQL、MySQL、Redis、iOS、安卓开发，努力做一个值得收藏的博客。">
@@ -99,7 +99,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -107,7 +107,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -139,7 +139,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -188,7 +188,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            首页
           </a>
         </li>
       
@@ -198,7 +198,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            Über
+            关于
           </a>
         </li>
       
@@ -208,7 +208,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
@@ -218,7 +218,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Kategorien
+            分类
           </a>
         </li>
       
@@ -228,7 +228,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            归档
           </a>
         </li>
       
@@ -238,7 +238,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
             
-            Commonweal 404
+            公益404
           </a>
         </li>
       
@@ -280,7 +280,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -304,9 +304,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-05T08:04:12+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-05T08:04:12+08:00">
                 2017-08-05
               </time>
             
@@ -325,7 +325,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -368,44 +368,18 @@
       
         
           
-            <p>MySQL 李的变量可分为用户变量和系统变量</p>
-<p><strong>1. 用户变量</strong></p>
-<p>MySQL允许用户在语句中自定义变量，对于用户变量的值，可以先保存在用户变量中，然后在引用它；这样就可以将值从一个语句传到另外一个语句。</p>
-<p>用户变量与连接有关。一个客户端定义的变量不能被其他客户端看到货使用。当客户端退出时，该客户端连接的所有变量将自动释放。这点不同于在函数或存储过程中通过 <code>DECLAER</code> 药监局声明的局部变量，局部变量的生存周期在它被声明的“<code>BEGIN...END</code>”块内。</p>
-<p>用户变量的表现形式为：@var_name</p>
-<p>设置用户变量的一个途径是执行 SET 语句，语法如下：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SET</span> @var_name= expr[, @var_name= expr] ...</div></pre></td></tr></table></figure>
-<p>对于SET，可以使用“=”或“:=”作为分配符。分配给每个变量的expr可以为整数、实数、字符串或NULL值。如:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SET @t1=0, @t2=0, @t3=0;</div></pre></td></tr></table></figure>
-<p>或</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SET</span> @minMid=(<span class="keyword">select</span> <span class="keyword">min</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> table_name) ;</div></pre></td></tr></table></figure>
-<p><strong>2.系统变量</strong></p>
-<p>MySQL服务器维护着两种系统变量:</p>
-<ul>
-<li>全局变量影响MySQL服务的整体运行方式</li>
-<li>会话变量影响具体客户端连接的操作</li>
-</ul>
-<p>当服务器启动时，它将所有全局变量初始化为默认值。这些默认值可以在选项文件中或在命令行中对指定的选项进行更改。服务器启动后，通过连接服务器并执行<code>SET</code> <code>GLOBAL var_name</code>语句，可以动态更改这些全局变量。要想更改全局变量，必须具有<code>SUPER</code>权限。</p>
-<p>服务器还为每个连接的客户端维护一系列的会话变量。在连接时使用相应全局变量的当前值对客户端的会话变量进行初始化。对于动态会话变量，客户端可以通过<code>SET SESSION var_name</code>语句更改它们。设置会话变量不需要特殊权限，但客户端只能更改自己的会话变量，而不能更改其他客户端的会话变量。</p>
-<p>访问全局变量的任何客户端都可以看见对全局变量所做的更改。然而，它只影响更改后连接的客户的相应会话变量，而不会影响目前已经连接的客户端的会话变量(即使客户端执行<code>SET GLOBAL</code>语句也不影响)。</p>
-<p>也就是说，如果你的连接是短连接，那么修改全局变量后，客户端有重连的操作，就会立刻影响到客户端。而对于长连接、连接池来说，连接可能一直在MySQL里没有被销毁，也就不会有重连的操作，所以这种情况下对全局变量的修改一般不会影响到客户端。</p>
-<p>可以使用如下几种语法形式来设置或检索全局变量或会话变量(下面的例子使用<code>sort_buffer_size</code>作为示例变量名)。</p>
-<p>要想设置一个<code>GLOBAL</code>变量的值，可使用下面的语法。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SET GLOBAL sort_buffer_size=value; </div><div class="line">mysql&gt; SET @@global.sort_buffer_size=value;</div></pre></td></tr></table></figure>
-<p>要想设置一个SESSION变量的值，可使用下面的语法。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SET SESSION sort_buffer_size=value; </div><div class="line">mysql&gt; SET @@session.sort_buffer_size=value; </div><div class="line">mysql&gt; SET sort_buffer_size=value;</div></pre></td></tr></table></figure>
-<p>如果设置变量时不指定<code>GLOBAL</code>、<code>SESSION</code>或<code>LOCAL</code>，则默认使用<code>SESSION</code>。</p>
-<p>要想检索一个<code>GLOBAL</code>变量的值，可使用下面的语法。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT @@global.sort_buffer_size;</div><div class="line">mysql&gt; SHOW GLOBAL VARIABLES LIKE 'sort_buffer_size';</div></pre></td></tr></table></figure>
-<p>要想检索一个SESSION变量的值，可使用下面的语法。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT @@sort_buffer_size;</div><div class="line">mysql&gt; SELECT @@session.sort_buffer_size; mysql&gt; SHOW VARIABLES LIKE 'sort_buffer_size';</div></pre></td></tr></table></figure>
-<p>当用<code>SELECT@@var_name</code>搜索一个变量时(也就是说，不指定<code>GLOBAL</code>、<code>SESSION</code>)，MySQL会返回<code>SESSION</code>值(如果存在<code>SESSION</code>变量的话)，否则返回<code>GLOBAL</code>值。</p>
-<p>对于<code>SHOW VARIABLES</code>，如果不指定<code>GLOBAL</code>、<code>SESSION的</code>话，MySQL会返回SESSION值。</p>
-<p>引用</p>
-<p>《MySQLDBA 修炼之道》 作者：陈晓勇</p>
-<p><a href="https://dev.mysql.com/doc/refman/5.7/en/user-variables.html" target="_blank" rel="noopener">MySQL 官方文档 9.4 User-Defined Variables</a></p>
-
-          
+          MySQL 李的变量可分为用户变量和系统变量
+1. 用户变量
+MySQL允许用户在语句中自定义变量，对于用户变量的值，可以先保存在用户变量中，然后在引用它；这样就可以将值从一个语句传到另外一个语句。
+用户变量与连接有关。一个客户端定义的变量不能被其他客户端看到货使用。当客户端退出时，该客户端连接的所
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/05/602/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -457,7 +431,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -481,9 +455,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-04T21:04:12+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T21:04:12+08:00">
                 2017-08-04
               </time>
             
@@ -502,7 +476,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -545,18 +519,17 @@
       
         
           
-            <p>“数据库基础”可不是一件小事。问题是，有时人们认为他们知道的很多。</p>
-<p>例如，这个问题:什么是数据库?</p>
-<p>我敢说大多数的人相信他们知道这个问题的答案。但其中一部分人(或者很多)都会答错。SQL Server 不是数据库，它只是一种 DBMS(数据库管理系统)。你可以使用 SQL Server 来创建数据库，但 SQL Server 本身不是一种数据库。</p>
-<p>那么，什么是数据库?数据库是一种有组织的数据存储，其中的数据可以通过指定的数据元素(比如，字段、记录和文件)来访问(详见图 1-1)。</p>
-<p><img src="http://www.maksim.website/images/whatis.png" alt="数据库"></p>
-<p>数据库是一种有组织的数据存储，其中的数据可以通过指定的数据元素来访问。</p>
-<p>DBMS 是一种使终端用户或程序员能够共享数据的软件。它提供了一套操作数据库的系</p>
-<p>统性方法:创建、更新、检索和存储信息。DBMS 通常还负责数据完整性、数据安全性、数据访问控制和优化、自动回退、重起和恢复。</p>
-<p>对外行人来说，你可以把数据库想象成一个文件夹，把 DBMS 想象成文件柜，且所容纳的所有文件都贴有标签。DBMS 管理着数据库，通过 DBMS 来实现和访问数据库实例。所以说，DB2、Oracle 和 SQL Server 都是数据库管理系统。工资单应用使用工资单的数据库，该数据库可以使用 DB2、Oracle 或者 SQL Server 来实现。</p>
-<p>摘自DBA 《修炼之道：数据库管理员的第一本书》</p>
-
-          
+          “数据库基础”可不是一件小事。问题是，有时人们认为他们知道的很多。
+例如，这个问题:什么是数据库?
+我敢说大多数的人相信他们知道这个问题的答案。但其中一部分人(或者很多)都会答错。SQL Server 不是数据库，它只是一种 DBMS(数据库管理系统)。你可以使用 SQL Server 来创建数据库
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/04/601/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -608,7 +581,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -632,9 +605,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-04T13:01:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T13:01:00+08:00">
                 2017-08-04
               </time>
             
@@ -653,7 +626,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -696,24 +669,18 @@
       
         
           
-            <p>MySQL 权限控制包含如下两个阶段。</p>
-<p>阶段1： 服务器检测是否允许你链接。</p>
-<p>阶段2： 假定你能连接，服务器将检测你发出的每一个请求，查看你是否有足够的权限实施它。例如你从数据库表中选择（SELECT）行或从数据库中删除表，那么服务器要确定你是否对表有SELECT权限或对数据库有DROP权限。</p>
-<p>MySQL是通过用户名、密码、IP(主机名)3个要素来验证用户的。当你想要访问MySQL服务器时，MySQL客户端程序一 般会要求你指定如下参数。</p>
-<ul>
-<li>MySQL服务器的IP(主机名)，</li>
-<li>端口</li>
-<li>用户名</li>
-<li>密码 </li>
-</ul>
-<p>以下是连接MySQL服务器的一个示例，你需要以实际的IP、端口、用户名、密码代替相应的内容。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -h host_ip_address -u user_name -pyour_password -P server_port</div></pre></td></tr></table></figure>
-<p>一般在生产环境下，程序账号有增加、删除、查询、修改这4项功能即可。</p>
-<p>如下命令用于赋予查询、插入、修改、删除权限，并进行密码设置。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">grant</span> <span class="keyword">select</span>,<span class="keyword">insert</span>,<span class="keyword">update</span>,<span class="keyword">delete</span> <span class="keyword">on</span> db_name.* <span class="keyword">to</span> user_name@ <span class="string">'10.%'</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">'password'</span>;</div></pre></td></tr></table></figure>
-<p>如下命令用于回收上面所赋予的权限。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">revoke</span> <span class="keyword">select</span>,<span class="keyword">insert</span>,<span class="keyword">update</span>,<span class="keyword">delete</span> <span class="keyword">on</span> db_name.* <span class="keyword">from</span> user_name@ <span class="string">'10.%'</span>;</div></pre></td></tr></table></figure>
-          
+          MySQL 权限控制包含如下两个阶段。
+阶段1： 服务器检测是否允许你链接。
+阶段2： 假定你能连接，服务器将检测你发出的每一个请求，查看你是否有足够的权限实施它。例如你从数据库表中选择（SELECT）行或从数据库中删除表，那么服务器要确定你是否对表有SELECT权限或对数据库有DROP权限。
+My
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/04/600/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -760,12 +727,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2017/07/14/cjftk4kbi003irlrdcroc4mrv/">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2017/07/14/cjftlwssx003l37rd64o5u2g5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -779,7 +746,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/14/cjftk4kbi003irlrdcroc4mrv/" itemprop="url">PHP7 微信支付不能回调，让我们的团队损失1.00CNY。</a></h1>
+                <a class="post-title-link" href="/2017/07/14/cjftlwssx003l37rd64o5u2g5/" itemprop="url">PHP7 微信支付不能回调，让我们的团队损失1.00CNY。</a></h1>
         
 
         <div class="post-meta">
@@ -789,9 +756,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-14T14:15:20+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-14T14:15:20+08:00">
                 2017-07-14
               </time>
             
@@ -810,7 +777,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -853,30 +820,17 @@
       
         
           
-            <p>公司目前正在使用一套基于 TP5的开源商城，在线上测试过程中碰到了一个问题，微信支付完成后无法进行回调更新订单状态，简单点说就是钱没了，啥也没得到。</p>
-<p><code>What？</code>这可是一个无法容忍的错误。</p>
-<p>原本以为是微信支付配置环节出了问题，于是便去查看微信官网给出的帮助手册，又顺着流程走了一边，信心满满的又测试了一边，结果尴尬了，又损失了0.01人民币。</p>
-<p>反复确认流程后，确认并不是配置的问题，于是便开始了百度，原来这一切都是在微信官网给出的SDK中的一段代码惹的祸，就这么一段代码让我们团队损失了接近1人民币。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取通知的数据</span></div><div class="line">$xml = $GLOBALS[<span class="string">'HTTP_RAW_POST_DATA'</span>];  <span class="comment">//  WxPay.Api.php  414 line</span></div></pre></td></tr></table></figure>
-<p>这段代码如果放在PHP7之前的版本是不会有任何问题的，但是在 PHP7版本中却已经<strong>废除</strong>了 <code>HTTP\_RAW\_POST\_DATA</code>    。</p>
-<p>在官方文档中给了说明：</p>
-<blockquote>
-<p><strong>Warning</strong> This feature was DEPRECATED in PHP 5.6.0, and REMOVED as of PHP 7.0.0.</p>
-</blockquote>
-<p>在<code>PHP5.6.0</code>发布的时候，就已经不推荐只用这种方法，于是在PHP 社区在开发 PHP7.0的时候直接就将其废弃掉了。</p>
-<p>而官方也给出了替代的方案，那就是<code>php://input</code></p>
-<p><code>php://input</code> 是个可以访问请求的原始数据的只读流。 </p>
-<p><code>POST</code> 请求的情况下，最好使用 <code>php://input</code> 来代替 <code>$HTTP\_RAW\_POST\_DATA</code>，因为它不依赖于特定的<code>php.ini</code>指令。 </p>
-<p> 而且，这样的情况下 <code>$HTTP\_RAW\_POST\_DATA</code> 默认没有填充， 比激活 <code>always\_populate\_raw\_post\_data</code>潜在需要更少的内存。 <code>enctype=&quot;multipart/form-data&quot;</code> 的时候 <code>php://input</code> 是无效的。</p>
-<blockquote>
-<p><code>Note</code>: 在 PHP 5.6 之前 php://input 打开的数据流只能读取一次； 数据流不支持 seek 操作。 不过，依赖于 SAPI 的实现，请求体数据被保存的时候， 它可以打开另一个 php://input 数据流并重新读取。 通常情况下，这种情况只是针对 POST 请求，而不是其他请求方式，比如 PUT 或者 PROPFIND。 </p>
-</blockquote>
-<p>于是我将这段代码改为了：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取通知的数据</span></div><div class="line">$xml = file_get_contents(<span class="string">"php://input"</span>); <span class="comment">//  WxPay.Api.php  414 line</span></div></pre></td></tr></table></figure>
-<p>最后我又以0.01人民币的代价确认修复了这个 BUG。</p>
-<p><code>PHP7:&quot;怪我喽，让你经常看文档，哼！&quot;</code></p>
-
-          
+          公司目前正在使用一套基于 TP5的开源商城，在线上测试过程中碰到了一个问题，微信支付完成后无法进行回调更新订单状态，简单点说就是钱没了，啥也没得到。
+What？这可是一个无法容忍的错误。
+原本以为是微信支付配置环节出了问题，于是便去查看微信官网给出的帮助手册，又顺着流程走了一边，信心满满的又测试了一
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/14/cjftlwssx003l37rd64o5u2g5/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -928,7 +882,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -952,9 +906,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-14T00:00:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-14T00:00:00+08:00">
                 2017-07-14
               </time>
             
@@ -973,7 +927,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1016,247 +970,20 @@
       
         
           
-            <blockquote>
-<p>英文：kamranahmedse，</p>
-<p>编译：伯乐在线 - Justin_YGG</p>
-</blockquote>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>设计模式用于解决反复出现的问题，是解决特定问题的指导方针。设计模式不是在应用中引用的类、package 或者库，而是在某些特定场景下解决特定问题的指导方针。</p>
-<p>设计模式用于解决反复出现的问题，是解决某些特定问题的指导方针。</p>
-<p>维基百科中这样描述设计模式：</p>
-<blockquote>
-<p>在软件工程中，设计模式是针对软件设计中普遍存在（反复出现）的各种问题，所提出的可复用型解决方案。设计模式并不直接完成代码的编写，而是描述在不同情况下如何解决问题。</p>
-</blockquote>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
-<li>设计模式并非解决所有问题的银弹。</li>
-<li>不要强制使用设计模式，否则结果可能适得其反。谨记：设计模式是用来解决问题的，而不是来寻找问题的，不要过度思考。</li>
-<li>如果在对的地方对的时机使用设计模式，它会是你的救世主。反之，将会一团糟。</li>
-</ul>
-<p>另注：下面的示例代码是用 PHP7 实现的，因为概念是一样的，所以语言并不会阻碍你理解设计模式。其他语言版本的实现正在进行中。</p>
-<h2 id="设计模式分类"><a href="#设计模式分类" class="headerlink" title="设计模式分类"></a>设计模式分类</h2><ul>
-<li>创建型模式</li>
-<li>结构型模式</li>
-<li>行为型模式</li>
-</ul>
-<h3 id="创建型模式"><a href="#创建型模式" class="headerlink" title="创建型模式"></a>创建型模式</h3><ul>
-<li>概述</li>
-</ul>
-<p>创建型模式专注于如何初始化对象 。</p>
-<ul>
-<li>维基百科</li>
-</ul>
-<p>在软件工程中，创建型模式是处理对象创建的设计模式，试图根据实际情况使用合适的方式创建对象。基本的对象创建方式可能会导致设计上的问题，或增加设计的复杂度。创建型模式通过以某种方式控制对象的创建来解决这些问题。</p>
-<ul>
-<li>分类<ul>
-<li>简单工厂模式</li>
-<li>工厂方法模式</li>
-<li>抽象工厂模式</li>
-<li>生成器模式</li>
-<li>原型模式</li>
-<li>单例模式</li>
-</ul>
-</li>
-</ul>
-<h3 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h3><ul>
-<li>现实生活示例</li>
-</ul>
-<p>想象一下，你正在建造一座房子而且需要几扇房门，如果每次需要房门的时候，不是用工厂制造的房门，而是穿上木匠服，然后开始自己制造房门，将会搞得一团糟。</p>
-<ul>
-<li>概述</li>
-</ul>
-<p>简单工厂模式只是为客户端创建实例，而不将任何实例化逻辑暴露给客户端。</p>
-<ul>
-<li>维基百科</li>
-</ul>
-<p>在面向对象程序设计中，工厂通常是一个用来创建其他对象的对象。通常来讲，工厂是指某个功能或方法，此功能或方法返回不同类型的对象或者类的某个方法调用，返回的东西看起来是「新的」。</p>
-<ul>
-<li>程序示例</li>
-</ul>
-<p>首先是房门的接口和实现</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Door</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getWidth</span><span class="params">()</span>: <span class="title">float</span></span>;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getHeight</span><span class="params">()</span>: <span class="title">float</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">WoodenDoor</span> <span class="keyword">implements</span> <span class="title">Door</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> $width;</div><div class="line">    <span class="keyword">protected</span> $height;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(float width, float height)</span></span></div><div class="line">    &#123;</div><div class="line">        this-&gt;width = width;</div><div class="line"></div><div class="line">        this-&gt;height = height;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getWidth</span><span class="params">()</span>: <span class="title">float</span></span></div><div class="line">    &#123;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;width;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getHeight</span><span class="params">()</span>: <span class="title">float</span></span></div><div class="line"></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;height;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后是生产房门的工厂</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DoorFactory</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">makeDoor</span><span class="params">(width, height)</span>: <span class="title">Door</span></span></div><div class="line">    &#123;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> WoodenDoor(width, height);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>这样使用</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$door = DoorFactory::makeDoor(<span class="number">100</span>, <span class="number">200</span>);</div><div class="line"></div><div class="line"><span class="keyword">echo</span> <span class="string">'Width: '</span> . $door-&gt;getWidth();</div><div class="line"></div><div class="line"><span class="keyword">echo</span> <span class="string">'Height: '</span> . $door-&gt;getHeight();</div></pre></td></tr></table></figure>
-<ul>
-<li>何时使用？</li>
-</ul>
-<p>如果创建对象不仅仅是一些变量的初始化，还涉及某些逻辑，那么将其封装到一个专用工厂中取代随处使用的重复代码是有意义的。</p>
-<h3 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h3><ul>
-<li>现实生活示例</li>
-</ul>
-<p>考虑招聘经理的情况。一个人不可能应付所有职位的面试，对于空缺职位，招聘经理必须委派不同的人去面试。</p>
-<ul>
-<li>概述</li>
-</ul>
-<p>工厂方法模式提供了一种将实例化逻辑委托给子类的方法。</p>
-<ul>
-<li>维基百科</li>
-</ul>
-<p>在基于类的编程中，工厂方法模式是一种使用了工厂方法的创建型设计模式，在不指定对象具体类型的情况下，处理创建对象的问题。创建对象不是通过调用构造器而是通过调用工厂方法（在接口中指定工厂方法并在子类中实现或者在基类中实现，随意在派生类中重写）来完成。</p>
-<ul>
-<li>程序示例</li>
-</ul>
-<p>以上述招聘经理为例，首先给出一个面试官接口及实现</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Interviewer</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">askQuestions</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Developer</span> <span class="keyword">implements</span> <span class="title">Interviewer</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">askQuestions</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line"></div><div class="line">        <span class="keyword">echo</span> <span class="string">'Asking about design patterns!'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CommunityExecutive</span> <span class="keyword">implements</span> <span class="title">Interviewer</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">askQuestions</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">'Asking about community building'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后创建 HiringManager</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">HiringManager</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// Factory method</span></div><div class="line"></div><div class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeInterviewer</span><span class="params">()</span>: <span class="title">Interviewer</span></span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">takeInterview</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $interviewer = <span class="keyword">$this</span>-&gt;makeInterviewer();</div><div class="line">        $interviewer-&gt;askQuestions();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>现在，任何子类都可以继承 HiringManager 并委派相应的面试官</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DevelopmentManager</span> <span class="keyword">extends</span> <span class="title">HiringManager</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeInterviewer</span><span class="params">()</span>: <span class="title">Interviewer</span></span></div><div class="line"></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Developer();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MarketingManager</span> <span class="keyword">extends</span> <span class="title">HiringManager</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeInterviewer</span><span class="params">()</span>: <span class="title">Interviewer</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> CommunityExecutive();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>这样使用</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$devManager = <span class="keyword">new</span> DevelopmentManager();</div><div class="line">$devManager-&gt;takeInterview(); <span class="comment">// Output: Asking about design patterns</span></div><div class="line"></div><div class="line">$marketingManager = <span class="keyword">new</span> MarketingManager();</div><div class="line">$marketingManager-&gt;takeInterview(); <span class="comment">// Output: Asking about community building.</span></div></pre></td></tr></table></figure>
-<ul>
-<li>何时使用？</li>
-</ul>
-<p>类中的一些常见处理需要在运行时动态决定所需的子类，换句话说，当客户端不知道可能需要的确切子类时，使用工厂方法模式。</p>
-<h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3><ul>
-<li>现实生活示例</li>
-</ul>
-<p>扩展一下简单工厂模式中的房门例子。基于所需，你可能需要从木门店获取木门，从铁门店获取铁门或者从相关的门店获取 PVC 门。进一步讲，你可能需要不同种类的专家来安装房门，比如木匠安装木门，焊接工安装铁门等等。正如你所料，房门有了依赖，木门需要木匠，铁门需要焊接工。</p>
-<ul>
-<li>概述</li>
-</ul>
-<p>一组工厂的工厂：将相关或者互相依赖的单个工厂聚集在一起，而不指定这些工厂的具体类。</p>
-<ul>
-<li>维基百科</li>
-</ul>
-<p>抽象工厂模式提供了一种方式，这种方式可以封装一组具有共同主题的个体工厂，而不指定这些工厂的具体类。</p>
-<ul>
-<li>编程示例</li>
-</ul>
-<p>以上述房门为例，首先给出 Door 接口和一些实现</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Door</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getDescription</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">WoodenDoor</span> <span class="keyword">implements</span> <span class="title">Door</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getDescription</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">'I am a wooden door'</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">IronDoor</span> <span class="keyword">implements</span> <span class="title">Door</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getDescription</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">'I am an iron door'</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后根据每种房门类型给出对应的安装专家</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">DoorFittingExpert</span></span></div><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getDescription</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Welder</span> <span class="keyword">implements</span> <span class="title">DoorFittingExpert</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getDescription</span><span class="params">()</span></span></div><div class="line"></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">'I can only fit iron doors'</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Carpenter</span> <span class="keyword">implements</span> <span class="title">DoorFittingExpert</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getDescription</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">'I can only fit wooden doors'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>现在抽象工厂可以将相关的对象组建在一起，也就是说，木门工厂会生成木门并提供木门安装专家，铁门工厂会生产铁门并提供铁门安装专家。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">DoorFactory</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeDoor</span><span class="params">()</span>: <span class="title">Door</span></span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeFittingExpert</span><span class="params">()</span>: <span class="title">DoorFittingExpert</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// Wooden factory to return carpenter and wooden door</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">WoodenDoorFactory</span> <span class="keyword">implements</span> <span class="title">DoorFactory</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeDoor</span><span class="params">()</span>: <span class="title">Door</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> WoodenDoor();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeFittingExpert</span><span class="params">()</span>: <span class="title">DoorFittingExpert</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Carpenter();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"> </div><div class="line"><span class="comment">// Iron door factory to get iron door and the relevant fitting expert</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">IronDoorFactory</span> <span class="keyword">implements</span> <span class="title">DoorFactory</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeDoor</span><span class="params">()</span>: <span class="title">Door</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> IronDoor();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeFittingExpert</span><span class="params">()</span>: <span class="title">DoorFittingExpert</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Welder();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>这样使用</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">$woodenFactory = <span class="keyword">new</span> WoodenDoorFactory();</div><div class="line"></div><div class="line">$door = $woodenFactory-&gt;makeDoor();</div><div class="line"></div><div class="line">$expert = $woodenFactory-&gt;makeFittingExpert();</div><div class="line"></div><div class="line">$door-&gt;getDescription();  <span class="comment">// Output: I am a wooden door</span></div><div class="line"></div><div class="line">$expert-&gt;getDescription(); <span class="comment">// Output: I can only fit wooden doors</span></div><div class="line"> </div><div class="line"></div><div class="line"><span class="comment">// Same for Iron Factory</span></div><div class="line"></div><div class="line">$ironFactory = <span class="keyword">new</span> IronDoorFactory();</div><div class="line"></div><div class="line">$door = $ironFactory-&gt;makeDoor();</div><div class="line"></div><div class="line">$expert = $ironFactory-&gt;makeFittingExpert();</div><div class="line"></div><div class="line">$door-&gt;getDescription();  <span class="comment">// Output: I am an iron door</span></div><div class="line"></div><div class="line">$expert-&gt;getDescription(); <span class="comment">// Output: I can only fit iron doors</span></div></pre></td></tr></table></figure>
-<p>正如你看到的，木门工厂将木匠和木门封装在一起，同样地，铁门工厂将铁门和焊接工封装在一起。这样就可以帮助我们确保，对于每一扇生产出来的门，都能搭配正确的安装工。</p>
-<ul>
-<li>何时使用？</li>
-</ul>
-<p>当存在相关的依赖并涉及到稍复杂的创建逻辑时，使用抽象工厂模式。</p>
-<h3 id="生成器模式"><a href="#生成器模式" class="headerlink" title="生成器模式"></a>生成器模式</h3><ul>
-<li>现实生活示例</li>
-</ul>
-<p>想象一下你在 Hardee’s 餐厅点了某个套餐，比如「大 Hardee 套餐」，然后工作人员会正常出餐，这是简单工厂模式。但是在很多情况下，创建逻辑可能涉及到更多步骤。比如，你想要一个定制的 Subway 套餐，对于你的汉堡如何制作有几个选项可供选择，比如你想要什么类型的酱汁？你想要什么奶酪？ 在这种情况下，建造者模式便可以派上用场。</p>
-<ul>
-<li>概述</li>
-</ul>
-<p>允许创建不同风格的对象，同时避免构造器污染。当创建多种风格的对象时或者创建对象时涉及很多步骤，可以使用生成器模式。</p>
-<ul>
-<li>维基百科</li>
-</ul>
-<p>生成器模式是一种对象创建软件设计模式，其目的是找到重叠构造器反面模式的解决方案。</p>
-<p>既然提到了，那我就补充一下什么是重叠构造器反面模式。 我们时不时地会看到如下构造函数：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($size, $cheese = true, $pepperoni = true, $tomato = false, $lettuce= true)</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>正如你看到的，构造器参数的数量可能会迅速失控，并且参数的排列可能让人难以理解。 如果将来要添加更多选项，此参数列表可能会不断增长，这被称为重叠构造器反面模式。</p>
-<p><strong>程序示例</strong></p>
-<p>理想之选是使用生成器模式，首先给出汉堡类</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Burger</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">protected</span> $size;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> $cheese = <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> $pepperoni = <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> $lettuce = <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> $tomato = <span class="keyword">false</span>;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(BurgerBuilder $builder)</span></span></div><div class="line"></div><div class="line">    &#123;</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;size = $builder-&gt;size;</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;cheese = $builder-&gt;cheese;</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;pepperoni = $builder-&gt;pepperoni;</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;lettuce = $builder-&gt;lettuce;</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;tomato = $builder-&gt;tomato;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后是 builder</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BurgerBuilder</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> $size;</div><div class="line">    <span class="keyword">public</span> $cheese = <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">public</span> $pepperoni = <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">public</span> $lettuce = <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">public</span> $tomato = <span class="keyword">false</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(int $size)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;size = $size;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addPepperoni</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;pepperoni = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addLettuce</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;lettuce = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addCheese</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;cheese = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addTomato</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;tomato = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">build</span><span class="params">()</span>: <span class="title">Burger</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Burger(<span class="keyword">$this</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>这样使用</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$burger = (<span class="keyword">new</span> BurgerBuilder(<span class="number">14</span>))</div><div class="line"></div><div class="line">                    -&gt;addPepperoni()</div><div class="line"></div><div class="line">                    -&gt;addLettuce()</div><div class="line"></div><div class="line">                    -&gt;addTomato()</div><div class="line"></div><div class="line">                    -&gt;build();</div></pre></td></tr></table></figure>
-<ul>
-<li>何时使用？</li>
-</ul>
-<p>当需要构建不同风格的对象，同时需要避免构造器重叠时使用生成器模式。与工厂模式的主要区别在于：当创建过程一步到位时，使用工厂模式，而当创建过程需要多个步骤时，使用生成器模式。</p>
-<h3 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h3><ul>
-<li>现实生活示例</li>
-</ul>
-<p>还记得多莉吗？那只克隆羊。这里不深入细节，关键点在于克隆。</p>
-<ul>
-<li>概述</li>
-</ul>
-<p>基于现有对象通过克隆创建对象。</p>
-<ul>
-<li>维基百科</li>
-</ul>
-<p>在软件开发过程中，原型模式是一种创建型设计模式。当要创建的对象类型由原型实例确定时，将通过克隆原型实例生成新对象。</p>
-<p>简言之，原型模式允许你创建现有对象的副本并根据需要进行修改，而不是从头开始创建对象并进行设置。</p>
-<ul>
-<li>编程示例</li>
-</ul>
-<p>使用 PHP 的 clone 方法可以轻松实现</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sheep</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> $name;</div><div class="line">    <span class="keyword">protected</span> $category;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(string name, string category = <span class="string">'Mountain Sheep'</span>)</span></span></div><div class="line">    &#123;</div><div class="line">        this-&gt;name = name;</div><div class="line"></div><div class="line">        this-&gt;category = category;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setName</span><span class="params">(string $name)</span></span></div><div class="line">    &#123;</div><div class="line">        this-&gt;name = name;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getName</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setCategory</span><span class="params">(string $category)</span></span></div><div class="line">    &#123;</div><div class="line">        this-&gt;category = category;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getCategory</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;category;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>可以像下面这样克隆</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">$original = <span class="keyword">new</span> Sheep(<span class="string">'Jolly'</span>);</div><div class="line"></div><div class="line"><span class="keyword">echo</span> $original-&gt;getName(); <span class="comment">// Jolly</span></div><div class="line"></div><div class="line"><span class="keyword">echo</span> $original-&gt;getCategory(); <span class="comment">// Mountain Sheep</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// Clone and modify what is required</span></div><div class="line"></div><div class="line">cloned = <span class="keyword">clone</span> original;</div><div class="line"></div><div class="line">$cloned-&gt;setName(<span class="string">'Dolly'</span>);</div><div class="line"></div><div class="line"><span class="keyword">echo</span> $cloned-&gt;getName(); <span class="comment">// Dolly</span></div><div class="line"></div><div class="line"><span class="keyword">echo</span> $cloned-&gt;getCategory(); <span class="comment">// Mountain sheep</span></div></pre></td></tr></table></figure>
-<p>此外，你可以使用魔术方法 **clone 来修改克隆行为。</p>
-<ul>
-<li>何时使用</li>
-</ul>
-<p>当需要创建一个与已有对象类似的对象，或者当创建对象的成本比克隆更高时，使用原型模式。</p>
-<h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><ul>
-<li>现实生活示例</li>
-</ul>
-<p>一个国家同一时间只能有一位总统。只要使命召唤，这个总统就必须采取行动。 这里的总统就是一个单例。</p>
-<ul>
-<li>概述</li>
-</ul>
-<p>确保特定类的对象只被创建一次。</p>
-<ul>
-<li>维基百科</li>
-</ul>
-<p>在软件工程中，单例模式是一种软件设计模式，用来限制类初始化为对象。当恰恰只需要一个对象来协调整个系统的功能时，单例模式非常有用。</p>
-<p>实际上，单例模式被认为是反模式，应该避免过度使用。 单例模式并非不好，可能有时候很有用，但应谨慎使用，因为它在你的应用程序中引入了全局状态，一处更改可能会影响其他地方，并且可能会变得很难调试。 另外不好的一点是单例模式会使代码紧耦合，单例也很难mock。</p>
-<ul>
-<li>编程示例</li>
-</ul>
-<p>要创建一个单例，需要将构造函数设为 private，禁用克隆，禁用扩展名，并创建静态变量来容纳实例</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">President</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> $instance;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="comment">// Hide the constructor</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getInstance</span><span class="params">()</span>: <span class="title">President</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (!<span class="keyword">self</span>::$instance) &#123;</div><div class="line">            <span class="keyword">self</span>::$instance = <span class="keyword">new</span> <span class="keyword">self</span>();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>::$instance;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">__clone</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="comment">// Disable cloning</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="comment">// Disable unserialize</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>这样使用</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$president1 = President::getInstance();</div><div class="line">$president2 = President::getInstance();</div><div class="line">var_dump(president1 === president2); <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<h2 id="结构型设计模式"><a href="#结构型设计模式" class="headerlink" title="结构型设计模式"></a>结构型设计模式</h2><ul>
-<li>概述</li>
-</ul>
-<p>结构型设计模式主要关注对象组合，换句话说，关注实体之间如何互相使用。 或者还有另外一个解释，结构型设计模式有助于回答“如何构建软件组件？”</p>
-<ul>
-<li>维基百科</li>
-</ul>
-<p>在软件工程中，结构型设计模式是借由一以贯之的方式来了解元件间的关系，从而简化设计的一种设计模式。</p>
-<ul>
-<li>分类<ul>
-<li>适配器模式</li>
-<li>桥接模式</li>
-<li>组合模式</li>
-<li>修饰模式</li>
-<li>外观模式</li>
-<li>享元模式</li>
-<li>代理模式</li>
-</ul>
-</li>
-</ul>
-<h3 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h3><ul>
-<li>现实生活示例</li>
-</ul>
-<p>考虑这样一个场景，你的存储卡中有一些照片，你需要将其传输到计算机。为此，你需要某种与计算机端口兼容的适配器，以便将存储卡连接到计算机上。在这种情况下，读卡器就是适配器。另外一个例子就是大名鼎鼎的电源适配器：一个三脚插头不能连接到双插头插座，需要使用电源适配器使其与双插头插座兼容。另外一个例子是译者将一个人说的话翻译给另一个人。</p>
-<ul>
-<li>概述</li>
-</ul>
-<p>适配器模式可以将不兼容的对象包装成适配器来适配其它类。</p>
-<ul>
-<li>维基百科</li>
-</ul>
-<p>在软件工程中，适配器模式是允许将现有类的接口用作另一个类接口的软件设计模式。它通常用于现有类与其他类的协作，而无需修改现有类的代码。</p>
-<p><strong>- 程序示例</strong></p>
-<p>考虑一个游戏场景，有一个猎人，他狩猎狮子。</p>
-<p>首先给出<code>Lion</code>接口，所有种类的狮子都要实现这个接口。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Lion</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">roar</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AfricanLion</span> <span class="keyword">implements</span> <span class="title">Lion</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">roar</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AsianLion</span> <span class="keyword">implements</span> <span class="title">Lion</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">roar</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>猎人希望可以狩猎任何实现 <code>Lion</code> 接口的狮子</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hunter</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">hunt</span><span class="params">(Lion $lion)</span></span></div><div class="line">    &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
           
+英文：kamranahmedse，
+编译：伯乐在线 - Justin_YGG
+
+简介设计模式用于解决反复出现的问题，是解决特定问题的指导方针。设计模式不是在应用中引用的类、package 或者库，而是在某些特定场景下解决特定问题的指导方针。
+设计模式用于解决反复出现的问题，是解决某些特定问题的指导
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/14/1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1308,7 +1035,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1332,9 +1059,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">
                 2017-06-23
               </time>
             
@@ -1353,7 +1080,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1396,145 +1123,17 @@
       
         
           
-            <p>这几日一直都在看慕课网的一篇有关于数据库设计的实战教程，在其中讲述了关于数据库设计的一些相关规范，可以说是受益匪浅，于是便将学习所得记录下来，如果有想要看视频版的同学可以到慕课网查看。</p>
-<p><a href="http://coding.imooc.com/class/79.html" target="_blank" rel="noopener">点我跳转到慕课网观看视频</a></p>
-<h2 id="数据库名称规范"><a href="#数据库名称规范" class="headerlink" title="数据库名称规范"></a>数据库名称规范</h2><h3 id="1-所有数据库对象名称必须使用小写字母并使用下划线分割"><a href="#1-所有数据库对象名称必须使用小写字母并使用下划线分割" class="headerlink" title="1.所有数据库对象名称必须使用小写字母并使用下划线分割"></a>1.所有数据库对象名称必须使用小写字母并使用下划线分割</h3><p>由于 MySQL数据库的对象名称默认情况下是大小写敏感的，特别是在 Linux 系统下，MySQL 的数据库和表实际上的存储方式就是 Linux 下的一个文件，由于 Linux 系统是对大小写敏感的，所以 MySQL 也就对大小写敏感，这就意味着 DbName dbname 是完全不同的两个数据库。</p>
-<p>如果在开发过程中使用大小写混用的情况下，就会对未来的开发工作造成很多不必要的麻烦，要时刻注意数据库对象的大小写。</p>
-<h3 id="2-所有的数据库对象名称禁止使用-MySQL-的保留字段"><a href="#2-所有的数据库对象名称禁止使用-MySQL-的保留字段" class="headerlink" title="2.所有的数据库对象名称禁止使用 MySQL 的保留字段"></a>2.所有的数据库对象名称禁止使用 MySQL 的保留字段</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select id,username from ,age from tb_user;</div></pre></td></tr></table></figure>
-<p>在上述SQL 语句中存在两个 from，由于 MySQL 并不知道这两个 from 有什么区别，若是执行这条 SQL 语句肯定会报错，但是在建表的时候却不会报错。</p>
-<p>若是已经使用了关键字做了字段名，那就需要在字段名前后加上反引号，示例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select id,username `from` ,age from tb_user;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>反引号是为了区分MySQL关键字和保留字与普通字符而引入的符号，保留字的列表请点击此网页查看 <a href="https://dev.mysql.com/doc/refman/5.7/en/keywords.html" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/5.7/en/keywords.html</a></p>
-</blockquote>
-<h3 id="3-数据库对象的命名要做到见名识义，而且最好不要超过32个字符"><a href="#3-数据库对象的命名要做到见名识义，而且最好不要超过32个字符" class="headerlink" title="3. 数据库对象的命名要做到见名识义，而且最好不要超过32个字符"></a>3. 数据库对象的命名要做到见名识义，而且最好不要超过32个字符</h3><p>MySQL 的限制长度是64个字符，但是表名和列名一旦过长，在使用过程中将会很不方便，而且还会增加网络传输的开销。</p>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">用户数据库： ex_userdb</div><div class="line">用户账户表： user_account</div></pre></td></tr></table></figure>
-<h3 id="4-所有的临时表必须以-tmp为前缀并以日期为后缀"><a href="#4-所有的临时表必须以-tmp为前缀并以日期为后缀" class="headerlink" title="4. 所有的临时表必须以 tmp为前缀并以日期为后缀"></a>4. 所有的临时表必须以 tmp为前缀并以日期为后缀</h3><p>在我们的日常工作中，会在数据库中建立一些临时表或者中间表，往往无法第一时间将其清理掉，时间一长便无法分清，哪些是临时表或者是持久化表，这样一来就会造成很多的垃圾数据。</p>
-<h3 id="5-备份表必须以bak为前缀并以日期为后缀"><a href="#5-备份表必须以bak为前缀并以日期为后缀" class="headerlink" title="5.备份表必须以bak为前缀并以日期为后缀"></a>5.备份表必须以bak为前缀并以日期为后缀</h3><p>在日常工作中，我们会对数据库进行备份，在备份的时候，以 bak 开头可以清晰的表示出这是一个备份表，并且以时间结尾标注了这个表是在什么时间进行的备份，这样一来能够设计出更加整洁的数据库，并且结构清晰。</p>
-<h3 id="6-所有存储相同数据的列明和列类型必须一致。"><a href="#6-所有存储相同数据的列明和列类型必须一致。" class="headerlink" title="6.所有存储相同数据的列明和列类型必须一致。"></a>6.所有存储相同数据的列明和列类型必须一致。</h3><p>通着这这种字段都是以关联字段进行使用的，如果两个表的关联字段的数据类型不一致，在关联时MySQL 会进行隐式类型转换，造成字段索引失效，影响数据库的运行性能，导致不必要的开销。</p>
-<h2 id="数据库基本设计规范"><a href="#数据库基本设计规范" class="headerlink" title="数据库基本设计规范"></a>数据库基本设计规范</h2><h3 id="1-在没有特殊要求的情况下，所有表必须使用-Innodb-存储引擎"><a href="#1-在没有特殊要求的情况下，所有表必须使用-Innodb-存储引擎" class="headerlink" title="1. 在没有特殊要求的情况下，所有表必须使用 Innodb 存储引擎"></a>1. 在没有特殊要求的情况下，所有表必须使用 Innodb 存储引擎</h3><p>比如列存储、在5.7版本之前存储空间数据，如果还在使用MyISAM 引擎如果在升级到5.6之后应该尽快将存储引擎升级到 Innodb，因为在5.6之后的默认引擎就是 Innodb，Innodb 支持事务，行级锁，更好的恢复性，高并发下性能更好。</p>
-<h3 id="2-数据库和表的字符集使用-UTF8"><a href="#2-数据库和表的字符集使用-UTF8" class="headerlink" title="2.数据库和表的字符集使用 UTF8"></a>2.数据库和表的字符集使用 UTF8</h3><p>统一的字符集可以避免由于字符集转换禅城的乱码，MySQL 中 UTF8字符集汉字站3个字节，ASCII 码占用1个字节，若我们定了一个 varchar(255)的列，并且存储中文的话，255个中文字符将会占用725个字节。</p>
-<h3 id="3-所有的表和字段都需要添加注释"><a href="#3-所有的表和字段都需要添加注释" class="headerlink" title="3.所有的表和字段都需要添加注释"></a>3.所有的表和字段都需要添加注释</h3><p>使用 comment 从句添加表和列的备注，从一开始就进行数据字典维护。</p>
-<h4 id="4-尽量控制单表数据量的大小，建议控制在500万行以内"><a href="#4-尽量控制单表数据量的大小，建议控制在500万行以内" class="headerlink" title="4.尽量控制单表数据量的大小，建议控制在500万行以内"></a>4.尽量控制单表数据量的大小，建议控制在500万行以内</h4><p>500万并不是 MySQL数据库的限制，MySQL 的存储数据量取决于存储设置和文件系统，修改表结构，备份，恢复都会有很大问题。</p>
-<p>可以使用历史数据归档，分库分表等手段来控制数据量的大小，历史数据归档常用语系统日志，分库分表主要应用在业务表上。</p>
-<h4 id="5-谨慎的使用-MySQL-分区表。"><a href="#5-谨慎的使用-MySQL-分区表。" class="headerlink" title="5.谨慎的使用 MySQL 分区表。"></a>5.谨慎的使用 MySQL 分区表。</h4><p>分区表在物理上表现为多个文件，在逻辑上表现为一个表。谨慎的选择分区键，跨分区查询效率可能更低。</p>
-<p>建议采用物理分表的方式管理大数据。</p>
-<h4 id="6-尽量做到冷热数据分离，减小表单的宽度"><a href="#6-尽量做到冷热数据分离，减小表单的宽度" class="headerlink" title="6.尽量做到冷热数据分离，减小表单的宽度"></a>6.尽量做到冷热数据分离，减小表单的宽度</h4><p>MySQL 限制最多存储4096列，并且每一行的大小是不能超过65535个字节的。最好将经常用到的列放到一个表中，这样一来可以减少磁盘 IO，保证热数据的内存缓存命中率。利用更有效的利用缓存，避免读入无用的冷数据。</p>
-<h4 id="7-禁止在表中建立预留字段"><a href="#7-禁止在表中建立预留字段" class="headerlink" title="7.禁止在表中建立预留字段"></a>7.禁止在表中建立预留字段</h4><p>预留字段的命名很难做到见名识义，预留字段无法确认存储的数据类型，所以无法选择合适的类型。对预留字段类型的修改，会对表进行锁定，修改一个字段类型的成本远高于新建一个字段。</p>
-<h4 id="8-禁止在数据库中存储图片，文件等二进制数据"><a href="#8-禁止在数据库中存储图片，文件等二进制数据" class="headerlink" title="8.禁止在数据库中存储图片，文件等二进制数据"></a>8.禁止在数据库中存储图片，文件等二进制数据</h4><p>这类文件都会很大，会在短时间内造成数据量的疯涨，在数据库读取的时会产生大量的 IO 操作，非常好事，影响数据库性能，常规的做法是将图片保存在对应的文件服务器上，然后在数据库中保存地址信息就可以了。</p>
-<h4 id="9-禁止在线上做数据库压力测试"><a href="#9-禁止在线上做数据库压力测试" class="headerlink" title="9.禁止在线上做数据库压力测试"></a>9.禁止在线上做数据库压力测试</h4><p>如果使用生产环境进行压力测试一方面会对正常的业务访问造成影响，另一方面也会对数据库造成影响，产生大量的垃圾数据。</p>
-<h4 id="8-禁止从开发环境，测试环境直接连生产环境数据库"><a href="#8-禁止从开发环境，测试环境直接连生产环境数据库" class="headerlink" title="8.禁止从开发环境，测试环境直接连生产环境数据库"></a>8.禁止从开发环境，测试环境直接连生产环境数据库</h4><p>会对生产环境的数据的完整性进行破坏。</p>
-<h2 id="数据库索引设计规范"><a href="#数据库索引设计规范" class="headerlink" title="数据库索引设计规范"></a>数据库索引设计规范</h2><h3 id="1-限制每张表上的索引数量，建议单标索引不超过5个"><a href="#1-限制每张表上的索引数量，建议单标索引不超过5个" class="headerlink" title="1.限制每张表上的索引数量，建议单标索引不超过5个"></a>1.限制每张表上的索引数量，建议单标索引不超过5个</h3><p>索引数量是和列的数量是成正比的，通常列的数量越多索引的数量也会越多，索引并不是越多越好，索引可以提高效率单同样也可以鉴定效率，索引可以增加查询效率，单同样也会降低插入和更新的效率。</p>
-<p>由于 MySQL 优化器在选择优化查询时，会根据统计信息对每一个可以用到的索引进行评估，以生成出一个最好的执行计划，如果同时有很多索引都可以用于查询，就会增加 MySQL优化器生成优化器的时间，同样机会降低 SQL 查询的性能。</p>
-<p>禁止给表中的每一个列都建立单独的索引。</p>
-<h3 id="2-每一个-Innodb表都必须有一个主键"><a href="#2-每一个-Innodb表都必须有一个主键" class="headerlink" title="2.每一个 Innodb表都必须有一个主键"></a>2.每一个 Innodb表都必须有一个主键</h3><p>Innodb 是一种索引组织表，数据存储的逻辑顺序与索引的顺序是相同的，每一个表上上都会有很多索引，但是存储顺序只有一种，Innodb是按照主键索引进行组织表的。</p>
-<p>如果没有主键，那么 Innodb 会优先以第一非空，唯一索引当做主键，在没有非空唯一所以的情况下，MySQL 会生成一个站位6个字节的主键，这个自动生成的主键性能并不是最好的。</p>
-<p>在表的设计中不要使用更新频繁的列作为主键，不使用多列主键（联合索引），因为 Innodb是一个索引组织表的缘故，如果主键频繁被更新，那么久意味着，数据存储的顺序就会频繁的变动，必然会带来大量的 IO 操作。</p>
-<p>不要使用 UUID，MD5，HASH，字符串列作为主键。因为这类数据无法保证数据的顺序增长，如果后面插入的值比已经存在的值还要小，则为了保证索引的顺序，则会把新的数据插入到前面，这样就会造成所有大于这个值的数据要想后移带来大量的 IO 操作。</p>
-<p>建议使用自增 ID 作为主键。</p>
-<h3 id="3-常见索引列建议"><a href="#3-常见索引列建议" class="headerlink" title="3.常见索引列建议"></a>3.常见索引列建议</h3><p>1.SELECT、UPDATE、DELETE语句的WHERE 从句中的列出现的字段中添加索引<br>2.包含在 ORDER BY、GROUP BY、DISTINCT 中的字段<br>3.多表JOIN的关联列</p>
-<h3 id="4-如何选择索引列的顺序"><a href="#4-如何选择索引列的顺序" class="headerlink" title="4.如何选择索引列的顺序"></a>4.如何选择索引列的顺序</h3><p>在联合索引中索引的使用顺序是由从左到右的顺序来使用的。所以我们需要将区分度最高的列放在联合索引的最左侧，尽量把字段长度小的列房子啊联合索引的最左侧，私用最频繁的列放在联合索引的左侧。</p>
-<p>###避免建立冗余索引和重复索引</p>
-<p>重复索引：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">primary key(id)、index(id)、unique index(id)</div></pre></td></tr></table></figure></p>
-<p>冗余索引：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">index(a,b,c) 、index(a,b)、index(a)</div></pre></td></tr></table></figure></p>
-<h3 id="5-对于频繁的查询优先考虑使用覆盖索引"><a href="#5-对于频繁的查询优先考虑使用覆盖索引" class="headerlink" title="5.对于频繁的查询优先考虑使用覆盖索引"></a>5.对于频繁的查询优先考虑使用覆盖索引</h3><p>覆盖索引：就是包含了所有查询字段的索引</p>
-<p>避免 Innodb 表进行索引的二次查找，</p>
-<h2 id="数据库字段设计规范"><a href="#数据库字段设计规范" class="headerlink" title="数据库字段设计规范"></a>数据库字段设计规范</h2><h3 id="1-优先选择符合存储需要的最小的数据类型"><a href="#1-优先选择符合存储需要的最小的数据类型" class="headerlink" title="1.优先选择符合存储需要的最小的数据类型"></a>1.优先选择符合存储需要的最小的数据类型</h3><ul>
-<li>将字符串转换为数字类型存储</li>
-<li>INET_ATON(‘255.255.255.255’) = 4294967295</li>
-<li>INET_NTOA(4294967295) = ‘255.255.255.255’</li>
-<li>对于非负型的数据来说，要有限选用无符号整型来存储，无符号相对于有符号可以多出一倍的存储空间</li>
-<li>VARCHAR（N）中的 N 代表的是字符数，而不是字节数</li>
-<li>使用 UTF8存储汉字 VARCHAR(255)=765个字节</li>
-<li>过大的长度会消耗更多的内存，因为当数据被载入到内存时为了提高效率是按照所定义的类型长度来申请内存的。</li>
-</ul>
-<h3 id="2-避免使用-Text、BLOG-的数据类型"><a href="#2-避免使用-Text、BLOG-的数据类型" class="headerlink" title="2.避免使用 Text、BLOG 的数据类型"></a>2.避免使用 Text、BLOG 的数据类型</h3><p>Text列分为四种 TinyText、Text、MidumText、LongText，Text 类型可以存储下64K的数据，备注或者说明很少会使用到64K 这么庞大的数据，使用 Varchar 类型就可以了。另外由于MySQL 内存表是不支持 Text 和 Blog 的，因此我们在对这种大数据类型进行排序的时候无法使用内存表，而必须使用磁盘内置表，这类数据MySQL 在读取数据时会进行二次查询，所以会使得 SQL 的性能变的很差。</p>
-<p>建议把 BLOG 或是 TEXT列分离到单独的扩展表中    ，并且在查询时一定不要使用 select * 的方式，而是取出必要的列，在使用 BOLOG 或者 TEXT 类型的时候就不要查询该列。</p>
-<p>TEXT或 BLOG 类型只能使用前缀索引，并且 TEXT 的列上是不能有默认值的。</p>
-<h3 id="3-避免使用-ENUM-数据类型"><a href="#3-避免使用-ENUM-数据类型" class="headerlink" title="3.避免使用 ENUM 数据类型"></a>3.避免使用 ENUM 数据类型</h3><p>枚举类型是一个很特别的类型，在其他关系型数据库中并不存在这一类型，枚举本身是一个字符串类型，但是其本身却是以整数类型，所以能够存储65535种不同的枚举值，前面提到要将字符串类型转换成整数进行存储，从这一点看枚举是一种很好的数据类型，有助于我们很好的进行优化。</p>
-<p>但是枚举类型也存在着很大的缺陷，修改 ENUM 值需要使用 ALTER 语句，频繁的对表结构进行修改很容易造成失误，在修改元数据的时候会生成元数据锁，在大量数据访问的时候会造成数据库系统的阻塞，对枚举数据进行操作的时候是存在一定的操作风险的。</p>
-<p>ENUM 类型的 ORDER BY 操作效率低，需额外操作，由于是按照整型进行存储的，所以在查询的时候会对其进行字符串转化然后在进行排序，这种装换是无法使用索引的，所以枚举值排序性能比较差。</p>
-<p>禁止使用数值作为 ENUM 的枚举值，因为枚举本身是索引顺序存储的，如果枚举值也是用整型进行存储，很容易会造成逻辑上的一种混淆，一般情况下枚举值是整型，通常建议使用整型代替。</p>
-<h3 id="4-尽量可能把所有列定义为-NOT-NULL"><a href="#4-尽量可能把所有列定义为-NOT-NULL" class="headerlink" title="4.尽量可能把所有列定义为 NOT NULL"></a>4.尽量可能把所有列定义为 NOT NULL</h3><p>索引 NULL 列需要额外的空间来保存，所以需要占用更多的空间，索引空间占用的越低越好。</p>
-<p>进行比较和计算时候对 NULL 值做特别的处理，所以可能会造成索引失效。</p>
-<h3 id="5-使用-TIMESTAMP-或DATETIME-类型存储时间"><a href="#5-使用-TIMESTAMP-或DATETIME-类型存储时间" class="headerlink" title="5.使用 TIMESTAMP 或DATETIME 类型存储时间"></a>5.使用 TIMESTAMP 或DATETIME 类型存储时间</h3><p>字符串存储日期型的数据（不正确的做法）</p>
-<p>缺点1：无法用日期函数进行计算和比较。<br>缺点2：用字符串存储日期要占用更多的空间</p>
-<p>TIMESTAMP 1970-01-01 00：00：01 ~ 2038-01-19 03：14：07</p>
-<p>其实 TIMESTAMP 是以 INT 类型存储的，但是以日期格式显示，TIMESTAMP占用4字节和 INT 相同，单比 INT 可读性高，</p>
-<p>当超出 TIMESTAMP 类型的存储范围时我们需要使用 DATETIME 类型来进行存储。</p>
-<h3 id="6-同财务相关的金额类数据，必须使用-decimal-类型"><a href="#6-同财务相关的金额类数据，必须使用-decimal-类型" class="headerlink" title="6.同财务相关的金额类数据，必须使用 decimal 类型"></a>6.同财务相关的金额类数据，必须使用 decimal 类型</h3><p>Decimal 类型为精准浮点数，在计算时不会丢失精度，占用空间油定义的宽度决定，可用于存储比 bigint 更大的整数数据。</p>
-<h2 id="数据库-SQL-开发规范"><a href="#数据库-SQL-开发规范" class="headerlink" title="数据库 SQL 开发规范"></a>数据库 SQL 开发规范</h2><h3 id="1-建议使用预编译语句进行数据库"><a href="#1-建议使用预编译语句进行数据库" class="headerlink" title="1.建议使用预编译语句进行数据库"></a>1.建议使用预编译语句进行数据库</h3><ol>
-<li>只传参数，比传递 SQL 语句更高效</li>
-<li>相同语句可以一次解析，多次使用，提高处理效率</li>
-<li>防范 SQL 注入的风险</li>
-</ol>
-<h3 id="2-避免数据类型的隐式转换"><a href="#2-避免数据类型的隐式转换" class="headerlink" title="2.避免数据类型的隐式转换"></a>2.避免数据类型的隐式转换</h3><p>隐式转换一般发生在 Where 从句中，当列类型和参数类型不一致时就会出现隐式转换。， 隐式转换会导致索引失效</p>
-<h3 id="3-充分利用表上已经存在的索引"><a href="#3-充分利用表上已经存在的索引" class="headerlink" title="3.充分利用表上已经存在的索引"></a>3.充分利用表上已经存在的索引</h3><p>尽量避免用%号的查询 例如 a like ‘%123%’<br> 一个 SQL 只能利用到符合索引中的一列进行范围查询<br> 使用 left join 活 not exists 来优化 not in 操作。</p>
-<h3 id="4-程序链接不同的数据库使用不同的账号，禁止跨库查询。"><a href="#4-程序链接不同的数据库使用不同的账号，禁止跨库查询。" class="headerlink" title="4.程序链接不同的数据库使用不同的账号，禁止跨库查询。"></a>4.程序链接不同的数据库使用不同的账号，禁止跨库查询。</h3><ol>
-<li>为了数据库迁移和分库分表留出余地</li>
-<li>降低业务耦合度</li>
-<li>避免由于权限过大产生的安全风险</li>
-</ol>
-<h3 id="5-禁止使用-SELECT-必须使用-SELECT-lt-字段列表-gt-查询"><a href="#5-禁止使用-SELECT-必须使用-SELECT-lt-字段列表-gt-查询" class="headerlink" title="5.禁止使用 SELECT *必须使用 SELECT&lt;字段列表&gt;查询"></a>5.禁止使用 SELECT *必须使用 SELECT&lt;字段列表&gt;查询</h3><ol>
-<li>消耗更多的 CPU 和 IO 以及网络带宽资源</li>
-<li>无法使用覆盖索引</li>
-<li>可减少表结构变更带来的影响</li>
-</ol>
-<h3 id="6-禁止使用不含字段列表的-insert-语句"><a href="#6-禁止使用不含字段列表的-insert-语句" class="headerlink" title="6.禁止使用不含字段列表的 insert 语句"></a>6.禁止使用不含字段列表的 insert 语句</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">insert into t values (&apos;a&apos;,&apos;b&apos;,&apos;c&apos;); //不包含字段列表的 insert</div><div class="line">insert into t(c1,c2,c3) values(&apos;a&apos;,&apos;b&apos;,&apos;c&apos;); //正确的写</div></pre></td></tr></table></figure>
-<p> 可以减少表结构变更带来的影响</p>
-<h3 id="7-避免使用子查询，可以把子查询优化为join"><a href="#7-避免使用子查询，可以把子查询优化为join" class="headerlink" title="7.避免使用子查询，可以把子查询优化为join"></a>7.避免使用子查询，可以把子查询优化为join</h3><p> 并不是所有的子查询都可以使用 join进行优化，一般情况下只有子查询在 IN 子句中，并且子查询是一个简单的 SQL ，例如其中不包含 order by之类的复杂查询，才可以进行转换。</p>
-<ol>
-<li>子查询的结果集无法使用索引</li>
-<li>子查询会产生临时表操作，如果子查询数据量大则严重影响性能</li>
-<li>临时表会消耗过多 CPU 以及 IO 资源</li>
-</ol>
-<h3 id="8-避免使用-JOIN-关联太多的表"><a href="#8-避免使用-JOIN-关联太多的表" class="headerlink" title="8.避免使用 JOIN 关联太多的表"></a>8.避免使用 JOIN 关联太多的表</h3><ol>
-<li>每Join 一个表会占用一部分内存（join <em> buffer </em> size）</li>
-<li>会产生临时表操作，影响查询效率</li>
-<li>MySQL 最多允许关联61个表，建议不超过五个</li>
-</ol>
-<h3 id="9-减少同数据库的交互次数"><a href="#9-减少同数据库的交互次数" class="headerlink" title="9.减少同数据库的交互次数"></a>9.减少同数据库的交互次数</h3><ol>
-<li>数据库更适合处理批量操作</li>
-<li>合并多个相同的操作到一起，可以提高处理效率</li>
-</ol>
-<h3 id="10-使用-in-代替or"><a href="#10-使用-in-代替or" class="headerlink" title="10.使用 in 代替or"></a>10.使用 in 代替or</h3><ol>
-<li>in 的值不要超过500个</li>
-<li>in 操作可以有效的利用索引</li>
-</ol>
-<h3 id="11-禁止使用-order-by-rand-）进行随机排序"><a href="#11-禁止使用-order-by-rand-）进行随机排序" class="headerlink" title="11.禁止使用 order by rand(）进行随机排序"></a>11.禁止使用 order by rand(）进行随机排序</h3><ol>
-<li>会把表中所有符合条件的数据装载到内存中进行排序</li>
-<li>会消耗大量的 CUP 和 IO 以及内存支援</li>
-<li>推荐在程序中获取一个随机值，然后从数据库中获取数据的方式</li>
-</ol>
-<h3 id="12-WHERE-从句中禁止对列进行函数转换和计算"><a href="#12-WHERE-从句中禁止对列进行函数转换和计算" class="headerlink" title="12.WHERE 从句中禁止对列进行函数转换和计算"></a>12.WHERE 从句中禁止对列进行函数转换和计算</h3><ol>
-<li>对列进行函数转换或计算会导致无法使用索引</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wehre date(createtime) = &apos;20160901&apos;</div><div class="line">where createtime &gt;= &apos;20160901&apos; and createtime&lt; &apos;20160902&apos;</div></pre></td></tr></table></figure>
-<h3 id="13-有明显不会重复值时使用-UNION-ALL-而不是UNION"><a href="#13-有明显不会重复值时使用-UNION-ALL-而不是UNION" class="headerlink" title="13.有明显不会重复值时使用 UNION ALL 而不是UNION"></a>13.有明显不会重复值时使用 UNION ALL 而不是UNION</h3><ol>
-<li>UNION 会把所有数据放到临时表中然后进行去重操作</li>
-<li>UNION ALL 不会对结果集进行去重操作</li>
-</ol>
-<h3 id="14-拆分复杂的大-SQL-为多个小-SQL"><a href="#14-拆分复杂的大-SQL-为多个小-SQL" class="headerlink" title="14.拆分复杂的大 SQL 为多个小 SQL"></a>14.拆分复杂的大 SQL 为多个小 SQL</h3><ol>
-<li>MySQL 一个 SQL 只能使用一个 CPU进行计算</li>
-<li>SQL 拆分后可以进行并行执行来提高处理效率</li>
-</ol>
-<h2 id="数据库操作行为规范"><a href="#数据库操作行为规范" class="headerlink" title="数据库操作行为规范"></a>数据库操作行为规范</h2><h3 id="1-超100万行的批量写操作，需分批多次进行操作"><a href="#1-超100万行的批量写操作，需分批多次进行操作" class="headerlink" title="1.超100万行的批量写操作，需分批多次进行操作"></a>1.超100万行的批量写操作，需分批多次进行操作</h3><ol>
-<li>大批量操作可能会造成严重的主从延迟</li>
-<li>binlog 日志为row 格式时会产生大量的日志</li>
-<li>避免产生大事务操作</li>
-</ol>
-<h3 id="2-对大表数据结构的修改一定要谨慎，会造成严重的锁表操作。尤其是生产环境，是不能忍受的。"><a href="#2-对大表数据结构的修改一定要谨慎，会造成严重的锁表操作。尤其是生产环境，是不能忍受的。" class="headerlink" title="2.对大表数据结构的修改一定要谨慎，会造成严重的锁表操作。尤其是生产环境，是不能忍受的。"></a>2.对大表数据结构的修改一定要谨慎，会造成严重的锁表操作。尤其是生产环境，是不能忍受的。</h3><p>对于大表使用 pt-online-schema-change 修改表结构，可以避免主从延时、表锁的问题。</p>
-<h3 id="3-禁止为程序使用的账户赋予-super-权限"><a href="#3-禁止为程序使用的账户赋予-super-权限" class="headerlink" title="3.禁止为程序使用的账户赋予 super 权限"></a>3.禁止为程序使用的账户赋予 super 权限</h3><ol>
-<li>当达到最大连接数贤之士，MySQL 允许1个有 super 权限的用户连接</li>
-<li>super 权限只能留给 DBA 处理问题的账户使用</li>
-</ol>
-<h3 id="4-对于程序链接数据库账户，遵循权限最小原则"><a href="#4-对于程序链接数据库账户，遵循权限最小原则" class="headerlink" title="4.对于程序链接数据库账户，遵循权限最小原则"></a>4.对于程序链接数据库账户，遵循权限最小原则</h3><ol>
-<li>程序使用数据库账号只能在一个 DB下使用，不准夸库</li>
-<li>程序使用账号原则上不准有 drop权限</li>
-</ol>
-
-          
+          这几日一直都在看慕课网的一篇有关于数据库设计的实战教程，在其中讲述了关于数据库设计的一些相关规范，可以说是受益匪浅，于是便将学习所得记录下来，如果有想要看视频版的同学可以到慕课网查看。
+点我跳转到慕课网观看视频
+数据库名称规范1.所有数据库对象名称必须使用小写字母并使用下划线分割由于 MySQL数据
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/23/2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1586,7 +1185,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1610,9 +1209,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-01T00:00:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-01T00:00:00+08:00">
                 2017-06-01
               </time>
             
@@ -1631,7 +1230,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1674,40 +1273,17 @@
       
         
           
-            <p>规格校验是使我们在日常的开发过程中中比较常见的一种业务需求，最直观的使用是我们在开发电商类网站时我们会对商品的一些规格进行限定，例如重量大小不能超过 N（kg） 。</p>
-<p>如果是一个刚刚加入业界的程序员，很有可能会编写出大量的<code>if</code>语句来进行解决此类的业务逻辑，这样编码可行吗？</p>
-<p>答案是可以，因为顺利的完成了业务逻辑代码的编写任务，但是却违反了类设计中的<code>开闭原则</code>，而且一看就是没有经过正规的训练，没有对于 OOP 编程有更深的了解。</p>
-<p>那么有没有一种设计模式可以让我们设计出优雅而又整洁的逻辑代码呢，答案是显而易见的，要不然也就不会出现这篇文章，它就是——规模设计模式。</p>
-<p>我们可以利用规约模式来解决这一实际问题，开发出优雅而又健全的业务逻辑代码。</p>
-<p>规约设计模式的主要设计目的就是为了生成业务规则的明确规范，通过<code>isSatisfiedBy</code>方法来检测对象是否符合规范。</p>
-<p>下图是规约模式 UML 类图（不懂的同学推荐去看由谭云杰所编写的《大象：Thinking in UML》）</p>
-<p><img src="http://designpatternsphp.readthedocs.io/zh_CN/latest/_images/uml7.png" alt=""></p>
-<p>即使看不懂 UML 类图也没有关系，编码能力的提高是要根据不断的实践才能有所增长的。当你顺着我的思路打完代码，你就已经可以明白规约设计模式的设计理念以及作用。</p>
-<p>当然我还是要解释一下这个类图所代表的含义。</p>
-<p>既然是规格校验，那么一个规格校验到底包括什么呢？</p>
-<p>一般而言主要有：区间、大于、小于、不等于，这几样，那么我们是不是可以将其抽象成一个类呢？</p>
-<p>这就是上面那张 UML 的简单含义，其中主要是用于描述其类的关系，UML 就是帮助我们对类进行抽象的一个工具。</p>
-<p>下面让我们撸起袖子打代码。首先我们应该新建了 Goods类用于表示被规约的产品，其中包含一个 Price 价格属性，然后在建立对 Price 属性的规约，用来检验最新实例化的 Goods 是否满足约定。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">//商品类</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Goods</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> float</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $price;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(float $price)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;price = $price;</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getPrice</span><span class="params">()</span>: <span class="title">float</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;price;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在建立规约之前，我们需要建立一个接口，这个接口中定了了一个方法<code>isSatisfiedBy</code>,也就是上文提到的那个检测对象是否满足规约条件的那个方法。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">SpecificationInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">isSatisfiedBy</span><span class="params">(Goods $goods)</span>: <span class="title">bool</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Ok，在我们编写其余代码之前，我们需要来做一个思考，在程序语言当中，判断条件中的操作符是不是有或、与、非这三个判断条件，对应着 ||、&amp;&amp;、！。</p>
-<p>那么我们是否可以将其抽象成一个又一个的类呢？</p>
-<p>OrSpecification规约用来表示 Or 的关系，与我们的逻辑判断一样，表示在两个规约之间只要满足一条便返回 true。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">OrSpecification</span> <span class="keyword">implements</span> <span class="title">SpecificationInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> SpecificationInterface[]</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $specifications;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> SpecificationInterface[] ...$specifications</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(SpecificationInterface ...$specifications)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;specifications = $specifications;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * if at least one specification is true, return true, else return false</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">isSatisfiedBy</span><span class="params">(Item $item)</span>: <span class="title">bool</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">foreach</span> (<span class="keyword">$this</span>-&gt;specifications <span class="keyword">as</span> $specification) &#123;</div><div class="line">            <span class="keyword">if</span> ($specification-&gt;isSatisfiedBy($item)) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>AndSpecification 用于表示 And 关系，两条以上规约时，必须都满足条件才会返回 true否则返回false.</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AndSpecification</span> <span class="keyword">implements</span> <span class="title">SpecificationInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> SpecificationInterface[]</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $specifications;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> SpecificationInterface[] ...$specifications</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(SpecificationInterface ...$specifications)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;specifications = $specifications;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * if at least one specification is false, return false, else return true.</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">isSatisfiedBy</span><span class="params">(Item $item)</span>: <span class="title">bool</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">foreach</span> (<span class="keyword">$this</span>-&gt;specifications <span class="keyword">as</span> $specification) &#123;</div><div class="line">            <span class="keyword">if</span> (!$specification-&gt;isSatisfiedBy($item)) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>NotSpecification.php 用于表示Not。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NotSpecification</span> <span class="keyword">implements</span> <span class="title">SpecificationInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> SpecificationInterface</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $specification;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(SpecificationInterface $specification)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;specification = $specification;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">isSatisfiedBy</span><span class="params">(Item $item)</span>: <span class="title">bool</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> !<span class="keyword">$this</span>-&gt;specification-&gt;isSatisfiedBy($item);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>逻辑判断抽编码好了之后，我们就要开始真正的规约了，我们建立一个 Price 规约，其中主要设定了 Price 的范围，构造函数中包含最大值与最小值，并且实现<code>isSatisfiedBy</code>用来判断输入的值是否符合范围。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PriceSpecification</span> <span class="keyword">implements</span> <span class="title">SpecificationInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> float|null</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $maxPrice;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> float|null</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $minPrice;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> float $minPrice</div><div class="line">     * <span class="doctag">@param</span> float $maxPrice</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($minPrice, $maxPrice)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;minPrice = $minPrice;</div><div class="line">        <span class="keyword">$this</span>-&gt;maxPrice = $maxPrice;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">isSatisfiedBy</span><span class="params">(Item $item)</span>: <span class="title">bool</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;maxPrice !== <span class="keyword">null</span> &amp;&amp; $item-&gt;getPrice() &gt; <span class="keyword">$this</span>-&gt;maxPrice) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;minPrice !== <span class="keyword">null</span> &amp;&amp; $item-&gt;getPrice() &lt; <span class="keyword">$this</span>-&gt;minPrice) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>下面我们进行单元测试，如果不懂单元测试的朋友，也可以直接使用上面的代码进行测试。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>\<span class="title">Tests</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>\<span class="title">Item</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>\<span class="title">NotSpecification</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>\<span class="title">OrSpecification</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>\<span class="title">AndSpecification</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>\<span class="title">PriceSpecification</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">PHPUnit</span>\<span class="title">Framework</span>\<span class="title">TestCase</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SpecificationTest</span> <span class="keyword">extends</span> <span class="title">TestCase</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testCanOr</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $spec1 = <span class="keyword">new</span> PriceSpecification(<span class="number">50</span>, <span class="number">99</span>);</div><div class="line">        $spec2 = <span class="keyword">new</span> PriceSpecification(<span class="number">101</span>, <span class="number">200</span>);</div><div class="line"></div><div class="line">        $orSpec = <span class="keyword">new</span> OrSpecification($spec1, $spec2);</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;assertFalse($orSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">100</span>)));</div><div class="line">        <span class="keyword">$this</span>-&gt;assertTrue($orSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">51</span>)));</div><div class="line">        <span class="keyword">$this</span>-&gt;assertTrue($orSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">150</span>)));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testCanAnd</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $spec1 = <span class="keyword">new</span> PriceSpecification(<span class="number">50</span>, <span class="number">100</span>);</div><div class="line">        $spec2 = <span class="keyword">new</span> PriceSpecification(<span class="number">80</span>, <span class="number">200</span>);</div><div class="line"></div><div class="line">        $andSpec = <span class="keyword">new</span> AndSpecification($spec1, $spec2);</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;assertFalse($andSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">150</span>)));</div><div class="line">        <span class="keyword">$this</span>-&gt;assertFalse($andSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">1</span>)));</div><div class="line">        <span class="keyword">$this</span>-&gt;assertFalse($andSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">51</span>)));</div><div class="line">        <span class="keyword">$this</span>-&gt;assertTrue($andSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">100</span>)));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testCanNot</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $spec1 = <span class="keyword">new</span> PriceSpecification(<span class="number">50</span>, <span class="number">100</span>);</div><div class="line">        $notSpec = <span class="keyword">new</span> NotSpecification($spec1);</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;assertTrue($notSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">150</span>)));</div><div class="line">        <span class="keyword">$this</span>-&gt;assertFalse($notSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">50</span>)));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这样一来，我们就设计出了优雅而又健壮的代码。</p>
-<p>说明：</p>
-<p>本文章代码，来自于 Github 开源项目，点击链接进入查看<a href="http://designpatternsphp.readthedocs.io/" target="_blank" rel="noopener">http://designpatternsphp.readthedocs.io/</a></p>
-
-          
+          规格校验是使我们在日常的开发过程中中比较常见的一种业务需求，最直观的使用是我们在开发电商类网站时我们会对商品的一些规格进行限定，例如重量大小不能超过 N（kg） 。
+如果是一个刚刚加入业界的程序员，很有可能会编写出大量的if语句来进行解决此类的业务逻辑，这样编码可行吗？
+答案是可以，因为顺利的完成了
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/01/1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1759,7 +1335,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1783,9 +1359,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-15T22:15:16+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-15T22:15:16+08:00">
                 2017-03-15
               </time>
             
@@ -1804,7 +1380,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1847,37 +1423,19 @@
       
         
           
-            <p>闭包函数（closures）也就做匿名函数（Anonymous functions），是指在创建时封装周围状态的函数。即便闭包所在的环境不存在了，闭包中封装的状态依然存在。</p>
-<blockquote>
-<p>理论上，闭包和匿名函数是不同的概念，不过 PHP 将其视作相同的概念，所以闭包与匿名函数相等。</p>
-</blockquote>
-<p>匿名函数其实就是没有名字的函数。匿名函数可以赋值给变量，还能像其他任何 PHP 对象那样传递。不过匿名函数仍然是函数，因此可以调用，还可以传入参数。匿名函数特别适合作为函数或方法的回调。</p>
-<h3 id="创建闭包"><a href="#创建闭包" class="headerlink" title="创建闭包"></a>创建闭包</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$closure = <span class="function"><span class="keyword">function</span> <span class="params">($name)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> sprintf(<span class="string">'Hello %s'</span>, $name);</div><div class="line">&#125;;</div><div class="line"><span class="keyword">echo</span> $closure(<span class="string">'Maksim'</span>);</div><div class="line"><span class="comment">//输出 Hello Maksim</span></div></pre></td></tr></table></figure>
-<p>创建一个闭包对象，然后将其复制给<code>$closure</code> 变量。闭包和普通的 PHP 函数很想：使用语句相同，也接受参数，而且能返回值。不过，匿名函数没有名称。</p>
-<p>我们通常把 PHP 闭包当做函数和方法的回调使用。很多 PHP 函数都会用到回调函数，例如 <code>array_map()</code>和 <code>preg_replace_callback()</code>。这是使用 PHP 匿名函数的最佳时机！</p>
-<p>记住，闭包和其他值一样，可以作为参数传入其他 PHP 函数，我们把一个闭包对象当做回调参数，传给 array_map()函数。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$numbersPlusOne = array_map(<span class="function"><span class="keyword">function</span> <span class="params">($number)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> $number + <span class="number">1</span>;</div><div class="line">&#125;,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</div><div class="line">print_r($numbersPlusOne);</div><div class="line"><span class="comment">//([0] =&gt; 2 [1] =&gt; 3 [2] =&gt; 4)</span></div></pre></td></tr></table></figure>
-<p>在闭包出现之前，PHP 开发者只能单独创建普通函数，然后使用名称引用那个函数，这么做，代码执行的稍微慢一点，而且把回调场景和使用场景分割开了，如下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$numbersPlusOne = array_map(<span class="string">'incrementNumber'</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">incrementNumber</span><span class="params">($number)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> $number + <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">print_r($numbersPlusOne);</div><div class="line"><span class="comment">//([0] =&gt; 2 [1] =&gt; 3 [2] =&gt; 4)</span></div></pre></td></tr></table></figure>
-<p>这样的代码虽然可用，但是没有使用闭包来的间接。如果只需要使用一次回调，没有必要单独定义具名函数。把闭包当做回调使用，写出的代码更加简洁、清晰。</p>
-<h3 id="使用附加状态"><a href="#使用附加状态" class="headerlink" title="使用附加状态"></a>使用附加状态</h3><p>前面演示了如何把匿名函数当做回调使用，下面探讨如何为 PHP 闭包附加兵封装状态。JavaScript 开发者可能对 PHP 的闭包感到奇怪，因为 PHP 闭包不会像真正的 JavaScript 闭包那样自动封装应用状态。在 PHP 中，必须手动调用闭包对象的 bindTo()方法或者使用 use 关键字，把状态附加到 PHP 闭包上。</p>
-<p>使用 use 关键字附加闭包状态常见得多，因此我们先看这种方式。使用 use 关键字把变量附加到闭包上时，附加的变量会记住附加时赋给它的值。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">enclosePerson</span><span class="params">($name)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">($doCommand)</span> <span class="title">use</span> <span class="params">($name)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> sprintf(<span class="string">'%s, %s'</span>, $name, $doCommand);</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//把字符串“Maksim”封装在闭包中</span></div><div class="line">$clay = enclosePerson(<span class="string">'Clay'</span>);</div><div class="line"></div><div class="line"><span class="comment">//掺入参数，调用闭包</span></div><div class="line"><span class="keyword">echo</span> $clay(<span class="string">'get sweet tea'</span>);</div><div class="line"><span class="comment">// Clay, get sweet tea</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>使用 use 关键字可以把多个参数传入闭包，此时要像 PHP 函数或者方法的参数一样，使用逗号分割多个参数</p>
-</blockquote>
-<p>PHP 闭包是对象。与其他 PHP 对象类似，每个闭包实例都可以使用$this 关键字获取闭包的内部状态。闭包对象的默认状态没什么用，不过有一个__invoke()魔术方法和 bindTo()方法，仅此而已。</p>
-<p>但是，bindTo()方法为闭包增加了一些有趣的潜力。我们可以把使用这个方法把 Closure 对象的内部状态绑定到其他对象上。bindTo()方法的第二个参数很重要，其作用是指定绑定闭包的那个对象所属的 PHP 类。因此闭包可以访问绑定闭包的对象中受保护和私有的成员变量。</p>
-<p>你会发现，PHP 框架经常使用 bindTo()方法把路由 URL 映射到匿名回调函数上。框架会把匿名函数绑定到应用对象上，这么做可以把这个匿名函数中使用$this 关键字引用重要的应用对象。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">protected</span> $routes = <span class="keyword">array</span>();</div><div class="line">    <span class="keyword">protected</span> $responseStatus = <span class="string">'200 Ok'</span>;</div><div class="line">    <span class="keyword">protected</span> $responseContentType = <span class="string">'text/html'</span>;</div><div class="line">    <span class="keyword">protected</span> $responseBody = <span class="string">'Hello world'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addRoute</span><span class="params">($routePath, $routeCallback)</span> </span>&#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;routes[$routePath] = $routeCallback-&gt;bindTo(<span class="keyword">$this</span>,<span class="keyword">__CLASS__</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">dispatch</span><span class="params">($currentPath)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">foreach</span> (<span class="keyword">$this</span>-&gt;routes <span class="keyword">as</span> $routePath =&gt; $callback) &#123;</div><div class="line">            <span class="keyword">if</span> ($currentPath === $currentPath) &#123;</div><div class="line">                $callback();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        header(<span class="string">'HTTP/1.1 '</span>. <span class="keyword">$this</span>-&gt;responseStatus);</div><div class="line">        header(<span class="string">'Content-type: '</span> . <span class="keyword">$this</span>-&gt;responseContentType);</div><div class="line">        header(<span class="string">'Content-length: '</span> . mb_strlen(<span class="keyword">$this</span>-&gt;responseBody));</div><div class="line">        <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;responseBody;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p> 我们要特别注意 addRoute（）方法。这个方法的参数分别是一个路由路径（例如/users/josh）和一个路由回调。dispatch()方法的参数是当前 HTTP 请求的路径，它调用匹配的路由回调。第10行是重点所在，我们把路由回调绑定到了当前 APP 实例上。这么做能够在回调函数中处理 APP 实例的状态。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$app =  <span class="keyword">new</span> App();</div><div class="line">$app-&gt;addRoute(<span class="string">'/users/josh'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">$this</span>-&gt;responseContentType = <span class="string">'application/json;charset=utf8'</span>;</div><div class="line">    <span class="keyword">$this</span>-&gt;responseBody = <span class="string">'&#123;"name":"json"&#125;'</span>;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">$app-&gt;dispatch(<span class="string">'/users/josh'</span>);</div></pre></td></tr></table></figure>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li>现代 PHP</li>
-<li>官方手册</li>
-</ul>
+          闭包函数（closures）也就做匿名函数（Anonymous functions），是指在创建时封装周围状态的函数。即便闭包所在的环境不存在了，闭包中封装的状态依然存在。
 
-          
+理论上，闭包和匿名函数是不同的概念，不过 PHP 将其视作相同的概念，所以闭包与匿名函数相等。
+
+匿名函数其实就是没有名字的
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/15/1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1924,12 +1482,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2017/03/12/cjftk4k9z000qrlrdyrxrzacn/">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2017/03/12/cjftlwspz000v37rd8v4v7kgv/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1943,7 +1501,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/12/cjftk4k9z000qrlrdyrxrzacn/" itemprop="url">光源色、物体色、固有色</a></h1>
+                <a class="post-title-link" href="/2017/03/12/cjftlwspz000v37rd8v4v7kgv/" itemprop="url">光源色、物体色、固有色</a></h1>
         
 
         <div class="post-meta">
@@ -1953,9 +1511,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-12T00:00:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-12T00:00:00+08:00">
                 2017-03-12
               </time>
             
@@ -1974,7 +1532,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -2017,15 +1575,15 @@
       
         
           
-            <h1 id="光源色、物体色、固有色"><a href="#光源色、物体色、固有色" class="headerlink" title="光源色、物体色、固有色"></a>光源色、物体色、固有色</h1><h2 id="什么是光源色"><a href="#什么是光源色" class="headerlink" title="什么是光源色"></a>什么是光源色</h2><p>光源色指的是发光体所发出光线的颜色。例如，阳光、月光、火光和各种灯光等的光色。光源色的不同会引起物体的固有颜色的变化。例如，一块红布在白天看起来和在晚上灯光下看起来颜色是有所不同的。许多女同志都懂得这一点，她们避免晚上去商店购买衣料，因为晚上灯光下看到的黄色，和白天看到的是有些不一样的。就是同样的眼光来说，在早晨、正午和傍晚其光色也是不相同的，会引起同一景物的色调的显著变化。</p>
-<p>物体在不同颜色的光照下会呈现出跟光颜色比较接近的色彩，这些都是收到光源色彩的影响。</p>
-<h2 id="什么是物体色"><a href="#什么是物体色" class="headerlink" title="什么是物体色"></a>什么是物体色</h2><p>物体色是指光源色经过物体有选择的吸收和反射，反映到人的视觉中的光色感觉。物体本身并不会发光，但都具有对各种波长的光有所选择性的吸收、反射或者投射的特性，因此形成千变万化的不相同的物体色彩。</p>
-<p>物体可以分为透明物体和不透明物体，不透明物体呈现的色彩是由它反射的光色决定的，而透明物体呈现的色彩则是由它透过的色彩决定的。</p>
-<p>如绿色树叶吸收太阳光除绿色光的其他色光，所以我们看到的是绿色，而蓝色玻璃只透过蓝色光吸收其他光所以看起来呈现的是蓝色。</p>
-<h2 id="什么是固有色"><a href="#什么是固有色" class="headerlink" title="什么是固有色"></a>什么是固有色</h2><p>固有色指的是一个物体在通常情况下给人的色彩印象（概念）例如，红旗是红色的，草地是绿色的，中国人的皮肤是黄色的等等。</p>
-<p>从色彩的光学原理知道物体并不存在固定不变的固有颜色，物体的颜色是与光密切相关的，是在一定的条件下变化的，是具体的，而不是一种概念。讲中国人皮肤是黄色的，其实不可能指出是哪一种具体的光色。然而，物体的颜色景观是变化的、复杂的，单扔给我们一定的色彩印象。所以我们既不要受固有色概念的束缚，又不能完全故事固有色。</p>
-
-          
+          光源色、物体色、固有色什么是光源色光源色指的是发光体所发出光线的颜色。例如，阳光、月光、火光和各种灯光等的光色。光源色的不同会引起物体的固有颜色的变化。例如，一块红布在白天看起来和在晚上灯光下看起来颜色是有所不同的。许多女同志都懂得这一点，她们避免晚上去商店购买衣料，因为晚上灯光下看到的黄色，和白天
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/12/cjftlwspz000v37rd8v4v7kgv/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2072,12 +1630,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2017/03/11/cjftk4ka1000srlrdd23vi6nv/">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2017/03/11/cjftlwspx000t37rdt15yvy64/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2091,7 +1649,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/11/cjftk4ka1000srlrdd23vi6nv/" itemprop="url">色彩基础</a></h1>
+                <a class="post-title-link" href="/2017/03/11/cjftlwspx000t37rdt15yvy64/" itemprop="url">色彩基础</a></h1>
         
 
         <div class="post-meta">
@@ -2101,9 +1659,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-11T20:40:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T20:40:00+08:00">
                 2017-03-11
               </time>
             
@@ -2122,7 +1680,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -2165,36 +1723,21 @@
       
         
           
-            <h1 id="色彩的基本构成和使用方法"><a href="#色彩的基本构成和使用方法" class="headerlink" title="色彩的基本构成和使用方法"></a>色彩的基本构成和使用方法</h1><ol>
-<li>色彩的定义是什么</li>
-<li>色彩的种类</li>
-<li>色彩3大特点</li>
-</ol>
-<h2 id="色彩的定义是什么"><a href="#色彩的定义是什么" class="headerlink" title="色彩的定义是什么"></a>色彩的定义是什么</h2><p>我们平时看到的所有东西都会有自己的色彩，有难以感觉到的灰暗，也有鲜艳耀眼的成色等，其实色彩是依赖于光存在的，没有光就不会有色彩，色彩是物体对光谱的反射给人眼传达的一种视觉信息。</p>
-<p>我们可以把颜色通过可见光的波长来划分，这有点跟 PS 软件上面的取色板上的色彩排列相似（如下图）。</p>
-<p><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=423413218,2703533471&amp;fm=116&amp;gp=0.jpg" alt="image"></p>
-<p>光其实也是电磁波的一种，我们知道电磁波的传播速度是一样的，而决定我们看到颜色光的色彩的就是电磁波的波长，我们可以从图中看到不同颜色对应的波长范围，如红色光的波长在760纳米之间，蓝色光的波长范围在380纳米之间，所以可见光的范围在380-760之间（如下图）。</p>
-<p><img src="http://p1.bpimg.com/4851/967f41bc84c70788.jpg" alt="image"></p>
-<h2 id="色彩种类划分"><a href="#色彩种类划分" class="headerlink" title="色彩种类划分"></a>色彩种类划分</h2><p>我们可以看到的可见光的范围是380-760纳米波长之间的光谱，通过三棱镜折射出太阳光我们可以看到红橙光绿青蓝紫7中颜色，而实际上我们可以把颜色归类成红黄蓝三追踪原色，这3种颜色可以通过组合搭配调配处其他任意颜色。</p>
-<p>色光三颜色 ： 红黄蓝 RGB（PS 案例）<br>物体三颜色： 红蓝黄（水彩绘画）</p>
-<h2 id="色彩的三要素"><a href="#色彩的三要素" class="headerlink" title="色彩的三要素"></a>色彩的三要素</h2><ol>
-<li>色相</li>
-<li>明度</li>
-<li>纯度（饱和度）</li>
-</ol>
-<h3 id="色相"><a href="#色相" class="headerlink" title="色相"></a>色相</h3><p>色相其实就是指色彩，物体所呈现的颜色状态叫做色相，如红旗的颜色就是红色，天空的颜色是蓝色，荷叶的颜色是绿色，我们可以很简单的识别一种物体的色相。</p>
-<p>在 RGB 色彩模式中，色彩用红，绿，蓝三种色彩来合成表现的，每种色彩分成255个阶，通过不同的比例调配出千变万化的色彩。</p>
-<h3 id="明度"><a href="#明度" class="headerlink" title="明度"></a>明度</h3><p>明度是指色彩的明暗程度，也称深浅度，是表现颜色层次感的基础。</p>
-<p>我们知道色彩的表现是以光反射的形式表现的，比如同一个橙子的颜色是橙色的，但是在明度上的变化让我们可以看出这个橙子的立体感(如下图)。</p>
-<p><img src="http://p1.bqimg.com/4851/87c2f84e88619477.jpg" alt=""></p>
-<p>在无彩色系中，白色明度最高，黑色明度最低，在黑白之间存在一系列灰色，靠近白色的部分称之为名灰色，靠近黑色的部分称之为暗灰色。在有色系中，黄色明度最高，紫色明度最低。任何一个有色彩，当它掺入白色时，明度提高，当掺入黑色时，明度降低。同时其混度也响应降低。</p>
-<p>在 RGB 色彩模式中，RGB 色彩3个数值相加越大就代表色彩明度越高，我们可以简单理解为月亮的颜色明度越高，就比如R：255是红色，那么 R255，G：50，B：50就是加了亮度的红色，会显得亮而且轻(如图)。</p>
-<p><img src="http://p1.bqimg.com/4851/16411dd0ff23090b.jpg" alt=""></p>
-<h3 id="纯度（饱和度）"><a href="#纯度（饱和度）" class="headerlink" title="纯度（饱和度）"></a>纯度（饱和度）</h3><p>纯度通常是指色彩的鲜艳程度。从科学的角度看，一种颜色的鲜艳度取决于这一色相发射光的单一程度，也就是指原色在色彩中所占的百分比。人眼能识别的有单色光特征的颜色，都具有一定的鲜艳度。不同色相不仅明度不同，纯度也不相同。</p>
-<p><img src="http://p1.bpimg.com/4851/4982b8808e9be06d.jpg" alt=""></p>
-<p>通常纯色的纯度最高，也就是不加入黑白灰的颜色，同一色相的色彩，不掺杂白色或者黑色，则被称为纯色。在纯色中加入不同明度的无彩色，会出现不同的纯度。以蓝色为例，向纯蓝色中加入一点白色，纯度下降而明度上升，变为淡蓝色。继续加入白色的量，颜色会越来越淡，纯度下降，而明度持续上升。反之，加入黑色或灰色，则相应的纯度和明度同时下降。</p>
+          色彩的基本构成和使用方法
+色彩的定义是什么
+色彩的种类
+色彩3大特点
 
-          
+色彩的定义是什么我们平时看到的所有东西都会有自己的色彩，有难以感觉到的灰暗，也有鲜艳耀眼的成色等，其实色彩是依赖于光存在的，没有光就不会有色彩，色彩是物体对光谱的反射给人眼传达的一种视觉信息。
+我们可以把颜色通过可见光的波长来划
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/11/cjftlwspx000t37rdt15yvy64/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2267,6 +1810,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="http://ogxeww23n.bkt.clouddn.com/timg.jpeg"
+                alt="Maksim" />
+            
               <p class="site-author-name" itemprop="name">Maksim</p>
               <p class="site-description motion-element" itemprop="description">Maksim's Website，分享成长的点点滴滴，关注PHP、JavaScript、Linux、C/C++、Go、SQL、MySQL、Redis、iOS、安卓开发，努力做一个值得收藏的博客。</p>
           </div>
@@ -2279,7 +1826,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">90</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
@@ -2288,10 +1835,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">14</span>
-                  <span class="site-state-item-name">Kategorien</span>
-                
+                  <span class="site-state-item-name">分类</span>
+                </a>
               </div>
             
 
@@ -2299,10 +1846,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">22</span>
-                  <span class="site-state-item-name">Tags</span>
-                
+                  <span class="site-state-item-name">标签</span>
+                </a>
               </div>
             
 
@@ -2317,6 +1864,22 @@
             </div>
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/aircrayon" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aircrayon@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -2344,7 +1907,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -2354,7 +1917,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -2362,7 +1925,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
@@ -2461,6 +2024,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
 
