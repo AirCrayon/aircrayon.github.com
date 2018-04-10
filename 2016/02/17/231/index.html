@@ -11,17 +11,17 @@
     
 
     
-    <meta name="description" content="一、Block 的定义定义和使用Block， 1234567891011121314151617181920212223242526- (void)viewDidLoad &amp;#123;	[super viewDidLoad];  	//（1）定义无参无返回值的Block	void (^printBlock)() = ^()&amp;#123;		printf(&amp;quot;no number&amp;quot;);">
+    <meta name="description" content="什么是BlockBlock是iOS4.0后推出的一种比较特殊的数据类型，用来保存某一段代码，可以在恰当的时间取出来再调用。，应用场景有:动画、多线程、集合遍历、网络请求回调等。 用Block替换代理可以使代码更加简洁、直观，苹果官方也更推荐使用block来进行传值等操作。 Block 的定义定义和使用Block， 123456789101112131415161718192021222324252">
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Objective-C Block的基本使用">
 <meta property="og:url" content="http://www.maksim.website/2016/02/17/231/index.html">
 <meta property="og:site_name" content="Maksim&#39;s Website">
-<meta property="og:description" content="一、Block 的定义定义和使用Block， 1234567891011121314151617181920212223242526- (void)viewDidLoad &amp;#123;	[super viewDidLoad];  	//（1）定义无参无返回值的Block	void (^printBlock)() = ^()&amp;#123;		printf(&amp;quot;no number&amp;quot;);">
-<meta property="og:updated_time" content="2018-04-03T14:53:43.397Z">
+<meta property="og:description" content="什么是BlockBlock是iOS4.0后推出的一种比较特殊的数据类型，用来保存某一段代码，可以在恰当的时间取出来再调用。，应用场景有:动画、多线程、集合遍历、网络请求回调等。 用Block替换代理可以使代码更加简洁、直观，苹果官方也更推荐使用block来进行传值等操作。 Block 的定义定义和使用Block， 123456789101112131415161718192021222324252">
+<meta property="og:updated_time" content="2018-04-10T10:52:18.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C Block的基本使用">
-<meta name="twitter:description" content="一、Block 的定义定义和使用Block， 1234567891011121314151617181920212223242526- (void)viewDidLoad &amp;#123;	[super viewDidLoad];  	//（1）定义无参无返回值的Block	void (^printBlock)() = ^()&amp;#123;		printf(&amp;quot;no number&amp;quot;);">
+<meta name="twitter:description" content="什么是BlockBlock是iOS4.0后推出的一种比较特殊的数据类型，用来保存某一段代码，可以在恰当的时间取出来再调用。，应用场景有:动画、多线程、集合遍历、网络请求回调等。 用Block替换代理可以使代码更加简洁、直观，苹果官方也更推荐使用block来进行传值等操作。 Block 的定义定义和使用Block， 123456789101112131415161718192021222324252">
 
     
     <link rel="alternative" href="/atom.xml" title="Maksim&#39;s Website" type="application/atom+xml">
@@ -97,12 +97,14 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Block-的定义"><span class="toc-number">1.</span> <span class="toc-text">一、Block 的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、-block关键字的使用"><span class="toc-number">2.</span> <span class="toc-text">二、__block关键字的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Block作为Property属性实现页面之间传值"><span class="toc-number">3.</span> <span class="toc-text">三、Block作为Property属性实现页面之间传值</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Block"><span class="toc-number">1.</span> <span class="toc-text">什么是Block</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Block-的定义"><span class="toc-number">2.</span> <span class="toc-text">Block 的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#block关键字的使用"><span class="toc-number">3.</span> <span class="toc-text">__block关键字的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Block作为Property属性实现页面之间传值"><span class="toc-number">3.1.</span> <span class="toc-text">Block作为Property属性实现页面之间传值</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="一、Block-的定义"><a href="#一、Block-的定义" class="headerlink" title="一、Block 的定义"></a>一、Block 的定义</h2><p>定义和使用Block，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">	[super viewDidLoad];</div><div class="line">  </div><div class="line">	//（1）定义无参无返回值的Block</div><div class="line">	void (^printBlock)() = ^()&#123;</div><div class="line">		printf(&quot;no number&quot;);</div><div class="line">	&#125;;</div><div class="line">  </div><div class="line">	printBlock();</div><div class="line">	printBlock(9);</div><div class="line">  </div><div class="line">	int mutiplier = 7;</div><div class="line">	//（3）定义名为myBlock的代码块，返回值类型为int</div><div class="line">	int (^myBlock)(int) = ^(int num)&#123;</div><div class="line">		return num*mutiplier;</div><div class="line">	&#125;</div><div class="line">	//使用定义的myBlock</div><div class="line">	int newMutiplier = myBlock(3);</div><div class="line">		printf(&quot;newMutiplier is %d&quot;,myBlock(3));</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	//定义在-viewDidLoad方法外部</div><div class="line">	//（2）定义一个有参数，没有返回值的Block</div><div class="line">	void (^printNumBlock)(int) = ^(int num)&#123;</div><div class="line">		printf(&quot;int number is %d&quot;,num);</div><div class="line">	&#125;;</div></pre></td></tr></table></figure>
+		<h2 id="什么是Block"><a href="#什么是Block" class="headerlink" title="什么是Block"></a>什么是Block</h2><p>Block是iOS4.0后推出的一种比较特殊的<strong>数据类型</strong>，用来保存某一段代码，可以在恰当的时间取出来再调用。，应用场景有:动画、多线程、集合遍历、网络请求回调等。</p>
+<p>用Block替换代理可以使代码更加简洁、直观，苹果官方也更推荐使用block来进行传值等操作。</p>
+<h2 id="Block-的定义"><a href="#Block-的定义" class="headerlink" title="Block 的定义"></a>Block 的定义</h2><p>定义和使用Block，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">-(void)viewDidLoad &#123;</div><div class="line">	</div><div class="line">	[super viewDidLoad];</div><div class="line">  </div><div class="line">	//1、定义无参无返回值的Block</div><div class="line">	void (^printBlock)() = ^()&#123;</div><div class="line">		printf(&quot;no number&quot;);</div><div class="line">	&#125;;</div><div class="line">  </div><div class="line">	printBlock();</div><div class="line">	printBlock(9);</div><div class="line">  </div><div class="line">	int mutiplier = 7;</div><div class="line">	</div><div class="line">	//3、定义名为myBlock的代码块，返回值类型为int</div><div class="line">	int (^myBlock)(int) = ^(int num)&#123;</div><div class="line">		return num*mutiplier;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	//使用定义的myBlock</div><div class="line">	int newMutiplier = myBlock(3);</div><div class="line">		printf(&quot;newMutiplier is %d&quot;,myBlock(3));</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//定义在-viewDidLoad方法外部</div><div class="line">//2、定义一个有参数，没有返回值的Block</div><div class="line">void (^printNumBlock)(int) = ^(int num)&#123;</div><div class="line">	printf(&quot;int number is %d&quot;,num)；</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>定义Block变量，就相当于定义了一个函数。但是区别也很明显，因为函数肯定是在-viewDidLoad方法外面定义，而Block变量定义在了viewDidLoad方法内部。当然，我们也可以把Block定义在-viewDidLoad方法外部，例如上面的代码块printNumBlock的定义，就在-viewDidLoad外面。</p>
 <p>再来看看上面代码运行的顺序问题，以第（3）个myBlock距离来说，在定义的地方，并不会执行Block{}内部的代码，而在myBlock(3)调用之后才会执行其中的代码，这跟函数的理解其实差不多，就是只要在调用Block（函数）的时候才会执行Block体内（函数体内）的代码。所以上面的简单代码示例，我可以作出如下的结论，</p>
 <ol>
@@ -110,25 +112,27 @@
 <li>Block可以定义在方法内部，也可以定义在方法外部；</li>
 <li>只有调用Block时候，才会执行其{}体内的代码；</li>
 </ol>
-<p>（PS：关于第（2）条，定义在方法外部的Block，其实就是文件级别的全局变量）</p>
+<blockquote>
+<p>关于第（2）条，定义在方法外部的Block，其实就是文件级别的全局变量</p>
+</blockquote>
 <p>那么在类中定义一个Block，特别是在-viewDidLoad方法体内定义一个Block到底有什么意义呢？我表示这时候只把它当做私有函数就可以了。我之前说过，Block其实就相当于代理，那么这时候我该怎样将其与代理类比以了解呢。这时候我可以这样说：本类中的Block就相当于类自己服从某个协议，然后让自己代理自己去做某个事情。很拗口吧？看看下面的代码，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//定义一个协议</div><div class="line">@protocol ViewControllerDelegate</div><div class="line">- (void)selfDelegateMethod;</div><div class="line">@end</div><div class="line">//本类实现这个协议ViewControllerDelegate</div><div class="line">@interface ViewController ()</div><div class="line">@property (nonatomic, assign) id delegate;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//定义一个协议</div><div class="line">@protocol ViewControllerDelegate</div><div class="line">	-(void)selfDelegateMethod;</div><div class="line">@end</div><div class="line">    </div><div class="line">//本类实现这个协议ViewControllerDelegate</div><div class="line">@interface ViewController ()</div><div class="line">	@property (nonatomic, assign) id delegate;</div><div class="line">@end</div></pre></td></tr></table></figure>
 <p>接着在-viewDidLoad中的代码如下，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">	[super viewDidLoad];</div><div class="line">	// Do any additional setup after loading the view from its nib.</div><div class="line">	self.delegate = self;</div><div class="line">	if (self.delegate &amp;&amp; [self.delegate respondsToSelector:@selector(selfDelegateMethod)] &#123;</div><div class="line">		[self.delegate selfDelegateMethod];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">        </div><div class="line">#pragma mark - ViewControllerDelegate method</div><div class="line">//实现协议中的方法</div><div class="line">- (void)selfDelegateMethod&#123;</div><div class="line">	NSLog(@&quot;自己委托自己实现的方法&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>看出这种写法的奇葩地方了吗？自己委托自己去实现某个方法，而不是委托别的类去实现某个方法。本类中定义的一个Block其实就是闲的蛋疼，委托自己去字做某件事情，实际的意义不大，所以你很少看见别人的代码直接在类中定义Block然后使用的，Block很多的用处是跨越两个类来使用的，比如作为property属性或者作为方法的参数，这样就能跨越两个类了。</p>
-<h2 id="二、-block关键字的使用"><a href="#二、-block关键字的使用" class="headerlink" title="二、__block关键字的使用"></a>二、__block关键字的使用</h2><p>在Block的{}体内，是不可以对外面的变量进行更改的，比如下面的语句，</p>
+<h2 id="block关键字的使用"><a href="#block关键字的使用" class="headerlink" title="__block关键字的使用"></a>__block关键字的使用</h2><p>在Block的{}体内，是不可以对外面的变量进行更改的，比如下面的语句，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">	//将Block定义在方法内部</div><div class="line">	int x = 100;</div><div class="line">	void (^sumXAndYBlock)(int) = ^(int y)&#123;</div><div class="line">		x = x+y;</div><div class="line">		printf(&quot;new x value is %d&quot;,x);</div><div class="line">	&#125;;</div><div class="line">	sumXAndYBlock(50);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这段代码有什么问题呢，Xcode会提示x变量错误信息：Variable is not assigning (missing__block type)，这时候给int x = 100;语句前面加上__block关键字即可，如下，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">__block int x = 100;</div></pre></td></tr></table></figure>
 <p>这样在Block的{}体内，就可以修改外部变量了。</p>
-<h2 id="三、Block作为Property属性实现页面之间传值"><a href="#三、Block作为Property属性实现页面之间传值" class="headerlink" title="三、Block作为Property属性实现页面之间传值"></a>三、Block作为Property属性实现页面之间传值</h2><p>需求：在ViewController中，点击Button，push到下一个页面NextViewController，在NextViewController的输入框TextField中输入一串字符，返回的时候，在ViewController的Label上面显示文字内容，</p>
-<p><strong>（1）第一种方法：首先看看通过“协议/代理”是怎么实现两个页面之间传值的吧，</strong></p>
+<h3 id="Block作为Property属性实现页面之间传值"><a href="#Block作为Property属性实现页面之间传值" class="headerlink" title="Block作为Property属性实现页面之间传值"></a>Block作为Property属性实现页面之间传值</h3><p>需求：在ViewController中，点击Button，push到下一个页面NextViewController，在NextViewController的输入框TextField中输入一串字符，返回的时候，在ViewController的Label上面显示文字内容，</p>
+<p><strong>1、第一种方法：首先看看通过“协议/代理”是怎么实现两个页面之间传值的吧，</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//NextViewController是push进入的第二个页面</div><div class="line">//NextViewController.h 文件</div><div class="line">//定义一个协议，前一个页面ViewController要服从该协议，并且实现协议中的方法</div><div class="line">@protocol NextViewControllerDelegate</div><div class="line">	- (void)passTextValue:(NSString *)tfText;</div><div class="line">@end</div><div class="line">  </div><div class="line">@interface NextViewController : UIViewController</div><div class="line">	@property (nonatomic, assign) id delegate;</div><div class="line">@end</div></pre></td></tr></table></figure>
 <p>//NextViewController.m 文件<br>//点击Button返回前一个ViewController页面</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (IBAction)popBtnClicked:(id)sender &#123;</div><div class="line">	if (self.delegate &amp;&amp; [self.delegate respondsToSelector:@selector(passTextValue:)]) &#123;</div><div class="line">		//self.inputTF是该页面中的TextField输入框</div><div class="line">    	[self.delegate passTextValue:self.inputTF.text];</div><div class="line">	&#125;</div><div class="line">	[self.navigationController popViewControllerAnimated:YES];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>接下来我们在看看ViewController文件中的内容，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">//ViewController.m 文件</div><div class="line">@interface ViewController ()</div><div class="line">@property (strong, nonatomic) IBOutlet UILabel *nextVCInfoLabel;</div><div class="line">@end</div><div class="line">//点击Button进入下一个NextViewController页面</div><div class="line">- (IBAction)btnClicked:(id)sender</div><div class="line">&#123;</div><div class="line">NextViewController *nextVC = [[NextViewController alloc] initWithNibName:@&quot;NextViewController&quot; bundle:nil];</div><div class="line">nextVC.delegate = self;//设置代理</div><div class="line">[self.navigationController pushViewController:nextVC animated:YES];</div><div class="line">&#125;</div><div class="line">//实现协议NextViewControllerDelegate中的方法</div><div class="line">#pragma mark - NextViewControllerDelegate method</div><div class="line">- (void)passTextValue:(NSString *)tfText</div><div class="line">&#123;</div><div class="line">//self.nextVCInfoLabel是显示NextViewController传递过来的字符串Label对象</div><div class="line">self.nextVCInfoLabel.text = tfText;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这是通过“协议/代理”来实现的两个页面之间传值的方式。<br><strong>（2）第二种方法：使用Block作为property，实现两个页面之间传值，</strong><br>先看看NextViewController文件中的内容，</p>
+<p>这是通过“协议/代理”来实现的两个页面之间传值的方式。<br><strong>2、第二种方法：使用Block作为property，实现两个页面之间传值，</strong><br>先看看NextViewController文件中的内容，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//NextViewController.h 文件</div><div class="line">@interface NextViewController : UIViewController</div><div class="line">	@property (nonatomic, copy) void (^NextViewControllerBlock)(NSString *tfText);</div><div class="line">@end</div><div class="line">//NextViewContorller.m 文件</div><div class="line">- (IBAction)popBtnClicked:(id)sender &#123;</div><div class="line">	if (self.NextViewControllerBlock) &#123;</div><div class="line">		self.NextViewControllerBlock(self.inputTF.text);</div><div class="line">	&#125;</div><div class="line">	[self.navigationController popViewControllerAnimated:YES];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>再来看看ViewController文件中的内容，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (IBAction)btnClicked:(id)sender&#123;</div><div class="line">	NextViewController *nextVC = [[NextViewController alloc] initWithNibName:@&quot;NextViewController&quot; bundle:nil];</div><div class="line">	nextVC.NextViewControllerBlock = ^(NSString *tfText)&#123;</div><div class="line">	[self resetLabel:tfText];</div><div class="line">&#125;;</div><div class="line">	[self.navigationController pushViewController:nextVC animated:YES];</div><div class="line">&#125;</div><div class="line">#pragma mark - NextViewControllerBlock method</div><div class="line">- (void)resetLabel:(NSString *)textStr &#123;</div><div class="line">	self.nextVCInfoLabel.text = textStr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -144,7 +148,7 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/ios/">ios</a>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
 </div>
 
 
@@ -173,10 +177,10 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/03/01/cjfs6tant006mi5rdzoujfbxl/" title="iOS多线程.01 简介">
+ <a href="/2016/03/01/cjftjraaq0005pird5hmuka6w/" title="iOS多线程概念入门">
   <strong>上一篇：</strong><br/>
   <span>
-  iOS多线程.01 简介</span>
+  iOS多线程概念入门</span>
 </a>
 </div>
 
@@ -201,7 +205,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Block-的定义"><span class="toc-number">1.</span> <span class="toc-text">一、Block 的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、-block关键字的使用"><span class="toc-number">2.</span> <span class="toc-text">二、__block关键字的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Block作为Property属性实现页面之间传值"><span class="toc-number">3.</span> <span class="toc-text">三、Block作为Property属性实现页面之间传值</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Block"><span class="toc-number">1.</span> <span class="toc-text">什么是Block</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Block-的定义"><span class="toc-number">2.</span> <span class="toc-text">Block 的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#block关键字的使用"><span class="toc-number">3.</span> <span class="toc-text">__block关键字的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Block作为Property属性实现页面之间传值"><span class="toc-number">3.1.</span> <span class="toc-text">Block作为Property属性实现页面之间传值</span></a></li></ol></li></ol>
  
   </div>
 
@@ -222,7 +226,7 @@
 		  
 		
 		  
-			<li><a href="/categories/C-C/" title="C/C++">C/C++<sup>3</sup></a></li>
+			<li><a href="/categories/C-C/" title="C/C++">C/C++<sup>4</sup></a></li>
 		  
 		
 		  
@@ -242,15 +246,15 @@
 		  
 		
 		  
-			<li><a href="/categories/PHP/" title="PHP">PHP<sup>22</sup></a></li>
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>24</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/iOS/" title="iOS">iOS<sup>7</sup></a></li>
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>9</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/ios/" title="ios">ios<sup>2</sup></a></li>
+			<li><a href="/categories/ios/" title="ios">ios<sup>1</sup></a></li>
 		  
 		
 		  
@@ -266,7 +270,7 @@
 		  
 		
 		  
-			<li><a href="/categories/读书笔记/" title="读书笔记">读书笔记<sup>2</sup></a></li>
+			<li><a href="/categories/读书笔记/" title="读书笔记">读书笔记<sup>3</sup></a></li>
 		  
 		
 		  
@@ -303,15 +307,11 @@
 			
 		
 			
-				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/PHP基础/" title="PHP基础">PHP基础<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/算法/" title="算法">算法<sup>1</sup></a></li>
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>2</sup></a></li>
 			
 		
 			
@@ -319,11 +319,11 @@
 			
 		
 			
-				<li><a href="/tags/服务容器/" title="服务容器">服务容器<sup>1</sup></a></li>
+				<li><a href="/tags/内存管理/" title="内存管理">内存管理<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/php/" title="php">php<sup>1</sup></a></li>
+				<li><a href="/tags/Linux-GNU/" title="Linux,GNU">Linux,GNU<sup>1</sup></a></li>
 			
 		
 			
@@ -331,7 +331,7 @@
 			
 		
 			
-				<li><a href="/tags/INSERT/" title="INSERT">INSERT<sup>1</sup></a></li>
+				<li><a href="/tags/色彩/" title="色彩">色彩<sup>1</sup></a></li>
 			
 		
 			
@@ -339,11 +339,15 @@
 			
 		
 			
-				<li><a href="/tags/Closures/" title="Closures">Closures<sup>1</sup></a></li>
+				<li><a href="/tags/INSERT/" title="INSERT">INSERT<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Linux-GNU/" title="Linux,GNU">Linux,GNU<sup>1</sup></a></li>
+				<li><a href="/tags/算法/" title="算法">算法<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/服务容器/" title="服务容器">服务容器<sup>1</sup></a></li>
 			
 		
 			
@@ -355,11 +359,11 @@
 			
 		
 			
-				<li><a href="/tags/内存管理/" title="内存管理">内存管理<sup>1</sup></a></li>
+				<li><a href="/tags/面试/" title="面试">面试<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/面试/" title="面试">面试<sup>1</sup></a></li>
+				<li><a href="/tags/MySQL-设计规范/" title="MySQL 设计规范">MySQL 设计规范<sup>1</sup></a></li>
 			
 		
 		</ul>
