@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Maksim&#39;s Website">
 <meta property="og:description" content="DIRECTORY_SEPARATOR（string） 目录分隔符，这是PHP内置的一个常量，代表着”/“或“” 因为系统原因，目录的分隔符被分为两种，在windows中目录的分割符号可以使用‘/’或者‘’，但是在linux中目录分隔符只能使用’/‘; PATH_SEPARATOR 路径分隔符，同样是PHP内置的一个常量，在windows系统中，如果使用include包含多个路径可以使用分号（;）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-03T14:53:43.419Z">
+<meta property="og:updated_time" content="2018-06-19T01:34:50.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="目录常量：PATH_SEPARATOR和DIRECTORY_SEPARATOR">
 <meta name="twitter:description" content="DIRECTORY_SEPARATOR（string） 目录分隔符，这是PHP内置的一个常量，代表着”/“或“” 因为系统原因，目录的分隔符被分为两种，在windows中目录的分割符号可以使用‘/’或者‘’，但是在linux中目录分隔符只能使用’/‘; PATH_SEPARATOR 路径分隔符，同样是PHP内置的一个常量，在windows系统中，如果使用include包含多个路径可以使用分号（;）">
@@ -370,6 +370,8 @@
 <p><strong>PATH_SEPARATOR</strong></p>
 <p>路径分隔符，同样是PHP内置的一个常量，在windows系统中，如果使用include包含多个路径可以使用分号（;）来进行分割，可是在linux系统中却要使用冒号（：）。</p>
 <p>这两个常量主要就是用来解决linux与windows的兼容问题，避免因为系统差异出现的错误，可以增强移植性。</p>
+<p>在 THINKPHP 中，将DIRECTORY_SEPARATOR定义为了一个DR 常量用来方便调用。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">define(<span class="string">"DS"</span>, DIRECTORY_SEPARATOR);</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -483,7 +485,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">94</span>
+                  <span class="site-state-item-count">90</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -505,7 +507,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
