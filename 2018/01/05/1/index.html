@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Maksim&#39;s Website">
 <meta property="og:description" content="抛出问题!  DOM是那种基本的数据结构？ DOM操作的常用API都有哪些？ DOM节点的attr和property有何区别？  解答问题: 1234567891011&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;note&amp;gt;	&amp;lt;to&amp;gt;Tove&amp;lt;/to&amp;gt;	&amp;lt;from&amp;gt;Jani&amp;lt;/from&amp;gt;	&amp;lt">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-09T11:34:56.643Z">
+<meta property="og:updated_time" content="2018-06-20T05:09:38.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DOM本质">
 <meta name="twitter:description" content="抛出问题!  DOM是那种基本的数据结构？ DOM操作的常用API都有哪些？ DOM节点的attr和property有何区别？  解答问题: 1234567891011&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;note&amp;gt;	&amp;lt;to&amp;gt;Tove&amp;lt;/to&amp;gt;	&amp;lt;from&amp;gt;Jani&amp;lt;/from&amp;gt;	&amp;lt">
@@ -386,7 +386,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj &#123;<span class="attr">x</span>:<span class="number">100</span>, <span class="attr">y</span>:<span class="number">200</span>&#125;;</div><div class="line"><span class="built_in">console</span>.log(obj.x) <span class="comment">// 100</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>)[<span class="number">0</span>]</div><div class="line">cosnole.log(p.nodeName); <span class="comment">//p</span></div></pre></td></tr></table></figure>
 <h2 id="Attribute"><a href="#Attribute" class="headerlink" title="Attribute"></a>Attribute</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> pList = <span class="built_in">document</span>.querySelectorAll(<span class="string">'p'</span>)</div><div class="line"><span class="keyword">var</span> p = pList[<span class="number">0</span>]</div><div class="line">p.getAttribute(<span class="string">'data-name'</span>)</div><div class="line">p.setAttribute(<span class="string">'data-name'</span>, <span class="string">'maksim'</span>)</div><div class="line">p.getAttribute(<span class="string">'style'</span>)</div><div class="line">p.setAttribute(<span class="string">'style'</span>, <span class="string">'font-size:30px;'</span>)</div></pre></td></tr></table></figure>
 <p>我们在上述代码中该的 <code>data-name</code> 和 <code>style</code> 到底是什么呢？</p>
-<p>其实就是HTML文档里的标签，并不是JavaScript里的对象。这也是两者之间的区别</p>
+<p>其实就是HTML文档里的标签，并不是JavaScript里的对象。这也是两者之间的区别。</p>
 
       
     </div>
@@ -411,8 +411,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/01/cjil165nw003q7rrdgccgh22h/" rel="next" title="高并发和大流量解决方案">
-                <i class="fa fa-chevron-left"></i> 高并发和大流量解决方案
+              <a href="/2018/01/05/3/" rel="next" title="cookie, sessionStorage和localStorage的区别">
+                <i class="fa fa-chevron-left"></i> cookie, sessionStorage和localStorage的区别
               </a>
             
           </div>
@@ -421,8 +421,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/05/3/" rel="prev" title="cookie, sessionStorage和localStorage的区别">
-                cookie, sessionStorage和localStorage的区别 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/10/cjimtrr11005skkrdx9clcz21/" rel="prev" title="创建型设计模式之抽象工厂">
+                创建型设计模式之抽象工厂 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -509,7 +509,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-count">84</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -531,7 +531,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
