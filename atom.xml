@@ -18,8 +18,8 @@
   
   <entry>
     <title>高并发和大流量解决方案之动态语言并发处理</title>
-    <link href="http://www.maksim.website/2018/06/20/cjimtrr160063kkrdx5u7ade8/"/>
-    <id>http://www.maksim.website/2018/06/20/cjimtrr160063kkrdx5u7ade8/</id>
+    <link href="http://www.maksim.website/2018/06/20/cjin8dshj0062htrdqe5ksy47/"/>
+    <id>http://www.maksim.website/2018/06/20/cjin8dshj0062htrdqe5ksy47/</id>
     <published>2018-06-20T04:53:13.207Z</published>
     <updated>2018-06-20T05:30:19.002Z</updated>
     
@@ -33,6 +33,29 @@
       
     
     </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>在MYSQL中进行日期操作</title>
+    <link href="http://www.maksim.website/2018/04/08/1/"/>
+    <id>http://www.maksim.website/2018/04/08/1/</id>
+    <published>2018-04-07T16:00:00.000Z</published>
+    <updated>2018-04-09T10:30:21.933Z</updated>
+    
+    <content type="html"><![CDATA[<p>平时比较常用的时间、字符串、时间戳之间的互相转换，虽然常用但是几乎每次使用时候都喜欢去搜索一下用法；本文将作为一个笔记，整理一下三者之间的 转换（即：date转字符串、date转时间戳、字符串转date、字符串转时间戳、时间戳转date，时间戳转字符串）用法，方便日后查看；</p><h2 id="涉及的函数"><a href="#涉及的函数" class="headerlink" title="涉及的函数"></a>涉及的函数</h2><p>date_format(date, format) 函数MySQL日期格式化函数date_format()</p><p>str_to_date(str, format) 函数 把字符串转换为日期</p><p>from_unixtime(unix_timestamp, format) 函数，MySQL时间戳格式化函数from_unixtime</p><h2 id="时间转换"><a href="#时间转换" class="headerlink" title="时间转换"></a>时间转换</h2><h3 id="时间转字符串"><a href="#时间转字符串" class="headerlink" title="时间转字符串"></a>时间转字符串</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select date_format(now(), '%Y-%m-%d');   #结果：2016-01-05</div></pre></td></tr></table></figure><h3 id="时间转时间戳"><a href="#时间转时间戳" class="headerlink" title="时间转时间戳"></a>时间转时间戳</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select unix_timestamp(now());  #结果：1452001082</div></pre></td></tr></table></figure><h3 id="字符串转时间"><a href="#字符串转时间" class="headerlink" title="字符串转时间"></a>字符串转时间</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select str_to_date('2016-01-02', '%Y-%m-%d %H');  #结果：2016-01-02 00:00:00</div></pre></td></tr></table></figure><h3 id="字符串转时间戳"><a href="#字符串转时间戳" class="headerlink" title="字符串转时间戳"></a>字符串转时间戳</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select unix_timestamp('2016-01-02');  #结果：1451664000</div></pre></td></tr></table></figure><h3 id="时间戳转时间"><a href="#时间戳转时间" class="headerlink" title="时间戳转时间"></a>时间戳转时间</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select from_unixtime(1451997924);  #结果：2016-01-05 20:45:24</div></pre></td></tr></table></figure><h3 id="时间戳转字符串"><a href="#时间戳转字符串" class="headerlink" title="时间戳转字符串"></a>时间戳转字符串</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select from_unixtime(1451997924,'%Y-%d');  #结果：2016-01-05 20:45:24</div></pre></td></tr></table></figure><h2 id="附表"><a href="#附表" class="headerlink" title="附表"></a>附表</h2><p>MySQL日期格式化（format）取值范围。</p><table><thead><tr><th></th><th>值</th><th>含义</th></tr></thead><tbody><tr><td>秒</td><td>%S、%s</td><td>两位数字形式的秒（ 00,01, …, 59）</td></tr><tr><td>分</td><td>%I、%i</td><td>两位数字形式的分（ 00,01, …, 59）</td></tr><tr><td>小时</td><td>%H</td><td>24小时制，两位数形式小时（00,01, …,23）</td></tr><tr><td>%h</td><td>12小时制，两位数形式小时（00,01, …,12）</td><td></td></tr><tr><td>%k</td><td>24小时制，数形式小时（0,1, …,23）</td><td></td></tr><tr><td>%l</td><td>12小时制，数形式小时（0,1, …,12）</td><td></td></tr><tr><td>%T</td><td>24小时制，时间形式（HH:mm:ss）</td><td></td></tr><tr><td>%r</td><td>12小时制，时间形式（hh:mm:ss AM 或 PM）</td><td></td></tr><tr><td>%p</td><td>AM上午或PM下午</td><td></td></tr><tr><td>周</td><td>%W</td><td>一周中每一天的名称（Sunday,Monday, …,Saturday）</td></tr><tr><td>%a</td><td>一周中每一天名称的缩写（Sun,Mon, …,Sat）</td><td></td></tr><tr><td>%w</td><td>以数字形式标识周（0=Sunday,1=Monday, …,6=Saturday）</td><td></td></tr><tr><td>%U</td><td>数字表示周数，星期天为周中第一天</td><td></td></tr><tr><td>%u</td><td>数字表示周数，星期一为周中第一天</td><td></td></tr><tr><td>天</td><td>%d</td><td>两位数字表示月中天数（01,02, …,31）</td></tr><tr><td>%e</td><td>数字表示月中天数（1,2, …,31）</td><td></td></tr><tr><td>%D</td><td>英文后缀表示月中天数（1st,2nd,3rd …）</td><td></td></tr><tr><td>%j</td><td>以三位数字表示年中天数（001,002, …,366）</td><td></td></tr><tr><td>月</td><td>%M</td><td>英文月名（January,February, …,December）</td></tr><tr><td>%b</td><td>英文缩写月名（Jan,Feb, …,Dec）</td><td></td></tr><tr><td>%m</td><td>两位数字表示月份（01,02, …,12）</td><td></td></tr><tr><td>%c</td><td>数字表示月份（1,2, …,12）</td><td></td></tr><tr><td>年</td><td>%Y</td><td>四位数字表示的年份（2015,2016…）</td></tr><tr><td>%y</td><td>两位数字表示的年份（15,16…）</td><td></td></tr><tr><td>文字输出</td><td>%文字</td><td>直接输出文字内容</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;平时比较常用的时间、字符串、时间戳之间的互相转换，虽然常用但是几乎每次使用时候都喜欢去搜索一下用法；本文将作为一个笔记，整理一下三者之间的 转换（即：date转字符串、date转时间戳、字符串转date、字符串转时间戳、时间戳转date，时间戳转字符串）用法，方便日后查看；
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
     
     
   </entry>
@@ -87,32 +110,9 @@
   </entry>
   
   <entry>
-    <title>在MYSQL中进行日期操作</title>
-    <link href="http://www.maksim.website/2018/04/08/1/"/>
-    <id>http://www.maksim.website/2018/04/08/1/</id>
-    <published>2018-04-07T16:00:00.000Z</published>
-    <updated>2018-04-09T10:30:21.933Z</updated>
-    
-    <content type="html"><![CDATA[<p>平时比较常用的时间、字符串、时间戳之间的互相转换，虽然常用但是几乎每次使用时候都喜欢去搜索一下用法；本文将作为一个笔记，整理一下三者之间的 转换（即：date转字符串、date转时间戳、字符串转date、字符串转时间戳、时间戳转date，时间戳转字符串）用法，方便日后查看；</p><h2 id="涉及的函数"><a href="#涉及的函数" class="headerlink" title="涉及的函数"></a>涉及的函数</h2><p>date_format(date, format) 函数MySQL日期格式化函数date_format()</p><p>str_to_date(str, format) 函数 把字符串转换为日期</p><p>from_unixtime(unix_timestamp, format) 函数，MySQL时间戳格式化函数from_unixtime</p><h2 id="时间转换"><a href="#时间转换" class="headerlink" title="时间转换"></a>时间转换</h2><h3 id="时间转字符串"><a href="#时间转字符串" class="headerlink" title="时间转字符串"></a>时间转字符串</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select date_format(now(), '%Y-%m-%d');   #结果：2016-01-05</div></pre></td></tr></table></figure><h3 id="时间转时间戳"><a href="#时间转时间戳" class="headerlink" title="时间转时间戳"></a>时间转时间戳</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select unix_timestamp(now());  #结果：1452001082</div></pre></td></tr></table></figure><h3 id="字符串转时间"><a href="#字符串转时间" class="headerlink" title="字符串转时间"></a>字符串转时间</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select str_to_date('2016-01-02', '%Y-%m-%d %H');  #结果：2016-01-02 00:00:00</div></pre></td></tr></table></figure><h3 id="字符串转时间戳"><a href="#字符串转时间戳" class="headerlink" title="字符串转时间戳"></a>字符串转时间戳</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select unix_timestamp('2016-01-02');  #结果：1451664000</div></pre></td></tr></table></figure><h3 id="时间戳转时间"><a href="#时间戳转时间" class="headerlink" title="时间戳转时间"></a>时间戳转时间</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select from_unixtime(1451997924);  #结果：2016-01-05 20:45:24</div></pre></td></tr></table></figure><h3 id="时间戳转字符串"><a href="#时间戳转字符串" class="headerlink" title="时间戳转字符串"></a>时间戳转字符串</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select from_unixtime(1451997924,'%Y-%d');  #结果：2016-01-05 20:45:24</div></pre></td></tr></table></figure><h2 id="附表"><a href="#附表" class="headerlink" title="附表"></a>附表</h2><p>MySQL日期格式化（format）取值范围。</p><table><thead><tr><th></th><th>值</th><th>含义</th></tr></thead><tbody><tr><td>秒</td><td>%S、%s</td><td>两位数字形式的秒（ 00,01, …, 59）</td></tr><tr><td>分</td><td>%I、%i</td><td>两位数字形式的分（ 00,01, …, 59）</td></tr><tr><td>小时</td><td>%H</td><td>24小时制，两位数形式小时（00,01, …,23）</td></tr><tr><td>%h</td><td>12小时制，两位数形式小时（00,01, …,12）</td><td></td></tr><tr><td>%k</td><td>24小时制，数形式小时（0,1, …,23）</td><td></td></tr><tr><td>%l</td><td>12小时制，数形式小时（0,1, …,12）</td><td></td></tr><tr><td>%T</td><td>24小时制，时间形式（HH:mm:ss）</td><td></td></tr><tr><td>%r</td><td>12小时制，时间形式（hh:mm:ss AM 或 PM）</td><td></td></tr><tr><td>%p</td><td>AM上午或PM下午</td><td></td></tr><tr><td>周</td><td>%W</td><td>一周中每一天的名称（Sunday,Monday, …,Saturday）</td></tr><tr><td>%a</td><td>一周中每一天名称的缩写（Sun,Mon, …,Sat）</td><td></td></tr><tr><td>%w</td><td>以数字形式标识周（0=Sunday,1=Monday, …,6=Saturday）</td><td></td></tr><tr><td>%U</td><td>数字表示周数，星期天为周中第一天</td><td></td></tr><tr><td>%u</td><td>数字表示周数，星期一为周中第一天</td><td></td></tr><tr><td>天</td><td>%d</td><td>两位数字表示月中天数（01,02, …,31）</td></tr><tr><td>%e</td><td>数字表示月中天数（1,2, …,31）</td><td></td></tr><tr><td>%D</td><td>英文后缀表示月中天数（1st,2nd,3rd …）</td><td></td></tr><tr><td>%j</td><td>以三位数字表示年中天数（001,002, …,366）</td><td></td></tr><tr><td>月</td><td>%M</td><td>英文月名（January,February, …,December）</td></tr><tr><td>%b</td><td>英文缩写月名（Jan,Feb, …,Dec）</td><td></td></tr><tr><td>%m</td><td>两位数字表示月份（01,02, …,12）</td><td></td></tr><tr><td>%c</td><td>数字表示月份（1,2, …,12）</td><td></td></tr><tr><td>年</td><td>%Y</td><td>四位数字表示的年份（2015,2016…）</td></tr><tr><td>%y</td><td>两位数字表示的年份（15,16…）</td><td></td></tr><tr><td>文字输出</td><td>%文字</td><td>直接输出文字内容</td></tr></tbody></table>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;平时比较常用的时间、字符串、时间戳之间的互相转换，虽然常用但是几乎每次使用时候都喜欢去搜索一下用法；本文将作为一个笔记，整理一下三者之间的 转换（即：date转字符串、date转时间戳、字符串转date、字符串转时间戳、时间戳转date，时间戳转字符串）用法，方便日后查看；
-      
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://www.maksim.website/categories/MySQL/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title></title>
-    <link href="http://www.maksim.website/2018/04/03/cjimtrr1j006pkkrd3c3a1h45/"/>
-    <id>http://www.maksim.website/2018/04/03/cjimtrr1j006pkkrd3c3a1h45/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjin8dsio006vhtrdm3zury2y/"/>
+    <id>http://www.maksim.website/2018/04/03/cjin8dsio006vhtrdm3zury2y/</id>
     <published>2018-04-03T14:53:43.478Z</published>
     <updated>2018-04-03T14:53:43.482Z</updated>
     
@@ -132,8 +132,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2018/04/03/cjimtrr0j0053kkrd04byvc9x/"/>
-    <id>http://www.maksim.website/2018/04/03/cjimtrr0j0053kkrd04byvc9x/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjin8dsgx004yhtrdt88axe3b/"/>
+    <id>http://www.maksim.website/2018/04/03/cjin8dsgx004yhtrdt88axe3b/</id>
     <published>2018-04-03T14:53:43.408Z</published>
     <updated>2018-06-20T07:17:28.071Z</updated>
     
@@ -204,8 +204,8 @@
   
   <entry>
     <title>AndroidStudio解决一直处于Building gradle project info的问题</title>
-    <link href="http://www.maksim.website/2018/03/10/cjimtrr1i006nkkrddf8q7k82/"/>
-    <id>http://www.maksim.website/2018/03/10/cjimtrr1i006nkkrddf8q7k82/</id>
+    <link href="http://www.maksim.website/2018/03/10/cjin8dshv006hhtrduxi8fzb1/"/>
+    <id>http://www.maksim.website/2018/03/10/cjin8dshv006hhtrduxi8fzb1/</id>
     <published>2018-03-09T16:00:00.000Z</published>
     <updated>2018-06-20T05:08:15.054Z</updated>
     
@@ -230,8 +230,8 @@
   
   <entry>
     <title>Nginx的安装</title>
-    <link href="http://www.maksim.website/2018/02/27/cjimtrr1e006gkkrdquy9bx7m/"/>
-    <id>http://www.maksim.website/2018/02/27/cjimtrr1e006gkkrdquy9bx7m/</id>
+    <link href="http://www.maksim.website/2018/02/27/cjin8dsi5006phtrd6brrbfcx/"/>
+    <id>http://www.maksim.website/2018/02/27/cjin8dsi5006phtrd6brrbfcx/</id>
     <published>2018-02-26T16:00:00.000Z</published>
     <updated>2018-06-19T01:52:07.643Z</updated>
     
@@ -277,8 +277,8 @@
   
   <entry>
     <title>function与感叹号</title>
-    <link href="http://www.maksim.website/2018/02/01/cjimtrr1c006bkkrd3060zgbh/"/>
-    <id>http://www.maksim.website/2018/02/01/cjimtrr1c006bkkrd3060zgbh/</id>
+    <link href="http://www.maksim.website/2018/02/01/cjin8dshl0064htrd6i2gjb7c/"/>
+    <id>http://www.maksim.website/2018/02/01/cjin8dshl0064htrd6i2gjb7c/</id>
     <published>2018-01-31T16:00:00.000Z</published>
     <updated>2018-06-20T05:05:43.568Z</updated>
     
@@ -300,31 +300,8 @@
   
   <entry>
     <title>高并发和大流量解决方案之独立图片服务器的部署</title>
-    <link href="http://www.maksim.website/2018/01/13/cjimtrr190067kkrd2f7ivlu3/"/>
-    <id>http://www.maksim.website/2018/01/13/cjimtrr190067kkrd2f7ivlu3/</id>
-    <published>2018-01-12T16:00:00.000Z</published>
-    <updated>2018-06-20T03:55:30.077Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="什么是动态语言静态化"><a href="#什么是动态语言静态化" class="headerlink" title="什么是动态语言静态化"></a>什么是动态语言静态化</h1><p>将现有 PHP 等动态语言的逻辑代码生成为静态HTML 文件，用户访问动态脚本重定向到静态 HTML 文件的过程。</p><p>如果页面中的的数据一直都在变化，那么不建议使用静态化。</p><h1 id="为什么要静态化"><a href="#为什么要静态化" class="headerlink" title="为什么要静态化"></a>为什么要静态化</h1><p>动态脚本通常会做逻辑运算和数据查询，访问量越大，服务器压力越大。</p><p>访问量大的时候可能造成 CPU 负载过高，数据服务器压力过大，静态化可以减轻逻辑处理能力，降低数据库服务器的查询压力。</p><h1 id="静态化的实现方式"><a href="#静态化的实现方式" class="headerlink" title="静态化的实现方式"></a>静态化的实现方式</h1><h2 id="使用模板引擎"><a href="#使用模板引擎" class="headerlink" title="使用模板引擎"></a>使用模板引擎</h2><p>可以使用 Smarty 的缓存机制生成静态 HTML 缓存文件。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$smarty-&gt;cache_dir = $ROOT.<span class="string">'/cache'</span>; <span class="comment">//缓存目录</span></div><div class="line">$smarty-&gt;caching = <span class="keyword">true</span>;    <span class="comment">//是否开启缓存</span></div><div class="line">$smarty-&gt;cache_lifetime = <span class="string">'3600'</span>;    <span class="comment">//缓存时间</span></div></pre></td></tr></table></figure><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$smarty-&gt;display(strign template [,string cache_id[, strign compile_id]]);</div></pre></td></tr></table></figure><p>如果开启了缓存，Smarty 会自动的生成 HTML 缓存文件。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$smarty-&gt;clear_all_cache();<span class="comment">//清除所有缓存</span></div><div class="line">$smarty-&gt;clear_cache(<span class="string">'file.html'</span>);<span class="comment">//清除指定缓存</span></div><div class="line">$smarty-&gt;clear_cache(<span class="string">'article,html'</span>, $cache_id) <span class="comment">//清除一同模板下的指定缓存号的缓存。</span></div></pre></td></tr></table></figure><h2 id="利用-OB-系列函数"><a href="#利用-OB-系列函数" class="headerlink" title="利用 OB 系列函数"></a>利用 OB 系列函数</h2><ul><li>ob_start()：打开输出控制缓冲</li><li>ob_get_contents()：返回输出缓冲区的内容</li><li>ob_clean()：清空输出缓冲区</li><li>ob_end_flush()：冲刷出（送出）输出缓冲区内容并且关闭缓冲</li></ul><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ob_start();</div><div class="line">输出到页面的 HTML 代码</div><div class="line">ob_get_contents();</div><div class="line">ob_end_flush();</div><div class="line">fopen()写入</div></pre></td></tr></table></figure><p>可以使用 filectime 函数 判断文件的 inode 修改时间，判断是否过期。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$cache_name = md5(<span class="keyword">__FILE__</span>).<span class="string">'html'</span>;</div><div class="line">$cache_lifetime = <span class="number">3600</span>;</div><div class="line"></div><div class="line"><span class="keyword">if</span> ( filectime(<span class="keyword">__FILE__</span>) &lt;= filectime($cache_name) file_exists($cache_name) &amp;&amp; filectime($cache_name) + $cache_lifetime &gt; time()) &#123;</div><div class="line">    <span class="comment">//判断 PHP 文件修改时间</span></div><div class="line"><span class="comment">//判断是否存在缓存</span></div><div class="line"><span class="comment">//判断是否过期</span></div><div class="line">    <span class="keyword">include</span> $cache_name;</div><div class="line">    <span class="keyword">exit</span>;</div><div class="line">&#125;</div><div class="line">ob_start();</div><div class="line"><span class="meta">?&gt;</span></div><div class="line">&lt;b&gt; This is my Script&lt;/b&gt;</div><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$content = ob_get_contents();    </div><div class="line">$ob_end_flush();</div><div class="line">$handle = fopen($cache_name, <span class="string">'w'</span>);</div><div class="line">fwrite($handle, $content);</div><div class="line">fclose($handle);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;什么是动态语言静态化&quot;&gt;&lt;a href=&quot;#什么是动态语言静态化&quot; class=&quot;headerlink&quot; title=&quot;什么是动态语言静态化&quot;&gt;&lt;/a&gt;什么是动态语言静态化&lt;/h1&gt;&lt;p&gt;将现有 PHP 等动态语言的逻辑代码生成为静态HTML 文件，用户访问动态脚
-      
-    
-    </summary>
-    
-      <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>高并发和大流量解决方案之独立图片服务器的部署</title>
-    <link href="http://www.maksim.website/2018/01/13/cjimtrr1b0069kkrd8b27wy0g/"/>
-    <id>http://www.maksim.website/2018/01/13/cjimtrr1b0069kkrd8b27wy0g/</id>
+    <link href="http://www.maksim.website/2018/01/13/cjin8dshn0066htrdfvg08ulm/"/>
+    <id>http://www.maksim.website/2018/01/13/cjin8dshn0066htrdfvg08ulm/</id>
     <published>2018-01-12T16:00:00.000Z</published>
     <updated>2018-06-20T03:27:20.559Z</updated>
     
@@ -345,9 +322,32 @@
   </entry>
   
   <entry>
+    <title>高并发和大流量解决方案之独立图片服务器的部署</title>
+    <link href="http://www.maksim.website/2018/01/13/cjin8dshi005zhtrdufnfykfi/"/>
+    <id>http://www.maksim.website/2018/01/13/cjin8dshi005zhtrdufnfykfi/</id>
+    <published>2018-01-12T16:00:00.000Z</published>
+    <updated>2018-06-20T03:55:30.077Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="什么是动态语言静态化"><a href="#什么是动态语言静态化" class="headerlink" title="什么是动态语言静态化"></a>什么是动态语言静态化</h1><p>将现有 PHP 等动态语言的逻辑代码生成为静态HTML 文件，用户访问动态脚本重定向到静态 HTML 文件的过程。</p><p>如果页面中的的数据一直都在变化，那么不建议使用静态化。</p><h1 id="为什么要静态化"><a href="#为什么要静态化" class="headerlink" title="为什么要静态化"></a>为什么要静态化</h1><p>动态脚本通常会做逻辑运算和数据查询，访问量越大，服务器压力越大。</p><p>访问量大的时候可能造成 CPU 负载过高，数据服务器压力过大，静态化可以减轻逻辑处理能力，降低数据库服务器的查询压力。</p><h1 id="静态化的实现方式"><a href="#静态化的实现方式" class="headerlink" title="静态化的实现方式"></a>静态化的实现方式</h1><h2 id="使用模板引擎"><a href="#使用模板引擎" class="headerlink" title="使用模板引擎"></a>使用模板引擎</h2><p>可以使用 Smarty 的缓存机制生成静态 HTML 缓存文件。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$smarty-&gt;cache_dir = $ROOT.<span class="string">'/cache'</span>; <span class="comment">//缓存目录</span></div><div class="line">$smarty-&gt;caching = <span class="keyword">true</span>;    <span class="comment">//是否开启缓存</span></div><div class="line">$smarty-&gt;cache_lifetime = <span class="string">'3600'</span>;    <span class="comment">//缓存时间</span></div></pre></td></tr></table></figure><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$smarty-&gt;display(strign template [,string cache_id[, strign compile_id]]);</div></pre></td></tr></table></figure><p>如果开启了缓存，Smarty 会自动的生成 HTML 缓存文件。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$smarty-&gt;clear_all_cache();<span class="comment">//清除所有缓存</span></div><div class="line">$smarty-&gt;clear_cache(<span class="string">'file.html'</span>);<span class="comment">//清除指定缓存</span></div><div class="line">$smarty-&gt;clear_cache(<span class="string">'article,html'</span>, $cache_id) <span class="comment">//清除一同模板下的指定缓存号的缓存。</span></div></pre></td></tr></table></figure><h2 id="利用-OB-系列函数"><a href="#利用-OB-系列函数" class="headerlink" title="利用 OB 系列函数"></a>利用 OB 系列函数</h2><ul><li>ob_start()：打开输出控制缓冲</li><li>ob_get_contents()：返回输出缓冲区的内容</li><li>ob_clean()：清空输出缓冲区</li><li>ob_end_flush()：冲刷出（送出）输出缓冲区内容并且关闭缓冲</li></ul><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ob_start();</div><div class="line">输出到页面的 HTML 代码</div><div class="line">ob_get_contents();</div><div class="line">ob_end_flush();</div><div class="line">fopen()写入</div></pre></td></tr></table></figure><p>可以使用 filectime 函数 判断文件的 inode 修改时间，判断是否过期。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$cache_name = md5(<span class="keyword">__FILE__</span>).<span class="string">'html'</span>;</div><div class="line">$cache_lifetime = <span class="number">3600</span>;</div><div class="line"></div><div class="line"><span class="keyword">if</span> ( filectime(<span class="keyword">__FILE__</span>) &lt;= filectime($cache_name) file_exists($cache_name) &amp;&amp; filectime($cache_name) + $cache_lifetime &gt; time()) &#123;</div><div class="line">    <span class="comment">//判断 PHP 文件修改时间</span></div><div class="line"><span class="comment">//判断是否存在缓存</span></div><div class="line"><span class="comment">//判断是否过期</span></div><div class="line">    <span class="keyword">include</span> $cache_name;</div><div class="line">    <span class="keyword">exit</span>;</div><div class="line">&#125;</div><div class="line">ob_start();</div><div class="line"><span class="meta">?&gt;</span></div><div class="line">&lt;b&gt; This is my Script&lt;/b&gt;</div><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$content = ob_get_contents();    </div><div class="line">$ob_end_flush();</div><div class="line">$handle = fopen($cache_name, <span class="string">'w'</span>);</div><div class="line">fwrite($handle, $content);</div><div class="line">fclose($handle);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;什么是动态语言静态化&quot;&gt;&lt;a href=&quot;#什么是动态语言静态化&quot; class=&quot;headerlink&quot; title=&quot;什么是动态语言静态化&quot;&gt;&lt;/a&gt;什么是动态语言静态化&lt;/h1&gt;&lt;p&gt;将现有 PHP 等动态语言的逻辑代码生成为静态HTML 文件，用户访问动态脚
+      
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>高并发和大流量解决方案之 CDN 加速</title>
-    <link href="http://www.maksim.website/2018/01/13/cjimtrr14005ykkrdf0ow6cdw/"/>
-    <id>http://www.maksim.website/2018/01/13/cjimtrr14005ykkrdf0ow6cdw/</id>
+    <link href="http://www.maksim.website/2018/01/13/cjin8dshp006ahtrdfy7424gq/"/>
+    <id>http://www.maksim.website/2018/01/13/cjin8dshp006ahtrdfy7424gq/</id>
     <published>2018-01-12T16:00:00.000Z</published>
     <updated>2018-06-20T03:33:06.535Z</updated>
     
@@ -368,9 +368,34 @@
   </entry>
   
   <entry>
+    <title>高并发和大流量解决方案 减少 HTTP 请求</title>
+    <link href="http://www.maksim.website/2018/01/12/cjin8dshh005whtrdu2peksnq/"/>
+    <id>http://www.maksim.website/2018/01/12/cjin8dshh005whtrdu2peksnq/</id>
+    <published>2018-01-12T11:29:10.000Z</published>
+    <updated>2018-06-20T14:27:03.127Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="为什么要减少HTTP请求"><a href="#为什么要减少HTTP请求" class="headerlink" title="为什么要减少HTTP请求"></a>为什么要减少HTTP请求</h2><h3 id="性能黄金法则："><a href="#性能黄金法则：" class="headerlink" title="性能黄金法则："></a>性能黄金法则：</h3><p>只有10%~20%的最终永不响应时间花在接收请求的HTML文档上，剩下的80%~90%时间花在HTML文档所引用的所有组件（图片，script，css，flash等等）进行的HTTP请求上。</p><h3 id="如何改善"><a href="#如何改善" class="headerlink" title="如何改善"></a>如何改善</h3><p>改善响应时间的最简单途径就是减少组件的数量，并由此减少HTTP请求的数量。</p><h3 id="HTTP链接产生的开销"><a href="#HTTP链接产生的开销" class="headerlink" title="HTTP链接产生的开销"></a>HTTP链接产生的开销</h3><p>域名解析 – TCP链接 – 发送请求 – 等待 – 下载资源 –  解析时间</p><ul><li>需要注意 DNS 缓存也需要时间，多个缓存就要查找多次有可能缓存会被清除 </li><li>HTTP1.1 协议规定请求只能串行发送，也就是说一百个请求必须一次逐个发送，前面的一个请求完成才能开始下一个请求。</li></ul><h2 id="减少HTTP请求的方式"><a href="#减少HTTP请求的方式" class="headerlink" title="减少HTTP请求的方式"></a>减少HTTP请求的方式</h2><h3 id="图片地图"><a href="#图片地图" class="headerlink" title="图片地图"></a>图片地图</h3><p>图片地图允许你在一个图片上关联多个URL。目标URL的选择取决于用户单击了图片上的哪个位置。 </p><p>我们可以通过使用五个分开的图片，然后每个图片对应一个超链接产生了5个HTTP请求，我们的目标是要减少HTTP请求。</p><p>将五个图片合并成为一张图片，然后以位置信息定位超链接。</p><p>把HTTP请求减少为一个 ，可以暴增设计的完整性和功能的齐全性。</p><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">map</span>&gt;</span><span class="tag">&lt;<span class="name">area</span>&gt;</span><span class="tag">&lt;/<span class="name">map</span>&gt;</span><span class="tag">&lt;/<span class="name">map</span>&gt;</span></div></pre></td></tr></table></figure><h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><p>未使用图像地图的例子：</p><p><a href="http://stevesouders.com/hpws/imagemap-no.php" target="_blank" rel="noopener">http://stevesouders.com/hpws/imagemap-no.php</a></p><p>使用图像地图的例子：    </p><p><a href="http://stevesouders.com/hpws/imagemap.php" target="_blank" rel="noopener">http://stevesouders.com/hpws/imagemap.php</a></p><h3 id="CSS-Sprites"><a href="#CSS-Sprites" class="headerlink" title="CSS Sprites"></a>CSS Sprites</h3><p>CSS Sprites 中文翻译为 CSS 精灵，通过使用合并图片，通过指定 CSS 的 backgroud-image 和backgroud-position来显示元素。</p><p><strong>backgroud-position属性</strong></p><p>backgroud-position:x,y; x和y可以写负值也可以写正值，我们可以想象图片的左上方为（0，0），以（0，0）坐标向右是为负数的 X 轴，以（0，0）坐标向下是为负数的 y 轴。</p><p>使用图片精灵的案例：</p><p><a href="http://stevesouders.com/hpws/sprites.php" target="_blank" rel="noopener">http://stevesouders.com/hpws/sprites.php</a></p><p>图片地图和 CSS Sprites 的响应时间基本相同，但比使用各自独立图片的方式要快50%以上。</p><h3 id="合并脚本和样式表"><a href="#合并脚本和样式表" class="headerlink" title="合并脚本和样式表"></a>合并脚本和样式表</h3><p>使用外部的 JS 和 CSS 文件引用的方式，因为这要比直接写在页面中性能要更好一点。</p><p>独立的一个 JS 比用多个 JS 文件组成的页面载入要快38%。</p><p>把多个脚本合并为一个脚本，把多个样式表合并成为一个样式表。</p><p><a href="http://stevesouders.com/hpws/combo-none.php" target="_blank" rel="noopener">http://stevesouders.com/hpws/combo-none.php</a></p><p><a href="http://stevesouders.com/hpws/combo.php" target="_blank" rel="noopener">http://stevesouders.com/hpws/combo.php</a></p><h3 id="图片使用base64编码减少页面请求数"><a href="#图片使用base64编码减少页面请求数" class="headerlink" title="图片使用base64编码减少页面请求数"></a>图片使用base64编码减少页面请求数</h3><p>采用Base64的编码方式将图片直接嵌入到网页中，而不是从外部载入。</p><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"data:image/gif;base64,/9j/4AAqsKZJ....."</span>&gt;</span></div></pre></td></tr></table></figure><p><a href="http://stevesouders.com/hpws/inline-images.php" target="_blank" rel="noopener">http://stevesouders.com/hpws/inline-images.php</a></p><p><a href="http://stevesouders.com/hpws/inline-css-images.php" target="_blank" rel="noopener">http://stevesouders.com/hpws/inline-css-images.php</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;为什么要减少HTTP请求&quot;&gt;&lt;a href=&quot;#为什么要减少HTTP请求&quot; class=&quot;headerlink&quot; title=&quot;为什么要减少HTTP请求&quot;&gt;&lt;/a&gt;为什么要减少HTTP请求&lt;/h2&gt;&lt;h3 id=&quot;性能黄金法则：&quot;&gt;&lt;a href=&quot;#性能黄金法则
+      
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
+    
+    
+      <category term="高并发" scheme="http://www.maksim.website/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
     <title>高并发和大流量解决方案之Web资源防盗链</title>
-    <link href="http://www.maksim.website/2018/01/11/cjimtrr180065kkrdfps8dih7/"/>
-    <id>http://www.maksim.website/2018/01/11/cjimtrr180065kkrdfps8dih7/</id>
+    <link href="http://www.maksim.website/2018/01/11/cjin8dshf005uhtrd23d0piwy/"/>
+    <id>http://www.maksim.website/2018/01/11/cjin8dshf005uhtrd23d0piwy/</id>
     <published>2018-01-11T04:20:11.000Z</published>
     <updated>2018-06-20T03:33:14.575Z</updated>
     
@@ -392,8 +417,8 @@
   
   <entry>
     <title>创建型设计模式之抽象工厂</title>
-    <link href="http://www.maksim.website/2018/01/10/cjimtrr11005skkrdx9clcz21/"/>
-    <id>http://www.maksim.website/2018/01/10/cjimtrr11005skkrdx9clcz21/</id>
+    <link href="http://www.maksim.website/2018/01/10/cjin8dshe005rhtrdytzsohgr/"/>
+    <id>http://www.maksim.website/2018/01/10/cjin8dshe005rhtrdytzsohgr/</id>
     <published>2018-01-10T12:44:02.000Z</published>
     <updated>2018-04-10T10:52:18.330Z</updated>
     
@@ -464,29 +489,6 @@
     </summary>
     
       <category term="JavaScript" scheme="http://www.maksim.website/categories/JavaScript/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>高并发和大流量解决方案</title>
-    <link href="http://www.maksim.website/2018/01/01/cjimtrr150060kkrda99qt9bm/"/>
-    <id>http://www.maksim.website/2018/01/01/cjimtrr150060kkrda99qt9bm/</id>
-    <published>2018-01-01T02:20:11.000Z</published>
-    <updated>2018-06-20T03:25:33.244Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="PHP-如何解决网站大流量与高并发的问题"><a href="#PHP-如何解决网站大流量与高并发的问题" class="headerlink" title="PHP 如何解决网站大流量与高并发的问题"></a>PHP 如何解决网站大流量与高并发的问题</h1><h2 id="高并发架构的相关概念"><a href="#高并发架构的相关概念" class="headerlink" title="高并发架构的相关概念"></a>高并发架构的相关概念</h2><h3 id="高并发的概念"><a href="#高并发的概念" class="headerlink" title="高并发的概念"></a>高并发的概念</h3><ul><li><p><strong>并发：</strong>在操作系统中，是指一个时间段中有几个程序都处于已启动运行到运行完毕之间，且这几个程序都是在同一个处理机上运行，但任意一个时刻点上只 有一个程序在处理机上运行。</p><p>上面这一段是摘自百度百科的一段话，但是上面的定义很明显不是我们通常所说的并发，在互联网时代，所讲的并发、高并发，通常是指并发访问。也就是在某一个时间点，有多少个访问同时到来。</p></li><li><p><strong>高并发：</strong> 通常如果一个系统的日 PV 在千万以上，有可能是一个高并发的系统，有的公司完全不走技术路线，全靠机器堆，这不再我们的讨论范围。</p></li></ul><h3 id="高并发中需要关注相关概念"><a href="#高并发中需要关注相关概念" class="headerlink" title="高并发中需要关注相关概念"></a>高并发中需要关注相关概念</h3><ul><li><strong>QPS:</strong>  每秒钟请求或者查询的数量，在互联网领域，指的是每秒响应请求数（指的是HTTP请求）。</li><li><strong>吞吐量：</strong>单位时间内处理的请求数量（通常由QPS与并发数决定）</li><li><strong>响应时间：</strong> 从请求发出到收到响应花费的时间。例如系统处理一个HTTP请求需要 100ms, 这个 100ms 就是系统的响应时间。</li><li><strong>PV：</strong> 综合浏览量（Page View），即页面浏览量或者点击量，一个访客在24小时内访问的页面数量。同一个人浏览你的网站统一页面，只记录一次 PV。</li><li><strong>UV：</strong> 独立访客（UniQue Visitor），即一定时间范围内相同访客多次访问网站，只计算为一个独立访客。</li><li><strong>带宽：</strong>  计算带宽大小需关注两个指标，峰值流量和页面的平均大小</li><li><strong>日网站带宽：</strong> PV/统计时间（换算到秒）*平均页面大小（单位KB）* 8，峰值一般为平均值的倍数，根据实际情况来定。</li><li><strong>压力测试：</strong> 测试服务器能够最大承受的最大并发数和QPS值，对于计算机来说，我们应该知道这台服务器最大能够承受多少QPS，而我们可以通过一天的PV来计算出峰值的QPS，这样我们就可以根据需求进行优化。</li></ul><p><strong>QPS 不等于并发数数量，QPS是每秒HTTP请求数量，并发连接数是系统同时处理的请求数量。</strong></p><p><strong>(总PV数 <em> 80%) / (6小时秒数 </em> 20%) = 峰值每秒请求数量(QPS)</strong>， 80%的访问量集中在20%的时间，那为什么是6个小时呢？</p><p>6个小时主要是做了一个简单的估计，比如说我们访问网站中午两个小时，下午两个小时，晚上两个小时。</p><h3 id="AB-压力测试工具"><a href="#AB-压力测试工具" class="headerlink" title="AB 压力测试工具"></a>AB 压力测试工具</h3><p>常用的性能测试工具：** ab、wrk、http_load、Web Bench、Siege、 Apache Jmeter </p><p>ab 全称是 Apache benchmark，是 Apache 官方推出的工具创建多个并发访问线程，模拟多个访问者同时访问某一URL 地址进行访问。它的测试目标是基于 URL 的，因此，它既可以用来测试 Apache 的负载压力，也可以测试 Nginx、lighthttp、tomact、IIS 等其它 Web 服务器的压力。</p><h4 id="ab-的简单使用"><a href="#ab-的简单使用" class="headerlink" title="ab 的简单使用"></a>ab 的简单使用</h4><p>模拟并发请求100次，总共请求5000次。</p><p>ab -c 100 -n 5000 待测试网站</p><h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul><li>测试机器与北侧机器分开</li><li>不要对线上服务做压力测试</li><li>观察测试工具 ab 所在机器，以及被测试的前端机的 CPU，内存，网络等都不超过最高限度的75%。</li></ul><h3 id="Q-PS-达到极限"><a href="#Q-PS-达到极限" class="headerlink" title="Q PS 达到极限"></a>Q PS 达到极限</h3><p>随着 QPS 的增长，每个阶段需要根据实际情况来进行优化，优化的方案也与硬件、网络带宽息息相关。</p><h4 id="QPS-达到50"><a href="#QPS-达到50" class="headerlink" title="QPS 达到50"></a>QPS 达到50</h4><p>可以称之为小型网站，一般的服务器都可以应付</p><h4 id="QPS-达到100"><a href="#QPS-达到100" class="headerlink" title="QPS 达到100"></a>QPS 达到100</h4><p>假设关系型数据库的每次请求在0.01秒完成。</p><p>假设单页面只有一个 SQL 查询，那么100QPS 意味着1秒钟完成100个请求，但是此时我们并不能保证数据库查询能完成100次。</p><p><strong>方案：</strong>数据库缓存层、数据库的负载均衡</p><h4 id="QPS-达到800"><a href="#QPS-达到800" class="headerlink" title="QPS 达到800"></a>QPS 达到800</h4><p>假设我们使用百兆带宽，意味着网站出口的实际带宽是8M 左右，假设每个页面只有10K，在这个并发条件下，百兆带宽已经吃完了。</p><p><strong>方案：</strong>CDN 加速、负载均衡</p><h4 id="QPS-达到1000"><a href="#QPS-达到1000" class="headerlink" title="QPS 达到1000"></a>QPS 达到1000</h4><p>假设使用 Memcache 缓存数据库查询数据，每个页面对 Memcache 的请求远大于直接 DB 的请求。</p><p>Memcache 的悲观并发数在2W 左右，但有可能在之前内王带宽已经吃光，表现出不稳定</p><p><strong>方案：</strong>静态 HTML缓存</p><h4 id="QPS-达到2000"><a href="#QPS-达到2000" class="headerlink" title="QPS 达到2000"></a>QPS 达到2000</h4><p>这个级别下，文件系统访问锁都成了灾难。</p><p><strong>方案：</strong>做业务隔离，分布式存储</p><h2 id="高并发解决方案案例"><a href="#高并发解决方案案例" class="headerlink" title="高并发解决方案案例"></a>高并发解决方案案例</h2><h3 id="流量优化"><a href="#流量优化" class="headerlink" title="流量优化"></a>流量优化</h3><ul><li>防盗链处理</li></ul><h3 id="前段优化"><a href="#前段优化" class="headerlink" title="前段优化"></a>前段优化</h3><ul><li>减少 HTTP 请求</li><li>添加异步请求</li><li>启用浏览器缓存和文件压缩</li><li>CDN 加速</li><li>建立独立的图片服务器</li></ul><h3 id="服务端优化"><a href="#服务端优化" class="headerlink" title="服务端优化"></a>服务端优化</h3><ul><li>页面静态化</li><li>并发处理</li><li>队列处理</li></ul><h3 id="数据库优化"><a href="#数据库优化" class="headerlink" title="数据库优化"></a>数据库优化</h3><ul><li>数据库缓存</li><li>分库分表、分区操作</li><li>读写分离</li><li>负载均衡</li></ul><h3 id="Web-服务器优化"><a href="#Web-服务器优化" class="headerlink" title="Web 服务器优化"></a>Web 服务器优化</h3><ul><li>负载均衡（Nginx、LVS）</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;PHP-如何解决网站大流量与高并发的问题&quot;&gt;&lt;a href=&quot;#PHP-如何解决网站大流量与高并发的问题&quot; class=&quot;headerlink&quot; title=&quot;PHP 如何解决网站大流量与高并发的问题&quot;&gt;&lt;/a&gt;PHP 如何解决网站大流量与高并发的问题&lt;/h1&gt;&lt;
-      
-    
-    </summary>
-    
-      <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
     
     
   </entry>
