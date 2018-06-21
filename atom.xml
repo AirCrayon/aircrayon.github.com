@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.maksim.website/"/>
-  <updated>2018-06-20T05:30:19.002Z</updated>
+  <updated>2018-04-09T11:37:37.616Z</updated>
   <id>http://www.maksim.website/</id>
   
   <author>
@@ -17,22 +17,26 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>高并发和大流量解决方案之动态语言并发处理</title>
-    <link href="http://www.maksim.website/2018/06/20/cjinr1zq3006hosrdxxgdl7l2/"/>
-    <id>http://www.maksim.website/2018/06/20/cjinr1zq3006hosrdxxgdl7l2/</id>
-    <published>2018-06-20T04:53:13.207Z</published>
-    <updated>2018-06-20T05:30:19.002Z</updated>
+    <title>写作的准备-读《完全写作指南》</title>
+    <link href="http://www.maksim.website/2018/04/08/2/"/>
+    <id>http://www.maksim.website/2018/04/08/2/</id>
+    <published>2018-04-07T16:00:00.000Z</published>
+    <updated>2018-04-09T11:37:37.616Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="什么是进程、线程、协程"><a href="#什么是进程、线程、协程" class="headerlink" title="什么是进程、线程、协程"></a>什么是进程、线程、协程</h1><h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><p>进程（Process）是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，是操作系统结构的基础。</p><h2 id="进程的三态模型"><a href="#进程的三态模型" class="headerlink" title="进程的三态模型"></a>进程的三态模型</h2><p>进程的三态模型：多道程序系统中，进程在处理器上交替运行，状态不断地发生变化</p><p><strong>运行：</strong>当一个进程在处理机上运行时，则称该进程处于运行状态。处于此状态的进程的数目小于等于处理器的数目，对于单机处理系统，处于运行状态的进程只有一个。没有其他进程可以执行时（如所有进程都在阻塞状态），通常会自动执行系统的空闲进程。</p><p><strong>就绪</strong>：当一个程序获得了除处理机意外的一切所需资源，一旦得到处理机即可运行，则称此进程出于就绪状态。就绪进程可以按多个优先级来划分队列。例如，当一个进程处于时间片用完而进入就绪状态时，排入低优先级队列；当前进程由 I/O 操作完成而进入就绪状态时，排入高优先队列。</p><p><strong>阻塞：</strong>也称之为等待或者睡眠状态，一个进程正在等待某一事件发生（例如请求 I/O而等待 I/O 完成等）而暂时停止运行，这时即使把处理机分配给进程也无法运行，故称该进程出于阻塞状态。</p><h2 id="进程的五态模型"><a href="#进程的五态模型" class="headerlink" title="进程的五态模型"></a>进程的五态模型</h2><p>进程的五态模型：对于一个实际的系统，进程的状态及其转换更为复杂。</p><h1 id="什么是多进程，多线程"><a href="#什么是多进程，多线程" class="headerlink" title="什么是多进程，多线程"></a>什么是多进程，多线程</h1><h1 id="同步阻塞模型"><a href="#同步阻塞模型" class="headerlink" title="同步阻塞模型"></a>同步阻塞模型</h1><h1 id="异步非阻塞模型"><a href="#异步非阻塞模型" class="headerlink" title="异步非阻塞模型"></a>异步非阻塞模型</h1><h1 id="PHP-并发编程实践"><a href="#PHP-并发编程实践" class="headerlink" title="PHP 并发编程实践"></a>PHP 并发编程实践</h1>]]></content>
+    <content type="html"><![CDATA[<p>写作需要明确目标、确定读者、用头脑风暴总结出中心思想、组织内容、写初稿以及修改。但在大多数写作课上，这些步骤以现行的方式展现的，像这样：</p><p>目标 → 读者 → 头脑风暴 → 组织 → 写初稿 → 修改</p><p>从理论上讲，按照这个顺序操作，你就能得到一篇组织得当、逻辑严谨的完美稿件。这个方法对一部分人是有用的，但是如果你和大多数人一样，那么他可能就不适合你。在现实生活中，大部分都不是线性思维的写作者。</p><p>这六个步骤没错，错的是这个强制性的顺序。当遵循渐进编程了因循守旧，它可能会阻碍你写作能力的发挥。</p><p>你可以以这个步骤中任意一步作为起点，头脑风暴、提纲或者是写初稿。</p><h2 id="明确目标"><a href="#明确目标" class="headerlink" title="明确目标"></a>明确目标</h2><p>当要写作时，首先我们要确定自己的目标是什么，你希望达到什么目的。</p><p>仔细思考写作目的能帮你搞清楚该说什么，以及怎么说。又去的是，这样一来你的读者也会更加轻松，如果你也有过收到大量简历的经理，你就会知道一封周到、工整且有针对性的求职信会让你干到多么轻松。</p><h2 id="了解你的读者"><a href="#了解你的读者" class="headerlink" title="了解你的读者"></a>了解你的读者</h2><p>除了私人日记之外，所有的作品都是有读者的，你的作品需要指向这些特定的读者。</p><p>站在读者的角度进行思考，有两个关键问题：</p><ul><li>信息</li><li>态度</li></ul><p>选择信息的黄金法则是：<strong>要有足量的有效信息，让你的读者行动起来。</strong></p><p>了解读者潜在的态度也是成功的关键。</p><ul><li>你的读者会有什么样的反应？</li><li>他们很容易接受你的信息吗?</li><li>还是会有抵触情绪？</li><li>他们是否怀有敌意。</li></ul><blockquote><p>笔者说：</p><p>在这里，可以读《美国航空航天局科学家给赞比亚修女的一封信》，这是一封大师级的回信。</p></blockquote><h2 id="用他头脑风暴锁定你想表达的内容"><a href="#用他头脑风暴锁定你想表达的内容" class="headerlink" title="用他头脑风暴锁定你想表达的内容"></a>用他头脑风暴锁定你想表达的内容</h2><p>头脑风暴有一些规则。如果你在学校或者工作的地方参加过头脑风暴式的讨论，那么你很可能看到过这些规则：</p><ol><li>相处的点子越多越好。如果你能把注意力放在数量而非质量上，那么提出有用的点子概率就会更大，点子都多多益善。</li><li>不要审查，不要评论。头脑风暴时，让你的思绪自由发散。这并不是对点子进行评论的时候，不要说这个点子不太好，那个点子不合适。把脑袋里评论的声音关掉，把所有想到的东西都写出来。你可以之后再删除。</li><li>接受不同寻常的想法。不要考虑你的想法靠不靠谱。你的这些想法可能完全超出预料，但它们当中可能会有一个非常有用，或至少能为你的思考指引方向的点子。充分发挥自己的想象力。</li><li>合并改进你的点子。如果你任由思绪自由发散，那么点子很可能会有一些重合。观察它们的相似之处，并加以合并调整。</li></ol><p>当写完初稿后，发现内容不够完整，不够有说服力时候甚至可以重新进行头脑风暴。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;什么是进程、线程、协程&quot;&gt;&lt;a href=&quot;#什么是进程、线程、协程&quot; class=&quot;headerlink&quot; title=&quot;什么是进程、线程、协程&quot;&gt;&lt;/a&gt;什么是进程、线程、协程&lt;/h1&gt;&lt;h2 id=&quot;进程&quot;&gt;&lt;a href=&quot;#进程&quot; class=&quot;head
+        &lt;p&gt;写作需要明确目标、确定读者、用头脑风暴总结出中心思想、组织内容、写初稿以及修改。但在大多数写作课上，这些步骤以现行的方式展现的，像这样：&lt;/p&gt;
+&lt;p&gt;目标 → 读者 → 头脑风暴 → 组织 → 写初稿 → 修改&lt;/p&gt;
+&lt;p&gt;从理论上讲，按照这个顺序操作，你就能得到一篇组
       
     
     </summary>
+    
+      <category term="读书笔记" scheme="http://www.maksim.website/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
     
   </entry>
@@ -52,31 +56,6 @@
       
         &lt;p&gt;背景： 1970年，赞比亚修女玛丽·尤肯达给美国航空航天局科学家恩斯特·施图林格博士问道：目前地球上还有这么多小孩子吃不上饭，他怎么能舍得为远在火星的项目花费数十亿美元。&lt;/p&gt;
 &lt;p&gt;1970年，赞比亚修女玛丽·尤肯达（Mary Jucunda）给恩斯特·施图林格（Ern
-      
-    
-    </summary>
-    
-      <category term="读书笔记" scheme="http://www.maksim.website/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>写作的准备-读《完全写作指南》</title>
-    <link href="http://www.maksim.website/2018/04/08/2/"/>
-    <id>http://www.maksim.website/2018/04/08/2/</id>
-    <published>2018-04-07T16:00:00.000Z</published>
-    <updated>2018-04-09T11:37:37.616Z</updated>
-    
-    <content type="html"><![CDATA[<p>写作需要明确目标、确定读者、用头脑风暴总结出中心思想、组织内容、写初稿以及修改。但在大多数写作课上，这些步骤以现行的方式展现的，像这样：</p><p>目标 → 读者 → 头脑风暴 → 组织 → 写初稿 → 修改</p><p>从理论上讲，按照这个顺序操作，你就能得到一篇组织得当、逻辑严谨的完美稿件。这个方法对一部分人是有用的，但是如果你和大多数人一样，那么他可能就不适合你。在现实生活中，大部分都不是线性思维的写作者。</p><p>这六个步骤没错，错的是这个强制性的顺序。当遵循渐进编程了因循守旧，它可能会阻碍你写作能力的发挥。</p><p>你可以以这个步骤中任意一步作为起点，头脑风暴、提纲或者是写初稿。</p><h2 id="明确目标"><a href="#明确目标" class="headerlink" title="明确目标"></a>明确目标</h2><p>当要写作时，首先我们要确定自己的目标是什么，你希望达到什么目的。</p><p>仔细思考写作目的能帮你搞清楚该说什么，以及怎么说。又去的是，这样一来你的读者也会更加轻松，如果你也有过收到大量简历的经理，你就会知道一封周到、工整且有针对性的求职信会让你干到多么轻松。</p><h2 id="了解你的读者"><a href="#了解你的读者" class="headerlink" title="了解你的读者"></a>了解你的读者</h2><p>除了私人日记之外，所有的作品都是有读者的，你的作品需要指向这些特定的读者。</p><p>站在读者的角度进行思考，有两个关键问题：</p><ul><li>信息</li><li>态度</li></ul><p>选择信息的黄金法则是：<strong>要有足量的有效信息，让你的读者行动起来。</strong></p><p>了解读者潜在的态度也是成功的关键。</p><ul><li>你的读者会有什么样的反应？</li><li>他们很容易接受你的信息吗?</li><li>还是会有抵触情绪？</li><li>他们是否怀有敌意。</li></ul><blockquote><p>笔者说：</p><p>在这里，可以读《美国航空航天局科学家给赞比亚修女的一封信》，这是一封大师级的回信。</p></blockquote><h2 id="用他头脑风暴锁定你想表达的内容"><a href="#用他头脑风暴锁定你想表达的内容" class="headerlink" title="用他头脑风暴锁定你想表达的内容"></a>用他头脑风暴锁定你想表达的内容</h2><p>头脑风暴有一些规则。如果你在学校或者工作的地方参加过头脑风暴式的讨论，那么你很可能看到过这些规则：</p><ol><li>相处的点子越多越好。如果你能把注意力放在数量而非质量上，那么提出有用的点子概率就会更大，点子都多多益善。</li><li>不要审查，不要评论。头脑风暴时，让你的思绪自由发散。这并不是对点子进行评论的时候，不要说这个点子不太好，那个点子不合适。把脑袋里评论的声音关掉，把所有想到的东西都写出来。你可以之后再删除。</li><li>接受不同寻常的想法。不要考虑你的想法靠不靠谱。你的这些想法可能完全超出预料，但它们当中可能会有一个非常有用，或至少能为你的思考指引方向的点子。充分发挥自己的想象力。</li><li>合并改进你的点子。如果你任由思绪自由发散，那么点子很可能会有一些重合。观察它们的相似之处，并加以合并调整。</li></ol><p>当写完初稿后，发现内容不够完整，不够有说服力时候甚至可以重新进行头脑风暴。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;写作需要明确目标、确定读者、用头脑风暴总结出中心思想、组织内容、写初稿以及修改。但在大多数写作课上，这些步骤以现行的方式展现的，像这样：&lt;/p&gt;
-&lt;p&gt;目标 → 读者 → 头脑风暴 → 组织 → 写初稿 → 修改&lt;/p&gt;
-&lt;p&gt;从理论上讲，按照这个顺序操作，你就能得到一篇组
       
     
     </summary>
@@ -111,8 +90,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2018/04/03/cjinr1zqh0074osrdvbx4b78j/"/>
-    <id>http://www.maksim.website/2018/04/03/cjinr1zqh0074osrdvbx4b78j/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjiojqgf0006x5vrdzavj5dzm/"/>
+    <id>http://www.maksim.website/2018/04/03/cjiojqgf0006x5vrdzavj5dzm/</id>
     <published>2018-04-03T14:53:43.478Z</published>
     <updated>2018-04-03T14:53:43.482Z</updated>
     
@@ -132,8 +111,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2018/04/03/cjinr1zpf0054osrdwwaold0b/"/>
-    <id>http://www.maksim.website/2018/04/03/cjinr1zpf0054osrdwwaold0b/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjiojqgdc00555vrd9u1c9jvx/"/>
+    <id>http://www.maksim.website/2018/04/03/cjiojqgdc00555vrd9u1c9jvx/</id>
     <published>2018-04-03T14:53:43.408Z</published>
     <updated>2018-06-20T07:17:28.071Z</updated>
     
@@ -204,8 +183,8 @@
   
   <entry>
     <title>AndroidStudio解决一直处于Building gradle project info的问题</title>
-    <link href="http://www.maksim.website/2018/03/10/cjinr1zq7006nosrdkakm4zh3/"/>
-    <id>http://www.maksim.website/2018/03/10/cjinr1zq7006nosrdkakm4zh3/</id>
+    <link href="http://www.maksim.website/2018/03/10/cjiojqgec006h5vrdb5a9j2w2/"/>
+    <id>http://www.maksim.website/2018/03/10/cjiojqgec006h5vrdb5a9j2w2/</id>
     <published>2018-03-09T16:00:00.000Z</published>
     <updated>2018-06-20T05:08:15.054Z</updated>
     
@@ -230,8 +209,8 @@
   
   <entry>
     <title>Nginx的安装</title>
-    <link href="http://www.maksim.website/2018/02/27/cjinr1zq9006sosrd3tfq6kha/"/>
-    <id>http://www.maksim.website/2018/02/27/cjinr1zq9006sosrd3tfq6kha/</id>
+    <link href="http://www.maksim.website/2018/02/27/cjiojqgea006f5vrdl0vztwcy/"/>
+    <id>http://www.maksim.website/2018/02/27/cjiojqgea006f5vrdl0vztwcy/</id>
     <published>2018-02-26T16:00:00.000Z</published>
     <updated>2018-06-19T01:52:07.643Z</updated>
     
@@ -277,8 +256,8 @@
   
   <entry>
     <title>function与感叹号</title>
-    <link href="http://www.maksim.website/2018/02/01/cjinr1zq1006bosrd50s90yji/"/>
-    <id>http://www.maksim.website/2018/02/01/cjinr1zq1006bosrd50s90yji/</id>
+    <link href="http://www.maksim.website/2018/02/01/cjiojqge8006c5vrddpkls3mj/"/>
+    <id>http://www.maksim.website/2018/02/01/cjiojqge8006c5vrddpkls3mj/</id>
     <published>2018-01-31T16:00:00.000Z</published>
     <updated>2018-06-20T05:05:43.568Z</updated>
     
@@ -299,32 +278,9 @@
   </entry>
   
   <entry>
-    <title>高并发和大流量解决方案之 CDN 加速</title>
-    <link href="http://www.maksim.website/2018/01/13/cjinr1zpz0068osrdyzugyjcj/"/>
-    <id>http://www.maksim.website/2018/01/13/cjinr1zpz0068osrdyzugyjcj/</id>
-    <published>2018-01-12T16:00:00.000Z</published>
-    <updated>2018-06-20T03:33:06.535Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="什么是CDN"><a href="#什么是CDN" class="headerlink" title="什么是CDN"></a>什么是CDN</h1><p>CDN 的全城是 Content Delivery Network，即内容分发网络，尽可能避开互联网上有可能影响数据传输速度和稳定性的平静和环节，是内容传输的更快、更稳定。</p><p>在网络各处放置节点服务器所构成的在现有的互联网基础之上的一层只能虚拟网络，比如说我们现在有一个服务器的集群，现在在北京，有几台服务器在北京，在上海访问北京服务器就会比较慢，我们就可以使用 CDN 解决这样的问题，可以在香港、上海建立一个 CDN 节点，这样当我的用户在某一个节点访问我们的网站时，可以去请求香港的 CDN 节点，这样距离他比较近，CDN 已经把真实服务器的数据缓存到了 CDN 当中，相当于一个镜像。</p><p>CDN 系统能够实时地根据网络流量和各节点的连接、敷在情况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。</p><h1 id="使用-CDN-的优势"><a href="#使用-CDN-的优势" class="headerlink" title="使用 CDN 的优势"></a>使用 CDN 的优势</h1><p>本地 Cache 加速，提高企业站点（尤其含有大量图片和静态资源页面站点）的访问速度。</p><p>跨运营商的网络加速，保证不同网络的用户能得到最好的访问质量。</p><p>远程访问用户根据 DNS 负载均衡技术只能选择 Cache 服务器。</p><p>自动生成服务器的远程 Mirror（镜像）Cache 服务器，远程用户访问时从 Cache 服务器上读取数据，减少远程访问的带宽、分带网络流量、减轻原站点 WEB 服务器负载等能力。</p><p>广泛分布的 CDN 节点加上节点之间的智能冗余机制，可以有效地预防黑客入侵。</p><h1 id="CDN-的工作原理"><a href="#CDN-的工作原理" class="headerlink" title="CDN 的工作原理"></a>CDN 的工作原理</h1><h2 id="传统访问"><a href="#传统访问" class="headerlink" title="传统访问"></a>传统访问</h2><p>用户在浏览器输入域名发起请求–&gt;解析域名获取服务器 IP 地址–&gt;根据 IP 地址找到对应的服务器—&gt;服务器响应并返回。</p><h2 id="使用-CDN-访问"><a href="#使用-CDN-访问" class="headerlink" title="使用 CDN 访问"></a>使用 CDN 访问</h2><p>用户发起请求–&gt;只能 DND 解析（根据 IP 判断地理位置、接入网类型、选择路由最短和负载最轻的服务器）–&gt;获得缓存服务器 IP–&gt;把内容返回给用户（如果缓存中有）—&gt;向源站发起请求—&gt;将结果返回给用户—&gt;将结果存入缓存服务器。</p><h1 id="CDN-适用场景"><a href="#CDN-适用场景" class="headerlink" title="CDN 适用场景"></a>CDN 适用场景</h1><ul><li>站点或者应用中大量静态资源的加速分发，例如：CSS，JS，图片和 HTML。</li><li>大文件下载</li><li>直播网站</li></ul><h1 id="CDN-的实现"><a href="#CDN-的实现" class="headerlink" title="CDN 的实现"></a>CDN 的实现</h1><p>BAT 等都有提供 CDN 服务。</p><p>可用 LVS 做4层负载均衡。</p><p>可用 Nginx，Varnish，Squid，Apache TrafficServer 做7层负载均衡和 Cache。</p><p>使用 squid 反向代理，或者 Nginx 等的反向代理</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;什么是CDN&quot;&gt;&lt;a href=&quot;#什么是CDN&quot; class=&quot;headerlink&quot; title=&quot;什么是CDN&quot;&gt;&lt;/a&gt;什么是CDN&lt;/h1&gt;&lt;p&gt;CDN 的全城是 Content Delivery Network，即内容分发网络，尽可能避开互联网上有可能
-      
-    
-    </summary>
-    
-      <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>高并发和大流量解决方案之独立图片服务器的部署</title>
-    <link href="http://www.maksim.website/2018/01/13/cjinr1zq2006dosrdcqc4pq83/"/>
-    <id>http://www.maksim.website/2018/01/13/cjinr1zq2006dosrdcqc4pq83/</id>
+    <link href="http://www.maksim.website/2018/01/13/cjiojqge400675vrdymumvlob/"/>
+    <id>http://www.maksim.website/2018/01/13/cjiojqge400675vrdymumvlob/</id>
     <published>2018-01-12T16:00:00.000Z</published>
     <updated>2018-06-20T03:27:20.559Z</updated>
     
@@ -345,11 +301,11 @@
   </entry>
   
   <entry>
-    <title>高并发和大流量解决方案之独立图片服务器的部署</title>
-    <link href="http://www.maksim.website/2018/01/13/cjinr1zq4006josrdx1z7yi4q/"/>
-    <id>http://www.maksim.website/2018/01/13/cjinr1zq4006josrdx1z7yi4q/</id>
+    <title>高并发和大流量解决方案之动态语言静态化</title>
+    <link href="http://www.maksim.website/2018/01/13/cjiojqge200655vrdizfs89q5/"/>
+    <id>http://www.maksim.website/2018/01/13/cjiojqge200655vrdizfs89q5/</id>
     <published>2018-01-12T16:00:00.000Z</published>
-    <updated>2018-06-20T03:55:30.077Z</updated>
+    <updated>2018-06-20T23:33:51.199Z</updated>
     
     <content type="html"><![CDATA[<h1 id="什么是动态语言静态化"><a href="#什么是动态语言静态化" class="headerlink" title="什么是动态语言静态化"></a>什么是动态语言静态化</h1><p>将现有 PHP 等动态语言的逻辑代码生成为静态HTML 文件，用户访问动态脚本重定向到静态 HTML 文件的过程。</p><p>如果页面中的的数据一直都在变化，那么不建议使用静态化。</p><h1 id="为什么要静态化"><a href="#为什么要静态化" class="headerlink" title="为什么要静态化"></a>为什么要静态化</h1><p>动态脚本通常会做逻辑运算和数据查询，访问量越大，服务器压力越大。</p><p>访问量大的时候可能造成 CPU 负载过高，数据服务器压力过大，静态化可以减轻逻辑处理能力，降低数据库服务器的查询压力。</p><h1 id="静态化的实现方式"><a href="#静态化的实现方式" class="headerlink" title="静态化的实现方式"></a>静态化的实现方式</h1><h2 id="使用模板引擎"><a href="#使用模板引擎" class="headerlink" title="使用模板引擎"></a>使用模板引擎</h2><p>可以使用 Smarty 的缓存机制生成静态 HTML 缓存文件。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$smarty-&gt;cache_dir = $ROOT.<span class="string">'/cache'</span>; <span class="comment">//缓存目录</span></div><div class="line">$smarty-&gt;caching = <span class="keyword">true</span>;    <span class="comment">//是否开启缓存</span></div><div class="line">$smarty-&gt;cache_lifetime = <span class="string">'3600'</span>;    <span class="comment">//缓存时间</span></div></pre></td></tr></table></figure><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$smarty-&gt;display(strign template [,string cache_id[, strign compile_id]]);</div></pre></td></tr></table></figure><p>如果开启了缓存，Smarty 会自动的生成 HTML 缓存文件。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$smarty-&gt;clear_all_cache();<span class="comment">//清除所有缓存</span></div><div class="line">$smarty-&gt;clear_cache(<span class="string">'file.html'</span>);<span class="comment">//清除指定缓存</span></div><div class="line">$smarty-&gt;clear_cache(<span class="string">'article,html'</span>, $cache_id) <span class="comment">//清除一同模板下的指定缓存号的缓存。</span></div></pre></td></tr></table></figure><h2 id="利用-OB-系列函数"><a href="#利用-OB-系列函数" class="headerlink" title="利用 OB 系列函数"></a>利用 OB 系列函数</h2><ul><li>ob_start()：打开输出控制缓冲</li><li>ob_get_contents()：返回输出缓冲区的内容</li><li>ob_clean()：清空输出缓冲区</li><li>ob_end_flush()：冲刷出（送出）输出缓冲区内容并且关闭缓冲</li></ul><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ob_start();</div><div class="line">输出到页面的 HTML 代码</div><div class="line">ob_get_contents();</div><div class="line">ob_end_flush();</div><div class="line">fopen()写入</div></pre></td></tr></table></figure><p>可以使用 filectime 函数 判断文件的 inode 修改时间，判断是否过期。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$cache_name = md5(<span class="keyword">__FILE__</span>).<span class="string">'html'</span>;</div><div class="line">$cache_lifetime = <span class="number">3600</span>;</div><div class="line"></div><div class="line"><span class="keyword">if</span> ( filectime(<span class="keyword">__FILE__</span>) &lt;= filectime($cache_name) file_exists($cache_name) &amp;&amp; filectime($cache_name) + $cache_lifetime &gt; time()) &#123;</div><div class="line">    <span class="comment">//判断 PHP 文件修改时间</span></div><div class="line"><span class="comment">//判断是否存在缓存</span></div><div class="line"><span class="comment">//判断是否过期</span></div><div class="line">    <span class="keyword">include</span> $cache_name;</div><div class="line">    <span class="keyword">exit</span>;</div><div class="line">&#125;</div><div class="line">ob_start();</div><div class="line"><span class="meta">?&gt;</span></div><div class="line">&lt;b&gt; This is my Script&lt;/b&gt;</div><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$content = ob_get_contents();    </div><div class="line">$ob_end_flush();</div><div class="line">$handle = fopen($cache_name, <span class="string">'w'</span>);</div><div class="line">fwrite($handle, $content);</div><div class="line">fclose($handle);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>]]></content>
     
@@ -368,9 +324,55 @@
   </entry>
   
   <entry>
+    <title>高并发和大流量解决方案之 CDN 加速</title>
+    <link href="http://www.maksim.website/2018/01/13/cjiojqge000625vrdcfp1jkjb/"/>
+    <id>http://www.maksim.website/2018/01/13/cjiojqge000625vrdcfp1jkjb/</id>
+    <published>2018-01-12T16:00:00.000Z</published>
+    <updated>2018-06-20T03:33:06.535Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="什么是CDN"><a href="#什么是CDN" class="headerlink" title="什么是CDN"></a>什么是CDN</h1><p>CDN 的全城是 Content Delivery Network，即内容分发网络，尽可能避开互联网上有可能影响数据传输速度和稳定性的平静和环节，是内容传输的更快、更稳定。</p><p>在网络各处放置节点服务器所构成的在现有的互联网基础之上的一层只能虚拟网络，比如说我们现在有一个服务器的集群，现在在北京，有几台服务器在北京，在上海访问北京服务器就会比较慢，我们就可以使用 CDN 解决这样的问题，可以在香港、上海建立一个 CDN 节点，这样当我的用户在某一个节点访问我们的网站时，可以去请求香港的 CDN 节点，这样距离他比较近，CDN 已经把真实服务器的数据缓存到了 CDN 当中，相当于一个镜像。</p><p>CDN 系统能够实时地根据网络流量和各节点的连接、敷在情况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。</p><h1 id="使用-CDN-的优势"><a href="#使用-CDN-的优势" class="headerlink" title="使用 CDN 的优势"></a>使用 CDN 的优势</h1><p>本地 Cache 加速，提高企业站点（尤其含有大量图片和静态资源页面站点）的访问速度。</p><p>跨运营商的网络加速，保证不同网络的用户能得到最好的访问质量。</p><p>远程访问用户根据 DNS 负载均衡技术只能选择 Cache 服务器。</p><p>自动生成服务器的远程 Mirror（镜像）Cache 服务器，远程用户访问时从 Cache 服务器上读取数据，减少远程访问的带宽、分带网络流量、减轻原站点 WEB 服务器负载等能力。</p><p>广泛分布的 CDN 节点加上节点之间的智能冗余机制，可以有效地预防黑客入侵。</p><h1 id="CDN-的工作原理"><a href="#CDN-的工作原理" class="headerlink" title="CDN 的工作原理"></a>CDN 的工作原理</h1><h2 id="传统访问"><a href="#传统访问" class="headerlink" title="传统访问"></a>传统访问</h2><p>用户在浏览器输入域名发起请求–&gt;解析域名获取服务器 IP 地址–&gt;根据 IP 地址找到对应的服务器—&gt;服务器响应并返回。</p><h2 id="使用-CDN-访问"><a href="#使用-CDN-访问" class="headerlink" title="使用 CDN 访问"></a>使用 CDN 访问</h2><p>用户发起请求–&gt;只能 DND 解析（根据 IP 判断地理位置、接入网类型、选择路由最短和负载最轻的服务器）–&gt;获得缓存服务器 IP–&gt;把内容返回给用户（如果缓存中有）—&gt;向源站发起请求—&gt;将结果返回给用户—&gt;将结果存入缓存服务器。</p><h1 id="CDN-适用场景"><a href="#CDN-适用场景" class="headerlink" title="CDN 适用场景"></a>CDN 适用场景</h1><ul><li>站点或者应用中大量静态资源的加速分发，例如：CSS，JS，图片和 HTML。</li><li>大文件下载</li><li>直播网站</li></ul><h1 id="CDN-的实现"><a href="#CDN-的实现" class="headerlink" title="CDN 的实现"></a>CDN 的实现</h1><p>BAT 等都有提供 CDN 服务。</p><p>可用 LVS 做4层负载均衡。</p><p>可用 Nginx，Varnish，Squid，Apache TrafficServer 做7层负载均衡和 Cache。</p><p>使用 squid 反向代理，或者 Nginx 等的反向代理</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;什么是CDN&quot;&gt;&lt;a href=&quot;#什么是CDN&quot; class=&quot;headerlink&quot; title=&quot;什么是CDN&quot;&gt;&lt;/a&gt;什么是CDN&lt;/h1&gt;&lt;p&gt;CDN 的全城是 Content Delivery Network，即内容分发网络，尽可能避开互联网上有可能
+      
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>高并发和大流量解决方案之动态语言并发处理</title>
+    <link href="http://www.maksim.website/2018/01/13/cjiojr0ly000066rd2xuotmcy/"/>
+    <id>http://www.maksim.website/2018/01/13/cjiojr0ly000066rd2xuotmcy/</id>
+    <published>2018-01-12T16:00:00.000Z</published>
+    <updated>2018-06-21T12:52:32.171Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="什么是进程、线程、协程"><a href="#什么是进程、线程、协程" class="headerlink" title="什么是进程、线程、协程"></a>什么是进程、线程、协程</h1><h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><p>进程（Process）是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，是操作系统结构的基础。</p><h3 id="进程的三态模型"><a href="#进程的三态模型" class="headerlink" title="进程的三态模型"></a>进程的三态模型</h3><p>进程的三态模型：多道程序系统中，进程在处理器上交替运行，状态不断地发生变化</p><p><strong>运行：</strong>当一个进程在处理机上运行时，则称该进程处于运行状态。处于此状态的进程的数目小于等于处理器的数目，对于单机处理系统，处于运行状态的进程只有一个。没有其他进程可以执行时（如所有进程都在阻塞状态），通常会自动执行系统的空闲进程。</p><p><strong>就绪</strong>：当一个程序获得了除处理机意外的一切所需资源，一旦得到处理机即可运行，则称此进程出于就绪状态。就绪进程可以按多个优先级来划分队列。例如，当一个进程处于时间片用完而进入就绪状态时，排入低优先级队列；当前进程由 I/O 操作完成而进入就绪状态时，排入高优先队列。</p><p><strong>阻塞：</strong>也称之为等待或者睡眠状态，一个进程正在等待某一事件发生（例如请求 I/O而等待 I/O 完成等）而暂时停止运行，这时即使把处理机分配给进程也无法运行，故称该进程出于阻塞状态。</p><p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180621140421.png" alt=""></p><h3 id="进程的五态模型"><a href="#进程的五态模型" class="headerlink" title="进程的五态模型"></a>进程的五态模型</h3><p>进程的五态模型：对于一个实际的系统，进程的状态及其转换更为复杂分为新建态、活跃就绪/静止就绪、运行、活跃阻塞/静止阻塞、终止态,可见下图。</p><p><img src="http://blog.51cto.com/attachment/201302/105409473.png" alt=""></p><p><strong>新建态：</strong>对应于进程刚刚被创建时没有被提交的状态，并等待系统完成创建进程的所有必要信息。</p><p><strong>活跃就绪：</strong>是指进程在主内存并且可被调度的状态。</p><p><strong>静止就绪（挂起就绪）：</strong>是指进程被对换到辅存时的就绪状态，是不能被直接调度的状态，只有当主存中没有活跃就绪态进程，或者是挂起就绪态进程具有更高的优先级，系统将被挂起就绪态进程调回主存并转化为活跃就绪。</p><p><strong>活跃阻塞</strong>：是指进程已在主存，一旦等待事件产生便进入活跃就绪状态</p><p><strong>静止阻塞：</strong>进程对换到辅存时的阻塞状态，一旦等地啊的事件产生便进入静止就绪状态。</p><p><strong>终止态：</strong>进程已经结束运行，回收除进程控制块之外的其他资源，并让其他进程从进程控制块中有关信息。</p><h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>由于我们用户的并发请求，为每一个请求都创建一个进程显然是行不通的，从系统资源开销方面或是响应用户请求的效率方面来看。因此系统中线程概念便被引进了。</p><p>线程，有时被称之为轻量级的进程（Lightweight Process, LWP），是程序执行流的最小单元。</p><p>线程是进程中的一个实体，是被系统独立调度和分派的基本单位，线程自己不拥有系统资源，只拥有一点儿在运行中必不可少的资源，但它可与同属的一个进程的其他线程共享进程所拥有的全部资源。</p><p>一个线程可以创建和撤销另一个线程，统一进程的多个线程之间可以并发执行。</p><p>线程是程序中一个单一的顺序控制流程。进程内一个相对独立的、可调度的执行单元，是系统独立调度和分派CPU的基本单位指运行中的程序的调度单位。</p><p>在单个程序中同事运行多个线程完成不同的工作，称之为<strong>多线程。</strong></p><p>每一个程序都只要有一个线程，若程序只有一个线程，那就是程序本身。</p><p>线程的状态：<strong>就绪</strong>、<strong>阻塞</strong>、<strong>运行</strong>。</p><p><strong>就绪状态：</strong>线程具备运行的所有条件，逻辑上可以运行，在等待处理机。</p><p><strong>阻塞状态：</strong>线程在等待一个事件（如某个信号量），逻辑上不可执行。</p><p><strong>运行状态：</strong>线程占有处理机正在运行。</p><h2 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h2><p>协程是一种用户态的轻量级线程，协程的调度完全由用户控制。协程已拥有自己的寄存器上下文和栈，协程调度切换时，将寄存器上下文和栈保存到其他地方，在切回来的时候，恢复先前保存的寄存器上下文和栈，直接操作栈基本没有内核切换开销，可以不加锁访问全局变量，所以上下文的切换非常快。</p><h2 id="线程与进程的区别"><a href="#线程与进程的区别" class="headerlink" title="线程与进程的区别"></a>线程与进程的区别</h2><ol><li>线程是进程内的一个执行单元，进程内至少有一个线程，它们共享进程的地址空间，而进程有自己独立的地址空间。</li><li>进程是资源分配和拥有的单元，同一个进程内的线程共享进程的资源。</li><li>线城市处理器调度的基本单位，进程不是。</li><li>两者均可并发执行</li><li>每个独立的线程有一个程序运行的入口，顺序执行序列和程序的出口，但是线程不能够独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制。</li></ol><h2 id="线程和协程的区别"><a href="#线程和协程的区别" class="headerlink" title="线程和协程的区别"></a>线程和协程的区别</h2><ol><li>一个线程可以有多个协程，一个协程也可以单独拥有多个协程</li><li>线程进程都是同步机制，而协程这是异步</li><li>协程能保留上一次调用时的状态，每次过程重入时，就相当于进入上一次调用的状态。</li></ol><h1 id="什么是多进程，多线程"><a href="#什么是多进程，多线程" class="headerlink" title="什么是多进程，多线程"></a>什么是多进程，多线程</h1><p><strong>多进程</strong>是指同一时间里，统一计算机系统中如果允许两个或者两个以上的进程处于运行状态，就是多进程。多开一个进程，多分配一份资源，进程间通信不方便。</p><p><strong>多线程</strong>就是把一个进程分为很多片，每一片都可以是一个独立的流程与多进程的却别是只会使用一个进程的资源，线程间可以直接通信。</p><h1 id="同步阻塞模型"><a href="#同步阻塞模型" class="headerlink" title="同步阻塞模型"></a>同步阻塞模型</h1><p>在最早的服务器端程序透视通过多进程、多线程来解决并发IO的问题。</p><p>一个请求创建一个进程，然后子进程进入循环同步阻塞地与客户端进行交互，收发处理数据。</p><p>多线程模式实现非常简单，线程可以直接向某一个客户端连接发送数据。</p><p>步骤：</p><ol><li>创建一个 socket，绑定服务器端口（bind），监听端口（listen），在PHP中用stream_socket_server一个函数就能完成上面3个步骤，当然也可以使用更底层的sockets扩展分别实现。</li><li>进入while循环，阻塞在accept操作上，等待客户端连接进入。此时程序会进入睡眠状态，直到有新的客户端发起connect到服务器，操作系统会唤醒此进程。accept函数返回客户端连接的socket</li><li>主进程在多进程模型下通过fork（PHP: pcntl_fork）创建子进程，多线程模型下使用pthread_create（PHP: new Thread）创建子线程。下文如无特殊声明将使用进程同时表示进程/线程。</li><li>子进程创建成功后进入while循环，阻塞在recv（PHP: fread）调用上，等待客户端向服务器发送数据。收到数据后服务器程序进行处理然后使用send（PHP: fwrite）向客户端发送响应。长连接的服务会持续与客户端交互，而短连接服务一般收到响应就会close。</li><li>当客户端连接关闭时，子进程/线程退出并销毁所有资源。主进程/线程会回收掉此子进程/线程。</li></ol><p>缺点：</p><ul><li>这种模型严重依赖进程的数量解决并发问题，一个客户端连接就需要占用一个进程，工作进程的数量有多少，并发处理能力就有多少。操作系统可以创建的进程数量是有限的。</li><li>启动大量进程会带来额外的进程调度消耗。数百个进程时可能进程上下文切换调度消耗占CPU不到1%可以忽略不计，如果启动数千甚至数万个进程，消耗就会直线上升。调度消耗可能占到 CPU 的百分之几十甚至 100%。</li></ul><p>另外有一些场景多进程模型无法解决，比如即时聊天程序（IM），一台服务器要同时维持上万甚至几十万上百万的连接（经典的C10K问题），多进程模型就力不从心了。</p><p>还有一种场景也是多进程模型的软肋。通常Web服务器启动100个进程，如果一个请求消耗100 ms，100个进程可以提供1000 QPS，这样的处理能力还是不错的。但是如果请求内要调用外网HTTP接口，像QQ、微博登录，耗时会很长，一个请求需要10s。那一个进程1秒只能处理0.1个请求，100个进程只能达到QPS，这样的处理能力就太差了。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建scoket监听</span></div><div class="line">$scokserv = stream_scoket_server(<span class="string">'tcp://0.0.0.0:8880'</span>, $errno, $errstr);</div><div class="line"><span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; <span class="number">5</span>; $i++)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>（pcntl_fork() == <span class="number">0</span>） &#123;</div><div class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">            $conn = stream_scoket_accept($sockserv);</div><div class="line">            <span class="keyword">if</span> ($conn == <span class="keyword">false</span>) &#123;</div><div class="line">                <span class="keyword">continue</span>;</div><div class="line">            &#125;</div><div class="line">            $request = fread($conn, <span class="number">9000</span>);</div><div class="line">            $response = <span class="string">'hello'</span>;</div><div class="line">            fwrite($conn, $response);</div><div class="line">            fclose($conn);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">exit</span>();</div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure><h1 id="异步非阻塞模型"><a href="#异步非阻塞模型" class="headerlink" title="异步非阻塞模型"></a>异步非阻塞模型</h1><p>现在各种高并发异步IO的服务器程序都是基于 <strong>epoll</strong> 实现的。</p><p>在早期Linux就提供了<strong>select</strong>，可以在一个进程内维持1024个连接，后来加入了<strong>poll</strong>，可以维持任意数量个连接。</p><p>但是<strong>poll</strong>需要循环检测是否有事件，如果服务器当前有100 W个连接，但是某一个时间内只有一条连接向服务器发送数据，这样系统就会循环100 W次，对于CPU是一种浪费。</p><p><strong>Linux在2.6时提供了epoll</strong>，可以在系统内维持无数个连接，而且无需轮训。</p><p>IO复用异步非阻塞程序使用经典的 <strong>Reactor</strong> 模型，<strong>Reactor</strong> 顾名思义，就是反应堆的意思，它本身不处理任何数据收发，只是可以监视一个socket句柄的事件变化。</p><p>Reactor模型：</p><ul><li><strong>Add:</strong>  添加一个 SOCKET到 Reactor </li><li><strong>Set：</strong> 修改 SOCKET 对应的事件，如可读可写</li><li><strong>Del：</strong> 从 Reactor 中移除</li><li><strong>Callback：</strong> 事件发生后回调指定的函数</li></ul><p><img src="http://rango.swoole.com/static/io/6.png" alt=""></p><h1 id="PHP-并发编程实践"><a href="#PHP-并发编程实践" class="headerlink" title="PHP 并发编程实践"></a>PHP 并发编程实践</h1><h3 id="PHP的Swoole扩展"><a href="#PHP的Swoole扩展" class="headerlink" title="PHP的Swoole扩展"></a>PHP的Swoole扩展</h3><p>PHP的异步、并行、高性能的网络通信引擎，使用纯C语言编写，提供了PHP语言的异步多线程服务器，异步TCP/UDP 网络客户端，异步 MySQL，异步 Redis，数据库连接池，AsyncTask，消息队列，毫秒定时器，异步文件读写，异步 DNS 查询。</p><p>除了异步IO的支持之外，Swoole 为 PHP 多进程的模式设计了多个并发数据结构和 IPC 通信机制，可以大大简化多进程并发编程的工作。</p><p>Swoole 2.0支持了类似Go语言的协程，可以使用完全同步的代码实现异步程序。</p><h4 id="Swoole-的异步MySQL实现"><a href="#Swoole-的异步MySQL实现" class="headerlink" title="Swoole 的异步MySQL实现"></a>Swoole 的异步MySQL实现</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">$db = <span class="keyword">new</span> swoole_mysql;</div><div class="line">$server = <span class="keyword">array</span>(</div><div class="line">    <span class="string">'host'</span> =&gt; <span class="string">'192.168.56.102'</span>,</div><div class="line">    <span class="string">'port'</span> =&gt; <span class="number">3306</span>,</div><div class="line">    <span class="string">'user'</span> =&gt; <span class="string">'test'</span>,</div><div class="line">    <span class="string">'password'</span> =&gt; <span class="string">'test'</span>,</div><div class="line">    <span class="string">'database'</span> =&gt; <span class="string">'test'</span>,</div><div class="line">    <span class="string">'charset'</span> =&gt; <span class="string">'utf8'</span>, <span class="comment">//指定字符集</span></div><div class="line">    <span class="string">'timeout'</span> =&gt; <span class="number">2</span>,  <span class="comment">// 可选：连接超时时间（非查询超时时间），默认为SW_MYSQL_CONNECT_TIMEOUT（1.0）</span></div><div class="line">);</div><div class="line"></div><div class="line">$db-&gt;connect($server, <span class="function"><span class="keyword">function</span> <span class="params">($db, $r)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> ($r === <span class="keyword">false</span>) &#123;</div><div class="line">        var_dump($db-&gt;connect_errno, $db-&gt;connect_error);</div><div class="line">        <span class="keyword">die</span>;</div><div class="line">    &#125;</div><div class="line">    $sql = <span class="string">'show tables'</span>;</div><div class="line">    $db-&gt;query($sql, <span class="function"><span class="keyword">function</span><span class="params">(swoole_mysql $db, $r)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> ($r === <span class="keyword">false</span>)</div><div class="line">        &#123;</div><div class="line">            var_dump($db-&gt;error, $db-&gt;errno);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">elseif</span> ($r === <span class="keyword">true</span> )</div><div class="line">        &#123;</div><div class="line">            var_dump($db-&gt;affected_rows, $db-&gt;insert_id);</div><div class="line">        &#125;</div><div class="line">        var_dump($r);</div><div class="line">        $db-&gt;close();</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure><h3 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h3><h4 id="用户注册"><a href="#用户注册" class="headerlink" title="用户注册"></a>用户注册</h4><p><strong>场景说明：</strong>当用户注册后，需要发注册邮件和注册短信。</p><p><strong>串行方式：</strong>将注册信息写入数据库成功以后，发送注册邮件，再发送注册短信。</p><p><strong>并行方式：</strong>将注册写入数据库成功后，发送注册邮件的同事，发送注册短信。</p><p><strong>消息队列方式：</strong>将注册信息写入数据库成功后，将成功信息写入队列，此时直接返回成功给用户，写入队列的时间非常短，可以忽略不计，然后异步发送邮件和短信。</p><h4 id="解耦操作"><a href="#解耦操作" class="headerlink" title="解耦操作"></a>解耦操作</h4><p><strong>场景说明：</strong>用户下单后，订单系统需要通知库存系统。假如库存系统无法访问，则订单减库存将失败，从而导致订单失败。此时需要进行解耦。</p><p><strong>引入队列：</strong> </p><ol><li>用户下单后，订单系统完成持久化处理，将消息写入消息队列，返回用户下单成功。</li><li>库存系统订阅下单的消息，采用拉/推得方式，获取下单信息，库存系统根据下单信息，进行库存操作。</li></ol><h4 id="流量削峰"><a href="#流量削峰" class="headerlink" title="流量削峰"></a>流量削峰</h4><p><strong>应用场景：</strong>秒杀活动，流量瞬间激增，服务器压力大</p><p>用户发起请求，服务器接收后，先写入消息队列，假如消息队列长度超过最大值，则直接报错或提示用户。</p><p>后续程序读取消息队列，在进行处理。</p><h4 id="日志处理"><a href="#日志处理" class="headerlink" title="日志处理"></a>日志处理</h4><p><strong>应用场景：</strong>解决大量日志的传输</p><p>日志采集程序可以将日志写入消息队列，然后通过日志处理程序的订阅消费日志。</p><h4 id="消息通讯"><a href="#消息通讯" class="headerlink" title="消息通讯"></a>消息通讯</h4><p><strong>应用场景：</strong> 聊天室</p><p>多个客户端订阅同一主题，进行消息发布和接收。</p><h4 id="常见的消息队列产品"><a href="#常见的消息队列产品" class="headerlink" title="常见的消息队列产品"></a>常见的消息队列产品</h4><p>kafka、ActiveMQ、ZeroMQ, RabbitMQ、Redis等等。</p><h3 id="接口的并发请求"><a href="#接口的并发请求" class="headerlink" title="接口的并发请求"></a>接口的并发请求</h3><p>curl_multi系列函数。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;什么是进程、线程、协程&quot;&gt;&lt;a href=&quot;#什么是进程、线程、协程&quot; class=&quot;headerlink&quot; title=&quot;什么是进程、线程、协程&quot;&gt;&lt;/a&gt;什么是进程、线程、协程&lt;/h1&gt;&lt;h2 id=&quot;进程&quot;&gt;&lt;a href=&quot;#进程&quot; class=&quot;head
+      
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>高并发和大流量解决方案 减少 HTTP 请求</title>
-    <link href="http://www.maksim.website/2018/01/12/cjinr1zpv005zosrdp67u1m8n/"/>
-    <id>http://www.maksim.website/2018/01/12/cjinr1zpv005zosrdp67u1m8n/</id>
+    <link href="http://www.maksim.website/2018/01/12/cjiojqgdy00605vrdqa6jvu0r/"/>
+    <id>http://www.maksim.website/2018/01/12/cjiojqgdy00605vrdqa6jvu0r/</id>
     <published>2018-01-12T11:29:10.000Z</published>
     <updated>2018-06-20T14:27:03.127Z</updated>
     
@@ -394,8 +396,8 @@
   
   <entry>
     <title>高并发和大流量解决方案之Web资源防盗链</title>
-    <link href="http://www.maksim.website/2018/01/11/cjinr1zpw0062osrdq4ifeyyb/"/>
-    <id>http://www.maksim.website/2018/01/11/cjinr1zpw0062osrdq4ifeyyb/</id>
+    <link href="http://www.maksim.website/2018/01/11/cjiojqgdu005x5vrdvuqrbn2c/"/>
+    <id>http://www.maksim.website/2018/01/11/cjiojqgdu005x5vrdvuqrbn2c/</id>
     <published>2018-01-11T04:20:11.000Z</published>
     <updated>2018-06-20T03:33:14.575Z</updated>
     
@@ -417,8 +419,8 @@
   
   <entry>
     <title>创建型设计模式之抽象工厂</title>
-    <link href="http://www.maksim.website/2018/01/10/cjinr1zpt005wosrd4jxjt1jc/"/>
-    <id>http://www.maksim.website/2018/01/10/cjinr1zpt005wosrd4jxjt1jc/</id>
+    <link href="http://www.maksim.website/2018/01/10/cjiojqgdp005o5vrd9ja8xli6/"/>
+    <id>http://www.maksim.website/2018/01/10/cjiojqgdp005o5vrd9ja8xli6/</id>
     <published>2018-01-10T12:44:02.000Z</published>
     <updated>2018-04-10T10:52:18.330Z</updated>
     
