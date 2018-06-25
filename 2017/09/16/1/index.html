@@ -84,14 +84,14 @@
 <meta name="description" content="引言在我们的日常开发过程当中，为了保持数据的一致性，多多少少都会用到事务。 当面对大量数据时，使用事务一定要谨小慎微，因为一旦编写的事务中设计的数据量过大，就会严重的影响系统性能，如果操作的数据量特别巨大，则会造成服务器的阻塞，导致业务逻辑无法访问。 什么是事务？在了解大事务对 MySQL 性能带来的影响之前，我们首先要了解什么是事务，事务又起到了什么样的作用：  事务是关系型数据库系统区分于其他">
 <meta name="keywords" content="前端博客,JavaScript,html5,css3,Jquery,Linux,PHP,iOS,MySQL,SQL,Redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大事务对MySQL性能带来的影响">
+<meta property="og:title" content="MySQL性能优化之大事务对MySQL性能带来的影响">
 <meta property="og:url" content="http://www.maksim.website/2017/09/16/1/index.html">
 <meta property="og:site_name" content="Maksim&#39;s Website">
 <meta property="og:description" content="引言在我们的日常开发过程当中，为了保持数据的一致性，多多少少都会用到事务。 当面对大量数据时，使用事务一定要谨小慎微，因为一旦编写的事务中设计的数据量过大，就会严重的影响系统性能，如果操作的数据量特别巨大，则会造成服务器的阻塞，导致业务逻辑无法访问。 什么是事务？在了解大事务对 MySQL 性能带来的影响之前，我们首先要了解什么是事务，事务又起到了什么样的作用：  事务是关系型数据库系统区分于其他">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-10T10:52:18.327Z">
+<meta property="og:updated_time" content="2018-06-25T12:11:32.651Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大事务对MySQL性能带来的影响">
+<meta name="twitter:title" content="MySQL性能优化之大事务对MySQL性能带来的影响">
 <meta name="twitter:description" content="引言在我们的日常开发过程当中，为了保持数据的一致性，多多少少都会用到事务。 当面对大量数据时，使用事务一定要谨小慎微，因为一旦编写的事务中设计的数据量过大，就会严重的影响系统性能，如果操作的数据量特别巨大，则会造成服务器的阻塞，导致业务逻辑无法访问。 什么是事务？在了解大事务对 MySQL 性能带来的影响之前，我们首先要了解什么是事务，事务又起到了什么样的作用：  事务是关系型数据库系统区分于其他">
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <title>大事务对MySQL性能带来的影响 | Maksim's Website</title>
+  <title>MySQL性能优化之大事务对MySQL性能带来的影响 | Maksim's Website</title>
   
 
 
@@ -292,7 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">大事务对MySQL性能带来的影响</h1>
+          <h1 class="post-title" itemprop="name headline">MySQL性能优化之大事务对MySQL性能带来的影响</h1>
         
 
         <div class="post-meta">
@@ -432,8 +432,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/10/1/" rel="next" title="MySQL主从数据库">
-                <i class="fa fa-chevron-left"></i> MySQL主从数据库
+              <a href="/2017/09/16/2/" rel="next" title="MYSQL性能优化（2）：大表对数据库的影响">
+                <i class="fa fa-chevron-left"></i> MYSQL性能优化（2）：大表对数据库的影响
               </a>
             
           </div>
@@ -442,8 +442,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/18/cjiu6x6u5003ysqrd903li5e0/" rel="prev" title="大表会对数据库带来的那些问题！">
-                大表会对数据库带来的那些问题！ <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/16/5/" rel="prev" title="MySQL性能优化（5）：MySQL体系结构">
+                MySQL性能优化（5）：MySQL体系结构 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -530,7 +530,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-count">86</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -541,7 +541,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -552,7 +552,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
