@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.maksim.website/"/>
-  <updated>2018-04-09T11:37:37.616Z</updated>
+  <updated>2018-06-25T11:42:34.785Z</updated>
   <id>http://www.maksim.website/</id>
   
   <author>
@@ -15,6 +15,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>高并发大流量解决方案之MySQL优化</title>
+    <link href="http://www.maksim.website/2018/10/14/cjiu7e2cc00000crd42fwbiuq/"/>
+    <id>http://www.maksim.website/2018/10/14/cjiu7e2cc00000crd42fwbiuq/</id>
+    <published>2018-10-13T16:00:00.000Z</published>
+    <updated>2018-06-25T11:42:34.785Z</updated>
+    
+    <content type="html"><![CDATA[<p>在本文中，并没有实现过程，算是一个提纲，当我们需要对MySQL进行优化的时候，可以通过本篇文章，了解一下，我们要对MySQL进行哪些优化，也算是对MySQL的优化先要有一个总体的认知。</p><p>因为如果要将所有的操作过程都放到这篇文章中，估计还没等看完，你就已经睡着了，具体的操作，我会在其他系列的博文中陆续的更新出来。</p><h1 id="优化方向"><a href="#优化方向" class="headerlink" title="优化方向"></a>优化方向</h1><ul><li>数据表数据类型优化</li><li>索引优化</li><li>SQL 语句优化</li><li>存储引擎的优化</li><li>数据表结构设计的优化</li><li>数据库服务器架构的优化</li></ul><h1 id="数据表数据类型优化"><a href="#数据表数据类型优化" class="headerlink" title="数据表数据类型优化"></a>数据表数据类型优化</h1><p>在做数据表结构类型优化时，我们需要考虑如下几点：</p><ul><li>字段使用什么样的数据类型更合适</li><li>字段使用什么样的数据类型性能更快</li></ul><h3 id="Int-tinyint、smallint、bigint"><a href="#Int-tinyint、smallint、bigint" class="headerlink" title="Int: tinyint、smallint、bigint"></a>Int: tinyint、smallint、bigint</h3><p>在使用Int类型存储值的时候，一定要按需选择，需要对空间、范围进行考虑，比如存储年龄通常是0~120多，所以我们选择一个最小的tinyint类型，如果加上无符号那么最大值是255，足够我们存储年龄，选择smallint或者bigint明显是一种浪费。</p><h3 id="char、varchar"><a href="#char、varchar" class="headerlink" title="char、varchar"></a>char、varchar</h3><p>char 的空间效率要比 varchar 要好，如果是存储电话号码，固定为11位，这种类似的需求，使用char要更好。</p><p>对于varchar存储一些可变的数据，如用户名。</p><p>###　enum</p><p>特性、固定的分类可以使用 enum 存储，效率更快。</p><p>一定要是固定的分类，如果将来的分类会变，就不适合使用enum，因为这样我们就需要去修改数据库表结构，扩展性会变得很差。</p><h3 id="IP-地址的存储"><a href="#IP-地址的存储" class="headerlink" title="IP 地址的存储"></a>IP 地址的存储</h3><p>IP 地址一般会采用字符型来进行存储，但是这种存储方式会带来很大的空间占用，我们可以使用整型来进行存储，PHP为我们提供了转换函数 <code>ip2lang</code></p><h2 id="索引优化"><a href="#索引优化" class="headerlink" title="索引优化"></a>索引优化</h2><p>在做索引型优化时，我们需要考虑如下几点：</p><ul><li>建立合适的索引</li><li>索引在什么场景下效率最高</li></ul><h2 id="索引的创建原则"><a href="#索引的创建原则" class="headerlink" title="索引的创建原则"></a>索引的创建原则</h2><ul><li><p>索引不是越多越好，在合适的字段上创建合适的索引，索引本身会影响我们的写操作的速度，并且会占用磁盘空间。</p></li><li><p>符合索引的前缀原则。</p></li></ul><h2 id="索引的注意事项"><a href="#索引的注意事项" class="headerlink" title="索引的注意事项"></a>索引的注意事项</h2><ul><li>符合索引的前缀原则</li><li>like 查询%的问题</li><li>全表扫描优化</li><li>or 条件索引使用情况</li><li>字符串类型索引失效的问题</li></ul><h1 id="SQL-语句的优化"><a href="#SQL-语句的优化" class="headerlink" title="SQL 语句的优化"></a>SQL 语句的优化</h1><ul><li>优化查询过程中的数据访问<ul><li>使用Limit</li><li>返回列不用 *</li></ul></li><li>优化长难句的查询语句<ul><li>变复杂为简单</li><li>切分查询</li><li>分解关联查询</li></ul></li><li>优化特定类型的查询语句<ul><li>优化count()</li><li>优化关联查询</li><li>优化子查询</li><li>优化 Group by 和 distinct</li><li>优化 limit 和 union</li></ul></li></ul><h1 id="存储引擎的优化"><a href="#存储引擎的优化" class="headerlink" title="存储引擎的优化"></a>存储引擎的优化</h1><ul><li>尽量使用 <code>InnoDB</code> 存储引擎</li></ul><h1 id="数据表结构设计的优化"><a href="#数据表结构设计的优化" class="headerlink" title="数据表结构设计的优化"></a>数据表结构设计的优化</h1><ul><li>分区操作<ul><li>通过特定的策略对数据表进行物理拆分</li><li>对用户透明</li><li>partition by</li></ul></li><li>分库分表<ul><li>水平拆分</li><li>垂直拆分</li></ul></li></ul><h1 id="数据库架构的优化"><a href="#数据库架构的优化" class="headerlink" title="数据库架构的优化"></a>数据库架构的优化</h1><ul><li>主从复制</li><li>读写分离</li><li>双主热备</li><li>负载均衡<ul><li>通过 <code>LVS</code> 的三种基本模式实现负载均衡</li><li><code>MyCat</code> 数据库中间件实现负载均衡。</li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在本文中，并没有实现过程，算是一个提纲，当我们需要对MySQL进行优化的时候，可以通过本篇文章，了解一下，我们要对MySQL进行哪些优化，也算是对MySQL的优化先要有一个总体的认知。&lt;/p&gt;
+&lt;p&gt;因为如果要将所有的操作过程都放到这篇文章中，估计还没等看完，你就已经睡着了
+      
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Swoole 基础（一）：起步</title>
+    <link href="http://www.maksim.website/2018/06/12/cjiu6x6x1006wsqrdzk2i6xbd/"/>
+    <id>http://www.maksim.website/2018/06/12/cjiu6x6x1006wsqrdzk2i6xbd/</id>
+    <published>2018-06-11T16:00:00.000Z</published>
+    <updated>2018-06-25T11:52:48.964Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h1><p>Swoole 是使用纯 C 语言编写，提供了 PHP 语言的异步多线程服务器，异步 TCP/UDP 网络客户端，异步 MySQL，异步 Redis，数据库连接池，AsyncTask，消息队列，毫秒定时器，异步文件读写，异步DNS查询。 Swoole内置了Http/WebSocket服务器端/客户端、Http2.0服务器端。</p><p>除了异步 IO 的支持之外，Swoole 为 PHP 多进程的模式设计了多个并发数据结构和IPC通信机制，可以大大简化多进程并发编程的工作。其中包括了并发原子计数器，并发 HashTable，Channel，Lock，进程间通信IPC等丰富的功能特性。</p><p>Swoole2.0 支持了类似 Go 语言的协程，可以使用完全同步的代码实现异步程序。PHP 代码无需额外增加任何关键词，底层自动进行协程调度，实现异步。</p><p>Swoole 的官网是 <a href="http://www.swoole.com" target="_blank" rel="noopener">http://www.swoole.com</a></p><h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><ul><li>移动互联网 API 服务器</li><li>物联网（IOT）</li><li>微服务（Micro Service）</li><li>高性能 Web 服务器</li><li>游戏服务器</li><li>在线聊天室</li></ul><h1 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h1><p>安装扩展的方法有很多，那么我们为什么要学习编译安装呢，因为大公司基本上都是以编译进行安装。</p><p>在 PHP 内核书中也提到过，建议开发者以编译形式进行安装，这样可以根据业务要求进行定制安装，例如线程安全等功能，而且对 PHP 的运行速度也会有稍微提升。</p><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul><li>Linux 环境下</li><li>PHP7  Swoole 2.1 redis</li><li>源码安装 PHP7、Swoole</li></ul><h2 id="获取-PHP-源代码"><a href="#获取-PHP-源代码" class="headerlink" title="获取 PHP 源代码"></a>获取 PHP 源代码</h2><p>我们可以到 PHP 官网下载，我们的生产环境都不会使用集成环境，比如 PHPStudy，WAMP，在生产环境我们都是使用编译安装 PHP 源代码。</p><p>我们最好选择最新的 PHP 版本，到本博文截止，最新的版本是7.2.6。</p><p>下载好后我们将其解压，然后按照如下步骤进行安装：</p><ol><li>configure</li><li>make</li><li>make install </li></ol><p>configure 可以对即将安装的软件进行配置与依赖检测，在这里需要注意，编译安装 PHP 需要用到 GCC、autoconfig，如果没有这两个依赖，请进行安装，configure 会给出提示。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure --prefix=/home/work/stduy/soft/php</div></pre></td></tr></table></figure><ul><li>–prefix 安装目录</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">make </div><div class="line">make test //对编译结果进行测试</div></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make install</div></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /home/work/stduy/soft/php/bin</div><div class="line">./php -v</div></pre></td></tr></table></figure><p>我们可以看到PHP 的版本信息记大功搞成。</p><p>这样 PHP7.2.6 就已经安装完毕了。</p><p>但是每一次都要进入该目录是在是太麻烦了，我们可以直接修改系统的环境变量，也就是 profile。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo vim ~/.bash_profile</div><div class="line">alias /home/work/stduy/soft/php/bin/php</div><div class="line">source ~/.bash_profile</div></pre></td></tr></table></figure><h2 id="编译安装-Swoole"><a href="#编译安装-Swoole" class="headerlink" title="编译安装 Swoole"></a>编译安装 Swoole</h2><h3 id="环境依赖"><a href="#环境依赖" class="headerlink" title="环境依赖"></a>环境依赖</h3><ul><li>仅支持 <code>Linux</code>、<code>FreeBSD</code>、<code>MacOS</code> 三种操作系统</li><li>在<code>Windows</code>平台，可使用<code>CygWin</code>或<code>WSL(Windows Subsystem for Linux)</code></li><li><code>Linux</code> 内核版本 <code>2.3.32</code> 以上</li><li><code>gcc4.4</code> 以上版本或者<code>clang</code></li><li><code>4.x</code>版本起需要<code>gcc-4.8</code>或更高版本</li><li>编译为 <code>libswoole.so</code> 作为 <code>C/C++</code> 库时需要使用 <code>cmake-2.4</code> 或更高版本</li></ul><blockquote><p> 建议使用 <code>Ubuntu14</code>、<code>CentOS7</code> 或更高版本的操作系统</p></blockquote><h3 id="PHP版本依赖"><a href="#PHP版本依赖" class="headerlink" title="PHP版本依赖"></a>PHP版本依赖</h3><ul><li><code>Swoole-1.x</code>需要<code>PHP-5.3.10</code>或更高版本</li><li><code>Swoole-2.x</code>需要<code>PHP-7.0.0</code>或更高版本</li><li>依赖不<code>PHP</code>的<code>stream</code>，<code>sockets</code>，<code>pcntl</code>，<code>posix</code>，<code>sysvmsg</code>等扩展。<code>PHP</code>只需安装最基本的扩展即可</li></ul><h3 id="安装准备"><a href="#安装准备" class="headerlink" title="安装准备"></a>安装准备</h3><p>安装swoole前必须保证系统已经安装了下列软件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">php-5.3.10 或更高版本</div><div class="line">gcc-4.4 或更高版本</div><div class="line">make</div><div class="line">autoconf</div><div class="line">pcre (centos系统可以执行命令：yum install pcre-devel)</div></pre></td></tr></table></figure><h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><ul><li><a href="https://github.com/swoole/swoole-src/releases" target="_blank" rel="noopener">https://github.com/swoole/swoole-src/releases</a></li><li><a href="http://pecl.php.net/package/swoole" target="_blank" rel="noopener">http://pecl.php.net/package/swoole</a></li><li><a href="http://git.oschina.net/swoole/swoole" target="_blank" rel="noopener">http://git.oschina.net/swoole/swoole</a></li></ul><p>下载源代码包后，在终端进入源码目录，执行下面的命令进行编译和安装</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd swoole</div><div class="line">phpize</div><div class="line">./configure</div><div class="line">make </div><div class="line">sudo make install</div></pre></td></tr></table></figure><h3 id="完整编译示例"><a href="#完整编译示例" class="headerlink" title="完整编译示例"></a>完整编译示例</h3><p>以下脚本会下载并编译主分支的swoole源码</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">mkdir -p ~/build &amp;&amp; \</div><div class="line">cd ~/build &amp;&amp; \</div><div class="line">rm -rf ./swoole-src &amp;&amp; \</div><div class="line">curl -o ./tmp/swoole.tar.gz https://github.com/swoole/swoole-src/archive/master.tar.gz -L &amp;&amp; \</div><div class="line">tar zxvf ./tmp/swoole.tar.gz &amp;&amp; \</div><div class="line">mv swoole-src* swoole-src &amp;&amp; \</div><div class="line">cd swoole-src &amp;&amp; \</div><div class="line">phpize &amp;&amp; \</div><div class="line">./configure \</div><div class="line">--enable-coroutine \</div><div class="line">--enable-openssl  \</div><div class="line">--enable-http2  \</div><div class="line">--enable-async-redis \</div><div class="line">--enable-sockets \</div><div class="line">--enable-mysqlnd &amp;&amp; \</div><div class="line">make clean &amp;&amp; make &amp;&amp; sudo make install</div></pre></td></tr></table></figure><p>详细参数详解请到swoole 官方文档进行查看——<a href="https://wiki.swoole.com/wiki/page/437.html" target="_blank" rel="noopener">传送门</a>。</p><h3 id="PECL"><a href="#PECL" class="headerlink" title="PECL"></a>PECL</h3><p>swoole项目已收录到PHP官方扩展库，除了手工下载编译外，还可以通过PHP官方提供的PECL命令，一键下载安装swoole</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pecl install swoole</div></pre></td></tr></table></figure><h2 id="配置的php-ini"><a href="#配置的php-ini" class="headerlink" title="配置的php.ini"></a>配置的php.ini</h2><p>编译安装成功后，修改php.ini中加入</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">extension=swoole.so</div></pre></td></tr></table></figure><p>通过<code>php -m</code>或<code>phpinfo()</code>来查看是否成功加载了swoole，如果可能没有的英文<code>php.ini</code>的路径不对，使用可以<code>php --ini</code>来定位到<code>php.ini</code>的绝对路径</p><p>这样我们进入下载的 swoole 目录下，进入 <code>[examples]</code>目录运行：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php echo.php</div></pre></td></tr></table></figure><p>如果没有报错便是安装成功了！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;特性&quot;&gt;&lt;a href=&quot;#特性&quot; class=&quot;headerlink&quot; title=&quot;特性&quot;&gt;&lt;/a&gt;特性&lt;/h1&gt;&lt;p&gt;Swoole 是使用纯 C 语言编写，提供了 PHP 语言的异步多线程服务器，异步 TCP/UDP 网络客户端，异步 MySQL，异步 Re
+      
+    
+    </summary>
+    
+      <category term="php" scheme="http://www.maksim.website/categories/php/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>写作的准备-读《完全写作指南》</title>
@@ -32,30 +79,6 @@
         &lt;p&gt;写作需要明确目标、确定读者、用头脑风暴总结出中心思想、组织内容、写初稿以及修改。但在大多数写作课上，这些步骤以现行的方式展现的，像这样：&lt;/p&gt;
 &lt;p&gt;目标 → 读者 → 头脑风暴 → 组织 → 写初稿 → 修改&lt;/p&gt;
 &lt;p&gt;从理论上讲，按照这个顺序操作，你就能得到一篇组
-      
-    
-    </summary>
-    
-      <category term="读书笔记" scheme="http://www.maksim.website/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>美国航空航天局科学家给赞比亚修女的一封信</title>
-    <link href="http://www.maksim.website/2018/04/08/3/"/>
-    <id>http://www.maksim.website/2018/04/08/3/</id>
-    <published>2018-04-07T16:00:00.000Z</published>
-    <updated>2018-04-09T10:30:21.934Z</updated>
-    
-    <content type="html"><![CDATA[<p>背景： 1970年，赞比亚修女玛丽·尤肯达给美国航空航天局科学家恩斯特·施图林格博士问道：目前地球上还有这么多小孩子吃不上饭，他怎么能舍得为远在火星的项目花费数十亿美元。</p><p>1970年，赞比亚修女玛丽·尤肯达（Mary Jucunda）给恩斯特·施图林格（Ernst Stuhlinger）博士写了一封信。施图林格因在火星之旅工程中的原创性研究，成为NASA（美国航空航天局）马绍尔太空航行中心的科学副总监。信中，玛丽·尤肯达修女问道：目前地球上还有这么多小孩子吃不上饭，他怎么能舍得为远在火星的项目花费数十亿美元。施图林格很快给尤肯达修女回了信，同时还附带了一张题为“升起的地球”的照片，这张标志性的照片是宇航员威廉·安德斯于1968年在月球轨道上拍摄的（照片中可以看到月球的地面）。他这封真挚的回信随后由NASA以《为什么要探索宇宙》为标题发表。</p><p>1970年5月6日</p><p>亲爱的玛丽·尤肯达修女：每天，我都会收到很多类似的来信，但这封对我的触动最深，因为它来自一颗慈悲的饱含探求精神的心灵。我会尽自己所能来回答你这个问题。首先，请允许我向你以及你勇敢的姐妹们表达深深的敬意，你们献身于人类最崇高的事业：帮助身处困境的同胞。</p><p>在来信中，你问我在目前地球上还有儿童由于饥饿面临死亡威胁的情况下，为什么还要花费数十亿美元来进行飞向火星的航行。 我清楚你肯定不希望这样的答案：“哦，我之前不知道还有小孩子快饿死了，好吧，从现在开始，暂停所有的太空项目，直到孩子们都吃上饭再说。”事实上，早在了解火星之旅的技术之前，我已经对儿童的饥荒问题有所了解。而且，同我很多朋友的看法一样，我认为此时此刻，我们就应该开始通往月球、火星乃至其他行星的伟大探险。从长远来看，相对于那些要么只有年复一年的辩论和争吵，要么连妥协之后也迟迟无法落实的各种援助计划来说，我甚至觉得探索太空的工程给更有助于解决人类目前所面临的种种危机。</p><p>在详细说明我们的太空项目如何帮助解决地面上的危机之前，我想先简短讲一个真实的故事。那是在400年前，德国某小镇里有一位伯爵。他是个心地善良的人，他将自己收入的一大部分捐给了镇子上的穷人。这十分令人钦佩，因为中世纪时穷人很多，而且那时经常爆发席卷全国的瘟疫。一天，伯爵碰到了一个奇怪的人，他家中有一个工作台和一个小实验室，他白天卖力工作，每天晚上的几小时的时间专心进行研究。他把小玻璃片研磨成镜片，然后把研磨好的镜片装到镜筒里，用此来观察细小的物件。伯爵被这个前所未见的可以把东西放大观察的小发明迷住了。他邀请这个怪人住到了他的城堡里，作为伯爵的门客，此后他可以专心投入所有的时间来研究这些光学器件。</p><p>然而，镇子上的人得知伯爵在这么一个怪人和他那些无用的玩意儿上花费金钱之后，都很生气，“我们还在受瘟疫的苦”，他们抱怨道，“而他却为那个闲人和他没用的爱好乱花钱！”伯爵听到后不为所动，“我会尽可能地接济大家”，他表示，“但我会继续资助这个人和他的工作，我确信终有一天会有回报。”</p><p>果不其然，他的工作赢来了丰厚的回报：显微镜。显微镜的发明给医学带来了前所未有的发展，由此展开的研究及其成果，消除了世界上大部分地区肆虐的瘟疫和其他一些传染性疾病。</p><p>伯爵为支持这项研究发明所花费的金钱，其最终结果大大减轻了人类所遭受的苦难，这回报远远超过单纯将这些钱用来救济那些遭受瘟疫的人。</p><p>我们目前面临类似的问题。美国总统的年度预算共有2000亿美元，这些钱将用于医疗、教育、福利、城市建设、高速公路、交通运输、海外援助、国防、环保、科技、农业以及其他多项国内外的工程。今年，预算中的1.6%将用于探索宇宙，这些花销将用于阿波罗以计划、其他一些涵盖了天体物理学、深空天文学、空间生物学、行星探测工程、地球资源工程的小项目以及空间工程技术。为担负这些太空项目的支出，平均每个年收入10,000美元的美国纳税人需要支付约30美元给太空，剩下的9,970美元则可用于一般生活开支、休闲娱乐、储蓄、别的税项等花销。</p><p>也许你会问：“为什么不从纳税人为太空支付的30美元里抽出5美元或3美元或是1美元来救济饥饿的儿童呢？”为了回答这个问题，我需要先简单解释一下我们国家的经济是如何运行的，其他国家也是类似的情形。政府由几个部门（如内政部、司法部、卫生部与公众福利部、教育部、运输部、国防部等）和几个机构（国家科学基金会、国家航空航天局等）组成，这些部门和机构根据自己的职能制定相应的年度预算，并严格执行以应对国务委员会的监督，同时还要应付来自预算部门和总统对于其经济效益的压力。当资金最终由国会拨出后，将严格用于经预算批准的计划中的项目。</p><p>显然，NASA的预算中所包含的项目都是和航空航天有关的。未经国会批准的预算项目，是不会得到资金支持的，自然也不会被课税，除非有其他部门的预算涵盖了该项目，借此花掉没有分配给太空项目的资金。由这段简短的说明可以看出，要想援助饥饿的儿童，或在美国已有的对外援助项目上增加援助金额，需要首先由相关部门提出预算，然后由国会批准才行。</p><p>要问是否同意政府实施类似的政策，我个人的意见是绝对赞成。我完全不介意每年多付出一点点税款来帮助饥饿的儿童，无论他们身在何处。</p><p>我相信我的朋友们也会持相同的态度。然而，事情并不是仅靠把去往火星航行的计划取消就能轻易实现的。相对的，我甚至认为可以通过太空项目，来为缓解乃至最终解决地球上的贫穷和饥饿问题作出贡献。解决饥饿问题的关键有两部分：食物的生产和食物的发放。食物的生产所涉及的农业、畜牧业、渔业及其他大规模生产活动在世界上的一些地区高效高产，而在有的地区则产量严重不足。通过高科技手段，如灌溉管理，肥料的使用，天气预报，产量评估，程序化种植，农田优选，作物的习性与耕作时间选择，农作物调查及收割计划，可以显著提高土地的生产效率。</p><p>人造地球卫星无疑是改进这两个关键问题最有力的工具。在远离地面的运行轨道上，卫星能够在很短的时间里扫描大片的陆地，可以同时观察计算农作物生长所需要的多项指标，土壤、旱情、雨雪天气等等，并且可以将这些信息广播至地面接收站以便做进一步处理。事实证明，配备有土地资源传感器及相应的农业程序的人造卫星系统，即便是最简单的型号，也能给农作物的年产量带来数以十亿美元计的提升。</p><p>如何将食品发放给需要的人则是另外一个全新的问题，关键不在于轮船的容量，而在于国际间的合作。小国统治者对于来自大国的大量食品的输入很难做出准确的判断，他们害怕伴随着食物一同而来的还有外国势力对其统治地位的影响。恐怕在国与国之间消除隔阂之前，饥饿问题无法得以高效解决了。我不认为太空计划能一夜之间创造奇迹，然而，探索宇宙有助于促使问题向着良好的方向发展。</p><p>以最近发生的阿波罗13号事故为例。当宇航员处于关键的大气层再入期时，为了保证通讯畅通，苏联关闭了境内与阿波罗飞船所用频带相同的所有广播通信。同时派出舰艇到太平洋和大西洋海域以备第一时间进行搜救工作。如果宇航员的救生舱降落到俄方舰船附近，俄方人员会像对待从太空返回的本国宇航员一样对他们进行救助。同样，如果俄方的宇宙飞船遇到了类似的紧急情况，美国也一定会毫不犹豫地提供援助。 </p><p>通过卫星进行监测与分析来提高食品产量，以及通过改善国际关系提高食品发放的效率，只是通过太空项目提高人类生活质量的两个方面。下面我想介绍另外两个重要作用：促进科学技术的发展和提高一代人的科学素养。</p><p>登月工程需要历史上前所未有的高精度和高可靠性。面对如此严苛的要求，我们要寻找新材料，新方法；开发出更好的工程系统；用更可靠的制作流程；让仪器的工作寿命更长久；甚至需要探索全新的自然规律。</p><p>这些为登月发明的新技术同样可以用于地面上的工程项目。每年，都有大概一千项从太空项目中发展出来的新技术被用于日常生活中，这些技术打造出更好的厨房用具和农场设备，更好的缝纫机和收音机，更好的轮船和飞机，更精确的天气预报和风暴预警，更好的通讯设施，更好的医疗设备，乃至更好的日常小工具。你可能会问为什么先设计出宇航员登月舱的维生系统，而不是先为听力障碍患者造出有声阅读设备呢。答案很简单：解决工程问题时，重要的技术突破往往并不是按部就班直接得到的，而是来自能够激发出强大创新精神，能够燃起的想象力和坚定的行动力，以及能够整合好所有资源的充满挑战的目标。</p><p>太空旅行无可置疑地是一项充满挑战的事业。通往火星的航行并不能直接提供食物解决饥荒问题。然而，它所带来大量的新技术和新方法可以用在火星项目之外，这将产生数倍于原始花费的收益。若希望人类生活得越来越好，除了需要新的技术，我们还需要基础科学不断有新的进展。包括物理学和化学，生物学和生理学，特别是医学，用来照看人类的健康，应对饥饿、疾病、食物和水的污染以及环境污染等问题。</p><p>我们需要更多的年轻人投入到科学事业中来，我们需要给予那些投身科研事业的有天分的科学家更多的帮助。随时要有富于挑战的研究项目，同时要保证对项目给予充分的资源支持。在此我要重申，太空项目是科技进步的催化剂，它为学术研究工作提供了绝佳和实践机会，包括对月球和其他行星的眼睛、物理学和天文学、生物学和医学科学等学科，有它，科学界源源不断出现令人激动不已研究课题，人类得以窥见宇宙无比瑰丽的景象；为了它，新技术新方法不断涌现。</p><p>由美国政府控制并提供资金支持的所有活动中，太空项目无疑最引人瞩目也最容易引起争议，尽管其仅占全部预算的1.6%，不到全民生产总值的千分之三。作为新技术的驱动者和催化剂，太空项目开展了多项基础科学的研究，它的地位注定不同于其他活动。从某种意义上来说，以太空项目的对社会的影响，其地位相当于3-4千年前的战争活动。</p><p>如果国家之间不再比拼轰炸机和远程导弹，取而代之比拼月球飞船的性能，那将避免多少战乱之苦！聪慧的胜利者将满怀希望，失败者也不用饱尝痛苦，不再埋下仇恨的种子，不再带来复仇的战争。</p><p>尽管我们开展的太空项目研究的东西离地球很遥远，已经将人类的视野延伸至月亮、至太阳、至星球、直至那遥远的星辰，但天文学家对地球的关注，超过以上所有天外之物。太空项目带来的不仅有那些新技术所所提供的生活品质的提升，随着对宇宙研究的深入，我们对地球，对生命，对人类自身的感激之情将越深。太空探索让地球更美好。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;背景： 1970年，赞比亚修女玛丽·尤肯达给美国航空航天局科学家恩斯特·施图林格博士问道：目前地球上还有这么多小孩子吃不上饭，他怎么能舍得为远在火星的项目花费数十亿美元。&lt;/p&gt;
-&lt;p&gt;1970年，赞比亚修女玛丽·尤肯达（Mary Jucunda）给恩斯特·施图林格（Ern
       
     
     </summary>
@@ -89,9 +112,33 @@
   </entry>
   
   <entry>
+    <title>美国航空航天局科学家给赞比亚修女的一封信</title>
+    <link href="http://www.maksim.website/2018/04/08/3/"/>
+    <id>http://www.maksim.website/2018/04/08/3/</id>
+    <published>2018-04-07T16:00:00.000Z</published>
+    <updated>2018-04-09T10:30:21.934Z</updated>
+    
+    <content type="html"><![CDATA[<p>背景： 1970年，赞比亚修女玛丽·尤肯达给美国航空航天局科学家恩斯特·施图林格博士问道：目前地球上还有这么多小孩子吃不上饭，他怎么能舍得为远在火星的项目花费数十亿美元。</p><p>1970年，赞比亚修女玛丽·尤肯达（Mary Jucunda）给恩斯特·施图林格（Ernst Stuhlinger）博士写了一封信。施图林格因在火星之旅工程中的原创性研究，成为NASA（美国航空航天局）马绍尔太空航行中心的科学副总监。信中，玛丽·尤肯达修女问道：目前地球上还有这么多小孩子吃不上饭，他怎么能舍得为远在火星的项目花费数十亿美元。施图林格很快给尤肯达修女回了信，同时还附带了一张题为“升起的地球”的照片，这张标志性的照片是宇航员威廉·安德斯于1968年在月球轨道上拍摄的（照片中可以看到月球的地面）。他这封真挚的回信随后由NASA以《为什么要探索宇宙》为标题发表。</p><p>1970年5月6日</p><p>亲爱的玛丽·尤肯达修女：每天，我都会收到很多类似的来信，但这封对我的触动最深，因为它来自一颗慈悲的饱含探求精神的心灵。我会尽自己所能来回答你这个问题。首先，请允许我向你以及你勇敢的姐妹们表达深深的敬意，你们献身于人类最崇高的事业：帮助身处困境的同胞。</p><p>在来信中，你问我在目前地球上还有儿童由于饥饿面临死亡威胁的情况下，为什么还要花费数十亿美元来进行飞向火星的航行。 我清楚你肯定不希望这样的答案：“哦，我之前不知道还有小孩子快饿死了，好吧，从现在开始，暂停所有的太空项目，直到孩子们都吃上饭再说。”事实上，早在了解火星之旅的技术之前，我已经对儿童的饥荒问题有所了解。而且，同我很多朋友的看法一样，我认为此时此刻，我们就应该开始通往月球、火星乃至其他行星的伟大探险。从长远来看，相对于那些要么只有年复一年的辩论和争吵，要么连妥协之后也迟迟无法落实的各种援助计划来说，我甚至觉得探索太空的工程给更有助于解决人类目前所面临的种种危机。</p><p>在详细说明我们的太空项目如何帮助解决地面上的危机之前，我想先简短讲一个真实的故事。那是在400年前，德国某小镇里有一位伯爵。他是个心地善良的人，他将自己收入的一大部分捐给了镇子上的穷人。这十分令人钦佩，因为中世纪时穷人很多，而且那时经常爆发席卷全国的瘟疫。一天，伯爵碰到了一个奇怪的人，他家中有一个工作台和一个小实验室，他白天卖力工作，每天晚上的几小时的时间专心进行研究。他把小玻璃片研磨成镜片，然后把研磨好的镜片装到镜筒里，用此来观察细小的物件。伯爵被这个前所未见的可以把东西放大观察的小发明迷住了。他邀请这个怪人住到了他的城堡里，作为伯爵的门客，此后他可以专心投入所有的时间来研究这些光学器件。</p><p>然而，镇子上的人得知伯爵在这么一个怪人和他那些无用的玩意儿上花费金钱之后，都很生气，“我们还在受瘟疫的苦”，他们抱怨道，“而他却为那个闲人和他没用的爱好乱花钱！”伯爵听到后不为所动，“我会尽可能地接济大家”，他表示，“但我会继续资助这个人和他的工作，我确信终有一天会有回报。”</p><p>果不其然，他的工作赢来了丰厚的回报：显微镜。显微镜的发明给医学带来了前所未有的发展，由此展开的研究及其成果，消除了世界上大部分地区肆虐的瘟疫和其他一些传染性疾病。</p><p>伯爵为支持这项研究发明所花费的金钱，其最终结果大大减轻了人类所遭受的苦难，这回报远远超过单纯将这些钱用来救济那些遭受瘟疫的人。</p><p>我们目前面临类似的问题。美国总统的年度预算共有2000亿美元，这些钱将用于医疗、教育、福利、城市建设、高速公路、交通运输、海外援助、国防、环保、科技、农业以及其他多项国内外的工程。今年，预算中的1.6%将用于探索宇宙，这些花销将用于阿波罗以计划、其他一些涵盖了天体物理学、深空天文学、空间生物学、行星探测工程、地球资源工程的小项目以及空间工程技术。为担负这些太空项目的支出，平均每个年收入10,000美元的美国纳税人需要支付约30美元给太空，剩下的9,970美元则可用于一般生活开支、休闲娱乐、储蓄、别的税项等花销。</p><p>也许你会问：“为什么不从纳税人为太空支付的30美元里抽出5美元或3美元或是1美元来救济饥饿的儿童呢？”为了回答这个问题，我需要先简单解释一下我们国家的经济是如何运行的，其他国家也是类似的情形。政府由几个部门（如内政部、司法部、卫生部与公众福利部、教育部、运输部、国防部等）和几个机构（国家科学基金会、国家航空航天局等）组成，这些部门和机构根据自己的职能制定相应的年度预算，并严格执行以应对国务委员会的监督，同时还要应付来自预算部门和总统对于其经济效益的压力。当资金最终由国会拨出后，将严格用于经预算批准的计划中的项目。</p><p>显然，NASA的预算中所包含的项目都是和航空航天有关的。未经国会批准的预算项目，是不会得到资金支持的，自然也不会被课税，除非有其他部门的预算涵盖了该项目，借此花掉没有分配给太空项目的资金。由这段简短的说明可以看出，要想援助饥饿的儿童，或在美国已有的对外援助项目上增加援助金额，需要首先由相关部门提出预算，然后由国会批准才行。</p><p>要问是否同意政府实施类似的政策，我个人的意见是绝对赞成。我完全不介意每年多付出一点点税款来帮助饥饿的儿童，无论他们身在何处。</p><p>我相信我的朋友们也会持相同的态度。然而，事情并不是仅靠把去往火星航行的计划取消就能轻易实现的。相对的，我甚至认为可以通过太空项目，来为缓解乃至最终解决地球上的贫穷和饥饿问题作出贡献。解决饥饿问题的关键有两部分：食物的生产和食物的发放。食物的生产所涉及的农业、畜牧业、渔业及其他大规模生产活动在世界上的一些地区高效高产，而在有的地区则产量严重不足。通过高科技手段，如灌溉管理，肥料的使用，天气预报，产量评估，程序化种植，农田优选，作物的习性与耕作时间选择，农作物调查及收割计划，可以显著提高土地的生产效率。</p><p>人造地球卫星无疑是改进这两个关键问题最有力的工具。在远离地面的运行轨道上，卫星能够在很短的时间里扫描大片的陆地，可以同时观察计算农作物生长所需要的多项指标，土壤、旱情、雨雪天气等等，并且可以将这些信息广播至地面接收站以便做进一步处理。事实证明，配备有土地资源传感器及相应的农业程序的人造卫星系统，即便是最简单的型号，也能给农作物的年产量带来数以十亿美元计的提升。</p><p>如何将食品发放给需要的人则是另外一个全新的问题，关键不在于轮船的容量，而在于国际间的合作。小国统治者对于来自大国的大量食品的输入很难做出准确的判断，他们害怕伴随着食物一同而来的还有外国势力对其统治地位的影响。恐怕在国与国之间消除隔阂之前，饥饿问题无法得以高效解决了。我不认为太空计划能一夜之间创造奇迹，然而，探索宇宙有助于促使问题向着良好的方向发展。</p><p>以最近发生的阿波罗13号事故为例。当宇航员处于关键的大气层再入期时，为了保证通讯畅通，苏联关闭了境内与阿波罗飞船所用频带相同的所有广播通信。同时派出舰艇到太平洋和大西洋海域以备第一时间进行搜救工作。如果宇航员的救生舱降落到俄方舰船附近，俄方人员会像对待从太空返回的本国宇航员一样对他们进行救助。同样，如果俄方的宇宙飞船遇到了类似的紧急情况，美国也一定会毫不犹豫地提供援助。 </p><p>通过卫星进行监测与分析来提高食品产量，以及通过改善国际关系提高食品发放的效率，只是通过太空项目提高人类生活质量的两个方面。下面我想介绍另外两个重要作用：促进科学技术的发展和提高一代人的科学素养。</p><p>登月工程需要历史上前所未有的高精度和高可靠性。面对如此严苛的要求，我们要寻找新材料，新方法；开发出更好的工程系统；用更可靠的制作流程；让仪器的工作寿命更长久；甚至需要探索全新的自然规律。</p><p>这些为登月发明的新技术同样可以用于地面上的工程项目。每年，都有大概一千项从太空项目中发展出来的新技术被用于日常生活中，这些技术打造出更好的厨房用具和农场设备，更好的缝纫机和收音机，更好的轮船和飞机，更精确的天气预报和风暴预警，更好的通讯设施，更好的医疗设备，乃至更好的日常小工具。你可能会问为什么先设计出宇航员登月舱的维生系统，而不是先为听力障碍患者造出有声阅读设备呢。答案很简单：解决工程问题时，重要的技术突破往往并不是按部就班直接得到的，而是来自能够激发出强大创新精神，能够燃起的想象力和坚定的行动力，以及能够整合好所有资源的充满挑战的目标。</p><p>太空旅行无可置疑地是一项充满挑战的事业。通往火星的航行并不能直接提供食物解决饥荒问题。然而，它所带来大量的新技术和新方法可以用在火星项目之外，这将产生数倍于原始花费的收益。若希望人类生活得越来越好，除了需要新的技术，我们还需要基础科学不断有新的进展。包括物理学和化学，生物学和生理学，特别是医学，用来照看人类的健康，应对饥饿、疾病、食物和水的污染以及环境污染等问题。</p><p>我们需要更多的年轻人投入到科学事业中来，我们需要给予那些投身科研事业的有天分的科学家更多的帮助。随时要有富于挑战的研究项目，同时要保证对项目给予充分的资源支持。在此我要重申，太空项目是科技进步的催化剂，它为学术研究工作提供了绝佳和实践机会，包括对月球和其他行星的眼睛、物理学和天文学、生物学和医学科学等学科，有它，科学界源源不断出现令人激动不已研究课题，人类得以窥见宇宙无比瑰丽的景象；为了它，新技术新方法不断涌现。</p><p>由美国政府控制并提供资金支持的所有活动中，太空项目无疑最引人瞩目也最容易引起争议，尽管其仅占全部预算的1.6%，不到全民生产总值的千分之三。作为新技术的驱动者和催化剂，太空项目开展了多项基础科学的研究，它的地位注定不同于其他活动。从某种意义上来说，以太空项目的对社会的影响，其地位相当于3-4千年前的战争活动。</p><p>如果国家之间不再比拼轰炸机和远程导弹，取而代之比拼月球飞船的性能，那将避免多少战乱之苦！聪慧的胜利者将满怀希望，失败者也不用饱尝痛苦，不再埋下仇恨的种子，不再带来复仇的战争。</p><p>尽管我们开展的太空项目研究的东西离地球很遥远，已经将人类的视野延伸至月亮、至太阳、至星球、直至那遥远的星辰，但天文学家对地球的关注，超过以上所有天外之物。太空项目带来的不仅有那些新技术所所提供的生活品质的提升，随着对宇宙研究的深入，我们对地球，对生命，对人类自身的感激之情将越深。太空探索让地球更美好。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;背景： 1970年，赞比亚修女玛丽·尤肯达给美国航空航天局科学家恩斯特·施图林格博士问道：目前地球上还有这么多小孩子吃不上饭，他怎么能舍得为远在火星的项目花费数十亿美元。&lt;/p&gt;
+&lt;p&gt;1970年，赞比亚修女玛丽·尤肯达（Mary Jucunda）给恩斯特·施图林格（Ern
+      
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="http://www.maksim.website/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title></title>
-    <link href="http://www.maksim.website/2018/04/03/cjiojqgf0006x5vrdzavj5dzm/"/>
-    <id>http://www.maksim.website/2018/04/03/cjiojqgf0006x5vrdzavj5dzm/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjiu6x6x80078sqrdbdmf0k0a/"/>
+    <id>http://www.maksim.website/2018/04/03/cjiu6x6x80078sqrdbdmf0k0a/</id>
     <published>2018-04-03T14:53:43.478Z</published>
     <updated>2018-04-03T14:53:43.482Z</updated>
     
@@ -111,8 +158,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2018/04/03/cjiojqgdc00555vrd9u1c9jvx/"/>
-    <id>http://www.maksim.website/2018/04/03/cjiojqgdc00555vrd9u1c9jvx/</id>
+    <link href="http://www.maksim.website/2018/04/03/cjiu6x6va005csqrdbete5jx0/"/>
+    <id>http://www.maksim.website/2018/04/03/cjiu6x6va005csqrdbete5jx0/</id>
     <published>2018-04-03T14:53:43.408Z</published>
     <updated>2018-06-20T07:17:28.071Z</updated>
     
@@ -183,8 +230,8 @@
   
   <entry>
     <title>AndroidStudio解决一直处于Building gradle project info的问题</title>
-    <link href="http://www.maksim.website/2018/03/10/cjiojqgec006h5vrdb5a9j2w2/"/>
-    <id>http://www.maksim.website/2018/03/10/cjiojqgec006h5vrdb5a9j2w2/</id>
+    <link href="http://www.maksim.website/2018/03/10/cjiu6x6wj006psqrd1p4vommt/"/>
+    <id>http://www.maksim.website/2018/03/10/cjiu6x6wj006psqrd1p4vommt/</id>
     <published>2018-03-09T16:00:00.000Z</published>
     <updated>2018-06-20T05:08:15.054Z</updated>
     
@@ -209,8 +256,8 @@
   
   <entry>
     <title>Nginx的安装</title>
-    <link href="http://www.maksim.website/2018/02/27/cjiojqgea006f5vrdl0vztwcy/"/>
-    <id>http://www.maksim.website/2018/02/27/cjiojqgea006f5vrdl0vztwcy/</id>
+    <link href="http://www.maksim.website/2018/02/27/cjiu6x6wz006usqrd07sjim75/"/>
+    <id>http://www.maksim.website/2018/02/27/cjiu6x6wz006usqrd07sjim75/</id>
     <published>2018-02-26T16:00:00.000Z</published>
     <updated>2018-06-19T01:52:07.643Z</updated>
     
@@ -256,8 +303,8 @@
   
   <entry>
     <title>function与感叹号</title>
-    <link href="http://www.maksim.website/2018/02/01/cjiojqge8006c5vrddpkls3mj/"/>
-    <id>http://www.maksim.website/2018/02/01/cjiojqge8006c5vrddpkls3mj/</id>
+    <link href="http://www.maksim.website/2018/02/01/cjiu6x6wg006ksqrdiz0h04sk/"/>
+    <id>http://www.maksim.website/2018/02/01/cjiu6x6wg006ksqrdiz0h04sk/</id>
     <published>2018-01-31T16:00:00.000Z</published>
     <updated>2018-06-20T05:05:43.568Z</updated>
     
@@ -278,9 +325,55 @@
   </entry>
   
   <entry>
+    <title>高并发大流量解决方库之Web服务器负载均衡</title>
+    <link href="http://www.maksim.website/2018/01/14/cjiu7e2cl00020crdxgekpxil/"/>
+    <id>http://www.maksim.website/2018/01/14/cjiu7e2cl00020crdxgekpxil/</id>
+    <published>2018-01-13T16:00:00.000Z</published>
+    <updated>2018-06-25T11:40:53.661Z</updated>
+    
+    <content type="html"><![CDATA[<p>负载均衡，英文名称为 <code>LoadBalance</code>，其意思就是将负载(工作任务)进行平衡，分摊到多个操作单元上进行执行(例如Web服务器、FTP服务器等)，实现多个服务器共同完成工作任务的目标。负载均衡建立在现有网络结构之上，它提升了服务器的性能、提高了带宽利用率，增强了网络的灵活性和可靠性。</p><h1 id="七层负载均衡的实现"><a href="#七层负载均衡的实现" class="headerlink" title="七层负载均衡的实现"></a>七层负载均衡的实现</h1><p>基于URL等应用层信息的负载均衡，Nginx 的 proxy 是它一个很强大的功能，实现了7层负载均衡。</p><ul><li>功能强大，性能卓越，运行稳定</li><li>配置简单灵活</li><li>能够自动剔除工作不正常的后端服务器</li><li>上传文件可以使用异步模式</li><li>支持多种分配策略，可以分配权重，分配方式灵活</li></ul><p>NGINX 拥有两种策略：<strong>内置策略</strong>、<strong>扩展策略</strong></p><p>内置策略是NGINX安装后内置，开箱即用的均衡策略，而扩展策略反之，需要我们安装特定的模块才能进行使用。</p><p>内置策略： IP Hash、加权轮询</p><p>扩展策略：fair策略、通用hash、一致性hash。</p><p><strong>加权轮询：</strong>首先将请求都发给高权的机器，直到该机器的权值降到了比其他机器底，才开始将请求分给下一个高权重的机器。当所有后端机器都 down 掉时，NGINX 会立即将所有机器的标志位清成初始状态，以避免所有的机器都处于 timeout 的状态。</p><p><strong>IP Hash：</strong> 流程和轮询很类似，只是其中的算法和具体的策略有些变化，IP HASH算法算是一种变相的轮询算法。</p><p><strong>fair 策略：</strong>根据后端服务器的响应时间判断负载情况，从中选出负载最轻的机器进行分流。</p><p><strong>通用hash、一致性hash：</strong>比较简单，可以以 NGINX 内置的变量为key进行hash，一致性hash采用了NGINX内置的一致性Hash环，支持 memcache。</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">http &#123;</div><div class="line">    upstream cluster &#123;</div><div class="line">        ip hash;</div><div class="line">        server serv1;</div><div class="line">        server serv2;</div><div class="line">        server serv3;</div><div class="line">    &#125;</div><div class="line">    server &#123;</div><div class="line">        listen 80;</div><div class="line">        location/ &#123;</div><div class="line">            proxy_pass http://cluster;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><h1 id="四层负载均衡的实现"><a href="#四层负载均衡的实现" class="headerlink" title="四层负载均衡的实现"></a>四层负载均衡的实现</h1><p>通过报文中的目标地址和端口，再加上负载均衡设备设置的服务器选择方式，决定最终选择的内部服务器。</p><p>LVS 实现服务器集群负载均衡有三种方式，NAT，DR 和TUN。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;负载均衡，英文名称为 &lt;code&gt;LoadBalance&lt;/code&gt;，其意思就是将负载(工作任务)进行平衡，分摊到多个操作单元上进行执行(例如Web服务器、FTP服务器等)，实现多个服务器共同完成工作任务的目标。负载均衡建立在现有网络结构之上，它提升了服务器的性能、提高了
+      
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>高并发大流量解决方案之数据库缓存</title>
+    <link href="http://www.maksim.website/2018/01/14/cjiu7e2ci00010crdhogx3wc6/"/>
+    <id>http://www.maksim.website/2018/01/14/cjiu7e2ci00010crdhogx3wc6/</id>
+    <published>2018-01-13T16:00:00.000Z</published>
+    <updated>2018-06-25T11:42:28.747Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="什么是数据库缓存"><a href="#什么是数据库缓存" class="headerlink" title="什么是数据库缓存"></a>什么是数据库缓存</h1><p><strong>MySQL</strong> 等一些常见的关系型数据库的数据都存储在硬盘当中，在高并发场景下，业务应用对 MySQL 产生的增、删、改、查的操作造成巨大的I/O开销和查询压力，这无疑对数据库和服务器都是一种巨大的压力，为了解决此类问题，缓存数据的概念应运而生。</p><p>使用数据库缓存可以极大的解决我们数据的压力，提高应用数据的响应速度，因为不用再动态查询了，直接将静态数据返回，无论是速度还是效率都要更快一些，节省了，很多查询和计算的时间。</p><p>常见的缓存形式：内存缓存，文件缓存</p><p>为了避免I/O开销，应该尽量使用内存缓存。</p><h1 id="为什么要使用缓存"><a href="#为什么要使用缓存" class="headerlink" title="为什么要使用缓存"></a>为什么要使用缓存</h1><p>缓存诗句是为了让客户端很少，甚至是不访问数据库服务器进行数据的查询，高并发下，能最大程度地降低对数据库服务器的访问压力。</p><p>当我们默认情况下<strong>不使用缓存</strong>的情况下，我们的执行顺序如下：</p><ol><li>用户请求</li><li>数据查询</li><li>链接数据库服务器并查询数据</li><li>将数据缓存起来（HTML、内存、JSON、序列化数据）</li><li>显示给客户端</li></ol><p>当我们第二次请求或者是新用户访问时候，执行顺序如下：</p><ol><li>用户再次请求或者新用户访问</li><li>数据查询</li><li>直接从缓存中获取数据</li><li>显示给客户端</li></ol><h2 id="缓存需要考虑的内容"><a href="#缓存需要考虑的内容" class="headerlink" title="缓存需要考虑的内容"></a>缓存需要考虑的内容</h2><ul><li><p>缓存方式的选择</p></li><li><p>缓存场景的选择</p></li><li><p>缓存数据的实时性</p></li><li>缓存数据的稳定性</li></ul><h1 id="使用-MySQL查询缓存"><a href="#使用-MySQL查询缓存" class="headerlink" title="使用 MySQL查询缓存"></a>使用 MySQL查询缓存</h1><p>启用MySQL查询缓存</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">query_cache_type</div></pre></td></tr></table></figure><p>查询缓存类型，有0、1、2三个取值。</p><ul><li>0 不是用查询缓存</li><li>1 始终使用查询缓存</li><li>2 按需查询缓存</li></ul><p>query_cache_type为1时，也可以关闭查询缓存</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> SQL_NO_CACHE * <span class="keyword">FROM</span>　my_table <span class="keyword">WHERE</span> condition;</div></pre></td></tr></table></figure><p>query_cache_type为2时，可以按需使用查询缓存</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">SQL_CACHE</span> * <span class="keyword">FROM</span> my_table <span class="keyword">WHERE</span> condition;</div></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">query_cache_size</div></pre></td></tr></table></figure><p>默认情况下query_cache_size为0，表示查询缓存预留的内存为0，则无法使用查询缓存。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SET GLOBAL query_cache_size = 134217728;</div></pre></td></tr></table></figure><p>查询缓存可以看成是 SQL 文本和查询结果的映射。</p><p>第二查询的SQL和第二次查询的SQL要完全相同，才会使用缓存。</p><p>我们可以通过下面的语句查看缓存的命中次数。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SHOW STATUS LIKE &apos;Qcache_hits&apos;;</div></pre></td></tr></table></figure><p>表的结构发生改变时候，查询缓存中的数据不再有效。</p><p>清理缓存如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">FLUSH QUERY CACHE;  //清理查询缓存内部碎片</div><div class="line">RESET QUERY CACHE;  //从查询花村中移出所有查询</div><div class="line">FLUSH TABLES;//关闭所有打开的表，同时该操作将会清空查询缓存中的内容。</div></pre></td></tr></table></figure><h1 id="使用-Memcache"><a href="#使用-Memcache" class="headerlink" title="使用 Memcache"></a>使用 Memcache</h1><p>对于大型的站点，如果没有中间缓存层，当流量打入数据库层的时候，即便有之前的几层为我们挡住了大量流量，但是在大并发的请胯下，还是会有大量请求涌入数据库，这样对于数据库服务器的压力冲击很大，响应速度也会下降，因此添加中间缓存层很有必要。</p><p>Memcache 是一套分布式的高速缓存系统， 由 LiveJournal 的Brad Fitzpatrick 开发，但目前被许多网站使用以提升网站的访问速度，尤其对于一些大型的、需要频繁访问数据库的网站访问速度提升效果十分显著。</p><h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p>Memcache 是一个高性能的分布式的内存对象缓存系统，通过在内存里维护一个统一的巨大的Hash表，它能够用来存储各种格式的数据，包括图像、视频、文件以及数据库检索出来的结果等。简单的说就是讲数据调用到内存，然后从内存中读取，从而大大提高读取速度。</p><h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2><p>先检查服务端的请求数据是否在 <code>memcached</code>中，如果存在直接把请求数据返回，不再对数据库进行任何操作。如果请求的数据不再<code>memcached</code>中，就去查询数据库, 把从数据库中获取的诗句返回给客户端，同时把数据缓存一份到<code>memcached</code>中。</p><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>获取：get(key)</p><p>设置：set(key, val, expire)</p><p>删除 : delete(key)</p><h2 id="通用缓存机制"><a href="#通用缓存机制" class="headerlink" title="通用缓存机制"></a>通用缓存机制</h2><p>用查询的方法名 + 参数作为查询时的key value对应中的key值。</p><h1 id="使用-Redis"><a href="#使用-Redis" class="headerlink" title="使用 Redis"></a>使用 Redis</h1><h2 id="与Memcache的区别"><a href="#与Memcache的区别" class="headerlink" title="与Memcache的区别"></a>与Memcache的区别</h2><ul><li>性能相差不大</li><li>Redis 在2.0版本后增加了自己的 VM 特性，突破了物理内存的限制</li><li>Memcache 可以修改最大可用内存，采用 LRU（缓存淘汰） 算法</li><li>Redis 依赖客户端来实现分布式读写</li><li>Memcache 本身没有数据冗余机制</li><li>Redis 支持（快照、AOF），依赖快照进行持久化，AOF 增强了可靠性的同时，对性能也有所影响</li><li>Memcache 不支持持久化，通常做缓存，提升性能</li><li>Memcache 在并发场景下，用 cas 保证一致性，Redis 事务支持比较弱，只能保证事务中的每个操作的连续执行</li><li>Redis 支持多种数据类型</li><li>Redis 用于数据量较小的高性能操作和运算上</li><li>Memcache 用于动态系统中减少数据库负载，提升性能；适合做缓存，提高性能</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;什么是数据库缓存&quot;&gt;&lt;a href=&quot;#什么是数据库缓存&quot; class=&quot;headerlink&quot; title=&quot;什么是数据库缓存&quot;&gt;&lt;/a&gt;什么是数据库缓存&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;MySQL&lt;/strong&gt; 等一些常见的关系型数据库的数据都存储在硬盘当中
+      
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>高并发和大流量解决方案之独立图片服务器的部署</title>
-    <link href="http://www.maksim.website/2018/01/13/cjiojqge400675vrdymumvlob/"/>
-    <id>http://www.maksim.website/2018/01/13/cjiojqge400675vrdymumvlob/</id>
+    <link href="http://www.maksim.website/2018/01/13/cjiu6x6w8006bsqrd6z921b01/"/>
+    <id>http://www.maksim.website/2018/01/13/cjiu6x6w8006bsqrd6z921b01/</id>
     <published>2018-01-12T16:00:00.000Z</published>
     <updated>2018-06-20T03:27:20.559Z</updated>
     
@@ -302,8 +395,8 @@
   
   <entry>
     <title>高并发和大流量解决方案之动态语言静态化</title>
-    <link href="http://www.maksim.website/2018/01/13/cjiojqge200655vrdizfs89q5/"/>
-    <id>http://www.maksim.website/2018/01/13/cjiojqge200655vrdizfs89q5/</id>
+    <link href="http://www.maksim.website/2018/01/13/cjiu6x6w60069sqrdiyzia3qm/"/>
+    <id>http://www.maksim.website/2018/01/13/cjiu6x6w60069sqrdiyzia3qm/</id>
     <published>2018-01-12T16:00:00.000Z</published>
     <updated>2018-06-20T23:33:51.199Z</updated>
     
@@ -325,8 +418,8 @@
   
   <entry>
     <title>高并发和大流量解决方案之 CDN 加速</title>
-    <link href="http://www.maksim.website/2018/01/13/cjiojqge000625vrdcfp1jkjb/"/>
-    <id>http://www.maksim.website/2018/01/13/cjiojqge000625vrdcfp1jkjb/</id>
+    <link href="http://www.maksim.website/2018/01/13/cjiu6x6wb006gsqrdibtba7gn/"/>
+    <id>http://www.maksim.website/2018/01/13/cjiu6x6wb006gsqrdibtba7gn/</id>
     <published>2018-01-12T16:00:00.000Z</published>
     <updated>2018-06-20T03:33:06.535Z</updated>
     
@@ -348,8 +441,8 @@
   
   <entry>
     <title>高并发和大流量解决方案之动态语言并发处理</title>
-    <link href="http://www.maksim.website/2018/01/13/cjiojr0ly000066rd2xuotmcy/"/>
-    <id>http://www.maksim.website/2018/01/13/cjiojr0ly000066rd2xuotmcy/</id>
+    <link href="http://www.maksim.website/2018/01/13/cjiu6x6w9006dsqrdl9tweiq6/"/>
+    <id>http://www.maksim.website/2018/01/13/cjiu6x6w9006dsqrdl9tweiq6/</id>
     <published>2018-01-12T16:00:00.000Z</published>
     <updated>2018-06-21T12:52:32.171Z</updated>
     
@@ -371,8 +464,8 @@
   
   <entry>
     <title>高并发和大流量解决方案 减少 HTTP 请求</title>
-    <link href="http://www.maksim.website/2018/01/12/cjiojqgdy00605vrdqa6jvu0r/"/>
-    <id>http://www.maksim.website/2018/01/12/cjiojqgdy00605vrdqa6jvu0r/</id>
+    <link href="http://www.maksim.website/2018/01/12/cjiu6x6w20063sqrdbpnatj79/"/>
+    <id>http://www.maksim.website/2018/01/12/cjiu6x6w20063sqrdbpnatj79/</id>
     <published>2018-01-12T11:29:10.000Z</published>
     <updated>2018-06-20T14:27:03.127Z</updated>
     
@@ -391,107 +484,6 @@
     
     
       <category term="高并发" scheme="http://www.maksim.website/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>高并发和大流量解决方案之Web资源防盗链</title>
-    <link href="http://www.maksim.website/2018/01/11/cjiojqgdu005x5vrdvuqrbn2c/"/>
-    <id>http://www.maksim.website/2018/01/11/cjiojqgdu005x5vrdvuqrbn2c/</id>
-    <published>2018-01-11T04:20:11.000Z</published>
-    <updated>2018-06-20T03:33:14.575Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="什么是防盗链"><a href="#什么是防盗链" class="headerlink" title="什么是防盗链"></a>什么是防盗链</h1><h2 id="盗链的概念"><a href="#盗链的概念" class="headerlink" title="盗链的概念"></a>盗链的概念</h2><p>盗链是指在自己的页面上展示一些并不在自己服务器上的内容。</p><p>获得他人服务器上的资源地址，绕过别人的资源展示页面，直接在自己的页面上向最终用户提供此内容。</p><p>常见的是小站盗用大站的图片、音乐、视频、软件等资源。</p><p>通过盗链的方法可以减轻自己服务器的负担，因为真实的空间和流量均是来自别人的服务器。</p><p>防盗链就是防止别人通过一些技术手段绕过本站的资源展示页面，盗用本站的资源，让绕开本站资源展示页面的资源链接失效。</p><h2 id="防盗链的工作原理"><a href="#防盗链的工作原理" class="headerlink" title="防盗链的工作原理"></a>防盗链的工作原理</h2><p>通过 Referer 或者签名，网站可以检测目标网页访问的来源网页，如果是资源文件，则可以跟踪到显示它的网页地址。</p><p>一旦检测到来源不是本站即进行组织或者返回指定的页面。</p><h1 id="防盗链的实现"><a href="#防盗链的实现" class="headerlink" title="防盗链的实现"></a>防盗链的实现</h1><h2 id="Nginx-Referer"><a href="#Nginx-Referer" class="headerlink" title="Nginx Referer"></a>Nginx Referer</h2><p>Nginx 模块 ngx_http_referer_module 用于阻挡来源非法的域名请求。</p><p>Nginx 指令 valid_referers，全局变量$invalid_referer。</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">valid_referers</span> <span class="literal">none</span> | <span class="literal">blocked</span> | server_names| string ...;</div></pre></td></tr></table></figure><p>none: “Referer” 来源头部为空的情况</p><p>blocked: “Referer”来源头部不为空，但是里面的值被代理或者防火墙删除了，这些值都以 <a href="http://或者" target="_blank" rel="noopener">http://或者</a> <a href="https://开头。" target="_blank" rel="noopener">https://开头。</a></p><p>server_names: “Referer” 来源头不包含当前的 server_names</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">location</span> ~.*\.(gif|jpg|png|flv|swf|rar|zip)$</div><div class="line">&#123;</div><div class="line">    <span class="attribute">valid_referers</span> <span class="literal">none</span> <span class="literal">blocked</span> maksim.website <span class="regexp">*.maksim.website</span>;</div><div class="line">    <span class="attribute">if</span> (<span class="variable">$invalid_referer</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">#return 403;</span></div><div class="line">        <span class="attribute">rewrite</span><span class="regexp"> ^/http://www.maksim.website/403.jpg</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>针对目录</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">location</span> /images/</div><div class="line">&#123;</div><div class="line">    <span class="attribute">valid_referers</span> <span class="literal">none</span> <span class="literal">blocked</span> maksim.website <span class="regexp">*.maksim.website</span>;</div><div class="line">    <span class="attribute">if</span> (<span class="variable">$invalid_referer</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">#return 403;</span></div><div class="line">        <span class="attribute">rewrite</span><span class="regexp"> ^/http://www.maksim.website/403.jpg</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><h2 id="Nginx-HTTPAccessKeyModule-加密签名"><a href="#Nginx-HTTPAccessKeyModule-加密签名" class="headerlink" title="Nginx HTTPAccessKeyModule 加密签名"></a>Nginx HTTPAccessKeyModule 加密签名</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">accesskey</span> <span class="literal">on</span> | <span class="literal">off</span></div><div class="line">accesskey_hashmethod md5 | sha-<span class="number">1</span> </div><div class="line">accesskey_arg GET参数名称</div><div class="line">accesskey_signatrue 加密规则</div></pre></td></tr></table></figure><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">location</span> ~.*\.(gif|jpg|png|flv|swf|rar|zip)$</div><div class="line">&#123;</div><div class="line">    <span class="attribute">accesskey</span> <span class="literal">on</span></div><div class="line">    accesskey_hashmethod md5</div><div class="line">    accesskey_arg <span class="string">"key"</span></div><div class="line">    accesskey_signatrue <span class="string">"maksim<span class="variable">$remote_addr</span>"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">    <span class="comment">//md5(maksim.ip)</span></div><div class="line">    $sign = md5(<span class="string">'maksim'</span>.$_SERVER[<span class="string">'REMOTE_ADDR'</span>]);</div><div class="line"><span class="keyword">echo</span> <span class="string">'&lt;img src="./image/maksim.png?sign='</span>. $sign .<span class="string">'"&gt;'</span>;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;什么是防盗链&quot;&gt;&lt;a href=&quot;#什么是防盗链&quot; class=&quot;headerlink&quot; title=&quot;什么是防盗链&quot;&gt;&lt;/a&gt;什么是防盗链&lt;/h1&gt;&lt;h2 id=&quot;盗链的概念&quot;&gt;&lt;a href=&quot;#盗链的概念&quot; class=&quot;headerlink&quot; title=
-      
-    
-    </summary>
-    
-      <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>创建型设计模式之抽象工厂</title>
-    <link href="http://www.maksim.website/2018/01/10/cjiojqgdp005o5vrd9ja8xli6/"/>
-    <id>http://www.maksim.website/2018/01/10/cjiojqgdp005o5vrd9ja8xli6/</id>
-    <published>2018-01-10T12:44:02.000Z</published>
-    <updated>2018-04-10T10:52:18.330Z</updated>
-    
-    <content type="html"><![CDATA[<p>原文地址：<a href="http://designpatternsphp.readthedocs.io" target="_blank" rel="noopener">http://designpatternsphp.readthedocs.io</a></p><p>在软件工程中，创建型设计模式承担着对象创建的职责，尝试创建适合程序上下文的对象，对象创建设计模式的产生是由于软件工程设计的问题，具体说是向设计中增加复杂度，创建型设计模式解决了程序设计中对象创建的问题。</p><h2 id="抽象工厂"><a href="#抽象工厂" class="headerlink" title="抽象工厂"></a>抽象工厂</h2><h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>创建一系列互相关联或依赖的对象时不需要指定将要创建的对象对应的类，因为这些将被创建的对象对应的类都实现了同一个接口。抽象工厂的使用者不需要关心对象的创建过程，它只需要知道这些对象是如何协调工作的。</p><h3 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h3><p><img src="http://designpatternsphp.readthedocs.io/zh_CN/latest/_images/uml12.png" alt=""></p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>在 <a href="https://github.com/domnikl/DesignPatternsPHP/tree/master/Creational/AbstractFactory" target="_blank" rel="noopener">GitHub</a> 上查看代码</p><p>AbstractFactory.php</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * In this case, the abstract factory is a contract for creating some components</div><div class="line"> * for the web. There are two ways of rendering text: HTML and JSON</div><div class="line"> */</div><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractFactory</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">createText</span><span class="params">(string $content)</span>: <span class="title">Text</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>JsonFactory.php</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JsonFactory</span> <span class="keyword">extends</span> <span class="title">AbstractFactory</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">createText</span><span class="params">(string $content)</span>: <span class="title">Text</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> JsonText($content);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>HtmlFactory.php</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HtmlFactory</span> <span class="keyword">extends</span> <span class="title">AbstractFactory</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">createText</span><span class="params">(string $content)</span>: <span class="title">Text</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> HtmlText($content);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>Text.php</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>;</div><div class="line"></div><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Text</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> string</div><div class="line">     */</div><div class="line">    <span class="keyword">protected</span> $text;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(string $text)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;text = $text;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>JsonText.php</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JsonText</span> <span class="keyword">extends</span> <span class="title">Text</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// do something here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure><p>HtmlText.php</p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HtmlText</span> <span class="keyword">extends</span> <span class="title">Text</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// do something here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>\<span class="title">Tests</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>\<span class="title">HtmlFactory</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>\<span class="title">HtmlText</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>\<span class="title">JsonFactory</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Creational</span>\<span class="title">AbstractFactory</span>\<span class="title">JsonText</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">PHPUnit</span>\<span class="title">Framework</span>\<span class="title">TestCase</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AbstractFactoryTest</span> <span class="keyword">extends</span> <span class="title">TestCase</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testCanCreateHtmlText</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $factory = <span class="keyword">new</span> HtmlFactory();</div><div class="line">        $text = $factory-&gt;createText(<span class="string">'foobar'</span>);</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;assertInstanceOf(HtmlText::class, $text);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testCanCreateJsonText</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $factory = <span class="keyword">new</span> JsonFactory();</div><div class="line">        $text = $factory-&gt;createText(<span class="string">'foobar'</span>);</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;assertInstanceOf(JsonText::class, $text);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;原文地址：&lt;a href=&quot;http://designpatternsphp.readthedocs.io&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://designpatternsphp.readthedocs.io&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;
-      
-    
-    </summary>
-    
-      <category term="PHP" scheme="http://www.maksim.website/categories/PHP/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>cookie, sessionStorage和localStorage的区别</title>
-    <link href="http://www.maksim.website/2018/01/05/3/"/>
-    <id>http://www.maksim.website/2018/01/05/3/</id>
-    <published>2018-01-04T16:00:00.000Z</published>
-    <updated>2018-04-09T10:30:21.932Z</updated>
-    
-    <content type="html"><![CDATA[<p>在HTML5出来之前，只有cookie作为本地存储的一个方法（JavaScript Web API）。</p><h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><ul><li>本身用于客户端和服务器端通信的，</li><li>但是它有本地存储的功能， 于是被“借用”</li><li>使用document.cookie = … 获取和修改即可，用起来特别麻烦</li></ul><p>缺点：</p><ul><li>存储量太小，只有4kb</li><li>所有http请求都带着，会影响获取资源的效率，所以cookie只适合保存很小的数据，如会话标识</li><li>API简单，需要封装才能用document.cookie = …</li><li><p>有效时长根据设定的过期时间而定。</p><p>​</p></li></ul><h2 id="sessionStorage-和localStorage"><a href="#sessionStorage-和localStorage" class="headerlink" title="sessionStorage 和localStorage"></a>sessionStorage 和localStorage</h2><ul><li>HTML5专门为存储而设计，因为不需要像服务端发送数据，所以最大容量5M</li><li>API简单易用：</li><li>localStorage.setItem(key, value); localStorage.getItem(key)</li><li>sessionStorage当关闭浏览器后便会被清除，localStorage则不会，即使关闭浏览器localStorage也会一直存在，直到删除</li><li>sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；localStorage 在所有同源窗口中都是共享的</li><li>在iOS Safari 隐匿模式下，localStorage.getItem会报错，建议同一使用try-catch</li><li>Web Storage 支持事件通知机制，可以将数据更新的通知发送给监听者</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;在HTML5出来之前，只有cookie作为本地存储的一个方法（JavaScript Web API）。&lt;/p&gt;
-&lt;h2 id=&quot;cookie&quot;&gt;&lt;a href=&quot;#cookie&quot; class=&quot;headerlink&quot; title=&quot;cookie&quot;&gt;&lt;/a&gt;cookie&lt;/h
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://www.maksim.website/categories/JavaScript/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>DOM本质</title>
-    <link href="http://www.maksim.website/2018/01/05/1/"/>
-    <id>http://www.maksim.website/2018/01/05/1/</id>
-    <published>2018-01-04T16:00:00.000Z</published>
-    <updated>2018-06-20T05:09:38.530Z</updated>
-    
-    <content type="html"><![CDATA[<p>抛出问题!</p><ul><li>DOM是那种基本的数据结构？</li><li>DOM操作的常用API都有哪些？</li><li>DOM节点的attr和property有何区别？</li></ul><p>解答问题:</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">note</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">to</span>&gt;</span>Tove<span class="tag">&lt;/<span class="name">to</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">from</span>&gt;</span>Jani<span class="tag">&lt;/<span class="name">from</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Reminder<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>Don't forget me this weekend!<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">other</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">b</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">other</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">note</span>&gt;</span></div></pre></td></tr></table></figure><h2 id="DOM本质"><a href="#DOM本质" class="headerlink" title="DOM本质"></a>DOM本质</h2><p>上面的代码是一段XML，这是一个结构化语言，跟它其同样作用的还有JSON，他们可以用于描述一切可以结构化的数据。</p><p>这段代码快描述了一封信，to收件人，from 来源，title标题，body内容。</p><p>DOM本质上是一个树形结构。我们可以将其理解为，浏览器把拿到的HTML代码，结构化成一个浏览器能够识别且能被js操作的一个模型。</p><p>我们知道HTML本质上就是字符串，计算机处理字符串是一件相当头疼的一件事情，通过DOM，我们就可以将HTML文件抽象成一个树形结构，只要是结构化的数据，计算机处理起来，无论你的逻辑结构有多复杂，他都能够轻松的进行处理。</p><h2 id="获取DOM节点"><a href="#获取DOM节点" class="headerlink" title="获取DOM节点"></a>获取DOM节点</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div1 = <span class="built_in">document</span>.getElementById(<span class="string">'div1'</span>) <span class="comment">//元素 </span></div><div class="line"><span class="keyword">var</span> divList = <span class="built_in">document</span>.getElementByTagName(<span class="string">'div'</span>) <span class="comment">//集合</span></div><div class="line"><span class="built_in">console</span>.log(divList.length)</div><div class="line"><span class="built_in">console</span>.log(divList[<span class="number">0</span>])</div><div class="line"></div><div class="line"><span class="keyword">var</span> containerList = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'.container'</span>);  <span class="comment">//集合</span></div><div class="line"><span class="keyword">var</span> pList = <span class="built_in">document</span>.querySelectorAll(<span class="string">'p'</span>) <span class="comment">//集合</span></div></pre></td></tr></table></figure><p>上面的代码都是JavaScript的基础API，有的人可能用jQuery或其他的的库时间长了，就把基础API给忘了，或者是基础并不是很牢，一直都在用库，这样的话最好将基础补齐，因为在面试的时候，大多数的面试题都是问的基础。</p><p>在面试的时候有个技巧，不要轻易的撩起用的熟，但是不知道实现原理的东西，比如说你会用jQuery的绑定事件，面试官肯定会问你实现原理。</p><h2 id="Property"><a href="#Property" class="headerlink" title="Property"></a>Property</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> pList = <span class="built_in">document</span>.querySelectorAll(<span class="string">'p'</span>)</div><div class="line"><span class="keyword">var</span> p = pList[<span class="number">0</span>]</div><div class="line"><span class="built_in">console</span>.log(p.style.width) <span class="comment">//获取样式</span></div><div class="line">p.style.width = <span class="string">'100px;'</span></div><div class="line"><span class="built_in">console</span>.log(p.className)</div><div class="line">p.className = <span class="string">'p1'</span></div><div class="line"></div><div class="line"><span class="comment">//获取nodeName 和 nodeType</span></div><div class="line"><span class="built_in">console</span>.log(p.nodeName)</div><div class="line"><span class="built_in">console</span>.log(p.nodeType)</div></pre></td></tr></table></figure><p>在这里我们需要知道P是个什么东西，它不就是个DOM节点吗？</p><p>其实它本质上就是一个JS对象。上面我们说过DOM的本质是一个JS可识别可操作的。既然本质上是一个对象，我们就可以操作他的属性，那这些属性都是怎么进去的？</p><p>这是浏览器规定的，W3C就是这么规定的。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj &#123;<span class="attr">x</span>:<span class="number">100</span>, <span class="attr">y</span>:<span class="number">200</span>&#125;;</div><div class="line"><span class="built_in">console</span>.log(obj.x) <span class="comment">// 100</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>)[<span class="number">0</span>]</div><div class="line">cosnole.log(p.nodeName); <span class="comment">//p</span></div></pre></td></tr></table></figure><h2 id="Attribute"><a href="#Attribute" class="headerlink" title="Attribute"></a>Attribute</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> pList = <span class="built_in">document</span>.querySelectorAll(<span class="string">'p'</span>)</div><div class="line"><span class="keyword">var</span> p = pList[<span class="number">0</span>]</div><div class="line">p.getAttribute(<span class="string">'data-name'</span>)</div><div class="line">p.setAttribute(<span class="string">'data-name'</span>, <span class="string">'maksim'</span>)</div><div class="line">p.getAttribute(<span class="string">'style'</span>)</div><div class="line">p.setAttribute(<span class="string">'style'</span>, <span class="string">'font-size:30px;'</span>)</div></pre></td></tr></table></figure><p>我们在上述代码中该的 <code>data-name</code> 和 <code>style</code> 到底是什么呢？</p><p>其实就是HTML文档里的标签，并不是JavaScript里的对象。这也是两者之间的区别。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;抛出问题!&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;DOM是那种基本的数据结构？&lt;/li&gt;
-&lt;li&gt;DOM操作的常用API都有哪些？&lt;/li&gt;
-&lt;li&gt;DOM节点的attr和property有何区别？&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;解答问题:&lt;/p&gt;
-&lt;figure class=&quot;high
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://www.maksim.website/categories/JavaScript/"/>
-    
     
   </entry>
   
