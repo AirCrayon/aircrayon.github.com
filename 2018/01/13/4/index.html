@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="独立图片服务器的必要性分担 Web 服务器的 I/O 负载-将耗资源的图片服务分离出来，提高服务器的性能和稳定性。 能够专门对图片服务器进行优化，为图片服务器设置针对性的缓存方案，减少带宽成本，提高访问速度。  提高网站的可扩展性，通过增加图片服务器，提高图片吞吐能力。 采用独立域名同一域名下浏览器的并发链接数有限制，突破浏览器链接数的限制，通常情况下浏览器的并发连接数是2到6个。 由于 Cook">
+<meta name="description" content="独立图片服务器的必要性我们知道，无论对于Apache还是Nginx，图片始终是最消耗系统资源的，如果将图片服务和应用服务放在同一个服务器的话，应用服务器很容易会因为图片的 高I/O负载而崩溃，因此对于有些大型网站项目，我们有必要将图片服务器和应用服务器分离。 部署独立的图片服务器（甚至是服务器集群）是大型网站图片存储解决方案中最基础的，因为有了独立的图片服务器后，我们才能对图片服务器做更有针对性">
 <meta name="keywords" content="前端博客,JavaScript,html5,css3,Jquery,Linux,PHP,iOS,MySQL,SQL,Redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高并发和大流量解决方案（8）：独立图片服务器的部署">
 <meta property="og:url" content="http://www.maksim.website/2018/01/13/4/index.html">
 <meta property="og:site_name" content="Maksim&#39;s Website">
-<meta property="og:description" content="独立图片服务器的必要性分担 Web 服务器的 I/O 负载-将耗资源的图片服务分离出来，提高服务器的性能和稳定性。 能够专门对图片服务器进行优化，为图片服务器设置针对性的缓存方案，减少带宽成本，提高访问速度。  提高网站的可扩展性，通过增加图片服务器，提高图片吞吐能力。 采用独立域名同一域名下浏览器的并发链接数有限制，突破浏览器链接数的限制，通常情况下浏览器的并发连接数是2到6个。 由于 Cook">
+<meta property="og:description" content="独立图片服务器的必要性我们知道，无论对于Apache还是Nginx，图片始终是最消耗系统资源的，如果将图片服务和应用服务放在同一个服务器的话，应用服务器很容易会因为图片的 高I/O负载而崩溃，因此对于有些大型网站项目，我们有必要将图片服务器和应用服务器分离。 部署独立的图片服务器（甚至是服务器集群）是大型网站图片存储解决方案中最基础的，因为有了独立的图片服务器后，我们才能对图片服务器做更有针对性">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-25T12:49:00.640Z">
+<meta property="og:updated_time" content="2018-06-27T13:22:58.702Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高并发和大流量解决方案（8）：独立图片服务器的部署">
-<meta name="twitter:description" content="独立图片服务器的必要性分担 Web 服务器的 I/O 负载-将耗资源的图片服务分离出来，提高服务器的性能和稳定性。 能够专门对图片服务器进行优化，为图片服务器设置针对性的缓存方案，减少带宽成本，提高访问速度。  提高网站的可扩展性，通过增加图片服务器，提高图片吞吐能力。 采用独立域名同一域名下浏览器的并发链接数有限制，突破浏览器链接数的限制，通常情况下浏览器的并发连接数是2到6个。 由于 Cook">
+<meta name="twitter:description" content="独立图片服务器的必要性我们知道，无论对于Apache还是Nginx，图片始终是最消耗系统资源的，如果将图片服务和应用服务放在同一个服务器的话，应用服务器很容易会因为图片的 高I/O负载而崩溃，因此对于有些大型网站项目，我们有必要将图片服务器和应用服务器分离。 部署独立的图片服务器（甚至是服务器集群）是大型网站图片存储解决方案中最基础的，因为有了独立的图片服务器后，我们才能对图片服务器做更有针对性">
 
 
 
@@ -364,14 +364,23 @@
       
 
       
-        <h1 id="独立图片服务器的必要性"><a href="#独立图片服务器的必要性" class="headerlink" title="独立图片服务器的必要性"></a>独立图片服务器的必要性</h1><p>分担 Web 服务器的 I/O 负载-将耗资源的图片服务分离出来，提高服务器的性能和稳定性。</p>
-<p>能够专门对图片服务器进行优化，为图片服务器设置针对性的缓存方案，减少带宽成本，提高访问速度。</p>
-<p> 提高网站的可扩展性，通过增加图片服务器，提高图片吞吐能力。</p>
-<h1 id="采用独立域名"><a href="#采用独立域名" class="headerlink" title="采用独立域名"></a>采用独立域名</h1><p>同一域名下浏览器的并发链接数有限制，突破浏览器链接数的限制，通常情况下浏览器的并发连接数是2到6个。</p>
-<p>由于 Cookie 的原因，对缓存不利，大部分 WebCache 都置换村不带 Cookie 的请求，导致每次的图片请求都不能命中 Cache。</p>
-<h1 id="独立后的问题"><a href="#独立后的问题" class="headerlink" title="独立后的问题"></a>独立后的问题</h1><h2 id="如何进行图片上传和图片同步"><a href="#如何进行图片上传和图片同步" class="headerlink" title="如何进行图片上传和图片同步?"></a>如何进行图片上传和图片同步?</h2><ul>
-<li>NFS 共享方式</li>
-<li>利用 FTP 同步</li>
+        <ul>
+<li><h1 id="独立图片服务器的必要性"><a href="#独立图片服务器的必要性" class="headerlink" title="独立图片服务器的必要性"></a>独立图片服务器的必要性</h1><p>我们知道，无论对于Apache还是Nginx，图片始终是最消耗系统资源的，如果将图片服务和应用服务放在同一个服务器的话，应用服务器很容易会因为图片的 高I/O负载而崩溃，因此对于有些大型网站项目，我们有必要将图片服务器和应用服务器分离。</p>
+<p>部署独立的图片服务器（甚至是服务器集群）是大型网站图片存储解决方案中最基础的，因为有了独立的图片服务器后，我们才能对图片服务器做更有针对性的性能优化，为图片服务器设置针对性的缓存方案，减少带宽成本，提高访问速度。</p>
+<p>从硬件角度说，图片服务器可以配置高端的硬盘，7200转的换成15000转的，而CPU只需要使用一般的CPU就可以了。</p>
+<p>从软件角度说，可以为图片服务器配置特殊的文件系统来满足对图片的I/O请求，如淘宝 的TFS，就很好地解决了大规模小图片文件带来的I/O噩梦，同时，我们也可以采用Nginx、squid来代理图片请求，通过增加图片服务器，提高图片吞吐能力。</p>
+<p>分担 Web 服务器的 I/O 负载-将耗资源的图片服务分离出来，提高服务器的性能、稳定性和扩展性。</p>
+<h1 id="采用独立域名"><a href="#采用独立域名" class="headerlink" title="采用独立域名"></a>采用独立域名</h1><p>注意，这里是指独立域名，不是子域哦，比如yahoo.com图片服务器用了yimg.com的域名，而不是用二级域名img.yahoo.com。</p>
+<p>同一域名下浏览器的并发链接数有限制，突破浏览器链接数的限制，通常情况下浏览器的并发连接数是2到6个。</p>
+<p>这样，我们如果给图片服务器配置独立的域名，那么在一个页面中加载图片时，就可以突破浏览器连接数的限制，理论上，增加一个独立域名，并发连接数加倍。  </p>
+<p>另外还有由于 Cookie 的原因，大部分 Web Cache都只缓存不带 Cookie 的请求，导致每次的图片请求都不能命中 Cache。而仍旧要去原始服务器获取图片，导致图片缓存意义不大。所以，还是给单独搞一个图片独立域名吧，当然，不只是图片，CSS和JavaScript文件也可以参照这个思路来搞。  </p>
+<h1 id="如何进行图片上传和图片同步"><a href="#如何进行图片上传和图片同步" class="headerlink" title="如何进行图片上传和图片同步?"></a>如何进行图片上传和图片同步?</h1><h2 id="NFS-共享方式"><a href="#NFS-共享方式" class="headerlink" title="NFS 共享方式"></a>NFS 共享方式</h2><p>NFS是Network  File System（网络文件系统）。主要功能是通过网络让不同的服务器之间可以共享文件或者目录。</p>
+<p>NFS客户端一般是应用服务器（比如web，负载均衡等），可以通过挂载的方式将NFS服务器端共享的目录挂载到NFS客户端本地的目录下。       </p>
+<p>NFS在文件传送过程中依赖与RPC（远程过程调用）协议。NFS本身是没有提供信息传送的协议和功能的，但是能够用过网络进行图片，视频，附件等分享功能。只要用到NFS的地方都需要启动RPC服务，不论是NFS的服务端还是客户端。       </p>
+<p>NFS和RPC的关系：可以理解为NFS是一个网络文件系统（比喻为租房的房主），而RPC是负责信息的传输（中介），客户端（相当于租房的租客） </p>
+<p>了解 NFS 可以看我的另外一篇博文《LInux 典型应用：》</p>
+<h2 id="利用-FTP-同步"><a href="#利用-FTP-同步" class="headerlink" title="利用 FTP 同步"></a>利用 FTP 同步</h2><p>用户上传完图片后是利用 FTP 同步到各个图片服务器的，PHP、Java、Asp.net基本上都能操作 FTP。这样的话 每个图片服务器就都保存一份图片的副本，也起到了备份的作用。但是缺点是将图片ftp到服务器比较耗时，如果异步去同步的话又会有延时，不过一般的小图片 文件也还好了。  </p>
+</li>
 </ul>
 
       
@@ -397,8 +406,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/13/3/" rel="next" title="高并发和大流量解决方案（7）：动态语言静态化">
-                <i class="fa fa-chevron-left"></i> 高并发和大流量解决方案（7）：动态语言静态化
+              <a href="/2018/01/13/2/" rel="next" title="高并发和大流量解决方案（6）：动态语言并发处理">
+                <i class="fa fa-chevron-left"></i> 高并发和大流量解决方案（6）：动态语言并发处理
               </a>
             
           </div>
@@ -407,8 +416,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/13/2/" rel="prev" title="高并发和大流量解决方案（6）：动态语言并发处理">
-                高并发和大流量解决方案（6）：动态语言并发处理 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/13/1/" rel="prev" title="高并发和大流量解决方案（5）： CDN 加速">
+                高并发和大流量解决方案（5）： CDN 加速 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -495,7 +504,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">89</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -517,7 +526,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -573,7 +582,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#独立图片服务器的必要性"><span class="nav-number">1.</span> <span class="nav-text">独立图片服务器的必要性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#采用独立域名"><span class="nav-number">2.</span> <span class="nav-text">采用独立域名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#独立后的问题"><span class="nav-number">3.</span> <span class="nav-text">独立后的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何进行图片上传和图片同步"><span class="nav-number">3.1.</span> <span class="nav-text">如何进行图片上传和图片同步?</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#独立图片服务器的必要性"><span class="nav-number">1.</span> <span class="nav-text">独立图片服务器的必要性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#采用独立域名"><span class="nav-number">2.</span> <span class="nav-text">采用独立域名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何进行图片上传和图片同步"><span class="nav-number">3.</span> <span class="nav-text">如何进行图片上传和图片同步?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS-共享方式"><span class="nav-number">3.1.</span> <span class="nav-text">NFS 共享方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用-FTP-同步"><span class="nav-number">3.2.</span> <span class="nav-text">利用 FTP 同步</span></a></li></ol></li></ol></div>
             
 
           </div>

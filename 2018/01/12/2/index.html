@@ -81,18 +81,26 @@
 
 
 
-<meta name="description" content="Maksim&apos;s Website，分享成长的点点滴滴，关注PHP、JavaScript、Linux、C/C++、Go、SQL、MySQL、Redis、iOS、安卓开发，努力做一个值得收藏的博客。">
+<meta name="description" content="HTTP 缓存机制缓存分类在HTTP缓存模型中，如果请求成功会有三种情况。  200 from cache 304 Not Modified 200 OK  200 from cache: 直接从本地缓存中获取响应，最快速，最省流量，因为根本没有向服务器发送请求I看到。 浏览器本身就有缓存机制，当我们浏览器检测到该资源在本地存在，那么就不需要向服务器发送请求，从下图中我们可以看到size没有大小显">
 <meta name="keywords" content="高并发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高并发和大流量解决方案（4）：浏览器缓存和压缩优化技术">
 <meta property="og:url" content="http://www.maksim.website/2018/01/12/2/index.html">
 <meta property="og:site_name" content="Maksim&#39;s Website">
-<meta property="og:description" content="Maksim&apos;s Website，分享成长的点点滴滴，关注PHP、JavaScript、Linux、C/C++、Go、SQL、MySQL、Redis、iOS、安卓开发，努力做一个值得收藏的博客。">
+<meta property="og:description" content="HTTP 缓存机制缓存分类在HTTP缓存模型中，如果请求成功会有三种情况。  200 from cache 304 Not Modified 200 OK  200 from cache: 直接从本地缓存中获取响应，最快速，最省流量，因为根本没有向服务器发送请求I看到。 浏览器本身就有缓存机制，当我们浏览器检测到该资源在本地存在，那么就不需要向服务器发送请求，从下图中我们可以看到size没有大小显">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-25T12:48:30.505Z">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180627102555.png">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180627103642.png">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180627103903.png">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180627104104.png">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180627110528.png">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180627112513.png">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180627112544.png">
+<meta property="og:updated_time" content="2018-06-27T13:24:14.387Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高并发和大流量解决方案（4）：浏览器缓存和压缩优化技术">
-<meta name="twitter:description" content="Maksim&apos;s Website，分享成长的点点滴滴，关注PHP、JavaScript、Linux、C/C++、Go、SQL、MySQL、Redis、iOS、安卓开发，努力做一个值得收藏的博客。">
+<meta name="twitter:description" content="HTTP 缓存机制缓存分类在HTTP缓存模型中，如果请求成功会有三种情况。  200 from cache 304 Not Modified 200 OK  200 from cache: 直接从本地缓存中获取响应，最快速，最省流量，因为根本没有向服务器发送请求I看到。 浏览器本身就有缓存机制，当我们浏览器检测到该资源在本地存在，那么就不需要向服务器发送请求，从下图中我们可以看到size没有大小显">
+<meta name="twitter:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180627102555.png">
 
 
 
@@ -364,7 +372,134 @@
       
 
       
-        
+        <h1 id="HTTP-缓存机制"><a href="#HTTP-缓存机制" class="headerlink" title="HTTP 缓存机制"></a>HTTP 缓存机制</h1><h2 id="缓存分类"><a href="#缓存分类" class="headerlink" title="缓存分类"></a>缓存分类</h2><p>在HTTP缓存模型中，如果请求成功会有三种情况。</p>
+<ul>
+<li>200 from cache</li>
+<li>304 Not Modified</li>
+<li>200 OK</li>
+</ul>
+<p><strong>200 from cache: </strong>直接从本地缓存中获取响应，最快速，最省流量，因为根本没有向服务器发送请求I看到。</p>
+<p>浏览器本身就有缓存机制，当我们浏览器检测到该资源在本地存在，那么就不需要向服务器发送请求，从下图中我们可以看到size没有大小显示的是 <strong>from cache</strong>，就是读取的缓存。</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180627102555.png" alt=""></p>
+<p>查看其响应头我们可以看到下图。</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180627103642.png" alt=""></p>
+<p><strong>304 Not Modified: </strong>协商缓存，浏览器在本地没有命中的情况下请求头中发送一定的教研数据到服务端，如果服务端数据没有改变，浏览器从本地缓存响应，返回304。    </p>
+<p>快速，发送的数据很少，只会返回一些基本的响应头信息，数据量很小，不发送实际响应体。</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180627103903.png" alt=""></p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180627104104.png" alt=""></p>
+<p><strong>200 OK：</strong> 以上两种缓存全部失效，服务器返回完整响应。没有用到缓存，相对较慢，对于200 OK不能称之为缓存，因为根本没有用到缓存机制。</p>
+<h2 id="相关-Header"><a href="#相关-Header" class="headerlink" title="相关 Header"></a>相关 Header</h2><ul>
+<li>Pragma</li>
+<li>Expires</li>
+<li>Cache-Control</li>
+</ul>
+<p><strong>Pragma：</strong> HTTP 1.0 时代的遗留产物，该字段被设置为no-cache时，会告知浏览器禁用本地缓存，即每次都向服务器发送请求。</p>
+<p><strong>Expires：</strong>HTTP 1.0 时代用来启用本地缓存的字段，expires值对应一个形式如Thu, 31 Dec 2037 23:55:55 GMT的格林威治时间，告诉浏览器缓存实现的时刻，如果还没到该时刻，标明缓存有效，无需发送请求。</p>
+<p>浏览器与服务器的时间无法保持一致，如果时间差比较大，就会影响缓存结果。我们可以保证服务器的时间，但是无法保证客户端的时间与服务器时间的一致。（QQ 空间就有对客户端时间进行检测，感兴趣的可以将本地时间调整一下然后去访问QQ空间）</p>
+<p><strong>Cache-Control：</strong>HTTP 1.1 针对 Expires 时间不一致的解决方案，运用 Cache-Control 告知浏览器缓存过期时间间隔，而不是时刻，即使具体时间不一致，也不影响缓存的管理。</p>
+<p>在Cache-Control下我们还可以设置一些头信息：</p>
+<ul>
+<li>no-store：禁止浏览器缓存响应</li>
+<li>no-cache：不允许直接使用本地缓存，先发起请求和服务器协商，也就是协商缓存</li>
+<li>max-age=delta-seconds：告知浏览器该响应本地缓存有效的最长期限，以秒为单位。</li>
+</ul>
+<p>优先级： Pragma &gt; Cache-Control &gt; Expires</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180627110528.png" alt=""></p>
+<p>在上图中，我们可以看到上面的头信息，设置了Cache-Control和Expires。</p>
+<p><strong>协商缓存</strong>当浏览器没有命中本地缓存，如果本地缓存过期或者响应中生命不允许直接使用本地缓存（Pragma或者Cache-Control设置成了no-cache），那么浏览器肯定会发起服务端请求。服务端会验证数据是否修改，如果没有通知浏览器使用本地缓存。</p>
+<p>相关的Header:</p>
+<ul>
+<li>Last-Modified：通知浏览器资源的最后修改时间，格式如上图。</li>
+<li>If-Modified-Since：这是与Last-Modified相对应的一个头信息，得到资源的最后修改时间后，会将这个信息通过If-Modified-Since提交到服务器进行检查，如果没有修改则返回304状态码。</li>
+<li>ETag: HTTP 1.1 推出，文件的指纹标识符，如果文件内容修改，指纹会改变，Last-Modified只能精确到秒，而 ETag 如果发生了改变，它就会改变，它就相当于文件的标识（”78437822c-6739”），也更加准确。</li>
+<li>If-Node-Match：与ETag相对应的一个头信息，本地缓存失效，会携带此值去请求服务端，服务端判断该资源是否改变，如果没有改变直接使用本地缓存，返回304</li>
+</ul>
+<p>通过下面的两张图，我们可以看到完整的协商缓存交互：</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180627112513.png" alt=""></p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180627112544.png" alt="">    </p>
+<h2 id="缓存策略的选择"><a href="#缓存策略的选择" class="headerlink" title="缓存策略的选择"></a>缓存策略的选择</h2><p>适合的内容：</p>
+<ul>
+<li>不变的图像，如logo，图标等</li>
+<li>js、css静态文件</li>
+<li>可下载的内容，媒体文件</li>
+</ul>
+<p>建议使用协商缓存：</p>
+<ul>
+<li>HTML文件</li>
+<li>经常替换的图片</li>
+<li>经常修改的js、css</li>
+<li>js、css问价你的加载可以加入文件的签名来拒绝缓存 （index.css?签名、index.签名.js）</li>
+</ul>
+<p>不建议缓存的内容：</p>
+<ul>
+<li>用户隐私等敏感数据</li>
+<li>经常改变的 api 数据接口</li>
+</ul>
+<h1 id="NGINX-配置缓存策略"><a href="#NGINX-配置缓存策略" class="headerlink" title="NGINX 配置缓存策略"></a>NGINX 配置缓存策略</h1><p>首先，我们使用PHP模拟NGINX的缓存。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">    <span class="comment">//1. 获取If-Modified-Since</span></div><div class="line">    $since = $_SERVER[<span class="string">'HTTP_IF_MODIFIED_SINCE'</span>];</div><div class="line">	<span class="comment">//2. 设置过期时间一个小时</span></div><div class="line">	$lifetime = <span class="number">3600</span>;</div><div class="line">	<span class="comment">//3. 如果没有过期直接返回304告诉浏览器使用本地缓存</span></div><div class="line">    <span class="keyword">if</span> (strtotime($since) + $lifetime &gt; time()) &#123;</div><div class="line">		header(<span class="string">'HTTP/1.1 304 Not Modified'</span>);</div><div class="line">        <span class="keyword">exit</span>;</div><div class="line">    &#125;</div><div class="line">	<span class="comment">//4. 设置最后修改时间</span></div><div class="line">	header(<span class="string">'Last-Modified:'</span>. gmdate(<span class="string">'D, d M Y H:i:s'</span>, time()). <span class="string">' GMT'</span>);</div><div class="line">	<span class="comment">//5. 网页显示的内容，用于验证是否开启缓存</span></div><div class="line">	<span class="keyword">echo</span> time();</div></pre></td></tr></table></figure>
+<p>上述代码就是NGINX的缓存原理，不过NGINX判断的不是3600秒，而是文件的修改时间。</p>
+<p>本地缓存配置</p>
+<p>add_header指令：添加状态码为2XX和3XX的响应头信息。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">add_header</span> name value [always];</div></pre></td></tr></table></figure>
+<p>可以设置Pragma/Expires/Cache-Control，可以继承</p>
+<p>expires指令：通知浏览器过期市场</p>
+<p>expires time; </p>
+<ul>
+<li>为负值时表示Cache-Control:no-cache；</li>
+<li>为正或0时，就表示Cache-Control:max-age=指定的时间；</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</div><div class="line">&#123;</div><div class="line">    expires 30d;</div><div class="line">&#125;</div><div class="line">location ~ .*\.(js|css)?$ </div><div class="line">｛</div><div class="line">	expires 12h;</div><div class="line">｝</div></pre></td></tr></table></figure>
+<p>当设为max时，会把Expires设置为”Thu, 31 Dec 2037 23:55:55 GMT”，Cache-Control设置到10年。</p>
+<p>协商缓存配置</p>
+<p>ETag指令：指定签名</p>
+<p>etag on | off 默认是on</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">location</span> <span class="regexp">~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</span></div><div class="line">&#123;</div><div class="line">    <span class="attribute">etag</span> <span class="literal">on</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Cache-Control</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">location ~ .*\.(js|css)?$ </div><div class="line">｛</div><div class="line">	add_header cache-control max-age = 3600;</div><div class="line">｝</div></pre></td></tr></table></figure>
+<h1 id="前端代码和资源的压缩"><a href="#前端代码和资源的压缩" class="headerlink" title="前端代码和资源的压缩"></a>前端代码和资源的压缩</h1><ul>
+<li>优势<ul>
+<li>让资源文件更小</li>
+<li>加快文件在网络中的传输</li>
+<li>让网页更快的展示</li>
+<li>降低带宽和流量的开销</li>
+</ul>
+</li>
+</ul>
+<p>压缩方式</p>
+<ul>
+<li>JS、CSS、图片、HTML代码的压缩</li>
+<li>Gzip压缩</li>
+</ul>
+<h2 id="JavaScript代码压缩"><a href="#JavaScript代码压缩" class="headerlink" title="JavaScript代码压缩"></a>JavaScript代码压缩</h2><p>JavaScript压缩的原理一般是去掉多余的空格和回车、替换长变量名、简化一些代码的写法。</p>
+<p>压缩工具有很多，有在线工具、有应用程序、有编辑器插件。</p>
+<p><strong>常用的压缩工具：</strong></p>
+<ul>
+<li>UglifyJs： 压缩、语法检查、美化代码、代码缩减、转化</li>
+<li>YUI compressor：来自Yahoo，只有压缩功能</li>
+<li>Closure Compiler：来自Google、功能和UglifyJs有些类似，压缩的方式不太一样。</li>
+</ul>
+<h2 id="CSS代码压缩"><a href="#CSS代码压缩" class="headerlink" title="CSS代码压缩"></a>CSS代码压缩</h2><p>原理和JavaScript压缩原理类似，同样是去除空白符、注释并且优化一些CSS语义规则。</p>
+<p><strong>常用的压缩工具：</strong></p>
+<ul>
+<li>YUI compressor：来自Yahoo，只有压缩功能</li>
+<li>CSS Compiler：压缩时候可以选择模式，也可以对一些语法进行优化</li>
+</ul>
+<h2 id="HTML代码压缩"><a href="#HTML代码压缩" class="headerlink" title="HTML代码压缩"></a>HTML代码压缩</h2><p>不建议使用代码压缩，有时会破坏代码结构，可以使用Gzip压缩，当然也可以使用htmlcompressor工具，不过转换后一定要检查代码结构。</p>
+<h2 id="图片压缩"><a href="#图片压缩" class="headerlink" title="图片压缩"></a>图片压缩</h2><p>除了代码的压缩外，有时对图片的压缩也是很有必要的，一般情况下图片在Web系统的比重都比较大。</p>
+<p>压缩工具</p>
+<ul>
+<li>tinypng</li>
+<li>JpegMini</li>
+<li>ImageOptim</li>
+</ul>
+<h2 id="Gzip压缩"><a href="#Gzip压缩" class="headerlink" title="Gzip压缩"></a>Gzip压缩</h2><p>GZIP最早由Jean-loup Gailly和Mark Adler创建，用于UNⅨ系统的<a href="https://baike.baidu.com/item/%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9" target="_blank" rel="noopener">文件压缩</a>。我们在<a href="https://baike.baidu.com/item/Linux" target="_blank" rel="noopener">Linux</a>中经常会用到后缀为.gz的文件，它们就是GZIP格式的。现今已经成为Internet 上使用非常普遍的一种<a href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%8E%8B%E7%BC%A9" target="_blank" rel="noopener">数据压缩</a>格式，或者说一种文件格式。</p>
+<p>HTTP协议上的GZIP编码是一种用来改进WEB应用程序性能的技术。大流量的WEB站点常常使用GZIP<a href="https://baike.baidu.com/item/%E5%8E%8B%E7%BC%A9%E6%8A%80%E6%9C%AF" target="_blank" rel="noopener">压缩技术</a>来让用户感受更快的速度。这一般是指WWW服务器中安装的一个功能，当有人来访问这个服务器中的网站时，服务器中的这个功能就将网页内容压缩后传输到来访的电脑浏览器中显示出来.一般对纯文本内容可压缩到原大小的40%.这样传输就快了，效果就是你点击网址后会很快的显示出来.当然这也会增加服务器的负载. 一般服务器中都安装有这个功能模块的。</p>
+<p>NGINX配置：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">gzip</span> <span class="literal">on</span>|of <span class="comment">#是否开启gzip</span></div><div class="line">gzip_buffres <span class="number">32</span> <span class="number">4k</span>| <span class="number">16</span> <span class="number">8k</span>; <span class="comment">#缓冲（在内存中缓冲几块，每块多大）</span></div><div class="line"><span class="attribute">gzip_comp_level</span> [<span class="number">1</span>-<span class="number">9</span>] <span class="comment">#推荐6 压缩级别（级别越高，压缩的越小，越浪费CPU计算资源）</span></div><div class="line">gzip_disable <span class="comment">#正则匹配UA什么样的Uri不进行gzip</span></div><div class="line">gzip_min_length <span class="number">200</span> <span class="comment">#开始压缩的最小长度</span></div><div class="line">gzip_http_version <span class="number">1</span>.<span class="number">0</span>|<span class="number">1</span>.<span class="number">1</span> <span class="comment">#开启压缩的http协议版本</span></div><div class="line">gzip_proxied	<span class="comment">#设置请求者代理服务器，该如何缓存内容</span></div><div class="line">gzip_types text/plain applecation/xml <span class="comment">#对那些文件类型使用压缩</span></div><div class="line">gzip_vary <span class="literal">on</span> | <span class="literal">off</span> <span class="comment">#是否传输gzip压缩标志</span></div></pre></td></tr></table></figure>
+<h2 id="其他工具"><a href="#其他工具" class="headerlink" title="其他工具"></a>其他工具</h2><ul>
+<li>自动化构建工具Grunt</li>
+</ul>
+
       
     </div>
     
@@ -404,8 +539,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/13/3/" rel="prev" title="高并发和大流量解决方案（7）：动态语言静态化">
-                高并发和大流量解决方案（7）：动态语言静态化 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/13/2/" rel="prev" title="高并发和大流量解决方案（6）：动态语言并发处理">
+                高并发和大流量解决方案（6）：动态语言并发处理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -463,8 +598,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -483,7 +627,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">89</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -505,7 +649,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -551,6 +695,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP-缓存机制"><span class="nav-number">1.</span> <span class="nav-text">HTTP 缓存机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存分类"><span class="nav-number">1.1.</span> <span class="nav-text">缓存分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关-Header"><span class="nav-number">1.2.</span> <span class="nav-text">相关 Header</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存策略的选择"><span class="nav-number">1.3.</span> <span class="nav-text">缓存策略的选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NGINX-配置缓存策略"><span class="nav-number">2.</span> <span class="nav-text">NGINX 配置缓存策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前端代码和资源的压缩"><span class="nav-number">3.</span> <span class="nav-text">前端代码和资源的压缩</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript代码压缩"><span class="nav-number">3.1.</span> <span class="nav-text">JavaScript代码压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS代码压缩"><span class="nav-number">3.2.</span> <span class="nav-text">CSS代码压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML代码压缩"><span class="nav-number">3.3.</span> <span class="nav-text">HTML代码压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片压缩"><span class="nav-number">3.4.</span> <span class="nav-text">图片压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gzip压缩"><span class="nav-number">3.5.</span> <span class="nav-text">Gzip压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他工具"><span class="nav-number">3.6.</span> <span class="nav-text">其他工具</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
