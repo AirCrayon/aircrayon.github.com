@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="为什么要用NFSNFS（Network File System）即网络文件系统，是FreeBSD支持的文件系统中的一种，它允许网络中的计算机之间通过TCP/IP网络共享资源。在NFS的应用中，本地NFS的客户端应用可以透明地读写位于远端NFS服务器上的文件，就像访问本地文件一样。 NFS最早是由Sun公司发展出来的， 简单的来说：它就是是可以透过网络，让不同的主机、不同的操作系统可以共享存储。 以">
+<meta name="description" content="为什么要用NFSNFS（Network File System）网络文件系统，由 SUN 公司开发，是FreeBSD支持的文件系统中的一种，它允许网络中的计算机之间通过TCP/IP网络共享资源。在NFS的应用中，本地NFS的客户端应用可以透明地读写位于远端NFS服务器上的文件，就像访问本地文件一样。 简单的来说：它就是是可以透过网络，让不同的主机、不同的操作系统可以共享存储。 以下是NFS最显而易">
 <meta name="keywords" content="前端博客,JavaScript,html5,css3,Jquery,Linux,PHP,iOS,MySQL,SQL,Redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux典型应用实践：NFS共享文件">
 <meta property="og:url" content="http://www.maksim.website/2018/04/12/2/index.html">
 <meta property="og:site_name" content="Maksim&#39;s Website">
-<meta property="og:description" content="为什么要用NFSNFS（Network File System）即网络文件系统，是FreeBSD支持的文件系统中的一种，它允许网络中的计算机之间通过TCP/IP网络共享资源。在NFS的应用中，本地NFS的客户端应用可以透明地读写位于远端NFS服务器上的文件，就像访问本地文件一样。 NFS最早是由Sun公司发展出来的， 简单的来说：它就是是可以透过网络，让不同的主机、不同的操作系统可以共享存储。 以">
+<meta property="og:description" content="为什么要用NFSNFS（Network File System）网络文件系统，由 SUN 公司开发，是FreeBSD支持的文件系统中的一种，它允许网络中的计算机之间通过TCP/IP网络共享资源。在NFS的应用中，本地NFS的客户端应用可以透明地读写位于远端NFS服务器上的文件，就像访问本地文件一样。 简单的来说：它就是是可以透过网络，让不同的主机、不同的操作系统可以共享存储。 以下是NFS最显而易">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-27T13:33:29.669Z">
+<meta property="og:updated_time" content="2018-06-27T13:37:51.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux典型应用实践：NFS共享文件">
-<meta name="twitter:description" content="为什么要用NFSNFS（Network File System）即网络文件系统，是FreeBSD支持的文件系统中的一种，它允许网络中的计算机之间通过TCP/IP网络共享资源。在NFS的应用中，本地NFS的客户端应用可以透明地读写位于远端NFS服务器上的文件，就像访问本地文件一样。 NFS最早是由Sun公司发展出来的， 简单的来说：它就是是可以透过网络，让不同的主机、不同的操作系统可以共享存储。 以">
+<meta name="twitter:description" content="为什么要用NFSNFS（Network File System）网络文件系统，由 SUN 公司开发，是FreeBSD支持的文件系统中的一种，它允许网络中的计算机之间通过TCP/IP网络共享资源。在NFS的应用中，本地NFS的客户端应用可以透明地读写位于远端NFS服务器上的文件，就像访问本地文件一样。 简单的来说：它就是是可以透过网络，让不同的主机、不同的操作系统可以共享存储。 以下是NFS最显而易">
 
 
 
@@ -364,8 +364,7 @@
       
 
       
-        <h1 id="为什么要用NFS"><a href="#为什么要用NFS" class="headerlink" title="为什么要用NFS"></a>为什么要用NFS</h1><p>NFS（Network File System）即网络文件系统，是FreeBSD支持的文件系统中的一种，它允许网络中的计算机之间通过TCP/IP网络共享资源。在NFS的应用中，本地NFS的客户端应用可以透明地读写位于远端NFS服务器上的文件，就像访问本地文件一样。</p>
-<p>NFS最早是由Sun公司发展出来的，</p>
+        <h1 id="为什么要用NFS"><a href="#为什么要用NFS" class="headerlink" title="为什么要用NFS"></a>为什么要用NFS</h1><p>NFS（Network File System）网络文件系统，由 SUN 公司开发，是FreeBSD支持的文件系统中的一种，它允许网络中的计算机之间通过TCP/IP网络共享资源。在NFS的应用中，本地NFS的客户端应用可以透明地读写位于远端NFS服务器上的文件，就像访问本地文件一样。</p>
 <p>简单的来说：它就是是可以透过网络，让不同的主机、不同的操作系统可以共享存储。</p>
 <p>以下是NFS最显而易见的好处：</p>
 <ol>
@@ -529,7 +528,8 @@
 <p>参考资料：</p>
 <ol>
 <li>《centos7下NFS使用与配置》 <a href="http://blog.51cto.com/mrxiong2017/2087001" target="_blank" rel="noopener">http://blog.51cto.com/mrxiong2017/2087001</a></li>
-<li>《详细讲解NFS配置过程》(<a href="https://www.cnblogs.com/alonones/p/6105586.html" target="_blank" rel="noopener">https://www.cnblogs.com/alonones/p/6105586.html</a>)</li>
+<li>《详细讲解NFS配置过程》<a href="https://www.cnblogs.com/alonones/p/6105586.html" target="_blank" rel="noopener">https://www.cnblogs.com/alonones/p/6105586.html</a></li>
+<li>百度百科 <a href="https://baike.baidu.com/item/NFS/812203?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/NFS/812203?fr=aladdin</a></li>
 </ol>
 
       
