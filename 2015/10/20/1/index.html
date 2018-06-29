@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="我们知道，session是一种会话技术，用来实现跨脚本共享数据。session是存放在服务器端的文件里的，因此session有可能因为文件数量过多，会在查询session文件以及读取的时候产生压力。一般我们有三种解决方案 1.使用文件分层（缺点：I/O操作是系统的一个瓶颈，即使分层也不能避免此问题） 2.将session放入数据库 3.将session放在内存中（非关系性数据库）（缺点：对服务器内">
+<meta name="description" content="我们知道，Session是一种会话技术，用来实现跨脚本共享数据。Session是存放在服务器端的文件里的，因此Session有可能因为文件数量过多，会在查询 Session 文件以及读取的时候产生压力。一般我们有三种解决方案  使用文件分层（缺点：I/O操作是系统的一个瓶颈，即使分层也不能避免此问题） 将session放入数据库 将session放在内存中（非关系性数据库）（缺点：对服务器内存要求">
 <meta name="keywords" content="前端博客,JavaScript,html5,css3,Jquery,Linux,PHP,iOS,MySQL,SQL,Redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PHP实现Session入库">
+<meta property="og:title" content="PHP基础教程：将Session存储到MySQL中">
 <meta property="og:url" content="http://www.maksim.website/2015/10/20/1/index.html">
 <meta property="og:site_name" content="Maksim&#39;s Website">
-<meta property="og:description" content="我们知道，session是一种会话技术，用来实现跨脚本共享数据。session是存放在服务器端的文件里的，因此session有可能因为文件数量过多，会在查询session文件以及读取的时候产生压力。一般我们有三种解决方案 1.使用文件分层（缺点：I/O操作是系统的一个瓶颈，即使分层也不能避免此问题） 2.将session放入数据库 3.将session放在内存中（非关系性数据库）（缺点：对服务器内">
+<meta property="og:description" content="我们知道，Session是一种会话技术，用来实现跨脚本共享数据。Session是存放在服务器端的文件里的，因此Session有可能因为文件数量过多，会在查询 Session 文件以及读取的时候产生压力。一般我们有三种解决方案  使用文件分层（缺点：I/O操作是系统的一个瓶颈，即使分层也不能避免此问题） 将session放入数据库 将session放在内存中（非关系性数据库）（缺点：对服务器内存要求">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/528226/201603/528226-20160317093240693-1557806104.png">
-<meta property="og:updated_time" content="2018-04-19T13:10:58.838Z">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/528226-20160317093240693-1557806104.png">
+<meta property="og:updated_time" content="2018-06-29T15:41:48.343Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PHP实现Session入库">
-<meta name="twitter:description" content="我们知道，session是一种会话技术，用来实现跨脚本共享数据。session是存放在服务器端的文件里的，因此session有可能因为文件数量过多，会在查询session文件以及读取的时候产生压力。一般我们有三种解决方案 1.使用文件分层（缺点：I/O操作是系统的一个瓶颈，即使分层也不能避免此问题） 2.将session放入数据库 3.将session放在内存中（非关系性数据库）（缺点：对服务器内">
-<meta name="twitter:image" content="https://images2015.cnblogs.com/blog/528226/201603/528226-20160317093240693-1557806104.png">
+<meta name="twitter:title" content="PHP基础教程：将Session存储到MySQL中">
+<meta name="twitter:description" content="我们知道，Session是一种会话技术，用来实现跨脚本共享数据。Session是存放在服务器端的文件里的，因此Session有可能因为文件数量过多，会在查询 Session 文件以及读取的时候产生压力。一般我们有三种解决方案  使用文件分层（缺点：I/O操作是系统的一个瓶颈，即使分层也不能避免此问题） 将session放入数据库 将session放在内存中（非关系性数据库）（缺点：对服务器内存要求">
+<meta name="twitter:image" content="http://ogxeww23n.bkt.clouddn.com/528226-20160317093240693-1557806104.png">
 
 
 
@@ -130,7 +130,7 @@
 
 
 
-  <title>PHP实现Session入库 | Maksim's Website</title>
+  <title>PHP基础教程：将Session存储到MySQL中 | Maksim's Website</title>
   
 
 
@@ -294,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">PHP实现Session入库</h1>
+          <h1 class="post-title" itemprop="name headline">PHP基础教程：将Session存储到MySQL中</h1>
         
 
         <div class="post-meta">
@@ -366,21 +366,41 @@
       
 
       
-        <p>我们知道，session是一种会话技术，用来实现跨脚本共享数据。session是存放在服务器端的文件里的，因此session有可能因为文件数量过多，会在查询session文件以及读取的时候产生压力。一般我们有三种解决方案</p>
-<p>1.使用文件分层（缺点：I/O操作是系统的一个瓶颈，即使分层也不能避免此问题）</p>
-<p>2.将session放入数据库</p>
-<p>3.将session放在内存中（非关系性数据库）（缺点：对服务器内存要求教高）</p>
-<p>因此我们选用一个折中的办法，将session存入mysql数据库，也就是我们要讲的重点，</p>
-<p>session入库技术：</p>
+        <p>我们知道，Session是一种会话技术，用来实现跨脚本共享数据。Session是存放在服务器端的文件里的，因此Session有可能因为文件数量过多，会在查询 Session 文件以及读取的时候产生压力。一般我们有三种解决方案</p>
+<ol>
+<li>使用文件分层（缺点：I/O操作是系统的一个瓶颈，即使分层也不能避免此问题）</li>
+<li>将session放入数据库</li>
+<li>将session放在内存中（非关系性数据库）（缺点：对服务器内存要求教高）</li>
+</ol>
+<p>将Session存入MySQL数据库，也就是我们要讲的重点（其实并不建议这么做，因为在高并发和大流量的情况下，无疑会增加MySQL的压力，建议放到缓存服务中，如Memcache、Redis），</p>
 <p>要实现session入库，首先我们要了解session 机制：</p>
-<p>什么是session机制：</p>
-<p>在php中，session可以理解为一套单独的小系统，在该系统中有很多关于session的处理方法，用来解决各种问题，用户只需要在session之外，调用session_start函数（session系统的一个接口）</p>
+<p>在PHP中，Session 可以理解为一套单独的小系统，在该系统中有很多关于 Session 的处理方法，用来解决各种问题，用户只需要在 Session 之外，调用session_start函数（session系统的一个接口）</p>
 <p>其他操作都是session系统帮忙去处理</p>
-<p><img src="https://images2015.cnblogs.com/blog/528226/201603/528226-20160317093240693-1557806104.png" alt="img"></p>
-<p>由图可知我们应该修改session机制中的session的读取和最终的写入。</p>
-<p>要修改session机制要借助一个系统函数</p>
-<p>session_set_save_handler():用来使用外部用户定义的函数，来取代session系统本身的函数。</p>
-<p>session_set_save_handler(开启session机制函数，关闭session机制函数，读取session数据函数，写入session函数，销毁session函数，后手过期session函数)。</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/528226-20160317093240693-1557806104.png" alt="img"></p>
+<p>由图可知我们应该修改session机制中的session的读取和最终的写入。要修改session机制要借助一个系统函数session_set_save_handler():用来使用外部用户定义的函数，来取代session系统本身的函数。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bool session_set_save_handler ( callable $open , callable $close , callable $read , callable $write , callable $destroy , callable $gc [, callable $create_sid [, callable $validate_sid [, callable $update_timestamp ]]] )</div></pre></td></tr></table></figure>
+<p><code>open(string $savePath, string $sessionName)</code></p>
+<p>open 回调函数类似于类的构造函数， 在会话打开的时候会被调用。 这是自动开始会话或者通过调用 <a href="http://php.net/manual/zh/function.session-start.php" target="_blank" rel="noopener">session_start()</a> 手动开始会话 之后第一个被调用的回调函数。 此回调函数操作成功返回 <strong>TRUE</strong>，反之返回 <strong>FALSE</strong>。</p>
+<p><code>close()</code></p>
+<p>close 回调函数类似于类的析构函数。 在 write 回调函数调用之后调用。 当调用 <a href="http://php.net/manual/zh/function.session-write-close.php" target="_blank" rel="noopener">session_write_close()</a> 函数之后，也会调用 close 回调函数。 此回调函数操作成功返回 <strong>TRUE</strong>，反之返回 <strong>FALSE</strong>。</p>
+<p><code>read(string $sessionId)</code></p>
+<p>如果会话中有数据，read 回调函数必须返回将会话数据编码（序列化）后的字符串。 如果会话中没有数据，read 回调函数返回空字符串。</p>
+<p>在自动开始会话或者通过调用 <a href="http://php.net/manual/zh/function.session-start.php" target="_blank" rel="noopener">session_start()</a> 函数手动开始会话之后，PHP 内部调用 read 回调函数来获取会话数据。 在调用 read 之前，PHP 会调用 open 回调函数。</p>
+<p>read 回调返回的序列化之后的字符串格式必须与 <code>write</code> 回调函数保存数据时的格式完全一致。 PHP 会自动反序列化返回的字符串并填充<a href="http://php.net/manual/zh/reserved.variables.session.php" target="_blank" rel="noopener">$_SESSION</a> 超级全局变量。 虽然数据看起来和 <a href="http://php.net/manual/zh/function.serialize.php" target="_blank" rel="noopener">serialize()</a> 函数很相似， 但是需要提醒的是，它们是不同的。 请参考：<a href="http://php.net/manual/zh/session.configuration.php#ini.session.serialize-handler" target="_blank" rel="noopener">session.serialize_handler</a>。</p>
+<p><code>write(string $sessionId, string $data)</code></p>
+<p>在会话保存数据时会调用 <code>write</code> 回调函数。 此回调函数接收当前会话 ID 以及 <a href="http://php.net/manual/zh/reserved.variables.session.php" target="_blank" rel="noopener">$_SESSION</a> 中数据序列化之后的字符串作为参数。 序列化会话数据的过程由 PHP 根据 <a href="http://php.net/manual/zh/session.configuration.php#ini.session.serialize-handler" target="_blank" rel="noopener">session.serialize_handler</a> 设定值来完成。</p>
+<p>序列化后的数据将和会话 ID 关联在一起进行保存。 当调用 <code>read</code> 回调函数获取数据时，所返回的数据必须要和 传入 <code>write</code> 回调函数的数据完全保持一致。</p>
+<p>PHP 会在脚本执行完毕或调用 <a href="http://php.net/manual/zh/function.session-write-close.php" target="_blank" rel="noopener">session_write_close()</a> 函数之后调用此回调函数。 注意，在调用完此回调函数之后，PHP 内部会调用 <code>close</code>回调函数。</p>
+<blockquote>
+<p><strong>Note</strong>:</p>
+<p>PHP 会在输出流写入完毕并且关闭之后 才调用 write 回调函数， 所以在 write 回调函数中的调试信息不会输出到浏览器中。 如果需要在 write 回调函数中使用调试输出， 建议将调试输出写入到文件。</p>
+</blockquote>
+<p><code>destroy($sessionId)</code></p>
+<p>当调用 <a href="http://php.net/manual/zh/function.session-destroy.php" target="_blank" rel="noopener">session_destroy()</a> 函数， 或者调用 <a href="http://php.net/manual/zh/function.session-regenerate-id.php" target="_blank" rel="noopener">session_regenerate_id()</a> 函数并且设置 destroy 参数为 <strong>TRUE</strong> 时， 会调用此回调函数。此回调函数操作成功返回 <strong>TRUE</strong>，反之返回 <strong>FALSE</strong>。</p>
+<p><code>gc($lifetime)</code></p>
+<p>为了清理会话中的旧数据，PHP 会不时的调用垃圾收集回调函数。 调用周期由 <a href="http://php.net/manual/zh/session.configuration.php#ini.session.gc-probability" target="_blank" rel="noopener">session.gc_probability</a> 和 <a href="http://php.net/manual/zh/session.configuration.php#ini.session.gc-divisor" target="_blank" rel="noopener">session.gc_divisor</a> 参数控制。 传入到此回调函数的 lifetime 参数由 <a href="http://php.net/manual/zh/session.configuration.php#ini.session.gc-maxlifetime" target="_blank" rel="noopener">session.gc_maxlifetime</a> 设置。 此回调函数操作成功返回 <strong>TRUE</strong>，反之返回 <strong>FALSE</strong>。</p>
+<p><code>create_sid()</code></p>
+<p>当需要新的会话 ID 时被调用的回调函数。 回调函数被调用时无传入参数， 其返回值应该是一个字符串格式的、有效的会话 ID。</p>
 <p>因此我们要准备六个函数。</p>
 <p>代码实现：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="comment">//session入库</span></div><div class="line"></div><div class="line"><span class="comment">//以为修改session机制必须借助session_set_save_handler()函数，该函数需要6个可以调用的回调函数，因此需要创建6个人对应的函数</span></div><div class="line"></div><div class="line"><span class="comment">//1.开启session机制</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sess_open</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">//开启资源</span></div><div class="line">    <span class="comment">//连接数据库</span></div><div class="line">    mysql_connect(<span class="string">'localhost'</span>,<span class="string">'root'</span>,<span class="string">''</span>);</div><div class="line">    mysql_query(<span class="string">'set names utf8'</span>);</div><div class="line">    mysql_query(<span class="string">'use session'</span>);</div><div class="line">    <span class="keyword">echo</span> <span class="function"><span class="keyword">FUNCTION</span>,'&lt;<span class="title">br</span>/&gt;'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//2.关闭session</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sess_close</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">//关闭资源</span></div><div class="line">    mysql_close();</div><div class="line">    <span class="keyword">echo</span> <span class="function"><span class="keyword">FUNCTION</span>,'&lt;<span class="title">br</span>/&gt;'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//3.读取session</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sess_read</span><span class="params">($sess_id)</span> </span>&#123;</div><div class="line">    <span class="comment">//从数据库读取数据</span></div><div class="line">    <span class="comment">//根据sess_id（由系统提供）获取数据</span></div><div class="line">    <span class="comment">//读数据时要过滤掉过期的数据</span></div><div class="line">    $expire=time()-ini_get(<span class="string">'session.gc_maxlifetime'</span>);</div><div class="line">    $sql=<span class="string">"selsct * from session where sess_id='&#123;$sess_id&#125;' and sess_expire&gt;='&#123;$expire&#125;'"</span>;</div><div class="line">    res=mysql_query(sql);</div><div class="line"></div><div class="line">    <span class="comment">//得到的是一个数组</span></div><div class="line">    <span class="keyword">if</span>(sess=@mysql_fetch_assoc(res)) &#123;</div><div class="line">        <span class="comment">//得到一个序列化后的字符串</span></div><div class="line">        <span class="comment">//要进行反序列化，read只负责读取数据，不负责加工数据</span></div><div class="line">        <span class="keyword">return</span> $sess[<span class="string">'sess_info'</span>];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">echo</span> <span class="function"><span class="keyword">FUNCTION</span>,'&lt;<span class="title">br</span>/&gt;'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//4.写入session</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sess_write</span><span class="params">(sess_id,sess_info)</span> </span>&#123;</div><div class="line">    <span class="comment">//向数据库中写入数据</span></div><div class="line">    $time=time();</div><div class="line">    $sql=<span class="string">"replace into session values('&#123;$sess_id&#125;','&#123;$sess_info&#125;','&#123;$time&#125;')"</span>;</div><div class="line">    mysql_query($sql);</div><div class="line">    <span class="keyword">echo</span> <span class="function"><span class="keyword">FUNCTION</span>,'&lt;<span class="title">br</span>/&gt;'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//5.销毁session</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sess_destroy</span><span class="params">($sess_id)</span> </span>&#123;</div><div class="line">    $sql=<span class="string">"delete from session where sess_id='&#123;$sess_id&#125;'"</span>;</div><div class="line">    <span class="keyword">return</span> mysql_query($sql);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//6.回收session</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sess_gc</span><span class="params">()</span> </span>&#123; </div><div class="line">    <span class="comment">//从数据库删除过期的session数据</span></div><div class="line">    <span class="comment">//判断session是否过期，过期的删除</span></div><div class="line">    $expire=ini_get(<span class="string">'session.gc_maxlifetime'</span>);</div><div class="line">    <span class="comment">//得到最迟的时间，在$expire之前的都是过期的</span></div><div class="line">    expire=time()-expire;</div><div class="line">    $sql=<span class="string">"delete from session where sess_expire &lt; '&#123;expire&#125;'"</span>;</div><div class="line">    <span class="keyword">return</span> mysql_query($sql);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//使用session_set_save_handler()修改session机制</span></div><div class="line">session_set_save_handler(<span class="string">'sess_open'</span>,<span class="string">'sess_close'</span>,<span class="string">'sess_read'</span>,<span class="string">'sess_write'</span>,<span class="string">'sess_destroy'</span>,<span class="string">'sess_gc'</span>);</div><div class="line"></div><div class="line"><span class="comment">//想要使用session，必须要用session_start()来开启</span></div><div class="line">session_start();</div><div class="line"></div><div class="line">$_SESSION[<span class="string">'name'</span>]=<span class="string">'wangqixing'</span>;</div><div class="line"></div><div class="line">$_SESSION[<span class="string">'age'</span>]=<span class="string">'23'</span>;</div><div class="line"></div><div class="line"><span class="comment">//session_destroy();</span></div></pre></td></tr></table></figure>
@@ -497,7 +517,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-count">91</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
