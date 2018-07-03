@@ -81,18 +81,20 @@
 
 
 
-<meta name="description" content="影响数据库性能的主要因素有很多，主要包括以下几点：  服务器硬件 服务器系统 数据库存储引擎的选择 数据库参数配置 数据库结构设计和SQL语句  服务器系统MySQL本身支持很多操作系统：  Windows FreeBSD Solaris Linux  很多人都习惯将开发环境的数据库部署在Windows上，将生产环境的数据库部署在Linux上，这就会导致一个问题，MySQL 的schema存储方式">
+<meta name="description" content="人们经常问，“我的服务器有32G内存，12核CPU，怎样配置最好？”很遗憾，问题没有那么简单。服务器的配置应该符合它的工作负载、数据，以及对应需求，并不仅仅看硬件的情况。 MySQL有大量可以修改的参数——但是不应该随意去修改。通常只需要把基本的配置正确（大部分情况下至于很少的一些参数是真正重要的），应该更多的时间花在schema的优化、索引、以及查询设计上。在正确地配置了MySQL的基本配置项之">
 <meta name="keywords" content="前端博客,JavaScript,html5,css3,Jquery,Linux,PHP,iOS,MySQL,SQL,Redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL性能优化（4）： 服务器操作系统对MYSQL性能带来的影响.">
-<meta property="og:url" content="http://www.maksim.website/2017/10/10/4/index.html">
+<meta property="og:title" content="MySQL性能优化（5）：服务器参数对 MYSQL 的影响">
+<meta property="og:url" content="http://www.maksim.website/2017/09/17/2/index.html">
 <meta property="og:site_name" content="Maksim&#39;s Website">
-<meta property="og:description" content="影响数据库性能的主要因素有很多，主要包括以下几点：  服务器硬件 服务器系统 数据库存储引擎的选择 数据库参数配置 数据库结构设计和SQL语句  服务器系统MySQL本身支持很多操作系统：  Windows FreeBSD Solaris Linux  很多人都习惯将开发环境的数据库部署在Windows上，将生产环境的数据库部署在Linux上，这就会导致一个问题，MySQL 的schema存储方式">
+<meta property="og:description" content="人们经常问，“我的服务器有32G内存，12核CPU，怎样配置最好？”很遗憾，问题没有那么简单。服务器的配置应该符合它的工作负载、数据，以及对应需求，并不仅仅看硬件的情况。 MySQL有大量可以修改的参数——但是不应该随意去修改。通常只需要把基本的配置正确（大部分情况下至于很少的一些参数是真正重要的），应该更多的时间花在schema的优化、索引、以及查询设计上。在正确地配置了MySQL的基本配置项之">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-25T12:31:31.052Z">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171013153125.png">
+<meta property="og:updated_time" content="2018-07-02T13:57:57.736Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL性能优化（4）： 服务器操作系统对MYSQL性能带来的影响.">
-<meta name="twitter:description" content="影响数据库性能的主要因素有很多，主要包括以下几点：  服务器硬件 服务器系统 数据库存储引擎的选择 数据库参数配置 数据库结构设计和SQL语句  服务器系统MySQL本身支持很多操作系统：  Windows FreeBSD Solaris Linux  很多人都习惯将开发环境的数据库部署在Windows上，将生产环境的数据库部署在Linux上，这就会导致一个问题，MySQL 的schema存储方式">
+<meta name="twitter:title" content="MySQL性能优化（5）：服务器参数对 MYSQL 的影响">
+<meta name="twitter:description" content="人们经常问，“我的服务器有32G内存，12核CPU，怎样配置最好？”很遗憾，问题没有那么简单。服务器的配置应该符合它的工作负载、数据，以及对应需求，并不仅仅看硬件的情况。 MySQL有大量可以修改的参数——但是不应该随意去修改。通常只需要把基本的配置正确（大部分情况下至于很少的一些参数是真正重要的），应该更多的时间花在schema的优化、索引、以及查询设计上。在正确地配置了MySQL的基本配置项之">
+<meta name="twitter:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171013153125.png">
 
 
 
@@ -122,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://www.maksim.website/2017/10/10/4/"/>
+  <link rel="canonical" href="http://www.maksim.website/2017/09/17/2/"/>
 
 
 
 
 
-  <title>MySQL性能优化（4）： 服务器操作系统对MYSQL性能带来的影响. | Maksim's Website</title>
+  <title>MySQL性能优化（5）：服务器参数对 MYSQL 的影响 | Maksim's Website</title>
   
 
 
@@ -275,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2017/10/10/4/">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2017/09/17/2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Maksim">
@@ -292,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL性能优化（4）： 服务器操作系统对MYSQL性能带来的影响.</h1>
+          <h1 class="post-title" itemprop="name headline">MySQL性能优化（5）：服务器参数对 MYSQL 的影响</h1>
         
 
         <div class="post-meta">
@@ -304,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T00:00:00+08:00">
-                2017-10-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-17T00:00:00+08:00">
+                2017-09-17
               </time>
             
 
@@ -364,40 +366,62 @@
       
 
       
-        <p>影响数据库性能的主要因素有很多，主要包括以下几点：</p>
-<ol>
-<li>服务器硬件</li>
-<li>服务器系统</li>
-<li>数据库存储引擎的选择</li>
-<li>数据库参数配置</li>
-<li>数据库结构设计和SQL语句</li>
-</ol>
-<h1 id="服务器系统"><a href="#服务器系统" class="headerlink" title="服务器系统"></a>服务器系统</h1><p>MySQL本身支持很多操作系统：</p>
+        <p>人们经常问，“我的服务器有32G内存，12核CPU，怎样配置最好？”很遗憾，问题没有那么简单。服务器的配置应该符合它的工作负载、数据，以及对应需求，并不仅仅看硬件的情况。</p>
+<p>MySQL有大量可以修改的参数——但是不应该随意去修改。通常只需要把基本的配置正确（大部分情况下至于很少的一些参数是真正重要的），应该更多的时间花在schema的优化、索引、以及查询设计上。在正确地配置了MySQL的基本配置项之后，再花力气去修改其他配置项的收益通常就比较小了。</p>
+<p>从另外一方面来说，没用的配置项会导致潜风险的可能更大。我们碰到过不止一个“高度调优”过的服务器不停地彭奎，停止服务或者运行缓慢，结果都是因为错误的配置导致的。</p>
+<p>##　MySQl获取配置信息路径</p>
 <ul>
-<li>Windows</li>
-<li>FreeBSD</li>
-<li>Solaris</li>
-<li>Linux</li>
+<li>命令行参数 <code>mysqld_safe --datadir=/data/sql_data</code></li>
+<li>配置文件 <code>mysqld --help --verbose | grep -A 1 &#39;Default options&#39;</code></li>
 </ul>
-<p>很多人都习惯将开发环境的数据库部署在Windows上，将生产环境的数据库部署在Linux上，这就会导致一个问题，MySQL 的schema存储方式在文件系统上实际是一个目录，<strong>在Windows平台上，大小写是不敏感的</strong>，而在<strong>Linux上大小写是敏感的</strong>，所以这就会导致，数据库和表的名字在Windows是可以运行的，但是当移植到Linux下就会找不到相关数据库和表的错误。</p>
-<h2 id="CentOS系统参数优化"><a href="#CentOS系统参数优化" class="headerlink" title="CentOS系统参数优化"></a>CentOS系统参数优化</h2><p><strong>内核相关参数</strong>（/etc/sysctl.conf）</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"># </div><div class="line">net.core.somaxconn = 65535</div><div class="line">net.core.netdev_max_backlog = 65535</div><div class="line">net.ipv4.tcp_max_syn_backlog = 65535</div><div class="line"></div><div class="line"># TCP连接回收</div><div class="line">net.ipv4.tcp_fin_timeout = 10</div><div class="line">net.ipv4.tcp_tw_reuse = 1</div><div class="line">net.ipv4.tcp_tw_recycle = 1</div><div class="line"></div><div class="line">net.core.wmen_default = 87380</div><div class="line">net.core.wmen_max = 16777216</div><div class="line">net.core.rmem_default = 87380</div><div class="line">net.core_rmem_max = 1677216</div><div class="line"></div><div class="line">net.ipv4.tcp_keeplive_time = 120</div><div class="line">net.ipv4.tcp_keepalive_intvl = 30</div><div class="line">net.ipv4.tcp_keepalive_probes = 3</div><div class="line"></div><div class="line">kernel.shmmax = 4294967295</div><div class="line"># Linux内核参数最重要的参数之一，用于定义单个共享内存段的最大值</div><div class="line"># 1. 这个参数应该设置的足够大，以便能在一个共享内存段下容纳下整个Innodb缓冲池的大小</div><div class="line"># 这个值的大小对于64位Linux系统，可取的最大值为物理内存值-1byte,建议设置为物理内存的一半，一半取决于Innodb缓冲池的大小即可，可以取物理内存-1byte</div><div class="line"></div><div class="line">vm.swappiness = 0 </div><div class="line"># 这个参数当内存不足时会对性能产生较明显的影响</div><div class="line"># Linux系统内存交换区。</div><div class="line"># 禁用交换分区所带来的风险：</div><div class="line">#	1. 降低操作系统的性能</div><div class="line">#	2。 容易造成内存溢出，崩溃，或者被操作系统kill掉</div><div class="line"># 在MySQL服务器上保留叫分区还是有必要的额，但是要控制何时使用交换分区，vm.swappiness = 0 ，就是告诉内核除非虚拟内存完全满了，否则就不会使用交换分区</div></pre></td></tr></table></figure>
-<p>增加资源限制（/etc/security/limit.conf），这个文件实际上是Linux PAM也就是插入式认证模块的配置文件。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">* soft nofile 65535</div><div class="line">* hard nofile 65535</div><div class="line"></div><div class="line"># * 表示对所有用户有效</div><div class="line"># soft 指的是当前系统生效的设置</div><div class="line"># hard 表明系统中所设定的最大值</div><div class="line"># nofile 表示所限制的资源是打开文件的额最大数目</div><div class="line"># 65535 就是限制的数量</div><div class="line"># 把可打开的文件数量增加到65535个，以保证可以打开足够多的文件句柄，这个文件的修改需要重启系统后生效</div></pre></td></tr></table></figure>
-<p>磁盘调度策略(/sys/block/devname/queue/scheduler)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cat /sys/block/devname/queue/scheduler</div><div class="line">noop anticipatory deadline [cfq]</div></pre></td></tr></table></figure>
-<p><strong>noop</strong>（电梯式调度策略）<br>NOOP实现了一个FIFO队列，它像电梯的工作方式一样对I/O请求进行组织，当有一个新的请求到来时，它将请求合并到最近的请求之后，以此来保证请求同一个介质。NOOP倾向于饿死读而利于写，因此NOOP对于闪存设备，RAM以及嵌入式是最好的选择。</p>
-<p><strong>deadline</strong>（介质时间调度策略）<br>Deadline确保了在一个截至时间内服务请求，这个截至时间是可调整的，而默认读期限短于写期限。这样就防止了写操作因为不能被读取而饿死的现象。Deadline对数据库类应用是最好的选择。</p>
-<p><strong>anticipatory</strong>（预料I/O调度策略）<br>本质上与Deadline一样，但在最后一次读操作后，要等待6ms，才能继续进行对其他I/O请求进行调度。它会在每个6ms中插入新的I/O操作，而会将一些小写入流合并成一个大写入流，用写入延时换取最大的写入吞吐量。AS适合于写入较多的环境，比如文件服务器，AS对数据库环境表现很差。</p>
-<p>通过下面方法修改磁盘策略：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo  deadline &gt;  /sys/block/devname/queue/scheduler</div></pre></td></tr></table></figure>
-<h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><p>在Windows环境下，仅有FAT和NTFS两种文件系统，但其实现在只使用NTFS。</p>
-<p>在Linux环境下就不同了，目前主流的文件系统有EXT3、EXT4、XFS。这三种文件系统都带有日志，安全性可以得到保证，江湖传闻XFS新更能更好。</p>
-<p>EXT3/4系统的挂在参数(/etc/fstab)</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 日志写入</div><div class="line">data = writeback | ordered | jouranl</div><div class="line">noatime, nodiratime</div><div class="line">/dev/sda1/ext4 noatime,nodiratime,data=writeback 1 1</div></pre></td></tr></table></figure>
-<p>writeback 只有元数据写入到日志，这是最快的一种配置，因为 innodb 有自己的日志，所以writeback对于 innodb 是最好的选择。</p>
-<p>ordered </p>
-<p>journal 提供了院子</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171013153125.png" alt=""></p>
+<p>MySQL会先从<code>/etc/my.cnf</code>文件下读取配置信息，然后是<code>/etc/mysql/my.cnf</code>。</p>
+<p>MySQL配置参数的作用域</p>
+<ul>
+<li>全局参数 <ul>
+<li><code>set global 参数名 = 参数值;</code></li>
+<li><code>set @@global。参数名:=参数值;</code></li>
+</ul>
+</li>
+<li>会话参数<ul>
+<li><code>set [session] 参数名=参数值;</code></li>
+<li><code>set @@session.参数名:=参数值;</code></li>
+</ul>
+</li>
+</ul>
+<p>会话参数在没有被单独指定的时会使用全局参数的值来当做默认值。</p>
+<p>在这里需要注意，如果在服务器运行时修改了变量的全局值，这个值对当前回话和其他任何已经存在的会话是不起作用的，这是因为会话的变量值是在连接创建时从全局值初始化来的。在每次更改之后，应该检查 SHOW GLOBAL VARIABLES 的输出，确认已经按照期望变更了。</p>
+<h2 id="内存配置相关参数"><a href="#内存配置相关参数" class="headerlink" title="内存配置相关参数"></a>内存配置相关参数</h2><p>MySQL对于内存的使用我们可以分为两个类来看。</p>
+<ul>
+<li>无法通过配置参数设置的，如MySQL运行，解析，运行，查询所需要的内存</li>
+<li>可以通过参数配置控制的，各类的缓冲池所需要的内存。</li>
+</ul>
+<p>对内存参数配置之前，我们需要进行考虑：</p>
+<ul>
+<li>确定可以使用内存的上限，最根本的一点是不能超过本身物理内存的。还有一点是系统架构的问题，如果是32位系统，那么单个进程只能设置低于3G的内存空间。</li>
+<li>确定MySQL的每个连接使用的内存，例如排序缓冲和临时表</li>
+<li><p>把剩下的内存全部给 MySQL 的缓存，例如 InnoDB 的缓冲池。</p>
+<ul>
+<li><p>sort_buffer_size</p>
+<ul>
+<li>join_buufer_szie</li>
+<li>read_buffer_size</li>
+<li>read_rnd_buffer_size  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="确定需要为操作系统保留多少内存"><a href="#确定需要为操作系统保留多少内存" class="headerlink" title="确定需要为操作系统保留多少内存"></a>确定需要为操作系统保留多少内存</h3><p>给操作系统保留的内存还需要保留，在系统中运行的其他所有服务所需要的内存，以及前面提到的我们无法为MySQL进行控制的那一部分内存。</p>
+<p>数据库最好使用专用的服务器，不要与其他服务共用服务器，不可避免的会造成内存的争用，给配置内存带来更多的考虑因素。</p>
+<p>另外也有人喜欢在一台物理服务器上，运行多个MySQL实例，从内存分配上来看这样做也不好，除非是在开发、测试中可以节约服务器成本，但是在生产环境中最好不要运行多个MySQL实例，因为这样也会造成内存和I/O的争用，影响mysql服务的性能。</p>
+<h3 id="如何为缓冲池分配内存"><a href="#如何为缓冲池分配内存" class="headerlink" title="如何为缓冲池分配内存"></a>如何为缓冲池分配内存</h3><p>Innodb_buffer_pool_size，Innodb缓冲区</p>
+<p>总内存-（每个线程所需要的内存*连接数）- 系统保留内存</p>
+<p>手册中建议大家该内存大小应该为服务器内存大小的百分之七十五以上，上面提到了MySQL是如何使用内存的，所以不能简单粗暴的设置成百分之七十五，必须还得考虑其他的一些因素。</p>
+<h4 id="key-buffer-size"><a href="#key-buffer-size" class="headerlink" title="key_buffer_size"></a>key_buffer_size</h4><p>设置这个变量可以一次性为缓冲区(key buffer，也叫键缓存 key cache)分配所指定的空间，然而</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select sum(index_length) from information_schema.tables where engine=&apos;myisam&apos;</div></pre></td></tr></table></figure>
+<h2 id="I-O相关配置参数"><a href="#I-O相关配置参数" class="headerlink" title="I/O相关配置参数"></a>I/O相关配置参数</h2><p>Innodb I/O相关配置</p>
+<h2 id="安全相关配置参数"><a href="#安全相关配置参数" class="headerlink" title="安全相关配置参数"></a>安全相关配置参数</h2><p><code>expire_logs_days</code> 指定自动清理binlog的天数，这个天数的设置，最好能够覆盖两次全备间隔的天数，如果每天都进行全备的话，最好也能够保持7天，这样以备在特殊情况下数据的查找，比如数据出现异常的情况下，就可能会使用到binlog日志进行查找。</p>
 
       
     </div>
@@ -422,8 +446,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/16/5/" rel="next" title="MySQL性能优化（5）：MySQL体系结构">
-                <i class="fa fa-chevron-left"></i> MySQL性能优化（5）：MySQL体系结构
+              <a href="/2017/09/16/3/" rel="next" title="MySQL性能优化（3）：服务器硬件对 MYSQL 带来的影响">
+                <i class="fa fa-chevron-left"></i> MySQL性能优化（3）：服务器硬件对 MYSQL 带来的影响
               </a>
             
           </div>
@@ -432,8 +456,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/10/cjj4bil1l004c3yrdi4ubg34u/" rel="prev" title="MySQL常用存储引擎之Innodb">
-                MySQL常用存储引擎之Innodb <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/17/2/" rel="prev" title="MYSQL性能优化（6）：存储引擎的选择">
+                MYSQL性能优化（6）：存储引擎的选择 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -520,7 +544,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">95</span>
+                  <span class="site-state-item-count">96</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -598,7 +622,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#服务器系统"><span class="nav-number">1.</span> <span class="nav-text">服务器系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS系统参数优化"><span class="nav-number">1.1.</span> <span class="nav-text">CentOS系统参数优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统"><span class="nav-number">1.2.</span> <span class="nav-text">文件系统</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存配置相关参数"><span class="nav-number">1.</span> <span class="nav-text">内存配置相关参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#确定需要为操作系统保留多少内存"><span class="nav-number">1.1.</span> <span class="nav-text">确定需要为操作系统保留多少内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何为缓冲池分配内存"><span class="nav-number">1.2.</span> <span class="nav-text">如何为缓冲池分配内存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#key-buffer-size"><span class="nav-number">1.2.1.</span> <span class="nav-text">key_buffer_size</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O相关配置参数"><span class="nav-number">2.</span> <span class="nav-text">I/O相关配置参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全相关配置参数"><span class="nav-number">3.</span> <span class="nav-text">安全相关配置参数</span></a></li></ol></div>
             
 
           </div>
