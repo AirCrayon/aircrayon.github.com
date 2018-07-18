@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Maksim's Website" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="持久化Redis 支持 RDB 和 AOF 两种持久化机制，持久化功能有效地避免因为进程退出造成数据丢失的问题，当下次重启时利用之前持久化的文件即可实现数据恢复。 RDBRDB 可以指定时间间隔保存数据快照，这有些类似于数据库表快照性质的，也就是说他隔一段时间就会把数据拍个照片然后保存下来，这也是数据库常用的备份方式，在某一个时间点执行备份 sql 或者是备份目录之类的，出发 RDB 持久化过程分">
+<meta name="keywords" content="前端博客,JavaScript,html5,css3,Jquery,Linux,PHP,iOS,MySQL,SQL,Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis 的持久化方案">
+<meta property="og:url" content="http://www.maksim.website/2018/07/18/cjjrrizup007y7nrd8lf55q93/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="持久化Redis 支持 RDB 和 AOF 两种持久化机制，持久化功能有效地避免因为进程退出造成数据丢失的问题，当下次重启时利用之前持久化的文件即可实现数据恢复。 RDBRDB 可以指定时间间隔保存数据快照，这有些类似于数据库表快照性质的，也就是说他隔一段时间就会把数据拍个照片然后保存下来，这也是数据库常用的备份方式，在某一个时间点执行备份 sql 或者是备份目录之类的，出发 RDB 持久化过程分">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-18T14:21:57.696Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis 的持久化方案">
+<meta name="twitter:description" content="持久化Redis 支持 RDB 和 AOF 两种持久化机制，持久化功能有效地避免因为进程退出造成数据丢失的问题，当下次重启时利用之前持久化的文件即可实现数据恢复。 RDBRDB 可以指定时间间隔保存数据快照，这有些类似于数据库表快照性质的，也就是说他隔一段时间就会把数据拍个照片然后保存下来，这也是数据库常用的备份方式，在某一个时间点执行备份 sql 或者是备份目录之类的，出发 RDB 持久化过程分">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.maksim.website/2018/07/18/cjjrrizup007y7nrd8lf55q93/"/>
+
+
+
+
+
+  <title>Redis 的持久化方案 | Maksim's Website</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Maksim's Website</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/07/18/cjjrrizup007y7nrd8lf55q93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Maksim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maksim's Website">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Redis 的持久化方案</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-18T22:21:03+08:00">
+                2018-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h1><p>Redis 支持 RDB 和 AOF 两种持久化机制，持久化功能有效地避免因为进程退出造成数据丢失的问题，当下次重启时利用之前持久化的文件即可实现数据恢复。</p>
+<h1 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h1><p>RDB 可以指定时间间隔保存数据快照，这有些类似于数据库表快照性质的，也就是说他隔一段时间就会把数据拍个照片然后保存下来，这也是数据库常用的备份方式，在某一个时间点执行备份 sql 或者是备份目录之类的，出发 RDB 持久化过程分为手动出发和自动触发。</p>
+<h4 id="触发机制"><a href="#触发机制" class="headerlink" title="触发机制"></a>触发机制</h4><p>手动出发分别对应 save 和 bgsave 命令：</p>
+<p><strong>save 命令：</strong>阻塞当前 Redis 服务器，直到 RDB 过程完成为止，对于内存比较大的实例会造成长时间堵塞，线上环境不建议使用。运行 save 命令对应的 Redis 如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DB saved on disk</div></pre></td></tr></table></figure>
+<p><strong>bgsave 命令：</strong>Redis 执行 fork 进程操作创建子进程，RDB 持久化过程由紫禁城负责，完成后自动结束。阻塞只发生在 fork 阶段，一般时间很短。运行 bgsave 命令对应的 Redis 日志如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Backgroud saving stated by pid 3151</div><div class="line">DB saved on disk</div><div class="line">RDB: 0 MB of memory used by copy-on-write</div><div class="line">Background saving terminated with success</div></pre></td></tr></table></figure>
+<p>显然bgsave 命令是针对 save 阻塞问题做的优化，因此Redis 内部所有涉及 RDB 的操作都采用 bgsave 的方式，而 save 命令已经被废弃了。</p>
+<p>除了手动触发，</p>
+<p><strong>RDB 模式的优点</strong></p>
+<ul>
+<li>适用于进行备份</li>
+<li>fork 出子进程进行备份，主进程没有任何 IO 操作</li>
+<li>恢复大数据集时的速度快</li>
+</ul>
+<p><strong>RDB 模式的优点：</strong></p>
+<ul>
+<li>特定条件下进行一次持久化，易丢失数据</li>
+<li>庞大数据时，保存时会出现性能问题</li>
+</ul>
+<p>相比之下，RDB 模式将时间设置的相对密集了，频繁的备份就会占用较多的资源，但是如果把时间拉的比较远了，万一出问题，就会恢复到上一个时间点，很可能会丢失数据。</p>
+<h2 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h2><p>AOF 先把命令追加到操作日志的尾部，保存所有历史操作，也就是说他是把所有操作都记录到了日志中，当需要回复的时候，会按照之前输入的命令挨个都执行一边。</p>
+<p>配置方式；</p>
+<blockquote>
+<p> redis.confg: appendonly yes</p>
+</blockquote>
+<p><strong>AOF模式的优点</strong></p>
+<ul>
+<li>数据非常完整，故障恢复丢失数据少</li>
+<li>可对历史记录进行处理</li>
+</ul>
+<p><strong>AOF模式的缺点</strong></p>
+<ul>
+<li>由于把整个操作都记录下来，这也就导致了文件体积较大</li>
+<li>速度低于 RDB 且故障恢复速度慢，如果几十万次或者上百万条记录，要比 RDB 慢上很多。</li>
+</ul>
+<p>这两种模式可以同时开启，但是会优先加载 AOF。但是需要注意，如果想要同时开启，尤其 AOF 模式最好 Redis 比较干净的时候就开启，刚开始的时候，我们用的 RDB 模式进行的备份，而 AOF 模式会从 AOF 的那个时间点开始计算，如果在之前有数据，恢复的时候就会出问题了。</p>
+<h1 id="合理的使用-Redis"><a href="#合理的使用-Redis" class="headerlink" title="合理的使用 Redis"></a>合理的使用 Redis</h1><ul>
+<li><p>防止内存站满：</p>
+<ul>
+<li>设置超时时间，如果把 redis 定位成一个缓存使用，键值一定要设置一个超时时间，如果不设置的话 key 会一直占着内存，造成非常大的浪费，而且随着时间的推移，内存的占用率越来越大，如果有一天达到内存上限，Redis 就会不断的进行持久化，另外一个 key 的时长进行综合评估，也不是越长越好，太长了其实跟没有超时时间没有太大区别。</li>
+<li>不存方过大文件，一般来说 Redis 每一个键在存储数据的时候不要超过500字节，要是超过的话一定要想办法先压缩一下然后在进行储存，Redis 是将数据放到内存中的，如果把太大的东西丢进 Redis 里面肯定会浪费一定的内存的。还有就是数据是需要来回传递的，当访问量非常高的时候，你里面还带了一个非常大的文件，来回的传输，很有可能就把带宽占用满了，其他的服务就不可用。</li>
+<li>不存不常用数据，Redis 比较适合存放一些热数据，所以我们要把冷热数据进行分离，冷数据比较适合放在 Mysql 之中，在 Redis 应该存一些比较高频的数据，把一些不长用的数据放在 Redis 中就太有点浪费资源了。Redis 存储数据量小的时候，速度肯定要快一些。不同的业务数据最好分开存储，不要把一些不相关的业务数据都放到一个 Redis 实例里面。</li>
+</ul>
+</li>
+<li><p>提高使用效率</p>
+<ul>
+<li>合理使用不同的数据类型：Redis 支持的类型非常的多，根据不同业务的业务场景，来使用不同的数据结构，不同的字段类型适用场景是不一样的。</li>
+<li>慎用正则处理或批量操作 Hash、Set 等：这是一个非常恐怖的操作，Hash 和 Set 本身就是一个很大的数据，然后在批量操作的话很要命的，因为 Redis 是单线程的，如果线上 Key 非常多的时候，如果再进行正则匹配效率会非常的低，效率一旦低下来，就会堵塞其他命令的运行。如果在批量操作 Hash 的时候，是需要把 feild 也进行一次操作的，</li>
+</ul>
+<p>所以说不要以为 Redis 是万能的，最终他还是要消耗 CPU 的。</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/17/1/" rel="next" title="从简单的示例中入门 Redis 五种常用数据结构">
+                <i class="fa fa-chevron-left"></i> 从简单的示例中入门 Redis 五种常用数据结构
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTYyMC8xMjE1Ng"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ogxeww23n.bkt.clouddn.com/timg.jpeg"
+                alt="Maksim" />
+            
+              <p class="site-author-name" itemprop="name">Maksim</p>
+              <p class="site-description motion-element" itemprop="description">Maksim's Website，分享成长的点点滴滴，关注PHP、JavaScript、Linux、C/C++、Go、SQL、MySQL、Redis、iOS、安卓开发，努力做一个值得收藏的博客。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/aircrayon" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aircrayon@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#持久化"><span class="nav-number">1.</span> <span class="nav-text">持久化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RDB"><span class="nav-number">2.</span> <span class="nav-text">RDB</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#触发机制"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">触发机制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOF"><span class="nav-number">2.1.</span> <span class="nav-text">AOF</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合理的使用-Redis"><span class="nav-number">3.</span> <span class="nav-text">合理的使用 Redis</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maksim</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

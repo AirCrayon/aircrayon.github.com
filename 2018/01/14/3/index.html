@@ -89,10 +89,12 @@
 <meta property="og:site_name" content="Maksim&#39;s Website">
 <meta property="og:description" content="负载均衡，英文名称为 LoadBalance，其意思就是将负载(工作任务)进行平衡，分摊到多个操作单元上进行执行(例如Web服务器、FTP服务器等)，实现多个服务器共同完成工作任务的目标。负载均衡建立在现有网络结构之上，它提升了服务器的性能、提高了带宽利用率，增强了网络的灵活性和可靠性。 七层负载均衡的实现基于URL等应用层信息的负载均衡，Nginx 的 proxy 是它一个很强大的功能，实现了7">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-27T12:00:17.955Z">
+<meta property="og:image" content="http://www.uml.org.cn/zjjs/images/2012111243.PNG">
+<meta property="og:updated_time" content="2018-07-16T02:17:02.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高并发和大流量解决方案（11）：Web服务器负载均衡">
 <meta name="twitter:description" content="负载均衡，英文名称为 LoadBalance，其意思就是将负载(工作任务)进行平衡，分摊到多个操作单元上进行执行(例如Web服务器、FTP服务器等)，实现多个服务器共同完成工作任务的目标。负载均衡建立在现有网络结构之上，它提升了服务器的性能、提高了带宽利用率，增强了网络的灵活性和可靠性。 七层负载均衡的实现基于URL等应用层信息的负载均衡，Nginx 的 proxy 是它一个很强大的功能，实现了7">
+<meta name="twitter:image" content="http://www.uml.org.cn/zjjs/images/2012111243.PNG">
 
 
 
@@ -383,7 +385,24 @@
 <p><strong>通用hash、一致性hash：</strong>比较简单，可以以 NGINX 内置的变量为key进行hash，一致性hash采用了NGINX内置的一致性Hash环，支持 memcache。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">http &#123;</div><div class="line">    upstream cluster &#123;</div><div class="line">        ip hash;</div><div class="line">        server serv1;</div><div class="line">        server serv2;</div><div class="line">        server serv3;</div><div class="line">    &#125;</div><div class="line">    server &#123;</div><div class="line">        listen 80;</div><div class="line">        location/ &#123;</div><div class="line">            proxy_pass http://cluster;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="四层负载均衡的实现"><a href="#四层负载均衡的实现" class="headerlink" title="四层负载均衡的实现"></a>四层负载均衡的实现</h1><p>通过报文中的目标地址和端口，再加上负载均衡设备设置的服务器选择方式，决定最终选择的内部服务器。</p>
-<p>LVS 实现服务器集群负载均衡有三种方式，NAT，DR 和TUN。</p>
+<p>在四层负载均衡上，我们可以使用LVS （Linux Virtual Server），意即Linux 虚拟服务器，是一个虚拟服务器的集群系统。该软件是在1998年5月由章文嵩山博士创建，是国内最早出现的自由软件项目之一，它具有良好的可靠性、可扩展性和可操作性。</p>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>LVS 是基于 IP 地址的调度方法实现的，是最高效的实现方法，IP 负载均衡是通过 IPVS 内核模块实现的，IPVS 是 LVS 集群系统的核心软件。</p>
+<p>也就是说在我们使用 LVS 之前，我们必须要先安装 ipvs 软件。</p>
+<p>安装在 Director Server 上，同时在 Director Server 上虚拟出一个 IP（VIP-Virtual IP）地址。在进行域名解析的时候，我们需要将域名解析到 VIP 上。然后根据 VIP 找到 Director Server分发到真实的服务器上。</p>
+<p>访问的请求首选in 经过 VIP 到负载调度器，由负载调度器从 Real Server 列表中选取一个节点响应用户的请求。</p>
+<p>Real Server 节点返回给用户数据使用过 ipvs 实现的，ipvs 实现负载均衡的机制有三种：<strong>NAT(地址转发)</strong>，<strong>DR （直接路由）</strong>和<strong>TUN（隧道模式）</strong>。</p>
+<h2 id="LVS-安装"><a href="#LVS-安装" class="headerlink" title="LVS 安装"></a>LVS 安装</h2><p>上文提到过，安装 LVS 需要安装 ipvs，我们需要到其官网进行下载：</p>
+<p><a href="http://www.linuxvirtualserver.org/software/index.html" target="_blank" rel="noopener">http://www.linuxvirtualserver.org/software/index.html</a></p>
+<p>在下载软件时我们需要注意，要下载对应的内核版本号，使用 uname -r 查看当前 Linux 的内核版本。</p>
+<p>同时，我们也可以使用 Linux 自带的包管理器进行安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install ipsadm</div></pre></td></tr></table></figure>
+<h2 id="NAT-模式"><a href="#NAT-模式" class="headerlink" title="NAT 模式"></a>NAT 模式</h2><p>地址转换技术 DR 只需要将 VIP 配置到 DR 上，将受到的集群服务请求报文目标地址转换成根据算法计算得出的后端主机 IP 地址。</p>
+<p>然后后端主主机将相应报文发送至 DR，再由 DR 将原地址转换成 VIP 地址。下面是他的网络拓扑图：</p>
+<p><img src="http://www.uml.org.cn/zjjs/images/2012111243.PNG" alt=""></p>
+<p>在 LVS（Director）上面需要两双网卡：DIP（内网）和 VIP（外网）</p>
+<p>内网的 Real Server 主机的 IP 必须和 DIP 在同一个网络中，并且要求其网关都需要指向 DIP 的地址。</p>
+<p>RIP 都是私有 IP地址，仅用于各个节点之间的通信，Director 位于 client 和 Real Server 之间，负责处理所有的进站、出站的通信，支持端口映射。</p>
+<p>应用在较大规模的应用场景中，但 Director 容易成为整个架构的瓶颈。</p>
 
       
     </div>
@@ -408,8 +427,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/13/1/" rel="next" title="高并发和大流量解决方案（5）： CDN 加速">
-                <i class="fa fa-chevron-left"></i> 高并发和大流量解决方案（5）： CDN 加速
+              <a href="/2018/01/14/2/" rel="next" title="高并发和大流量解决方案（10）：MySQL优化">
+                <i class="fa fa-chevron-left"></i> 高并发和大流量解决方案（10）：MySQL优化
               </a>
             
           </div>
@@ -418,8 +437,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/14/2/" rel="prev" title="高并发和大流量解决方案（10）：MySQL优化">
-                高并发和大流量解决方案（10）：MySQL优化 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/14/1/" rel="prev" title="高并发和大流量解决方案（9）：数据库缓存">
+                高并发和大流量解决方案（9）：数据库缓存 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -506,7 +525,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">96</span>
+                  <span class="site-state-item-count">102</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -584,7 +603,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#七层负载均衡的实现"><span class="nav-number">1.</span> <span class="nav-text">七层负载均衡的实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四层负载均衡的实现"><span class="nav-number">2.</span> <span class="nav-text">四层负载均衡的实现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#七层负载均衡的实现"><span class="nav-number">1.</span> <span class="nav-text">七层负载均衡的实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四层负载均衡的实现"><span class="nav-number">2.</span> <span class="nav-text">四层负载均衡的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现原理"><span class="nav-number">2.1.</span> <span class="nav-text">实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LVS-安装"><span class="nav-number">2.2.</span> <span class="nav-text">LVS 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NAT-模式"><span class="nav-number">2.3.</span> <span class="nav-text">NAT 模式</span></a></li></ol></li></ol></div>
             
 
           </div>

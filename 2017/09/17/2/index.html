@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="人们经常问，“我的服务器有32G内存，12核CPU，怎样配置最好？”很遗憾，问题没有那么简单。服务器的配置应该符合它的工作负载、数据，以及对应需求，并不仅仅看硬件的情况。 MySQL有大量可以修改的参数——但是不应该随意去修改。通常只需要把基本的配置正确（大部分情况下至于很少的一些参数是真正重要的），应该更多的时间花在schema的优化、索引、以及查询设计上。在正确地配置了MySQL的基本配置项之">
+<meta name="description" content="MyISAMMyISAM存储引擎是MySQL5.5之前版本默认的存储引擎，由于这个原因，现在还有大量的数据库在使用MyISAM的表。 同时它也是MySQL大部分系统表和临时表使用的而存储引擎，这个临时表并非是我们使用CREATE TEMPORARY TABLE所建立的临时表。 使用CREATE TEMPORARY TABLE语句创建的临时表，我们可以使用MySQL各种存储引擎的，这里所说的临时表指">
 <meta name="keywords" content="前端博客,JavaScript,html5,css3,Jquery,Linux,PHP,iOS,MySQL,SQL,Redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL性能优化（5）：服务器参数对 MYSQL 的影响">
+<meta property="og:title" content="MYSQL性能优化（6）：存储引擎的选择">
 <meta property="og:url" content="http://www.maksim.website/2017/09/17/2/index.html">
 <meta property="og:site_name" content="Maksim&#39;s Website">
-<meta property="og:description" content="人们经常问，“我的服务器有32G内存，12核CPU，怎样配置最好？”很遗憾，问题没有那么简单。服务器的配置应该符合它的工作负载、数据，以及对应需求，并不仅仅看硬件的情况。 MySQL有大量可以修改的参数——但是不应该随意去修改。通常只需要把基本的配置正确（大部分情况下至于很少的一些参数是真正重要的），应该更多的时间花在schema的优化、索引、以及查询设计上。在正确地配置了MySQL的基本配置项之">
+<meta property="og:description" content="MyISAMMyISAM存储引擎是MySQL5.5之前版本默认的存储引擎，由于这个原因，现在还有大量的数据库在使用MyISAM的表。 同时它也是MySQL大部分系统表和临时表使用的而存储引擎，这个临时表并非是我们使用CREATE TEMPORARY TABLE所建立的临时表。 使用CREATE TEMPORARY TABLE语句创建的临时表，我们可以使用MySQL各种存储引擎的，这里所说的临时表指">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171013153125.png">
-<meta property="og:updated_time" content="2018-07-02T13:57:57.736Z">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20171013110625.png">
+<meta property="og:updated_time" content="2018-07-02T14:11:12.457Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL性能优化（5）：服务器参数对 MYSQL 的影响">
-<meta name="twitter:description" content="人们经常问，“我的服务器有32G内存，12核CPU，怎样配置最好？”很遗憾，问题没有那么简单。服务器的配置应该符合它的工作负载、数据，以及对应需求，并不仅仅看硬件的情况。 MySQL有大量可以修改的参数——但是不应该随意去修改。通常只需要把基本的配置正确（大部分情况下至于很少的一些参数是真正重要的），应该更多的时间花在schema的优化、索引、以及查询设计上。在正确地配置了MySQL的基本配置项之">
-<meta name="twitter:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171013153125.png">
+<meta name="twitter:title" content="MYSQL性能优化（6）：存储引擎的选择">
+<meta name="twitter:description" content="MyISAMMyISAM存储引擎是MySQL5.5之前版本默认的存储引擎，由于这个原因，现在还有大量的数据库在使用MyISAM的表。 同时它也是MySQL大部分系统表和临时表使用的而存储引擎，这个临时表并非是我们使用CREATE TEMPORARY TABLE所建立的临时表。 使用CREATE TEMPORARY TABLE语句创建的临时表，我们可以使用MySQL各种存储引擎的，这里所说的临时表指">
+<meta name="twitter:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20171013110625.png">
 
 
 
@@ -130,7 +130,7 @@
 
 
 
-  <title>MySQL性能优化（5）：服务器参数对 MYSQL 的影响 | Maksim's Website</title>
+  <title>MYSQL性能优化（6）：存储引擎的选择 | Maksim's Website</title>
   
 
 
@@ -294,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL性能优化（5）：服务器参数对 MYSQL 的影响</h1>
+          <h1 class="post-title" itemprop="name headline">MYSQL性能优化（6）：存储引擎的选择</h1>
         
 
         <div class="post-meta">
@@ -366,62 +366,58 @@
       
 
       
-        <p>人们经常问，“我的服务器有32G内存，12核CPU，怎样配置最好？”很遗憾，问题没有那么简单。服务器的配置应该符合它的工作负载、数据，以及对应需求，并不仅仅看硬件的情况。</p>
-<p>MySQL有大量可以修改的参数——但是不应该随意去修改。通常只需要把基本的配置正确（大部分情况下至于很少的一些参数是真正重要的），应该更多的时间花在schema的优化、索引、以及查询设计上。在正确地配置了MySQL的基本配置项之后，再花力气去修改其他配置项的收益通常就比较小了。</p>
-<p>从另外一方面来说，没用的配置项会导致潜风险的可能更大。我们碰到过不止一个“高度调优”过的服务器不停地彭奎，停止服务或者运行缓慢，结果都是因为错误的配置导致的。</p>
-<p>##　MySQl获取配置信息路径</p>
+        <h1 id="MyISAM"><a href="#MyISAM" class="headerlink" title="MyISAM"></a>MyISAM</h1><p>MyISAM存储引擎是MySQL5.5之前版本默认的存储引擎，由于这个原因，现在还有大量的数据库在使用MyISAM的表。</p>
+<p>同时它也是MySQL大部分系统表和临时表使用的而存储引擎，这个临时表并非是我们使用<code>CREATE TEMPORARY TABLE</code>所建立的临时表。</p>
+<p>使用<code>CREATE TEMPORARY TABLE</code>语句创建的临时表，我们可以使用MySQL各种存储引擎的，这里所说的临时表指的是在排序、分组等操作中，当当数量超过一定大小后，由查询优化器所建立的磁盘临时表。</p>
+<p>MyISAM存储引擎表由MYD和MYI组成。</p>
+<p>在这里，我们建立一个myIsam的表，并且存储引擎使用了MyISAM。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`myIsam`</span> (</div><div class="line">	<span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line">	<span class="string">`c1`</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span></div><div class="line">)<span class="keyword">ENGINE</span>= MyISAM <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8</div></pre></td></tr></table></figure>
+<p>下图为MyISAM在文件系统上的存储方式：</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20171013110625.png" alt=""></p>
+<p>以frm为扩展名存储的文件并非是MyISAM存储引擎独有，它是用于记录表的结构。MyISAM表可以存储的记录数，一般首选治愈可用磁盘空间，或者是操作系统单个文件最大尺寸的限制。</p>
+<p>作为MySQL最早的存储引擎之一，MyISAM有一些已经开发出来很多年的特性，可以满足用户的实际需求。</p>
+<p><strong>加锁与并发</strong></p>
 <ul>
-<li>命令行参数 <code>mysqld_safe --datadir=/data/sql_data</code></li>
-<li>配置文件 <code>mysqld --help --verbose | grep -A 1 &#39;Default options&#39;</code></li>
+<li>MyISAM使用的是表级锁，进行读取操作时会对需要读到的所有表加共享锁，写入时则会对表加排他锁。但是在表有读取查询的同时，可以往表中插入新的记录，这也被称之为并发插入，CONCURRENT INSERT</li>
 </ul>
-<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171013153125.png" alt=""></p>
-<p>MySQL会先从<code>/etc/my.cnf</code>文件下读取配置信息，然后是<code>/etc/mysql/my.cnf</code>。</p>
-<p>MySQL配置参数的作用域</p>
+<p><strong>修复</strong> </p>
 <ul>
-<li>全局参数 <ul>
-<li><code>set global 参数名 = 参数值;</code></li>
-<li><code>set @@global。参数名:=参数值;</code></li>
+<li>对于MyISAM表，MySQL可以手工或者自动执行检查和修复操作，但是此处的修复和事务恢复以及崩溃恢复并不是一个概念，执行表的修复可能导致数据的丢失，而且修复操作时非常慢的。可以通过CHECK TABLE table检查表的错误，如果存在错误可以通过REPAIR TABLE table进行修复。在MySQL服务器处于<strong>关闭状态</strong>时，可以通过myisamcheck命令工具进行检查和恢复，切记是处于<strong>关闭状态</strong>。</li>
 </ul>
-</li>
-<li>会话参数<ul>
-<li><code>set [session] 参数名=参数值;</code></li>
-<li><code>set @@session.参数名:=参数值;</code></li>
-</ul>
-</li>
-</ul>
-<p>会话参数在没有被单独指定的时会使用全局参数的值来当做默认值。</p>
-<p>在这里需要注意，如果在服务器运行时修改了变量的全局值，这个值对当前回话和其他任何已经存在的会话是不起作用的，这是因为会话的变量值是在连接创建时从全局值初始化来的。在每次更改之后，应该检查 SHOW GLOBAL VARIABLES 的输出，确认已经按照期望变更了。</p>
-<h2 id="内存配置相关参数"><a href="#内存配置相关参数" class="headerlink" title="内存配置相关参数"></a>内存配置相关参数</h2><p>MySQL对于内存的使用我们可以分为两个类来看。</p>
+<p><strong>索引</strong></p>
 <ul>
-<li>无法通过配置参数设置的，如MySQL运行，解析，运行，查询所需要的内存</li>
-<li>可以通过参数配置控制的，各类的缓冲池所需要的内存。</li>
+<li>对于MyISAM表，即使是BLOG和TEXT等长字段，也可以基于前500个字符创建索引，而且MyISAM也支持全文索引。</li>
+<li>延迟更新索引（Delayed Key Write）创建MyISAM表的时候，如果制定了DELAY_KEY_WRITE选项，在每次修改执行完成时，不会立即将修改的索引数据写入磁盘，而是会写到内存中的键缓冲区(in-memory key buffer)，只有在清理键缓冲区或者关闭表的时候才会将对应的索引块写入磁盘。这种方式可以极大的提升写入性能，但是在数据库或者主机崩溃的时候会造成索引损坏，需要执行修复操作。此属性可以再全局设置，也可以为单个表设置。</li>
 </ul>
-<p>对内存参数配置之前，我们需要进行考虑：</p>
+<p><strong>压缩</strong></p>
 <ul>
-<li>确定可以使用内存的上限，最根本的一点是不能超过本身物理内存的。还有一点是系统架构的问题，如果是32位系统，那么单个进程只能设置低于3G的内存空间。</li>
-<li>确定MySQL的每个连接使用的内存，例如排序缓冲和临时表</li>
-<li><p>把剩下的内存全部给 MySQL 的缓存，例如 InnoDB 的缓冲池。</p>
+<li>如果表在创建并导入数据以后，不会再进行修改操作，可以使用myisampa对表进行压缩（打包）。压缩表不能进行修改，除非解除压缩，压缩表可以极大地减少磁盘空间占用，因此也可以减少磁盘I/O，从而提升性能，压缩表支持索引，但索引也是只读的。</li>
+<li>压缩时表中的记录是独立压缩的，所以读取单行的时候不需要去解压整个表。</li>
+</ul>
+<h4 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h4><ul>
+<li>版本&lt;MySYQL5.0时默认表大小为4G，如存储大表则需要修改MAX_Rows和AVG_ROW_LENGTH这两个参数，调整后表会进行重建，这需要很长的时间。</li>
+<li>版本 &gt; 5.0时默认支持256TB </li>
+</ul>
+<p>适用场景：</p>
 <ul>
-<li><p>sort_buffer_size</p>
+<li>非事务性应用</li>
+<li>只读类应用</li>
+<li>空间类应用（在5.7之前，MyISAM是唯一支持空间函数的存储引擎）</li>
+</ul>
+<h1 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h1><p>Mysql5.5(5.58)及之后的版本默认的存储引擎由 MyISAM 引擎替换为 Innodb。</p>
+<p>和 MyISAM 存储引擎不同，InnoDB是事务型引擎，也是最重要、使用最广泛的存储引擎。它被设计用来处理大量的短期（short-lived）事务，短期事务大部分情况下是正常提交的，很少会被回滚。InnoDB 的性能和自动崩溃恢复特性，使得它在非实物型存储的需求中也很六星。除非有非常特别的原因需要使用其他的存储引擎，否则应该优先考虑 innoDB 引擎。</p>
+<p>特点：</p>
 <ul>
-<li>join_buufer_szie</li>
-<li>read_buffer_size</li>
-<li>read_rnd_buffer_size  </li>
+<li>灾难恢复性好</li>
+<li>支持全部四种级别的事务。默认的事务隔离级别是可重复度（Repeatable Read），它的事务支持通过多版本并发控制（MVVC）来提供的</li>
+<li>使用行级锁</li>
+<li>对于 InnoDB 引擎的表，其数据的物理组织形式是簇表（Cluster Table），数据按主键来组织，也就是说主键索引和数据是在一起的，数据主键的顺序物理分布。数据表的另一种常见形式是非簇表，其索引是有序的，而数据时无序的</li>
+<li>实现了缓冲管理，不仅能缓冲索引也能缓冲数据，并且会自动创建散列索引以加快数据的读取。相比之下，MyISAM 只是缓存了索引</li>
+<li>支持外键</li>
+<li>支持热备份</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="确定需要为操作系统保留多少内存"><a href="#确定需要为操作系统保留多少内存" class="headerlink" title="确定需要为操作系统保留多少内存"></a>确定需要为操作系统保留多少内存</h3><p>给操作系统保留的内存还需要保留，在系统中运行的其他所有服务所需要的内存，以及前面提到的我们无法为MySQL进行控制的那一部分内存。</p>
-<p>数据库最好使用专用的服务器，不要与其他服务共用服务器，不可避免的会造成内存的争用，给配置内存带来更多的考虑因素。</p>
-<p>另外也有人喜欢在一台物理服务器上，运行多个MySQL实例，从内存分配上来看这样做也不好，除非是在开发、测试中可以节约服务器成本，但是在生产环境中最好不要运行多个MySQL实例，因为这样也会造成内存和I/O的争用，影响mysql服务的性能。</p>
-<h3 id="如何为缓冲池分配内存"><a href="#如何为缓冲池分配内存" class="headerlink" title="如何为缓冲池分配内存"></a>如何为缓冲池分配内存</h3><p>Innodb_buffer_pool_size，Innodb缓冲区</p>
-<p>总内存-（每个线程所需要的内存*连接数）- 系统保留内存</p>
-<p>手册中建议大家该内存大小应该为服务器内存大小的百分之七十五以上，上面提到了MySQL是如何使用内存的，所以不能简单粗暴的设置成百分之七十五，必须还得考虑其他的一些因素。</p>
-<h4 id="key-buffer-size"><a href="#key-buffer-size" class="headerlink" title="key_buffer_size"></a>key_buffer_size</h4><p>设置这个变量可以一次性为缓冲区(key buffer，也叫键缓存 key cache)分配所指定的空间，然而</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select sum(index_length) from information_schema.tables where engine=&apos;myisam&apos;</div></pre></td></tr></table></figure>
-<h2 id="I-O相关配置参数"><a href="#I-O相关配置参数" class="headerlink" title="I/O相关配置参数"></a>I/O相关配置参数</h2><p>Innodb I/O相关配置</p>
-<h2 id="安全相关配置参数"><a href="#安全相关配置参数" class="headerlink" title="安全相关配置参数"></a>安全相关配置参数</h2><p><code>expire_logs_days</code> 指定自动清理binlog的天数，这个天数的设置，最好能够覆盖两次全备间隔的天数，如果每天都进行全备的话，最好也能够保持7天，这样以备在特殊情况下数据的查找，比如数据出现异常的情况下，就可能会使用到binlog日志进行查找。</p>
+<p>Innodb 拥有表空间的概念，表中的数据时存储在表空间之中的，具体存储在什么样的表空间之中则由<code>innodb_file_per_table</code>这个参数决定。</p>
+<p>如果值为 <code>ON</code>,会为每个 innodb 表建立一个<code>tablename.ibd</code>的系统文件，如果该参数为<code>OFF</code>时会把数据存储到系统的表空间<code>ibdataX</code></p>
 
       
     </div>
@@ -456,8 +452,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/17/2/" rel="prev" title="MYSQL性能优化（6）：存储引擎的选择">
-                MYSQL性能优化（6）：存储引擎的选择 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/17/1/" rel="prev" title="MySQL性能优化(4)：操作系统优化">
+                MySQL性能优化(4)：操作系统优化 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -544,7 +540,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">96</span>
+                  <span class="site-state-item-count">102</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -622,7 +618,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存配置相关参数"><span class="nav-number">1.</span> <span class="nav-text">内存配置相关参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#确定需要为操作系统保留多少内存"><span class="nav-number">1.1.</span> <span class="nav-text">确定需要为操作系统保留多少内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何为缓冲池分配内存"><span class="nav-number">1.2.</span> <span class="nav-text">如何为缓冲池分配内存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#key-buffer-size"><span class="nav-number">1.2.1.</span> <span class="nav-text">key_buffer_size</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O相关配置参数"><span class="nav-number">2.</span> <span class="nav-text">I/O相关配置参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全相关配置参数"><span class="nav-number">3.</span> <span class="nav-text">安全相关配置参数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MyISAM"><span class="nav-number">1.</span> <span class="nav-text">MyISAM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#限制"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">限制</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#InnoDB"><span class="nav-number">2.</span> <span class="nav-text">InnoDB</span></a></li></ol></div>
             
 
           </div>
