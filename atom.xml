@@ -18,8 +18,8 @@
   
   <entry>
     <title>Redis 的持久化方案</title>
-    <link href="http://www.maksim.website/2018/07/18/cjjrthlip007mc7rdyj444jsz/"/>
-    <id>http://www.maksim.website/2018/07/18/cjjrthlip007mc7rdyj444jsz/</id>
+    <link href="http://www.maksim.website/2018/07/18/cjjsna3oa0088fbrd0wva1vzv/"/>
+    <id>http://www.maksim.website/2018/07/18/cjjsna3oa0088fbrd0wva1vzv/</id>
     <published>2018-07-18T14:21:03.590Z</published>
     <updated>2018-07-19T00:27:49.921Z</updated>
     
@@ -34,6 +34,30 @@
       
     
     </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>利用 tail 命令监控文件变化</title>
+    <link href="http://www.maksim.website/2018/07/17/2/"/>
+    <id>http://www.maksim.website/2018/07/17/2/</id>
+    <published>2018-07-16T16:00:00.000Z</published>
+    <updated>2018-07-17T13:47:36.478Z</updated>
+    
+    <content type="html"><![CDATA[<p>tail 命令从指定点开始将文件写到标准输出.使用tail命令的-f选项可以方便的查阅正在改变的日志文件,tail -f filename会把filename里最尾部的内容显示在屏幕上,并且不但刷新,使你看到最新的文件内容. </p><h1 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tail(选项)(参数)</div></pre></td></tr></table></figure><p>选项</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">--retry：即是在tail命令启动时，文件不可访问或者文件稍后变得不可访问，都始终尝试打开文件。使用此选项时需要与选项“——follow=name”连用；</div><div class="line">-c&lt;N&gt;或——bytes=&lt;N&gt;：输出文件尾部的N（N为整数）个字节内容；</div><div class="line">-f&lt;name/descriptor&gt;或；--follow&lt;nameldescript&gt;：显示文件最新追加的内容。“name”表示以文件名的方式监视文件的变化。“-f”与“-fdescriptor”等效；</div><div class="line">-F：与选项“-follow=name”和“--retry&quot;连用时功能相同；</div><div class="line">-n&lt;N&gt;或——line=&lt;N&gt;：输出文件的尾部N（N位数字）行内容。</div><div class="line">--pid=&lt;进程号&gt;：与“-f”选项连用，当指定的进程号的进程终止后，自动退出tail命令；</div><div class="line">-q或——quiet或——silent：当有多个文件参数时，不输出各个文件名；</div><div class="line">-s&lt;秒数&gt;或——sleep-interal=&lt;秒数&gt;：与“-f”选项连用，指定监视文件变化时间隔的秒数；</div><div class="line">-v或——verbose：当有多个文件参数时，总是输出各个文件名；</div><div class="line">--help：显示指令的帮助信息；</div><div class="line">--version：显示指令的版本信息。</div></pre></td></tr></table></figure><p><strong>2．**</strong>命令功能：**</p><p>用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件。</p><p><strong>3．**</strong>命令参数：**</p><p>-f 循环读取</p><p>-q 不显示处理信息</p><p>-v 显示详细的处理信息</p><p>-c&lt;数目&gt; 显示的字节数</p><p>-n&lt;行数&gt; 显示行数</p><p>–pid=PID 与-f合用,表示在进程ID,PID死掉之后结束. </p><p>-q, –quiet, –silent 从不输出给出文件名的首部 </p><p>-s, –sleep-interval=S 与-f合用,表示在每次反复的间隔休眠S秒 </p><p><strong>4．**</strong>使用实例：**</p><p><strong>实例1：显示文件末尾内容</strong></p><p><strong>命令：</strong></p><p>tail -n 5 log2014.log</p><p><strong>输出：</strong></p><p>[root@localhost test]# tail -n 5 log2014.log </p><p>2014-09</p><p>2014-10</p><p>2014-11</p><p>2014-12</p><p>==============================[root@localhost test]#</p><p><strong>说明：</strong></p><p>显示文件最后5行内容</p><p><strong>实例2：循环查看文件内容</strong></p><p><strong>命令：</strong></p><p>tail -f test.log</p><p><strong>输出：</strong></p><p>[root@localhost ~]# ping 192.168.120.204 &gt; test.log &amp;</p><p>[1] 11891[root@localhost ~]# tail -f test.log </p><p>PING 192.168.120.204 (192.168.120.204) 56(84) bytes of data.</p><p>64 bytes from 192.168.120.204: icmp_seq=1 ttl=64 time=0.038 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=2 ttl=64 time=0.036 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=3 ttl=64 time=0.033 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=4 ttl=64 time=0.027 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=5 ttl=64 time=0.032 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=6 ttl=64 time=0.026 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=7 ttl=64 time=0.030 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=8 ttl=64 time=0.029 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=9 ttl=64 time=0.044 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=10 ttl=64 time=0.033 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=11 ttl=64 time=0.027 ms</p><p>[root@localhost ~]#</p><p><strong>说明：</strong></p><p>ping 192.168.120.204 &gt; test.log &amp; //在后台ping远程主机。并输出文件到test.log；这种做法也使用于一个以上的档案监视。用Ctrl＋c来终止。 </p><p><strong>实例3：从第5行开始显示文件</strong></p><p><strong>命令：</strong></p><p>tail -n +5 log2014.log</p><p><strong>输出：</strong></p><p>[root@localhost test]# cat log2014.log </p><p>2014-01</p><p>2014-02</p><p>2014-03</p><p>2014-04</p><p>2014-05</p><p>2014-06</p><p>2014-07</p><p>2014-08</p><p>2014-09</p><p>2014-10</p><p>2014-11</p><p>2014-12</p><p>==============================</p><p>[root@localhost test]# tail -n +5 log2014.log</p><p>2014-05</p><p>2014-06</p><p>2014-07</p><p>2014-08</p><p>2014-09</p><p>2014-10</p><p>2014-11</p><p>2014-12</p><p>==============================</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;tail 命令从指定点开始将文件写到标准输出.使用tail命令的-f选项可以方便的查阅正在改变的日志文件,tail -f filename会把filename里最尾部的内容显示在屏幕上,并且不但刷新,使你看到最新的文件内容. &lt;/p&gt;
+&lt;h1 id=&quot;命令格式&quot;&gt;&lt;a hr
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.maksim.website/categories/Linux/"/>
     
     
   </entry>
@@ -64,33 +88,9 @@
   </entry>
   
   <entry>
-    <title>利用 tail 命令监控文件变化</title>
-    <link href="http://www.maksim.website/2018/07/17/2/"/>
-    <id>http://www.maksim.website/2018/07/17/2/</id>
-    <published>2018-07-16T16:00:00.000Z</published>
-    <updated>2018-07-17T13:47:36.478Z</updated>
-    
-    <content type="html"><![CDATA[<p>tail 命令从指定点开始将文件写到标准输出.使用tail命令的-f选项可以方便的查阅正在改变的日志文件,tail -f filename会把filename里最尾部的内容显示在屏幕上,并且不但刷新,使你看到最新的文件内容. </p><h1 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tail(选项)(参数)</div></pre></td></tr></table></figure><p>选项</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">--retry：即是在tail命令启动时，文件不可访问或者文件稍后变得不可访问，都始终尝试打开文件。使用此选项时需要与选项“——follow=name”连用；</div><div class="line">-c&lt;N&gt;或——bytes=&lt;N&gt;：输出文件尾部的N（N为整数）个字节内容；</div><div class="line">-f&lt;name/descriptor&gt;或；--follow&lt;nameldescript&gt;：显示文件最新追加的内容。“name”表示以文件名的方式监视文件的变化。“-f”与“-fdescriptor”等效；</div><div class="line">-F：与选项“-follow=name”和“--retry&quot;连用时功能相同；</div><div class="line">-n&lt;N&gt;或——line=&lt;N&gt;：输出文件的尾部N（N位数字）行内容。</div><div class="line">--pid=&lt;进程号&gt;：与“-f”选项连用，当指定的进程号的进程终止后，自动退出tail命令；</div><div class="line">-q或——quiet或——silent：当有多个文件参数时，不输出各个文件名；</div><div class="line">-s&lt;秒数&gt;或——sleep-interal=&lt;秒数&gt;：与“-f”选项连用，指定监视文件变化时间隔的秒数；</div><div class="line">-v或——verbose：当有多个文件参数时，总是输出各个文件名；</div><div class="line">--help：显示指令的帮助信息；</div><div class="line">--version：显示指令的版本信息。</div></pre></td></tr></table></figure><p><strong>2．**</strong>命令功能：**</p><p>用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件。</p><p><strong>3．**</strong>命令参数：**</p><p>-f 循环读取</p><p>-q 不显示处理信息</p><p>-v 显示详细的处理信息</p><p>-c&lt;数目&gt; 显示的字节数</p><p>-n&lt;行数&gt; 显示行数</p><p>–pid=PID 与-f合用,表示在进程ID,PID死掉之后结束. </p><p>-q, –quiet, –silent 从不输出给出文件名的首部 </p><p>-s, –sleep-interval=S 与-f合用,表示在每次反复的间隔休眠S秒 </p><p><strong>4．**</strong>使用实例：**</p><p><strong>实例1：显示文件末尾内容</strong></p><p><strong>命令：</strong></p><p>tail -n 5 log2014.log</p><p><strong>输出：</strong></p><p>[root@localhost test]# tail -n 5 log2014.log </p><p>2014-09</p><p>2014-10</p><p>2014-11</p><p>2014-12</p><p>==============================[root@localhost test]#</p><p><strong>说明：</strong></p><p>显示文件最后5行内容</p><p><strong>实例2：循环查看文件内容</strong></p><p><strong>命令：</strong></p><p>tail -f test.log</p><p><strong>输出：</strong></p><p>[root@localhost ~]# ping 192.168.120.204 &gt; test.log &amp;</p><p>[1] 11891[root@localhost ~]# tail -f test.log </p><p>PING 192.168.120.204 (192.168.120.204) 56(84) bytes of data.</p><p>64 bytes from 192.168.120.204: icmp_seq=1 ttl=64 time=0.038 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=2 ttl=64 time=0.036 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=3 ttl=64 time=0.033 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=4 ttl=64 time=0.027 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=5 ttl=64 time=0.032 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=6 ttl=64 time=0.026 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=7 ttl=64 time=0.030 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=8 ttl=64 time=0.029 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=9 ttl=64 time=0.044 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=10 ttl=64 time=0.033 ms</p><p>64 bytes from 192.168.120.204: icmp_seq=11 ttl=64 time=0.027 ms</p><p>[root@localhost ~]#</p><p><strong>说明：</strong></p><p>ping 192.168.120.204 &gt; test.log &amp; //在后台ping远程主机。并输出文件到test.log；这种做法也使用于一个以上的档案监视。用Ctrl＋c来终止。 </p><p><strong>实例3：从第5行开始显示文件</strong></p><p><strong>命令：</strong></p><p>tail -n +5 log2014.log</p><p><strong>输出：</strong></p><p>[root@localhost test]# cat log2014.log </p><p>2014-01</p><p>2014-02</p><p>2014-03</p><p>2014-04</p><p>2014-05</p><p>2014-06</p><p>2014-07</p><p>2014-08</p><p>2014-09</p><p>2014-10</p><p>2014-11</p><p>2014-12</p><p>==============================</p><p>[root@localhost test]# tail -n +5 log2014.log</p><p>2014-05</p><p>2014-06</p><p>2014-07</p><p>2014-08</p><p>2014-09</p><p>2014-10</p><p>2014-11</p><p>2014-12</p><p>==============================</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;tail 命令从指定点开始将文件写到标准输出.使用tail命令的-f选项可以方便的查阅正在改变的日志文件,tail -f filename会把filename里最尾部的内容显示在屏幕上,并且不但刷新,使你看到最新的文件内容. &lt;/p&gt;
-&lt;h1 id=&quot;命令格式&quot;&gt;&lt;a hr
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://www.maksim.website/categories/Linux/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title></title>
-    <link href="http://www.maksim.website/2018/07/02/cjjrthl9r0001c7rddk5leqiu/"/>
-    <id>http://www.maksim.website/2018/07/02/cjjrthl9r0001c7rddk5leqiu/</id>
+    <link href="http://www.maksim.website/2018/07/02/cjjsna3fc0001fbrdep703x5x/"/>
+    <id>http://www.maksim.website/2018/07/02/cjjsna3fc0001fbrdep703x5x/</id>
     <published>2018-07-02T13:52:36.919Z</published>
     <updated>2018-07-02T13:52:36.919Z</updated>
     
@@ -103,8 +103,8 @@
   
   <entry>
     <title></title>
-    <link href="http://www.maksim.website/2018/07/02/cjjrthlgb004vc7rdtk2hi6kf/"/>
-    <id>http://www.maksim.website/2018/07/02/cjjrthlgb004vc7rdtk2hi6kf/</id>
+    <link href="http://www.maksim.website/2018/07/02/cjjsna3lr004wfbrdpytk23ad/"/>
+    <id>http://www.maksim.website/2018/07/02/cjjsna3lr004wfbrdpytk23ad/</id>
     <published>2018-07-02T12:11:33.990Z</published>
     <updated>2018-07-02T13:58:19.299Z</updated>
     
