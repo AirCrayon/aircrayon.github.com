@@ -92,7 +92,7 @@
 <meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180717191043.png">
 <meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/Jietu20180718-194727.jpg">
 <meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/Jietu20180718-203012.jpg">
-<meta property="og:updated_time" content="2018-07-18T14:32:32.820Z">
+<meta property="og:updated_time" content="2018-07-19T00:27:53.408Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从简单的示例中入门 Redis 五种常用数据结构">
 <meta name="twitter:description" content="概述Redis 是完全开源免费的，遵守 BSD 协议，是一个高性能的 key-value 数据库。  简单的 key-value 存储，性能极高 Redis 拥有更多的数据结构和支持更丰富的数据操作 Redis 支持数据持久化和数据恢复 Redis 的所有操作都是原子性的 服务器支持 AUTH 密码验证  Redis 和 PHP 组件的依赖关系 在 Redis 的安装时，有一个配置文件，可以在安装">
@@ -869,6 +869,22 @@
 <p>然后在 PHP 中使用倒序排列输出排名为前五的小说</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line">$redis = <span class="keyword">new</span> Redis();</div><div class="line">$redis-&gt;connect(<span class="string">'127.0.0.1'</span>, <span class="number">6379</span>);</div><div class="line"></div><div class="line">$books = $redis-&gt;zRevRange(<span class="string">'book_rank'</span>, <span class="number">0</span> ,<span class="number">4</span>, <span class="keyword">true</span>);</div><div class="line">$count = $redis-&gt;zSize(<span class="string">'book_rank'</span>);</div><div class="line"><span class="keyword">echo</span> <span class="string">'当前一共有'</span>.$count.<span class="string">'本书，显示排名前五的书籍&lt;br&gt;'</span>;</div><div class="line"><span class="keyword">foreach</span> ($books <span class="keyword">as</span> $key =&gt; $value) &#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">'《'</span>.$key.<span class="string">'》的评分为:'</span>.$value.<span class="string">'星&lt;br&gt;'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><img src="http://ogxeww23n.bkt.clouddn.com/Jietu20180718-203012.jpg" alt=""></p>
+<h1 id="合理的使用-Redis"><a href="#合理的使用-Redis" class="headerlink" title="合理的使用 Redis"></a>合理的使用 Redis</h1><ul>
+<li><p>防止内存站满：</p>
+<ul>
+<li>设置超时时间，如果把 redis 定位成一个缓存使用，键值一定要设置一个超时时间，如果不设置的话 key 会一直占着内存，造成非常大的浪费，而且随着时间的推移，内存的占用率越来越大，如果有一天达到内存上限，Redis 就会不断的进行持久化，另外一个 key 的时长进行综合评估，也不是越长越好，太长了其实跟没有超时时间没有太大区别。</li>
+<li>不存方过大文件，一般来说 Redis 每一个键在存储数据的时候不要超过500字节，要是超过的话一定要想办法先压缩一下然后在进行储存，Redis 是将数据放到内存中的，如果把太大的东西丢进 Redis 里面肯定会浪费一定的内存的。还有就是数据是需要来回传递的，当访问量非常高的时候，你里面还带了一个非常大的文件，来回的传输，很有可能就把带宽占用满了，其他的服务就不可用。</li>
+<li>不存不常用数据，Redis 比较适合存放一些热数据，所以我们要把冷热数据进行分离，冷数据比较适合放在 Mysql 之中，在 Redis 应该存一些比较高频的数据，把一些不长用的数据放在 Redis 中就太有点浪费资源了。Redis 存储数据量小的时候，速度肯定要快一些。不同的业务数据最好分开存储，不要把一些不相关的业务数据都放到一个 Redis 实例里面。</li>
+</ul>
+</li>
+<li><p>提高使用效率</p>
+<ul>
+<li>合理使用不同的数据类型：Redis 支持的类型非常的多，根据不同业务的业务场景，来使用不同的数据结构，不同的字段类型适用场景是不一样的。</li>
+<li>慎用正则处理或批量操作 Hash、Set 等：这是一个非常恐怖的操作，Hash 和 Set 本身就是一个很大的数据，然后在批量操作的话很要命的，因为 Redis 是单线程的，如果线上 Key 非常多的时候，如果再进行正则匹配效率会非常的低，效率一旦低下来，就会堵塞其他命令的运行。如果在批量操作 Hash 的时候，是需要把 feild 也进行一次操作的，</li>
+</ul>
+<p>所以说不要以为 Redis 是万能的，最终他还是要消耗 CPU 的。</p>
+</li>
+</ul>
 
       
     </div>
@@ -903,7 +919,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/18/cjjrrizup007y7nrd8lf55q93/" rel="prev" title="Redis 的持久化方案">
+              <a href="/2018/07/18/cjjrthlip007mc7rdyj444jsz/" rel="prev" title="Redis 的持久化方案">
                 Redis 的持久化方案 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -1069,7 +1085,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-和-PHP-组件的依赖关系"><span class="nav-number">2.</span> <span class="nav-text">Redis 和 PHP 组件的依赖关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-常用命令"><span class="nav-number">3.</span> <span class="nav-text">Redis 常用命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-常用字段类型"><span class="nav-number">4.</span> <span class="nav-text">Redis 常用字段类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">4.1.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-number">4.1.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例：使用-String-记录用户登录次数"><span class="nav-number">4.1.2.</span> <span class="nav-text">示例：使用 String 记录用户登录次数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash-类型"><span class="nav-number">4.2.</span> <span class="nav-text">Hash 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#示例：-存储用户信息"><span class="nav-number">4.2.1.</span> <span class="nav-text">示例： 存储用户信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List-类型"><span class="nav-number">4.3.</span> <span class="nav-text">List 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#示例：秒杀"><span class="nav-number">4.3.1.</span> <span class="nav-text">示例：秒杀</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-类型"><span class="nav-number">4.4.</span> <span class="nav-text">Set 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令-1"><span class="nav-number">4.4.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例：查并集"><span class="nav-number">4.4.2.</span> <span class="nav-text">示例：查并集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Zset有序集合"><span class="nav-number">4.5.</span> <span class="nav-text">Zset有序集合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令-2"><span class="nav-number">4.5.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#案例：按照评分给小说排名"><span class="nav-number">4.5.2.</span> <span class="nav-text">案例：按照评分给小说排名</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-和-PHP-组件的依赖关系"><span class="nav-number">2.</span> <span class="nav-text">Redis 和 PHP 组件的依赖关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-常用命令"><span class="nav-number">3.</span> <span class="nav-text">Redis 常用命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-常用字段类型"><span class="nav-number">4.</span> <span class="nav-text">Redis 常用字段类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">4.1.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-number">4.1.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例：使用-String-记录用户登录次数"><span class="nav-number">4.1.2.</span> <span class="nav-text">示例：使用 String 记录用户登录次数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash-类型"><span class="nav-number">4.2.</span> <span class="nav-text">Hash 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#示例：-存储用户信息"><span class="nav-number">4.2.1.</span> <span class="nav-text">示例： 存储用户信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List-类型"><span class="nav-number">4.3.</span> <span class="nav-text">List 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#示例：秒杀"><span class="nav-number">4.3.1.</span> <span class="nav-text">示例：秒杀</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-类型"><span class="nav-number">4.4.</span> <span class="nav-text">Set 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令-1"><span class="nav-number">4.4.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例：查并集"><span class="nav-number">4.4.2.</span> <span class="nav-text">示例：查并集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Zset有序集合"><span class="nav-number">4.5.</span> <span class="nav-text">Zset有序集合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令-2"><span class="nav-number">4.5.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#案例：按照评分给小说排名"><span class="nav-number">4.5.2.</span> <span class="nav-text">案例：按照评分给小说排名</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合理的使用-Redis"><span class="nav-number">5.</span> <span class="nav-text">合理的使用 Redis</span></a></li></ol></div>
             
 
           </div>
