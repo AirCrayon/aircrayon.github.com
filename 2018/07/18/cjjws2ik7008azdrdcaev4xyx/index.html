@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Maksim's Website" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="持久化这个词对于长时间从事It 行业，或者是开发人员而言，应该不会陌生，那么到底什么持久化？ Redis 是一款内存数据库，所有的数据都会被放置到内存当中，如果在运行时发生了宕机，那么保存在内存中的数据就会全部丢失，这并不是我们想要看到的，为此，Redis 提供了持久化机制，对数据的更新异步的保存到磁盘当中。 Redis 支持 RDB 和 AOF 两种持久化机制，持久化功能有效地避免因为进程退出造">
+<meta name="keywords" content="前端博客,JavaScript,html5,css3,Jquery,Linux,PHP,iOS,MySQL,SQL,Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis 的持久化方案">
+<meta property="og:url" content="http://www.maksim.website/2018/07/18/cjjws2ik7008azdrdcaev4xyx/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="持久化这个词对于长时间从事It 行业，或者是开发人员而言，应该不会陌生，那么到底什么持久化？ Redis 是一款内存数据库，所有的数据都会被放置到内存当中，如果在运行时发生了宕机，那么保存在内存中的数据就会全部丢失，这并不是我们想要看到的，为此，Redis 提供了持久化机制，对数据的更新异步的保存到磁盘当中。 Redis 支持 RDB 和 AOF 两种持久化机制，持久化功能有效地避免因为进程退出造">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-25T14:00:26.529Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis 的持久化方案">
+<meta name="twitter:description" content="持久化这个词对于长时间从事It 行业，或者是开发人员而言，应该不会陌生，那么到底什么持久化？ Redis 是一款内存数据库，所有的数据都会被放置到内存当中，如果在运行时发生了宕机，那么保存在内存中的数据就会全部丢失，这并不是我们想要看到的，为此，Redis 提供了持久化机制，对数据的更新异步的保存到磁盘当中。 Redis 支持 RDB 和 AOF 两种持久化机制，持久化功能有效地避免因为进程退出造">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.maksim.website/2018/07/18/cjjws2ik7008azdrdcaev4xyx/"/>
+
+
+
+
+
+  <title>Redis 的持久化方案 | Maksim's Website</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Maksim's Website</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/07/18/cjjws2ik7008azdrdcaev4xyx/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Maksim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maksim's Website">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Redis 的持久化方案</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-18T22:21:03+08:00">
+                2018-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>持久化这个词对于长时间从事It 行业，或者是开发人员而言，应该不会陌生，那么到底什么持久化？</p>
+<p>Redis 是一款内存数据库，所有的数据都会被放置到内存当中，如果在运行时发生了宕机，那么保存在内存中的数据就会全部丢失，这并不是我们想要看到的，为此，Redis 提供了持久化机制，对数据的更新异步的保存到磁盘当中。</p>
+<p>Redis 支持 RDB 和 AOF 两种持久化机制，持久化功能有效地避免因为进程退出造成数据丢失的问题，当下次重启时利用之前持久化的文件即可实现数据恢复。</p>
+<h1 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h1><p>RDB 可以指定时间间隔保存数据快照，这有些类似于数据库表快照性质的，也就是说他隔一段时间就会把数据拍个照片然后保存下来，这也是数据库常用的备份方式，在某一个时间点执行备份 sql 或者是备份目录之类的，出发 RDB 持久化过程分为手动出发和自动触发。</p>
+<h2 id="触发机制"><a href="#触发机制" class="headerlink" title="触发机制"></a>触发机制</h2><p>手动出发分别对应 save 和 bgsave 命令：</p>
+<p><strong>save 命令：</strong>阻塞当前 Redis 服务器，直到 RDB 过程完成为止，对于内存比较大的实例会造成长时间堵塞，线上环境不建议使用。运行 save 命令对应的 Redis 如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DB saved on disk</div></pre></td></tr></table></figure>
+<p><strong>bgsave 命令：</strong>Redis 执行 fork 进程操作创建子进程，RDB 持久化过程由紫禁城负责，完成后自动结束。阻塞只发生在 fork 阶段，一般时间很短。运行 bgsave 命令对应的 Redis 日志如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Backgroud saving stated by pid 3151</div><div class="line">DB saved on disk</div><div class="line">RDB: 0 MB of memory used by copy-on-write</div><div class="line">Background saving terminated with success</div></pre></td></tr></table></figure>
+<p>显然bgsave 命令是针对 save 阻塞问题做的优化，因此Redis 内部所有涉及 RDB 的操作都采用 bgsave 的方式，而 save 命令已经被废弃了。</p>
+<p>除了手动触发，之外，Redis 内部还存在自动触发 RDB 的持久化机制：</p>
+<ol>
+<li>使用 save 相关配置，如“save m n”表示 m 秒内数据集存在n 此修改时，自动触发bgsave。</li>
+<li>如果从节点执行全量赋值操作，主节点自动执行 bgsave 生成 RDB 文件并发送给从节点</li>
+<li>执行 debug reload 命令重新加载 Redis 时，也会自动触发 save 操作。</li>
+<li>默认情况下执行 shotdown 命令时，如果没有开启 AOF 持久化功能则自动执行 bgsave</li>
+</ol>
+<h2 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h2><ol>
+<li>执行 bgsave 命令，Redis 父进程判断当前是否存在正在执行的子进程，如 RDB/AOF 子进程，如果存在 bgsave 命令则直接返回。</li>
+<li>父进程执行 fork 操作创建子进程，fork 操作过程中父进程会阻塞，通过 info stats 命令查看 latest_fork_usec 选项，可以获取最近一个 fork 操作的耗时，单位为微秒。</li>
+<li>父进程 fork 完成后，bgsave 命令返回“Background saveing started”信息并不再阻塞父进程，可以继续响应其他命令。</li>
+<li>子进程创建 RDB 文件，根据父进程内存生成临时快照文件，完成后对原有文件进行原子替换。执行 lastsave 命令可以获取最后一次生成 RDB 的时间，对应 info 统计的 rdb_last_save_time 选项。</li>
+<li>进程发送信号告诉父进程表示完成，父进程更新统计信息，具体见 info Persistence 下的 rdb_*相关选项。</li>
+</ol>
+<p>RDB 文件保存在 dir 配置指定的目录下，文件通过dbfilename 配置指定。可以公国执行 config set dir {newDir}和 config set dbfilename {newFilename} 运行期间动态执行，当下次运行 RDB 文件会保存到新目录上。</p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p><strong>RDB 模式的优点</strong></p>
+<ul>
+<li>适用于进行备份</li>
+<li>fork 出子进程进行备份，主进程没有任何 IO 操作</li>
+<li>恢复大数据集时的速度快</li>
+</ul>
+<p><strong>RDB 模式的优点：</strong></p>
+<ul>
+<li>特定条件下进行一次持久化，易丢失数据</li>
+<li>庞大数据时，保存时会出现性能问题</li>
+</ul>
+<p>相比之下，RDB 模式将时间设置的相对密集了，频繁的备份就会占用较多的资源，但是如果把时间拉的比较远了，万一出问题，就会恢复到上一个时间点，很可能会丢失数据。</p>
+<h2 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h2><p>AOF 以独立日志的方式保存所有历史操作命令，当需要回复的时候，会按照之前输入的命令挨个都执行一次，主要作用是解决了数据持久化的实时性，目前已经是 Redis 持久化的主流方式。</p>
+<p>配置方式；</p>
+<blockquote>
+<p> redis.confg: appendonly yes</p>
+</blockquote>
+<p>AOF 默认不开启，AOF 文件名通过 appendfilename 进行培植，默认文件名是 appendonly.aof，保存路径与 RDB 一样，需要通过 dir 配置指定。</p>
+<p>AOF 工作流程：命令写入（append）、文件同步（sync）、文件重写（Write）、重启加载（load）</p>
+<p>在命令写入命令时候，Redis 会将命令追加到 aof_buf(缓冲区中)，然后再根据对应的策略向硬盘做同步操作，随着AOF 文件越来越大，需要定期对 AOF 文件进行重写达到压缩的目的。</p>
+<p>当 Redis 重启时候，可以加载 AOF 文件进行恢复。</p>
+<p>AOF 命令的写入的内容直接是文本协议格式，例如 set hello world 这套命令，在 AOF 缓冲区会追加如下文本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">*3\r\n$3\rnset\r\n$5\r]nhello\r\n$5\r\nworld\r\n</div></pre></td></tr></table></figure>
+<p>这样有一个好处，文本协议具有可读性，方便直接修改和处理，而且直接采用协议格式，可以避免了二次处理的开销。</p>
+<p>缓冲区同步文件策略：</p>
+<table>
+<thead>
+<tr>
+<th>可配置值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>always</td>
+<td>命令写入 aof_buf 后调用系统 fsync 操作同步到 AOF 文件，fsync 完成后线程返回</td>
+</tr>
+<tr>
+<td>everysec</td>
+<td>命令写入 aof_buf 后调用系统 Write 操作，Write 操作完成后县城返回。fsync 同步文件操作由专门线程每秒调用一次。</td>
+</tr>
+<tr>
+<td>no</td>
+<td>命令写入 aof_buf 后调用系统 Write 操作，不对 AOF 文件做 fsync 同步，同步硬盘操作系统由操作系统负责，通常同步周期最长30秒</td>
+</tr>
+</tbody>
+</table>
+<p>系统调用 Write 和 fsync 说明：</p>
+<p>Write 操作会触发延迟写机制，Linux 在内核提供页缓冲区来提高硬盘 IO 性能。Write 操操作在写入系统缓冲区后直接返回，同步硬盘操作依赖于系统调度机制不过同步文件之前，如果此时系统故障宕机，缓冲区内数据将丢失。</p>
+<p>fsync 针对单个文件操作，做强制硬盘同步，fsyn 将阻塞直接写到硬盘完成后返回，保证了数据持久化。</p>
+<h2 id="重写机制"><a href="#重写机制" class="headerlink" title="重写机制"></a>重写机制</h2><p>随着命令不断写入 AOF，文件越来越大，为了解决这个问题，Redis 引入 AOF 重写机制压缩文件体积。AOF 文件重写是把 Redis 进程内的数据转化为写命令同步到新的 AOF 文件的过程。</p>
+<p>重写后的 AOF 文件会变小的主要原因是：</p>
+<ol>
+<li>进程内已超时的数据不会写入文件</li>
+<li>旧的 AOF 文件含有无效命令，如del key1、 hdel key2、srem keys、set alll、set a222等。重写使用进程内数据直接生成，这样新的 AOF 文件只保留最终数据的写入命令</li>
+<li>多条写命令可以合并成为一个如：lpush list a、lpush list b、lpush list c 可以转化为 lpush list a b c。为了防止但命令过大造成数据段缓冲区溢出，对于 list、set、hash、zset 等类型操作，以64个元素为界拆分多条。</li>
+</ol>
+<p>AOF 重写降低了文件占用空间，除此之外，另外一个目的是更小的 AOF 文件可以更快地被 Redis 加载。</p>
+<p>AOF 重写过程可以手动触发和被动触发：</p>
+<p><strong>手动触发：</strong>直接调用bgrewriteaof</p>
+<p><strong>被动触发：</strong>根据 auto-aof-rewrite-min-size 和 auto-aof-rewrite-percentage 参数确定自动触发的时机。</p>
+<h1 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h1><p><strong>AOF模式的优点</strong></p>
+<ul>
+<li>数据非常完整，故障恢复丢失数据少</li>
+<li>可对历史记录进行处理</li>
+</ul>
+<p><strong>AOF模式的缺点</strong></p>
+<ul>
+<li>把整个操作都记录下来，这也就导致了文件体积较大</li>
+<li>速度低于 RDB 且故障恢复速度慢，如果几十万次或者上百万条记录，要比 RDB 慢上很多。</li>
+</ul>
+<p>这两种模式可以同时开启，但是会优先加载 AOF。但是需要注意，如果想要同时开启，尤其 AOF 模式最好 Redis 比较干净的时候就开启，刚开始的时候，我们用的 RDB 模式进行的备份，而 AOF 模式会从 AOF 的那个时间点开始计算，如果在之前有数据，恢复的时候就会出问题了。</p>
+<h1 id="RDB-和-AOF-的抉择"><a href="#RDB-和-AOF-的抉择" class="headerlink" title="RDB 和 AOF 的抉择"></a>RDB 和 AOF 的抉择</h1><p>首先，我们队 RDB 和 AOF 做一个对比</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>RDB</th>
+<th>AOF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>启动优先级</td>
+<td>低</td>
+<td>高</td>
+</tr>
+<tr>
+<td>体积</td>
+<td>小</td>
+<td>大</td>
+</tr>
+<tr>
+<td>数据安全性</td>
+<td>丢数据</td>
+<td>根据策略决定</td>
+</tr>
+<tr>
+<td>轻重</td>
+<td>重</td>
+<td>轻</td>
+</tr>
+</tbody>
+</table>
+<p>假如说 RDB 和 AOF 同时开启， 也就是说在工作目录下既有 RDB 文件也有 AOF 文件，如果此时突然宕机，Redis 重启之后会优先加载 AOF，因为AOF的数据级别是比较高的，大部分情况下它会比 RDB 保存更新的数据。</p>
+<p>RDB 使用类似二进制的形式进行存储，并且进行了压缩，所以他的体积非常小，恢复速度也就会更快，AOF 类似日志的形式也有重写机制，但是他的体积还是较大的，加载速度也就更慢。</p>
+<p>根据上文中所提到过，RDB 的数据安全性要较低一些，会丢失一些数据，AOF 是根据策略决定的。</p>
+<p>RDB 是一个很重的操作，因为他要将全部的 Redis 数据存储到硬盘当中，首先是要将内存中的数据移动到硬盘当中，这个操作本身就涉及很多方面，首先硬盘写入量就很大，本身也是一个计算密集型的操作，它还会执行个 fork 产生一些内存开销。</p>
+<p>AOF 不讨论重写的话，本身就是一个很轻的追加日志操作。</p>
+<h3 id="RDB-的最佳策略"><a href="#RDB-的最佳策略" class="headerlink" title="RDB 的最佳策略"></a>RDB 的最佳策略</h3><ol>
+<li>建议‘关’掉 RDB</li>
+<li>集中管理</li>
+<li>主从，从开</li>
+</ol>
+<h3 id="AOF的最佳操作"><a href="#AOF的最佳操作" class="headerlink" title="AOF的最佳操作"></a>AOF的最佳操作</h3><ul>
+<li>建议开启，但是如果只是用来做缓存的话可以关闭掉</li>
+<li>AOF 重写集中管理</li>
+<li>everysec</li>
+</ul>
+<h3 id="最佳策略"><a href="#最佳策略" class="headerlink" title="最佳策略"></a>最佳策略</h3><ul>
+<li>最小分片</li>
+<li>缓存或者存储</li>
+<li>监控（硬盘、内存、负载、网络）</li>
+<li>足够的内存</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/17/2/" rel="next" title="从简单的示例中入门 Redis 五种常用数据结构">
+                <i class="fa fa-chevron-left"></i> 从简单的示例中入门 Redis 五种常用数据结构
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/25/1/" rel="prev" title="SVN 从入门到放弃">
+                SVN 从入门到放弃 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTYyMC8xMjE1Ng"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ogxeww23n.bkt.clouddn.com/timg.jpeg"
+                alt="Maksim" />
+            
+              <p class="site-author-name" itemprop="name">Maksim</p>
+              <p class="site-description motion-element" itemprop="description">Maksim's Website，分享成长的点点滴滴，关注PHP、JavaScript、Linux、C/C++、Go、SQL、MySQL、Redis、iOS、安卓开发，努力做一个值得收藏的博客。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">108</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/aircrayon" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aircrayon@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RDB"><span class="nav-number">1.</span> <span class="nav-text">RDB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#触发机制"><span class="nav-number">1.1.</span> <span class="nav-text">触发机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行流程"><span class="nav-number">1.2.</span> <span class="nav-text">执行流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优缺点"><span class="nav-number">1.3.</span> <span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOF"><span class="nav-number">1.4.</span> <span class="nav-text">AOF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重写机制"><span class="nav-number">1.5.</span> <span class="nav-text">重写机制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优缺点-1"><span class="nav-number">2.</span> <span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RDB-和-AOF-的抉择"><span class="nav-number">3.</span> <span class="nav-text">RDB 和 AOF 的抉择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDB-的最佳策略"><span class="nav-number">3.0.1.</span> <span class="nav-text">RDB 的最佳策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOF的最佳操作"><span class="nav-number">3.0.2.</span> <span class="nav-text">AOF的最佳操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最佳策略"><span class="nav-number">3.0.3.</span> <span class="nav-text">最佳策略</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maksim</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

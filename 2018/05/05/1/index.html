@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Maksim's Website" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="这篇文章依旧是介绍线性数据结构——链表。 在前面的几篇文章中，我们也介绍了其他的线性结构：动态数组、栈、队列。这三种数据结构，底层依托的都是静态数组，靠resize 解决固定容量问题。 而链表则是真正的动态数据结构，对于链表来说，他是数据结构学习科目中的一个重点，也是一个难点，首先他是最简单的动态数据结构，在接下来，我们还会接触更多的动态数据结构，最典型的二分搜索树，都是动态数据结构，如果有更好的">
+<meta name="keywords" content="前端博客,JavaScript,html5,css3,Jquery,Linux,PHP,iOS,MySQL,SQL,Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构入门（04）： 链表">
+<meta property="og:url" content="http://www.maksim.website/2018/05/05/1/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="这篇文章依旧是介绍线性数据结构——链表。 在前面的几篇文章中，我们也介绍了其他的线性结构：动态数组、栈、队列。这三种数据结构，底层依托的都是静态数组，靠resize 解决固定容量问题。 而链表则是真正的动态数据结构，对于链表来说，他是数据结构学习科目中的一个重点，也是一个难点，首先他是最简单的动态数据结构，在接下来，我们还会接触更多的动态数据结构，最典型的二分搜索树，都是动态数据结构，如果有更好的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/u=556624825,2864962507&fm=27&gp=0.jpg">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/e37346b1dd503e1c3fb073a9075f4bb7.png.jpeg">
+<meta property="og:updated_time" content="2018-07-22T08:00:03.082Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构入门（04）： 链表">
+<meta name="twitter:description" content="这篇文章依旧是介绍线性数据结构——链表。 在前面的几篇文章中，我们也介绍了其他的线性结构：动态数组、栈、队列。这三种数据结构，底层依托的都是静态数组，靠resize 解决固定容量问题。 而链表则是真正的动态数据结构，对于链表来说，他是数据结构学习科目中的一个重点，也是一个难点，首先他是最简单的动态数据结构，在接下来，我们还会接触更多的动态数据结构，最典型的二分搜索树，都是动态数据结构，如果有更好的">
+<meta name="twitter:image" content="http://ogxeww23n.bkt.clouddn.com/u=556624825,2864962507&fm=27&gp=0.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.maksim.website/2018/05/05/1/"/>
+
+
+
+
+
+  <title>数据结构入门（04）： 链表 | Maksim's Website</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Maksim's Website</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/05/05/1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Maksim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maksim's Website">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据结构入门（04）： 链表</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-05T00:00:00+08:00">
+                2018-05-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这篇文章依旧是介绍线性数据结构——链表。</p>
+<p>在前面的几篇文章中，我们也介绍了其他的线性结构：动态数组、栈、队列。这三种数据结构，底层依托的都是静态数组，靠resize 解决固定容量问题。</p>
+<p>而链表则是真正的动态数据结构，对于链表来说，他是数据结构学习科目中的一个重点，也是一个难点，首先他是最简单的动态数据结构，在接下来，我们还会接触更多的动态数据结构，最典型的二分搜索树，都是动态数据结构，如果有更好的链表基础的话，对于后面的学习将会变的容易很多。</p>
+<p>对于链表而言，涉及到计算机领域非常重要的概念，也就是引用或者是指针这个概念和内存相关，在 Java 或者 PHP 中我们并不需要手动的管理内存，但是对于链表这种数据结构更深入的了解，能够帮助大家对引用和指针，甚至是计算机系统中和内存管理相关管理话题有更深的认识。</p>
+<p>很多人会忽视的一点，链表本身也是有它非常清晰的递归结构的，只不过由于链表是一种线性结构所以我们依然可以使用循环的方式来进行操作，但是链表本身天生就是具有递归结构的性质的所以他也是一个帮助同学们了解递归机制的相应的数据结构，当我们学习更加复杂的树形结构的时候，递归这种逻辑机制深入的理解是必不可缺的，对于本文章后面所涉及的递归问题也会进行介绍。</p>
+<p>链表这种数据结构本身也具有功能性，他可以用来组织更加复杂的数据结构，比如说图结构，Hash 表等，栈和队列也可以用链表进行实现。</p>
+<h1 id="链表-Linked-List-的数据结构"><a href="#链表-Linked-List-的数据结构" class="headerlink" title="链表 Linked List 的数据结构"></a>链表 Linked List 的数据结构</h1><p>数据存储在“节点”(Node) 中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</div><div class="line">	T value;</div><div class="line">    Node next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 Value 中存储着我们所需要使用的真正数据，而 next 是一个 Node 类型的对象，next 本身又是一个节点，看单词的字面意思就知道，他指向的是这个节点的下一个节点。</p>
+<p>对于链表来说就像是一个火车一样，每一个节点就像是一个车厢一样，在车厢中存储着我们需要使用的东西，而车厢和车厢之间，需要存在一个连接，以使得数据时整个在一起的，用户可以方便的在这个链表上进行查询或者其他的操作。</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/u=556624825,2864962507&amp;fm=27&amp;gp=0.jpg" alt=""></p>
+<p>数据和数据之间的链接就是由 next 完成的。</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/e37346b1dd503e1c3fb073a9075f4bb7.png.jpeg" alt=""></p>
+<p>链表当然不会是无穷无尽的，链表的最后一个节点存储就是一个 NULL，如果一个节点为空了，那么就是最后一个节点，通过上面的这些内容，希望大家能够理解，什么真正的动态，这样我们就不需要处理固定容量的问题。</p>
+<p>对于链表来说，你需要存储个多少个数据，只要创建多少个节点，然后连接起来，当然链表也并不是没有缺点，对比数组而言，它丧失了随机访问的能力，也就是说不能给一个索引就能直接取出索引下对应的数据。链表由于是靠 next 一层一层链接的，我们必须靠 next 逐层寻找。</p>
+<p>所以链表自然也就不适合索引有语意的情况。</p>
+<h1 id="链表的实现"><a href="#链表的实现" class="headerlink" title="链表的实现"></a>链表的实现</h1><p>对于链表而言，他是由内部类组成的，所以我们需要在类中声明一个内部类。也就是说只有在 LinkedList 类中才可以放到 Node 这个类，可能有一些教材或者教科书，会将 Node 设计成一个外部共用的类，这是一个设计上的问题，个人倾向于设计成一个私有的内部类。</p>
+<p>对于用户而言，没有必要清楚链表是怎样实现的，根本不需要知道链表内部有个 node，他只需要知道是链表是一个线性结构，可以增加、删除数据就可以了。</p>
+<p>我们要对用户屏蔽内部实现的细节。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Linked;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedList</span> &lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</div><div class="line">		<span class="keyword">public</span> T value;</div><div class="line">		<span class="keyword">public</span> Node next;</div><div class="line">		</div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">()</span> </span>&#123;</div><div class="line">			<span class="keyword">this</span>(<span class="keyword">null</span>, <span class="keyword">null</span>);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="title">Node</span> <span class="params">(T value)</span> </span>&#123;</div><div class="line">			<span class="keyword">this</span>(value, <span class="keyword">null</span>);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="title">Node</span> <span class="params">(T value, Node next)</span> </span>&#123;</div><div class="line">			<span class="keyword">this</span>.value = value;</div><div class="line">			<span class="keyword">this</span>.next = next;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">			<span class="keyword">return</span> value.toString();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样就设计好了节点。</p>
+<p>对于链表来说，我们要向访问链表中所有的节点，相应的我们必须把链表的头存储起来 head，也就是说在 LinkedList应该有一个Node 型的变量叫做 head 指向链表中的第一个节点。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//记录拥有多少个节点</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">int</span> size;</div><div class="line"><span class="comment">//存放头节点</span></div><div class="line"><span class="keyword">private</span> Node head;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">LinkedList</span><span class="params">()</span> </span>&#123;</div><div class="line">    head = <span class="keyword">null</span>;</div><div class="line">	size = <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSize</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> size;</div><div class="line">&#125;</div><div class="line">	</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> size == <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>为数组尾添加元素是非常方便的，但是对于链表而言情况恰好相反，我们在链表头添加元素是非常方便的，对于数组而言，因为有 size 在跟踪数组的尾巴，我们直接向其中插入数据就可以了，但是对于链表来说，我们设计了一个 head跟踪链表的头，但是我们没有变量跟踪链表的尾巴。</p>
+<p>我们在链表头添加元素会很方便，只需要将新来的 Node 中的 next 指向 head，然后将 head 变量指向新来的 Node 就可以了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">node.next = head</div><div class="line">head = node</div></pre></td></tr></table></figure>
+<p>下面实现在链表头添加新的元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addFirst</span><span class="params">(T value)</span> </span>&#123;</div><div class="line">	Node node = <span class="keyword">new</span> Node(value);</div><div class="line">	node.next = head;</div><div class="line">	head = node;</div><div class="line">    <span class="comment">//也可以将上面的三行代码替换成 head = new Node(e, head);可以自己想一想是为什么！</span></div><div class="line">	size++;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在想要在‘索引’为2的地方添加一个新的元素，  </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/04/1/" rel="next" title="数据结构入门（03）： 队列">
+                <i class="fa fa-chevron-left"></i> 数据结构入门（03）： 队列
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/12/1/" rel="prev" title="Swoole 基础（01）：起步">
+                Swoole 基础（01）：起步 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTYyMC8xMjE1Ng"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ogxeww23n.bkt.clouddn.com/timg.jpeg"
+                alt="Maksim" />
+            
+              <p class="site-author-name" itemprop="name">Maksim</p>
+              <p class="site-description motion-element" itemprop="description">Maksim's Website，分享成长的点点滴滴，关注PHP、JavaScript、Linux、C/C++、Go、SQL、MySQL、Redis、iOS、安卓开发，努力做一个值得收藏的博客。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">108</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/aircrayon" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aircrayon@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#链表-Linked-List-的数据结构"><span class="nav-number">1.</span> <span class="nav-text">链表 Linked List 的数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链表的实现"><span class="nav-number">2.</span> <span class="nav-text">链表的实现</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maksim</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
