@@ -91,7 +91,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-20%2012.48.55.png">
 <meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-20%2014.55.57.png">
-<meta property="og:updated_time" content="2018-07-20T12:09:04.474Z">
+<meta property="og:updated_time" content="2018-08-04T12:32:25.119Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MYSQL DBA 学习笔记（03）：解密 MySQL databock and Binlog 的格式">
 <meta name="twitter:description" content="本文内容  InnoDB 物理存储结构 innoDB 逻辑存储结构 InnoDB 文件结构 InnoDB Page结构 InnoDB 航记录结构 InnoDB 数据块解析 Binlog 日志生成的流程 Biglog 日志解析  InnoDB 的物理存储结构 当我们创建一张表的时候. 1234567CREATE TABLE `gyj_t5` (	`id` int(11) NOT NULL DEFAU">
@@ -330,8 +330,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MYSQL-DBA/" itemprop="url" rel="index">
-                    <span itemprop="name">MYSQL DBA</span>
+                  <a href="/categories/MySQL-DBA/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL DBA</span>
                   </a>
                 </span>
 
@@ -413,24 +413,33 @@
 </tr>
 </tbody>
 </table>
-<p>那么他在物理上的存储结构就应该是如上图左边看到B+Tree 结构，InnoDB 天生就是一个 BTree 索引表，即索引存放在一起，数据就是索引，索引就是数据，相当于 Oracle 的索引组织表，最上面的节点是根，第二层是枝叶，第三层是叶子，叶子上存储着数据和PVK（主键），RowData（数据）、XID（事务的 ID），Roll_Ptx（回滚的指针）</p>
+<p>那么他在物理上的存储结构就应该是如上图左边看到B+树结构，InnoDB 天生就是一个 BTree 索引表，即索引存放在一起，数据就是索引，索引就是数据，相当于 Oracle 的索引组织表，最上面的节点是根，第二层是枝叶，第三层是叶子，叶子上存储着数据和PVK（主键），RowData（数据）、XID（事务的 ID），Roll_Ptx（回滚的指针）。</p>
 <p>现在，我们通过二级索引，也就是普通索引name，去查询数据</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; explain select * from gyj_t5 where name = &apos;Joe&apos;;</div><div class="line">+----+-------------+--------+------+---------------+----------+---------+-------+------+-----------------------+</div><div class="line">| id | select_type | table  | type | possible_keys | key      | key_len | ref   | rows | Extra                 |</div><div class="line">+----+-------------+--------+------+---------------+----------+---------+-------+------+-----------------------+</div><div class="line">|  1 | SIMPLE      | gyj_t5 | ref  | idx_name      | idx_name | 33      | const |    1 | Using index condition |</div><div class="line">+----+-------------+--------+------+---------------+----------+---------+-------+------+-----------------------+</div><div class="line">1 row in set (0.01 sec)</div></pre></td></tr></table></figure>
 <p>通过二级索引，也就是 name，上图的右边，找到 name 之后，普通索引的值对应的 PKV主键值，如果要把年龄找出来的话，会找到 ID=2，然后通过2主键索引把RowData的其他字段找出来。</p>
 <p>所以说，二级索引最终是要指向到主键索引上的。</p>
 <p>我们的这张表由两个索引组成，但是实际上，主键第一个索引就是表，如果没有主键就会去寻找不为空的唯一键，如果没有唯一键，系统会生成一个6字节的rowid的主键，但是对用户是不可见的。</p>
-<h1 id="Innodb-的逻辑-存储结构"><a href="#Innodb-的逻辑-存储结构" class="headerlink" title="Innodb 的逻辑 存储结构"></a>Innodb 的逻辑 存储结构</h1><p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-20%2014.55.57.png" alt=""></p>
+<h1 id="Innodb-的逻辑存储结构"><a href="#Innodb-的逻辑存储结构" class="headerlink" title="Innodb 的逻辑存储结构"></a>Innodb 的逻辑存储结构</h1><p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-20%2014.55.57.png" alt=""></p>
 <p> InnoDB 的逻辑存储结构又大到小分别是Tablespace（表空间）、Segment（段落），区，页、行。</p>
 <p>在 MySQL InnoDB 实际上一个表就对应一个表空间，他有一个 space id来标识这个表空间， 我们有一个参数可以设置这个表空间是独立的表空间，还是共享的表空间。</p>
 <p>如果是独立的表空间，那就是一个表一个表空间，会用 space id 来区分。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables like &apos;%per_table%&apos;;</div><div class="line">+-----------------------+-------+</div><div class="line">| Variable_name         | Value |</div><div class="line">+-----------------------+-------+</div><div class="line">| innodb_file_per_table | ON    |</div><div class="line">+-----------------------+-------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
-<p>其实放在共享表空间和独立表空间中性能是一样的，不过在进行管理和迁移数据的时候比较方便。</p>
-<p>现在我们来创建一张表</p>
+<p>如果设置成 ON 就说明设置成为独立表空间了，如果不为 ON 则所有的数据都放到了 ibdata 里面，所有的其实放在共享表空间和独立表空间中性能是一样的，不过在进行管理和迁移数据的时候比较方便，放到一起的话一个文件管理起来比较麻烦 。</p>
+<p>现在我们来创建一张表 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create table gyj_t1 (id int, name varchar(10));</div></pre></td></tr></table></figure>
 <p>进入到数据库目录我们可以看到：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[root@MyDB1 test]# ll -lh</div><div class="line">总用量 236K</div><div class="line">-rw-r--r-- 1 mysql mysql   65 11月 28 2016 db.opt</div><div class="line">-rw-rw---- 1 mysql mysql 8.4K 7月  20 19:01 gyj_t1.frm</div><div class="line">-rw-rw---- 1 mysql mysql  96K 7月  20 19:01 gyj_t1.ibd</div><div class="line">-rw-rw---- 1 mysql mysql 8.5K 7月  20 18:46 gyj_t5.frm</div><div class="line">-rw-rw---- 1 mysql mysql 112K 7月  20 18:47 gyj_t5.ibd</div></pre></td></tr></table></figure>
-<p>frm </p>
-
+<p>frm 中存储着表的定义，ibd 存放着索引和数据，我们上面说了 ibdata 对应着表空间，我们可以使用如下命令查看。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select * from information_schema.INNODB_SYS_TABLES;</div><div class="line">+----------+----------------------------+------+--------+-------+-------------+------------+---------------+</div><div class="line">| TABLE_ID | NAME                       | FLAG | N_COLS | SPACE | FILE_FORMAT | ROW_FORMAT | ZIP_PAGE_SIZE |</div><div class="line">+----------+----------------------------+------+--------+-------+-------------+------------+---------------+</div><div class="line">|       14 | SYS_DATAFILES              |    0 |      5 |     0 | Antelope    | Redundant  |             0 |</div><div class="line">|       11 | SYS_FOREIGN                |    0 |      7 |     0 | Antelope    | Redundant  |             0 |</div><div class="line">|       12 | SYS_FOREIGN_COLS           |    0 |      7 |     0 | Antelope    | Redundant  |             0 |</div><div class="line">|       13 | SYS_TABLESPACES            |    0 |      6 |     0 | Antelope    | Redundant  |             0 |</div><div class="line">|       16 | mysql/innodb_index_stats   |    1 |     11 |     2 | Antelope    | Compact    |             0 |</div><div class="line">|       15 | mysql/innodb_table_stats   |    1 |      9 |     1 | Antelope    | Compact    |             0 |</div><div class="line">|       18 | mysql/slave_master_info    |    1 |     26 |     4 | Antelope    | Compact    |             0 |</div><div class="line">|       17 | mysql/slave_relay_log_info |    1 |     11 |     3 | Antelope    | Compact    |             0 |</div><div class="line">|       19 | mysql/slave_worker_info    |    1 |     15 |     5 | Antelope    | Compact    |             0 |</div><div class="line">|       21 | test/gyj_t1                |    1 |      5 |     7 | Antelope    | Compact    |             0 |</div><div class="line">|       20 | test/gyj_t5                |    1 |      6 |     6 | Antelope    | Compact    |             0 |</div><div class="line">+----------+----------------------------+------+--------+-------+-------------+------------+---------------+</div><div class="line">11 rows in set (0.02 sec)</div></pre></td></tr></table></figure>
+<p>我们可以看到我们刚刚创建的那个表 <code>gyj_t1</code> 的表空间 id 是7,我们可以看到每一张表都有对应的变空间 id，而0则代表是系统表空间。</p>
+<p>Tablespace 中可以存放很多的segment（段） 因为 InnoDB 是 B 树索引其中段又被分为叶子段和非叶子段，除了这些表空间还可以存放回滚段，也就是事务段。</p>
+<p>Segment，其实就是我们的表，Segment 和 Table 的区别是，Segment 是物理上存放数据的，而表是逻辑上的一个定义。</p>
+<p>段的管理是由InnoDB 存储引擎来完成的，在段下面由多个Extent（区）组成的，区实际上是分配空间的最小单位，比如说向数据库中插入一条记录，这个空间不够了并不是给他分配一个 Page，而是分配一个Extent，Extent 的分配标准是1MB，Extent 是由 Page 组成的，可以理解成 Block(块)，在内存里面叫做 Page，在磁盘里面叫做 Block。</p>
+<p>刚才说分配最小单位是一个 Extent 单位是 1MB，而 Page 标准的话是 16K，也就是说一个 Extent 是由 连续的64个 Page 组成的。</p>
+<p>Page 是最小的 IO 单位，比如说要读一行数据从硬盘读到内存，是以 Page 为单位读到内存。</p>
+<p>在上一篇笔记里面也提到过，Page 有好多种，数据页，Undo 页等等。</p>
+<p>Page 下面就是 Row（行），Row 就放在索引结构的叶子上面，里面包括了事务 id 、回滚指针，数据组成</p>
+<h1 id="InnoDB-的文件结构"><a href="#InnoDB-的文件结构" class="headerlink" title="InnoDB 的文件结构"></a>InnoDB 的文件结构</h1>
       
     </div>
     
@@ -454,7 +463,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/19/cjjws2iga002lzdrd3jw3sxvi/" rel="next" title="MySQL DBA 学习笔记（02）：MySQL 体系结构">
+              <a href="/2017/01/19/cjl0rso2g002dx0rdho0w3lnj/" rel="next" title="MySQL DBA 学习笔记（02）：MySQL 体系结构">
                 <i class="fa fa-chevron-left"></i> MySQL DBA 学习笔记（02）：MySQL 体系结构
               </a>
             
@@ -464,7 +473,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/15/cjjws2igd002szdrdo30szbt7/" rel="prev" title="PHP Closures">
+              <a href="/2017/03/15/cjl0rso2r002xx0rd6h5b2ifx/" rel="prev" title="PHP Closures">
                 PHP Closures <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -552,7 +561,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">108</span>
+                  <span class="site-state-item-count">109</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -563,7 +572,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -630,7 +639,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#InnoDB-的物理存储结构"><span class="nav-number">1.</span> <span class="nav-text">InnoDB 的物理存储结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Innodb-的逻辑-存储结构"><span class="nav-number">2.</span> <span class="nav-text">Innodb 的逻辑 存储结构</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#InnoDB-的物理存储结构"><span class="nav-number">1.</span> <span class="nav-text">InnoDB 的物理存储结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Innodb-的逻辑存储结构"><span class="nav-number">2.</span> <span class="nav-text">Innodb 的逻辑存储结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#InnoDB-的文件结构"><span class="nav-number">3.</span> <span class="nav-text">InnoDB 的文件结构</span></a></li></ol></div>
             
 
           </div>

@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://www.awaimai.com/wp-content/uploads/2017/12/Sorting_shellsort_anim.gif">
 <meta property="og:image" content="https://www.awaimai.com/wp-content/uploads/2017/12/unnamed-file.gif">
 <meta property="og:image" content="https://www.awaimai.com/wp-content/uploads/2017/12/sort_table.jpg">
-<meta property="og:updated_time" content="2018-07-18T23:32:34.294Z">
+<meta property="og:updated_time" content="2018-08-04T02:51:45.388Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法图解">
 <meta name="twitter:description" content="这篇博文是来自 https://www.awaimai.com/1980.html，但是都是基于面向过程的代码编写，我用面向对象的方式重新实现了一边，并且按照自己的写作习惯进行了重新编辑。 在 PHP 日常开发过程中，接触算法的机会并不多，大多数PHP 程序员都是在进行 CURD 的操作，甚至连数据结构的接触也很局限，并且大多数培训班很少回去讲解数据结构与算法，这也导致了 PHP 程序员的水平参差">
@@ -391,7 +391,7 @@
 </ol>
 <p>递归的结束条件是数列的大小是<code>0</code>或<code>1</code>，也就是永远都已经被排序好了。</p>
 <p>PHP代码实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">function quickSort($arr) &#123;</div><div class="line">    // 先设定结束条件，判断是否需要继续进行</div><div class="line">    if(count($arr) &lt;= 1) &#123;</div><div class="line">        return $arr;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // 选择第一个元素作为基准元素</div><div class="line">    $baseValue = $arr[0];</div><div class="line"></div><div class="line">    // 初始化小于基准元素的左数组</div><div class="line">    $leftArray = array();</div><div class="line"></div><div class="line">    // 初始化大于基准元素的右数组</div><div class="line">    $rightArray = array();</div><div class="line"></div><div class="line">    // 遍历除基准元素外的所有元素，按照大小关系放入左右数组内</div><div class="line">    array_shift($arr);</div><div class="line">    foreach ($arr as $value) &#123;</div><div class="line">        if ($value &lt; $baseValue) &#123;</div><div class="line">            $leftArray[] = $value;</div><div class="line">        &#125; else &#123;</div><div class="line">            $rightArray[] = $value;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // 再分别对左右数组进行相同的排序</div><div class="line">    $leftArray = quickSort($leftArray);</div><div class="line">    $rightArray = quickSort($rightArray);</div><div class="line"></div><div class="line">    // 合并基准元素和左右数组</div><div class="line">    return array_merge($leftArray, array($baseValue), $rightArray);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span><span class="params">($arr)</span> </span>&#123;</div><div class="line">    <span class="comment">// 先设定结束条件，判断是否需要继续进行</span></div><div class="line">    <span class="keyword">if</span>(count($arr) &lt;= <span class="number">1</span>) &#123;</div><div class="line">        <span class="keyword">return</span> $arr;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 选择第一个元素作为基准元素</span></div><div class="line">    $baseValue = $arr[<span class="number">0</span>];</div><div class="line"></div><div class="line">    <span class="comment">// 初始化小于基准元素的左数组</span></div><div class="line">    $leftArray = <span class="keyword">array</span>();</div><div class="line"></div><div class="line">    <span class="comment">// 初始化大于基准元素的右数组</span></div><div class="line">    $rightArray = <span class="keyword">array</span>();</div><div class="line"></div><div class="line">    <span class="comment">// 遍历除基准元素外的所有元素，按照大小关系放入左右数组内</span></div><div class="line">    array_shift($arr);</div><div class="line">    <span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $value) &#123;</div><div class="line">        <span class="keyword">if</span> ($value &lt; $baseValue) &#123;</div><div class="line">            $leftArray[] = $value;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            $rightArray[] = $value;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 再分别对左右数组进行相同的排序</span></div><div class="line">    $leftArray = quickSort($leftArray);</div><div class="line">    $rightArray = quickSort($rightArray);</div><div class="line"></div><div class="line">    <span class="comment">// 合并基准元素和左右数组</span></div><div class="line">    <span class="keyword">return</span> array_merge($leftArray, <span class="keyword">array</span>($baseValue), $rightArray);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="2-冒泡排序"><a href="#2-冒泡排序" class="headerlink" title="2 冒泡排序"></a>2 冒泡排序</h2><p>冒泡排序是一种简单的排序算法。</p>
 <p>算法重复地走访过要排序的数列，一次<strong>比较两个元素</strong>，如果他们的顺序错误就把他们交换过来。</p>
 <p>走访数列的工作重复地进行，直到没有再需要交换，也就是说该数列已经排序完成。</p>
@@ -543,7 +543,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/02/cjjws2ihz0051zdrd9dw4uwii/" rel="prev" title="">
+              <a href="/2018/07/02/cjl0rsodk0055x0rd60r57a88/" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -631,7 +631,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">108</span>
+                  <span class="site-state-item-count">109</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -642,7 +642,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

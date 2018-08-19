@@ -91,7 +91,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/u=556624825,2864962507&fm=27&gp=0.jpg">
 <meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/e37346b1dd503e1c3fb073a9075f4bb7.png.jpeg">
-<meta property="og:updated_time" content="2018-07-22T08:00:03.082Z">
+<meta property="og:updated_time" content="2018-08-04T02:46:56.325Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构入门（04）： 链表">
 <meta name="twitter:description" content="这篇文章依旧是介绍线性数据结构——链表。 在前面的几篇文章中，我们也介绍了其他的线性结构：动态数组、栈、队列。这三种数据结构，底层依托的都是静态数组，靠resize 解决固定容量问题。 而链表则是真正的动态数据结构，对于链表来说，他是数据结构学习科目中的一个重点，也是一个难点，首先他是最简单的动态数据结构，在接下来，我们还会接触更多的动态数据结构，最典型的二分搜索树，都是动态数据结构，如果有更好的">
@@ -395,7 +395,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">node.next = head</div><div class="line">head = node</div></pre></td></tr></table></figure>
 <p>下面实现在链表头添加新的元素</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addFirst</span><span class="params">(T value)</span> </span>&#123;</div><div class="line">	Node node = <span class="keyword">new</span> Node(value);</div><div class="line">	node.next = head;</div><div class="line">	head = node;</div><div class="line">    <span class="comment">//也可以将上面的三行代码替换成 head = new Node(e, head);可以自己想一想是为什么！</span></div><div class="line">	size++;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>现在想要在‘索引’为2的地方添加一个新的元素，  </p>
+<p>现在想要在‘索引’为2的地方添加一个新的元素，我们首先要创建 node，如果想要将节点插入到正确的位置，我们首先就是要找到</p>
 
       
     </div>
@@ -518,7 +518,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">108</span>
+                  <span class="site-state-item-count">109</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -529,7 +529,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
