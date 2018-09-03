@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="创建TCP服务器程序代码server.php 1234567891011121314151617181920//创建Server对象，监听 127.0.0.1:9501端口$serv = new swoole_server(&amp;quot;127.0.0.1&amp;quot;, 9501); //监听连接进入事件$serv-&amp;gt;on(&amp;apos;connect&amp;apos;, function ($ser">
+<meta name="description" content="swoole-1.7.7增加了内置Http服务器的支持，通过几行代码即可写出一个异步非阻塞多进程的Http服务器。swoole_http_server对Http协议的支持并不完整，建议仅作为应用服务器。并且在前端增加Nginx作为代理 通过使用apache bench工具进行压力测试，在Inter Core-I5 4核 + 8G内存的普通PC机器上，swoole_http_server可以达到近1">
 <meta name="keywords" content="前端博客,JavaScript,html5,css3,Jquery,Linux,PHP,iOS,MySQL,SQL,Redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swoole 基础（03）：创建 TCP 服务器">
+<meta property="og:title" content="Swoole 基础（02）：创建 TCP 服务器">
 <meta property="og:url" content="http://www.maksim.website/2018/06/13/1/index.html">
 <meta property="og:site_name" content="Maksim&#39;s Website">
-<meta property="og:description" content="创建TCP服务器程序代码server.php 1234567891011121314151617181920//创建Server对象，监听 127.0.0.1:9501端口$serv = new swoole_server(&amp;quot;127.0.0.1&amp;quot;, 9501); //监听连接进入事件$serv-&amp;gt;on(&amp;apos;connect&amp;apos;, function ($ser">
+<meta property="og:description" content="swoole-1.7.7增加了内置Http服务器的支持，通过几行代码即可写出一个异步非阻塞多进程的Http服务器。swoole_http_server对Http协议的支持并不完整，建议仅作为应用服务器。并且在前端增加Nginx作为代理 通过使用apache bench工具进行压力测试，在Inter Core-I5 4核 + 8G内存的普通PC机器上，swoole_http_server可以达到近1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-21T06:31:59.511Z">
+<meta property="og:updated_time" content="2018-07-21T06:31:55.443Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swoole 基础（03）：创建 TCP 服务器">
-<meta name="twitter:description" content="创建TCP服务器程序代码server.php 1234567891011121314151617181920//创建Server对象，监听 127.0.0.1:9501端口$serv = new swoole_server(&amp;quot;127.0.0.1&amp;quot;, 9501); //监听连接进入事件$serv-&amp;gt;on(&amp;apos;connect&amp;apos;, function ($ser">
+<meta name="twitter:title" content="Swoole 基础（02）：创建 TCP 服务器">
+<meta name="twitter:description" content="swoole-1.7.7增加了内置Http服务器的支持，通过几行代码即可写出一个异步非阻塞多进程的Http服务器。swoole_http_server对Http协议的支持并不完整，建议仅作为应用服务器。并且在前端增加Nginx作为代理 通过使用apache bench工具进行压力测试，在Inter Core-I5 4核 + 8G内存的普通PC机器上，swoole_http_server可以达到近1">
 
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <title>Swoole 基础（03）：创建 TCP 服务器 | Maksim's Website</title>
+  <title>Swoole 基础（02）：创建 TCP 服务器 | Maksim's Website</title>
   
 
 
@@ -292,7 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Swoole 基础（03）：创建 TCP 服务器</h1>
+          <h1 class="post-title" itemprop="name headline">Swoole 基础（02）：创建 TCP 服务器</h1>
         
 
         <div class="post-meta">
@@ -364,28 +364,31 @@
       
 
       
-        <h1 id="创建TCP服务器"><a href="#创建TCP服务器" class="headerlink" title="创建TCP服务器"></a>创建TCP服务器</h1><h2 id="程序代码"><a href="#程序代码" class="headerlink" title="程序代码"></a>程序代码</h2><p>server.php</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//创建Server对象，监听 127.0.0.1:9501端口</div><div class="line">$serv = new swoole_server(&quot;127.0.0.1&quot;, 9501); </div><div class="line"></div><div class="line">//监听连接进入事件</div><div class="line">$serv-&gt;on(&apos;connect&apos;, function ($serv, $fd) &#123;  </div><div class="line">    echo &quot;Client: Connect.\n&quot;;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">//监听数据接收事件</div><div class="line">$serv-&gt;on(&apos;receive&apos;, function ($serv, $fd, $from_id, $data) &#123;</div><div class="line">    $serv-&gt;send($fd, &quot;Server: &quot;.$data);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">//监听连接关闭事件</div><div class="line">$serv-&gt;on(&apos;close&apos;, function ($serv, $fd) &#123;</div><div class="line">    echo &quot;Client: Close.\n&quot;;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">//启动服务器</div><div class="line">$serv-&gt;start();</div></pre></td></tr></table></figure>
-<p>这里就创建了一个TCP服务器，监听本机9501端口。它的逻辑很简单，当客户端Socket通过网络发送一个 <code>hello</code> 字符串时，服务器会回复一个 <code>Server: hello</code> 字符串。</p>
-<p>swoole_server是异步服务器，所以是通过监听事件的方式来编写程序的。当对应的事件发生时底层会主动回调指定的PHP函数。如当有新的TCP连接进入时会执行onConnect事件回调，当某个连接向服务器发送数据时会回调onReceive函数。</p>
+        <p>swoole-1.7.7增加了内置Http服务器的支持，通过几行代码即可写出一个异步非阻塞多进程的Http服务器。swoole_http_server对Http协议的支持并不完整，建议仅作为应用服务器。并且在前端增加Nginx作为代理</p>
+<p>通过使用apache bench工具进行压力测试，在Inter Core-I5 4核 + 8G内存的普通PC机器上，swoole_http_server可以达到近11万QPS。远远超过php-fpm，golang自带http服务器，node.js自带http服务器。性能几乎接近与Nginx的静态文件处理。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ab -c 200 -n 200000 -k http://127.0.0.1:9501</div></pre></td></tr></table></figure>
+<h1 id="创建Web服务器"><a href="#创建Web服务器" class="headerlink" title="创建Web服务器"></a>创建Web服务器</h1><h2 id="程序代码"><a href="#程序代码" class="headerlink" title="程序代码"></a>程序代码</h2><p>http_server.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$http = <span class="keyword">new</span> swoole_http_server(<span class="string">"0.0.0.0"</span>, <span class="number">9501</span>);</div><div class="line"></div><div class="line">$http-&gt;on(<span class="string">'request'</span>, <span class="function"><span class="keyword">function</span> <span class="params">($request, $response)</span> </span>&#123;</div><div class="line">    var_dump($request-&gt;get, $request-&gt;post);</div><div class="line">    $response-&gt;header(<span class="string">"Content-Type"</span>, <span class="string">"text/html; charset=utf-8"</span>);</div><div class="line">    $response-&gt;end(<span class="string">"&lt;h1&gt;Hello Swoole. #"</span>.rand(<span class="number">1000</span>, <span class="number">9999</span>).<span class="string">"&lt;/h1&gt;"</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">$http-&gt;start();</div></pre></td></tr></table></figure>
+<p>Http服务器只需要关注请求响应即可，所以只需要监听一个<code>onRequest</code>事件。当有新的Http请求进入就会触发此事件。事件回调函数有2个参数，一个是$request对象，包含了请求的相关信息，如GET/POST请求的数据。</p>
+<p>另外一个是response对象，对request的响应可以通过操作response对象来完成。$response-&gt;end()方法表示输出一段HTML内容，并结束此请求。</p>
 <ul>
-<li>服务器可以同时被成千上万个客户端连接，$fd就是客户端连接的唯一标识符</li>
-<li>调用 <code>$server-&gt;send()</code> 方法向客户端连接发送数据，参数就是$fd客户端标识符</li>
-<li>调用 <code>$server-&gt;close()</code> 方法可以强制关闭某个客户端连接</li>
-<li>客户端可能会主动断开连接，此时会触发onClose事件回调</li>
+<li><code>0.0.0.0</code> 表示监听所有IP地址，一台服务器可能同时有多个IP，如<code>127.0.0.1</code>本地回环IP、<code>192.168.1.100</code>局域网IP、<code>210.127.20.2</code> 外网IP，这里也可以单独指定监听一个IP</li>
+<li><code>9501</code> 监听的端口，如果被占用程序会抛出致命错误，中断执行。</li>
 </ul>
-<h2 id="执行程序"><a href="#执行程序" class="headerlink" title="执行程序"></a>执行程序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php server.php</div></pre></td></tr></table></figure>
-<p>在命令行下运行server.php程序，启动成功后可以使用 <code>netstat</code> 工具看到，已经在监听9501端口。这时就可以使用telnet/netcat工具连接服务器。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">telnet 127.0.0.1 9501</div><div class="line">hello</div><div class="line">Server: hello</div></pre></td></tr></table></figure>
-<h2 id="无法连接到服务器的简单检测手段"><a href="#无法连接到服务器的简单检测手段" class="headerlink" title="无法连接到服务器的简单检测手段"></a>无法连接到服务器的简单检测手段</h2><ul>
-<li>在<code>Linux</code>下，使用<code>netstat -an | grep 端口</code>，查看端口是否已经被打开处于<code>Listening</code>状态</li>
-<li>上一步确认后，检查防火墙问题</li>
-<li>注意服务器所使用的IP地址，如果是<code>127.0.0.1</code>回环地址，则客户端只能使用<code>127.0.0.1</code>才能连接上</li>
+<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php http_server.php</div></pre></td></tr></table></figure>
+<ul>
+<li>可以打开浏览器，访问<code>http://127.0.0.1:9501</code>查看程序的结果。</li>
+<li>也可以使用apache <code>ab</code>工具对服务器进行压力测试</li>
 </ul>
-<h1 id="创建TCP-客户端"><a href="#创建TCP-客户端" class="headerlink" title="创建TCP 客户端"></a>创建TCP 客户端</h1><p>client.php</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">//连接 swoole tcp 服务</span></div><div class="line">$client = <span class="keyword">new</span> swoole_client(SWOOLE_SOCK_TCP);</div><div class="line"></div><div class="line"><span class="keyword">if</span> (!$client-&gt;connect(<span class="string">'127.0.0.1'</span>, <span class="number">9501</span>)) &#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"连接失败"</span>;</div><div class="line">    <span class="keyword">exit</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//PHP CLI 常量，swoole大部分功能都是在 CLI 模式下运作的。</span></div><div class="line">fwrite(STDOUT, <span class="string">"请输入消息："</span>);</div><div class="line">$msg = trim(fgets(STDIN));</div><div class="line"></div><div class="line"><span class="comment">//发送给 TCP Server</span></div><div class="line">$client-&gt;send($msg);</div><div class="line"></div><div class="line"><span class="comment">//接受来自 server 的数据</span></div><div class="line">$result = $client-&gt;recv();</div><div class="line"></div><div class="line"><span class="keyword">echo</span> $result.<span class="string">"\n"</span>;</div></pre></td></tr></table></figure>
-<p>Swoole 的 UDP 实现和 TCP 的实现基本一致，下一章就不再讲解如何搭建 UDP 服务了，而是 HTTP 服务。</p>
-
+<h2 id="使用Http2协议"><a href="#使用Http2协议" class="headerlink" title="使用Http2协议"></a>使用Http2协议</h2><ul>
+<li>需要依赖<code>nghttp2</code>库，<a href="https://github.com/tatsuhiro-t/nghttp2" target="_blank" rel="noopener">下载nghttp2</a>后编译安装</li>
+<li>使用<code>Http2</code>协议必须开启<code>openssl</code></li>
+<li>需要高版本<code>openssl</code>必须支持<code>TLS1.2</code>、<code>ALPN</code>、<code>NPN</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure --enable-openssl --enable-http2</div></pre></td></tr></table></figure>
+<p>设置http服务器的<code>open_http2_protocol</code>为<code>true</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$serv = <span class="keyword">new</span> swoole_http_server(<span class="string">"127.0.0.1"</span>, <span class="number">9501</span>, SWOOLE_PROCESS, SWOOLE_SOCK_TCP | SWOOLE_SSL);</div><div class="line">$serv-&gt;set([</div><div class="line">    <span class="string">'ssl_cert_file'</span> =&gt; $ssl_dir . <span class="string">'/ssl.crt'</span>,</div><div class="line">    <span class="string">'ssl_key_file'</span> =&gt; $ssl_dir . <span class="string">'/ssl.key'</span>,</div><div class="line">    <span class="string">'open_http2_protocol'</span> =&gt; <span class="keyword">true</span>,</div><div class="line">]);</div></pre></td></tr></table></figure>
+<h2 id="nginx-swoole配置"><a href="#nginx-swoole配置" class="headerlink" title="nginx+swoole配置"></a>nginx+swoole配置</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="section">server</span> &#123;</div><div class="line">    <span class="attribute">root</span> /data/wwwroot/;</div><div class="line">    <span class="attribute">server_name</span> local.swoole.com;</div><div class="line"></div><div class="line">    <span class="attribute">location</span> / &#123;</div><div class="line">        <span class="attribute">proxy_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</div><div class="line">        <span class="attribute">proxy_set_header</span> Connection <span class="string">"keep-alive"</span>;</div><div class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</div><div class="line">        <span class="attribute">if</span> (!-e <span class="variable">$request_filename</span>) &#123;</div><div class="line">             <span class="attribute">proxy_pass</span> http://127.0.0.1:9501;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -419,8 +422,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/13/1/" rel="prev" title="Swoole 基础（02）：创建 TCP 服务器">
-                Swoole 基础（02）：创建 TCP 服务器 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/13/1/" rel="prev" title="Swoole 基础（03）：创建 TCP 服务器">
+                Swoole 基础（03）：创建 TCP 服务器 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -507,7 +510,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">110</span>
+                  <span class="site-state-item-count">112</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -518,7 +521,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -585,7 +588,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建TCP服务器"><span class="nav-number">1.</span> <span class="nav-text">创建TCP服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序代码"><span class="nav-number">1.1.</span> <span class="nav-text">程序代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行程序"><span class="nav-number">1.2.</span> <span class="nav-text">执行程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无法连接到服务器的简单检测手段"><span class="nav-number">1.3.</span> <span class="nav-text">无法连接到服务器的简单检测手段</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建TCP-客户端"><span class="nav-number">2.</span> <span class="nav-text">创建TCP 客户端</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建Web服务器"><span class="nav-number">1.</span> <span class="nav-text">创建Web服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序代码"><span class="nav-number">1.1.</span> <span class="nav-text">程序代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动服务"><span class="nav-number">1.2.</span> <span class="nav-text">启动服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Http2协议"><span class="nav-number">1.3.</span> <span class="nav-text">使用Http2协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx-swoole配置"><span class="nav-number">1.4.</span> <span class="nav-text">nginx+swoole配置</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Maksim's Website" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="在分析开源项目的时候，我们可以有5种分析代码的方法：  看文档 Xdebug做调试 自带函数（debug_backtrace, debug_print_backtrace, var_export, var_dump, get_inclued_files） SocketLog（不能var_dump的地方ajax、api，var_dump了也看不见的地方，cron 脚本，队列） 思维整理 （UML、思">
+<meta name="keywords" content="前端博客,JavaScript,html5,css3,Jquery,Linux,PHP,iOS,MySQL,SQL,Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分析开源项目的方法">
+<meta property="og:url" content="http://www.maksim.website/2018/08/19/2/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="在分析开源项目的时候，我们可以有5种分析代码的方法：  看文档 Xdebug做调试 自带函数（debug_backtrace, debug_print_backtrace, var_export, var_dump, get_inclued_files） SocketLog（不能var_dump的地方ajax、api，var_dump了也看不见的地方，cron 脚本，队列） 思维整理 （UML、思">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-19%2017.26.42.png">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-19%2017.56.37.png">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-19%2019.26.58.png">
+<meta property="og:updated_time" content="2018-09-03T14:42:13.738Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分析开源项目的方法">
+<meta name="twitter:description" content="在分析开源项目的时候，我们可以有5种分析代码的方法：  看文档 Xdebug做调试 自带函数（debug_backtrace, debug_print_backtrace, var_export, var_dump, get_inclued_files） SocketLog（不能var_dump的地方ajax、api，var_dump了也看不见的地方，cron 脚本，队列） 思维整理 （UML、思">
+<meta name="twitter:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-19%2017.26.42.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.maksim.website/2018/08/19/2/"/>
+
+
+
+
+
+  <title>分析开源项目的方法 | Maksim's Website</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Maksim's Website</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2018/08/19/2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Maksim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maksim's Website">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">分析开源项目的方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-19T00:00:00+08:00">
+                2018-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在分析开源项目的时候，我们可以有5种分析代码的方法：</p>
+<ol>
+<li>看文档</li>
+<li>Xdebug做调试</li>
+<li>自带函数（debug_backtrace, debug_print_backtrace, var_export, var_dump, get_inclued_files）</li>
+<li>SocketLog（不能var_dump的地方ajax、api，var_dump了也看不见的地方，cron 脚本，队列）</li>
+<li>思维整理 （UML、思维导图）</li>
+</ol>
+<p><strong>为什么我们首先是要去看文档呢？</strong></p>
+<p>当我们第一次拿到开源程序的代码时，很多人会第一反应去看它的源代码，但是如果说我们要了解它的编程思想，就看编程思想而言是看文档，还是看代码要容易呢？</p>
+<p>如果在不了解开源代码的功能就去了解代码的话，其实很难能够弄懂他的编程思想。</p>
+<p>有时候开源程序没有提供文档，我们可以使用 <em>PHPDocumentor</em> 将注释提取成文档。</p>
+<blockquote>
+<p>PHPDocumentor: <a href="http://www.phpdoc.org/" target="_blank" rel="noopener">http://www.phpdoc.org/</a></p>
+</blockquote>
+<p><strong>使用 Xdebug 调试代码</strong></p>
+<p>我们可以使用 Xdebug 联合 IDE 通过断点调试放慢代码执行流程，当程序执行到用户指定的断点后，可以到该位置停顿，然后输出在该变量中的值，可以一步一步的分析代码，如果碰到难懂的代码就可以通过这种形式来进行调试代码。</p>
+<blockquote>
+<p>Xdebug: <a href="https://xdebug.org" target="_blank" rel="noopener">https://xdebug.org</a></p>
+</blockquote>
+<p><strong>PHP自带函数</strong></p>
+<p>打出调用栈：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">debug_backtrace();</div><div class="line">debug_print_backtrace();</div></pre></td></tr></table></figure>
+<p>如果我们自己去看执行流程，就要跟着函数一步一步的走，可是如果使用调用栈，就可以清晰明了的看清。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">index</span>\<span class="title">controller</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Index</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">    	dump(debug_backtrace());<span class="keyword">exit</span>;</div><div class="line">      </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们可以通过这两个函数查看 ThinkPHP 是如何调用控制器的,在这里，我使用的 ThinkPHP5.0，在这里我们需要从下往上看。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div><div class="line">366</div><div class="line">367</div><div class="line">368</div><div class="line">369</div><div class="line">370</div><div class="line">371</div><div class="line">372</div><div class="line">373</div><div class="line">374</div><div class="line">375</div><div class="line">376</div><div class="line">377</div><div class="line">378</div><div class="line">379</div><div class="line">380</div><div class="line">381</div><div class="line">382</div><div class="line">383</div><div class="line">384</div><div class="line">385</div><div class="line">386</div><div class="line">387</div><div class="line">388</div><div class="line">389</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">array</span>(<span class="number">7</span>) &#123;</div><div class="line">  [<span class="number">0</span>] =&gt; <span class="keyword">array</span>(<span class="number">5</span>) &#123;</div><div class="line">    [<span class="string">"function"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"index"</span></div><div class="line">    [<span class="string">"class"</span>] =&gt; string(<span class="number">26</span>) <span class="string">"app\index\controller\Index"</span></div><div class="line">    [<span class="string">"object"</span>] =&gt; object(app\index\controller\Index)<span class="comment">#3 (0) &#123;</span></div><div class="line">    &#125;</div><div class="line">    [<span class="string">"type"</span>] =&gt; string(<span class="number">2</span>) <span class="string">"-&gt;"</span></div><div class="line">    [<span class="string">"args"</span>] =&gt; <span class="keyword">array</span>(<span class="number">0</span>) &#123;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  [<span class="number">1</span>] =&gt; <span class="keyword">array</span>(<span class="number">7</span>) &#123;</div><div class="line">    [<span class="string">"file"</span>] =&gt; string(<span class="number">70</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/library/think/App.php"</span></div><div class="line">    [<span class="string">"line"</span>] =&gt; int(<span class="number">343</span>)</div><div class="line">    [<span class="string">"function"</span>] =&gt; string(<span class="number">10</span>) <span class="string">"invokeArgs"</span></div><div class="line">    [<span class="string">"class"</span>] =&gt; string(<span class="number">16</span>) <span class="string">"ReflectionMethod"</span></div><div class="line">    [<span class="string">"object"</span>] =&gt; object(ReflectionMethod)<span class="comment">#4 (2) &#123;</span></div><div class="line">      [<span class="string">"name"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"index"</span></div><div class="line">      [<span class="string">"class"</span>] =&gt; string(<span class="number">26</span>) <span class="string">"app\index\controller\Index"</span></div><div class="line">    &#125;</div><div class="line">    [<span class="string">"type"</span>] =&gt; string(<span class="number">2</span>) <span class="string">"-&gt;"</span></div><div class="line">    [<span class="string">"args"</span>] =&gt; <span class="keyword">array</span>(<span class="number">2</span>) &#123;</div><div class="line">      [<span class="number">0</span>] =&gt; object(app\index\controller\Index)<span class="comment">#3 (0) &#123;</span></div><div class="line">      &#125;</div><div class="line">      [<span class="number">1</span>] =&gt; <span class="keyword">array</span>(<span class="number">0</span>) &#123;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  [<span class="number">2</span>] =&gt; <span class="keyword">array</span>(<span class="number">6</span>) &#123;</div><div class="line">    [<span class="string">"file"</span>] =&gt; string(<span class="number">70</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/library/think/App.php"</span></div><div class="line">    [<span class="string">"line"</span>] =&gt; int(<span class="number">606</span>)</div><div class="line">    [<span class="string">"function"</span>] =&gt; string(<span class="number">12</span>) <span class="string">"invokeMethod"</span></div><div class="line">    [<span class="string">"class"</span>] =&gt; string(<span class="number">9</span>) <span class="string">"think\App"</span></div><div class="line">    [<span class="string">"type"</span>] =&gt; string(<span class="number">2</span>) <span class="string">"::"</span></div><div class="line">    [<span class="string">"args"</span>] =&gt; <span class="keyword">array</span>(<span class="number">2</span>) &#123;</div><div class="line">      [<span class="number">0</span>] =&gt; <span class="keyword">array</span>(<span class="number">2</span>) &#123;</div><div class="line">        [<span class="number">0</span>] =&gt; object(app\index\controller\Index)<span class="comment">#3 (0) &#123;</span></div><div class="line">        &#125;</div><div class="line">        [<span class="number">1</span>] =&gt; string(<span class="number">5</span>) <span class="string">"index"</span></div><div class="line">      &#125;</div><div class="line">      [<span class="number">1</span>] =&gt; <span class="keyword">array</span>(<span class="number">0</span>) &#123;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  [<span class="number">3</span>] =&gt; <span class="keyword">array</span>(<span class="number">6</span>) &#123;</div><div class="line">    [<span class="string">"file"</span>] =&gt; string(<span class="number">70</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/library/think/App.php"</span></div><div class="line">    [<span class="string">"line"</span>] =&gt; int(<span class="number">456</span>)</div><div class="line">    [<span class="string">"function"</span>] =&gt; string(<span class="number">6</span>) <span class="string">"module"</span></div><div class="line">    [<span class="string">"class"</span>] =&gt; string(<span class="number">9</span>) <span class="string">"think\App"</span></div><div class="line">    [<span class="string">"type"</span>] =&gt; string(<span class="number">2</span>) <span class="string">"::"</span></div><div class="line">    [<span class="string">"args"</span>] =&gt; <span class="keyword">array</span>(<span class="number">3</span>) &#123;</div><div class="line">      [<span class="number">0</span>] =&gt; <span class="keyword">array</span>(<span class="number">3</span>) &#123;</div><div class="line">        [<span class="number">0</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">        [<span class="number">1</span>] =&gt; <span class="keyword">NULL</span></div><div class="line">        [<span class="number">2</span>] =&gt; <span class="keyword">NULL</span></div><div class="line">      &#125;</div><div class="line">      [<span class="number">1</span>] =&gt; <span class="keyword">array</span>(<span class="number">66</span>) &#123;</div><div class="line">        [<span class="string">"app_host"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">        [<span class="string">"app_debug"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"app_trace"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"app_status"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">        [<span class="string">"app_multi_module"</span>] =&gt; bool(<span class="keyword">true</span>)</div><div class="line">        [<span class="string">"auto_bind_module"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"root_namespace"</span>] =&gt; <span class="keyword">array</span>(<span class="number">0</span>) &#123;</div><div class="line">        &#125;</div><div class="line">        [<span class="string">"extra_file_list"</span>] =&gt; <span class="keyword">array</span>(<span class="number">1</span>) &#123;</div><div class="line">          [<span class="number">0</span>] =&gt; string(<span class="number">59</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/helper.php"</span></div><div class="line">        &#125;</div><div class="line">        [<span class="string">"default_return_type"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"html"</span></div><div class="line">        [<span class="string">"default_ajax_return"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"json"</span></div><div class="line">        [<span class="string">"default_jsonp_handler"</span>] =&gt; string(<span class="number">11</span>) <span class="string">"jsonpReturn"</span></div><div class="line">        [<span class="string">"var_jsonp_handler"</span>] =&gt; string(<span class="number">8</span>) <span class="string">"callback"</span></div><div class="line">        [<span class="string">"default_timezone"</span>] =&gt; string(<span class="number">3</span>) <span class="string">"PRC"</span></div><div class="line">        [<span class="string">"lang_switch_on"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"default_filter"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">        [<span class="string">"default_lang"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"zh-cn"</span></div><div class="line">        [<span class="string">"class_suffix"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"controller_suffix"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"default_module"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"index"</span></div><div class="line">        [<span class="string">"deny_module_list"</span>] =&gt; <span class="keyword">array</span>(<span class="number">1</span>) &#123;</div><div class="line">          [<span class="number">0</span>] =&gt; string(<span class="number">6</span>) <span class="string">"common"</span></div><div class="line">        &#125;</div><div class="line">        [<span class="string">"default_controller"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"Index"</span></div><div class="line">        [<span class="string">"default_action"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"index"</span></div><div class="line">        [<span class="string">"default_validate"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">        [<span class="string">"empty_controller"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"Error"</span></div><div class="line">        [<span class="string">"use_action_prefix"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"action_suffix"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">        [<span class="string">"controller_auto_search"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"var_pathinfo"</span>] =&gt; string(<span class="number">1</span>) <span class="string">"s"</span></div><div class="line">        [<span class="string">"pathinfo_fetch"</span>] =&gt; <span class="keyword">array</span>(<span class="number">3</span>) &#123;</div><div class="line">          [<span class="number">0</span>] =&gt; string(<span class="number">14</span>) <span class="string">"ORIG_PATH_INFO"</span></div><div class="line">          [<span class="number">1</span>] =&gt; string(<span class="number">18</span>) <span class="string">"REDIRECT_PATH_INFO"</span></div><div class="line">          [<span class="number">2</span>] =&gt; string(<span class="number">12</span>) <span class="string">"REDIRECT_URL"</span></div><div class="line">        &#125;</div><div class="line">        [<span class="string">"pathinfo_depr"</span>] =&gt; string(<span class="number">1</span>) <span class="string">"/"</span></div><div class="line">        [<span class="string">"https_agent_name"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">        [<span class="string">"url_html_suffix"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"html"</span></div><div class="line">        [<span class="string">"url_common_param"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"url_param_type"</span>] =&gt; int(<span class="number">0</span>)</div><div class="line">        [<span class="string">"url_route_on"</span>] =&gt; bool(<span class="keyword">true</span>)</div><div class="line">        [<span class="string">"route_config_file"</span>] =&gt; <span class="keyword">array</span>(<span class="number">1</span>) &#123;</div><div class="line">          [<span class="number">0</span>] =&gt; string(<span class="number">5</span>) <span class="string">"route"</span></div><div class="line">        &#125;</div><div class="line">        [<span class="string">"route_complete_match"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"url_route_must"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"url_domain_deploy"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"url_domain_root"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">        [<span class="string">"url_convert"</span>] =&gt; bool(<span class="keyword">true</span>)</div><div class="line">        [<span class="string">"url_controller_layer"</span>] =&gt; string(<span class="number">10</span>) <span class="string">"controller"</span></div><div class="line">        [<span class="string">"var_method"</span>] =&gt; string(<span class="number">7</span>) <span class="string">"_method"</span></div><div class="line">        [<span class="string">"var_ajax"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"_ajax"</span></div><div class="line">        [<span class="string">"var_pjax"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"_pjax"</span></div><div class="line">        [<span class="string">"request_cache"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"request_cache_expire"</span>] =&gt; <span class="keyword">NULL</span></div><div class="line">        [<span class="string">"request_cache_except"</span>] =&gt; <span class="keyword">array</span>(<span class="number">0</span>) &#123;</div><div class="line">        &#125;</div><div class="line">        [<span class="string">"template"</span>] =&gt; <span class="keyword">array</span>(<span class="number">8</span>) &#123;</div><div class="line">          [<span class="string">"type"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"Think"</span></div><div class="line">          [<span class="string">"view_path"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"view_suffix"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"html"</span></div><div class="line">          [<span class="string">"view_depr"</span>] =&gt; string(<span class="number">1</span>) <span class="string">"/"</span></div><div class="line">          [<span class="string">"tpl_begin"</span>] =&gt; string(<span class="number">1</span>) <span class="string">"&#123;"</span></div><div class="line">          [<span class="string">"tpl_end"</span>] =&gt; string(<span class="number">1</span>) <span class="string">"&#125;"</span></div><div class="line">          [<span class="string">"taglib_begin"</span>] =&gt; string(<span class="number">1</span>) <span class="string">"&#123;"</span></div><div class="line">          [<span class="string">"taglib_end"</span>] =&gt; string(<span class="number">1</span>) <span class="string">"&#125;"</span></div><div class="line">        &#125;</div><div class="line">        [<span class="string">"view_replace_str"</span>] =&gt; <span class="keyword">array</span>(<span class="number">0</span>) &#123;</div><div class="line">        &#125;</div><div class="line">        [<span class="string">"dispatch_success_tmpl"</span>] =&gt; string(<span class="number">70</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/tpl/dispatch_jump.tpl"</span></div><div class="line">        [<span class="string">"dispatch_error_tmpl"</span>] =&gt; string(<span class="number">70</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/tpl/dispatch_jump.tpl"</span></div><div class="line">        [<span class="string">"exception_tmpl"</span>] =&gt; string(<span class="number">72</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/tpl/think_exception.tpl"</span></div><div class="line">        [<span class="string">"error_message"</span>] =&gt; string(<span class="number">33</span>) <span class="string">"页面错误！请稍后再试～"</span></div><div class="line">        [<span class="string">"show_error_msg"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"exception_handle"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">        [<span class="string">"record_trace"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"log"</span>] =&gt; <span class="keyword">array</span>(<span class="number">3</span>) &#123;</div><div class="line">          [<span class="string">"type"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"File"</span></div><div class="line">          [<span class="string">"path"</span>] =&gt; string(<span class="number">52</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/runtime/log/"</span></div><div class="line">          [<span class="string">"level"</span>] =&gt; <span class="keyword">array</span>(<span class="number">0</span>) &#123;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">        [<span class="string">"trace"</span>] =&gt; <span class="keyword">array</span>(<span class="number">1</span>) &#123;</div><div class="line">          [<span class="string">"type"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"Html"</span></div><div class="line">        &#125;</div><div class="line">        [<span class="string">"cache"</span>] =&gt; <span class="keyword">array</span>(<span class="number">4</span>) &#123;</div><div class="line">          [<span class="string">"type"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"File"</span></div><div class="line">          [<span class="string">"path"</span>] =&gt; string(<span class="number">54</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/runtime/cache/"</span></div><div class="line">          [<span class="string">"prefix"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"expire"</span>] =&gt; int(<span class="number">0</span>)</div><div class="line">        &#125;</div><div class="line">        [<span class="string">"session"</span>] =&gt; <span class="keyword">array</span>(<span class="number">5</span>) &#123;</div><div class="line">          [<span class="string">"id"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"var_session_id"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"prefix"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"think"</span></div><div class="line">          [<span class="string">"type"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"auto_start"</span>] =&gt; bool(<span class="keyword">true</span>)</div><div class="line">        &#125;</div><div class="line">        [<span class="string">"cookie"</span>] =&gt; <span class="keyword">array</span>(<span class="number">7</span>) &#123;</div><div class="line">          [<span class="string">"prefix"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"expire"</span>] =&gt; int(<span class="number">0</span>)</div><div class="line">          [<span class="string">"path"</span>] =&gt; string(<span class="number">1</span>) <span class="string">"/"</span></div><div class="line">          [<span class="string">"domain"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"secure"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">          [<span class="string">"httponly"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"setcookie"</span>] =&gt; bool(<span class="keyword">true</span>)</div><div class="line">        &#125;</div><div class="line">        [<span class="string">"database"</span>] =&gt; <span class="keyword">array</span>(<span class="number">20</span>) &#123;</div><div class="line">          [<span class="string">"type"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"mysql"</span></div><div class="line">          [<span class="string">"dsn"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"hostname"</span>] =&gt; string(<span class="number">9</span>) <span class="string">"127.0.0.1"</span></div><div class="line">          [<span class="string">"database"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"username"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"root"</span></div><div class="line">          [<span class="string">"password"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"hostport"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"params"</span>] =&gt; <span class="keyword">array</span>(<span class="number">0</span>) &#123;</div><div class="line">          &#125;</div><div class="line">          [<span class="string">"charset"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"utf8"</span></div><div class="line">          [<span class="string">"prefix"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"debug"</span>] =&gt; bool(<span class="keyword">true</span>)</div><div class="line">          [<span class="string">"deploy"</span>] =&gt; int(<span class="number">0</span>)</div><div class="line">          [<span class="string">"rw_separate"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">          [<span class="string">"master_num"</span>] =&gt; int(<span class="number">1</span>)</div><div class="line">          [<span class="string">"slave_no"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"fields_strict"</span>] =&gt; bool(<span class="keyword">true</span>)</div><div class="line">          [<span class="string">"resultset_type"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"array"</span></div><div class="line">          [<span class="string">"auto_timestamp"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">          [<span class="string">"datetime_format"</span>] =&gt; string(<span class="number">11</span>) <span class="string">"Y-m-d H:i:s"</span></div><div class="line">          [<span class="string">"sql_explain"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        &#125;</div><div class="line">        [<span class="string">"paginate"</span>] =&gt; <span class="keyword">array</span>(<span class="number">3</span>) &#123;</div><div class="line">          [<span class="string">"type"</span>] =&gt; string(<span class="number">9</span>) <span class="string">"bootstrap"</span></div><div class="line">          [<span class="string">"var_page"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"page"</span></div><div class="line">          [<span class="string">"list_rows"</span>] =&gt; int(<span class="number">15</span>)</div><div class="line">        &#125;</div><div class="line">        [<span class="string">"console"</span>] =&gt; <span class="keyword">array</span>(<span class="number">3</span>) &#123;</div><div class="line">          [<span class="string">"name"</span>] =&gt; string(<span class="number">13</span>) <span class="string">"Think Console"</span></div><div class="line">          [<span class="string">"version"</span>] =&gt; string(<span class="number">3</span>) <span class="string">"0.1"</span></div><div class="line">          [<span class="string">"user"</span>] =&gt; <span class="keyword">NULL</span></div><div class="line">        &#125;</div><div class="line">        [<span class="string">"queue"</span>] =&gt; <span class="keyword">array</span>(<span class="number">1</span>) &#123;</div><div class="line">          [<span class="string">"connector"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"Sync"</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">      [<span class="number">2</span>] =&gt; bool(<span class="keyword">true</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  [<span class="number">4</span>] =&gt; <span class="keyword">array</span>(<span class="number">6</span>) &#123;</div><div class="line">    [<span class="string">"file"</span>] =&gt; string(<span class="number">70</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/library/think/App.php"</span></div><div class="line">    [<span class="string">"line"</span>] =&gt; int(<span class="number">139</span>)</div><div class="line">    [<span class="string">"function"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"exec"</span></div><div class="line">    [<span class="string">"class"</span>] =&gt; string(<span class="number">9</span>) <span class="string">"think\App"</span></div><div class="line">    [<span class="string">"type"</span>] =&gt; string(<span class="number">2</span>) <span class="string">"::"</span></div><div class="line">    [<span class="string">"args"</span>] =&gt; <span class="keyword">array</span>(<span class="number">2</span>) &#123;</div><div class="line">      [<span class="number">0</span>] =&gt; <span class="keyword">array</span>(<span class="number">2</span>) &#123;</div><div class="line">        [<span class="string">"type"</span>] =&gt; string(<span class="number">6</span>) <span class="string">"module"</span></div><div class="line">        [<span class="string">"module"</span>] =&gt; <span class="keyword">array</span>(<span class="number">3</span>) &#123;</div><div class="line">          [<span class="number">0</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="number">1</span>] =&gt; <span class="keyword">NULL</span></div><div class="line">          [<span class="number">2</span>] =&gt; <span class="keyword">NULL</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">      [<span class="number">1</span>] =&gt; <span class="keyword">array</span>(<span class="number">66</span>) &#123;</div><div class="line">        [<span class="string">"app_host"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">        [<span class="string">"app_debug"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"app_trace"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"app_status"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">        [<span class="string">"app_multi_module"</span>] =&gt; bool(<span class="keyword">true</span>)</div><div class="line">        [<span class="string">"auto_bind_module"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"root_namespace"</span>] =&gt; <span class="keyword">array</span>(<span class="number">0</span>) &#123;</div><div class="line">        &#125;</div><div class="line">        [<span class="string">"extra_file_list"</span>] =&gt; <span class="keyword">array</span>(<span class="number">1</span>) &#123;</div><div class="line">          [<span class="number">0</span>] =&gt; string(<span class="number">59</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/helper.php"</span></div><div class="line">        &#125;</div><div class="line">        [<span class="string">"default_return_type"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"html"</span></div><div class="line">        [<span class="string">"default_ajax_return"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"json"</span></div><div class="line">        [<span class="string">"default_jsonp_handler"</span>] =&gt; string(<span class="number">11</span>) <span class="string">"jsonpReturn"</span></div><div class="line">        [<span class="string">"var_jsonp_handler"</span>] =&gt; string(<span class="number">8</span>) <span class="string">"callback"</span></div><div class="line">        [<span class="string">"default_timezone"</span>] =&gt; string(<span class="number">3</span>) <span class="string">"PRC"</span></div><div class="line">        [<span class="string">"lang_switch_on"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"default_filter"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">        [<span class="string">"default_lang"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"zh-cn"</span></div><div class="line">        [<span class="string">"class_suffix"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"controller_suffix"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"default_module"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"index"</span></div><div class="line">        [<span class="string">"deny_module_list"</span>] =&gt; <span class="keyword">array</span>(<span class="number">1</span>) &#123;</div><div class="line">          [<span class="number">0</span>] =&gt; string(<span class="number">6</span>) <span class="string">"common"</span></div><div class="line">        &#125;</div><div class="line">        [<span class="string">"default_controller"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"Index"</span></div><div class="line">        [<span class="string">"default_action"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"index"</span></div><div class="line">        [<span class="string">"default_validate"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">        [<span class="string">"empty_controller"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"Error"</span></div><div class="line">        [<span class="string">"use_action_prefix"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"action_suffix"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">        [<span class="string">"controller_auto_search"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"var_pathinfo"</span>] =&gt; string(<span class="number">1</span>) <span class="string">"s"</span></div><div class="line">        [<span class="string">"pathinfo_fetch"</span>] =&gt; <span class="keyword">array</span>(<span class="number">3</span>) &#123;</div><div class="line">          [<span class="number">0</span>] =&gt; string(<span class="number">14</span>) <span class="string">"ORIG_PATH_INFO"</span></div><div class="line">          [<span class="number">1</span>] =&gt; string(<span class="number">18</span>) <span class="string">"REDIRECT_PATH_INFO"</span></div><div class="line">          [<span class="number">2</span>] =&gt; string(<span class="number">12</span>) <span class="string">"REDIRECT_URL"</span></div><div class="line">        &#125;</div><div class="line">        [<span class="string">"pathinfo_depr"</span>] =&gt; string(<span class="number">1</span>) <span class="string">"/"</span></div><div class="line">        [<span class="string">"https_agent_name"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">        [<span class="string">"url_html_suffix"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"html"</span></div><div class="line">        [<span class="string">"url_common_param"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"url_param_type"</span>] =&gt; int(<span class="number">0</span>)</div><div class="line">        [<span class="string">"url_route_on"</span>] =&gt; bool(<span class="keyword">true</span>)</div><div class="line">        [<span class="string">"route_config_file"</span>] =&gt; <span class="keyword">array</span>(<span class="number">1</span>) &#123;</div><div class="line">          [<span class="number">0</span>] =&gt; string(<span class="number">5</span>) <span class="string">"route"</span></div><div class="line">        &#125;</div><div class="line">        [<span class="string">"route_complete_match"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"url_route_must"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"url_domain_deploy"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"url_domain_root"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">        [<span class="string">"url_convert"</span>] =&gt; bool(<span class="keyword">true</span>)</div><div class="line">        [<span class="string">"url_controller_layer"</span>] =&gt; string(<span class="number">10</span>) <span class="string">"controller"</span></div><div class="line">        [<span class="string">"var_method"</span>] =&gt; string(<span class="number">7</span>) <span class="string">"_method"</span></div><div class="line">        [<span class="string">"var_ajax"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"_ajax"</span></div><div class="line">        [<span class="string">"var_pjax"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"_pjax"</span></div><div class="line">        [<span class="string">"request_cache"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"request_cache_expire"</span>] =&gt; <span class="keyword">NULL</span></div><div class="line">        [<span class="string">"request_cache_except"</span>] =&gt; <span class="keyword">array</span>(<span class="number">0</span>) &#123;</div><div class="line">        &#125;</div><div class="line">        [<span class="string">"template"</span>] =&gt; <span class="keyword">array</span>(<span class="number">8</span>) &#123;</div><div class="line">          [<span class="string">"type"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"Think"</span></div><div class="line">          [<span class="string">"view_path"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"view_suffix"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"html"</span></div><div class="line">          [<span class="string">"view_depr"</span>] =&gt; string(<span class="number">1</span>) <span class="string">"/"</span></div><div class="line">          [<span class="string">"tpl_begin"</span>] =&gt; string(<span class="number">1</span>) <span class="string">"&#123;"</span></div><div class="line">          [<span class="string">"tpl_end"</span>] =&gt; string(<span class="number">1</span>) <span class="string">"&#125;"</span></div><div class="line">          [<span class="string">"taglib_begin"</span>] =&gt; string(<span class="number">1</span>) <span class="string">"&#123;"</span></div><div class="line">          [<span class="string">"taglib_end"</span>] =&gt; string(<span class="number">1</span>) <span class="string">"&#125;"</span></div><div class="line">        &#125;</div><div class="line">        [<span class="string">"view_replace_str"</span>] =&gt; <span class="keyword">array</span>(<span class="number">0</span>) &#123;</div><div class="line">        &#125;</div><div class="line">        [<span class="string">"dispatch_success_tmpl"</span>] =&gt; string(<span class="number">70</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/tpl/dispatch_jump.tpl"</span></div><div class="line">        [<span class="string">"dispatch_error_tmpl"</span>] =&gt; string(<span class="number">70</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/tpl/dispatch_jump.tpl"</span></div><div class="line">        [<span class="string">"exception_tmpl"</span>] =&gt; string(<span class="number">72</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/tpl/think_exception.tpl"</span></div><div class="line">        [<span class="string">"error_message"</span>] =&gt; string(<span class="number">33</span>) <span class="string">"页面错误！请稍后再试～"</span></div><div class="line">        [<span class="string">"show_error_msg"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"exception_handle"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">        [<span class="string">"record_trace"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        [<span class="string">"log"</span>] =&gt; <span class="keyword">array</span>(<span class="number">3</span>) &#123;</div><div class="line">          [<span class="string">"type"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"File"</span></div><div class="line">          [<span class="string">"path"</span>] =&gt; string(<span class="number">52</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/runtime/log/"</span></div><div class="line">          [<span class="string">"level"</span>] =&gt; <span class="keyword">array</span>(<span class="number">0</span>) &#123;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">        [<span class="string">"trace"</span>] =&gt; <span class="keyword">array</span>(<span class="number">1</span>) &#123;</div><div class="line">          [<span class="string">"type"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"Html"</span></div><div class="line">        &#125;</div><div class="line">        [<span class="string">"cache"</span>] =&gt; <span class="keyword">array</span>(<span class="number">4</span>) &#123;</div><div class="line">          [<span class="string">"type"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"File"</span></div><div class="line">          [<span class="string">"path"</span>] =&gt; string(<span class="number">54</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/runtime/cache/"</span></div><div class="line">          [<span class="string">"prefix"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"expire"</span>] =&gt; int(<span class="number">0</span>)</div><div class="line">        &#125;</div><div class="line">        [<span class="string">"session"</span>] =&gt; <span class="keyword">array</span>(<span class="number">5</span>) &#123;</div><div class="line">          [<span class="string">"id"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"var_session_id"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"prefix"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"think"</span></div><div class="line">          [<span class="string">"type"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"auto_start"</span>] =&gt; bool(<span class="keyword">true</span>)</div><div class="line">        &#125;</div><div class="line">        [<span class="string">"cookie"</span>] =&gt; <span class="keyword">array</span>(<span class="number">7</span>) &#123;</div><div class="line">          [<span class="string">"prefix"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"expire"</span>] =&gt; int(<span class="number">0</span>)</div><div class="line">          [<span class="string">"path"</span>] =&gt; string(<span class="number">1</span>) <span class="string">"/"</span></div><div class="line">          [<span class="string">"domain"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"secure"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">          [<span class="string">"httponly"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"setcookie"</span>] =&gt; bool(<span class="keyword">true</span>)</div><div class="line">        &#125;</div><div class="line">        [<span class="string">"database"</span>] =&gt; <span class="keyword">array</span>(<span class="number">20</span>) &#123;</div><div class="line">          [<span class="string">"type"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"mysql"</span></div><div class="line">          [<span class="string">"dsn"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"hostname"</span>] =&gt; string(<span class="number">9</span>) <span class="string">"127.0.0.1"</span></div><div class="line">          [<span class="string">"database"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"username"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"root"</span></div><div class="line">          [<span class="string">"password"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"hostport"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"params"</span>] =&gt; <span class="keyword">array</span>(<span class="number">0</span>) &#123;</div><div class="line">          &#125;</div><div class="line">          [<span class="string">"charset"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"utf8"</span></div><div class="line">          [<span class="string">"prefix"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"debug"</span>] =&gt; bool(<span class="keyword">true</span>)</div><div class="line">          [<span class="string">"deploy"</span>] =&gt; int(<span class="number">0</span>)</div><div class="line">          [<span class="string">"rw_separate"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">          [<span class="string">"master_num"</span>] =&gt; int(<span class="number">1</span>)</div><div class="line">          [<span class="string">"slave_no"</span>] =&gt; string(<span class="number">0</span>) <span class="string">""</span></div><div class="line">          [<span class="string">"fields_strict"</span>] =&gt; bool(<span class="keyword">true</span>)</div><div class="line">          [<span class="string">"resultset_type"</span>] =&gt; string(<span class="number">5</span>) <span class="string">"array"</span></div><div class="line">          [<span class="string">"auto_timestamp"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">          [<span class="string">"datetime_format"</span>] =&gt; string(<span class="number">11</span>) <span class="string">"Y-m-d H:i:s"</span></div><div class="line">          [<span class="string">"sql_explain"</span>] =&gt; bool(<span class="keyword">false</span>)</div><div class="line">        &#125;</div><div class="line">        [<span class="string">"paginate"</span>] =&gt; <span class="keyword">array</span>(<span class="number">3</span>) &#123;</div><div class="line">          [<span class="string">"type"</span>] =&gt; string(<span class="number">9</span>) <span class="string">"bootstrap"</span></div><div class="line">          [<span class="string">"var_page"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"page"</span></div><div class="line">          [<span class="string">"list_rows"</span>] =&gt; int(<span class="number">15</span>)</div><div class="line">        &#125;</div><div class="line">        [<span class="string">"console"</span>] =&gt; <span class="keyword">array</span>(<span class="number">3</span>) &#123;</div><div class="line">          [<span class="string">"name"</span>] =&gt; string(<span class="number">13</span>) <span class="string">"Think Console"</span></div><div class="line">          [<span class="string">"version"</span>] =&gt; string(<span class="number">3</span>) <span class="string">"0.1"</span></div><div class="line">          [<span class="string">"user"</span>] =&gt; <span class="keyword">NULL</span></div><div class="line">        &#125;</div><div class="line">        [<span class="string">"queue"</span>] =&gt; <span class="keyword">array</span>(<span class="number">1</span>) &#123;</div><div class="line">          [<span class="string">"connector"</span>] =&gt; string(<span class="number">4</span>) <span class="string">"Sync"</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  [<span class="number">5</span>] =&gt; <span class="keyword">array</span>(<span class="number">6</span>) &#123;</div><div class="line">    [<span class="string">"file"</span>] =&gt; string(<span class="number">58</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/start.php"</span></div><div class="line">    [<span class="string">"line"</span>] =&gt; int(<span class="number">19</span>)</div><div class="line">    [<span class="string">"function"</span>] =&gt; string(<span class="number">3</span>) <span class="string">"run"</span></div><div class="line">    [<span class="string">"class"</span>] =&gt; string(<span class="number">9</span>) <span class="string">"think\App"</span></div><div class="line">    [<span class="string">"type"</span>] =&gt; string(<span class="number">2</span>) <span class="string">"::"</span></div><div class="line">    [<span class="string">"args"</span>] =&gt; <span class="keyword">array</span>(<span class="number">0</span>) &#123;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  [<span class="number">6</span>] =&gt; <span class="keyword">array</span>(<span class="number">4</span>) &#123;</div><div class="line">    [<span class="string">"file"</span>] =&gt; string(<span class="number">56</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/public/index.php"</span></div><div class="line">    [<span class="string">"line"</span>] =&gt; int(<span class="number">17</span>)</div><div class="line">    [<span class="string">"args"</span>] =&gt; <span class="keyword">array</span>(<span class="number">1</span>) &#123;</div><div class="line">      [<span class="number">0</span>] =&gt; string(<span class="number">58</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/start.php"</span></div><div class="line">    &#125;</div><div class="line">    [<span class="string">"function"</span>] =&gt; string(<span class="number">7</span>) <span class="string">"require"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们可以来分析一下 ThinkPHP5.0的调用步骤：</p>
+<ol>
+<li>在入口文件的第17行调用加载了 start.php</li>
+<li>在 start.php 的第19行执行了 think\App::start()方法</li>
+<li>然后在 APP.php 中执行了 exec()方法…..</li>
+</ol>
+<p>debug_backtrace 显示的是详细信息，如果想要简单的查看调用，可以使用<code>debug_print_backtrace</code>函数直接打印输出堆栈的调用信息。</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-19%2017.26.42.png" alt=""></p>
+<p>这样我们就可以分析出，ThinkPHP 的执行流程，也就四五分钟的时间。</p>
+<p>当我们需要输出变量的时候，我们应该使用 var_dump()，因为var_dump 可以直观的看出数组的结构。</p>
+<p>当我们在在向日志文件输出数组的时候，我们可以使用 <code>var_export()</code>进行输出。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$a = <span class="keyword">array</span> (<span class="number">1</span>, <span class="number">2</span>, <span class="keyword">array</span> (<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>));</div><div class="line">var_export ($a);</div><div class="line"><span class="comment">/* 输出：</span></div><div class="line">array (</div><div class="line">  0 =&gt; 1,</div><div class="line">  1 =&gt; 2,</div><div class="line">  2 =&gt; </div><div class="line">  array (</div><div class="line">    0 =&gt; 'a',</div><div class="line">    1 =&gt; 'b',</div><div class="line">    2 =&gt; 'c',</div><div class="line">  ),</div><div class="line">)</div><div class="line">*/</div></pre></td></tr></table></figure>
+<p>另外我们可以通过 <strong>get_included_files</strong>来获取当前脚本文件都加载了哪些文件。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">array</span>(<span class="number">23</span>) &#123;</div><div class="line">  [<span class="number">0</span>] =&gt; string(<span class="number">56</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/public/index.php"</span></div><div class="line">  [<span class="number">1</span>] =&gt; string(<span class="number">58</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/start.php"</span></div><div class="line">  [<span class="number">2</span>] =&gt; string(<span class="number">57</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/base.php"</span></div><div class="line">  [<span class="number">3</span>] =&gt; string(<span class="number">73</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/library/think/Loader.php"</span></div><div class="line">  [<span class="number">4</span>] =&gt; string(<span class="number">75</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/vendor/composer/autoload_static.php"</span></div><div class="line">  [<span class="number">5</span>] =&gt; string(<span class="number">72</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/library/think/Error.php"</span></div><div class="line">  [<span class="number">6</span>] =&gt; string(<span class="number">73</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/library/think/Config.php"</span></div><div class="line">  [<span class="number">7</span>] =&gt; string(<span class="number">63</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/convention.php"</span></div><div class="line">  [<span class="number">8</span>] =&gt; string(<span class="number">70</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/library/think/App.php"</span></div><div class="line">  [<span class="number">9</span>] =&gt; string(<span class="number">74</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/library/think/Request.php"</span></div><div class="line">  [<span class="number">10</span>] =&gt; string(<span class="number">62</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/application/config.php"</span></div><div class="line">  [<span class="number">11</span>] =&gt; string(<span class="number">64</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/application/database.php"</span></div><div class="line">  [<span class="number">12</span>] =&gt; string(<span class="number">67</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/application/extra/queue.php"</span></div><div class="line">  [<span class="number">13</span>] =&gt; string(<span class="number">71</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/library/think/Hook.php"</span></div><div class="line">  [<span class="number">14</span>] =&gt; string(<span class="number">60</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/application/tags.php"</span></div><div class="line">  [<span class="number">15</span>] =&gt; string(<span class="number">62</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/application/common.php"</span></div><div class="line">  [<span class="number">16</span>] =&gt; string(<span class="number">70</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/library/think/Env.php"</span></div><div class="line">  [<span class="number">17</span>] =&gt; string(<span class="number">59</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/helper.php"</span></div><div class="line">  [<span class="number">18</span>] =&gt; string(<span class="number">71</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/library/think/Lang.php"</span></div><div class="line">  [<span class="number">19</span>] =&gt; string(<span class="number">63</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/lang/zh-cn.php"</span></div><div class="line">  [<span class="number">20</span>] =&gt; string(<span class="number">61</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/application/route.php"</span></div><div class="line">  [<span class="number">21</span>] =&gt; string(<span class="number">72</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/thinkphp/library/think/Route.php"</span></div><div class="line">  [<span class="number">22</span>] =&gt; string(<span class="number">78</span>) <span class="string">"/Users/maksim/Downloads/thinkphp_5.0.20/application/index/controller/Index.php"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面都是用PHP 自带的函数来做代码分析，下面来讲解一下利用 SocketLog 来分析源代码。</p>
+<p>SocketLog 可以把我们的一些日志打到浏览器的调试工具上面。</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-19%2017.56.37.png" alt=""></p>
+<p>比如说 SQL 语句，点开后可以查看调用栈，通过这些信息，我们就可以快速定位我们想要修改的代码。其实 SocketLog 还可以做微信调试。</p>
+<p>详细的使用方法可以通过 github 进行查看：</p>
+<blockquote>
+<p><a href="https://github.com/luofei614/SocketLog" target="_blank" rel="noopener">https://github.com/luofei614/SocketLog</a></p>
+</blockquote>
+<p>我们可以通过一些思维导图的工具来帮助我们分析业务逻辑。</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-19%2019.26.58.png" alt=""></p>
+<p>我们还可以通过 UML 图形来整理类之间的关系，我们可以看 《大象UML 》来了解 UML 建模。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/19/1/" rel="next" title="添加报警程序提高站点的可用性">
+                <i class="fa fa-chevron-left"></i> 添加报警程序提高站点的可用性
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTYyMC8xMjE1Ng"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ogxeww23n.bkt.clouddn.com/timg.jpeg"
+                alt="Maksim" />
+            
+              <p class="site-author-name" itemprop="name">Maksim</p>
+              <p class="site-description motion-element" itemprop="description">Maksim's Website，分享成长的点点滴滴，关注PHP、JavaScript、Linux、C/C++、Go、SQL、MySQL、Redis、iOS、安卓开发，努力做一个值得收藏的博客。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">112</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/aircrayon" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aircrayon@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maksim</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

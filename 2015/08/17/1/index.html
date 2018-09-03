@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Maksim&#39;s Website">
 <meta property="og:description" content="Base64是网络上最常见的用于传输8Bit字节代码的编码方式之一，大家可以查看RFC2045～RFC2049，上面有MIME的详细规范。Base64编码可用于在HTTP环境下传递较长的标识信息。例如，在Java Persistence系统Hibernate中，就采用了Base64来将一个较长的唯一标识符（一般为128-bit的UUID）编码为一个字符串，用作HTTP表单和HTTP GET URL">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-25T12:36:54.744Z">
+<meta property="og:updated_time" content="2018-08-20T13:52:40.328Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DATA URI image封装类">
 <meta name="twitter:description" content="Base64是网络上最常见的用于传输8Bit字节代码的编码方式之一，大家可以查看RFC2045～RFC2049，上面有MIME的详细规范。Base64编码可用于在HTTP环境下传递较长的标识信息。例如，在Java Persistence系统Hibernate中，就采用了Base64来将一个较长的唯一标识符（一般为128-bit的UUID）编码为一个字符串，用作HTTP表单和HTTP GET URL">
@@ -365,8 +365,7 @@
 
       
         <p>Base64是网络上最常见的用于传输8Bit字节代码的编码方式之一，大家可以查看RFC2045～RFC2049，上面有MIME的详细规范。Base64编码可用于在HTTP环境下传递较长的标识信息。例如，在Java Persistence系统Hibernate中，就采用了Base64来将一个较长的唯一标识符（一般为128-bit的UUID）编码为一个字符串，用作HTTP表单和HTTP GET URL中的参数。在其他应用程序中，也常常需要把二进制数据编码为适合放在URL（包括隐藏表单域）中的形式。此时，采用Base64编码具有不可读性，即所编码的数据不会被人用肉眼所直接看到。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class DataBase64&#123;</div><div class="line">		public $file = &apos;&apos;;</div><div class="line">		public function __construct($file)&#123;</div><div class="line">			$this-&gt;file = $file;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		public function getBase64()&#123;</div><div class="line">			$type = getimagesize($this-&gt;file);	</div><div class="line">			$fp = fopen($this-&gt;file, &apos;r&apos;) or die(&quot;Can&apos;t open file&quot;);</div><div class="line">			$file_content= chunk_split(base64_encode(fread($fp, filesize($this-&gt;file)))) ;</div><div class="line">			switch($type[2])&#123;//判读图片类型  </div><div class="line">				case 1:$img_type=&quot;gif&quot;;break;  </div><div class="line">				case 2:$img_type=&quot;jpg&quot;;break;  </div><div class="line">				case 3:$img_type=&quot;png&quot;;break;  </div><div class="line">			&#125;  </div><div class="line">			return $img=&apos;data:image/&apos;.$img_type.&apos;;base64,&apos;.$file_content;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	$data = new DataBase64(&apos;image/1.jpg&apos;);</div><div class="line">	$img = $data-&gt;getBase64();</div></pre></td></tr></table></figure>
-
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DataBase64</span> </span>&#123;</div><div class="line">		</div><div class="line">    <span class="keyword">public</span> $file = <span class="string">''</span>;</div><div class="line">	</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($file)</span></span>&#123;</div><div class="line">			<span class="keyword">$this</span>-&gt;file = $file;</div><div class="line">	&#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getBase64</span><span class="params">()</span></span>&#123;</div><div class="line">		$type = getimagesize(<span class="keyword">$this</span>-&gt;file);	</div><div class="line">		$fp = fopen(<span class="keyword">$this</span>-&gt;file, <span class="string">'r'</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">"Can't open file"</span>);</div><div class="line">		$file_content= chunk_split(base64_encode(fread($fp, filesize(<span class="keyword">$this</span>-&gt;file)))) ;</div><div class="line">		<span class="keyword">switch</span>($type[<span class="number">2</span>])&#123;<span class="comment">//判读图片类型  </span></div><div class="line">			<span class="keyword">case</span> <span class="number">1</span>:$img_type=<span class="string">"gif"</span>;<span class="keyword">break</span>;  </div><div class="line">			<span class="keyword">case</span> <span class="number">2</span>:$img_type=<span class="string">"jpg"</span>;<span class="keyword">break</span>;  </div><div class="line">			<span class="keyword">case</span> <span class="number">3</span>:$img_type=<span class="string">"png"</span>;<span class="keyword">break</span>;  </div><div class="line">		&#125;  </div><div class="line">		<span class="keyword">return</span> $img=<span class="string">'data:image/'</span>.$img_type.<span class="string">';base64,'</span>.$file_content;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">$data = <span class="keyword">new</span> DataBase64(<span class="string">'image/1.jpg'</span>);</div><div class="line">$img = $data-&gt;getBase64();</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -485,7 +484,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">110</span>
+                  <span class="site-state-item-count">112</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -496,7 +495,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
