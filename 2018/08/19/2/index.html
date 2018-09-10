@@ -81,21 +81,21 @@
 
 
 
-<meta name="description" content="在分析开源项目的时候，我们可以有5种分析代码的方法：  看文档 Xdebug做调试 自带函数（debug_backtrace, debug_print_backtrace, var_export, var_dump, get_inclued_files） SocketLog（不能var_dump的地方ajax、api，var_dump了也看不见的地方，cron 脚本，队列） 思维整理 （UML、思">
+<meta name="description" content="在我们开发项目的过程中，不可避免的会使用一些开软程序，因为使用开源程序可以缩短我们的开发周期，降低研发成本。 但是在使用过程中，难免会碰到各种坑，这个时候，就要求程序员拥有分析开源项目的能力，因为并非是所有开源项目都会拥有一个稳定的维护团队和健全的文档（毕竟开源项目很少有盈利的）。 在进行 PHP 研发过程中，我们可以使用以下5中方式来进行代码分析：  看文档 Xdebug做调试 自带函数（deb">
 <meta name="keywords" content="前端博客,JavaScript,html5,css3,Jquery,Linux,PHP,iOS,MySQL,SQL,Redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分析开源项目的方法">
+<meta property="og:title" content="如何分析学习 PHP 开源项目">
 <meta property="og:url" content="http://www.maksim.website/2018/08/19/2/index.html">
 <meta property="og:site_name" content="Maksim&#39;s Website">
-<meta property="og:description" content="在分析开源项目的时候，我们可以有5种分析代码的方法：  看文档 Xdebug做调试 自带函数（debug_backtrace, debug_print_backtrace, var_export, var_dump, get_inclued_files） SocketLog（不能var_dump的地方ajax、api，var_dump了也看不见的地方，cron 脚本，队列） 思维整理 （UML、思">
+<meta property="og:description" content="在我们开发项目的过程中，不可避免的会使用一些开软程序，因为使用开源程序可以缩短我们的开发周期，降低研发成本。 但是在使用过程中，难免会碰到各种坑，这个时候，就要求程序员拥有分析开源项目的能力，因为并非是所有开源项目都会拥有一个稳定的维护团队和健全的文档（毕竟开源项目很少有盈利的）。 在进行 PHP 研发过程中，我们可以使用以下5中方式来进行代码分析：  看文档 Xdebug做调试 自带函数（deb">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-19%2017.26.42.png">
 <meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-19%2017.56.37.png">
 <meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-19%2019.26.58.png">
-<meta property="og:updated_time" content="2018-09-03T14:42:13.738Z">
+<meta property="og:updated_time" content="2018-09-08T04:58:32.057Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分析开源项目的方法">
-<meta name="twitter:description" content="在分析开源项目的时候，我们可以有5种分析代码的方法：  看文档 Xdebug做调试 自带函数（debug_backtrace, debug_print_backtrace, var_export, var_dump, get_inclued_files） SocketLog（不能var_dump的地方ajax、api，var_dump了也看不见的地方，cron 脚本，队列） 思维整理 （UML、思">
+<meta name="twitter:title" content="如何分析学习 PHP 开源项目">
+<meta name="twitter:description" content="在我们开发项目的过程中，不可避免的会使用一些开软程序，因为使用开源程序可以缩短我们的开发周期，降低研发成本。 但是在使用过程中，难免会碰到各种坑，这个时候，就要求程序员拥有分析开源项目的能力，因为并非是所有开源项目都会拥有一个稳定的维护团队和健全的文档（毕竟开源项目很少有盈利的）。 在进行 PHP 研发过程中，我们可以使用以下5中方式来进行代码分析：  看文档 Xdebug做调试 自带函数（deb">
 <meta name="twitter:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-19%2017.26.42.png">
 
 
@@ -132,7 +132,7 @@
 
 
 
-  <title>分析开源项目的方法 | Maksim's Website</title>
+  <title>如何分析学习 PHP 开源项目 | Maksim's Website</title>
   
 
 
@@ -296,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">分析开源项目的方法</h1>
+          <h1 class="post-title" itemprop="name headline">如何分析学习 PHP 开源项目</h1>
         
 
         <div class="post-meta">
@@ -368,7 +368,9 @@
       
 
       
-        <p>在分析开源项目的时候，我们可以有5种分析代码的方法：</p>
+        <p>在我们开发项目的过程中，不可避免的会使用一些开软程序，因为使用开源程序可以缩短我们的开发周期，降低研发成本。</p>
+<p>但是在使用过程中，难免会碰到各种坑，这个时候，就要求程序员拥有分析开源项目的能力，因为并非是所有开源项目都会拥有一个稳定的维护团队和健全的文档（毕竟开源项目很少有盈利的）。</p>
+<p>在进行 PHP 研发过程中，我们可以使用以下5中方式来进行代码分析：</p>
 <ol>
 <li>看文档</li>
 <li>Xdebug做调试</li>
@@ -376,7 +378,7 @@
 <li>SocketLog（不能var_dump的地方ajax、api，var_dump了也看不见的地方，cron 脚本，队列）</li>
 <li>思维整理 （UML、思维导图）</li>
 </ol>
-<p><strong>为什么我们首先是要去看文档呢？</strong></p>
+<p><strong>为什么要把看文档排在第一位？</strong></p>
 <p>当我们第一次拿到开源程序的代码时，很多人会第一反应去看它的源代码，但是如果说我们要了解它的编程思想，就看编程思想而言是看文档，还是看代码要容易呢？</p>
 <p>如果在不了解开源代码的功能就去了解代码的话，其实很难能够弄懂他的编程思想。</p>
 <p>有时候开源程序没有提供文档，我们可以使用 <em>PHPDocumentor</em> 将注释提取成文档。</p>
@@ -444,8 +446,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/19/1/" rel="next" title="添加报警程序提高站点的可用性">
-                <i class="fa fa-chevron-left"></i> 添加报警程序提高站点的可用性
+              <a href="/2018/08/19/1/" rel="next" title="添加报警程序提高对线上错误的感知能力">
+                <i class="fa fa-chevron-left"></i> 添加报警程序提高对线上错误的感知能力
               </a>
             
           </div>
@@ -529,7 +531,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">112</span>
+                  <span class="site-state-item-count">111</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -551,7 +553,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

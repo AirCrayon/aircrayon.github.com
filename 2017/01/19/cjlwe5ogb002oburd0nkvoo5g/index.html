@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Maksim's Website" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="MySQL 是单进程、多线程的架构，Oracle 多进程架构，Oracle 除了 Windows 也是单进程的，这两种架构哪种更好，单进程，多线程上下文切换的代价会比比较小，所以对 CPU 的消耗会比较小一些，多进程的话并发性会好一些，两种对比的话，可能单线程多进程会比多进程要好一点，不过还要看使用场景，如果对并发性要求较高的话性能会更好一些。 MySQL 里面可以用 ps -ef | grep">
+<meta name="keywords" content="前端博客,JavaScript,html5,css3,Jquery,Linux,PHP,iOS,MySQL,SQL,Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL DBA 学习笔记（02）：MySQL 体系结构">
+<meta property="og:url" content="http://www.maksim.website/2017/01/19/cjlwe5ogb002oburd0nkvoo5g/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="MySQL 是单进程、多线程的架构，Oracle 多进程架构，Oracle 除了 Windows 也是单进程的，这两种架构哪种更好，单进程，多线程上下文切换的代价会比比较小，所以对 CPU 的消耗会比较小一些，多进程的话并发性会好一些，两种对比的话，可能单线程多进程会比多进程要好一点，不过还要看使用场景，如果对并发性要求较高的话性能会更好一些。 MySQL 里面可以用 ps -ef | grep">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/http://images2015.cnblogs.com/blog/676456/201707/676456-20170722164214340-166686649.jpg210050572965263.gif">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180719180252.png">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180719180321.png">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180719181249.png">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180719181648.png">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180719182012.png">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-20%2011.30.15.png">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-20%2011.52.40.png">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-20%2011.59.00.png">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-20%2012.04.56.png">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-20%2012.05.54.png">
+<meta property="og:image" content="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-20%2012.06.09.png">
+<meta property="og:updated_time" content="2018-07-31T14:27:41.615Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL DBA 学习笔记（02）：MySQL 体系结构">
+<meta name="twitter:description" content="MySQL 是单进程、多线程的架构，Oracle 多进程架构，Oracle 除了 Windows 也是单进程的，这两种架构哪种更好，单进程，多线程上下文切换的代价会比比较小，所以对 CPU 的消耗会比较小一些，多进程的话并发性会好一些，两种对比的话，可能单线程多进程会比多进程要好一点，不过还要看使用场景，如果对并发性要求较高的话性能会更好一些。 MySQL 里面可以用 ps -ef | grep">
+<meta name="twitter:image" content="http://ogxeww23n.bkt.clouddn.com/http://images2015.cnblogs.com/blog/676456/201707/676456-20170722164214340-166686649.jpg210050572965263.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.maksim.website/2017/01/19/cjlwe5ogb002oburd0nkvoo5g/"/>
+
+
+
+
+
+  <title>MySQL DBA 学习笔记（02）：MySQL 体系结构 | Maksim's Website</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Maksim's Website</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.maksim.website/2017/01/19/cjlwe5ogb002oburd0nkvoo5g/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Maksim">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ogxeww23n.bkt.clouddn.com/timg.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maksim's Website">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL DBA 学习笔记（02）：MySQL 体系结构</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-19T00:00:00+08:00">
+                2017-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL-DBA/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL DBA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>MySQL 是单进程、多线程的架构，Oracle 多进程架构，Oracle 除了 Windows 也是单进程的，这两种架构哪种更好，单进程，多线程上下文切换的代价会比比较小，所以对 CPU 的消耗会比较小一些，多进程的话并发性会好一些，两种对比的话，可能单线程多进程会比多进程要好一点，不过还要看使用场景，如果对并发性要求较高的话性能会更好一些。</p>
+<p>MySQL 里面可以用 <code>ps -ef | grep 3306</code>查看进程。</p>
+<p>在 MySQL 架构里面有个非常有特色的地方，它的存储引擎是可插拔的，如果没有学过 MySQL 的人可能会对存储引擎的概念不是很清楚，在 MySQL 中存储引擎是用来处理数据库相关的 CRUD 的操作，每个数据库都有存储引擎，学过 Oracle 的同学可能会知道堆表，簇表，索引组织表，实际上这些都是存储引擎，在 Oracle 中这些存储引擎都是它自己的，所以没有去强调。</p>
+<p>MySQL 里面存储引擎有很多，是可插拔式的，存储引擎和文件系统有些相似，就像是 Linux 中的 ext2/3，Windows 中的 NTFS，FAT32。</p>
+<p>存储引擎的对象就是表，每一个引擎就像是插头一样的东西，其实我们可以自己开发存储引擎，像是 Facebook 这样的第三方就可以开发自己的存储引擎，满足自己的需求。</p>
+<p>但是因为灵活和存储引擎比较多，就会存在兼容性的问题。</p>
+<p>对于数据库产品的架构，一般可以分为应用层、逻辑层、物理层，对于MySQL，同样可以理解为如下3个层次。</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/http://images2015.cnblogs.com/blog/676456/201707/676456-20170722164214340-166686649.jpg210050572965263.gif" alt="img"></p>
+<p>其中<code>Connectors</code>可以理解为各种客户端、 应用服务； <code>Connection Pool</code>可以理解为<strong>应用层</strong>，负责和客户端、用户进行交互，需要和不同的客户端（<code>PHP</code>,<code>Java</code>,<code>C API</code>,<code>.Net</code>以及<code>ODBC</code>,<code>JDBC</code>等等）和中间服务器进行交互，这一层主要完成的是链接处理，授权认证，和安全等一些功能，连接到<code>MySQL</code>的客户端在其进程中，都会有一个独立的线程，连接的查询只会在这个登录线程中进行查询。</p>
+<p><code>Management Services&amp;Utilities</code>、<code>SQL Interface</code>、 <code>Parser</code>、 <code>Optimizer</code>、 <code>Caches&amp;Buffers</code>、 <code>Pluggable Storage Engines</code>可以理解为数据库的大脑——<strong>逻辑层</strong>。</p>
+<p>负责具体的查询处理、事务处理、存储管理、恢复管理，以及其他附加功能。查询处理器负责查询的解析、执行。当接收到客户端的查询时，数据库会分配一个县城来处理它。先友查询处理器（优化器）生成执行计划，然后交由计划执行器来执行，执行器有时需要访问更底层的事务管理器、存储管理器来操作数据，事务管理器、存储管理器主要负责事务控制、并发控制、存储管理。在其中，将由事务管理来保证“<code>ACID</code>”特性，通过锁管理器来控制并发，由日志管理器来确保数据持久化，存储故那里器一般还包括一个缓冲管理器，有它来确定磁盘和缓存之间的数据传输。</p>
+<p>根据上面的架构图，我们可以看到在逻辑层中<code>Pluggable Storage Engines</code></p>
+<p>这是MySQL服务逻辑架构中的第三层，是MySQL的存储引擎，MySQL提供出了存储引擎接口，第三方可以根据自己的业务逻辑需求开发自己的存储引擎，Innodb起初就是由Innobase Oy公司所开发，2006年5月被甲骨文公司并购。</p>
+<p>服务器通过API与存储引擎通信，这些接口屏蔽了不同存储引擎之间的差异，使得这些差异对上层的查询过程透明。存储引擎API包含几十个底层函数，用于执行诸如“开始一个事务”或者“根据主键提取一行记录”等操作，但存储引擎不会去解析SQL，不同存储引擎之间也不会相互通信，而只是简单地相应上层和服务的请求。</p>
+<blockquote>
+<p>注意：存储引擎是针对于表的而不是针对于库的，不同的表可以使用不同的引擎；</p>
+</blockquote>
+<p> 最下方的Files&amp;Logs可以理解为物理层，实际物理磁盘（存储）上的数据库文件，比如数据文件、日志文件等等。</p>
+<h1 id="MySQL-数据库与实例的关系"><a href="#MySQL-数据库与实例的关系" class="headerlink" title="MySQL 数据库与实例的关系"></a>MySQL 数据库与实例的关系</h1><p>对于没有学习过 Mysql 和 Oracle 的人可能并不清楚什么是数据库，什么是实例。</p>
+<p>在MySQL 中一个数据库可以对应几个实例，比如说3306这个实例它对应的数据库是一对多，还是一对一的！</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180719180252.png" alt=""></p>
+<p>一个实例对应的是一个数据库，比如说3306对应的就是一个数据库，3307对应的是一个数据库。</p>
+<p>Oracle 的数据库对于实例的关系是可以对应多个实例。比如Oracle RAC 集群可以一对多，数据库指的的磁盘上的文件，内存上的进程我们叫做实例。</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180719180321.png" alt=""></p>
+<p>数据库其实就是磁盘上的文件或者其他形式文件类型的结合，实例是数据库后台进程/线程以及一个共享内存区组成的，共享内存可以被运行的后台进程/线程共享。</p>
+<p>数据库在 MySQL 里面与实例关系是1：1，数据库实例才是真正用来操作数据库文件的。</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180719181249.png" alt=""></p>
+<p>如果在一台物理机上建立两个实例的话，对应的是两个数据库，多实例比如说我又两个实例3306和3307要对应的建立一个目录，3307不能使用3307的目录，这样的话3306和3307有各自的文件。</p>
+<h1 id="MySQL-5-6-InnoDB-架构"><a href="#MySQL-5-6-InnoDB-架构" class="headerlink" title="MySQL 5.6 InnoDB 架构"></a>MySQL 5.6 InnoDB 架构</h1><p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180719181648.png" alt=""></p>
+<p>在红线框起来的叫实例，红线框起来的叫数据库。</p>
+<h2 id="内存和线程"><a href="#内存和线程" class="headerlink" title="内存和线程"></a>内存和线程</h2><p>实例是由内存和进程组成的，下图就是共享内存，相当于 Oracle 的 SGA：</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180719182012.png" alt=""></p>
+<p>围绕在共享内存边上的就是后台线程。</p>
+<p><code>index page（索引页）</code>  就类似于 Oracle 中的 buffer，在磁盘里面我们叫block(块)，在 MySQL 里面叫做 page (页)，<code>Index page</code> 索引页这里就是放数据的，MySQL 的数据都放在 index page 里面，因为 MySQL 的存储结构是 B-Tree 结构， 数据索引都是这里面。</p>
+<p><code>data dictionary（数据字典）</code> 是放在 MySQL的 <code>ibdata</code> 里面，这是数据的缓存，我们需要 DDL 操作，如果我要创建表，修改表，删除表，会把数据字典里面的信息，先读到内存里面，也就是数据字典中，然后在里面。</p>
+<p><code>lock info（锁信息）</code>，行锁的信息是放在 <code>lock info</code> 里面的，如果做DML操作需要获取所要到里面拿。需要注意的是对一个大的事务，UPDATE 了一千万行记录，就要分配一千万个行锁，每一个行锁都要有大小的，<code>lock info</code>就会比较大，所以在 MySQL 中有一个优化，当行锁达到一定级别的时候，就会升级为表级锁，如果不升级的话开销就很大了。</p>
+<p><code>undo page</code>和 <code>index page</code> 的机制是一样的，当我们每一次做 DML 操作时候， 我们要把一些前置项缓存到 <code>undo page</code> 当中, undo page 的信息也是放在 <code>ibdata</code> 当中的。</p>
+<p><code>Insert buffer page</code>中是缓存二级索引的，二级索引就是非唯一的索引就是二级索引或者是辅助索引，二级索引是非唯一的，比如说我建立一个表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> t1 (</div><div class="line">	<span class="keyword">id</span> <span class="built_in">int</span>,</div><div class="line">    vid <span class="built_in">int</span>,</div><div class="line">    primary <span class="keyword">key</span>(<span class="keyword">id</span>),</div><div class="line">    <span class="keyword">key</span> idx_vid(vid)</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>id 是主键，vid 是一个普通索引，那我向表中插入数据的时候。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t1 <span class="keyword">values</span>(<span class="number">1</span>,<span class="number">123456</span>);</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t1 <span class="keyword">values</span>(<span class="number">2</span>,<span class="number">654321</span>);</div></pre></td></tr></table></figure>
+<p>主键索引1，2在 tree 的节点上可能会很近，但是二级索引，123456，654321的节点是随机的，两个节点之间的距离相差很大，效率就比较低了，机械盘读的速度就很慢，为了减少二级索引随机读的问题，就会需要用到 <code>Insert buffer page</code>来缓存我们的二级索引，主要是根据 space_id 和 page_number 进行合并在写入到文件中，这样一来效率就比较高了。</p>
+<p>也就是说，要先把我们的123456，654312先放入 <code>insert buffer page</code>当中，然后根据这两条不同的记录，放到不同的page 里面，然后根据 space_id 和 page_number 进行合并然后一次性写入到磁盘当中。</p>
+<p>虽然增加了内存开销，但是提高了随机度的效率，用空间来换时间。</p>
+<p><code>adaptive hash index</code> 是用来缓存 Hash 索引，我们有一些热数据需要放到 Hash 索引中，因为 Hash 索引的查询效率是最快的，他可以直接查找到需要使用的数据，他的时间复杂度是 O(1) 。</p>
+<p>我们可以通过<code>show variables like &#39;%buffer%&#39;</code>查看 innodb_buffer_pool_size，一般我们可以将其设置成物理内存的60~80%。</p>
+<p><code>Additional Memory Pool</code>这是放一些内存额外的一些东西。</p>
+<p> <code>redo log buffer</code>  日志缓冲区，在我们的操作中会产生一些日志，就会放到这个位置,然后通过 <code>redo log thread</code>线程写入到磁盘当中，它也会有条件的触发，比如当服务器收到commit命令线程就会把它写到日志文件，其对应的是ib_logfile。</p>
+<p><code>double write</code> 双写，MySQL 在写数据的时候，首先要到磁盘中把 page 先读到 index page 里面，然后再插入数据，然后再写数据，从硬盘到内存是同步操作，从内存写到磁盘是异步的，我们的一个 page 是16k，操作系统里面 block 的大小可能是4k 也可能是2k，不同的操作系统块的大小是不一样的，扇区的大小是512btye，</p>
+<p>如果说我的一个 page，从内存写到文件的时候，写了8k，这个时候突然宕机了没写进去，怎么办？</p>
+<p>当我们修改完数据会产生日志，redo 肯定是写进去了做了保护，但是这个时候 redo 是无法恢复的，因为这个时候page 已经坏了，redo 是修复不了的，因为这个 page 已经不完整了，每个 page 头部都会有一个校验和，尾部也有一个，只有一致的时候，page 才是好的，如果说写坏了，也就破坏了一致性，这个时候这个 block 就是损坏的。</p>
+<p>因为 redo 里面没有保留 page 的完全的镜像，他只是保留了这个 page 里面修改的某条记录，当你的page 不完整的时候他是没有办法修复的。</p>
+<p>所以在 MySQL 里面就有了 <code>double write</code>，首先要把 index page 先放到 double write 里面，然后 double write 里缓存的数据再写到 doublewrite segment 里面，如果没有问题的话在写到正式文件里面去。</p>
+<p>如果 doublewrite segment 写坏了，double Write 里面不是还有吗，如果 doule write 到 doublewrite segment 再写坏了，那就再重新来一遍就好了，虽然增加了开销，但是增强了安全性。</p>
+<p>到此，内存中的内容就介绍完了，接下来介绍 inndb 的线程。</p>
+<p>我们可以通过 ps 命令找到进程编号</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps -ef | grep 3306</div></pre></td></tr></table></figure>
+<p>然后在使用 psstack 查看线程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pstack 3530  #3530是 mysql 的进程编号</div></pre></td></tr></table></figure>
+<p><code>user threads</code>：用户线程</p>
+<p><code>rollback clean thread</code>：回滚线程</p>
+<p><code>recv write thread</code>：恢复线程</p>
+<p><code>redo log thread</code>： 刷日志线程，到遇到提交命令的时候会触发，或者是当达到 redo log buffer 容量二分之一的时候也会进行触发，在 MySQL 中每个一秒也会去刷，在5.6版本中还没有这个线程，patch 还没有打上去，目前还是使用用户线程去做的。</p>
+<p><code>read/write thread</code>：读写线程，写线程就是写 double write 中的赃块，写到文件中去，也是异步写的，可以通过参数进行培植<code>innodb_write_io_threads</code>，read 指的是预读，如果现在读取的是 page1,下一次可能读 page2，那么 inndbo 就会把 page2读进去，如果下次读的是 page2就会直接从内存中调用。</p>
+<p><code>purge thread</code>: 事务被提交后，其所使用的 undolog 可能不再需要，因此需要 Purge Thread 来回收已经使用并分配的 undo page，在 InnoDB 1.1版本之前，purge 操作仅在 InnoDB 引擎的Master Thread 中完成，1.1版本之后，purge 操作可以独立到单独的线程中进行，以此来减轻 Master Tread 的工作，从而提高 CPU 的使用率以及提升存储引擎的性能，用户可以在 MYSQL 数据库的配置文件中天骄如下命令来启用独立的 Purge Thread:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="section">[mysqld]</span></div><div class="line"><span class="attr">innodb_purge_threads</span> = <span class="number">1</span></div></pre></td></tr></table></figure>
+<p><code>page cleaner thread</code>：该线程通过 RLU 算法用来刷赃块，在 RLU 上面有 free page, clean page， drity page，cleaner thread 就是把赃块刷到磁盘当中去。</p>
+<p><code>Master Trehad</code> 该线程是一个非常核心的后台线程，主要负责将缓冲池中的数据异步刷新到磁盘，保证数据的一致性，包括脏页的刷新、合并插入缓冲（INSERT BUFFER）、UNDO 页的回收等。</p>
+<p><code>buf dump thread</code>：这个线程主要是做预热的，当我的数据库关闭的时候，我要把我的热块保存起来。可以通过<code>innodb_buffer_pool_dump_at_shutdown</code> 和 <code>innodb_buffer_pool_now</code> 来进行开启。</p>
+<p>此时我们将 mysql 关闭后，他就会把这些数据放到 ib_buffer_pool 里面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">0,278</div><div class="line">0,279</div><div class="line">.....</div></pre></td></tr></table></figure>
+<p>这里保存的是 space_id,page_number。</p>
+<h2 id="数据库层"><a href="#数据库层" class="headerlink" title="数据库层"></a>数据库层</h2><p>在 Innodb 中也有属于自己的 redo，因为 innodb 本身也是一个数据库，就算是没有 mysql server 层，你给他一个 key，他也返回一个 value，所以他需要自己 redo 来记录自己的操作，而 MySQL 中的 binlog 日志，是所有引擎都要通过binlog 来进行封装，所有引擎的操作都要放到 binlog 之中。</p>
+<p>user tablespace 就是我们存放数据的表空间，system tablespace 是我们的系统表空间，里面存放了undo 等信息。</p>
+<h1 id="MySQL-数据库里的文件"><a href="#MySQL-数据库里的文件" class="headerlink" title="MySQL 数据库里的文件"></a>MySQL 数据库里的文件</h1><p>在 MySQL 中又数据库配置文件，表结构定义文件，数据文件，慢查询日志，错误文件，通用日志。</p>
+<p>数据库配置文件其实就是 MYSQL 的参数文件，我们可以通过–defaults-file 来自己指定 MySQL 启动时候加载的配置文件。</p>
+<p>表结构定义文件：就是放在 frm 文件中，我们没有办法直接查看其中的内容，因为这是一个二进制文件，但是我们可以通过 mysql-utilities 工具中的 mysqlfrm 来查。</p>
+<p>慢查询日志，错误日志，和通用日志，如果 MySQL 服务器有问题，我们通常是要去看错误日志的，</p>
+<p>我们在优化 sql 时候，我们要通过慢查询日志来看，不过默认配置慢查询日志是没有开启的，我们需要使用 <code>show_query_log</code>进行开启，同时我们还需要对慢查询做一个定义，一个 sql 执行多长时间才是慢查询，我们可以通过 <code>long_query_time</code>进行设置，其基本单位是秒，但是我们可以设置到毫秒。</p>
+<p>通用日志一般是不会开启的，因为会影响 MySQL 的性能，因为他会把所有的 SQL 操作都记录下来，如果想要研究一下 mysqldump 的一个过程，可以查看日志都进行了什么操作。</p>
+<h1 id="MySQL-客户机-服务器模型"><a href="#MySQL-客户机-服务器模型" class="headerlink" title="MySQL 客户机/服务器模型"></a>MySQL 客户机/服务器模型</h1><p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-20%2011.30.15.png" alt=""></p>
+<h1 id="TCP-IP-套接字"><a href="#TCP-IP-套接字" class="headerlink" title="TCP/IP 套接字"></a>TCP/IP 套接字</h1><p>客户端通过 TCP/IP 协议去链接 MySQL 服务器，后面就是具体的服务器。</p>
+<p>TCP/IP 套接字方式是 MySQL 数据库在任何平台下都支持的链接方式，也是网络中使用的最多的一种方式。这种方式在 TPC/IP 上建立一个机遇网络的连接请求，一般情况下客户端在一台服务器上，而 MySQL 实例在另外一个服务器上，这两台服务器通过一个 TCP 网络链接。</p>
+<p>例如用户可以在 Windows 服务器下请求一个远程 Linux 服务器（前提是开启了远程访问）。</p>
+<h2 id="命令管道和共享内存"><a href="#命令管道和共享内存" class="headerlink" title="命令管道和共享内存"></a>命令管道和共享内存</h2><p>在 Windows 上，如果两个需要进程通信的进程在一台服务器上，那么可以使用命令管道，Microsoft SQL Server 数据库默认安装后的本地连接也是使用命令管道。在 MySQL 数据库中需在配置文件中开启–enable-named-pipe 选项。</p>
+<p>在 MySQL4.1之后的版本中，MySQL 还提供了共享内存的链接方式，这是通过在配置文件中添加–shared-memory 实现的。如果想要使用共享内存的方式，在连接时， 必须使用–protocol=memory</p>
+<h2 id="Uinx-套接字"><a href="#Uinx-套接字" class="headerlink" title="Uinx 套接字"></a>Uinx 套接字</h2><p>在 LInux 和 Uinx 环境下，还可以使用 Uinx 域套接字。Uinx 套接字其实不是一个玩过协议，所以只能在 MySQL 客户端和数据库实例在一台服务器上的情况下可以使用。用户可以在配置文件中指定套接字文件路径，如–socket=/tmp/mysql.scok。当数据库实例启动后，用户可以通过下列命令进行套接字路径的查找：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SHOW VARIABLES liek &apos;socket&apos;;</div></pre></td></tr></table></figure>
+<p>知道了 Uinx 套接字文件路径后，就可以使用该方式进行连接了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@MyDB1] mysql -udavid -S /tmp/mysql.socks</div></pre></td></tr></table></figure>
+<p>我们可以通过设置 max_user_connections 来设置 MySQL 的最大连接数，这里不能设置的太大，因为每一个连接都是要消耗资源的，他会占用内存，一个连接会在服务器上最小占用512字节，最大会占用64M，如果连接一直不断，被占用的内存会越来越大，这要根据业务场景来进行配置。</p>
+<p>比方说，在业务层有10台 Java JDBC，Java 连接池当中是50个连接，一共有10台，就占用了500个连接，如果是300个连接就是3000个连接这里，所以要根据实际的去设置。</p>
+<h1 id="SQL-处理过程"><a href="#SQL-处理过程" class="headerlink" title="SQL 处理过程"></a>SQL 处理过程</h1><p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-20%2011.52.40.png" alt=""></p>
+<p>如果把 MySQL 里面开启了查询缓存的话，在执行 SQL 的时候，就会把 SQL 查询的结果集缓存起来，我们可以通过<code>query_chache_type</code>和 <code>query_cache_wlock_invalidate</code>进行开启，不过建议不要开，因为 bug 比较多。因为所有的修改缓存都需要更新，如果你的表结构改了或者数据改了，关联会比较多。</p>
+<p>如果没有开启缓存，就回去解析查询，解析查询又被分为了<strong>硬解析</strong>和<strong>软解析</strong>，如果当前的 SQL 语句是<strong>第一次执行</strong>就会执行硬解析，如果语法语意、权限都没有问题的会统计信息，并且对 SQL 进行等价、切片，优化器根据 SQL 语句的一些信息生成一个执行计划在返回给用户。</p>
+<p>如果是软解析，已经被执行过，直接找到 SQL 语句的执行计划进行操作。</p>
+<h1 id="内存结构"><a href="#内存结构" class="headerlink" title="内存结构"></a>内存结构</h1><p>服务器以三种不同的类别分配内存：</p>
+<p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-20%2011.59.00.png" alt=""></p>
+<p>连接会话有排序、读取、临时表，这些都是私有的，每一个线程都会有，相当于 PGA。</p>
+<p>而服务器和存储引擎相当于 Oracle 的SGA。</p>
+<h2 id="内存参数"><a href="#内存参数" class="headerlink" title="内存参数"></a>内存参数</h2><p>连接/会话</p>
+<ul>
+<li>binlog_cache_size</li>
+<li>read_buffer_size</li>
+<li>read_rnd_buffer_size</li>
+<li>join_buffer_size</li>
+<li>sort_buffer_size</li>
+<li>tmp_table_size</li>
+<li>thread_cache_szie</li>
+<li>bulk_insert_buffer_size</li>
+<li>net_buffer_length</li>
+<li>thread_stack</li>
+</ul>
+<p>服务器/共享</p>
+<ul>
+<li>query_cache</li>
+<li>table_cache</li>
+<li>table_definition_cache</li>
+</ul>
+<p>存储引擎/共享</p>
+<ul>
+<li>innodb_buffer_pool_szie</li>
+<li>innodb_additional_mem_pool_szie</li>
+<li>innodb_log_buffer_size</li>
+</ul>
+<h1 id="MySQL-如何使用磁盘空间"><a href="#MySQL-如何使用磁盘空间" class="headerlink" title="MySQL 如何使用磁盘空间"></a>MySQL 如何使用磁盘空间</h1><p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-20%2012.04.56.png" alt=""></p>
+<h1 id="MySQL-物理存储结构"><a href="#MySQL-物理存储结构" class="headerlink" title="MySQL 物理存储结构"></a>MySQL 物理存储结构</h1><p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-20%2012.05.54.png" alt=""></p>
+<h1 id="MySQL-逻辑存储结构"><a href="#MySQL-逻辑存储结构" class="headerlink" title="MySQL 逻辑存储结构"></a>MySQL 逻辑存储结构</h1><p><img src="http://ogxeww23n.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-20%2012.06.09.png" alt=""></p>
+<p>一个数据库实例可以创建很多数据，在 MySQL 中 Database 和 Schema 是一对一的，在 Database 或者是 Schema 下面可以拥有很多表。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/08/cjlwe5og9002lburdwd4h2kh6/" rel="next" title="MySQL DBA 学习笔记（01）：安装 MYSQL5.6 for CentOS6.6 源码编译安装">
+                <i class="fa fa-chevron-left"></i> MySQL DBA 学习笔记（01）：安装 MYSQL5.6 for CentOS6.6 源码编译安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/24/1/" rel="prev" title="MYSQL DBA 学习笔记（03）：解密 MySQL databock and Binlog 的格式">
+                MYSQL DBA 学习笔记（03）：解密 MySQL databock and Binlog 的格式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTYyMC8xMjE1Ng"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ogxeww23n.bkt.clouddn.com/timg.jpeg"
+                alt="Maksim" />
+            
+              <p class="site-author-name" itemprop="name">Maksim</p>
+              <p class="site-description motion-element" itemprop="description">Maksim's Website，分享成长的点点滴滴，关注PHP、JavaScript、Linux、C/C++、Go、SQL、MySQL、Redis、iOS、安卓开发，努力做一个值得收藏的博客。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">111</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/aircrayon" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aircrayon@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-数据库与实例的关系"><span class="nav-number">1.</span> <span class="nav-text">MySQL 数据库与实例的关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-5-6-InnoDB-架构"><span class="nav-number">2.</span> <span class="nav-text">MySQL 5.6 InnoDB 架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存和线程"><span class="nav-number">2.1.</span> <span class="nav-text">内存和线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库层"><span class="nav-number">2.2.</span> <span class="nav-text">数据库层</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-数据库里的文件"><span class="nav-number">3.</span> <span class="nav-text">MySQL 数据库里的文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-客户机-服务器模型"><span class="nav-number">4.</span> <span class="nav-text">MySQL 客户机/服务器模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-IP-套接字"><span class="nav-number">5.</span> <span class="nav-text">TCP/IP 套接字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#命令管道和共享内存"><span class="nav-number">5.1.</span> <span class="nav-text">命令管道和共享内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Uinx-套接字"><span class="nav-number">5.2.</span> <span class="nav-text">Uinx 套接字</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL-处理过程"><span class="nav-number">6.</span> <span class="nav-text">SQL 处理过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存结构"><span class="nav-number">7.</span> <span class="nav-text">内存结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存参数"><span class="nav-number">7.1.</span> <span class="nav-text">内存参数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-如何使用磁盘空间"><span class="nav-number">8.</span> <span class="nav-text">MySQL 如何使用磁盘空间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-物理存储结构"><span class="nav-number">9.</span> <span class="nav-text">MySQL 物理存储结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-逻辑存储结构"><span class="nav-number">10.</span> <span class="nav-text">MySQL 逻辑存储结构</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maksim</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

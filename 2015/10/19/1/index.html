@@ -81,30 +81,20 @@
 
 
 
-<meta name="description" content="session技术Session基础PHP有内建的会话支持，帮助你维护所有cookie的状态来通过不同的页面和多访问提供持久的变量访问，会话可以让你简单地创建多页面表单（如购物车），页面之间的用户认证信息保存，以及在站点上存储持久的用户偏好。 每个初次访问的客户会分配到一个唯一的会话ID，默认情况下，会话ID会存储到cookie中，叫做PHPSESSID。如果浏览器不支持cookie或者关闭了 创">
+<meta name="description" content="CookieHTTP协议是无状态的，也就导致服务器无法分片是谁浏览了网页，为了解决此问题，1994年网景通讯的一名员工 Lou Montulli将 “magic cookies” 的概念应用到 Web 通讯中。他试图解决 Web 的第一个购物车应用，现在购物车成了购物网站的支柱。他的原始说明文档提供了 cookie 工作原理的基本信息，该文档后来被作为规范纳入到 RFC 2109（大多数浏览器的实">
 <meta name="keywords" content="前端博客,JavaScript,html5,css3,Jquery,Linux,PHP,iOS,MySQL,SQL,Redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cookie和Session">
 <meta property="og:url" content="http://www.maksim.website/2015/10/19/1/index.html">
 <meta property="og:site_name" content="Maksim&#39;s Website">
-<meta property="og:description" content="session技术Session基础PHP有内建的会话支持，帮助你维护所有cookie的状态来通过不同的页面和多访问提供持久的变量访问，会话可以让你简单地创建多页面表单（如购物车），页面之间的用户认证信息保存，以及在站点上存储持久的用户偏好。 每个初次访问的客户会分配到一个唯一的会话ID，默认情况下，会话ID会存储到cookie中，叫做PHPSESSID。如果浏览器不支持cookie或者关闭了 创">
+<meta property="og:description" content="CookieHTTP协议是无状态的，也就导致服务器无法分片是谁浏览了网页，为了解决此问题，1994年网景通讯的一名员工 Lou Montulli将 “magic cookies” 的概念应用到 Web 通讯中。他试图解决 Web 的第一个购物车应用，现在购物车成了购物网站的支柱。他的原始说明文档提供了 cookie 工作原理的基本信息，该文档后来被作为规范纳入到 RFC 2109（大多数浏览器的实">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/527602/201609/527602-20160927164512656-711284124.png">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/527602/201609/527602-20160927164844735-530897279.png">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/527602/201609/527602-20160927165530578-1895480954.png">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/527602/201610/527602-20161012000955406-233131158.png">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/527602/201610/527602-20161012001004953-995359578.png">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/527602/201610/527602-20161012001011609-1786708842.png">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/527602/201610/527602-20161012001019234-875162513.png">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/527602/201610/527602-20161012001026109-724254497.png">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/527602/201610/527602-20161012001032171-280699486.png">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/527602/201610/527602-20161012001042968-352947356.png">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/527602/201610/527602-20161012001052203-1655209067.png">
-<meta property="og:updated_time" content="2018-06-21T12:51:28.219Z">
+<meta property="og:image" content="http://www.phpfensi.com/uploadfile/2016/0830/20160830022704117.png">
+<meta property="og:updated_time" content="2018-06-14T13:27:24.131Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cookie和Session">
-<meta name="twitter:description" content="session技术Session基础PHP有内建的会话支持，帮助你维护所有cookie的状态来通过不同的页面和多访问提供持久的变量访问，会话可以让你简单地创建多页面表单（如购物车），页面之间的用户认证信息保存，以及在站点上存储持久的用户偏好。 每个初次访问的客户会分配到一个唯一的会话ID，默认情况下，会话ID会存储到cookie中，叫做PHPSESSID。如果浏览器不支持cookie或者关闭了 创">
-<meta name="twitter:image" content="https://images2015.cnblogs.com/blog/527602/201609/527602-20160927164512656-711284124.png">
+<meta name="twitter:description" content="CookieHTTP协议是无状态的，也就导致服务器无法分片是谁浏览了网页，为了解决此问题，1994年网景通讯的一名员工 Lou Montulli将 “magic cookies” 的概念应用到 Web 通讯中。他试图解决 Web 的第一个购物车应用，现在购物车成了购物网站的支柱。他的原始说明文档提供了 cookie 工作原理的基本信息，该文档后来被作为规范纳入到 RFC 2109（大多数浏览器的实">
+<meta name="twitter:image" content="http://www.phpfensi.com/uploadfile/2016/0830/20160830022704117.png">
 
 
 
@@ -376,63 +366,36 @@
       
 
       
-        <h2 id="session技术"><a href="#session技术" class="headerlink" title="session技术"></a>session技术</h2><h1 id="Session基础"><a href="#Session基础" class="headerlink" title="Session基础"></a>Session基础</h1><p>PHP有内建的会话支持，帮助你维护所有cookie的状态来通过不同的页面和多访问提供持久的变量访问，会话可以让你简单地创建多页面表单（如购物车），页面之间的用户认证信息保存，以及在站点上存储持久的用户偏好。</p>
-<p>每个初次访问的客户会分配到一个唯一的会话ID，默认情况下，会话ID会存储到cookie中，叫做PHPSESSID。如果浏览器不支持cookie或者关闭了</p>
-<h2 id="创建Session"><a href="#创建Session" class="headerlink" title="创建Session"></a>创建Session</h2><p>在创建Session之前，我们需要知道，</p>
-<p>3，保存session信息</p>
-<p>index1.php</p>
-<p>index2.php</p>
-<p>　　先在网页中运行index1.php，再运行index2.php页面输出：</p>
-<p><img src="https://images2015.cnblogs.com/blog/527602/201609/527602-20160927164512656-711284124.png" alt="img"></p>
-<h2 id="session可以保存多种数据类型"><a href="#session可以保存多种数据类型" class="headerlink" title="session可以保存多种数据类型"></a>session可以保存多种数据类型</h2><p>session不但保存字符串，还可以保存整型，布尔型，数组，对象等。</p>
-<p>index1.php</p>
-<p>index2.php</p>
-<p>　　先在网页中运行index1.php，再运行index2.php页面输出：</p>
-<p><img src="https://images2015.cnblogs.com/blog/527602/201609/527602-20160927164844735-530897279.png" alt="img"></p>
-<p><img src="https://images2015.cnblogs.com/blog/527602/201609/527602-20160927165530578-1895480954.png" alt="img"></p>
-<h2 id="获取session信息"><a href="#获取session信息" class="headerlink" title="获取session信息"></a>获取session信息</h2><p>直接获取所有session</p>
-<p> <img src="https://images2015.cnblogs.com/blog/527602/201610/527602-20161012000955406-233131158.png" alt="img"></p>
-<p>根据key获取</p>
-<p>直接获取某个变量</p>
-<p> <img src="https://images2015.cnblogs.com/blog/527602/201610/527602-20161012001004953-995359578.png" alt="img"></p>
-<p>获取数组</p>
-<p> <img src="https://images2015.cnblogs.com/blog/527602/201610/527602-20161012001011609-1786708842.png" alt="img"></p>
-<p>获取对象，session在保存对象时候，没法保存类的信息，因此在获取对象，需要先声明这个类。可以把类单独作为一个文件，存储和读取session时候分别引用这个文件。</p>
-<p> <img src="https://images2015.cnblogs.com/blog/527602/201610/527602-20161012001019234-875162513.png" alt="img"></p>
-<p>6，Session的更新，就是根据key值重新保存session的值。</p>
-<h2 id="Session的删除"><a href="#Session的删除" class="headerlink" title="Session的删除"></a>Session的删除</h2><p>(1) 指定删除session中某个键值对</p>
-<p> <img src="https://images2015.cnblogs.com/blog/527602/201610/527602-20161012001026109-724254497.png" alt="img"></p>
-<p>(2) 删除所有session</p>
-<p> <img src="https://images2015.cnblogs.com/blog/527602/201610/527602-20161012001032171-280699486.png" alt="img"></p>
-<h2 id="设置默认时间"><a href="#设置默认时间" class="headerlink" title="设置默认时间"></a>设置默认时间</h2><p>session数据默认存在时间是1440s（24分钟），可以在php.ini中修改， session.gc_maxlifetime = 1440。Session文件的存放路径是可以修改的，可以通过修改php.ini改变sesion文件存放路径，session.save_path = “tcp://127.0.0.1:11211”。</p>
-<h2 id="自动开启Session"><a href="#自动开启Session" class="headerlink" title="自动开启Session"></a>自动开启Session</h2><p>Session使用前，先进行初始化，session_start();这样比较麻烦，可以在php.ini设置session自动初始化，session.auto_start = 0（此方法不推荐）。</p>
-<p>10，浏览器访问页面a.php时候，服务器产生一个session文件，将其存放在服务器，同时将session_id发送给浏览器，浏览器将其保存到cookie，浏览器再次访问b.php时候，从cookie中获取session_id发送到服务器，服务器根据session_id获取相应session内容。</p>
-<p>问题：如果浏览器禁用cookie，怎么使用session呢？</p>
-<p>使用URL重写的方式，url重写分为手动和自动。自动重写url就是配置php.ini，开启透明的SID，其他程序不变，自动重写url不安全，不建议使用。</p>
-<p>开启透明SID，需要修改的php.ini是：</p>
-<p>session.use_trans_sid = 1  //由0改为1</p>
-<p>session.use_only_cookies = 0  //是否只使用cookie来保存session值  该参数为1时，上述机制失效。</p>
-<p>session.use_cookies = 0  //设置客户端是否使用cookie来保存session值  该参数的值不影响上述机制的进行。这个可改可不改</p>
-<p>手动模式：</p>
-<p>index1.php</p>
-<p>index2.php</p>
-<p>而自动模式，会将url后面自动添加PHPSESSID参数，所以在index1.php中去掉SID即可，index2.php不变。</p>
-<p>index1.php</p>
-<p>11，php.ini中关于session和cookie的配置</p>
-<p>(1) session.use_trans_sid = 0，开启后，默认为每个url后添加了session_name=session_id。</p>
-<p>(2) session.save_path=”c:/mysession”，save_path是session文件在服务器的存放路径。</p>
-<p>(3) session.gc_maxlifetime = 1440,session默认最大生命周期，当session文件在1440s后没被访问的话，则该session被视为“垃圾文件”，并且等待gc(垃圾回收)进程的调用时候被清理掉；session.gc_probability=1;session.gc_divisor=1000;这两个参数根据网站规模合理设置。每当初始化一个session时候，有gc_probability/gc_divisor的概率执行一次垃圾回收。</p>
-<p>我开启三个会话，则创建三个对应的session文件，当每个文件在30秒内都没被调用的话，就会被当成是“垃圾文件”，等到gc进程调用的时候，“垃圾文件”就会被unlink，因为之前我已经通过修改php.ini配置文件，将gc被调用的概率改成百分百，所以接下来，如果我重新使用任何一个浏览器刷新下页面的时候，三个session文件，应该只剩下一个了。</p>
-<p> <img src="https://images2015.cnblogs.com/blog/527602/201610/527602-20161012001042968-352947356.png" alt="img"></p>
-<p> <img src="https://images2015.cnblogs.com/blog/527602/201610/527602-20161012001052203-1655209067.png" alt="img"></p>
-<p>(4) session.cookie_lifetime，以秒数指定了发送到浏览器的cookie的生命周期，值为0表示“直到关闭浏览器”。默认为0。这个与程序中setCookie(“name”,”zhangsan”,time()+60);类似。</p>
-<h2 id="禁用cookie的session使用方案"><a href="#禁用cookie的session使用方案" class="headerlink" title="禁用cookie的session使用方案"></a>禁用cookie的session使用方案</h2><p>在浏览器中，有的用户会禁用掉cookie(现在基本上已经不会出现了)，但是这种情况还是会有发生。</p>
-<ul>
-<li>通过URL传值，把session id附加到URL上（缺点：整个站点中不能有纯净静态页面，因为纯静态页面的session id将无法传递到下一个页面）。</li>
-<li>通过隐藏表单，把session id放到表单的隐藏文本框中同表单一块提交过去（缺点不适用\<a\>标签这种直接跳转的非标单情况）</a\></li>
-<li>直接配置php.ini，将session.use_trans_sid = 0设置为1</li>
-<li>用文件、数据库等形式保存session id，在跨页面中手动调用。</li>
-</ul>
+        <h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><p>HTTP协议是无状态的，也就导致服务器无法分片是谁浏览了网页，为了解决此问题，1994年网景通讯的一名员工 Lou Montulli将 “magic cookies” 的概念应用到 Web 通讯中。他试图解决 Web 的第一个购物车应用，现在购物车成了购物网站的支柱。他的原始说明文档提供了 cookie 工作原理的基本信息，该文档后来被作为规范纳入到 RFC 2109（大多数浏览器的实现参考文档）中，最终被纳入到 RFC 2965 中。Montulli 也被授予 cookie 的美国专利。网景浏览器在它的第一个版本中就开始支持 cookie，现在所有 Web 浏览器都支持 cookie。</p>
+<p>cookie是浏览器保存在用户电脑上的一小段文本，用来保存用户在网站上的必要的信息。Web页面或服务器告诉浏览器按照一定的规范存储这些信息，并且在以后的所有请求中，这些信息就会自动加在HTTP请求头中发送给服务器，服务器根据这些信息判断不同的用户。并且cookie本身是安全的。</p>
+<h3 id="创建Cookie"><a href="#创建Cookie" class="headerlink" title="创建Cookie"></a>创建Cookie</h3><p>Web 服务器通过发送一个称为 Set-Cookie 的 HTTP 消息头来创建一个 cookie，Set-Cookie消息头是一个字符串，其格式如下（中括号中的部分是可选的）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Set-Cookie: value; expires=date; path=path</div></pre></td></tr></table></figure>
+<p>在PHP开发过程中，我们可以使用<strong>setcookie</strong>函数来进行设置：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bool setcookie ( string $name [, string $value = <span class="string">""</span> [, int $expire = <span class="number">0</span> [, string $path = <span class="string">""</span> [, string $domain = <span class="string">""</span> [, bool $secure = <span class="keyword">false</span> [, bool $httponly = <span class="keyword">false</span> ]]]]]] )</div></pre></td></tr></table></figure>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><p><strong>name：</strong> Cookie 名称。</p>
+<p><strong>value： </strong>Cookie 值。 这个值储存于用户的电脑里，请勿储存敏感信息。 比如 <code>name</code> 是 <em>‘cookiename’</em>， 可通过 $_COOKIE[‘cookiename’]获取它的值。</p>
+<p><strong>expire</strong>： Cookie 的过期时间。 这是个 Unix 时间戳，即 Unix 纪元以来（格林威治时间 1970 年 1 月 1 日 00:00:00）的秒数。 也就是说，基本可以用<a href="http://php.net/manual/zh/function.time.php" target="_blank" rel="noopener">time()</a> 函数的结果加上希望过期的秒数。 或者也可以用 <a href="http://php.net/manual/zh/function.mktime.php" target="_blank" rel="noopener">mktime()</a>。 <em>time()+60\</em>60<em>24</em>30* 就是设置 Cookie 30 天后过期。 如果设置成零，或者忽略参数， Cookie 会在会话结束时过期（也就是关掉浏览器时）。</p>
+<blockquote>
+<p><strong>Note</strong>:</p>
+<p>你可能注意到了，<code>expire</code> 使用 Unix 时间戳而非 <em>Wdy, DD-Mon-YYYY HH:MM:SS GMT</em> 这样的日期格式，是因为 PHP 内部作了转换。</p>
+</blockquote>
+<p><strong>path:</strong> Cookie 有效的服务器路径。 设置成 <em>‘/‘</em> 时，Cookie 对整个域名 <code>domain</code> 有效。 如果设置成 <em>‘/foo/‘</em>， Cookie 仅仅对 <code>domain</code> 中 <em>/foo/</em> 目录及其子目录有效（比如 <em>/foo/bar/</em>）。 默认值是设置 Cookie 时的当前目录。</p>
+<p><strong>domain</strong>: Cookie 的有效域名/子域名。 设置成子域名（例如 <em>‘www.example.com’</em>），会使 Cookie 对这个子域名和它的三级域名有效（例如 w2.www.example.com）。 要让 Cookie 对整个域名有效（包括它的全部子域名），只要设置成域名就可以了（这个例子里是<em>‘example.com’</em>）。</p>
+<p>旧版浏览器仍然在使用废弃的 <a href="http://www.faqs.org/rfcs/rfc2109" target="_blank" rel="noopener">» RFC 2109</a>， 需要一个前置的点 <em>.</em> 来匹配所有子域名。</p>
+<p><strong>secure:</strong> 设置这个 Cookie 是否仅仅通过安全的 HTTPS 连接传给客户端。 设置成 <strong>TRUE</strong> 时，只有安全连接存在时才会设置 Cookie。 如果是在服务器端处理这个需求，程序员需要仅仅在安全连接上发送此类 Cookie （通过 <a href="http://php.net/manual/zh/reserved.variables.server.php" target="_blank" rel="noopener">$_SERVER[“HTTPS”]</a> 判断）。</p>
+<p><strong>httponly : </strong>设置成 <strong>TRUE</strong>，Cookie 仅可通过 HTTP 协议访问。 这意思就是 Cookie 无法通过类似 JavaScript 这样的脚本语言访问。 要有效减少 XSS 攻击时的身份窃取行为，可建议用此设置（虽然不是所有浏览器都支持），不过这个说法经常有争议。 PHP 5.2.0 中添加。 <strong>TRUE</strong> 或 <strong>FALSE</strong></p>
+<p><strong>JavaScript 操作 cookie</strong></p>
+<p>在 JavaScript 中通过 document.cookie 属性，你可以创建、维护和删除 cookie。创建 cookie 时该属性等同于 Set-Cookie 消息头，而在读取 cookie 时则等同于 Cookie 消息头。</p>
+<h3 id="删除cookie"><a href="#删除cookie" class="headerlink" title="删除cookie"></a>删除cookie</h3><p>会话 cooke (Session cookie) 在会话结束时（浏览器关闭）会被删除。</p>
+<p>持久化 cookie（Persistent cookie）在到达失效日期时会被删除。</p>
+<p>如果浏览器中的 cookie 数量达到限制，那么 cookie 会被删除以为新建的 cookie 创建空间。</p>
+<h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><p>session的作用和cookie差不多，也是用来解决Http协议不能维持状态的问题。但是session只存储在服务器端的，不会在网络中进行传输，所以较cookie来说，session相对安全一些。但是session是依赖cookie的，当用户访问某一站点时，服务器会为这个用户产生唯一的session_id,并把这个session_id以cookie的形式发送到客户端，以后的客户端的所有请求都会自动携带这个cookie（前提是浏览器支持并且没有禁用cookie）。</p>
+<p>用下面这个图来了解下session的工作原理:</p>
+<p><img src="http://www.phpfensi.com/uploadfile/2016/0830/20160830022704117.png" alt="img"></p>
+<p>禁用cookie时如何使用session</p>
+<p>有些时候,为了安全浏览器会禁用cookie,这时可以用传参的方式将session_id发送到服务器,session可以照常工作.</p>
+<h2 id="删除session"><a href="#删除session" class="headerlink" title="删除session"></a>删除session</h2><p>会话关闭后，session会自动失效，如果想手动删除session，可以在服务器端编程实现。如PHP是这样做的</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$_SESSION = <span class="keyword">array</span>();</div><div class="line">session_destory();</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -555,7 +518,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">112</span>
+                  <span class="site-state-item-count">111</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -577,7 +540,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -633,7 +596,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#session技术"><span class="nav-number">1.</span> <span class="nav-text">session技术</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Session基础"><span class="nav-number"></span> <span class="nav-text">Session基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Session"><span class="nav-number">1.</span> <span class="nav-text">创建Session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#session可以保存多种数据类型"><span class="nav-number">2.</span> <span class="nav-text">session可以保存多种数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取session信息"><span class="nav-number">3.</span> <span class="nav-text">获取session信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Session的删除"><span class="nav-number">4.</span> <span class="nav-text">Session的删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置默认时间"><span class="nav-number">5.</span> <span class="nav-text">设置默认时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动开启Session"><span class="nav-number">6.</span> <span class="nav-text">自动开启Session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁用cookie的session使用方案"><span class="nav-number">7.</span> <span class="nav-text">禁用cookie的session使用方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookie"><span class="nav-number">1.</span> <span class="nav-text">Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Cookie"><span class="nav-number">1.1.</span> <span class="nav-text">创建Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数"><span class="nav-number">1.1.1.</span> <span class="nav-text">参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除cookie"><span class="nav-number">1.2.</span> <span class="nav-text">删除cookie</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Session"><span class="nav-number">2.</span> <span class="nav-text">Session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除session"><span class="nav-number">3.</span> <span class="nav-text">删除session</span></a></li></ol></div>
             
 
           </div>
