@@ -1,0 +1,619 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>PHP Closures | Maksim&#39;s Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Maksim">
+    
+
+    
+    <meta name="description" content="闭包函数（closures）也就做匿名函数（Anonymous functions），是指在创建时封装周围状态的函数。即便闭包所在的环境不存在了，闭包中封装的状态依然存在。  理论上，闭包和匿名函数是不同的概念，不过 PHP 将其视作相同的概念，所以闭包与匿名函数相等。  匿名函数其实就是没有名字的函数。匿名函数可以赋值给变量，还能像其他任何 PHP 对象那样传递。不过匿名函数仍然是函数，因此可以">
+<meta name="keywords" content="Closures">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP Closures">
+<meta property="og:url" content="http://www.maksim.website/2017/03/15/cjlz9pr38002xabrdfv0hk1tb/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="闭包函数（closures）也就做匿名函数（Anonymous functions），是指在创建时封装周围状态的函数。即便闭包所在的环境不存在了，闭包中封装的状态依然存在。  理论上，闭包和匿名函数是不同的概念，不过 PHP 将其视作相同的概念，所以闭包与匿名函数相等。  匿名函数其实就是没有名字的函数。匿名函数可以赋值给变量，还能像其他任何 PHP 对象那样传递。不过匿名函数仍然是函数，因此可以">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-20T05:02:56.751Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP Closures">
+<meta name="twitter:description" content="闭包函数（closures）也就做匿名函数（Anonymous functions），是指在创建时封装周围状态的函数。即便闭包所在的环境不存在了，闭包中封装的状态依然存在。  理论上，闭包和匿名函数是不同的概念，不过 PHP 将其视作相同的概念，所以闭包与匿名函数相等。  匿名函数其实就是没有名字的函数。匿名函数可以赋值给变量，还能像其他任何 PHP 对象那样传递。不过匿名函数仍然是函数，因此可以">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Maksim&#39;s Website" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+		
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Maksim&#39;s Website">Maksim&#39;s Website</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.maksim.website">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/03/15/cjlz9pr38002xabrdfv0hk1tb/" title="PHP Closures" itemprop="url">PHP Closures</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Maksim" target="_blank" itemprop="author">Maksim</a>
+		
+  <p class="article-time">
+    <time datetime="2017-03-15T14:15:16.000Z" itemprop="datePublished"> Published 2017-03-15</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建闭包"><span class="toc-number">1.</span> <span class="toc-text">创建闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用附加状态"><span class="toc-number">2.</span> <span class="toc-text">使用附加状态</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number"></span> <span class="toc-text">参考</span></a>
+		
+		</div>
+		
+		<p>闭包函数（closures）也就做匿名函数（Anonymous functions），是指在创建时封装周围状态的函数。即便闭包所在的环境不存在了，闭包中封装的状态依然存在。</p>
+<blockquote>
+<p>理论上，闭包和匿名函数是不同的概念，不过 PHP 将其视作相同的概念，所以闭包与匿名函数相等。</p>
+</blockquote>
+<p>匿名函数其实就是没有名字的函数。匿名函数可以赋值给变量，还能像其他任何 PHP 对象那样传递。不过匿名函数仍然是函数，因此可以调用，还可以传入参数。匿名函数特别适合作为函数或方法的回调。</p>
+<h3 id="创建闭包"><a href="#创建闭包" class="headerlink" title="创建闭包"></a>创建闭包</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$closure = <span class="function"><span class="keyword">function</span> <span class="params">($name)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> sprintf(<span class="string">'Hello %s'</span>, $name);</div><div class="line">&#125;;</div><div class="line"><span class="keyword">echo</span> $closure(<span class="string">'Maksim'</span>);</div><div class="line"><span class="comment">//输出 Hello Maksim</span></div></pre></td></tr></table></figure>
+<p>创建一个闭包对象，然后将其复制给<code>$closure</code> 变量。闭包和普通的 PHP 函数很想：使用语句相同，也接受参数，而且能返回值。不过，匿名函数没有名称。</p>
+<p>我们通常把 PHP 闭包当做函数和方法的回调使用。很多 PHP 函数都会用到回调函数，例如 <code>array_map()</code>和 <code>preg_replace_callback()</code>。这是使用 PHP 匿名函数的最佳时机！</p>
+<p>记住，闭包和其他值一样，可以作为参数传入其他 PHP 函数，我们把一个闭包对象当做回调参数，传给 array_map()函数。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$numbersPlusOne = array_map(<span class="function"><span class="keyword">function</span> <span class="params">($number)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> $number + <span class="number">1</span>;</div><div class="line">&#125;,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</div><div class="line">print_r($numbersPlusOne);</div><div class="line"><span class="comment">//([0] =&gt; 2 [1] =&gt; 3 [2] =&gt; 4)</span></div></pre></td></tr></table></figure>
+<p>在闭包出现之前，PHP 开发者只能单独创建普通函数，然后使用名称引用那个函数，这么做，代码执行的稍微慢一点，而且把回调场景和使用场景分割开了，如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$numbersPlusOne = array_map(<span class="string">'incrementNumber'</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">incrementNumber</span><span class="params">($number)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> $number + <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">print_r($numbersPlusOne);</div><div class="line"><span class="comment">//([0] =&gt; 2 [1] =&gt; 3 [2] =&gt; 4)</span></div></pre></td></tr></table></figure>
+<p>这样的代码虽然可用，但是没有使用闭包来的间接。如果只需要使用一次回调，没有必要单独定义具名函数。把闭包当做回调使用，写出的代码更加简洁、清晰。</p>
+<h3 id="使用附加状态"><a href="#使用附加状态" class="headerlink" title="使用附加状态"></a>使用附加状态</h3><p>前面演示了如何把匿名函数当做回调使用，下面探讨如何为 PHP 闭包附加兵封装状态。JavaScript 开发者可能对 PHP 的闭包感到奇怪，因为 PHP 闭包不会像真正的 JavaScript 闭包那样自动封装应用状态。在 PHP 中，必须手动调用闭包对象的 bindTo()方法或者使用 use 关键字，把状态附加到 PHP 闭包上。</p>
+<p>使用 use 关键字附加闭包状态常见得多，因此我们先看这种方式。使用 use 关键字把变量附加到闭包上时，附加的变量会记住附加时赋给它的值。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">enclosePerson</span><span class="params">($name)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">($doCommand)</span> <span class="title">use</span> <span class="params">($name)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> sprintf(<span class="string">'%s, %s'</span>, $name, $doCommand);</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//把字符串“Maksim”封装在闭包中</span></div><div class="line">$clay = enclosePerson(<span class="string">'Clay'</span>);</div><div class="line"></div><div class="line"><span class="comment">//掺入参数，调用闭包</span></div><div class="line"><span class="keyword">echo</span> $clay(<span class="string">'get sweet tea'</span>);</div><div class="line"><span class="comment">// Clay, get sweet tea</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用 use 关键字可以把多个参数传入闭包，此时要像 PHP 函数或者方法的参数一样，使用逗号分割多个参数</p>
+</blockquote>
+<p>PHP 闭包是对象。与其他 PHP 对象类似，每个闭包实例都可以使用$this 关键字获取闭包的内部状态。闭包对象的默认状态没什么用，不过有一个__invoke()魔术方法和 bindTo()方法，仅此而已。</p>
+<p>但是，bindTo()方法为闭包增加了一些有趣的潜力。我们可以把使用这个方法把 Closure 对象的内部状态绑定到其他对象上。bindTo()方法的第二个参数很重要，其作用是指定绑定闭包的那个对象所属的 PHP 类。因此闭包可以访问绑定闭包的对象中受保护和私有的成员变量。</p>
+<p>你会发现，PHP 框架经常使用 bindTo()方法把路由 URL 映射到匿名回调函数上。框架会把匿名函数绑定到应用对象上，这么做可以把这个匿名函数中使用$this 关键字引用重要的应用对象。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">protected</span> $routes = <span class="keyword">array</span>();</div><div class="line">    <span class="keyword">protected</span> $responseStatus = <span class="string">'200 Ok'</span>;</div><div class="line">    <span class="keyword">protected</span> $responseContentType = <span class="string">'text/html'</span>;</div><div class="line">    <span class="keyword">protected</span> $responseBody = <span class="string">'Hello world'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addRoute</span><span class="params">($routePath, $routeCallback)</span> </span>&#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;routes[$routePath] = $routeCallback-&gt;bindTo(<span class="keyword">$this</span>,<span class="keyword">__CLASS__</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">dispatch</span><span class="params">($currentPath)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">foreach</span> (<span class="keyword">$this</span>-&gt;routes <span class="keyword">as</span> $routePath =&gt; $callback) &#123;</div><div class="line">            <span class="keyword">if</span> ($currentPath === $currentPath) &#123;</div><div class="line">                $callback();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        header(<span class="string">'HTTP/1.1 '</span>. <span class="keyword">$this</span>-&gt;responseStatus);</div><div class="line">        header(<span class="string">'Content-type: '</span> . <span class="keyword">$this</span>-&gt;responseContentType);</div><div class="line">        header(<span class="string">'Content-length: '</span> . mb_strlen(<span class="keyword">$this</span>-&gt;responseBody));</div><div class="line">        <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;responseBody;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 我们要特别注意 addRoute（）方法。这个方法的参数分别是一个路由路径（例如/users/josh）和一个路由回调。dispatch()方法的参数是当前 HTTP 请求的路径，它调用匹配的路由回调。第10行是重点所在，我们把路由回调绑定到了当前 APP 实例上。这么做能够在回调函数中处理 APP 实例的状态。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$app =  <span class="keyword">new</span> App();</div><div class="line">$app-&gt;addRoute(<span class="string">'/users/josh'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">$this</span>-&gt;responseContentType = <span class="string">'application/json;charset=utf8'</span>;</div><div class="line">    <span class="keyword">$this</span>-&gt;responseBody = <span class="string">'&#123;"name":"json"&#125;'</span>;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">$app-&gt;dispatch(<span class="string">'/users/josh'</span>);</div></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li>现代 PHP</li>
+<li>官方手册</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/PHP/">PHP</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Closures/">Closures</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://www.maksim.website/2017/03/15/cjlz9pr38002xabrdfv0hk1tb/" data-title="PHP Closures | Maksim&#39;s Website" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/04/08/1/" title="在MYSQL中进行日期操作">
+  <strong>上一篇：</strong><br/>
+  <span>
+  在MYSQL中进行日期操作</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/01/24/1/"  title="MYSQL DBA 学习笔记（03）：解密 MySQL databock and Binlog 的格式">
+ <strong>下一篇：</strong><br/> 
+ <span>MYSQL DBA 学习笔记（03）：解密 MySQL databock and Binlog 的格式
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建闭包"><span class="toc-number">1.</span> <span class="toc-text">创建闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用附加状态"><span class="toc-number">2.</span> <span class="toc-text">使用附加状态</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number"></span> <span class="toc-text">参考</span></a>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Andriod/" title="Andriod">Andriod<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/C-C/" title="C/C++">C/C++<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/JavaScript/" title="JavaScript">JavaScript<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MessageQueue/" title="MessageQueue">MessageQueue<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>15</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL-DBA/" title="MySQL DBA">MySQL DBA<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Objective-C/" title="Objective-C">Objective-C<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>46</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PHP-架构/" title="PHP 架构">PHP 架构<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SVN/" title="SVN">SVN<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ios/" title="ios">ios<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/javascript/" title="javascript">javascript<sup>1</sup></a></li>
+		  
+		
+		  
+		
+		  
+			<li><a href="/categories/工具/" title="工具">工具<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据结构与算法/" title="数据结构与算法">数据结构与算法<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书笔记/" title="读书笔记">读书笔记<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/随笔/" title="随笔">随笔<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP基础/" title="PHP基础">PHP基础<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP/" title="PHP">PHP<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/高并发/" title="高并发">高并发<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux-Centos/" title="Linux,Centos">Linux,Centos<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Closures/" title="Closures">Closures<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wechat-pay-php-php7-php-input/" title="wechat pay,php, php7, php://input">wechat pay,php, php7, php://input<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php/" title="php">php<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/INSERT/" title="INSERT">INSERT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux-GNU/" title="Linux,GNU">Linux,GNU<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C-C-算法/" title="C/C++,算法">C/C++,算法<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/算法/" title="算法">算法<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MySQL-设计规范/" title="MySQL 设计规范">MySQL 设计规范<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Objc-多线程/" title="Objc,多线程">Objc,多线程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多线程-PHP7-2-编译安装-GCC/" title="多线程,PHP7.2,编译安装,GCC">多线程,PHP7.2,编译安装,GCC<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="Maksim">Maksim</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

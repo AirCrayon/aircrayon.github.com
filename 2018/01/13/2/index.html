@@ -46,15 +46,13 @@
       
 <div>
 		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="Maksim&#39;s Website" title="Maksim&#39;s Website"/></a>
-			</div>
+		
 			
 			<div id="textlogo">
 				<h1 class="site-name"><a href="/" title="Maksim&#39;s Website">Maksim&#39;s Website</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -70,7 +68,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:www.maksim.website">
 					</form>
 					
@@ -93,14 +91,14 @@
 		<a href="/about" title="Maksim" target="_blank" itemprop="author">Maksim</a>
 		
   <p class="article-time">
-    <time datetime="2018-01-12T16:00:00.000Z" itemprop="datePublished"> 发表于 2018-01-13</time>
+    <time datetime="2018-01-12T16:00:00.000Z" itemprop="datePublished"> Published 2018-01-13</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是进程、线程、协程"><span class="toc-number">1.</span> <span class="toc-text">什么是进程、线程、协程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#进程"><span class="toc-number">1.1.</span> <span class="toc-text">进程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#进程的三态模型"><span class="toc-number">1.1.1.</span> <span class="toc-text">进程的三态模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程的五态模型"><span class="toc-number">1.1.2.</span> <span class="toc-text">进程的五态模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程"><span class="toc-number">1.2.</span> <span class="toc-text">线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#协程"><span class="toc-number">1.3.</span> <span class="toc-text">协程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程与进程的区别"><span class="toc-number">1.4.</span> <span class="toc-text">线程与进程的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程和协程的区别"><span class="toc-number">1.5.</span> <span class="toc-text">线程和协程的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是多进程，多线程"><span class="toc-number">2.</span> <span class="toc-text">什么是多进程，多线程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#同步阻塞模型"><span class="toc-number">3.</span> <span class="toc-text">同步阻塞模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#异步非阻塞模型"><span class="toc-number">4.</span> <span class="toc-text">异步非阻塞模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP-并发编程实践"><span class="toc-number">5.</span> <span class="toc-text">PHP 并发编程实践</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP的Swoole扩展"><span class="toc-number">5.0.1.</span> <span class="toc-text">PHP的Swoole扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Swoole-的异步MySQL实现"><span class="toc-number">5.0.1.1.</span> <span class="toc-text">Swoole 的异步MySQL实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#消息队列"><span class="toc-number">5.0.2.</span> <span class="toc-text">消息队列</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#用户注册"><span class="toc-number">5.0.2.1.</span> <span class="toc-text">用户注册</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解耦操作"><span class="toc-number">5.0.2.2.</span> <span class="toc-text">解耦操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#流量削峰"><span class="toc-number">5.0.2.3.</span> <span class="toc-text">流量削峰</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#日志处理"><span class="toc-number">5.0.2.4.</span> <span class="toc-text">日志处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#消息通讯"><span class="toc-number">5.0.2.5.</span> <span class="toc-text">消息通讯</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常见的消息队列产品"><span class="toc-number">5.0.2.6.</span> <span class="toc-text">常见的消息队列产品</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接口的并发请求"><span class="toc-number">5.0.3.</span> <span class="toc-text">接口的并发请求</span></a></li></ol></li></ol></li></ol>
 		
@@ -233,18 +231,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2018/01/13/1/" title="高并发和大流量解决方案（5）： CDN 加速">
+ <a href="/2018/01/13/3/" title="高并发和大流量解决方案（7）：动态语言静态化">
   <strong>上一篇：</strong><br/>
   <span>
-  高并发和大流量解决方案（5）： CDN 加速</span>
+  高并发和大流量解决方案（7）：动态语言静态化</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2018/01/12/2/"  title="高并发和大流量解决方案（4）：浏览器缓存和压缩优化技术">
+<a href="/2018/01/13/1/"  title="高并发和大流量解决方案（5）： CDN 加速">
  <strong>下一篇：</strong><br/> 
- <span>高并发和大流量解决方案（4）：浏览器缓存和压缩优化技术
+ <span>高并发和大流量解决方案（5）： CDN 加速
 </span>
 </a>
 </div>
@@ -256,17 +254,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是进程、线程、协程"><span class="toc-number">1.</span> <span class="toc-text">什么是进程、线程、协程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#进程"><span class="toc-number">1.1.</span> <span class="toc-text">进程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#进程的三态模型"><span class="toc-number">1.1.1.</span> <span class="toc-text">进程的三态模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程的五态模型"><span class="toc-number">1.1.2.</span> <span class="toc-text">进程的五态模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程"><span class="toc-number">1.2.</span> <span class="toc-text">线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#协程"><span class="toc-number">1.3.</span> <span class="toc-text">协程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程与进程的区别"><span class="toc-number">1.4.</span> <span class="toc-text">线程与进程的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程和协程的区别"><span class="toc-number">1.5.</span> <span class="toc-text">线程和协程的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是多进程，多线程"><span class="toc-number">2.</span> <span class="toc-text">什么是多进程，多线程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#同步阻塞模型"><span class="toc-number">3.</span> <span class="toc-text">同步阻塞模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#异步非阻塞模型"><span class="toc-number">4.</span> <span class="toc-text">异步非阻塞模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP-并发编程实践"><span class="toc-number">5.</span> <span class="toc-text">PHP 并发编程实践</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP的Swoole扩展"><span class="toc-number">5.0.1.</span> <span class="toc-text">PHP的Swoole扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Swoole-的异步MySQL实现"><span class="toc-number">5.0.1.1.</span> <span class="toc-text">Swoole 的异步MySQL实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#消息队列"><span class="toc-number">5.0.2.</span> <span class="toc-text">消息队列</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#用户注册"><span class="toc-number">5.0.2.1.</span> <span class="toc-text">用户注册</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解耦操作"><span class="toc-number">5.0.2.2.</span> <span class="toc-text">解耦操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#流量削峰"><span class="toc-number">5.0.2.3.</span> <span class="toc-text">流量削峰</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#日志处理"><span class="toc-number">5.0.2.4.</span> <span class="toc-text">日志处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#消息通讯"><span class="toc-number">5.0.2.5.</span> <span class="toc-text">消息通讯</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常见的消息队列产品"><span class="toc-number">5.0.2.6.</span> <span class="toc-text">常见的消息队列产品</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接口的并发请求"><span class="toc-number">5.0.3.</span> <span class="toc-text">接口的并发请求</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -274,7 +272,7 @@
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -298,7 +296,7 @@
 		  
 		
 		  
-			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>14</sup></a></li>
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>15</sup></a></li>
 		  
 		
 		  
@@ -334,8 +332,6 @@
 		  
 		
 		  
-			<li><a href="/categories/php/" title="php">php<sup>3</sup></a></li>
-		  
 		
 		  
 			<li><a href="/categories/工具/" title="工具">工具<sup>1</sup></a></li>
@@ -359,7 +355,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -367,15 +363,19 @@
 			
 		
 			
+				<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/PHP基础/" title="PHP基础">PHP基础<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>4</sup></a></li>
+				<li><a href="/tags/PHP/" title="PHP">PHP<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/PHP/" title="PHP">PHP<sup>4</sup></a></li>
+				<li><a href="/tags/高并发/" title="高并发">高并发<sup>2</sup></a></li>
 			
 		
 			
@@ -387,11 +387,7 @@
 			
 		
 			
-				<li><a href="/tags/高并发/" title="高并发">高并发<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Linux-GNU/" title="Linux,GNU">Linux,GNU<sup>1</sup></a></li>
+				<li><a href="/tags/Closures/" title="Closures">Closures<sup>1</sup></a></li>
 			
 		
 			
@@ -403,7 +399,7 @@
 			
 		
 			
-				<li><a href="/tags/Objc-多线程/" title="Objc,多线程">Objc,多线程<sup>1</sup></a></li>
+				<li><a href="/tags/INSERT/" title="INSERT">INSERT<sup>1</sup></a></li>
 			
 		
 			
@@ -411,11 +407,7 @@
 			
 		
 			
-				<li><a href="/tags/多线程-PHP7-2-编译安装-GCC/" title="多线程,PHP7.2,编译安装,GCC">多线程,PHP7.2,编译安装,GCC<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/算法/" title="算法">算法<sup>1</sup></a></li>
+				<li><a href="/tags/Linux-GNU/" title="Linux,GNU">Linux,GNU<sup>1</sup></a></li>
 			
 		
 			
@@ -423,15 +415,19 @@
 			
 		
 			
-				<li><a href="/tags/INSERT/" title="INSERT">INSERT<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Closures/" title="Closures">Closures<sup>1</sup></a></li>
+				<li><a href="/tags/算法/" title="算法">算法<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/MySQL-设计规范/" title="MySQL 设计规范">MySQL 设计规范<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Objc-多线程/" title="Objc,多线程">Objc,多线程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多线程-PHP7-2-编译安装-GCC/" title="多线程,PHP7.2,编译安装,GCC">多线程,PHP7.2,编译安装,GCC<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -439,7 +435,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -461,11 +457,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -475,31 +471,6 @@
     </div>
     <footer><div id="footer" >
 	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
-	</section>
-	 
-	<div class="social-font" class="clearfix">
-		
-		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	</div>
 			
 		
 
@@ -694,7 +665,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

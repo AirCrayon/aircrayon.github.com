@@ -47,15 +47,13 @@
       
 <div>
 		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="Maksim&#39;s Website" title="Maksim&#39;s Website"/></a>
-			</div>
+		
 			
 			<div id="textlogo">
 				<h1 class="site-name"><a href="/" title="Maksim&#39;s Website">Maksim&#39;s Website</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -71,7 +69,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:www.maksim.website">
 					</form>
 					
@@ -94,14 +92,14 @@
 		<a href="/about" title="Maksim" target="_blank" itemprop="author">Maksim</a>
 		
   <p class="article-time">
-    <time datetime="2017-09-09T16:00:00.000Z" itemprop="datePublished"> 发表于 2017-09-10</time>
+    <time datetime="2017-09-09T16:00:00.000Z" itemprop="datePublished"> Published 2017-09-10</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是mysql主从同步？"><span class="toc-number">1.</span> <span class="toc-text">什么是mysql主从同步？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主从同步的原理是什么？"><span class="toc-number">2.</span> <span class="toc-text">主从同步的原理是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#主从同步事件有哪些"><span class="toc-number">2.1.</span> <span class="toc-text">主从同步事件有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在master机器上的操作"><span class="toc-number">2.2.</span> <span class="toc-text">在master机器上的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#binlog-dump线程"><span class="toc-number">2.2.1.</span> <span class="toc-text">binlog dump线程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在slave机器上的操作"><span class="toc-number">2.3.</span> <span class="toc-text">在slave机器上的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何在master、slave上查看上述的线程？"><span class="toc-number">2.4.</span> <span class="toc-text">如何在master、slave上查看上述的线程？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#讲了这么多，一图以蔽之"><span class="toc-number">3.</span> <span class="toc-text">讲了这么多，一图以蔽之</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实战"><span class="toc-number">4.</span> <span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境"><span class="toc-number">4.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#master机器上的操作"><span class="toc-number">4.2.</span> <span class="toc-text">master机器上的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、更改配置文件"><span class="toc-number">4.2.1.</span> <span class="toc-text">1、更改配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、重启MySQL"><span class="toc-number">4.2.2.</span> <span class="toc-text">2、重启MySQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、创建主从同步的mysql-user。"><span class="toc-number">4.2.3.</span> <span class="toc-text">3、创建主从同步的mysql user。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、为MYSQL加读锁"><span class="toc-number">4.2.4.</span> <span class="toc-text">4、为MYSQL加读锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、记录下来MASTER-REPLICATION-LOG-的位置"><span class="toc-number">4.2.5.</span> <span class="toc-text">5、记录下来MASTER REPLICATION LOG 的位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、将master-DB中现有的数据信息导出"><span class="toc-number">4.2.6.</span> <span class="toc-text">6、将master DB中现有的数据信息导出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7、接触master-DB的读锁"><span class="toc-number">4.2.7.</span> <span class="toc-text">7、接触master DB的读锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8、将步骤6中的dbdump-sql文件copy到slave"><span class="toc-number">4.2.8.</span> <span class="toc-text">8、将步骤6中的dbdump.sql文件copy到slave</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slave机器上的操作"><span class="toc-number">4.3.</span> <span class="toc-text">slave机器上的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、更改配置文件-1"><span class="toc-number">4.3.1.</span> <span class="toc-text">1、更改配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、重启mysql，以使配置文件生效"><span class="toc-number">4.3.2.</span> <span class="toc-text">2、重启mysql，以使配置文件生效</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、导入从master-DB。-导出的dbdump-sql文件，以使master-slave数据一致"><span class="toc-number">4.3.3.</span> <span class="toc-text">3、导入从master DB。 导出的dbdump.sql文件，以使master-slave数据一致</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、使slave与master建立连接，从而同步"><span class="toc-number">4.3.4.</span> <span class="toc-text">4、使slave与master建立连接，从而同步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP代码实现数据库读写分离"><span class="toc-number">5.</span> <span class="toc-text">PHP代码实现数据库读写分离</span></a></li></ol>
 		
@@ -222,17 +220,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是mysql主从同步？"><span class="toc-number">1.</span> <span class="toc-text">什么是mysql主从同步？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主从同步的原理是什么？"><span class="toc-number">2.</span> <span class="toc-text">主从同步的原理是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#主从同步事件有哪些"><span class="toc-number">2.1.</span> <span class="toc-text">主从同步事件有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在master机器上的操作"><span class="toc-number">2.2.</span> <span class="toc-text">在master机器上的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#binlog-dump线程"><span class="toc-number">2.2.1.</span> <span class="toc-text">binlog dump线程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在slave机器上的操作"><span class="toc-number">2.3.</span> <span class="toc-text">在slave机器上的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何在master、slave上查看上述的线程？"><span class="toc-number">2.4.</span> <span class="toc-text">如何在master、slave上查看上述的线程？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#讲了这么多，一图以蔽之"><span class="toc-number">3.</span> <span class="toc-text">讲了这么多，一图以蔽之</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实战"><span class="toc-number">4.</span> <span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境"><span class="toc-number">4.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#master机器上的操作"><span class="toc-number">4.2.</span> <span class="toc-text">master机器上的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、更改配置文件"><span class="toc-number">4.2.1.</span> <span class="toc-text">1、更改配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、重启MySQL"><span class="toc-number">4.2.2.</span> <span class="toc-text">2、重启MySQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、创建主从同步的mysql-user。"><span class="toc-number">4.2.3.</span> <span class="toc-text">3、创建主从同步的mysql user。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、为MYSQL加读锁"><span class="toc-number">4.2.4.</span> <span class="toc-text">4、为MYSQL加读锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、记录下来MASTER-REPLICATION-LOG-的位置"><span class="toc-number">4.2.5.</span> <span class="toc-text">5、记录下来MASTER REPLICATION LOG 的位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、将master-DB中现有的数据信息导出"><span class="toc-number">4.2.6.</span> <span class="toc-text">6、将master DB中现有的数据信息导出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7、接触master-DB的读锁"><span class="toc-number">4.2.7.</span> <span class="toc-text">7、接触master DB的读锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8、将步骤6中的dbdump-sql文件copy到slave"><span class="toc-number">4.2.8.</span> <span class="toc-text">8、将步骤6中的dbdump.sql文件copy到slave</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slave机器上的操作"><span class="toc-number">4.3.</span> <span class="toc-text">slave机器上的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、更改配置文件-1"><span class="toc-number">4.3.1.</span> <span class="toc-text">1、更改配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、重启mysql，以使配置文件生效"><span class="toc-number">4.3.2.</span> <span class="toc-text">2、重启mysql，以使配置文件生效</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、导入从master-DB。-导出的dbdump-sql文件，以使master-slave数据一致"><span class="toc-number">4.3.3.</span> <span class="toc-text">3、导入从master DB。 导出的dbdump.sql文件，以使master-slave数据一致</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、使slave与master建立连接，从而同步"><span class="toc-number">4.3.4.</span> <span class="toc-text">4、使slave与master建立连接，从而同步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP代码实现数据库读写分离"><span class="toc-number">5.</span> <span class="toc-text">PHP代码实现数据库读写分离</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -240,7 +238,7 @@
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -264,7 +262,7 @@
 		  
 		
 		  
-			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>14</sup></a></li>
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>15</sup></a></li>
 		  
 		
 		  
@@ -300,8 +298,6 @@
 		  
 		
 		  
-			<li><a href="/categories/php/" title="php">php<sup>3</sup></a></li>
-		  
 		
 		  
 			<li><a href="/categories/工具/" title="工具">工具<sup>1</sup></a></li>
@@ -325,7 +321,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -333,15 +329,19 @@
 			
 		
 			
+				<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/PHP基础/" title="PHP基础">PHP基础<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>4</sup></a></li>
+				<li><a href="/tags/PHP/" title="PHP">PHP<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/PHP/" title="PHP">PHP<sup>4</sup></a></li>
+				<li><a href="/tags/高并发/" title="高并发">高并发<sup>2</sup></a></li>
 			
 		
 			
@@ -353,11 +353,7 @@
 			
 		
 			
-				<li><a href="/tags/高并发/" title="高并发">高并发<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Linux-GNU/" title="Linux,GNU">Linux,GNU<sup>1</sup></a></li>
+				<li><a href="/tags/Closures/" title="Closures">Closures<sup>1</sup></a></li>
 			
 		
 			
@@ -369,7 +365,7 @@
 			
 		
 			
-				<li><a href="/tags/Objc-多线程/" title="Objc,多线程">Objc,多线程<sup>1</sup></a></li>
+				<li><a href="/tags/INSERT/" title="INSERT">INSERT<sup>1</sup></a></li>
 			
 		
 			
@@ -377,11 +373,7 @@
 			
 		
 			
-				<li><a href="/tags/多线程-PHP7-2-编译安装-GCC/" title="多线程,PHP7.2,编译安装,GCC">多线程,PHP7.2,编译安装,GCC<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/算法/" title="算法">算法<sup>1</sup></a></li>
+				<li><a href="/tags/Linux-GNU/" title="Linux,GNU">Linux,GNU<sup>1</sup></a></li>
 			
 		
 			
@@ -389,15 +381,19 @@
 			
 		
 			
-				<li><a href="/tags/INSERT/" title="INSERT">INSERT<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Closures/" title="Closures">Closures<sup>1</sup></a></li>
+				<li><a href="/tags/算法/" title="算法">算法<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/MySQL-设计规范/" title="MySQL 设计规范">MySQL 设计规范<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Objc-多线程/" title="Objc,多线程">Objc,多线程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多线程-PHP7-2-编译安装-GCC/" title="多线程,PHP7.2,编译安装,GCC">多线程,PHP7.2,编译安装,GCC<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -405,7 +401,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -427,11 +423,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -441,31 +437,6 @@
     </div>
     <footer><div id="footer" >
 	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
-	</section>
-	 
-	<div class="social-font" class="clearfix">
-		
-		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	</div>
 			
 		
 
@@ -660,7 +631,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
