@@ -1,0 +1,622 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>利用规约设计模式（Specification）开发整洁的规格校验（PHP 语言描述） | Maksim&#39;s Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Maksim">
+    
+
+    
+    <meta name="description" content="规格校验是使我们在日常的开发过程中中比较常见的一种业务需求，最直观的使用是我们在开发电商类网站时我们会对商品的一些规格进行限定，例如重量大小不能超过 N（kg） 。 如果是一个刚刚加入业界的程序员，很有可能会编写出大量的if语句来进行解决此类的业务逻辑，这样编码可行吗？ 答案是可以，因为顺利的完成了业务逻辑代码的编写任务，但是却违反了类设计中的开闭原则，而且一看就是没有经过正规的训练，没有对于 O">
+<meta name="keywords" content="设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用规约设计模式（Specification）开发整洁的规格校验（PHP 语言描述）">
+<meta property="og:url" content="http://www.maksim.website/2017/06/01/cjmc0idsx0032wprdr9g6muw0/index.html">
+<meta property="og:site_name" content="Maksim&#39;s Website">
+<meta property="og:description" content="规格校验是使我们在日常的开发过程中中比较常见的一种业务需求，最直观的使用是我们在开发电商类网站时我们会对商品的一些规格进行限定，例如重量大小不能超过 N（kg） 。 如果是一个刚刚加入业界的程序员，很有可能会编写出大量的if语句来进行解决此类的业务逻辑，这样编码可行吗？ 答案是可以，因为顺利的完成了业务逻辑代码的编写任务，但是却违反了类设计中的开闭原则，而且一看就是没有经过正规的训练，没有对于 O">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://designpatternsphp.readthedocs.io/zh_CN/latest/_images/uml7.png">
+<meta property="og:updated_time" content="2018-06-20T05:03:26.184Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用规约设计模式（Specification）开发整洁的规格校验（PHP 语言描述）">
+<meta name="twitter:description" content="规格校验是使我们在日常的开发过程中中比较常见的一种业务需求，最直观的使用是我们在开发电商类网站时我们会对商品的一些规格进行限定，例如重量大小不能超过 N（kg） 。 如果是一个刚刚加入业界的程序员，很有可能会编写出大量的if语句来进行解决此类的业务逻辑，这样编码可行吗？ 答案是可以，因为顺利的完成了业务逻辑代码的编写任务，但是却违反了类设计中的开闭原则，而且一看就是没有经过正规的训练，没有对于 O">
+<meta name="twitter:image" content="http://designpatternsphp.readthedocs.io/zh_CN/latest/_images/uml7.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Maksim&#39;s Website" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+		
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Maksim&#39;s Website">Maksim&#39;s Website</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:www.maksim.website">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/06/01/cjmc0idsx0032wprdr9g6muw0/" title="利用规约设计模式（Specification）开发整洁的规格校验（PHP 语言描述）" itemprop="url">利用规约设计模式（Specification）开发整洁的规格校验（PHP 语言描述）</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Maksim" target="_blank" itemprop="author">Maksim</a>
+		
+  <p class="article-time">
+    <time datetime="2017-05-31T16:00:00.000Z" itemprop="datePublished"> 發表於 2017-06-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			
+		
+		</div>
+		
+		<p>规格校验是使我们在日常的开发过程中中比较常见的一种业务需求，最直观的使用是我们在开发电商类网站时我们会对商品的一些规格进行限定，例如重量大小不能超过 N（kg） 。</p>
+<p>如果是一个刚刚加入业界的程序员，很有可能会编写出大量的<code>if</code>语句来进行解决此类的业务逻辑，这样编码可行吗？</p>
+<p>答案是可以，因为顺利的完成了业务逻辑代码的编写任务，但是却违反了类设计中的<code>开闭原则</code>，而且一看就是没有经过正规的训练，没有对于 OOP 编程有更深的了解。</p>
+<p>那么有没有一种设计模式可以让我们设计出优雅而又整洁的逻辑代码呢，答案是显而易见的，要不然也就不会出现这篇文章，它就是——规模设计模式。</p>
+<p>我们可以利用规约模式来解决这一实际问题，开发出优雅而又健全的业务逻辑代码。</p>
+<p>规约设计模式的主要设计目的就是为了生成业务规则的明确规范，通过<code>isSatisfiedBy</code>方法来检测对象是否符合规范。</p>
+<p>下图是规约模式 UML 类图（不懂的同学推荐去看由谭云杰所编写的《大象：Thinking in UML》）</p>
+<p><img src="http://designpatternsphp.readthedocs.io/zh_CN/latest/_images/uml7.png" alt=""></p>
+<p>即使看不懂 UML 类图也没有关系，编码能力的提高是要根据不断的实践才能有所增长的。当你顺着我的思路打完代码，你就已经可以明白规约设计模式的设计理念以及作用。</p>
+<p>当然我还是要解释一下这个类图所代表的含义。</p>
+<p>既然是规格校验，那么一个规格校验到底包括什么呢？</p>
+<p>一般而言主要有：区间、大于、小于、不等于，这几样，那么我们是不是可以将其抽象成一个类呢？</p>
+<p>这就是上面那张 UML 的简单含义，其中主要是用于描述其类的关系，UML 就是帮助我们对类进行抽象的一个工具。</p>
+<p>下面让我们撸起袖子打代码。首先我们应该新建了 Goods类用于表示被规约的产品，其中包含一个 Price 价格属性，然后在建立对 Price 属性的规约，用来检验最新实例化的 Goods 是否满足约定。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">//商品类</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Goods</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> float</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $price;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(float $price)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;price = $price;</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getPrice</span><span class="params">()</span>: <span class="title">float</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;price;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在建立规约之前，我们需要建立一个接口，这个接口中定了了一个方法<code>isSatisfiedBy</code>,也就是上文提到的那个检测对象是否满足规约条件的那个方法。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">SpecificationInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">isSatisfiedBy</span><span class="params">(Goods $goods)</span>: <span class="title">bool</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Ok，在我们编写其余代码之前，我们需要来做一个思考，在程序语言当中，判断条件中的操作符是不是有或、与、非这三个判断条件，对应着 ||、&amp;&amp;、！。</p>
+<p>那么我们是否可以将其抽象成一个又一个的类呢？</p>
+<p>OrSpecification规约用来表示 Or 的关系，与我们的逻辑判断一样，表示在两个规约之间只要满足一条便返回 true。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">OrSpecification</span> <span class="keyword">implements</span> <span class="title">SpecificationInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> SpecificationInterface[]</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $specifications;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> SpecificationInterface[] ...$specifications</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(SpecificationInterface ...$specifications)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;specifications = $specifications;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * if at least one specification is true, return true, else return false</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">isSatisfiedBy</span><span class="params">(Item $item)</span>: <span class="title">bool</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">foreach</span> (<span class="keyword">$this</span>-&gt;specifications <span class="keyword">as</span> $specification) &#123;</div><div class="line">            <span class="keyword">if</span> ($specification-&gt;isSatisfiedBy($item)) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>AndSpecification 用于表示 And 关系，两条以上规约时，必须都满足条件才会返回 true否则返回false.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AndSpecification</span> <span class="keyword">implements</span> <span class="title">SpecificationInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> SpecificationInterface[]</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $specifications;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> SpecificationInterface[] ...$specifications</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(SpecificationInterface ...$specifications)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;specifications = $specifications;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * if at least one specification is false, return false, else return true.</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">isSatisfiedBy</span><span class="params">(Item $item)</span>: <span class="title">bool</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">foreach</span> (<span class="keyword">$this</span>-&gt;specifications <span class="keyword">as</span> $specification) &#123;</div><div class="line">            <span class="keyword">if</span> (!$specification-&gt;isSatisfiedBy($item)) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>NotSpecification.php 用于表示Not。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NotSpecification</span> <span class="keyword">implements</span> <span class="title">SpecificationInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> SpecificationInterface</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $specification;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(SpecificationInterface $specification)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;specification = $specification;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">isSatisfiedBy</span><span class="params">(Item $item)</span>: <span class="title">bool</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> !<span class="keyword">$this</span>-&gt;specification-&gt;isSatisfiedBy($item);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>逻辑判断抽编码好了之后，我们就要开始真正的规约了，我们建立一个 Price 规约，其中主要设定了 Price 的范围，构造函数中包含最大值与最小值，并且实现<code>isSatisfiedBy</code>用来判断输入的值是否符合范围。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PriceSpecification</span> <span class="keyword">implements</span> <span class="title">SpecificationInterface</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> float|null</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $maxPrice;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@var</span> float|null</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> $minPrice;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> float $minPrice</div><div class="line">     * <span class="doctag">@param</span> float $maxPrice</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($minPrice, $maxPrice)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;minPrice = $minPrice;</div><div class="line">        <span class="keyword">$this</span>-&gt;maxPrice = $maxPrice;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">isSatisfiedBy</span><span class="params">(Item $item)</span>: <span class="title">bool</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;maxPrice !== <span class="keyword">null</span> &amp;&amp; $item-&gt;getPrice() &gt; <span class="keyword">$this</span>-&gt;maxPrice) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;minPrice !== <span class="keyword">null</span> &amp;&amp; $item-&gt;getPrice() &lt; <span class="keyword">$this</span>-&gt;minPrice) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面我们进行单元测试，如果不懂单元测试的朋友，也可以直接使用上面的代码进行测试。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>\<span class="title">Tests</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>\<span class="title">Item</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>\<span class="title">NotSpecification</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>\<span class="title">OrSpecification</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>\<span class="title">AndSpecification</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">DesignPatterns</span>\<span class="title">Behavioral</span>\<span class="title">Specification</span>\<span class="title">PriceSpecification</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">PHPUnit</span>\<span class="title">Framework</span>\<span class="title">TestCase</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SpecificationTest</span> <span class="keyword">extends</span> <span class="title">TestCase</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testCanOr</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $spec1 = <span class="keyword">new</span> PriceSpecification(<span class="number">50</span>, <span class="number">99</span>);</div><div class="line">        $spec2 = <span class="keyword">new</span> PriceSpecification(<span class="number">101</span>, <span class="number">200</span>);</div><div class="line"></div><div class="line">        $orSpec = <span class="keyword">new</span> OrSpecification($spec1, $spec2);</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;assertFalse($orSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">100</span>)));</div><div class="line">        <span class="keyword">$this</span>-&gt;assertTrue($orSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">51</span>)));</div><div class="line">        <span class="keyword">$this</span>-&gt;assertTrue($orSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">150</span>)));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testCanAnd</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $spec1 = <span class="keyword">new</span> PriceSpecification(<span class="number">50</span>, <span class="number">100</span>);</div><div class="line">        $spec2 = <span class="keyword">new</span> PriceSpecification(<span class="number">80</span>, <span class="number">200</span>);</div><div class="line"></div><div class="line">        $andSpec = <span class="keyword">new</span> AndSpecification($spec1, $spec2);</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;assertFalse($andSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">150</span>)));</div><div class="line">        <span class="keyword">$this</span>-&gt;assertFalse($andSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">1</span>)));</div><div class="line">        <span class="keyword">$this</span>-&gt;assertFalse($andSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">51</span>)));</div><div class="line">        <span class="keyword">$this</span>-&gt;assertTrue($andSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">100</span>)));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testCanNot</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $spec1 = <span class="keyword">new</span> PriceSpecification(<span class="number">50</span>, <span class="number">100</span>);</div><div class="line">        $notSpec = <span class="keyword">new</span> NotSpecification($spec1);</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;assertTrue($notSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">150</span>)));</div><div class="line">        <span class="keyword">$this</span>-&gt;assertFalse($notSpec-&gt;isSatisfiedBy(<span class="keyword">new</span> Item(<span class="number">50</span>)));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样一来，我们就设计出了优雅而又健壮的代码。</p>
+<p>说明：</p>
+<p>本文章代码，来自于 Github 开源项目，点击链接进入查看<a href="http://designpatternsphp.readthedocs.io/" target="_blank" rel="noopener">http://designpatternsphp.readthedocs.io/</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/PHP/">PHP</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/设计模式/">设计模式</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://www.maksim.website/2017/06/01/cjmc0idsx0032wprdr9g6muw0/" data-title="利用规约设计模式（Specification）开发整洁的规格校验（PHP 语言描述） | Maksim&#39;s Website" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/07/14/1/" title="人人都懂设计模式">
+  <strong>上一篇：</strong><br/>
+  <span>
+  人人都懂设计模式</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/04/08/1/"  title="在MYSQL中进行日期操作">
+ <strong>下一篇：</strong><br/> 
+ <span>在MYSQL中进行日期操作
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Andriod/" title="Andriod">Andriod<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/C-C/" title="C/C++">C/C++<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/JavaScript/" title="JavaScript">JavaScript<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MessageQueue/" title="MessageQueue">MessageQueue<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL/" title="MySQL">MySQL<sup>15</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/MySQL-DBA/" title="MySQL DBA">MySQL DBA<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Objective-C/" title="Objective-C">Objective-C<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>46</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/PHP-架构/" title="PHP 架构">PHP 架构<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SVN/" title="SVN">SVN<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ios/" title="ios">ios<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/javascript/" title="javascript">javascript<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/工具/" title="工具">工具<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据结构与算法/" title="数据结构与算法">数据结构与算法<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书笔记/" title="读书笔记">读书笔记<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/随笔/" title="随笔">随笔<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP基础/" title="PHP基础">PHP基础<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/PHP/" title="PHP">PHP<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/高并发/" title="高并发">高并发<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux-Centos/" title="Linux,Centos">Linux,Centos<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Closures/" title="Closures">Closures<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Objc-多线程/" title="Objc,多线程">Objc,多线程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/php/" title="php">php<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/多线程-PHP7-2-编译安装-GCC/" title="多线程,PHP7.2,编译安装,GCC">多线程,PHP7.2,编译安装,GCC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wechat-pay-php-php7-php-input/" title="wechat pay,php, php7, php://input">wechat pay,php, php7, php://input<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C-C-算法/" title="C/C++,算法">C/C++,算法<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/算法/" title="算法">算法<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MySQL-设计规范/" title="MySQL 设计规范">MySQL 设计规范<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/INSERT/" title="INSERT">INSERT<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux-GNU/" title="Linux,GNU">Linux,GNU<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="Maksim">Maksim</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
